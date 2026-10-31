@@ -1,0 +1,293 @@
+{
+  "scope": "In-process messages to this host's own native windows; no OS input injection or physical mouse test",
+  "checks": [
+    {
+      "name": "ATL initialized and native popup created",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "real apple candidate with definition",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "light native frame rendered",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "popup mouse activation handler preserves host focus",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "clicking the English row commits Chinese",
+      "passed": true,
+      "input": "",
+      "commit": "苹果",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "popup recreated after mouse commit",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "clicking a different Chinese candidate uses its current index",
+      "passed": true,
+      "input": "",
+      "commit": "平果",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "explicit English action commits apple",
+      "passed": true,
+      "input": "",
+      "commit": "apple",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "repeated English action cannot duplicate text",
+      "passed": true,
+      "input": "",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "English action uses highlighted candidate",
+      "passed": true,
+      "input": "",
+      "commit": "give it a try",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "next page uses real Rime candidates",
+      "passed": true,
+      "input": "shishi",
+      "commit": "",
+      "page": 1,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "page two native frame rendered",
+      "passed": true,
+      "input": "shishi",
+      "commit": "",
+      "page": 1,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "English action after paging uses new page",
+      "passed": true,
+      "input": "",
+      "commit": "at the right time",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "previous page restores first-page candidates",
+      "passed": true,
+      "input": "shishi",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "long English native frame rendered",
+      "passed": true,
+      "input": "zhishichanquan",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "long English commits full value",
+      "passed": true,
+      "input": "",
+      "commit": "intellectual property rights",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "missing definition preserves composition",
+      "passed": true,
+      "input": "zhangxiaoming",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "missing-definition toggle collapses without candidate change",
+      "passed": true,
+      "input": "zhangxiaoming",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": false
+    },
+    {
+      "name": "collapsed native frame rendered",
+      "passed": true,
+      "input": "zhangxiaoming",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": false
+    },
+    {
+      "name": "learning off blocks English",
+      "passed": true,
+      "input": "zhangxiaoming",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": false
+    },
+    {
+      "name": "learning off still commits Chinese",
+      "passed": true,
+      "input": "",
+      "commit": "张小明",
+      "page": 0,
+      "selected": 0,
+      "learning": false
+    },
+    {
+      "name": "learning on restores definitions and height",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "dark theme retains geometry",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "partial English action keeps all input",
+      "passed": true,
+      "input": "pingguoyinhang",
+      "commit": "",
+      "page": 0,
+      "selected": 1,
+      "learning": true
+    },
+    {
+      "name": "partial Chinese composition still completes",
+      "passed": true,
+      "input": "",
+      "commit": "苹果银行",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "native backspace handler edits composition",
+      "passed": true,
+      "input": "pinggu",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
+      "name": "twenty load-toggle-commit cycles remain consistent",
+      "passed": true,
+      "input": "",
+      "commit": "apple",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    }
+  ],
+  "dpi": 144,
+  "normal_width": 744,
+  "normal_height": 81,
+  "collapsed_height": 55,
+  "passed": true,
+  "executed_at": "2026-11-01T00:34:17+08:00",
+  "executable_sha256": "c9ccb229a18e662bca9f042dade354639baf782ef5faa7eb8b194f1fe340ddf6",
+  "frames": [
+    {
+      "file": "results\\previews\\native-light.png",
+      "width": 744,
+      "height": 81,
+      "sha256": "10477573a9bd6f8747b1d03d53a3791f83cb3ffb6a69aa5e861b6a763c4cc816"
+    },
+    {
+      "file": "results\\previews\\native-page-two.png",
+      "width": 744,
+      "height": 81,
+      "sha256": "3f97507eed35a9dabde7c5e159314f6cf4c5c3c6c7c56ca9d8046fb5cfbc0058"
+    },
+    {
+      "file": "results\\previews\\native-long.png",
+      "width": 966,
+      "height": 81,
+      "sha256": "eccfaf2395b4dbe3009baa40b8a2bf4009bfa2c5e56891fa158bacaefdcfe9f9"
+    },
+    {
+      "file": "results\\previews\\native-closed.png",
+      "width": 744,
+      "height": 55,
+      "sha256": "4f72bb76be6e6e017443bac1799c8bbafa7c31417e4a50b740aeca562db098db"
+    },
+    {
+      "file": "results\\previews\\native-dark.png",
+      "width": 744,
+      "height": 81,
+      "sha256": "fd131a52d06df0e14a8885f5c88335d77c309c2f9e4e1bd9d82c95f0b27bb842"
+    }
+  ],
+  "limitations": [
+    "Frames come from Weasel's own paint buffer, not a desktop screenshot",
+    "In-process button/key/candidate messages do not replace physical mouse and keyboard testing",
+    "No TSF registration, application compatibility, system DPI switching, or installation test",
+    "Animations, production settings and the final in-bar English menu are not implemented here"
+  ]
+}

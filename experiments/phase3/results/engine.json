@@ -1,0 +1,753 @@
+{
+  "scope": "actual extracted Weasel 0.17.4 x86 DLL, isolated synthetic input only",
+  "version": {
+    "version": "1.13.1",
+    "lua_module": true,
+    "pointer_bits": 32,
+    "maintenance_ms": 934.892
+  },
+  "checks": [
+    {
+      "name": "bundled DLL and Lua load",
+      "passed": true,
+      "evidence": {
+        "version": "1.13.1",
+        "lua_module": true,
+        "pointer_bits": 32,
+        "maintenance_ms": 934.892
+      }
+    },
+    {
+      "name": "real simplified candidates retain order",
+      "passed": true,
+      "evidence": {
+        "base": {
+          "input": "pingguo",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "苹果",
+              "comment": ""
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            },
+            {
+              "text": "评估",
+              "comment": ""
+            }
+          ]
+        },
+        "learning": {
+          "input": "pingguo",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "苹果",
+              "comment": "apple"
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            },
+            {
+              "text": "评估",
+              "comment": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "exact local definition",
+      "passed": true,
+      "evidence": {
+        "input": "pingguo",
+        "commit": "",
+        "learning": true,
+        "load": "ready",
+        "action": "",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": [
+          {
+            "text": "苹果",
+            "comment": "apple"
+          },
+          {
+            "text": "平果",
+            "comment": ""
+          },
+          {
+            "text": "平锅",
+            "comment": ""
+          },
+          {
+            "text": "评过",
+            "comment": ""
+          },
+          {
+            "text": "评估",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "mid-composition toggle restores original comments",
+      "passed": true,
+      "evidence": {
+        "input": "pingguo",
+        "commit": "",
+        "learning": false,
+        "load": "ready",
+        "action": "",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": [
+          {
+            "text": "苹果",
+            "comment": ""
+          },
+          {
+            "text": "平果",
+            "comment": ""
+          },
+          {
+            "text": "平锅",
+            "comment": ""
+          },
+          {
+            "text": "评过",
+            "comment": ""
+          },
+          {
+            "text": "评估",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "disabled English consumes key without committing",
+      "passed": true,
+      "evidence": {
+        "input": "pingguo",
+        "commit": "",
+        "learning": false,
+        "load": "ready",
+        "action": "disabled",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": [
+          {
+            "text": "苹果",
+            "comment": ""
+          },
+          {
+            "text": "平果",
+            "comment": ""
+          },
+          {
+            "text": "平锅",
+            "comment": ""
+          },
+          {
+            "text": "评过",
+            "comment": ""
+          },
+          {
+            "text": "评估",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chinese space commit while disabled",
+      "passed": true,
+      "evidence": {
+        "input": "",
+        "commit": "苹果",
+        "learning": false,
+        "load": "ready",
+        "action": "disabled",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": []
+      }
+    },
+    {
+      "name": "Ctrl Shift Enter commits full English",
+      "passed": true,
+      "evidence": {
+        "input": "",
+        "commit": "apple",
+        "learning": true,
+        "load": "ready",
+        "action": "english-committed",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": []
+      }
+    },
+    {
+      "name": "repeated English action cannot duplicate commit",
+      "passed": true,
+      "evidence": {
+        "input": "",
+        "commit": "",
+        "learning": true,
+        "load": "ready",
+        "action": "no-candidate",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": []
+      }
+    },
+    {
+      "name": "missing definition preserves composition",
+      "passed": true,
+      "evidence": {
+        "input": "pingguo",
+        "commit": "",
+        "learning": true,
+        "load": "ready",
+        "action": "no-definition",
+        "page": 0,
+        "last": false,
+        "selected": 1,
+        "candidates": [
+          {
+            "text": "苹果",
+            "comment": "apple"
+          },
+          {
+            "text": "平果",
+            "comment": ""
+          },
+          {
+            "text": "平锅",
+            "comment": ""
+          },
+          {
+            "text": "评过",
+            "comment": ""
+          },
+          {
+            "text": "评估",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "missing definition remains selectable in Chinese",
+      "passed": true,
+      "evidence": {
+        "input": "",
+        "commit": "平果",
+        "learning": true,
+        "load": "ready",
+        "action": "no-definition",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": []
+      }
+    },
+    {
+      "name": "long English commits untruncated",
+      "passed": true,
+      "evidence": {
+        "page": {
+          "input": "zhishichanquan",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "no-definition",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "知识产权",
+              "comment": "intellectual property rights"
+            },
+            {
+              "text": "知识产权保护",
+              "comment": ""
+            },
+            {
+              "text": "知识产权法",
+              "comment": ""
+            },
+            {
+              "text": "知识产权局",
+              "comment": ""
+            },
+            {
+              "text": "知识产权证券化",
+              "comment": ""
+            }
+          ]
+        },
+        "commit": {
+          "input": "",
+          "commit": "intellectual property rights",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "name": "page selection uses current page",
+      "passed": true,
+      "evidence": {
+        "first": {
+          "input": "shishi",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "事实",
+              "comment": "fact"
+            },
+            {
+              "text": "实施",
+              "comment": "implement"
+            },
+            {
+              "text": "试试",
+              "comment": "give it a try"
+            },
+            {
+              "text": "实时",
+              "comment": "real-time"
+            },
+            {
+              "text": "史诗",
+              "comment": ""
+            }
+          ]
+        },
+        "second": {
+          "input": "shishi",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 1,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "适时",
+              "comment": "at the right time"
+            },
+            {
+              "text": "时时",
+              "comment": ""
+            },
+            {
+              "text": "史实",
+              "comment": ""
+            },
+            {
+              "text": "逝世",
+              "comment": ""
+            },
+            {
+              "text": "事事",
+              "comment": ""
+            }
+          ]
+        },
+        "highlight": {
+          "input": "shishi",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 1,
+          "last": false,
+          "selected": 1,
+          "candidates": [
+            {
+              "text": "适时",
+              "comment": "at the right time"
+            },
+            {
+              "text": "时时",
+              "comment": ""
+            },
+            {
+              "text": "史实",
+              "comment": ""
+            },
+            {
+              "text": "逝世",
+              "comment": ""
+            },
+            {
+              "text": "事事",
+              "comment": ""
+            }
+          ]
+        },
+        "commit": {
+          "input": "",
+          "commit": "时时",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "name": "English submission after paging uses new page",
+      "passed": true,
+      "evidence": {
+        "page": {
+          "input": "shishi",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 1,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "适时",
+              "comment": "at the right time"
+            },
+            {
+              "text": "时时",
+              "comment": ""
+            },
+            {
+              "text": "史实",
+              "comment": ""
+            },
+            {
+              "text": "逝世",
+              "comment": ""
+            },
+            {
+              "text": "事事",
+              "comment": ""
+            }
+          ]
+        },
+        "commit": {
+          "input": "",
+          "commit": "at the right time",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "name": "partial English blocked without lost input",
+      "passed": true,
+      "evidence": {
+        "before": {
+          "input": "pingguoyinhang",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "english-committed",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "苹果银行",
+              "comment": ""
+            },
+            {
+              "text": "苹果",
+              "comment": "apple"
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            }
+          ]
+        },
+        "after": {
+          "input": "pingguoyinhang",
+          "commit": "",
+          "learning": true,
+          "load": "ready",
+          "action": "partial-composition",
+          "page": 0,
+          "last": false,
+          "selected": 1,
+          "candidates": [
+            {
+              "text": "苹果银行",
+              "comment": ""
+            },
+            {
+              "text": "苹果",
+              "comment": "apple"
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "partial Chinese selection keeps remainder",
+      "passed": true,
+      "evidence": {
+        "input": "pingguoyinhang",
+        "commit": "",
+        "learning": true,
+        "load": "ready",
+        "action": "partial-composition",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": [
+          {
+            "text": "银行",
+            "comment": "bank"
+          },
+          {
+            "text": "引航",
+            "comment": ""
+          },
+          {
+            "text": "淫行",
+            "comment": ""
+          },
+          {
+            "text": "印航",
+            "comment": ""
+          },
+          {
+            "text": "引吭",
+            "comment": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "remaining segment can complete normally",
+      "passed": true,
+      "evidence": {
+        "input": "",
+        "commit": "苹果银行",
+        "learning": true,
+        "load": "ready",
+        "action": "partial-composition",
+        "page": 0,
+        "last": false,
+        "selected": 0,
+        "candidates": []
+      }
+    },
+    {
+      "name": "missing data fails open for Chinese",
+      "passed": true,
+      "evidence": {
+        "candidates": {
+          "input": "pingguo",
+          "commit": "",
+          "learning": true,
+          "load": "missing",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "苹果",
+              "comment": ""
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            },
+            {
+              "text": "评估",
+              "comment": ""
+            }
+          ]
+        },
+        "commit": {
+          "input": "",
+          "commit": "苹果",
+          "learning": true,
+          "load": "missing",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": []
+        }
+      }
+    },
+    {
+      "name": "malformed data fails open for Chinese",
+      "passed": true,
+      "evidence": {
+        "candidates": {
+          "input": "pingguo",
+          "commit": "",
+          "learning": true,
+          "load": "missing",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": [
+            {
+              "text": "苹果",
+              "comment": ""
+            },
+            {
+              "text": "平果",
+              "comment": ""
+            },
+            {
+              "text": "平锅",
+              "comment": ""
+            },
+            {
+              "text": "评过",
+              "comment": ""
+            },
+            {
+              "text": "评估",
+              "comment": ""
+            }
+          ]
+        },
+        "commit": {
+          "input": "",
+          "commit": "苹果",
+          "learning": true,
+          "load": "missing",
+          "action": "",
+          "page": 0,
+          "last": false,
+          "selected": 0,
+          "candidates": []
+        }
+      }
+    }
+  ],
+  "performance": {
+    "baseline": {
+      "samples": 300,
+      "unit": "us per synthetic composition + first page",
+      "p50": 238.2,
+      "p95": 339.6,
+      "p99": 470.7
+    },
+    "learning_off": {
+      "samples": 300,
+      "unit": "us per synthetic composition + first page",
+      "p50": 674.6,
+      "p95": 1141.4,
+      "p99": 1286
+    },
+    "learning_on": {
+      "samples": 300,
+      "unit": "us per synthetic composition + first page",
+      "p50": 666.8,
+      "p95": 1179.9,
+      "p99": 1383.6
+    }
+  },
+  "limitations": [
+    "21 test-only pairs; not a production dictionary",
+    "timings include decoding plus first-page materialization, not isolated lookup time",
+    "not TSF or application compatibility tests"
+  ]
+}

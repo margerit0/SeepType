@@ -1,0 +1,31 @@
+__include: luna_pinyin_simp.schema:/
+schema:
+  schema_id: study
+  name: Isolated English study spike
+  version: '0.1'
+switches:
+  - {name: ascii_mode, reset: 0}
+  - {name: full_shape, reset: 0}
+  - {name: zh_simp, reset: 1}
+  - {name: ascii_punct, reset: 0}
+  - {name: learning_mode, reset: 1}
+engine:
+  processors:
+    - lua_processor@study_keys
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  filters:
+    - simplifier
+    - uniquifier
+    - lua_filter@study_filter
+translator:
+  prism: luna_pinyin_simp
+  enable_user_dict: false
+menu:
+  page_size: 5

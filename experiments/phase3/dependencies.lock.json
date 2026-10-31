@@ -1,0 +1,27 @@
+{
+  "weasel_source": {
+    "repository": "https://github.com/rime/weasel.git",
+    "tag": "0.17.4",
+    "commit": "9cc96e20dc71b80876b12f689bb5863c76c2a7ed"
+  },
+  "artifacts": [
+    {"name":"weasel-0.17.4.0-installer.exe","url":"https://github.com/rime/weasel/releases/download/0.17.4/weasel-0.17.4.0-installer.exe","sha256":"cf509534a8f5f8af9c98ed7cbb8f135439f145a8cbe7e50ede42bb5b5ab45c29","verification":"matches GitHub release asset digest; extract only, never execute"},
+    {"name":"rime-1c23358-Windows-msvc-x64.7z","url":"https://github.com/rime/librime/releases/download/1.13.1/rime-1c23358-Windows-msvc-x64.7z","sha256":"05fcf8cc2d058a0186dd9f04d6e021ad41687db50dc81e85cf655dfabfdf0009","verification":"download hash recorded; used for C API headers and version-info only, not the runtime DLL"},
+    {"name":"7zr.exe","url":"https://github.com/ip7z/7zip/releases/download/26.04/7zr.exe","sha256":"256feca8e274e5da655e2a284fabafd9f554365eb164862089dacd4e8276d282","verification":"matches GitHub release asset digest; portable extractor"},
+    {"name":"7z2605-x64.exe","url":"https://github.com/ip7z/7zip/releases/download/26.05/7z2605-x64.exe","sha256":"fd99e86f57d8f429ef5ed045bf98315af962e2309b0f1ba87a147a44c71647d0","verification":"download hash recorded; extract only, never execute"},
+    {"name":"boost_1_84_0.tar.bz2","url":"https://archives.boost.io/release/1.84.0/source/boost_1_84_0.tar.bz2","sha256":"cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454","verification":"matches official archive JSON SHA256"}
+  ],
+  "runtime_dll": {
+    "path":".cache/weasel-0.17.4/rime.dll",
+    "sha256":"cd3ccdb56cb5dd1b8483f501130d17a1631936d29bb006426d579b383256489c",
+    "architecture":"x86",
+    "runtime_version":"1.13.1",
+    "lua":"module and required APIs exercised; exact plugin source commit in this DLL is not attested"
+  },
+  "lua_source_read_for_api": {
+    "repository":"https://github.com/hchunhui/librime-lua",
+    "commit":"e3912a4b3ac2c202d89face3fef3d41eb1d7fcd6",
+    "provenance":"version-info.txt from separate official x64 1.13.1 artifact; not claimed as exact provenance of bundled x86 DLL"
+  },
+  "toolchain_observed": {"visual_studio":"Build Tools 2019 16.11.48","msvc_directory":"14.29.30133","sdk":"10.0.19041.0","python":"3.13","atl":"Microsoft.VisualStudio.Component.VC.ATL; installed with explicit user permission"}
+}

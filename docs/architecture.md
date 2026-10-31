@@ -1,56 +1,73 @@
-# 技术调查与验证计划
+# 技术方案与阶段 3 验证
 
-更新：2026-10-31。原生技术仍处于源码/官方资料核查；**没有编译、加载 DLL、运行输入法、注册 TSF 或修改系统输入设置**。阶段 2 的网页原型已完成并通过浏览器交互检查，这不代表以下原生验证项已通过。
+更新：2026-11-01。以已确认的 v0.5 为设计基线，核心隔离实验通过。当前是 Rime + WeaselUI 测试宿主，不是完整系统输入法；没有运行 WeaselSetup、WeaselDeployer、WeaselServer 或注册 TSF。
 
-原型使用原生 HTML/CSS/JavaScript；`prototype/ime-candidates.html` 为可编辑源，`prototype/index.html` 为 visualize 工具生成的独立预览页，运行无需 Node/构建服务。该预览包装工具不属于输入法产品依赖。测试用 HTTP 服务仅绑定 127.0.0.1，不涉及系统安装。详见 [原型说明](../prototype/README.md)。
+## 已固定的基线
 
-设计现已迭代为 v0.5 轻量横条：后续优先验证 HorizontalLayout 与同排小工具区，旧纵向学习型不再作为当前实现提案。详情按需浮出，需校验不抢焦点及关闭时机。原型按容器宽度减少每页项数仅用于小窗口展示，尚未验证原生 Rime 动态页大小；不得直接当作已解决的接口能力。用户新增学习模式 240ms 收起/展开动画，现仅在网页原型实现；原生窗口尺寸、锚点、绘制与状态同步需要单独验证，不能将 CSS 动画当作原生可行性证据。
+| 组件 | 实际使用与证据 |
+| --- | --- |
+| Weasel 源码 | 0.17.4，提交 `9cc96e20dc71b80876b12f689bb5863c76c2a7ed` |
+| 运行时 | 该安装包内的 x86 `rime.dll`，运行时报告 librime 1.13.1；x64 Windows 上使用 x86 宿主 |
+| Lua | 实际 DLL 的 lua 模块、filter、processor、ShadowCandidate、读取选中候选和提交 API 均已运行；精确插件源码提交尚未追溯 |
+| C API 头文件 | 官方 x64 librime 1.13.1 归档中的头文件；没有以其 DLL 替代包内 x86 DLL |
+| 中文数据 | Weasel 发行附带的朙月简体方案、词典与 OpenCC 数据，复制到独立 shared/user 目录；实验关闭用户词典学习 |
+| 英文数据 | 21 个自拟 test-only 词对；没有正式分发词库 |
+| 工具链 | VS 2019 Build Tools 16.11.48；MSVC 目录 14.29.30133，cl 文件版本 14.29.30159；SDK 10.0.19041.0；Python 3.13；Boost 1.84.0 头文件 |
 
-## 版本与证据
+用户在原聊天中已单独授权补装 C++ ATL x86/x64，安装成功。其余安装格式文件仅解包读取。准确下载 URL、源码提交与 SHA256 见 [依赖锁文件](../experiments/phase3/dependencies.lock.json)。本次重新校验固定缓存通过；没有进行全新机器/空缓存构建测试。
 
-| 对象 | 本次查看基线 | 已知与限制 |
-| --- | --- | --- |
-| Weasel | `0.17.4`，`9cc96e20dc71b80876b12f689bb5863c76c2a7ed` | GitHub latest 正式发行 API 本次返回此版本，发行于 2025-06-04；建议技术验证先用此基线 |
-| librime | Weasel 子模块 `1c23358157934bd6e6d6981f0c0164f05393b497`；另核查 `1.13.1` 工作流 | Weasel 0.17.0 日志写升级至 1.13.1；不能据此推断 0.17.4 安装包内 DLL 的精确构建 |
-| librime 当前正式发行 | API 返回 `1.17.0`，2026-06-06 | 仅记录现状，不因其较新就替换验证基线 |
-| librime-lua | `6da5d6cedb853380ed1b5b9b6979cb1a9c028353` | 这是本次阅读的上游源码，不是已确认与 0.17.4 捆绑的插件版本 |
-| 朙月拼音 | `56b934b099dfbeab842320f13aa8b461a6ab3e42` | 评估 `luna_pinyin_simp`，继承主方案并启用简化字；尚未固定完整部署依赖 |
+来源：[Weasel 0.17.4](https://github.com/rime/weasel/releases/tag/0.17.4)、[源码树](https://github.com/rime/weasel/tree/9cc96e20dc71b80876b12f689bb5863c76c2a7ed)、[librime 1.13.1](https://github.com/rime/librime/releases/tag/1.13.1)。单独 x64 归档中的 Lua 提交记录不等于 x86 DLL 的来源证明。
 
-版本资料：[Weasel release](https://github.com/rime/weasel/releases/tag/0.17.4)、[Weasel 变更日志](https://github.com/rime/weasel/blob/0.17.4/CHANGELOG.md)、[Weasel 树与子模块](https://api.github.com/repos/rime/weasel/git/trees/0.17.4?recursive=1)、[librime release](https://github.com/rime/librime/releases/tag/1.17.0)。最终版本清单还须包含工具链、插件、方案、词典、二进制哈希，当前表不等于构建锁文件。
+## 实际路径与补丁边界
 
-## 五项关键调查结论
+Rime 全拼候选 → 简化字/去重 → Lua 精确查表 → ShadowCandidate 附加 comment → Weasel 双行布局。中文 text、顺序和原始候选不被改写；关闭学习或缺少释义时返回原候选。词表一次加载到内存，没有每键文件读取、联网查询或输入历史记录。
 
-1. **Lua 路线有上游支持，所选安装包的实际能力未验证。** librime 1.13.1 的 [发布工作流](https://github.com/rime/librime/blob/1.13.1/.github/workflows/release-ci.yml) Windows 任务显式包含 `hchunhui/librime-lua`；Weasel 历史日志也记录包含 Lua。读取的 Lua [README](https://github.com/hchunhui/librime-lua/blob/6da5d6cedb853380ed1b5b9b6979cb1a9c028353/README.md) 支持 processor/filter 等扩展；[types.cc](https://github.com/hchunhui/librime-lua/blob/6da5d6cedb853380ed1b5b9b6979cb1a9c028353/src/types.cc) 存在候选 comment、ShadowCandidate、get_selected_candidate、set_option、commit_text 等绑定。阶段 3 必须检查实际加载的库版本并运行最小脚本，不能拿新源码代替旧二进制验证。
-2. **未找到配置即可满足上下双行的证据，预计需前端补丁。** 检查 [默认配置](https://github.com/rime/weasel/blob/0.17.4/output/data/weasel.yaml)、[配置说明](https://github.com/rime/weasel/wiki/Weasel-%E5%AE%9A%E5%88%B6%E5%8C%96) 和 [HorizontalLayout.cpp](https://github.com/rime/weasel/blob/0.17.4/WeaselUI/HorizontalLayout.cpp)：label、text、comment 共用基础 y，x 依次增长，align_type 调整行内对齐。`horizontal` 只是候选横排；`vertical_text` 是文字竖排，不是上下双行。[VerticalLayout.cpp](https://github.com/rime/weasel/blob/0.17.4/WeaselUI/VerticalLayout.cpp) 也把注释放在同项横向位置。向 comment 塞换行或交换中英文 text 会影响几何/提交语义，不作为架构方案。
-3. **预计改动集中在候选窗口，但不承诺只改一个文件。** 布局测量、文本/注释矩形、整项高亮和命中区需要一致；截断、DPI、屏幕避让也须核验。涉及 HorizontalLayout（若选 A）或 VerticalLayout（若选 B）、Layout/StandardLayout 辅助逻辑、WeaselPanel 绘制/鼠标事件。新增样式字段可能涉及 `include/WeaselIPCData.h` 的初始化/比较/序列化和 `RimeWithWeasel.cpp` 的 `_UpdateUIStyle`；学习状态也需由会话传给 UI。接口调整后需构建配套客户端与服务端，不能假定混搭旧文件安全。
-4. **键盘英文提交优先 Lua，鼠标入口由前端承接。** 当前 `WeaselPanel::OnLeftClickedUp` 用 UI 回调选词，`RimeWithWeasel` 用当前页候选 API，不能让 Lua 独自绘制或接收新的右键菜单操作。建议前端只发出针对当前会话/候选的语义动作，最终统一走同一词表校验和提交逻辑；具体桥接要实验。避免模拟系统键盘、剪贴板粘贴或双份翻译逻辑。来源：[WeaselPanel](https://github.com/rime/weasel/blob/0.17.4/WeaselUI/WeaselPanel.cpp)、[RimeWithWeasel](https://github.com/rime/weasel/blob/0.17.4/RimeWithWeasel/RimeWithWeasel.cpp)、[IPC 数据](https://github.com/rime/weasel/blob/0.17.4/include/WeaselIPCData.h)。
-5. **用少量职责清楚的补丁维护。** 不改 librime 核心、解码排序或 TSF 协议行为；优先以现有 comment 传展示文本。学习状态/鼠标动作所需协议变化先实验证明必要性。UI 补丁、Lua 模块、词表/构建工具分开，记录每个补丁的上游提交、理由、文件、验证步骤。每次上游升级重放并检查实际行为，不把“可自动合并”当成兼容通过。
+键盘英文动作位于 Lua processor：读取当前会话的真实选中候选，重新查表并检查开关、候选范围和光标位置。`Ctrl+Shift+Enter` 提交完整词表值，不从省略后的显示注释取文本。无释义、学习关闭、非完整组合时消费该专用动作且保留组合，避免回退提交拼音或丢字。空格、数字和普通点击继续选择中文。
 
-## 推荐模块边界
+原 [HorizontalLayout.cpp](https://github.com/rime/weasel/blob/0.17.4/WeaselUI/HorizontalLayout.cpp) 把 label/text/comment 横向排列，现有配置未提供本设计所需的上下两行。实验增加 `StudyLayout`，继承真实 StandardLayout，英文置于中文上方；整项共用高亮和点击区，长英文由 DirectWrite 单行省略。
 
-Rime 全拼候选 → 简化字/去重后的最终候选 → Lua 学习 filter 精确查表、附加 comment → Weasel 双行展示。中文 text、排序及选词语义保持不变；需保留候选原有元信息/注释，学习关闭时恢复，不直接不可逆覆盖共享候选。
+[weasel-ui-spike.patch](../experiments/phase3/patches/weasel-ui-spike.patch) 对一个上游文件增加 **10 行**：7 行编译期开关选择新布局，3 行把本窗口已经生成的绘制缓冲区交给测试观察器。观察器只在明确的内部测试采样点写文件，不读取桌面；正常运行不采集画面。原 HorizontalLayout、librime 引擎和 IPC 均未修改。
 
-英文动作读取当前会话的真实选中候选，再校验最终中文词形、候选范围、学习开关及可提交值；不从已省略的 comment 提取英文，不用翻页前的序号缓存。分段组合先采用 design.md 的受限提交规则，避免简单 commit_text + clear 丢掉未提交的内容。
+学习状态在实验宿主中暂借注释颜色控制双行空间；这不是正式配置协议。实验外围按钮也不代表最终工具区或设置。正式实现需明确学习状态、候选版本和菜单动作在会话/前端之间的传递，避免陈旧候选提交，不复制第二套翻译逻辑。
 
-首批小词表启动时一次加载为 Lua 内存映射；按候选精确查询，不每键读盘、不联网、不遍历整个候选流或词库。扩充前测量冷启动、内存与查词开销，再决定是否引入索引，当前不引入数据库服务。查词失败时返回原候选。学习关闭走短路；不增加输入历史日志。引擎自学习用户词典、调试日志、错误转储的隐私行为需单独审查。
+## 验证结果
 
-## 构建调查
+| 验证 | 结果与适用范围 |
+| --- | --- |
+| 真实引擎与 Lua | 18/18：加载、候选顺序、精确释义、开关、中文/英文提交、长词完整值、当前页关联、分段保护、缺失/损坏词表回退 |
+| 原生窗口与内部交互 | 27/27：创建、真实绘制、两行命中区、鼠标消息选择、选词后重建、翻页后的英文、无释义开关、浅深主题、退格及 20 轮连续操作；全部是同进程的自身窗口消息 |
+| DPI 参数布局 | 24/24：普通/长英文/缺词 × 学习开关 × 96/120/144/192 DPI；英文区和中文区都在同项点击范围内 |
+| 原生预览 | 保存 5 张真实 Weasel 绘制缓冲区图，并检查双行、长词省略和主题；不是桌面截图 |
+| 真实桌面鼠标/快捷键 | **未测试**。用户已明确授权 ui_probe，但电脑操作工具仍返回 `Computer Use was not approved to use ui_probe` |
+| 完整服务/TSF、三个实际应用、安装卸载 | **未测试** |
 
-[INSTALL.md](https://github.com/rime/weasel/blob/0.17.4/INSTALL.md) 提及 VS C++/ATL/MFC、CMake、Boost、NSIS；该版 [release-ci.yml](https://github.com/rime/weasel/blob/0.17.4/.github/workflows/release-ci.yml) 实际使用 windows-2019、VS2019 配置、Boost 1.84.0。文档与 CI 年代不一，下一阶段以可复现实验选工具链，不能据此宣称当前已可构建。
+记录：[engine.json](../experiments/phase3/results/engine.json)、[native-ui.json](../experiments/phase3/results/native-ui.json)、[native-layout.json](../experiments/phase3/results/native-layout.json)、[桌面检查状态](../experiments/phase3/results/desktop-interaction.json)。
 
-CI 调用 `get-rime.ps1 -use dev`，未指定 tag。[脚本](https://github.com/rime/weasel/blob/0.17.4/get-rime.ps1) 默认请求最新正式 release；dev 是构建用途，不是夜间版。插件安装脚本也可能拉取浮动分支。因此需锁定源码/产物及 SHA-256，禁用构建中的隐式更新；检查并移除 MVP 不需要的自动更新入口。当前没有运行这些脚本。
+本机当前窗口 DPI 为 144，普通候选区域为 744×81，学习关闭为 744×55。96 DPI 参数下对应 498×55 / 498×38；宽度未包含尚未实现的右侧工具区。没有实际切换系统缩放或执行多显示器测试。
 
-本机只检查 PATH：git、Python、Node、rg 可用；cmake、cl、msbuild 未在 PATH 找到，**不等同于没有安装 Visual Studio**。后续可只读检查 vswhere；本轮未安装工具链。尚未审计独立产品与已装小狼毫的注册标识、安装路径、用户目录是否冲突，不能声称可并存。
+### 暖态性能
 
-## 阶段 3 最小实验与门槛（全部未测试）
+同一次合成输入 `pingguo`，每组 300 个样本，统计包含输入解码和第一页候选生成，单位毫秒：
 
-| 验证 | 优先隔离办法 | 必须记录的结果 |
-| --- | --- | --- |
-| 基础引擎与 Lua 可运行 | 固定产物 + 独立用户/共享目录，rime_api_console 或等价测试程序 | 实际版本、Lua 组件加载、真实全拼候选 |
-| 本地释义 | 约 20 条审核样例接真实候选 | 候选排序/中文未变；简化字与翻页后关联准确；缺失回退 |
-| 双行原生布局 | 独立 WeaselUI 测试窗口，不注册系统输入法 | 高亮/点击区域、长英文、空释义；100/125/150/200% 缩放 |
-| 英文提交 | 向隔离会话发送约定按键并检查 commit | 当前候选、无释义、长词完整值、重复键、部分组合无丢字 |
-| 开关 | 组合中关闭/重开与会话切换 | 无误提交，无旧英文残留，布局状态一致 |
-| 性能与故障 | 合成输入对照无学习版；词表损坏/缺失 | 查词耗时 p50/p95/p99、总延迟、内存；建议暖态每页新增 p95 ≤2ms 作为实验目标，不是实测承诺 |
+| 状态 | p50 | p95 | p99 |
+| --- | ---: | ---: | ---: |
+| 不含 Lua 扩展的基准 | 0.238 | 0.340 | 0.471 |
+| 扩展加载、学习关 | 0.675 | 1.141 | 1.286 |
+| 扩展加载、学习开 | 0.667 | 1.180 | 1.384 |
 
-用户确认设计后推进这些实验；设计期间仅可按需做小实验。通过后才正式实现。安装测试另行取得用户对具体隔离环境/安装动作的明确同意，不更换系统默认输入法。最终记事本、浏览器、VS Code、安装/卸载及显示缩放目前均为“未测试”。
+本次学习开与基准的 p95 相差约 0.84ms，低于实验设定的 2ms 参考目标。它不是单次查词耗时或普遍延迟保证；不能外推到大词库、所有输入和实际应用。词库扩充前仍需冷启动、内存和更多输入分布测量。
+
+## 本次修复及维护要点
+
+1. **ATL 初始化丢失**：本机 MSVC 下，同一编译单元包含 Rime API 头文件和 ATL 时，Rime 头文件的 `.CRT$XCU` 声明影响 selectany 初始化。最小对照中 ATL 的 cbSize/LockCount 从 44/-1 变为 0/0，注册窗口类时崩溃。将 Rime API 移入 `StudyEngine.cpp`，UI 只包含普通 C++ 数据接口后恢复；启动检查已覆盖。没有修改上游头文件，不推断官方完整构建也存在此问题。
+2. **候选窗口生命周期**：Weasel 鼠标选词后销毁 popup，下一次组合必须重建。宿主按真实 Weasel 窗口类 atom 查找自身候选窗，不能把其他同线程输入窗口当成候选窗。
+3. **只有样式变化时刷新**：缺词候选的 comment 始终为空，仅改变学习状态不会让 UI::Update 发现候选变化。宿主显式刷新布局和绘制，避免收起/展开失效。
+4. **构建诊断**：本机 PDB 调试链接曾报 LNK1101；当前使用正常可构建的 /O2 或 /Od 加栈帧和 map 文件定位，不依赖该 PDB 路径。实验未进一步修改工具链。
+
+## 后续实现边界
+
+- 保留 v0.5 全部目标：右侧工具区、英文菜单与完整释义浮层、设置、翻页定宽、180ms 翻页和 240ms 学习开关动画。它们尚未原生实现，不是设计删减。
+- 固定并构建完整 Weasel 服务/TSF 组件，核对现有前端与 Lua 动作的会话同步、样式序列化和失焦清理；当前宿主没有验证 IPC。
+- 安装前先确定产品标识、目录和现有小狼毫的关系，制作可审阅安装方案；系统安装、默认输入法及输入设置变更仍须单独明确授权。
+- 扩充约 200 条词表前完成具体来源快照、人工释义审核与再分发条件核查。当前 21 条只供实验。
+- 上游升级时重放独立补丁并重跑实际候选、布局、提交与生命周期检查；自动合并成功不等于运行兼容。

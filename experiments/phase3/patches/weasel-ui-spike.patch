@@ -1,0 +1,36 @@
+diff --git a/WeaselUI/WeaselPanel.cpp b/WeaselUI/WeaselPanel.cpp
+index 18964a0..46aeae1 100644
+--- a/WeaselUI/WeaselPanel.cpp
++++ b/WeaselUI/WeaselPanel.cpp
+@@ -8,6 +8,9 @@
+ 
+ #include "VerticalLayout.h"
+ #include "HorizontalLayout.h"
++#ifdef WEASEL_STUDY_SPIKE
++#include "StudyLayout.h"
++#endif
+ #include "FullScreenLayout.h"
+ #include "VHorizontalLayout.h"
+ 
+@@ -117,7 +120,11 @@ void WeaselPanel::_CreateLayout() {
+       layout = new VerticalLayout(m_style, m_ctx, m_status, pDWR);
+     } else if (m_style.layout_type == UIStyle::LAYOUT_HORIZONTAL ||
+                m_style.layout_type == UIStyle::LAYOUT_HORIZONTAL_FULLSCREEN) {
++#ifdef WEASEL_STUDY_SPIKE
++      layout = new StudyLayout(m_style, m_ctx, m_status, pDWR);
++#else
+       layout = new HorizontalLayout(m_style, m_ctx, m_status, pDWR);
++#endif
+     }
+ 
+     if (IS_FULLSCREENLAYOUT(m_style)) {
+@@ -1075,6 +1082,9 @@ void WeaselPanel::RedrawWindow() {
+ }
+ 
+ void WeaselPanel::_LayerUpdate(const CRect& rc, CDCHandle dc) {
++#ifdef WEASEL_STUDY_SPIKE
++  weasel::CaptureStudyFrame(dc, rc.Width(), rc.Height());
++#endif
+   HDC ScreenDC = ::GetDC(NULL);
+   CRect rect;
+   GetWindowRect(&rect);

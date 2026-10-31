@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-01",
+  "scope": "Real desktop mouse and keyboard interaction with the isolated ui_probe application",
+  "status": "not_tested",
+  "user_authorized": true,
+  "launched_by_computer_use": false,
+  "blocker": "Computer Use was not approved to use ui_probe",
+  "note": "The user explicitly authorized this application. The tool still rejected access after that reply; do not request the same authorization again. Native in-process checks are recorded separately in native-ui.json.",
+  "pending": [
+    "Observe the actual visible native window",
+    "Click the English row and verify Chinese commit",
+    "Press Ctrl+Shift+Enter and verify full English commit",
+    "Continue typing after a mouse selection",
+    "Toggle learning and page using physical input"
+  ]
+}
