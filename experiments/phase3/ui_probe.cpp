@@ -212,9 +212,15 @@ static LRESULT procedureBody(HWND window,UINT message,WPARAM wp,LPARAM lp) {
     }
     refresh(window);if(!automated)SetFocus(window);return 0;
   }
+  if(message==WM_CONTEXTMENU) {
+    POINT position{24,190};
+    if(lp==static_cast<LPARAM>(-1))ClientToScreen(window,&position);
+    else position={static_cast<short>(LOWORD(lp)),static_cast<short>(HIWORD(lp))};
+    showEnglishMenu(window,static_cast<size_t>(snapshot.highlighted),position);return 0;
+  }
   if(message==WM_KEYDOWN) {
     int key=0,mask=(GetKeyState(VK_SHIFT)<0?1:0)|(GetKeyState(VK_CONTROL)<0?4:0)|(GetKeyState(VK_MENU)<0?8:0);
-    if(wp==VK_F2 || wp==VK_APPS || (wp==VK_F10 && (mask&1))) {
+    if(wp==VK_F2 && mask==0) {
       POINT position{24,190};ClientToScreen(window,&position);
       showEnglishMenu(window,static_cast<size_t>(snapshot.highlighted),position);return 0;
     }

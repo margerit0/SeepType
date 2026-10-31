@@ -1,6 +1,6 @@
-# 阶段 4：会话动作与原生英文菜单
+# 阶段 4：会话动作、原生英文菜单与 Weasel IPC
 
-2026-11-01。已开始分步正式实现，本批完成可复用的会话版本模块、统一 Lua 英文动作，并在现有隔离宿主接入 Win32 英文菜单。完整 Weasel 服务/IPC/TSF 尚未接入，当前仍不是系统输入法安装包。
+2026-11-01。已实现会话版本模块、统一 Lua 英文动作、隔离宿主 Win32 菜单，以及真实 Weasel 服务端与客户端的版本化 IPC。菜单的 16 项桌面观察已从中断聊天恢复，新增 27 项跨进程检查通过。完整 x64 TSF 候选前端未接入，当前仍不是系统输入法安装包。
 
 ## 实现
 
@@ -9,23 +9,28 @@
 - `StudyEngine` 适配器先向 Lua 查询目标，菜单关闭后再验证版本、页、索引、拼音、光标、中文和完整英文。当前查询不读取或消耗应用尚未领取的提交文本。
 - `src/study/windows/EnglishMenu.*` 提供原生菜单，显示完整释义和明确的“输入英文”；学习关闭、缺词或部分拼音时禁用该动作并解释原因。隔离宿主可右键候选或按 F2 / Shift+F10 打开。F2 当前复用菜单，设计中的独立释义浮层仍待实现。
 - F8 仅保留在阶段 3 的实验包装器，未成为正式模块快捷键。正式工具区、设置和两种动画仍待开发。
+- `src/study/RimeSession.*` 绑定 `RimeWithWeaselHandler` 已有的真实会话；不另建 Rime 实例，不领取应用 commit。`StudyService.*` 管理每个会话的临时目标、焦点和版本，并增加服务实例身份来隔离重启前的请求。
+- `StudyProtocol.*` 提供有限长度的 Inspect / CommitEnglish / SetLearning 请求。客户端只传版本和候选编号，英文值从服务端 Lua 重新查询。正常 Weasel 响应携带 capability 和当前版本；提交继续走标准 commit 响应。
+- [weasel-study-ipc.patch](patches/weasel-study-ipc.patch) 接入原 `WeaselClientImpl`、`WeaselServerImpl` 与 `RimeWithWeaselHandler`。管道使用每连接独立缓冲区，修正请求体偏移、空消息残留及连接竞态；旧请求或无效报文不能再次提交英文。
 
-接口 `inspect-v1` / `commit-v1` 通过 Rime 会话临时属性和内部零键码分派；普通按键不会生成该内部请求。这个适配器只证明同进程中的动作边界，没有声称已完成跨进程协议。输入文字不写入正式模块日志，不联网。
+Lua 内部接口 `inspect-v1` / `commit-v1` 仍通过 Rime 会话临时属性和零键码分派；新增 `study.v1` 在 Weasel IPC 层验证后调用它们。查询及拒绝动作不读取应用待取 commit。输入文字不写入新增正式模块日志，不联网。[协议与接入说明](../../docs/study-ipc.md)。
 
 ## 构建与检查
 
-先完成[阶段 3 依赖准备](../phase3/README.md)，然后从项目根目录运行：
+当前目录中的依赖、引擎与 UI 已准备并验证，**不要因接续聊天重新运行旧检查**。修改新增服务路径时，从项目根目录使用：
 
 ```powershell
-python experiments/phase3/prepare-runtime.py
-./experiments/phase4/build-actions.cmd
-python experiments/phase4/verify-actions.py
-./experiments/phase3/build-ui.cmd
-python experiments/phase3/verify-engine.py
-python experiments/phase3/verify-native.py
+./experiments/phase4/build-service.cmd
+python experiments/phase4/verify-service.py
 ```
 
-不要与交互宿主同时运行共享实验数据的检查程序。任何一步非零退出码都应先停止排查。
+构建使用已有 VS2019，首次从已固定缓存归档补取 Boost serialization/thread/chrono 源码并编译，不下载或安装系统组件。`prepare-weasel.py` 从固定提交生成 `.cache/study-weasel` 覆盖层及可审阅补丁，不修改原 Weasel checkout；后续只重编发生变化的文件。
+
+`verify-service.py` 在 `phase4/runtime` 使用阶段 3 已准备数据的独立副本，以随机名称建立 `StudyIme-Phase4-*` 管道。服务与客户端都是脚本创建的无控制台窗口子进程，结束后退出；不会连接或终止已安装小狼毫，也不操作桌面窗口。服务程序缺少隔离管道参数时直接退出，不回退到系统 Weasel 管道。
+
+普通完整运行包含 25 项 IPC 检查和重启后的 2 项检查。本次首轮 24 项通过；分段检查原先比较了更换选中候选前后的显示文本，修正为比较尝试提交动作前后后，仅补测该项及重启。`--resume` 保留同一服务二进制上的已通过结果，各项客户端哈希写入报告；不是重新检查旧结果。
+
+既有 `build-actions.cmd` / `verify-actions.py` 和阶段 3 命令仍保留，仅在相应旧路径被实际修改时使用。任何一步非零退出码应先排查该步。
 
 | 检查 | 状态 |
 | --- | --- |
@@ -33,12 +38,13 @@ python experiments/phase3/verify-native.py
 | 既有 Rime/Lua 引擎回归 | [18/18 通过](../phase3/results/engine.json) |
 | 原生内部交互与绘制 | [28/28 通过](../phase3/results/native-ui.json) |
 | DPI 参数布局 | [24/24 通过](../phase3/results/native-layout.json) |
-| 新菜单的实际右键、点击、失焦及连续输入 | [未测试](results/desktop-menu.json)：Computer Use 被用户物理 Esc 停止，尚未打开新构建 |
+| 新菜单的实际右键、点击、失焦及连续输入 | [16/16 已恢复](results/desktop-menu.json)，包含 Shift+F10 修复；本轮未重跑 |
+| 真实 Weasel 服务会话与跨进程 IPC | [27/27 通过](results/service-ipc.json)，包括并发连接及服务重启 |
 
-阶段 3 的 18 项桌面观察仍保留其原被测二进制哈希，不能当作新菜单或新焦点处理的桌面实测。菜单弹出、真实菜单选择和焦点返回需下次继续验证；没有重新请求应用授权的必要。
+阶段 3 的 18 项桌面观察与阶段 4 的 16 项菜单观察分开保留来源。后者来自聊天 `01a1932b-0fd6-7ce0-b447-1343468abea0` 和 `01a19343-dab9-7af0-a6af-4cab916c0ccd`；此前聊天错误发生在记录落盘前，并非仍有菜单测试待做。
 
-运行产物仍为 `experiments/phase3/build/ui_probe.exe`，依赖当前目录树。关闭窗口即可退出，没有安装或注册步骤。
+可视宿主仍是 `experiments/phase3/build/ui_probe.exe`；新产物为 `build/study_service.exe` 与 `build/service_client_test.exe`，由上述脚本配对运行。均依赖当前目录树，没有安装或注册步骤。新 IPC 测试没有创建可见服务候选窗，不能作为 UI 或真实应用测试结果。
 
 ## 接续
 
-先完成已编译菜单的真实桌面检查，修复观察到的问题；然后接入正式 Weasel 会话/IPC，并继续右侧工具区、设置、释义浮层和 v0.5 的动画。安装标识、隔离数据目录、完整构建与许可材料完成后，再就具体安装动作请求用户同意。
+下一步接入真实 TSF 候选前端：读取 capability/版本、调用明确英文动作、处理服务断线与重连；梳理服务窗口与管道线程之间的 UI 调度。然后完成右侧工具区、独立释义浮层、设置、翻页定宽与 v0.5 两种动画。x64 TSF 构建、正式词库、安装标识、完整许可及实际应用兼容性仍待完成。菜单与本轮 IPC 已有证据，不要再次当作断点。

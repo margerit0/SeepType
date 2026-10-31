@@ -1,0 +1,83 @@
+"""Build only the new isolated IPC path with the installed VS2019 toolchain."""
+from pathlib import Path
+import json
+import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+HERE = Path(__file__).resolve().parent
+BUILD = HERE / "build/service"
+UPSTREAM = ROOT / ".cache/src/weasel"
+OVERLAY = ROOT / ".cache/study-weasel"
+BOOST = ROOT / ".cache/src/boost_1_84_0"
+BUILD.mkdir(parents=True, exist_ok=True)
+
+
+def run(args, name):
+    print(name, flush=True)
+    with (BUILD / f"{name}.log").open("w", encoding="utf-8") as output:
+        result = subprocess.run([str(arg) for arg in args], cwd=ROOT, stdout=output, stderr=subprocess.STDOUT)
+    if result.returncode:
+        print((BUILD / f"{name}.log").read_text(encoding="utf-8", errors="replace")[-12000:])
+        raise SystemExit(result.returncode)
+
+
+run([sys.executable, HERE / "prepare-weasel.py"], "prepare-weasel")
+run([sys.executable, HERE / "prepare-service-deps.py"], "prepare-deps")
+common = ["/nologo", "/std:c++17", "/EHsc", "/O2", "/MT", "/utf-8", "/DBOOST_ALL_NO_LIB", "/DBOOST_THREAD_USE_LIB", "/DUNICODE", "/D_UNICODE"]
+boostlib = BUILD / "boost_study.lib"
+if not boostlib.exists():
+    boost_objects = []
+    groups = {
+        "serialization": sorted((BOOST / "libs/serialization/src").glob("*.cpp")),
+        "thread": [BOOST / "libs/thread/src" / name for name in ["win32/thread.cpp", "win32/tss_dll.cpp", "win32/tss_pe.cpp", "win32/thread_primitives.cpp", "future.cpp"]],
+        "chrono": [BOOST / "libs/chrono/src" / name for name in ["chrono.cpp", "process_cpu_clocks.cpp", "thread_clock.cpp"]],
+    }
+    for group, sources in groups.items():
+        directory = BUILD / ("boost-" + group)
+        directory.mkdir(exist_ok=True)
+        flags = ["/DBOOST_THREAD_BUILD_LIB", "/DBOOST_USE_WINDOWS_H", "/DWIN32_LEAN_AND_MEAN"] if group == "thread" else []
+        run(["cl", *common, *flags, "/c", "/I", BOOST, *sources, "/Fo" + str(directory) + "\\"], "build-boost-" + group)
+        boost_objects.extend(sorted(directory.glob("*.obj")))
+    run(["lib", "/nologo", "/OUT:" + str(boostlib), *boost_objects], "link-boost")
+
+includes = [OVERLAY / "include", ROOT / "src", UPSTREAM / "include", BOOST, ROOT / ".cache/rime-1.13.1/dist/include", UPSTREAM / "WeaselServer", UPSTREAM / "WeaselUI", UPSTREAM / "WeaselIPC", UPSTREAM / "WeaselIPCServer", UPSTREAM / "RimeWithWeasel"]
+flags = [*common, "/DWEASEL_STUDY_ISOLATED"]
+for include in includes:
+    flags.extend(["/I", str(include)])
+headers = list(OVERLAY.rglob("*.h")) + list((ROOT / "src/study").glob("*.h"))
+header_time = max(path.stat().st_mtime for path in headers)
+
+
+def compile_source(source, group):
+    source = Path(source)
+    directory = BUILD / group
+    directory.mkdir(exist_ok=True)
+    obj = directory / (source.stem + ".obj")
+    if not obj.exists() or obj.stat().st_mtime < max(source.stat().st_mtime, header_time):
+        run(["cl", *flags, "/c", source, "/Fo" + str(obj)], "compile-" + group + "-" + source.stem)
+    return obj
+
+
+study_objects = [compile_source(path, "study") for path in (ROOT / "src/study").glob("*.cpp")]
+ipc_objects = []
+for path in UPSTREAM.glob("WeaselIPC/*.cpp"):
+    if path.name == "stdafx.cpp": continue
+    overlay = OVERLAY / "WeaselIPC" / path.name
+    ipc_objects.append(compile_source(overlay if overlay.exists() else path, "ipc"))
+server_objects = [compile_source(OVERLAY / "WeaselIPCServer/WeaselServerImpl.cpp", "server"), compile_source(UPSTREAM / "WeaselIPCServer/SecurityAttribute.cpp", "server"), compile_source(OVERLAY / "RimeWithWeasel/RimeWithWeasel.cpp", "rime")]
+ui_objects = [compile_source(path, "ui") for path in UPSTREAM.glob("WeaselUI/*.cpp") if path.name != "stdafx.cpp"]
+libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "advapi32.lib", "shell32.lib", "imm32.lib"]
+
+
+def link(name, sources, objects):
+    objects = objects + [compile_source(HERE / path, "test") for path in sources]
+    output = HERE / "build" / (name + ".exe")
+    if not output.exists() or output.stat().st_mtime < max(path.stat().st_mtime for path in objects + [boostlib]):
+        run(["link", "/nologo", "/INCREMENTAL:NO", "/SUBSYSTEM:CONSOLE", "/OUT:" + str(output), *objects, *libraries], "link-" + name)
+
+
+link("study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
+if (HERE / "service_client_test.cpp").exists():
+    link("service_client_test", ["service_client_test.cpp"], ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
+print("New Weasel IPC build complete; no installer or registered input method was run.")

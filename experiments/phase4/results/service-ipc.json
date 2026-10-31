@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-01T03:23:58+08:00",
+  "scope": "Real Weasel Client, PipeChannel, IPC Server and RimeWithWeasel handler in separate processes, with the fixed x86 Rime/Lua DLL. Headless and isolated; no TSF registration or desktop input.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "ordinary Weasel responses carry candidates and the study capability",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "IPC inspection preserves composition and exposes the complete definition",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "IPC English commit reaches the standard Weasel commit response exactly once",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "retransmitting a consumed ticket cannot duplicate committed English",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "typing continues through IPC after an English commit",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "editing pinyin invalidates an outstanding IPC ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "paging rejects the previous ticket and binds the current page",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "current-page IPC action commits that page's full English",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "returning to the original page does not revive an old IPC ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "selection changes invalidate the old ticket and preserve the selected target",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "long English survives IPC serialization without an ellipsis",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "learning-off IPC action disables English without changing Chinese composition",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "turning learning back on does not reactivate an old ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "missing definitions are unavailable through the actual IPC action",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "an inactive session cannot accept an old English ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "focus restoration requires a fresh ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "another client cannot use a ticket from the first session",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "recreating a session rejects its predecessor's ticket",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "inspection never drains a pending Chinese commit from the application",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "keyboard and IPC English actions share the same Lua commit behavior",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "malformed and unsupported IPC frames cannot trigger English actions",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "header-only IPC frames cannot replay a previous request body or response",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "client decoder rejects missing capabilities duplicate states and incomplete replies",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "concurrent pipe connections keep their request and response bodies isolated",
+      "passed": true,
+      "client_executable_sha256": "ea0437369d8c520332d95f809cdda5fe591b082892b6fd92244a209283bb0e50"
+    },
+    {
+      "name": "partial composition cannot lose remaining pinyin through IPC",
+      "passed": true,
+      "client_executable_sha256": "dcc85adf1ca8765fe9176b680e690594463f0a932a3249686164ffab04be9371"
+    },
+    {
+      "name": "service restart rejects a ticket from the previous process",
+      "passed": true,
+      "client_executable_sha256": "dcc85adf1ca8765fe9176b680e690594463f0a932a3249686164ffab04be9371"
+    },
+    {
+      "name": "a fresh ticket still commits after the service restart",
+      "passed": true,
+      "client_executable_sha256": "dcc85adf1ca8765fe9176b680e690594463f0a932a3249686164ffab04be9371"
+    }
+  ],
+  "error": null,
+  "executables": {
+    "study_service.exe": "8b28bd88f27d0737c5f97a0550a921b434a91a2eea70c209b91dce30ba49a8cb",
+    "service_client_test.exe": "dcc85adf1ca8765fe9176b680e690594463f0a932a3249686164ffab04be9371"
+  },
+  "verification_note": "The same service binary passed all checks. Earlier successful cases are retained with their client binary hashes; the candidate-selection display assertion was corrected and only that case and restart were rerun.",
+  "upstream_patch": "../patches/weasel-study-ipc.patch",
+  "unchanged_suites": [
+    "phase3 engine",
+    "phase3 native UI",
+    "phase3 DPI layout",
+    "phase4 desktop menu"
+  ],
+  "limits": [
+    "No Windows input method installed or registered",
+    "No live TSF client or application compatibility coverage",
+    "No production toolbar, settings or animation coverage",
+    "Uses the 21-entry test-only lexicon",
+    "Runs x86 clients and service; x64 TSF integration remains pending"
+  ]
+}

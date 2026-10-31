@@ -1,21 +1,75 @@
 {
   "date": "2026-11-01",
   "scope": "Actual right-click, menu selection, cancellation and focus checks for the new native English menu in ui_probe",
-  "status": "not_tested",
+  "status": "passed",
   "user_authorized": true,
-  "new_build_launched_by_computer_use": false,
-  "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6",
-  "stop_reason": "Computer Use was stopped by the user with the physical Escape key",
-  "action_taken": "Stopped all Computer Use input. Saved compiled code and automated results; no alternative UI automation was used.",
-  "pending": [
-    "Right-click a candidate and inspect its full English definition",
-    "Choose Input English and verify the complete committed value",
-    "Verify unavailable actions for missing definition, disabled learning and partial composition",
-    "Cancel the menu without changing input or committed text",
-    "Lose and regain focus without accepting an old menu action",
-    "Continue typing after menu selection",
-    "Verify F2 and Shift+F10 menu access"
+  "new_build_launched_by_computer_use": true,
+  "executable_sha256": "987f6e620f5caba30563a9f4e87141b0a280e77ef1a622b698eecec41047d8d4",
+  "stop_reason": null,
+  "action_taken": "Recovered completed desktop observations from the interrupted chats. No desktop tests were repeated during this recovery. Shift+F10 is handled through WM_CONTEXTMENU and was verified on the corrected build.",
+  "pending": [],
+  "recovered_from_threads": [
+    "01a1932b-0fd6-7ce0-b447-1343468abea0",
+    "01a19343-dab9-7af0-a6af-4cab916c0ccd"
   ],
+  "evidence_note": "Checks are recovered observations and recordMenu calls from the linked chats, not a fresh test run. The latest chat asserts before recording; earlier learning-off and right-click observations are also supported by its predecessor's progress messages. Focus coverage is minimize/restore of the isolated host, not switching real TSF applications.",
   "prior_desktop_report": "../phase3/results/desktop-interaction.json",
-  "prior_report_scope": "The prior 18 desktop observations were performed before this native menu and focus change; they do not cover the new code"
+  "prior_report_scope": "The prior 18 desktop observations were performed before this native menu and focus change; they do not cover the new code",
+  "previous_build_checks": [
+    {
+      "name": "right-click candidate exposes full definition and explicit English action",
+      "passed": true,
+      "observed": "Right-clicking the apple row opened a native menu labeled 苹果 · apple with 输入英文 and Ctrl+Shift+Enter; no text was committed just by opening it.",
+      "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6"
+    },
+    {
+      "name": "mouse English menu selection commits the bound candidate",
+      "passed": true,
+      "observed": "Clicking 输入英文 appended apple once, cleared the composition and closed the native popup.",
+      "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6"
+    },
+    {
+      "name": "typing resumes immediately after a menu commit",
+      "passed": true,
+      "observed": "A physical p immediately started a new Rime composition after the menu commit, without refocusing the host; apple stayed unchanged.",
+      "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6"
+    },
+    {
+      "name": "F2 reveals the full long definition",
+      "passed": true,
+      "observed": "F2 opened a native menu showing 知识产权 · intellectual property rights in full while the candidate row remained ellipsized; input and output were unchanged.",
+      "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6"
+    },
+    {
+      "name": "mouse menu commits a long definition without truncation",
+      "passed": true,
+      "observed": "Clicking the long-word menu action appended the complete intellectual property rights and cleared composition; no ellipsis was committed.",
+      "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6"
+    }
+  ],
+  "checks": [
+    {"name": "right-click shows full definition and explicit English action", "passed": true, "observed": "苹果 · apple with 输入英文; opening did not commit.", "source_thread": "01a1932b-0fd6-7ce0-b447-1343468abea0"},
+    {"name": "mouse menu selection commits the bound candidate once", "passed": true, "observed": "The right-click action appended apple once and cleared composition.", "source_thread": "01a1932b-0fd6-7ce0-b447-1343468abea0"},
+    {"name": "typing resumes immediately after a menu commit", "passed": true, "observed": "Physical p started the next composition without refocusing or modifying committed text.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "F2 reveals the full long definition", "passed": true, "observed": "知识产权 · intellectual property rights was shown in full above an ellipsized candidate row.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "menu commits the complete long English value", "passed": true, "observed": "Output gained intellectual property rights once without an ellipsis.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "Shift+F10 opens the corrected native menu", "passed": true, "observed": "Physical Shift+F10 opened the menu after the WM_CONTEXTMENU fix.", "source_thread": "01a1932b-0fd6-7ce0-b447-1343468abea0"},
+    {"name": "learning-off menu explains disabled English", "passed": true, "observed": "学习模式已关闭 and greyed 输入英文 were visible.", "source_thread": "01a1932b-0fd6-7ce0-b447-1343468abea0"},
+    {"name": "disabled learning action cannot commit", "passed": true, "observed": "Clicking the disabled item retained zhangxiaoming and existing output.", "source_thread": "01a1932b-0fd6-7ce0-b447-1343468abea0"},
+    {"name": "missing definition explains disabled English", "passed": true, "observed": "张小明 showed 此候选暂无英文释义 and disabled 输入英文.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "missing-definition action preserves input and output", "passed": true, "observed": "Clicking the disabled action retained all zhangxiaoming and existing output.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "partial composition explains disabled English", "passed": true, "observed": "The 苹果 candidate in pingguoy showed apple and 请先完成整段拼音.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "partial English action preserves the entire composition", "passed": true, "observed": "Clicking disabled 输入英文 retained pingguoy and existing output.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "Escape dismisses only the menu", "passed": true, "observed": "Candidates, pingguoy, selection and existing output remained.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "minimize and restore dismisses the old menu without commit", "passed": true, "observed": "After restoring the host only candidates returned, with pingguo and output unchanged.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "typing resumes after restoring focus", "passed": true, "observed": "Physical p extended the retained composition to pingguop without reviving the old menu.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"},
+    {"name": "a fresh menu commits once after restoring focus", "passed": true, "observed": "A newly opened F2 menu appended apple exactly once and cleared composition.", "source_thread": "01a19343-dab9-7af0-a6af-4cab916c0ccd"}
+  ],
+  "issues": [
+    {
+      "name": "Shift+F10 did not open the native menu",
+      "observed": "With zhangxiaoming composing, physical Shift+F10 left only the candidate strip visible; no menu appeared.",
+      "status": "fixed and verified on 987f6e620f5caba30563a9f4e87141b0a280e77ef1a622b698eecec41047d8d4; native WM_CONTEXTMENU handles Shift+F10"
+    }
+  ]
 }

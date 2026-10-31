@@ -259,8 +259,8 @@
   "normal_height": 81,
   "collapsed_height": 55,
   "passed": true,
-  "executed_at": "2026-11-01T01:52:55+08:00",
-  "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6",
+  "executed_at": "2026-11-01T02:08:35+08:00",
+  "executable_sha256": "987f6e620f5caba30563a9f4e87141b0a280e77ef1a622b698eecec41047d8d4",
   "frames": [
     {
       "file": "results\\previews\\native-light.png",
