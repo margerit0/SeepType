@@ -10,7 +10,9 @@
 #include <iomanip>
 #include <sstream>
 #include <dbghelp.h>
+#include <imm.h>
 #pragma comment(lib,"dbghelp.lib")
+#pragma comment(lib,"imm32.lib")
 
 CAppModule _Module;
 static std::unique_ptr<study::Engine> engine;
@@ -134,10 +136,14 @@ static void refresh(HWND window) {
 static void type(const char* text) {engine->Type(text);}
 static HWND control(HWND parent,const wchar_t* cls,const wchar_t* text,int id,int x,int y,int w,int h,DWORD extra=0) {
   HWND child=CreateWindowW(cls,text,WS_CHILD|WS_VISIBLE|extra,x,y,w,h,parent,(HMENU)(INT_PTR)id,_Module.GetModuleInstance(),nullptr);
+  ImmAssociateContext(child,nullptr);
   SendMessage(child,WM_SETFONT,(WPARAM)GetStockObject(DEFAULT_GUI_FONT),TRUE);return child;
 }
 static LRESULT procedureBody(HWND window,UINT message,WPARAM wp,LPARAM lp) {
   if(message==WM_CREATE) {
+    // This host feeds physical keys into its own isolated Rime session. Detach
+    // the installed system IME from this window so it cannot consume them first.
+    ImmAssociateContext(window,nullptr);
     control(window,L"STATIC",L"真实 WeaselUI + librime/Lua · 隔离验证，不注册系统输入法",0,20,12,640,24);
     control(window,L"BUTTON",L"苹果",101,20,42,120,30);
     control(window,L"BUTTON",L"多候选",102,150,42,120,30);
@@ -267,6 +273,13 @@ static bool selfTest(HWND window) {
 
   check("ATL initialized and native popup created",
     ATL::_AtlWinModule.cbSize==sizeof(ATL::_ATL_WIN_MODULE) && !ATL::CAtlBaseModule::m_bInitFailed && panelWindow(window));
+  auto detachedIme=[](HWND target) {
+    HIMC context=ImmGetContext(target);
+    if(context)ImmReleaseContext(target,context);
+    return context==nullptr;
+  };
+  check("isolated host and controls do not use the installed system IME",
+    detachedIme(window) && detachedIme(outputBox) && detachedIme(learningButton));
   check("real apple candidate with definition",
     snapshot.candidates.size()==5 && snapshot.candidates[0].text=="苹果" && snapshot.candidates[0].comment=="apple");
   const UINT dpi=windowDpi(window);

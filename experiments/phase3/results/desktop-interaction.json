@@ -1,16 +1,157 @@
 {
   "date": "2026-11-01",
-  "scope": "Real desktop mouse and keyboard interaction with the isolated ui_probe application",
-  "status": "not_tested",
+  "scope": "Real desktop interaction through Computer Use SendInput with the isolated ui_probe application; not system input-method or other-app compatibility testing",
+  "status": "passed",
   "user_authorized": true,
-  "launched_by_computer_use": false,
-  "blocker": "Computer Use was not approved to use ui_probe",
-  "note": "The user explicitly authorized this application. The tool still rejected access after that reply; do not request the same authorization again. Native in-process checks are recorded separately in native-ui.json.",
-  "pending": [
-    "Observe the actual visible native window",
-    "Click the English row and verify Chinese commit",
-    "Press Ctrl+Shift+Enter and verify full English commit",
-    "Continue typing after a mouse selection",
-    "Toggle learning and page using physical input"
+  "launched_by_computer_use": true,
+  "executable_sha256": "2b59e0772402b1f7f7cedda7ddbecf44c025b07fd7306fbd65b2cda90885acc0",
+  "recovered_checks": 12,
+  "current_checks": 6,
+  "checks": [
+    {
+      "name": "non-first candidate English shortcut",
+      "passed": true,
+      "observed": "Down twice selected 试试; Ctrl+Shift+Enter appended give it a try and cleared composition",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "physical Page Down and Page Up",
+      "passed": true,
+      "observed": "Page Down displayed page 2 starting with 适时; Page Up restored page 1 starting with 事实, with matching English annotations",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "current-page English shortcut",
+      "passed": true,
+      "observed": "After Page Down, Ctrl+Shift+Enter appended full at the right time for 适时 and cleared composition",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "long English display and complete commit",
+      "passed": true,
+      "observed": "Candidate row showed intellectual…; shortcut appended intellectual property rights without truncation",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "repeated English shortcut does not duplicate commit",
+      "passed": true,
+      "observed": "Second Ctrl+Shift+Enter with empty composition left output unchanged",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "missing definition preserves composition",
+      "passed": true,
+      "observed": "Ctrl+Shift+Enter left zhangxiaoming and all Chinese candidates visible; output unchanged and no invented English",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "F8 collapses even when definitions are absent",
+      "passed": true,
+      "observed": "F8 changed 学习：开 to 学习：关 and removed the reserved English row while keeping zhangxiaoming and candidates unchanged",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "space commits Chinese with missing definition and learning off",
+      "passed": true,
+      "observed": "Space appended 张小明 and cleared composition with learning off",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "learning off blocks English for a translated word",
+      "passed": true,
+      "observed": "With learning off and 苹果 selected, Ctrl+Shift+Enter kept pingguo and did not append apple",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "number key commits Chinese with learning off",
+      "passed": true,
+      "observed": "Number-row 2 appended second Chinese candidate 平果 and cleared composition",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "F8 restores English row and keeps composition",
+      "passed": true,
+      "observed": "F8 restored apple above 苹果, kept pingguo, and expanded the same native candidate strip",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "clicking English row commits Chinese and preserves focus",
+      "passed": true,
+      "observed": "Click on apple row appended 苹果, and following physical p opened a new Rime composition without refocusing",
+      "evidence_source": "internal chat (omitted)",
+      "verification": "Observed in the previous chat; recovered from its completed desktop-check calls and progress messages"
+    },
+    {
+      "name": "continuous physical typing after a mouse commit",
+      "passed": true,
+      "observed": "Resumed physical pinggu input with o; Rime shows pingguo and apple above 苹果 without changing committed output.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    },
+    {
+      "name": "physical Backspace preserves committed text",
+      "passed": true,
+      "observed": "Backspace changed pingguo to pinggu and recomputed candidates; previously committed text stayed unchanged.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    },
+    {
+      "name": "space commits Chinese after continuous typing and correction",
+      "passed": true,
+      "observed": "After restoring pingguo, Space appended 苹果, cleared composition and hid the candidate popup.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    },
+    {
+      "name": "Escape cancels a new composition without committing",
+      "passed": true,
+      "observed": "After a new physical p, Escape cleared composition and hid the popup; committed output stayed unchanged.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    },
+    {
+      "name": "native dark theme preserves the long-word composition",
+      "passed": true,
+      "observed": "Mouse theme toggle recolored the same two-row native strip; intellectual… stayed above 知识产权 without layout or input change.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    },
+    {
+      "name": "complete English shortcut in dark theme",
+      "passed": true,
+      "observed": "Ctrl+Shift+Enter appended the full intellectual property rights in dark theme and cleared composition.",
+      "evidence_source": "current continuation",
+      "verification": "Computer Use screenshot and stable accessibility text observed in this continuation"
+    }
+  ],
+  "permission_configuration": {
+    "location": "User config.toml",
+    "key": "computer_use.windows.always_allowed_app_ids",
+    "added_app_id": "ui_probe.exe",
+    "toml_validated": true,
+    "other_settings_preserved": true,
+    "private_backup_created": true,
+    "retry_after_save": "Computer Use was not approved to use ui_probe",
+    "app_restart_pending": false,
+    "resolution": "After the authorized restart, application access succeeded; no authorization remains pending"
+  },
+  "fix": "The host and child controls detach their installed system IME association using ImmAssociateContext(hwnd, nullptr), limited to this process, so physical alphabet keys reach the isolated Rime session.",
+  "observation_note": "Accessibility text can lag the captured image by one snapshot; output assertions used a refreshed stable tree.",
+  "limitations": [
+    "These checks exercise only the isolated native host and its popup; TSF, IPC, Notepad, browser and VS Code are not tested.",
+    "No system input method installed, registered or made default.",
+    "No OS display scaling switch or multi-monitor test.",
+    "Final toolbar, context menu, settings and native animations remain outside this phase-3 desktop run."
   ]
 }

@@ -11,6 +11,15 @@
       "learning": true
     },
     {
+      "name": "isolated host and controls do not use the installed system IME",
+      "passed": true,
+      "input": "pingguo",
+      "commit": "",
+      "page": 0,
+      "selected": 0,
+      "learning": true
+    },
+    {
       "name": "real apple candidate with definition",
       "passed": true,
       "input": "pingguo",
@@ -250,8 +259,8 @@
   "normal_height": 81,
   "collapsed_height": 55,
   "passed": true,
-  "executed_at": "2026-11-01T00:34:17+08:00",
-  "executable_sha256": "c9ccb229a18e662bca9f042dade354639baf782ef5faa7eb8b194f1fe340ddf6",
+  "executed_at": "2026-11-01T01:41:11+08:00",
+  "executable_sha256": "465d161dbea1eeb0498077a112cc79581cbb953e9da9dd29de9e300d659b26c9",
   "frames": [
     {
       "file": "results\\previews\\native-light.png",
