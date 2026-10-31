@@ -4,7 +4,7 @@
     "version": "1.13.1",
     "lua_module": true,
     "pointer_bits": 32,
-    "maintenance_ms": 934.892
+    "maintenance_ms": 1132.71
   },
   "checks": [
     {
@@ -14,7 +14,7 @@
         "version": "1.13.1",
         "lua_module": true,
         "pointer_bits": 32,
-        "maintenance_ms": 934.892
+        "maintenance_ms": 1132.71
       }
     },
     {
@@ -726,23 +726,23 @@
     "baseline": {
       "samples": 300,
       "unit": "us per synthetic composition + first page",
-      "p50": 238.2,
-      "p95": 339.6,
-      "p99": 470.7
+      "p50": 275.4,
+      "p95": 521.6,
+      "p99": 586.2
     },
     "learning_off": {
       "samples": 300,
       "unit": "us per synthetic composition + first page",
-      "p50": 674.6,
-      "p95": 1141.4,
-      "p99": 1286
+      "p50": 1075.7,
+      "p95": 1928.4,
+      "p99": 2200.8
     },
     "learning_on": {
       "samples": 300,
       "unit": "us per synthetic composition + first page",
-      "p50": 666.8,
-      "p95": 1179.9,
-      "p99": 1383.6
+      "p50": 1331.3,
+      "p95": 2167.4,
+      "p99": 2436.4
     }
   },
   "limitations": [

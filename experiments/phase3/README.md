@@ -2,6 +2,8 @@
 
 2026-11-01，v0.5 设计基线的核心隔离验证通过。此目录是测试程序，**不是系统输入法或安装包**。它没有运行 WeaselSetup、WeaselDeployer、WeaselServer，没有注册 TSF 或修改系统输入设置。
 
+当前工作树已让这个宿主承载[阶段 4 的会话动作与英文菜单](../phase4/README.md)。阶段 3 桌面结果保留其被测 EXE 哈希；新菜单的真实点击、取消和失焦尚未测试。
+
 ## 结果与预览
 
 | 检查 | 结果 |
@@ -60,7 +62,7 @@ python experiments/phase3/verify-native.py
 ## 代码与测试边界
 
 - `engine_probe.cpp` / `verify-engine.py`：官方 C API 加载真实 DLL，执行自拟拼音与合成按键；含候选顺序、开关、长词、第二页英文、分段保护、词表缺失/损坏和暖态对照。
-- `fixtures/lua/study.lua`：启动时精确词表加载；ShadowCandidate 保留原候选。英文动作重新读取真实选中候选和完整词值，拒绝无释义/关闭学习/未完成分段，保留中文组合。
+- `fixtures/lua/study.lua`：仅包装实验 F8；实际逻辑共用 `src/study/lua/study_core.lua`。启动时精确词表加载；ShadowCandidate 保留原候选。英文动作重新读取真实选中候选和完整词值，拒绝无释义/关闭学习/未完成分段，保留中文组合。
 - `StudyEngine.*`：把 Rime API 与 ATL 编译单元分开，修复本机二者头文件组合导致的静态初始化异常；不修改引擎。
 - `StudyLayout.*`：真实 StandardLayout 子类，英文在上，序号和中文在下，整项共享点击区域，长英文由 DirectWrite 省略。
 - `ui_probe.cpp` / `verify-native.py`：真实 Win32 + WeaselUI 宿主；启动、参数测量、同进程消息回归、绘制缓冲区导出。没有 OS 输入注入或桌面捕获。PNG 编码使用 Python 标准库。
@@ -68,7 +70,7 @@ python experiments/phase3/verify-native.py
 
 21 个自拟词对全部是 **test-only**，未人工验收，不得直接作为正式分发词库。时延统计包含解码和第一页候选生成，不是单次查词耗时，也不能外推大词库。来源与许可见 [项目记录](../../docs/data-sources.md)。
 
-完整 Weasel 服务/TSF、会话 IPC、正式英文菜单/浮层、工具区、设置、两种原生动画、翻页定宽、安装卸载及记事本/浏览器/VS Code 兼容性仍未完成或未测试。
+完整 Weasel 服务/TSF、会话 IPC、独立释义浮层、工具区、设置、两种原生动画、翻页定宽、安装卸载及记事本/浏览器/VS Code 兼容性仍未完成或未测试。原生英文菜单已在宿主接入，但真实菜单操作未测试。
 
 ## 结束与清理
 

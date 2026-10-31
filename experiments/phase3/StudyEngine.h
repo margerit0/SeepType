@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "../../src/study/SessionActions.h"
 
 namespace study {
 
@@ -13,6 +14,7 @@ struct Candidate {
 };
 
 struct Snapshot {
+  VersionStamp version;
   std::string input;
   std::string commit;
   std::string action;
@@ -20,6 +22,7 @@ struct Snapshot {
   bool last_page = false;
   int page = 0;
   int highlighted = 0;
+  size_t caret = 0;
   std::vector<Candidate> candidates;
 };
 
@@ -35,6 +38,10 @@ class Engine {
   void Type(const char* text);
   bool Select(size_t index);
   bool Highlight(size_t index);
+  EnglishTarget PrepareEnglish(size_t index);
+  bool CommitEnglish(const EnglishTarget& target);
+  void InvalidateActions();
+  bool ResetSession();
   Snapshot Read();
 
  private:

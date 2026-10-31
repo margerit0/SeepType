@@ -75,7 +75,8 @@ report["limitations"] = [
     "Frames come from Weasel's own paint buffer, not a desktop screenshot",
     "In-process button/key/candidate messages do not replace physical mouse and keyboard testing",
     "No TSF registration, application compatibility, system DPI switching, or installation test",
-    "Animations, production settings and the final in-bar English menu are not implemented here",
+    "Animations, production settings and the final in-bar toolbar are not implemented here",
+    "The native English context menu is integrated, but these internal checks do not exercise its real desktop clicks or focus",
 ]
 report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 for check in report["checks"]:

@@ -11,6 +11,7 @@ shared.mkdir(parents=True, exist_ok=True)
 user.mkdir(parents=True, exist_ok=True)
 shutil.copytree(ROOT / ".cache/weasel-0.17.4/data", shared, dirs_exist_ok=True)
 shutil.copytree(HERE / "fixtures", user, dirs_exist_ok=True)
+shutil.copy2(ROOT / "src/study/lua/study_core.lua", user / "lua/study_core.lua")
 schema = (HERE / "fixtures/study.schema.yaml").read_text(encoding="utf-8")
 baseline = schema.replace("schema_id: study", "schema_id: study_base").replace(
     "    - lua_processor@study_keys\n", ""

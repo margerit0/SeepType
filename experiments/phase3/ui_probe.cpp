@@ -4,6 +4,7 @@
 #include "WeaselPanel.h"
 #include "HorizontalLayout.h"
 #include "StudyEngine.h"
+#include "../../src/study/windows/EnglishMenu.h"
 #include <fstream>
 #include <filesystem>
 #include <memory>
@@ -28,6 +29,9 @@ static bool automated=false;
 static bool darkTheme=false;
 static std::string captureName;
 static bool frameCaptured=false;
+static bool englishMenuOpen=false;
+static void showEnglishMenu(HWND window,size_t index,POINT position);
+static LRESULT CALLBACK studyPanelSubclass(HWND,UINT,WPARAM,LPARAM,UINT_PTR,DWORD_PTR);
 static UINT windowDpi(HWND window) {
   auto query=reinterpret_cast<UINT(WINAPI*)(HWND)>(GetProcAddress(GetModuleHandleW(L"user32.dll"),"GetDpiForWindow"));
   return query?query(window):96;
@@ -119,6 +123,8 @@ static void refresh(HWND window) {
   // composition, just as the real frontend starts a new candidate UI.
   const bool recreated=!panelWindow(window);
   if(recreated){phase="UI.Create";ui->Create(window);}
+  if(HWND panel=panelWindow(window))
+    SetWindowSubclass(panel,studyPanelSubclass,1,reinterpret_cast<DWORD_PTR>(window));
   const bool styleChanged=ui->ostyle()!=ui->style();
   const bool contextChanged=ui->ctx()!=current || !(ui->status()==status);
   if(styleChanged)ui->octx()=weasel::Context();
@@ -126,12 +132,42 @@ static void refresh(HWND window) {
   if((styleChanged || recreated) && !contextChanged)ui->Refresh();
   POINT point{24,190};ClientToScreen(window,&point);
   phase="UI.UpdateInputPosition";ui->UpdateInputPosition(RECT{point.x,point.y,point.x+1,point.y+20});
-  phase="UI.Show";if(status.composing && !automated)ui->Show();else ui->Hide();
+  const bool active=GetForegroundWindow()==window;
+  phase="UI.Show";if(status.composing && !automated && active)ui->Show();else ui->Hide();
   output+=wide(snapshot.commit.c_str());
   SetWindowTextW(outputBox,output.c_str());
   std::wstring label=L"拼音："+wide(snapshot.input.c_str())+L"   第 "+std::to_wstring(current.cinfo.currentPage+1)+L" 页";
   SetWindowTextW(inputLabel,label.c_str());
   SetWindowTextW(learningButton,enabled?L"学习：开（F8）":L"学习：关（F8）");
+}
+static void showEnglishMenu(HWND window,size_t index,POINT position) {
+  if(englishMenuOpen)return;
+  const auto target=engine->PrepareEnglish(index);
+  refresh(window);
+  englishMenuOpen=true;
+  const UINT selected=study::ShowEnglishMenu(window,position,target);
+  englishMenuOpen=false;
+  if(selected==study::kInputEnglish)engine->CommitEnglish(target);
+  refresh(window);
+  if(!automated && GetForegroundWindow()==window)SetFocus(window);
+}
+static LRESULT CALLBACK studyPanelSubclass(HWND panel,UINT message,WPARAM wp,LPARAM lp,UINT_PTR id,DWORD_PTR data) {
+  if(message==WM_RBUTTONUP) {
+    const HWND owner=reinterpret_cast<HWND>(data);
+    const CPoint point(static_cast<short>(LOWORD(lp)),static_cast<short>(HIWORD(lp)));
+    auto resources=std::make_shared<weasel::DirectWriteResources>(ui->style(),windowDpi(panel));
+    weasel::StudyLayout layout(ui->style(),current,status,resources);
+    HDC dc=GetDC(panel);layout.DoLayout(dc,resources);ReleaseDC(panel,dc);
+    for(size_t i=0;i<current.cinfo.candies.size();++i) {
+      if(layout.GetCandidateRect(static_cast<int>(i)).PtInRect(point)) {
+        POINT screen=point;ClientToScreen(panel,&screen);
+        showEnglishMenu(owner,i,screen);return 0;
+      }
+    }
+    return 0;
+  }
+  if(message==WM_NCDESTROY)RemoveWindowSubclass(panel,studyPanelSubclass,id);
+  return DefSubclassProc(panel,message,wp,lp);
 }
 static void type(const char* text) {engine->Type(text);}
 static HWND control(HWND parent,const wchar_t* cls,const wchar_t* text,int id,int x,int y,int w,int h,DWORD extra=0) {
@@ -169,7 +205,8 @@ static LRESULT procedureBody(HWND window,UINT message,WPARAM wp,LPARAM lp) {
       case 101:type("pingguo");break;case 102:type("shishi");break;
       case 103:type("zhishichanquan");break;case 104:type("zhangxiaoming");break;
       case 105:engine->Key(65365);break;case 106:engine->Key(65366);break;
-      case 107:engine->Key(65477);break;case 108:engine->Key(65293,5);break;
+      case 107:engine->Key(65477);break;
+      case 108:engine->CommitEnglish(engine->PrepareEnglish(static_cast<size_t>(snapshot.highlighted)));break;
       case 109:darkTheme=!darkTheme;break;
       default:return DefWindowProc(window,message,wp,lp);
     }
@@ -177,6 +214,10 @@ static LRESULT procedureBody(HWND window,UINT message,WPARAM wp,LPARAM lp) {
   }
   if(message==WM_KEYDOWN) {
     int key=0,mask=(GetKeyState(VK_SHIFT)<0?1:0)|(GetKeyState(VK_CONTROL)<0?4:0)|(GetKeyState(VK_MENU)<0?8:0);
+    if(wp==VK_F2 || wp==VK_APPS || (wp==VK_F10 && (mask&1))) {
+      POINT position{24,190};ClientToScreen(window,&position);
+      showEnglishMenu(window,static_cast<size_t>(snapshot.highlighted),position);return 0;
+    }
     if(wp==VK_NEXT)key=65366;else if(wp==VK_PRIOR)key=65365;else if(wp==VK_F8)key=65477;
     else if(wp==VK_RETURN)key=65293;else if(wp==VK_ESCAPE)key=65307;
     else if(wp==VK_DOWN)key=65364;else if(wp==VK_UP)key=65362;
@@ -186,6 +227,14 @@ static LRESULT procedureBody(HWND window,UINT message,WPARAM wp,LPARAM lp) {
     if(key){engine->Key(key,mask);refresh(window);return 0;}
   }
   if(message==WM_CHAR && wp>=32 && wp<127) {engine->Key((int)wp);refresh(window);return 0;}
+  if(message==WM_ACTIVATE && engine && ui && outputBox && !automated) {
+    if(LOWORD(wp)==WA_INACTIVE) {
+      engine->InvalidateActions();
+      if(englishMenuOpen)EndMenu();
+      ui->Hide();
+    } else refresh(window);
+    return 0;
+  }
   if(message==WM_MOVE && ui && ui->IsShown()){refresh(window);return 0;}
   if(message==WM_DESTROY){ui->Destroy(true);PostQuitMessage(0);return 0;}
   return DefWindowProc(window,message,wp,lp);

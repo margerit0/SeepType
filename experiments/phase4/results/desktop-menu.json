@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "scope": "Actual right-click, menu selection, cancellation and focus checks for the new native English menu in ui_probe",
+  "status": "not_tested",
+  "user_authorized": true,
+  "new_build_launched_by_computer_use": false,
+  "executable_sha256": "ff4971d018e63022c1ba64cbd0a9574732013d283f82d1faccab3876fb27c3e6",
+  "stop_reason": "Computer Use was stopped by the user with the physical Escape key",
+  "action_taken": "Stopped all Computer Use input. Saved compiled code and automated results; no alternative UI automation was used.",
+  "pending": [
+    "Right-click a candidate and inspect its full English definition",
+    "Choose Input English and verify the complete committed value",
+    "Verify unavailable actions for missing definition, disabled learning and partial composition",
+    "Cancel the menu without changing input or committed text",
+    "Lose and regain focus without accepting an old menu action",
+    "Continue typing after menu selection",
+    "Verify F2 and Shift+F10 menu access"
+  ],
+  "prior_desktop_report": "../phase3/results/desktop-interaction.json",
+  "prior_report_scope": "The prior 18 desktop observations were performed before this native menu and focus change; they do not cover the new code"
+}

@@ -1,0 +1,89 @@
+{
+  "scope": "Actual isolated Rime/Lua sessions with candidate-version and frontend-action guards; no TSF or OS input injection",
+  "checks": [
+    {
+      "name": "Lua inspection exposes exact full definition without input or commit changes",
+      "passed": true
+    },
+    {
+      "name": "frontend and keyboard actions use the same Lua English commit",
+      "passed": true
+    },
+    {
+      "name": "consumed action cannot duplicate English",
+      "passed": true
+    },
+    {
+      "name": "editing pinyin invalidates an open menu target",
+      "passed": true
+    },
+    {
+      "name": "old page target is rejected while current page has its own full definition",
+      "passed": true
+    },
+    {
+      "name": "paging back to identical candidates does not revive a stale target",
+      "passed": true
+    },
+    {
+      "name": "candidate selection invalidates old actions and commits the selected word",
+      "passed": true
+    },
+    {
+      "name": "learning off hides the definition and blocks English without losing composition",
+      "passed": true
+    },
+    {
+      "name": "turning learning back on does not revive an old action",
+      "passed": true
+    },
+    {
+      "name": "partial candidate retains its definition but cannot drop remaining pinyin",
+      "passed": true
+    },
+    {
+      "name": "Chinese segmented input still completes after a rejected menu action",
+      "passed": true
+    },
+    {
+      "name": "caret movement invalidates the action and prevents partial English",
+      "passed": true
+    },
+    {
+      "name": "missing definition remains unavailable without changing Chinese input",
+      "passed": true
+    },
+    {
+      "name": "focus invalidation rejects the old menu without committing elsewhere",
+      "passed": true
+    },
+    {
+      "name": "new real Rime session rejects an identical previous-session target",
+      "passed": true
+    },
+    {
+      "name": "cached or edited display text cannot become committed English",
+      "passed": true
+    },
+    {
+      "name": "out-of-range candidate target is harmless",
+      "passed": true
+    },
+    {
+      "name": "opening an empty menu does not consume pending Chinese commit",
+      "passed": true
+    },
+    {
+      "name": "menu action commits the complete long definition",
+      "passed": true
+    },
+    {
+      "name": "zero key without a private request cannot submit English",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "executed_at": "2026-11-01T01:48:31+08:00",
+  "executable_sha256": "168e112cac8de8dd4de1fb81ff32891f2bed5cc0ea99c63320b722de191bc6a2",
+  "lua_sha256": "d12a8fd65d7c48ce12e0fc40d97ac5f0ed33855666bf7bd3ae0b121db60d66c5"
+}
