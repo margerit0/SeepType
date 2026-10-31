@@ -1,0 +1,192 @@
+{
+  "date": "2026-10-31",
+  "scope": "Browser prototype only. Observations across design iterations; final pagination, heights and narrow-width checks supersede earlier numeric measurements.",
+  "checks": [
+    {
+      "name": "点击英文所在候选仍提交中文",
+      "actual": "事实",
+      "expected": "事实",
+      "pass": true
+    },
+    {
+      "name": "选中第二项后英文快捷键",
+      "actual": "事实implement",
+      "expected": "事实implement",
+      "pass": true
+    },
+    {
+      "name": "翻页后数字键中文选词",
+      "actual": "事实implement时时",
+      "expected": "事实implement时时",
+      "pass": true
+    },
+    {
+      "name": "右键不提交",
+      "actual": "事实implement时时",
+      "expected": "事实implement时时",
+      "pass": true
+    },
+    {
+      "name": "长英文菜单完整提交",
+      "actual": "事实implement时时intellectual property rights",
+      "expected": "事实implement时时intellectual property rights",
+      "pass": true
+    },
+    {
+      "name": "缺词英文操作不提交",
+      "actual": "暂无可靠释义，中文输入不受影响。",
+      "expected": "暂无可靠释义，中文输入不受影响。",
+      "pass": true
+    },
+    {
+      "name": "缺词中文仍可提交",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "部分拼音英文操作不提交且保留组合串",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "部分拼音明确提示",
+      "actual": "请单独输入这个词；当前还有未完成的拼音。",
+      "expected": "请单独输入这个词；当前还有未完成的拼音。",
+      "pass": true
+    },
+    {
+      "name": "中文选前段后保留后段",
+      "actual": "yinhang",
+      "expected": "yinhang",
+      "pass": true
+    },
+    {
+      "name": "候选变化使旧菜单失效",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "name": "当前组合关闭保持候选高度",
+      "actual": 161,
+      "expected": 161,
+      "pass": true
+    },
+    {
+      "name": "关闭后全部英文清空",
+      "actual": "",
+      "expected": "",
+      "pass": true
+    },
+    {
+      "name": "下一组合恢复单行",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "设置后的备用快捷键",
+      "actual": "已输入英文：fact",
+      "expected": "已输入英文：fact",
+      "pass": true
+    },
+    {
+      "name": "学习型关闭也保持本轮高度",
+      "actual": 545.6666870117188,
+      "expected": 545.6666870117188,
+      "pass": true
+    },
+    {
+      "name": "学习型英文提交",
+      "actual": "已输入英文：implement",
+      "expected": "已输入英文：implement",
+      "pass": true
+    },
+    {
+      "name": "多义词显示语义限制",
+      "actual": "示例仅取“金融机构”义；不根据上下文判断。",
+      "expected": "示例仅取“金融机构”义；不根据上下文判断。",
+      "pass": true
+    },
+    {
+      "name": "两方案标准宽度下舞台同高",
+      "actual": 987.3333740234376,
+      "expected": 987.3333740234376,
+      "pass": true
+    },
+    {
+      "name": "紧凑型320宽度无横向溢出",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "学习型320宽度无横向溢出",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "学习型每页三项",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "name": "学习型十项共四页",
+      "actual": "1 / 4",
+      "expected": "1 / 4",
+      "pass": true
+    },
+    {
+      "name": "学习型第二页第二项正确",
+      "actual": "已输入中文：时事",
+      "expected": "已输入中文：时事",
+      "pass": true
+    },
+    {
+      "name": "学习型翻页后英文对应正确",
+      "actual": "已输入英文：give it a try",
+      "expected": "已输入英文：give it a try",
+      "pass": true
+    },
+    {
+      "name": "三项学习型关闭保持高度",
+      "actual": 397.6666870117187,
+      "expected": 397.6666870117187,
+      "pass": true
+    },
+    {
+      "name": "最终两方案舞台同高",
+      "actual": 813.3333740234375,
+      "expected": 813.3333740234375,
+      "pass": true
+    },
+    {
+      "name": "连续替换拼音后中文与英文同步",
+      "actual": "1. 事实 / fact，点击输入中文",
+      "expected": "1. 事实 / fact，点击输入中文",
+      "pass": true
+    },
+    {
+      "name": "多义中文词仅显示选定常用义",
+      "actual": "示例仅取“击打”义；不根据上下文判断。",
+      "expected": "示例仅取“击打”义；不根据上下文判断。",
+      "pass": true
+    },
+    {
+      "name": "最终紧凑型窄宽无横向溢出",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "最终学习型窄宽无横向溢出",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    }
+  ]
+}

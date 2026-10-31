@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-31",
+  "revision": "v0.3",
+  "scope": "Browser prototype only; logical CSS px, not Windows DPI measurements",
+  "checks": [
+    {
+      "name": "桌面尺寸五项横排",
+      "actual": 5,
+      "expected": 5,
+      "pass": true
+    },
+    {
+      "name": "双行候选条高度55px",
+      "actual": 55,
+      "expected": 55,
+      "pass": true
+    },
+    {
+      "name": "关闭学习后当前组合高度不变",
+      "actual": 55,
+      "expected": 55,
+      "pass": true
+    },
+    {
+      "name": "下一组合收为38px单行",
+      "actual": 38,
+      "expected": 38,
+      "pass": true
+    },
+    {
+      "name": "改版后英文快捷键",
+      "actual": "已输入英文：implement",
+      "expected": "已输入英文：implement",
+      "pass": true
+    },
+    {
+      "name": "详情浮层不撑高候选条",
+      "actual": 55,
+      "expected": 55,
+      "pass": true
+    },
+    {
+      "name": "详情显示完整英文",
+      "actual": "intellectual property rights",
+      "expected": "intellectual property rights",
+      "pass": true
+    },
+    {
+      "name": "小菜单完整提交长英文",
+      "actual": "已输入英文：intellectual property rights",
+      "expected": "已输入英文：intellectual property rights",
+      "pass": true
+    },
+    {
+      "name": "缺词保护保留",
+      "actual": "暂无可靠释义，中文输入不受影响。",
+      "expected": "暂无可靠释义，中文输入不受影响。",
+      "pass": true
+    },
+    {
+      "name": "缺词中文正常提交",
+      "actual": "已输入中文：张小明",
+      "expected": "已输入中文：张小明",
+      "pass": true
+    },
+    {
+      "name": "改版翻页仍对应正确",
+      "actual": "已输入中文：时时",
+      "expected": "已输入中文：时时",
+      "pass": true
+    },
+    {
+      "name": "分段保护保留",
+      "actual": "请单独输入这个词；当前还有未完成的拼音。",
+      "expected": "请单独输入这个词；当前还有未完成的拼音。",
+      "pass": true
+    },
+    {
+      "name": "320窄预览仍只有一排候选",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "name": "窄预览无横向溢出",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    }
+  ],
+  "bounds": {
+    "slim-light": {
+      "height": 55,
+      "width": 599,
+      "x": 30,
+      "y": 265
+    },
+    "slim-dark": {
+      "height": 55,
+      "width": 599,
+      "x": 30,
+      "y": 265
+    }
+  }
+}

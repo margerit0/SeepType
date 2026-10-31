@@ -1,0 +1,320 @@
+<div id="ime-study-prototype">
+  <style>
+    #ime-study-prototype { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; color-scheme: light dark; }
+    #ime-study-prototype * { box-sizing: border-box; }
+    #ime-study-prototype [hidden] { display: none !important; }
+    #ime-study-prototype .ime-lab { --paper: light-dark(#ffffff,#202328); --desk: light-dark(#f0f2f4,#15171b); --ink: light-dark(#20252b,#edf0f3); --sub: light-dark(#59636d,#aeb7c1); --line: light-dark(#d9dee3,#414852); --accent: light-dark(#245b9a,#9ac9ff); --selected: light-dark(#e9f2ff,#233f60); --shadow: light-dark(#1c2b3d21,#00000048); --font-add: 0px; color:var(--ink); background:var(--desk); border:1px solid var(--line); border-radius:12px; min-height:800px; overflow-wrap:anywhere; font-size:14px; line-height:1.5; }
+    #ime-study-prototype .ime-lab[data-theme="light"] { color-scheme:light; }
+    #ime-study-prototype .ime-lab[data-theme="dark"] { color-scheme:dark; }
+    #ime-study-prototype .lab-header { background:var(--paper); padding:15px 18px; border-radius:12px 12px 0 0; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; padding-right:96px; }
+    #ime-study-prototype .lab-header strong { font-weight:600; }
+    #ime-study-prototype .variant-tag { color:var(--accent); font-size:12px; }
+    #ime-study-prototype .lab-tools { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 18px; }
+    #ime-study-prototype label { display:flex; align-items:center; gap:7px; }
+    #ime-study-prototype button, #ime-study-prototype select, #ime-study-prototype input { font:inherit; color:inherit; }
+    #ime-study-prototype button, #ime-study-prototype select { background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:5px 10px; }
+    #ime-study-prototype button:hover:not(:disabled) { background:var(--selected); }
+    #ime-study-prototype button:disabled { opacity:.5; }
+    #ime-study-prototype select { max-width:100%; min-width:0; }
+    #ime-study-prototype input[type="checkbox"] { accent-color:var(--accent); width:16px; height:16px; margin:0; }
+    #ime-study-prototype .theme-field { margin-left:auto; }
+    #ime-study-prototype .desktop { padding:0 18px 16px; min-height:626px; }
+    #ime-study-prototype .document { border:1px solid var(--line); border-radius:8px; background:var(--paper); }
+    #ime-study-prototype .document-top { display:flex; justify-content:space-between; gap:12px; padding:10px 14px; border-bottom:1px solid var(--line); font-size:12px; color:var(--sub); }
+    #ime-study-prototype .paper { padding:14px; }
+    #ime-study-prototype .output-label { color:var(--sub); font-size:12px; margin-bottom:5px; }
+    #ime-study-prototype .committed { min-height:48px; max-width:100%; white-space:pre-wrap; overflow-wrap:anywhere; font-size:18px; line-height:26px; }
+    #ime-study-prototype .committed:empty::before { content:"提交后的文字出现在这里"; color:var(--sub); font-size:14px; }
+    #ime-study-prototype .composition-row { display:flex; gap:10px; align-items:center; margin-top:8px; }
+    #ime-study-prototype .composition-row label { flex:1; color:var(--sub); font-size:12px; min-width:0; }
+    #ime-study-prototype .composition { min-width:0; flex:1; width:100%; background:var(--desk); border:1px solid var(--line); border-bottom:2px solid var(--accent); border-radius:4px; padding:7px 9px; color:var(--ink); font-size:16px; line-height:22px; }
+    #ime-study-prototype .ime-window { margin-top:12px; background:var(--paper); border:1px solid var(--line); border-radius:8px; box-shadow:0 5px 18px var(--shadow); width:640px; max-width:100%; position:relative; }
+    #ime-study-prototype .ime-top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:7px; border-bottom:1px solid var(--line); padding:7px 10px; color:var(--sub); font-size:12px; }
+    #ime-study-prototype .ime-top label { color:var(--ink); }
+    #ime-study-prototype .spelling { color:var(--accent); font-size:14px; font-weight:500; }
+    #ime-study-prototype .candidates { display:flex; flex-wrap:wrap; gap:8px; padding:8px; align-items:stretch; }
+    #ime-study-prototype .candidate { min-width:72px; width:calc((100% - 32px)/5); max-width:160px; border:1px solid transparent; padding:7px; background:transparent; border-radius:var(--candidate-radius,5px); text-align:left; min-height:62px; display:flex; flex-direction:column; justify-content:center; }
+    #ime-study-prototype .candidate[aria-current="true"] { background:var(--selected); border-color:var(--accent); }
+    #ime-study-prototype .english { color:var(--sub); display:block; font-size:calc(13px + var(--font-add)); line-height:calc(18px + var(--font-add)); height:calc(18px + var(--font-add)); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-bottom:2px; }
+    #ime-study-prototype .candidate[aria-current="true"] .english { color:var(--accent); }
+    #ime-study-prototype .chinese { display:flex; gap:6px; align-items:baseline; white-space:nowrap; font-size:calc(18px + var(--font-add)); line-height:calc(26px + var(--font-add)); }
+    #ime-study-prototype .cn-text { overflow:hidden; text-overflow:ellipsis; }
+    #ime-study-prototype .number { color:var(--sub); font-size:12px; flex-shrink:0; }
+    #ime-study-prototype .single-row .candidate { min-height:40px; }
+    #ime-study-prototype .single-row .english { display:none; }
+    #ime-study-prototype .ime-bottom { display:flex; align-items:center; flex-wrap:wrap; gap:7px; padding:7px 10px; border-top:1px solid var(--line); font-size:12px; color:var(--sub); }
+    #ime-study-prototype .pager { margin-left:auto; display:flex; align-items:center; gap:6px; }
+    #ime-study-prototype .pager button { padding:2px 7px; }
+    #ime-study-prototype .detail-panel { margin:0 8px 8px; border-top:1px solid var(--line); padding:8px; min-height:66px; }
+    #ime-study-prototype .detail-caption { font-size:12px; color:var(--sub); }
+    #ime-study-prototype .full-english { color:var(--accent); font-size:15px; line-height:22px; overflow-wrap:anywhere; }
+    #ime-study-prototype .word-note { font-size:12px; color:var(--sub); }
+    #ime-study-prototype .learning .ime-window { width:340px; }
+    #ime-study-prototype .learning .candidates { display:flex; flex-direction:column; gap:4px; }
+    #ime-study-prototype .learning .candidate { width:100%; max-width:none; min-height:64px; padding:7px 10px; }
+    #ime-study-prototype .learning .english { font-size:calc(17px + var(--font-add)); line-height:calc(24px + var(--font-add)); height:calc(24px + var(--font-add)); margin-bottom:4px; }
+    #ime-study-prototype .learning .chinese { font-size:calc(17px + var(--font-add)); line-height:calc(24px + var(--font-add)); }
+    #ime-study-prototype .learning .single-row .candidate { min-height:40px; }
+    #ime-study-prototype .empty-candidates { padding:18px 12px; font-size:13px; color:var(--sub); }
+    #ime-study-prototype .context-menu { position:absolute; left:8px; right:8px; top:calc(100% + 5px); z-index:4; padding:8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); box-shadow:0 6px 20px var(--shadow); }
+    #ime-study-prototype .context-menu .menu-title { color:var(--sub); font-size:12px; margin:2px 4px 6px; }
+    #ime-study-prototype .context-menu button { display:block; width:100%; text-align:left; white-space:normal; padding:9px; margin-bottom:4px; }
+    #ime-study-prototype .context-menu .menu-en { color:var(--accent); display:block; overflow-wrap:anywhere; }
+    #ime-study-prototype .status { min-height:44px; padding:10px 18px; border-top:1px solid var(--line); color:var(--sub); font-size:13px; }
+    #ime-study-prototype .hint { display:flex; flex-wrap:wrap; gap:8px 16px; padding:0 18px 16px; font-size:12px; color:var(--sub); }
+    #ime-study-prototype kbd { font-family:inherit; font-size:11px; border:1px solid var(--line); background:var(--paper); border-radius:3px; padding:1px 4px; }
+    #ime-study-prototype .settings { margin:12px 0; padding:18px; background:var(--paper); border:1px solid var(--line); border-radius:8px; }
+    #ime-study-prototype .settings-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+    #ime-study-prototype .settings-fields { display:grid; gap:16px; }
+    #ime-study-prototype .settings-fields label { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+    #ime-study-prototype .settings-data { border-top:1px solid var(--line); padding-top:12px; font-size:12px; color:var(--sub); }
+    #ime-study-prototype .learning-paused { color:var(--sub); font-size:12px; }
+    @media(max-width:560px) {
+      #ime-study-prototype .lab-header { padding-left:12px; }
+      #ime-study-prototype .lab-tools { padding:10px 12px; gap:8px; }
+      #ime-study-prototype .theme-field { margin-left:0; }
+      #ime-study-prototype .desktop { padding:0 10px 12px; min-height:780px; }
+      #ime-study-prototype .paper { padding:10px; }
+      #ime-study-prototype .candidate { width:calc((100% - 8px)/2); max-width:none; }
+      #ime-study-prototype .learning .candidate { width:100%; }
+      #ime-study-prototype .ime-lab { min-height:900px; }
+      #ime-study-prototype .composition-row { flex-wrap:wrap; }
+      #ime-study-prototype .composition-row label { flex-basis:100%; }
+    }
+    @media(pointer:coarse) {
+      #ime-study-prototype button, #ime-study-prototype select { min-height:44px; }
+    }
+  </style>
+  <div class="viz-carousel" aria-label="候选窗口设计方案" data-previous-label="上一方案" data-next-label="下一方案">
+    <section data-variant="紧凑型" aria-label="紧凑型候选窗口"><div class="ime-lab compact" data-mode="compact"></div></section>
+    <section data-variant="学习型" aria-label="学习型候选窗口" hidden><div class="ime-lab learning" data-mode="learning"></div></section>
+  </div>
+  <template id="ime-lab-template">
+    <header class="lab-header"><strong>英语学习输入法</strong><span class="variant-tag"></span></header>
+    <div class="lab-tools">
+      <label>场景<select class="scenario cursor-interaction" aria-label="演示场景"><option value="daily">普通候选与翻页</option><option value="long">长英文</option><option value="missing">没有释义</option><option value="poly">多义词</option><option value="partial">分段输入</option></select></label>
+      <label class="theme-field">外观<select class="theme cursor-interaction" aria-label="背景主题"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
+      <button class="settings-open cursor-interaction" type="button">设置</button>
+    </div>
+    <main class="desktop">
+      <div class="document">
+        <div class="document-top"><span>练习笔记</span><span>模拟候选 · 不代表 Rime 排序</span></div>
+        <div class="paper">
+          <div class="output-label">已输入</div><div class="committed" aria-label="已提交文字"></div>
+          <div class="composition-row"><label>拼音<input class="composition" aria-label="模拟拼音输入" value="shishi" placeholder="试试 shishi 或 pingguo" spellcheck="false" autocomplete="off" autocapitalize="off"></label><button class="replay cursor-interaction" type="button">重试本场景</button></div>
+          <div class="ime-window" aria-label="模拟候选窗口">
+            <div class="ime-top"><span class="spelling">shishi</span><label><input class="learning-toggle cursor-interaction" type="checkbox" checked>学习模式</label></div>
+            <div class="candidates" role="group" aria-label="中文候选"></div>
+            <div class="empty-candidates" hidden></div>
+            <div class="detail-panel" hidden><div class="detail-caption">当前候选 · 完整释义</div><div class="full-english"></div><div class="word-note"></div></div>
+            <div class="ime-bottom"><button class="detail-toggle cursor-interaction" type="button" aria-expanded="false">查看释义</button><button class="menu-open cursor-interaction" type="button">候选操作</button><span class="pager"><button class="prev cursor-interaction" type="button" aria-label="上一页">‹</button><span class="page-label">1 / 2</span><button class="next cursor-interaction" type="button" aria-label="下一页">›</button></span></div>
+            <div class="context-menu" aria-label="候选操作菜单" hidden><div class="menu-title"></div><button class="menu-english cursor-interaction" type="button">输入英文<span class="menu-en"></span></button><button class="menu-detail cursor-interaction" type="button">查看完整释义</button><button class="menu-close cursor-interaction" type="button">取消</button></div>
+          </div>
+          <div class="learning-paused" hidden></div>
+        </div>
+      </div>
+      <section class="settings" aria-label="基本设置" hidden>
+        <div class="settings-header"><strong>基本设置</strong><button class="settings-close cursor-interaction" type="button">完成</button></div>
+        <div class="settings-fields">
+          <label>学习模式<input class="settings-learning cursor-interaction" type="checkbox" checked></label>
+          <label>候选字号<select class="font-size cursor-interaction" aria-label="候选字号"><option value="0">标准</option><option value="2">较大（+2 px）</option></select></label>
+          <label>输入英文<select class="shortcut cursor-interaction" aria-label="英文快捷键"><option value="ctrlShiftEnter">Ctrl + Shift + Enter</option><option value="altEnter">Alt + Enter</option></select></label>
+          <div class="settings-data">词库：prototype-fixtures v0.1 · test-only<br>少量自拟演示数据，尚未人工验收；不能用于正式分发。<br>仅保存外观与操作偏好；练习文字不保存。</div>
+        </div>
+      </section>
+    </main>
+    <div class="status" role="status" aria-live="polite">空格或数字输入中文；英文需要专用操作。</div>
+    <div class="hint"><span><kbd>↑</kbd> <kbd>↓</kbd> 切换候选</span><span><kbd>PgUp</kbd> <kbd>PgDn</kbd> 翻页</span><span><kbd class="shortcut-label">Ctrl Shift Enter</kbd> 输入英文</span><span><kbd>F2</kbd> 完整释义</span></div>
+  </template>
+  <script>
+  (() => {
+    const root = document.getElementById('ime-study-prototype');
+    const row = (zh, en, note = '') => ({zh, en, note});
+    const dictionary = {
+      shishi:[row('事实','fact'),row('实施','implement'),row('实时','real-time'),row('试试','give it a try'),row('时事','current affairs'),row('事事',null),row('时时','at all times'),row('世事','worldly affairs'),row('失事','have an accident'),row('史诗','epic')],
+      zhishichanquan:[row('知识产权','intellectual property rights')],
+      zhangxiaoming:[row('张小明',null,'人名不猜译，中文输入照常。')],
+      yinhang:[row('银行','bank')],
+      da:[row('打','hit','示例仅取“击打”义；不根据上下文判断。'),row('大','big'),row('答','answer')],
+      pingguo:[row('苹果','apple'),row('平果',null)],
+      pingguoyinhang:[{...row('苹果','apple','只覆盖 pingguo，后面还有 yinhang。'), remaining:'yinhang'},{...row('平果',null), remaining:'yinhang'}]
+    };
+    const scenes = {daily:'shishi',long:'zhishichanquan',missing:'zhangxiaoming',poly:'da',partial:'pingguoyinhang'};
+    const controllers = [];
+    let restoring = false;
+    function storePrefs() {
+      if (restoring) return;
+      const preferences = Object.fromEntries(controllers.map(c => [c.mode, c.preferences()]));
+      const snapshot = {modelContent:{designStatus:'awaiting-confirmation'},privateContent:{imePrototype:preferences}};
+      if (window.openai && window.openai.setWidgetState) {
+        try { Promise.resolve(window.openai.setWidgetState(snapshot)).catch(() => {}); } catch (_) {}
+      }
+    }
+    function mount(lab) {
+      lab.append(root.querySelector('template').content.cloneNode(true));
+      const mode = lab.dataset.mode;
+      const pageSize = mode === 'learning' ? 3 : 5;
+      const $ = s => lab.querySelector(s);
+      const input = $('.composition');
+      const s = {page:0, selected:0, learning:true, rowLearning:true, theme:'system',font:0,shortcut:'ctrlShiftEnter',detail:false,scene:'daily',menu:null,revision:0};
+      $('.variant-tag').textContent = mode === 'compact' ? '紧凑型 · 中文优先' : '学习型 · 英文更醒目';
+      function items() { return dictionary[input.value.toLowerCase().replace(/\s|'/g,'')] || []; }
+      function current() { return items()[s.page*pageSize+s.selected]; }
+      function englishReady() { return s.learning && s.rowLearning; }
+      function reason(c) {
+        if (!englishReady()) return '学习模式未启用；下次输入时按当前开关生效。';
+        if (!c) return '没有可提交的候选。';
+        if (!c.en) return '暂无可靠释义，中文输入不受影响。';
+        if (c.remaining) return '请单独输入这个词；当前还有未完成的拼音。';
+        return '';
+      }
+      function status(t) { $('.status').textContent=t; }
+      function closeMenu() { s.menu=null; $('.context-menu').hidden=true; }
+      function updateHighlight() {
+        const c=current();
+        [...$('.candidates').children].forEach((b,i)=>b.setAttribute('aria-current', String(i===s.selected)));
+        $('.detail-panel').hidden = !input.value || !s.rowLearning || !(mode==='learning'||s.detail) || !c;
+        $('.full-english').textContent = !englishReady() ? '学习模式已关闭' : (c?.en || '暂无可靠释义');
+        $('.word-note').textContent = !englishReady() ? '本轮保留空间，下次输入恢复单行。' : (c?.note || (c?.en ? '示例常用义 · 不做上下文翻译' : '保留中文候选，不补译。'));
+        $('.detail-toggle').setAttribute('aria-expanded', String(!$('.detail-panel').hidden));
+        $('.detail-toggle').textContent = mode==='learning' ? '完整释义' : (s.detail ? '收起释义' : '查看释义');
+      }
+      function render() {
+        lab.dataset.theme=s.theme;
+        lab.style.setProperty('--font-add',s.font+'px');
+        $('.theme').value=s.theme;
+        $('.learning-toggle').checked=s.learning;
+        $('.settings-learning').checked=s.learning;
+        $('.font-size').value=String(s.font);
+        $('.shortcut').value=s.shortcut;
+        $('.shortcut-label').textContent=s.shortcut==='altEnter'?'Alt Enter':'Ctrl Shift Enter';
+        $('.spelling').textContent=input.value || '中文';
+        const list=items(), pages=Math.max(1,Math.ceil(list.length/pageSize));
+        s.page=Math.max(0,Math.min(s.page,pages-1));
+        const visible=list.slice(s.page*pageSize,s.page*pageSize+pageSize);
+        s.selected=Math.max(0,Math.min(s.selected,visible.length-1));
+        $('.ime-window').classList.toggle('single-row',!s.rowLearning);
+        $('.candidates').replaceChildren();
+        for (const [i,c] of visible.entries()) {
+          const b=document.createElement('button');
+          b.type='button'; b.className='candidate cursor-interaction';
+          b.setAttribute('aria-label',`${i+1}. ${c.zh}${englishReady()&&c.en?' / '+c.en:''}，点击输入中文`);
+          if(englishReady()) b.dataset.tooltip=`${c.zh} · ${c.en||'暂无可靠释义'}`;
+          const en=document.createElement('span');en.className='english';en.textContent=englishReady()?(c.en||''):'';
+          const cn=document.createElement('span');cn.className='chinese';
+          const number=document.createElement('span');number.className='number';number.textContent=String(i+1)+'.';
+          const text=document.createElement('span');text.className='cn-text';text.textContent=c.zh;
+          cn.append(number,text); b.append(en,cn);
+          b.addEventListener('pointerdown',e=>{ if(e.button===0) e.preventDefault(); });
+          b.addEventListener('click',()=>{s.selected=i;commit('zh');});
+          b.addEventListener('contextmenu',e=>{e.preventDefault();s.selected=i;updateHighlight();openMenu();});
+          $('.candidates').append(b);
+        }
+        $('.empty-candidates').hidden=visible.length>0;
+        $('.empty-candidates').textContent=input.value?'此原型仅内置示例拼音；可切换上方场景。':'输入拼音开始下一次练习。';
+        $('.page-label').textContent=visible.length?`${s.page+1} / ${pages}`:'—';
+        $('.prev').disabled=!visible.length || s.page===0;
+        $('.next').disabled=!visible.length || s.page===pages-1;
+        $('.menu-open').disabled=!visible.length;
+        $('.detail-toggle').disabled=!visible.length||!englishReady();
+        updateHighlight();
+      }
+      function invalidate() {s.revision++;closeMenu();}
+      function start(scene, focus=true) {
+        invalidate();s.scene=scene;$('.scenario').value=scene;
+        input.value=scenes[scene];s.page=0;s.selected=0;s.rowLearning=s.learning;s.detail=false;
+        render();status('空格或数字输入中文；英文需要专用操作。');if(focus)input.focus();
+      }
+      function commit(lang) {
+        const c=current();
+        if(!c)return;
+        if(lang==='en' && reason(c)){status(reason(c));closeMenu();input.focus();return;}
+        const value=lang==='en'?c.en:c.zh;
+        $('.committed').textContent+=value;
+        invalidate();input.value=lang==='zh'?(c.remaining||''):'';
+        s.page=0;s.selected=0;s.detail=false;if(!input.value)s.rowLearning=s.learning;
+        render();status(`已输入${lang==='en'?'英文':'中文'}：${value}${input.value?'；剩余拼音 '+input.value:''}`);input.focus();
+      }
+      function page(delta) {
+        const next=s.page+delta;
+        if(next<0||next>=Math.ceil(items().length/pageSize))return;
+        invalidate();s.page=next;s.selected=0;render();status(`第 ${s.page+1} 页，当前候选 ${current()?.zh||''}`);input.focus();
+      }
+      function showDetail() {s.detail=mode==='learning'?true:!s.detail;closeMenu();updateHighlight();}
+      function openMenu() {
+        const c=current();if(!c)return;
+        closeMenu();s.menu={revision:s.revision,index:s.page*pageSize+s.selected};
+        $('.menu-title').textContent=`${c.zh} · 候选操作`;
+        $('.menu-en').textContent=reason(c)||c.en;
+        $('.menu-english').disabled=Boolean(reason(c));
+        $('.menu-detail').disabled=!englishReady();
+        $('.context-menu').hidden=false;
+        ($('.menu-english').disabled?$('.menu-close'):$('.menu-english')).focus();
+      }
+      function changeLearning(value) {
+        invalidate();s.learning=value;
+        if(!input.value)s.rowLearning=value;
+        render();
+        status(!value?'学习模式已关闭；本轮保留行高，下次输入恢复单行。':(s.rowLearning?'学习模式已开启。':'学习模式已开启；下一次输入显示双行释义。'));
+        storePrefs();
+      }
+      input.addEventListener('input',()=>{const wasEmpty=!$('.spelling').textContent||$('.spelling').textContent==='中文';invalidate();s.page=0;s.selected=0;if(wasEmpty||!input.value)s.rowLearning=s.learning;render();status(items().length?'模拟候选已更新。':'仅演示内置拼音；可选上方场景。');});
+      lab.addEventListener('keydown',e=>{
+        if(e.isComposing)return;
+        const inInput=e.target===input;
+        const inCandidate=Boolean(e.target.closest('.candidates'));
+        const inMenu=Boolean(e.target.closest('.context-menu'));
+        if(e.key==='Escape'&&s.menu){e.preventDefault();closeMenu();input.focus();return;}
+        if(!(inInput||inCandidate||inMenu))return;
+        const english=e.key==='Enter'&&(s.shortcut==='ctrlShiftEnter'?e.ctrlKey&&e.shiftKey&&!e.altKey:e.altKey&&!e.ctrlKey&&!e.shiftKey);
+        if(english&&input.value){e.preventDefault();if(!e.repeat)commit('en');return;}
+        if(inMenu)return;
+        if(e.key==='F10'&&e.shiftKey&&current()){e.preventDefault();openMenu();return;}
+        if(e.key==='F2'&&current()){e.preventDefault();if(englishReady())showDetail();return;}
+        if(!inInput||!input.value)return;
+        if(e.ctrlKey||e.altKey||e.metaKey)return;
+        if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft'].includes(e.key)&&items().length){e.preventDefault();closeMenu();const delta=['ArrowDown','ArrowRight'].includes(e.key)?1:-1;const last=Math.min(pageSize-1,items().length-s.page*pageSize-1);s.selected=Math.max(0,Math.min(last,s.selected+delta));updateHighlight();status(`当前候选：${current().zh}`);return;}
+        if(['PageDown','PageUp'].includes(e.key)){e.preventDefault();page(e.key==='PageDown'?1:-1);return;}
+        if(/^[1-5]$/.test(e.key)&&items().length){e.preventDefault();const n=Number(e.key)-1;if(n<pageSize&&items()[s.page*pageSize+n]){s.selected=n;commit('zh');}return;}
+        if(e.key===' '&&current()){e.preventDefault();commit('zh');return;}
+        if(e.key==='Escape'){e.preventDefault();invalidate();input.value='';s.rowLearning=s.learning;render();status('已取消本次组合；已输入文字保留。');return;}
+        if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('.committed').textContent+=input.value;invalidate();input.value='';s.rowLearning=s.learning;render();status('原型回车行为：提交原始拼音。真实行为以后续所选方案为准。');}
+      });
+      $('.scenario').addEventListener('change',()=>start($('.scenario').value));
+      $('.replay').addEventListener('click',()=>start(s.scene));
+      $('.prev').addEventListener('click',()=>page(-1));$('.next').addEventListener('click',()=>page(1));
+      $('.detail-toggle').addEventListener('click',showDetail);
+      $('.menu-open').addEventListener('click',openMenu);
+      $('.menu-close').addEventListener('click',()=>{closeMenu();input.focus();});
+      $('.menu-detail').addEventListener('click',()=>{s.detail=true;closeMenu();updateHighlight();input.focus();});
+      $('.menu-english').addEventListener('click',()=>{if(s.menu?.revision===s.revision&&s.menu?.index===s.page*pageSize+s.selected)commit('en');else closeMenu();});
+      $('.learning-toggle').addEventListener('change',()=>changeLearning($('.learning-toggle').checked));
+      $('.settings-learning').addEventListener('change',()=>changeLearning($('.settings-learning').checked));
+      $('.theme').addEventListener('change',()=>{closeMenu();s.theme=$('.theme').value;lab.dataset.theme=s.theme;storePrefs();});
+      $('.settings-open').addEventListener('click',()=>{closeMenu();if(input.value){status('请先完成当前输入，或按 Esc 取消组合后打开设置。');input.focus();return;}$('.settings').hidden=false;$('.settings-close').focus();});
+      $('.settings-close').addEventListener('click',()=>{$('.settings').hidden=true;input.focus();});
+      $('.font-size').addEventListener('change',()=>{s.font=Number($('.font-size').value);render();storePrefs();});
+      $('.shortcut').addEventListener('change',()=>{s.shortcut=$('.shortcut').value;render();storePrefs();});
+      lab.addEventListener('pointerdown',e=>{if(s.menu&&!e.target.closest('.context-menu')&&!e.target.closest('.menu-open')&&!e.target.closest('.candidate'))closeMenu();});
+      lab.addEventListener('focusout',e=>{if(!lab.contains(e.relatedTarget))closeMenu();});
+      const controller={mode,preferences:()=>({learning:s.learning,theme:s.theme,font:s.font,shortcut:s.shortcut}),restore:(p,initial)=>{
+        if(!p)return;
+        if(!initial&&p.learning===s.learning&&p.theme===s.theme&&p.font===s.font&&p.shortcut===s.shortcut)return;
+        closeMenu();
+        if(typeof p.learning==='boolean')s.learning=p.learning;
+        if(['system','light','dark'].includes(p.theme))s.theme=p.theme;
+        if([0,2].includes(p.font))s.font=p.font;
+        if(['ctrlShiftEnter','altEnter'].includes(p.shortcut))s.shortcut=p.shortcut;
+        if(initial||!input.value)s.rowLearning=s.learning;render();
+      }};
+      start('daily',false);
+      if(globalThis.Tweak){const design={radius:5};const tweak=new Tweak({container:lab,onChange:()=>{lab.style.setProperty('--candidate-radius',design.radius+'px');}});tweak.addSlider(design,'radius',{label:'候选圆角',min:0,max:10,unit:'px'});}
+      return controller;
+    }
+    root.querySelectorAll('.ime-lab').forEach(lab=>controllers.push(mount(lab)));
+    function restore(snapshot,initial=false){restoring=true;try{const prefs=snapshot?.privateContent?.imePrototype;controllers.forEach(c=>c.restore(prefs?.[c.mode],initial));}finally{restoring=false;}}
+    restore(window.openai?.widgetState,true);
+    window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)restore(e.detail.globals.widgetState);});
+  })();
+  </script>
+</div>

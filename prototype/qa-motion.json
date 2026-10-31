@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-31",
+  "revision": "v0.4",
+  "scope": "Local browser prototype only; CSS pixels, not Windows native input method",
+  "observations": [
+    {
+      "name": "before close",
+      "actual": {
+        "classes": "ime-window",
+        "englishHeight": 16,
+        "h": 55,
+        "input": "shishi",
+        "opacity": "1",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事 / current affairs，点击输入中文",
+        "transition": "all",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "closing sample",
+      "actual": {
+        "classes": "ime-window mode-transition single-row",
+        "englishHeight": 0,
+        "h": 38,
+        "input": "shishi",
+        "opacity": "0",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事，点击输入中文",
+        "transition": "height 0.24s cubic-bezier(0.22, 1, 0.36, 1), margin-bottom 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "closed endpoint",
+      "actual": {
+        "classes": "ime-window mode-transition single-row",
+        "englishHeight": 0,
+        "h": 38,
+        "input": "shishi",
+        "opacity": "0",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事，点击输入中文",
+        "transition": "height 0.24s cubic-bezier(0.22, 1, 0.36, 1), margin-bottom 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "opening sample",
+      "actual": {
+        "classes": "ime-window mode-transition",
+        "englishHeight": 16,
+        "h": 55,
+        "input": "shishi",
+        "opacity": "1",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事 / current affairs，点击输入中文",
+        "transition": "height 0.24s cubic-bezier(0.22, 1, 0.36, 1), margin-bottom 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "open endpoint",
+      "actual": {
+        "classes": "ime-window mode-transition",
+        "englishHeight": 16,
+        "h": 55,
+        "input": "shishi",
+        "opacity": "1",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事 / current affairs，点击输入中文",
+        "transition": "height 0.24s cubic-bezier(0.22, 1, 0.36, 1), margin-bottom 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "rapid toggle endpoint",
+      "actual": {
+        "classes": "ime-window mode-transition",
+        "englishHeight": 16,
+        "h": 55,
+        "input": "shishi",
+        "opacity": "1",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "2. 时事 / current affairs，点击输入中文",
+        "transition": "height 0.24s cubic-bezier(0.22, 1, 0.36, 1), margin-bottom 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s",
+        "w": 403,
+        "y": 291.3333435058594
+      }
+    }
+  ],
+  "checks": {
+    "height55to38": true,
+    "pinyinPageAndSelectedCandidatePreserved": true,
+    "rapidToggleConvergesWithoutCommit": true,
+    "offEnglishMenuDisabled": true,
+    "offEnglishShortcutBlocked": true,
+    "offChineseSpaceCommit": "时事",
+    "widthAndTopStable": true
+  },
+  "notes": [
+    "Final revision closing animation sampled at height 46.083px between 55px and 38px, English height 7.615px and opacity 0.685; height transition 240ms, opacity 160ms.",
+    "Opening and closing endpoint measurements after the fix retained page 2 and selected 时事.",
+    "CSS reduced-motion fallback implemented; system preference toggle untested.",
+    "Native Weasel/Rime, Windows DPI, installation and application compatibility untested.",
+    "qa-slim.json records v0.3; its keep-height-until-next-composition rule is superseded."
+  ],
+  "finalRevisionIntermediateClose": {
+    "englishHeight": 7.614583492279053,
+    "opacity": 0.684555,
+    "width": 403,
+    "top": 291.3333435058594,
+    "height": 46.08333587646485,
+    "targetHeight": 38
+  }
+}

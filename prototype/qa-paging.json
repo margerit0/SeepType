@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-31",
+  "revision": "v0.5",
+  "scope": "Local browser prototype only; CSS pixels, not Windows native IME",
+  "observations": [
+    {
+      "name": "initial",
+      "actual": {
+        "ghost": false,
+        "h": 54.97916793823242,
+        "input": "shishi",
+        "nextDisabled": false,
+        "opacity": "1",
+        "output": "",
+        "page": "1 / 4",
+        "selected": "1. 事实 / fact，点击输入中文",
+        "transform": "none",
+        "w": 403,
+        "words": [
+          "事实",
+          "实施",
+          "实时"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "next sample",
+      "actual": {
+        "ghost": true,
+        "ghostHidden": "true",
+        "ghostInert": true,
+        "h": 55,
+        "input": "shishi",
+        "nextDisabled": false,
+        "opacity": "0.999716",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "1. 试试 / give it a try，点击输入中文",
+        "transform": "matrix(1, 0, 0, 1, 0.00284006, 0)",
+        "w": 403,
+        "words": [
+          "试试",
+          "时事",
+          "事事"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "next settled",
+      "actual": {
+        "ghost": false,
+        "h": 55,
+        "input": "shishi",
+        "nextDisabled": false,
+        "opacity": "1",
+        "output": "",
+        "page": "2 / 4",
+        "selected": "1. 试试 / give it a try，点击输入中文",
+        "transform": "none",
+        "w": 403,
+        "words": [
+          "试试",
+          "时事",
+          "事事"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "rapid forward reaches last page without resizing",
+      "actual": {
+        "ghost": false,
+        "h": 55,
+        "input": "shishi",
+        "nextDisabled": true,
+        "opacity": "1",
+        "output": "",
+        "page": "4 / 4",
+        "selected": "1. 史诗 / epic，点击输入中文",
+        "transform": "none",
+        "w": 403,
+        "words": [
+          "史诗"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "last-page boundary",
+      "actual": {
+        "ghost": false,
+        "h": 55,
+        "input": "shishi",
+        "nextDisabled": true,
+        "opacity": "1",
+        "output": "",
+        "page": "4 / 4",
+        "selected": "1. 史诗 / epic，点击输入中文",
+        "transform": "none",
+        "w": 403,
+        "words": [
+          "史诗"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "keyboard previous sample",
+      "actual": {
+        "ghost": true,
+        "ghostHidden": "true",
+        "ghostInert": true,
+        "h": 55,
+        "input": "shishi",
+        "nextDisabled": false,
+        "opacity": "0.452709",
+        "output": "",
+        "page": "3 / 4",
+        "selected": "1. 时时 / at all times，点击输入中文",
+        "transform": "matrix(1, 0, 0, 1, -5.47291, 0)",
+        "w": 403,
+        "words": [
+          "时时",
+          "世事",
+          "失事"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "English after previous page",
+      "status": "已输入英文：at all times",
+      "output": "at all times"
+    },
+    {
+      "name": "mode switch clears paging overlay",
+      "actual": {
+        "ghost": false,
+        "h": 38,
+        "input": "shishi",
+        "nextDisabled": false,
+        "opacity": "1",
+        "output": "at all times",
+        "page": "2 / 4",
+        "selected": "1. 试试，点击输入中文",
+        "transform": "none",
+        "w": 403,
+        "words": [
+          "试试",
+          "时事",
+          "事事"
+        ],
+        "x": 14,
+        "y": 291.3333435058594
+      }
+    },
+    {
+      "name": "Chinese selection after paging with learning off",
+      "status": "已输入中文：时事",
+      "output": "at all times时事"
+    }
+  ],
+  "notTested": [
+    "OS reduced-motion preference toggle (implemented, not exercised)",
+    "Native Rime/Weasel animation, Windows DPI, app compatibility and installation"
+  ]
+}
