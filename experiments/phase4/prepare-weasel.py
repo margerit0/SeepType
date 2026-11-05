@@ -18,7 +18,8 @@ files = {}
 
 def source(path):
     if path not in files:
-        data = subprocess.check_output(["git", "show", f"{PIN}:{path}"], cwd=UPSTREAM).decode("utf-8-sig")
+        raw = subprocess.check_output(["git", "show", f"{PIN}:{path}"], cwd=UPSTREAM)
+        data = raw.decode("utf-16" if raw.startswith(b"\xff\xfe") else "utf-8-sig")
         originals[path] = files[path] = data.replace("\r\n", "\n")
     return files[path]
 
@@ -256,12 +257,40 @@ pipe = "WeaselIPC/PipeChannel.cpp"
 replace(pipe, "  DWORD lread;\n  BOOL success = ::ReadFile(pipe, msg, rec_len, &lread, NULL);", "  memset(buffer.get(), 0, buff_size);\n  DWORD lread = 0;\n  BOOL success = ::ReadFile(pipe, msg, rec_len, &lread, NULL);\n  if (lread != rec_len) throw static_cast<DWORD>(ERROR_INVALID_DATA);")
 replace(pipe, "  if (pipe == INVALID_HANDLE_VALUE || !::ConnectNamedPipe(pipe, NULL)) {\n    _ThrowLastError;\n  }", "  if (pipe == INVALID_HANDLE_VALUE) { _ThrowLastError; }\n  if (!::ConnectNamedPipe(pipe, NULL) && GetLastError() != ERROR_PIPE_CONNECTED) {\n    const DWORD error = GetLastError();\n    CloseHandle(pipe);\n    throw error;\n  }")
 
+# A failed write must never replay a commit on another service connection.
+replace("include/PipeChannel.h", """    try {
+      _WritePipe(pipe, data_sz, pbuff);
+    } catch (...) {
+      _Reconnect();
+      _WritePipe(pipe, data_sz, pbuff);
+    }""", "    _WritePipe(pipe, data_sz, pbuff);")
+replace("include/PipeChannel.h", "  void Disconnect() { _FinalizePipe(hpipe); }", """  void Disconnect() {
+    _FinalizePipe(hpipe);
+    ClearBufferStream();
+    memset(buffer.get(), 0, buff_size);
+  }""")
+replace(client, "  } catch (DWORD /* ex */) {\n    return 0;", "  } catch (DWORD /* ex */) {\n    channel.Disconnect();\n    session_id = 0;\n    return 0;")
+
+# Keep TSF integration reviewable in the same pinned-source overlay.
+import importlib.util
+spec = importlib.util.spec_from_file_location("prepare_tsf", ROOT / "experiments/phase4/prepare-tsf.py")
+tsf = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(tsf)
+tsf.prepare(source, replace)
+
+# Quoted includes must resolve to one coherent header tree, never a mix of
+# upstream and overlay class definitions.
+for directory in ["WeaselTSF", "WeaselUI"]:
+    for path in (UPSTREAM / directory).iterdir():
+        if path.suffix in [".h", ".cpp"]:
+            source(f"{directory}/{path.name}")
+
 patch = []
 for path, content in files.items():
     target = OVERLAY / path
     write_changed(target, content)
     patch.extend(difflib.unified_diff(originals[path].splitlines(True), content.splitlines(True), fromfile="a/" + path, tofile="b/" + path))
-for directory in ["RimeWithWeasel", "WeaselIPC", "WeaselIPCServer"]:
+for directory in ["RimeWithWeasel", "WeaselIPC", "WeaselIPCServer", "WeaselTSF", "WeaselUI"]:
     for name in ["stdafx.h", "targetver.h"]:
         path = f"{directory}/{name}"
         write_changed(OVERLAY / path, source(path))

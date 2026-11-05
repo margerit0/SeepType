@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-05T23:09:09+08:00",
+  "scope": "Built all x64 TSF translation units and resources; loaded isolated DLL without registration; tested production response parser/state and x64-to-x86 real Rime IPC. No TSF activation or document editing.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "x64 frontend executable",
+      "passed": true
+    },
+    {
+      "name": "x64 TSF DLL loads without registration",
+      "passed": true
+    },
+    {
+      "name": "same response preserves uint64 identities",
+      "passed": true
+    },
+    {
+      "name": "owned commits survive shared-buffer overwrite",
+      "passed": true
+    },
+    {
+      "name": "response without capability clears old action",
+      "passed": true
+    },
+    {
+      "name": "same snapshot cannot resurrect an invalidated menu",
+      "passed": true
+    },
+    {
+      "name": "truncated response cannot become an edit snapshot",
+      "passed": true
+    },
+    {
+      "name": "duplicate capability disables actions",
+      "passed": true
+    },
+    {
+      "name": "x64 frontend reads real candidate and stamp together",
+      "passed": true
+    },
+    {
+      "name": "explicit English action uses inspected server target",
+      "passed": true
+    },
+    {
+      "name": "candidate change invalidates local menu",
+      "passed": true
+    },
+    {
+      "name": "English standard commit remains owned across later IPC",
+      "passed": true
+    },
+    {
+      "name": "learning-off response immediately blocks English",
+      "passed": true
+    },
+    {
+      "name": "ordinary space still yields Chinese commit",
+      "passed": true
+    },
+    {
+      "name": "new session does not restore old menu identity",
+      "passed": true
+    },
+    {
+      "name": "broken connection clears response and active session",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "binaries": {
+    "experiments\\phase4\\build\\frontend_test_x64.exe": "ed03e544be51f364e1670c3991bf0a4523b8deaa4354660c26a163db699b5ded",
+    "experiments\\phase4\\build\\tsf-x64\\study_weasel_x64.dll": "abd0725191f4fa9eef9fff21e3ee4baaa6f05646cd86a27d33a2ecc54a266756",
+    "experiments\\phase4\\build\\study_service.exe": "d8f9d2615fb89bfb957ad1df0d15e3164f5abbb3d976d60f192cf8a8f31bf5f3"
+  },
+  "sources": {
+    "src\\study\\windows\\WeaselResponse.cpp": "162be7a8ea706eb5124a393c0611be9c0a456dfb6839a0413e95ddc81e831118",
+    "src\\study\\windows\\TsfStudy.inc": "cb04f64d39abf8485c176b5252dda64347ab73b3c536fe080ab68945b103695c",
+    "experiments\\phase4\\prepare-tsf.py": "d9c2643322a00abf746bb96bbc3186d537cd98b2f840f633e797eda7c328272c",
+    "experiments\\phase4\\patches\\weasel-study-ipc.patch": "671c5c443712e50f3ee326d1d6377e687aed6ad2e920f74965e628612c65f04c"
+  },
+  "limits": [
+    "No TSF registration or input settings change",
+    "No real TSF edit-session execution, visible TSF menu, or application compatibility evidence",
+    "x64 TSF DLL with x86 isolated service; not an x64 service/package",
+    "Test-only lexicon; native v0.5 tool area, definition popup, settings and animations remain pending"
+  ],
+  "unchanged_evidence": [
+    "desktop-menu.json",
+    "service-ipc.json",
+    "service-dispatch.json"
+  ]
+}

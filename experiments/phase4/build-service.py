@@ -6,7 +6,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
-BUILD = HERE / "build/service"
+TSF = "--tsf" in sys.argv
+BUILD = HERE / ("build/tsf-x64" if TSF else "build/service")
 UPSTREAM = ROOT / ".cache/src/weasel"
 OVERLAY = ROOT / ".cache/study-weasel"
 BOOST = ROOT / ".cache/src/boost_1_84_0"
@@ -41,8 +42,9 @@ if not boostlib.exists():
         boost_objects.extend(sorted(directory.glob("*.obj")))
     run(["lib", "/nologo", "/OUT:" + str(boostlib), *boost_objects], "link-boost")
 
-includes = [OVERLAY / "include", ROOT / "src", UPSTREAM / "include", BOOST, ROOT / ".cache/rime-1.13.1/dist/include", UPSTREAM / "WeaselServer", UPSTREAM / "WeaselUI", UPSTREAM / "WeaselIPC", UPSTREAM / "WeaselIPCServer", UPSTREAM / "RimeWithWeasel"]
+includes = [OVERLAY / "include", ROOT / "src", UPSTREAM / "include", BOOST, ROOT / ".cache/rime-1.13.1/dist/include", UPSTREAM / "WeaselServer", OVERLAY / "WeaselUI", UPSTREAM / "WeaselUI", UPSTREAM / "WeaselIPC", UPSTREAM / "WeaselIPCServer", UPSTREAM / "RimeWithWeasel", OVERLAY / "WeaselTSF", UPSTREAM / "WeaselTSF"]
 flags = [*common, "/DWEASEL_STUDY_ISOLATED"]
+if TSF: flags += ["/DWEASEL_STUDY_TSF"]
 for include in includes:
     flags.extend(["/I", str(include)])
 headers = list(OVERLAY.rglob("*.h")) + list((ROOT / "src/study").rglob("*.h")) + list((ROOT / "src/study").rglob("*.inc"))
@@ -65,9 +67,16 @@ for path in UPSTREAM.glob("WeaselIPC/*.cpp"):
     if path.name == "stdafx.cpp": continue
     overlay = OVERLAY / "WeaselIPC" / path.name
     ipc_objects.append(compile_source(overlay if overlay.exists() else path, "ipc"))
-dispatch_object = compile_source(ROOT / "src/study/windows/WindowDispatcher.cpp", "study")
-server_objects = [dispatch_object, compile_source(OVERLAY / "WeaselIPCServer/WeaselServerImpl.cpp", "server"), compile_source(UPSTREAM / "WeaselIPCServer/SecurityAttribute.cpp", "server"), compile_source(OVERLAY / "RimeWithWeasel/RimeWithWeasel.cpp", "rime")]
-ui_objects = [compile_source(path, "ui") for path in UPSTREAM.glob("WeaselUI/*.cpp") if path.name != "stdafx.cpp"]
+if TSF:
+    server_objects = []
+else:
+    dispatch_object = compile_source(ROOT / "src/study/windows/WindowDispatcher.cpp", "study")
+    server_objects = [dispatch_object, compile_source(OVERLAY / "WeaselIPCServer/WeaselServerImpl.cpp", "server"), compile_source(UPSTREAM / "WeaselIPCServer/SecurityAttribute.cpp", "server"), compile_source(OVERLAY / "RimeWithWeasel/RimeWithWeasel.cpp", "rime")]
+ui_objects = []
+for path in UPSTREAM.glob("WeaselUI/*.cpp"):
+    if path.name == "stdafx.cpp": continue
+    overlay = OVERLAY / "WeaselUI" / path.name
+    ui_objects.append(compile_source(overlay if TSF and overlay.exists() else path, "ui"))
 libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "advapi32.lib", "shell32.lib", "imm32.lib"]
 
 
@@ -78,8 +87,28 @@ def link(name, sources, objects):
         run(["link", "/nologo", "/INCREMENTAL:NO", "/SUBSYSTEM:CONSOLE", "/MANIFEST:EMBED", "/MANIFESTUAC:level='asInvoker' uiAccess='false'", "/OUT:" + str(output), *objects, *libraries], "link-" + name)
 
 
-link("study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
-if (HERE / "service_client_test.cpp").exists():
-    link("service_client_test", ["service_client_test.cpp"], ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
-link("dispatch_test", ["dispatch_test.cpp"], [obj for obj in server_objects if obj.stem != "RimeWithWeasel"] + ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
-print("New Weasel IPC build complete; no installer or registered input method was run.")
+if TSF:
+    tsf_objects = []
+    for path in UPSTREAM.glob("WeaselTSF/*.cpp"):
+        if path.name == "stdafx.cpp": continue
+        overlay = OVERLAY / "WeaselTSF" / path.name
+        tsf_objects.append(compile_source(overlay if overlay.exists() else path, "tsf"))
+    for name in ["WeaselResponse", "EnglishMenu"]:
+        tsf_objects.append(compile_source(ROOT / "src/study/windows" / (name + ".cpp"), "study"))
+    resource = BUILD / "WeaselTSF.res"
+    run(["rc", "/nologo", "/c65001", "/d", "WIN64", "/i", UPSTREAM / "include", "/i", UPSTREAM / "WeaselTSF",
+         "/fo", resource, OVERLAY / "WeaselTSF/WeaselTSF.rc"], "compile-resource")
+    run(["link", "/nologo", "/DLL", "/MACHINE:X64", "/INCREMENTAL:NO", "/MANIFEST:EMBED",
+         "/DEF:" + str(UPSTREAM / "WeaselTSF/WeaselTSF.def"),
+         "/OUT:" + str(BUILD / "study_weasel_x64.dll"), *tsf_objects, *ipc_objects, *ui_objects,
+         *[o for o in study_objects if o.stem == "StudyProtocol"], resource,
+         *libraries, "oleaut32.lib", "uuid.lib", "usp10.lib"], "link-tsf")
+    if (HERE / "frontend_test.cpp").exists():
+        link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
+             [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
+else:
+    link("study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
+    if (HERE / "service_client_test.cpp").exists():
+        link("service_client_test", ["service_client_test.cpp"], ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
+    link("dispatch_test", ["dispatch_test.cpp"], [obj for obj in server_objects if obj.stem != "RimeWithWeasel"] + ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
+    print("New Weasel IPC build complete; no installer or registered input method was run.")

@@ -94,7 +94,16 @@
  void ClientImpl::UpdateInputPosition(RECT const& rc) {
    if (!_Active())
      return;
-@@ -244,6 +253,10 @@
+@@ -197,6 +206,8 @@
+     PipeMessage req{Msg, wParam, lParam};
+     return channel.Transact(req);
+   } catch (DWORD /* ex */) {
++    channel.Disconnect();
++    session_id = 0;
+     return 0;
+   }
+ }
+@@ -244,6 +255,10 @@
    return m_pImpl->ChangePage(backward);
  }
  
@@ -414,19 +423,23 @@
    // configuration information
 --- a/include/WeaselUtility.h
 +++ b/include/WeaselUtility.h
-@@ -35,6 +35,11 @@
+@@ -35,6 +35,15 @@
  std::filesystem::path WeaselSharedDataPath();
  std::filesystem::path WeaselUserDataPath();
  inline fs::path WeaselLogPath() {
 +#ifdef WEASEL_STUDY_ISOLATED
++#ifdef WEASEL_STUDY_TSF
++  const auto logs = fs::temp_directory_path() / L"StudyIme-Phase4-TSF";
++#else
 +  const auto logs = WeaselUserDataPath() / L"logs";
++#endif
 +  fs::create_directories(logs);
 +  return logs;
 +#else
    WCHAR _path[MAX_PATH] = {0};
    // default location
    ExpandEnvironmentStringsW(L"%TEMP%\\rime.weasel", _path, _countof(_path));
-@@ -43,6 +48,7 @@
+@@ -43,6 +52,7 @@
      fs::create_directories(path);
    }
    return path;
@@ -721,7 +734,20 @@
  // weasel::Server
 --- a/include/PipeChannel.h
 +++ b/include/PipeChannel.h
-@@ -105,7 +105,8 @@
+@@ -72,7 +72,11 @@
+ 
+   bool Connect() { return _Ensure(); }
+   bool Connected() const { return !_Invalid(hpipe); }
+-  void Disconnect() { _FinalizePipe(hpipe); }
++  void Disconnect() {
++    _FinalizePipe(hpipe);
++    ClearBufferStream();
++    memset(buffer.get(), 0, buff_size);
++  }
+ 
+   /* Write data to buffer */
+ 
+@@ -105,7 +109,8 @@
  
    char* SendBuffer() const { return buffer.get() + _MsgSize; }
  
@@ -731,6 +757,20 @@
  
    template <typename _TyHandler>
    bool HandleResponseData(_TyHandler const& handler) {
+@@ -126,12 +131,7 @@
+     *reinterpret_cast<Msg*>(pbuff) = msg;
+     size_t data_sz = has_body ? buff_size : _MsgSize;
+ 
+-    try {
+-      _WritePipe(pipe, data_sz, pbuff);
+-    } catch (...) {
+-      _Reconnect();
+-      _WritePipe(pipe, data_sz, pbuff);
+-    }
++    _WritePipe(pipe, data_sz, pbuff);
+     ClearBufferStream();
+   }
+ 
 --- a/WeaselIPC/PipeChannel.cpp
 +++ b/WeaselIPC/PipeChannel.cpp
 @@ -99,8 +99,10 @@
@@ -759,3 +799,514 @@
    }
    return pipe;
  }
+--- a/WeaselTSF/WeaselTSF.h
++++ b/WeaselTSF/WeaselTSF.h
+@@ -3,6 +3,7 @@
+ #include "Globals.h"
+ #include <WeaselIPC.h>
+ #include <WeaselIPCData.h>
++#include <study/windows/WeaselResponse.h>
+ 
+ class CCandidateList;
+ class CLangBarItemButton;
+@@ -127,6 +128,17 @@
+   HWND _GetFocusedContextWindow();
+   void _HandleLangBarMenuSelect(UINT wID);
+ 
++  void _InvalidateStudy();
++  bool _StudyAction(study::Action action, unsigned index, bool enabled = false);
++  void _StudyMenu(unsigned index, HWND owner, POINT position);
++  bool _StudyKey(WPARAM key, LPARAM info, BOOL* eaten);
++  void _QueueResponse(com_ptr<ITfContext> context,
++                      std::shared_ptr<const study::WeaselResponse> response);
++  HRESULT _ApplyResponse(TfEditCookie cookie, com_ptr<ITfContext> context,
++      std::shared_ptr<const study::WeaselResponse> response,
++      std::uint64_t epoch, std::uint64_t serial);
++  HRESULT _RunEdit(com_ptr<ITfContext> context, ITfEditSession* session,
++                   DWORD flags, HRESULT* result);
+   /* IPC */
+   bool _EnsureServerConnected();
+ 
+@@ -225,6 +237,10 @@
+   weasel::Client m_client;
+   DWORD _activateFlags;
+ 
++  study::CandidateState _studyCandidates;
++  std::uint64_t _studyEpoch = 1, _studySerial = 0;
++  bool _studyMenuOpen = false, _studyApplying = false, _studyKeyHandled = false;
++  TfEditCookie _studyCookie = 0;
+   /* IME status */
+   weasel::Status _status;
+ 
+--- a/WeaselTSF/Composition.cpp
++++ b/WeaselTSF/Composition.cpp
+@@ -78,7 +78,7 @@
+   _cand->StartUI();
+   if (pStartCompositionEditSession != nullptr) {
+     HRESULT hr;
+-    pContext->RequestEditSession(_tfClientId, pStartCompositionEditSession,
++    _RunEdit(pContext, pStartCompositionEditSession,
+                                  TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
+   }
+ }
+@@ -125,7 +125,7 @@
+   _cand->EndUI();
+   if ((pEditSession = new CEndCompositionEditSession(
+            this, pContext, _pComposition, clear)) != NULL) {
+-    pContext->RequestEditSession(_tfClientId, pEditSession,
++    _RunEdit(pContext, pEditSession,
+                                  TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
+     pEditSession->Release();
+   }
+@@ -220,7 +220,7 @@
+     return FALSE;
+   }
+   HRESULT hr;
+-  pContext->RequestEditSession(_tfClientId, pEditSession,
++  _RunEdit(pContext, pEditSession,
+                                TF_ES_ASYNCDONTCARE | TF_ES_READ, &hr);
+   return SUCCEEDED(hr);
+ }
+@@ -311,7 +311,7 @@
+       new CInlinePreeditEditSession(this, pContext, _pComposition, context));
+   if (pEditSession != NULL) {
+     HRESULT hr;
+-    pContext->RequestEditSession(_tfClientId, pEditSession,
++    _RunEdit(pContext, pEditSession,
+                                  TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
+   }
+   return TRUE;
+@@ -369,7 +369,7 @@
+ 
+   if ((pEditSession = new CInsertTextEditSession(this, pContext, _pComposition,
+                                                  text)) != NULL) {
+-    pContext->RequestEditSession(_tfClientId, pEditSession,
++    _RunEdit(pContext, pEditSession,
+                                  TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
+     pEditSession->Release();
+   }
+@@ -378,14 +378,9 @@
+ }
+ 
+ void WeaselTSF::_UpdateComposition(com_ptr<ITfContext> pContext) {
+-  HRESULT hr;
+-
+-  _pEditSessionContext = pContext;
+-
+-  _pEditSessionContext->RequestEditSession(
+-      _tfClientId, this, TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
+-  _async_edit = !!(hr == TF_S_ASYNC);
+-  _UpdateCompositionWindow(pContext);
++  auto response = study::ReadResponse(m_client, _cand->style());
++  if (!response) { _InvalidateStudy(); return; }
++  _QueueResponse(pContext, std::move(response));
+ }
+ 
+ /* Composition State */
+@@ -395,11 +390,13 @@
+   // This will be called when an edit session ended up with an empty composition
+   // string, Even if it is closed normally. Silly M$.
+ 
+-  _AbortComposition();
++  if (!_studyApplying) _AbortComposition();
+   return S_OK;
+ }
+ 
+ void WeaselTSF::_AbortComposition(bool clear) {
++  ++_studyEpoch;
++  _InvalidateStudy();
+   m_client.ClearComposition();
+   if (_IsComposing()) {
+     _EndComposition(_pEditSessionContext, clear);
+--- a/WeaselTSF/EditSession.cpp
++++ b/WeaselTSF/EditSession.cpp
+@@ -1,47 +1,5 @@
+ #include "stdafx.h"
+ #include "WeaselTSF.h"
+ #include "CandidateList.h"
+-#include "ResponseParser.h"
+-
+-STDAPI WeaselTSF::DoEditSession(TfEditCookie ec) {
+-  // get commit string from server
+-  std::wstring commit;
+-  weasel::Config config;
+-  auto context = std::make_shared<weasel::Context>();
+-  weasel::ResponseParser parser(&commit, context.get(), &_status, &config,
+-                                &_cand->style());
+-
+-  bool ok = m_client.GetResponseData(std::ref(parser));
+-
+-  _UpdateLanguageBar(_status);
+-
+-  if (ok) {
+-    if (!commit.empty()) {
+-      // For auto-selecting, commit and preedit can both exist.
+-      // Commit and close the original composition first.
+-      if (!_IsComposing()) {
+-        _StartComposition(_pEditSessionContext,
+-                          _fCUASWorkaroundEnabled && !config.inline_preedit);
+-      }
+-      _InsertText(_pEditSessionContext, commit);
+-      _EndComposition(_pEditSessionContext, false);
+-      _committed = TRUE;
+-    } else {
+-      _committed = FALSE;
+-    }
+-    if (_status.composing && !_IsComposing()) {
+-      _StartComposition(_pEditSessionContext,
+-                        _fCUASWorkaroundEnabled && !config.inline_preedit);
+-    } else if (!_status.composing && _IsComposing()) {
+-      _EndComposition(_pEditSessionContext, true);
+-    }
+-    if (_IsComposing() && config.inline_preedit) {
+-      _ShowInlinePreedit(_pEditSessionContext, context);
+-    }
+-    _UpdateCompositionWindow(_pEditSessionContext);
+-  }
+-
+-  _UpdateUI(*context, _status);
+-
+-  return TRUE;
+-}
++#include "EditSession.h"
++#include <study/windows/TsfStudy.inc>
+--- a/WeaselTSF/KeyEventSink.cpp
++++ b/WeaselTSF/KeyEventSink.cpp
+@@ -9,6 +9,7 @@
+ static int keyCountToSimulate = 0;
+ 
+ void WeaselTSF::_ProcessKeyEvent(WPARAM wParam, LPARAM lParam, BOOL* pfEaten) {
++  _studyKeyHandled = true;
+   // when _IsKeyboardDisabled don't eat the key,
+   // when keyboard closable and keyboard closed, don't eat the key
+   if ((_isToOpenClose && !_IsKeyboardOpen()) || _IsKeyboardDisabled()) {
+@@ -21,6 +22,8 @@
+     *pfEaten = FALSE;
+     return;
+   }
++  if (_StudyKey(wParam, lParam, pfEaten)) { _studyKeyHandled = true; return; }
++  _InvalidateStudy();
+   weasel::KeyEvent ke;
+   GetKeyboardState(_lpbKeyState);
+   if (!ConvertKeyEvent(static_cast<UINT>(wParam), lParam, _lpbKeyState, ke)) {
+@@ -34,8 +37,10 @@
+       else if (ke.keycode == ibus::Down)
+         ke.keycode = ibus::Up;
+     }
+-    if (!keyCountToSimulate)
++    if (!keyCountToSimulate) {
++      _studyKeyHandled = false;
+       *pfEaten = (BOOL)m_client.ProcessKeyEvent(ke);
++    }
+ 
+     if (ke.keycode == ibus::Caps_Lock) {
+       if (prevKeyEvent.keycode == ibus::Caps_Lock && prevfEaten == TRUE &&
+@@ -66,6 +71,8 @@
+   if (fForeground)
+     m_client.FocusIn();
+   else {
++    ++_studyEpoch;
++    _InvalidateStudy();
+     m_client.FocusOut();
+     _AbortComposition();
+   }
+@@ -93,7 +100,7 @@
+     return S_OK;
+   }
+   _ProcessKeyEvent(wParam, lParam, pfEaten);
+-  _UpdateComposition(pContext);
++  if (!_studyKeyHandled) _UpdateComposition(pContext);
+   if (*pfEaten)
+     _fTestKeyDownPending = TRUE;
+   return S_OK;
+@@ -109,7 +116,7 @@
+     *pfEaten = TRUE;
+   } else {
+     _ProcessKeyEvent(wParam, lParam, pfEaten);
+-    _UpdateComposition(pContext);
++    if (!_studyKeyHandled) _UpdateComposition(pContext);
+   }
+   return S_OK;
+ }
+@@ -124,7 +131,7 @@
+     return S_OK;
+   }
+   _ProcessKeyEvent(wParam, lParam, pfEaten);
+-  _UpdateComposition(pContext);
++  if (!_studyKeyHandled) _UpdateComposition(pContext);
+   if (*pfEaten)
+     _fTestKeyUpPending = TRUE;
+   return S_OK;
+@@ -140,8 +147,7 @@
+     *pfEaten = TRUE;
+   } else {
+     _ProcessKeyEvent(wParam, lParam, pfEaten);
+-    if (!_async_edit)
+-      _UpdateComposition(pContext);
++    if (!_studyKeyHandled) _UpdateComposition(pContext);
+   }
+   return S_OK;
+ }
+--- a/WeaselTSF/CandidateList.cpp
++++ b/WeaselTSF/CandidateList.cpp
+@@ -284,6 +284,9 @@
+ }
+ 
+ void CCandidateList::StartUI() {
++  _ui->studyMenu = [this](unsigned index, HWND owner, POINT position) {
++    _tsf->_StudyMenu(index, owner, position);
++  };
+   com_ptr<ITfThreadMgr> pThreadMgr = _tsf->_GetThreadMgr();
+   if (!pThreadMgr) {
+     return;
+@@ -367,6 +370,7 @@
+ }
+ 
+ void WeaselTSF::_HideUI() {
++  _InvalidateStudy();
+   _cand->Show(FALSE);
+ }
+ 
+@@ -379,20 +383,14 @@
+ }
+ 
+ void WeaselTSF::_SelectCandidateOnCurrentPage(size_t index) {
++  _InvalidateStudy();
+   m_client.SelectCandidateOnCurrentPage(index);
+-  // simulate a VK_SELECT presskey to get data back and DoEditSession
+-  // the simulated keycode must be the one make TranslateKeycode Non-Zero return
+-  // fix me: are there any better ways?
+-  INPUT inputs[2];
+-  inputs[0].type = INPUT_KEYBOARD;
+-  inputs[0].ki = {VK_SELECT, 0, 0, 0, 0};
+-  inputs[1].type = INPUT_KEYBOARD;
+-  inputs[1].ki = {VK_SELECT, 0, KEYEVENTF_KEYUP, 0, 0};
+-  ::SendInput(sizeof(inputs) / sizeof(INPUT), inputs, sizeof(INPUT));
++  _UpdateComposition(_pEditSessionContext);
+ }
+ 
+ void WeaselTSF::_HandleMousePageEvent(bool* const nextPage,
+                                       bool* const scrollNextPage) {
++  _InvalidateStudy();
+   // from scrolling event
+   if (scrollNextPage) {
+     if (_cand->style().paging_on_scroll)
+@@ -420,6 +418,7 @@
+ }
+ 
+ void WeaselTSF::_HandleMouseHoverEvent(const size_t index) {
++  _InvalidateStudy();
+   UINT current_select = 0;
+   _cand->GetSelection(&current_select);
+ 
+--- a/WeaselTSF/WeaselTSF.cpp
++++ b/WeaselTSF/WeaselTSF.cpp
+@@ -95,6 +95,8 @@
+ }
+ 
+ STDAPI WeaselTSF::Deactivate() {
++  ++_studyEpoch;
++  _InvalidateStudy();
+   m_client.EndSession();
+ 
+   _InitTextEditSink(com_ptr<ITfDocumentMgr>());
+@@ -175,14 +177,14 @@
+   _isToOpenClose = (_ToggleImeOnOpenClose == L"yes");
+   if (m_client.Echo()) {
+     m_client.ProcessKeyEvent(0);
+-    weasel::ResponseParser parser(NULL, NULL, &_status, NULL, &_cand->style());
+-    bool ok = m_client.GetResponseData(std::ref(parser));
+-    if (ok)
+-      _UpdateLanguageBar(_status);
++    auto response = study::ReadResponse(m_client, _cand->style());
++    if (response) _QueueResponse(_pTextEditSinkContext, response);
++    else _InvalidateStudy();
+   }
+   return S_OK;
+ }
+ STDMETHODIMP WeaselTSF::OnKillThreadFocus() {
++  m_client.FocusOut();
+   _AbortComposition();
+   return S_OK;
+ }
+@@ -222,6 +224,8 @@
+ }
+ 
+ void WeaselTSF::_Reconnect() {
++  ++_studyEpoch;
++  _InvalidateStudy();
+   m_client.Disconnect();
+   m_client.Connect(NULL);
+   m_client.StartSession();
+@@ -232,32 +236,8 @@
+   }
+ }
+ 
+-static unsigned int retry = 0;
+-
+ bool WeaselTSF::_EnsureServerConnected() {
+-  if (!m_client.Echo()) {
+-    _Reconnect();
+-    retry++;
+-    if (retry >= 6) {
+-      HANDLE hMutex = CreateMutex(NULL, TRUE, L"WeaselDeployerExclusiveMutex");
+-      if (!m_client.Echo() && GetLastError() != ERROR_ALREADY_EXISTS) {
+-        std::wstring dir = _GetRootDir();
+-        std::thread th([dir, this]() {
+-          ShellExecuteW(NULL, L"open", (dir + L"\\start_service.bat").c_str(),
+-                        NULL, dir.c_str(), SW_HIDE);
+-          // wait 500ms, then reconnect
+-          std::this_thread::sleep_for(std::chrono::milliseconds(500));
+-          _Reconnect();
+-        });
+-        th.detach();
+-      }
+-      if (hMutex) {
+-        CloseHandle(hMutex);
+-      }
+-      retry = 0;
+-    }
+-    return (m_client.Echo() != 0);
+-  } else {
+-    return true;
+-  }
+-}
++  if (m_client.Echo()) return true;
++  _Reconnect();
++  return m_client.Echo();
++}
+--- a/WeaselTSF/ThreadMgrEventSink.cpp
++++ b/WeaselTSF/ThreadMgrEventSink.cpp
+@@ -11,6 +11,11 @@
+ 
+ STDAPI WeaselTSF::OnSetFocus(ITfDocumentMgr* pDocMgrFocus,
+                              ITfDocumentMgr* pDocMgrPrevFocus) {
++  if (pDocMgrFocus != pDocMgrPrevFocus) {
++    ++_studyEpoch;
++    _InvalidateStudy();
++    m_client.FocusOut();
++  }
+   _InitTextEditSink(pDocMgrFocus);
+ 
+   com_ptr<ITfDocumentMgr> pCandidateListDocumentMgr;
+@@ -32,6 +37,8 @@
+ }
+ 
+ STDAPI WeaselTSF::OnPopContext(ITfContext* pContext) {
++  ++_studyEpoch;
++  _InvalidateStudy();
+   return S_OK;
+ }
+ 
+--- a/include/WeaselUI.h
++++ b/include/WeaselUI.h
+@@ -36,6 +36,8 @@
+       pDWR.reset();
+     }
+   }
++
++  std::function<void(unsigned, HWND, POINT)> studyMenu;
+ 
+   // 创建输入法界面
+   bool Create(HWND parent);
+--- a/WeaselUI/WeaselPanel.h
++++ b/WeaselUI/WeaselPanel.h
+@@ -26,6 +26,7 @@
+       CDoubleBufferImpl<WeaselPanel> {
+  public:
+   BEGIN_MSG_MAP(WeaselPanel)
++  MESSAGE_HANDLER(WM_CONTEXTMENU, OnStudyMenu)
+   MESSAGE_HANDLER(WM_CREATE, OnCreate)
+   MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+   MESSAGE_HANDLER(WM_DPICHANGED, OnDpiChanged)
+@@ -38,6 +39,7 @@
+   CHAIN_MSG_MAP(CDoubleBufferImpl<WeaselPanel>)
+   END_MSG_MAP()
+ 
++  LRESULT OnStudyMenu(UINT, WPARAM, LPARAM, BOOL&);
+   LRESULT OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+   LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+   LRESULT OnDpiChanged(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+@@ -104,6 +106,7 @@
+   void _LayerUpdate(const CRect& rc, CDCHandle dc);
+ 
+   weasel::Layout* m_layout;
++  weasel::UI& m_studyUI;
+   weasel::Context& m_ctx;
+   weasel::Context& m_octx;
+   weasel::Status& m_status;
+--- a/WeaselUI/WeaselPanel.cpp
++++ b/WeaselUI/WeaselPanel.cpp
+@@ -51,7 +51,7 @@
+ 
+ WeaselPanel::WeaselPanel(weasel::UI& ui)
+     : m_layout(NULL),
+-      m_ctx(ui.ctx()),
++      m_studyUI(ui), m_ctx(ui.ctx()),
+       m_octx(ui.octx()),
+       m_status(ui.status()),
+       m_style(ui.style()),
+@@ -1268,3 +1268,25 @@
+ #endif
+   }
+ }
++
++LRESULT WeaselPanel::OnStudyMenu(UINT, WPARAM, LPARAM lParam, BOOL&) {
++  if (!m_layout || !m_studyUI.studyMenu) return 0;
++  POINT screen{GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)};
++  unsigned index = static_cast<unsigned>(m_ctx.cinfo.highlighted);
++  if (screen.x == -1 && screen.y == -1) {
++    RECT rc{}; GetWindowRect(&rc); screen = {rc.left, rc.bottom};
++  } else {
++    POINT local = screen; ScreenToClient(&local);
++    bool found = false;
++    for (unsigned i = 0; i < m_ctx.cinfo.candies.size() && i < MAX_CANDIDATES_COUNT; ++i) {
++      auto rect = m_layout->GetCandidateRect(i);
++      if (m_istorepos) rect.OffsetRect(0, m_offsetys[i]);
++      rect.InflateRect(DPI_SCALE(m_style.hilite_padding_x), DPI_SCALE(m_style.hilite_padding_y));
++      if (rect.PtInRect(local)) { index = i; found = true; break; }
++    }
++    if (!found) return 0;
++  }
++  auto callback = m_studyUI.studyMenu;
++  callback(index, m_hWnd, screen);
++  return 0;
++}
+--- a/WeaselTSF/Server.cpp
++++ b/WeaselTSF/Server.cpp
+@@ -101,6 +101,9 @@
+ }
+ 
+ STDAPI DllRegisterServer() {
++#ifdef WEASEL_STUDY_ISOLATED
++  return E_ACCESSDENIED;
++#endif
+   if (!RegisterServer() || !RegisterProfiles() || !RegisterCategories()) {
+     DllUnregisterServer();
+     return E_FAIL;
+@@ -109,6 +112,9 @@
+ }
+ 
+ STDAPI DllUnregisterServer() {
++#ifdef WEASEL_STUDY_ISOLATED
++  return E_ACCESSDENIED;
++#endif
+   UnregisterProfiles();
+   UnregisterCategories();
+   UnregisterServer();
+--- a/WeaselTSF/WeaselTSF.rc
++++ b/WeaselTSF/WeaselTSF.rc
+@@ -7,7 +7,12 @@
+ //
+ // Generated from the TEXTINCLUDE 2 resource.
+ //
+-#include "afxres.h"
++#include <winres.h>
++#define VERSION_MAJOR 0
++#define VERSION_MINOR 17
++#define VERSION_PATCH 4
++#define FILE_VERSION "0.17.4-study-isolated"
++#define PRODUCT_VERSION 0.17.4-study-isolated
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ #undef APSTUDIO_READONLY_SYMBOLS
