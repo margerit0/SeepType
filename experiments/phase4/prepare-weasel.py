@@ -139,17 +139,71 @@ replace(rime, "  weasel_traits.app_name = \"rime.weasel\";", '''  weasel_traits.
 #endif''')
 replace(rime, "bool RimeWithWeaselHandler::_IsDeployerRunning() {", "bool RimeWithWeaselHandler::_IsDeployerRunning() {\n#ifdef WEASEL_STUDY_ISOLATED\n  return false;\n#endif")
 
+# Rime deployment notifications may originate on an engine worker. Copy only;
+# read option labels and mutate presentation state later on the window thread.
+replace(rh, "#include <study/StudyService.h>", "#include <study/StudyService.h>\n#include <mutex>\n#include <optional>\n#include <tuple>")
+replace(rh, "  static std::string m_message_type;", '''  void _DrainNotification();
+  std::mutex m_notification_mutex;
+  std::optional<std::tuple<uintptr_t, std::string, std::string>> m_notification;
+  std::string m_message_type;''')
+for field in ["m_message_value", "m_message_label", "m_option_name"]:
+    replace(rh, f"  static std::string {field};", f"  std::string {field};")
+for field in ["m_message_type", "m_message_value", "m_message_label", "m_option_name"]:
+    replace(rime, f"std::string RimeWithWeaselHandler::{field};\n", "")
+replace(rime, '''  m_message_type = message_type;
+  m_message_value = message_value;''', '''  std::lock_guard<std::mutex> lock(self->m_notification_mutex);
+  self->m_notification = std::make_tuple(session_id, message_type, message_value);
+}
+
+void RimeWithWeaselHandler::_DrainNotification() {
+  decltype(m_notification) notification;
+  {
+    std::lock_guard<std::mutex> lock(m_notification_mutex);
+    notification.swap(m_notification);
+  }
+  if (!notification) return;
+  const auto session_id = std::get<0>(*notification);
+  m_message_type = std::get<1>(*notification);
+  m_message_value = std::get<2>(*notification);
+  m_message_label.clear();
+  m_option_name.clear();
+  const char* message_type = m_message_type.c_str();
+  const char* message_value = m_message_value.c_str();''')
+replace(rime, '  if (RIME_API_AVAILABLE(rime_api, get_state_label) &&', '  if (rime_api->find_session(session_id) &&\n      RIME_API_AVAILABLE(rime_api, get_state_label) &&')
+replace(rime, "  Status& weasel_status = m_ui->status();", "  _DrainNotification();\n  Status& weasel_status = m_ui->status();")
+replace(rime, "bool RimeWithWeaselHandler::_ShowMessage(Context& ctx, Status& status) {", "bool RimeWithWeaselHandler::_ShowMessage(Context& ctx, Status& status) {\n  _DrainNotification();")
+replace(rime, "  rime_api->finalize();", "  rime_api->finalize();\n  std::lock_guard<std::mutex> lock(m_notification_mutex);\n  m_notification.reset();")
+
 utility = "include/WeaselUtility.h"
 replace(utility, "inline fs::path WeaselLogPath() {", "inline fs::path WeaselLogPath() {\n#ifdef WEASEL_STUDY_ISOLATED\n  const auto logs = WeaselUserDataPath() / L\"logs\";\n  fs::create_directories(logs);\n  return logs;\n#else")
 replace(utility, "  return path;\n}", "  return path;\n#endif\n}")
 
 sh = "WeaselIPCServer/WeaselServerImpl.h"
 replace(sh, "  DWORD OnChangePage(WEASEL_IPC_COMMAND uMsg, DWORD wParam, DWORD lParam);", "  DWORD OnChangePage(WEASEL_IPC_COMMAND uMsg, DWORD wParam, DWORD lParam);\n  DWORD OnStudyAction(WEASEL_IPC_COMMAND uMsg, DWORD wParam, DWORD lParam);")
-replace(sh, "  std::unique_ptr<PipeServer> channel;", "  std::unique_ptr<PipeServer> channel;\n  PipeServer* requestChannel = nullptr;  // only while the handler mutex is held")
+replace(sh, '#include "SecurityAttribute.h"', '#include "SecurityAttribute.h"\n#include <study/windows/WindowDispatcher.h>')
+replace(sh, "  MESSAGE_HANDLER(WM_CREATE, OnCreate)", "  MESSAGE_HANDLER(study::WindowDispatcher::kMessage, OnDispatch)\n  MESSAGE_HANDLER(WM_CREATE, OnCreate)")
+replace(sh, "  void _Finailize();", "  void _Finailize();\n  LRESULT OnDispatch(UINT, WPARAM, LPARAM, BOOL&);")
+replace(sh, "  std::unique_ptr<PipeServer> channel;", "  std::unique_ptr<PipeServer> channel;\n  PipeServer* requestChannel = nullptr;  // window thread only\n  study::WindowDispatcher dispatcher;")
+replace(sh, "  std::unique_ptr<boost::thread> pipeThread;", "")
 server = "WeaselIPCServer/WeaselServerImpl.cpp"
-replace(server, "using ServerHandler = std::function<void(PipeMessage, Respond)>;", "using ServerHandler = std::function<void(PipeMessage, PipeServer&, Respond)>;")
+replace(server, "#include <mutex>", "#include <atomic>\n#include <thread>\n#include <vector>")
+data = source(server)
+begin = data.index("class PipeServer :")
+end = data.index("}  // namespace weasel", begin)
+replace(server, data[begin:end], '#include <study/windows/WeaselPipeServer.inc>\n')
+data = source(server)
+begin = data.index("PipeServer::PipeServer(")
+end = data.index("// weasel::Server", begin)
+replace(server, data[begin:end], "")
 replace(server, "static std::mutex g_api_mutex;", "")
-replace(server, "using namespace weasel;", "using namespace weasel;\n\nstatic std::recursive_mutex g_api_mutex;")
+replace(server, '''  if (pipeThread != nullptr) {
+    pipeThread->interrupt();
+    pipeThread = nullptr;
+  } else {
+    // avoid finalize again
+    return;
+  }''', '''  dispatcher.Close();
+  channel->Stop();''')
 replace(server, '  std::wstring instanceName = L"(WEASEL)Furandōru-Sukāretto-";', '''#ifdef WEASEL_STUDY_ISOLATED
   std::wstring instanceName = GetPipeName() + L"-instance";
   std::replace(instanceName.begin(), instanceName.end(), L'\\\\', L'-');
@@ -158,12 +212,33 @@ replace(server, '  std::wstring instanceName = L"(WEASEL)Furandōru-Sukāretto-"
 #endif''')
 replace(server, "  auto listener = [this](PipeMessage msg, PipeServer::Respond resp) -> void {\n    std::lock_guard guard(g_api_mutex);\n    HandlePipeMessage(msg, resp);\n  };", '''  auto listener = [this](PipeMessage msg, PipeServer& connection,
                          PipeServer::Respond resp) -> void {
-    std::lock_guard guard(g_api_mutex);
-    requestChannel = &connection;
-    try { HandlePipeMessage(msg, resp); }
-    catch (...) { requestChannel = nullptr; throw; }
-    requestChannel = nullptr;
+    DWORD result = 0;
+    const bool completed = dispatcher.Invoke([&] {
+      requestChannel = &connection;
+      try { HandlePipeMessage(msg, [&](DWORD value) { result = value; }); }
+      catch (...) { requestChannel = nullptr; throw; }
+      requestChannel = nullptr;
+      return result;
+    }, result);
+    if (!completed) throw static_cast<DWORD>(ERROR_OPERATION_ABORTED);
+    // A slow/disconnected reader can only block its own transport worker.
+    resp(result);
   };''')
+replace(server, '''  pipeThread = std::make_unique<boost::thread>(
+      [this, &listener]() { channel->Listen(listener); });''', '''  dispatcher.Open(m_hWnd);
+  channel->Start(listener);''')
+replace(server, "  _Module.RemoveMessageLoop();\n  return nRet;", "  _Module.RemoveMessageLoop();\n  dispatcher.Close();\n  channel->Stop();\n  return nRet;")
+replace(server, "int ServerImpl::Run() {", '''LRESULT ServerImpl::OnDispatch(UINT, WPARAM, LPARAM, BOOL&) {
+  dispatcher.DispatchOne();
+  return 0;
+}
+
+int ServerImpl::Run() {''')
+replace(server, "  bHandled = FALSE;\n  return 1;", "  dispatcher.Close();\n  bHandled = FALSE;\n  return 1;")
+replace(server, "  if (m_pRequestHandler) {\n    m_pRequestHandler->Finalize();", "  dispatcher.Close();\n  if (m_pRequestHandler) {\n    m_pRequestHandler->Finalize();")
+replace(server, "  if (IsUserDarkMode() != m_darkMode) {", "  if (m_pRequestHandler && IsUserDarkMode() != m_darkMode) {")
+replace(server, "  UINT uID = LOWORD(wParam);", "  if (!m_pRequestHandler) return 0;\n  UINT uID = LOWORD(wParam);")
+replace(server, "                                       BOOL& bHandled) {\n  dispatcher.Close();", "                                       BOOL& bHandled) {\n  if (!wParam) return 0;  // Windows cancelled the end-session request.\n  dispatcher.Close();")
 replace(server, "reinterpret_cast<LPWSTR>(channel->ReceiveBuffer())", "reinterpret_cast<LPWSTR>(requestChannel->ReceiveBuffer())")
 replace(server, "*channel << msg;", "*requestChannel << msg;", count=4)
 replace(server, "#define MAP_PIPE_MSG_HANDLE", '''DWORD ServerImpl::OnStudyAction(WEASEL_IPC_COMMAND, DWORD, DWORD session) {
@@ -175,14 +250,6 @@ replace(server, "#define MAP_PIPE_MSG_HANDLE", '''DWORD ServerImpl::OnStudyActio
 
 #define MAP_PIPE_MSG_HANDLE''')
 replace(server, "  PIPE_MSG_HANDLE(WEASEL_IPC_TRAY_COMMAND, OnCommand);", "  PIPE_MSG_HANDLE(WEASEL_IPC_TRAY_COMMAND, OnCommand);\n  PIPE_MSG_HANDLE(WEASEL_IPC_STUDY_ACTION, OnStudyAction);")
-replace(server, "  try {\n    for (;;) {\n      Res msg;\n      _Receive(pipe, &msg, sizeof(msg));\n      handler(msg, [this, pipe](Msg resp) { _Send(pipe, resp); });", "  PipeServer connection(std::wstring(), nullptr);\n  try {\n    for (;;) {\n      Res msg;\n      connection._Receive(pipe, &msg, sizeof(msg));\n      handler(msg, connection, [&connection, pipe](Msg resp) { connection._Send(pipe, resp); });")
-# Serialize UI-originating options with pipe-originating Rime operations too.
-for signature in [
-    "LRESULT ServerImpl::OnColorChange(UINT uMsg,\n                                  WPARAM wParam,\n                                  LPARAM lParam,\n                                  BOOL& bHandled) {",
-    "LRESULT ServerImpl::OnCommand(UINT uMsg,\n                              WPARAM wParam,\n                              LPARAM lParam,\n                              BOOL& bHandled) {",
-    "LRESULT ServerImpl::OnEndSystemSession(UINT uMsg,\n                                       WPARAM wParam,\n                                       LPARAM lParam,\n                                       BOOL& bHandled) {",
-]:
-    replace(server, signature, signature + "\n  std::lock_guard guard(g_api_mutex);")
 
 replace("include/PipeChannel.h", "  char* ReceiveBuffer() const { return buffer.get() + _ResSize; }", "  // _Receive stores the body at offset zero after reading the header.\n  char* ReceiveBuffer() const { return buffer.get(); }")
 pipe = "WeaselIPC/PipeChannel.cpp"

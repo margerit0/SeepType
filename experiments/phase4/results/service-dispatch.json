@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-05T22:32:53+08:00",
+  "scope": "Window-owner dispatch and joined transport lifetime using actual Win32 message queues, patched Weasel pipes, and a targeted real Rime smoke run. No visible candidate window or installed TSF.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "owner cannot synchronously wait on its own dispatcher",
+      "passed": true
+    },
+    {
+      "name": "queued work completes on owner without nested dispatch",
+      "passed": true
+    },
+    {
+      "name": "handler exception releases the waiting transport worker",
+      "passed": true
+    },
+    {
+      "name": "close cancels queued requests without replay from old messages",
+      "passed": true
+    },
+    {
+      "name": "200 concurrent requests retain per-connection responses",
+      "passed": true
+    },
+    {
+      "name": "cancelled Windows end-session leaves the handler running",
+      "passed": true
+    },
+    {
+      "name": "Rime-equivalent and window operations share the window owner",
+      "passed": true
+    },
+    {
+      "name": "window commands progress alongside pipe work and slow readers",
+      "passed": true
+    },
+    {
+      "name": "shutdown joins blocked reader writer and listener threads",
+      "passed": true
+    },
+    {
+      "name": "window-dispatched Rime response keeps candidates and capability together",
+      "passed": true
+    },
+    {
+      "name": "window-dispatched explicit English action uses the normal commit response",
+      "passed": true
+    },
+    {
+      "name": "window dispatch does not replay an already completed action",
+      "passed": true
+    },
+    {
+      "name": "learning option notifications remain coherent on the window owner",
+      "passed": true
+    },
+    {
+      "name": "focus change still invalidates a menu across window dispatch",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "executables": {
+    "dispatch_test.exe": "9376b6fbc583ecebce24006d55c205d3786053ba28b137e9e76050dcffd6de8a",
+    "study_service.exe": "d8f9d2615fb89bfb957ad1df0d15e3164f5abbb3d976d60f192cf8a8f31bf5f3",
+    "service_client_test.exe": "04fe06c48f61edfc35d50a9d91a794d092c9fc8416d84ed9548b0a89c1eb07d2"
+  },
+  "upstream_patch": "../patches/weasel-study-ipc.patch",
+  "unchanged_evidence": [
+    "service-ipc.json",
+    "desktop-menu.json",
+    "session-actions.json",
+    "phase3 results"
+  ],
+  "limits": [
+    "x86 isolated test processes",
+    "No visible candidate or TSF edit-session validation",
+    "No real application compatibility validation",
+    "Test-only lexicon"
+  ]
+}

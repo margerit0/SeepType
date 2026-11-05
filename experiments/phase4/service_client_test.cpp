@@ -156,6 +156,33 @@ int wmain(int argc, wchar_t** argv) {
   try {
     weasel::Client client;
     auto current = Open(client);
+    if (std::wstring(argv[2]) == L"--dispatch") {
+      current = Type(client, "pingguo");
+      report.Check("window-dispatched Rime response keeps candidates and capability together",
+          current.parsed && current.capability && Has(current, L"苹果"));
+      auto inspected = Inspect(client, current);
+      auto ticket = Request(inspected.reply, study::Action::CommitEnglish);
+      auto committed = Act(client, ticket);
+      report.Check("window-dispatched explicit English action uses the normal commit response",
+          inspected.accepted && committed.accepted && committed.reply.commit == L"apple");
+      auto duplicate = Act(client, ticket);
+      report.Check("window dispatch does not replay an already completed action",
+          !duplicate.accepted && duplicate.reply.commit.empty());
+      current = Type(client, "pingguo");
+      auto disabled = Act(client, Request(current, study::Action::SetLearning, 0, false));
+      auto enabled = Act(client, Request(disabled.reply, study::Action::SetLearning, 0, true));
+      report.Check("learning option notifications remain coherent on the window owner",
+          disabled.accepted && !disabled.reply.study.learning && enabled.accepted && enabled.reply.study.learning &&
+          disabled.reply.context.preedit.str == enabled.reply.context.preedit.str);
+      auto menu = Inspect(client, enabled.reply);
+      ticket = Request(menu.reply, study::Action::CommitEnglish);
+      client.FocusOut(); client.FocusIn();
+      auto rejected = Act(client, ticket);
+      report.Check("focus change still invalidates a menu across window dispatch",
+          !rejected.accepted && rejected.reply.commit.empty() && Has(rejected.reply, L"苹果"));
+      client.EndSession(); client.ShutdownServer();
+      return report.passed ? 0 : 1;
+    }
     if (std::wstring(argv[2]) == L"--partial") {
       PartialTest(client, report);
       client.EndSession(); client.ShutdownServer();

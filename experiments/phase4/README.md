@@ -1,6 +1,6 @@
 # 阶段 4：会话动作、原生英文菜单与 Weasel IPC
 
-2026-11-01。已实现会话版本模块、统一 Lua 英文动作、隔离宿主 Win32 菜单，以及真实 Weasel 服务端与客户端的版本化 IPC。菜单的 16 项桌面观察已从中断聊天恢复，新增 27 项跨进程检查通过。完整 x64 TSF 候选前端未接入，当前仍不是系统输入法安装包。
+更新：2026-11-05。已实现会话版本模块、统一 Lua 英文动作、隔离宿主 Win32 菜单，以及真实 Weasel 服务端与客户端的版本化 IPC。菜单 16 项、IPC 27 项证据已保留；本轮新增服务窗口线程调度，14 项定向检查通过。完整 x64 TSF 候选前端未接入，当前仍不是系统输入法安装包。
 
 ## 实现
 
@@ -12,6 +12,7 @@
 - `src/study/RimeSession.*` 绑定 `RimeWithWeaselHandler` 已有的真实会话；不另建 Rime 实例，不领取应用 commit。`StudyService.*` 管理每个会话的临时目标、焦点和版本，并增加服务实例身份来隔离重启前的请求。
 - `StudyProtocol.*` 提供有限长度的 Inspect / CommitEnglish / SetLearning 请求。客户端只传版本和候选编号，英文值从服务端 Lua 重新查询。正常 Weasel 响应携带 capability 和当前版本；提交继续走标准 commit 响应。
 - [weasel-study-ipc.patch](patches/weasel-study-ipc.patch) 接入原 `WeaselClientImpl`、`WeaselServerImpl` 与 `RimeWithWeaselHandler`。管道使用每连接独立缓冲区，修正请求体偏移、空消息残留及连接竞态；旧请求或无效报文不能再次提交英文。
+- `src/study/windows/WindowDispatcher.*` 把会话操作统一调度到服务窗口线程；`WeaselPipeServer.inc` 只在连接工作线程收发，退出时取消并 join 全部线程，取消跨线程 Rime/UI 锁。Rime 后台通知使用复制邮箱。设计与生命周期契约见 [service-dispatch.md](../../docs/service-dispatch.md)。
 
 Lua 内部接口 `inspect-v1` / `commit-v1` 仍通过 Rime 会话临时属性和零键码分派；新增 `study.v1` 在 Weasel IPC 层验证后调用它们。查询及拒绝动作不读取应用待取 commit。输入文字不写入新增正式模块日志，不联网。[协议与接入说明](../../docs/study-ipc.md)。
 
@@ -40,6 +41,7 @@ python experiments/phase4/verify-service.py
 | DPI 参数布局 | [24/24 通过](../phase3/results/native-layout.json) |
 | 新菜单的实际右键、点击、失焦及连续输入 | [16/16 已恢复](results/desktop-menu.json)，包含 Shift+F10 修复；本轮未重跑 |
 | 真实 Weasel 服务会话与跨进程 IPC | [27/27 通过](results/service-ipc.json)，包括并发连接及服务重启 |
+| 窗口线程调度、连接退出和受影响的 Rime 动作 | [14/14 通过](results/service-dispatch.json)，含 200 次并发请求与慢客户端；不等于可见窗口测试 |
 
 阶段 3 的 18 项桌面观察与阶段 4 的 16 项菜单观察分开保留来源。后者来自聊天 `01a1932b-0fd6-7ce0-b447-1343468abea0` 和 `01a19343-dab9-7af0-a6af-4cab916c0ccd`；此前聊天错误发生在记录落盘前，并非仍有菜单测试待做。
 
@@ -47,4 +49,6 @@ python experiments/phase4/verify-service.py
 
 ## 接续
 
-下一步接入真实 TSF 候选前端：读取 capability/版本、调用明确英文动作、处理服务断线与重连；梳理服务窗口与管道线程之间的 UI 调度。然后完成右侧工具区、独立释义浮层、设置、翻页定宽与 v0.5 两种动画。x64 TSF 构建、正式词库、安装标识、完整许可及实际应用兼容性仍待完成。菜单与本轮 IPC 已有证据，不要再次当作断点。
+服务窗口线程调度已实现并验证；修改该路径时使用 `python experiments/phase4/verify-dispatch.py`，无需重跑旧完整 IPC、菜单、引擎和布局检查。新增 `dispatch_test.exe` 使用隐藏消息窗口和真实管道，未创建可见候选条。构建产物嵌入普通用户 `asInvoker` 清单，不要求提权。
+
+下一步直接接入真实 TSF 候选前端：从同一次响应读取候选与 capability/版本、调用明确英文动作、处理失焦、服务断线与重连，旧菜单不得复活。然后推进 x64 完整构建与右侧工具区、独立释义浮层、设置、翻页定宽及 v0.5 两种动画。正式词库、安装标识、完整许可及实际应用兼容性仍待完成。菜单、IPC 与线程调度已有证据，不要再次当作断点。

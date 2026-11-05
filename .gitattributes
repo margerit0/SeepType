@@ -1,2 +1,3 @@
 # Unified diffs use one space for an empty context line; preserve valid patches.
 experiments/phase3/patches/*.patch whitespace=-blank-at-eol
+experiments/phase4/patches/*.patch whitespace=-blank-at-eol
