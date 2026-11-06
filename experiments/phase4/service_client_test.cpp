@@ -305,7 +305,7 @@ int wmain(int argc, wchar_t** argv) {
 
     current = Type(client, "pingguo"); menu = Inspect(client, current);
     old = Request(menu.reply, study::Action::Inspect);
-    client.SelectCandidateOnCurrentPage(0);
+    client.CommitComposition();
     result = Act(client, old);
     auto empty = Inspect(client, result.reply);
     current = Key(client, 'n');

@@ -2,6 +2,8 @@
 
 2026-11-06。接续 `08d5733`，固定 Weasel 0.17.4 源码和已验证 x86 隔离服务。
 
+**后续已完成 v0.5 原生 UI 与 x64 服务，见 [最新接续](native-ui.md)。** 本文件主体记录最初 16 项编辑会话检查及当时边界；本轮另有 27 项真实 TSF/MSAA 集成，并将原 16 项回归结果另存，原报告不覆盖。
+
 ## 实现与验证边界
 
 新增 `experiments/phase4/tsf_text_host.cpp` 和 `text_store.h`：可见双文本区，应用侧实现纯文本 `ITextStoreACP`，Windows 自身创建 `ITfThreadMgr`、`ITfDocumentMgr`、`ITfContext`、range、composition 和 edit cookie。宿主没有自己实现/模拟这些 TSF 对象，也没有用 `SetWindowText` 替代上屏；实际 `ITfRange::SetText` 写入文本存储后由宿主绘制。
@@ -34,4 +36,4 @@ python experiments/phase4/verify-text-host.py
 
 ## 下一步
 
-继续将阶段 3 双行布局移入正式前端，开发右侧工具区、独立完整释义浮层、设置、同组合翻页定宽、180ms 翻页动画及 240ms 学习切换动画。随后整合 x64 服务、正式词库、许可和完整产品构建。当前仍不是可安装输入法；真实应用、物理菜单选择、系统自动路由与安装标识仍须后续验证。
+v0.5 正式原生界面和 x64 服务已实现，继续按 [最新断点](native-ui.md) 准备正式词库、许可和完整产品构建。当前仍不是可安装输入法；Computer Use 审批问题按用户要求暂缓，实际键鼠、真实应用、系统自动路由与安装标识仍须后续验收。

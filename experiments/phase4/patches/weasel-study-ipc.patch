@@ -24,7 +24,15 @@
    WEASEL_IPC_LAST_COMMAND
  };
  
-@@ -72,6 +79,9 @@
+@@ -65,13 +72,16 @@
+   }
+   virtual void CommitComposition(DWORD session_id) {}
+   virtual void ClearComposition(DWORD session_id) {}
+-  virtual void SelectCandidateOnCurrentPage(size_t index, DWORD session_id) {}
++  virtual bool SelectCandidateOnCurrentPage(size_t index, DWORD session_id, EatLine eat) { return false; }
+   virtual bool HighlightCandidateOnCurrentPage(size_t index,
+                                                DWORD session_id,
+                                                EatLine eat) {
      return false;
    }
    virtual bool ChangePage(bool backward, DWORD session_id, EatLine eat) {
@@ -127,7 +135,15 @@
  
  struct CaseInsensitiveCompare {
    bool operator()(const std::string& str1, const std::string& str2) const {
-@@ -52,6 +56,7 @@
+@@ -46,12 +50,13 @@
+                                EatLine eat);
+   virtual void CommitComposition(WeaselSessionId ipc_id);
+   virtual void ClearComposition(WeaselSessionId ipc_id);
+-  virtual void SelectCandidateOnCurrentPage(size_t index,
+-                                            WeaselSessionId ipc_id);
++  virtual bool SelectCandidateOnCurrentPage(size_t index,
++                                            WeaselSessionId ipc_id, EatLine eat);
+   virtual bool HighlightCandidateOnCurrentPage(size_t index,
                                                 WeaselSessionId ipc_id,
                                                 EatLine eat);
    virtual bool ChangePage(bool backward, WeaselSessionId ipc_id, EatLine eat);
@@ -227,7 +243,7 @@
    rime_api->commit_composition(to_session_id(ipc_id));
    _UpdateUI(ipc_id);
    m_active_session = ipc_id;
-@@ -346,6 +360,7 @@
+@@ -346,19 +360,22 @@
    DLOG(INFO) << "Clear composition: ipc_id = " << ipc_id;
    if (m_disabled)
      return;
@@ -235,15 +251,30 @@
    rime_api->clear_composition(to_session_id(ipc_id));
    _UpdateUI(ipc_id);
    m_active_session = ipc_id;
-@@ -358,6 +373,7 @@
-              << ", index = " << index;
-   if (m_disabled)
-     return;
-+  m_study.Invalidate(ipc_id);
-   rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);
  }
  
-@@ -367,6 +383,7 @@
+-void RimeWithWeaselHandler::SelectCandidateOnCurrentPage(
+-    size_t index,
+-    WeaselSessionId ipc_id) {
+-  DLOG(INFO) << "select candidate on current page, ipc_id = " << ipc_id
+-             << ", index = " << index;
+-  if (m_disabled)
+-    return;
+-  rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);
++bool RimeWithWeaselHandler::SelectCandidateOnCurrentPage(
++    size_t index, WeaselSessionId ipc_id, EatLine eat) {
++  if (m_disabled || !eat || !m_session_status_map.count(ipc_id)) return false;
++  m_study.Invalidate(ipc_id);
++  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);
++  // Deliver this ordinary Chinese commit in the selecting response itself.
++  // Rejected selection must not drain a pending commit owned by the application.
++  _Respond(ipc_id, eat, selected);
++  _UpdateUI(ipc_id);
++  return selected;
+ }
+ 
+ bool RimeWithWeaselHandler::HighlightCandidateOnCurrentPage(
+@@ -367,6 +384,7 @@
      EatLine eat) {
    DLOG(INFO) << "highlight candidate on current page, ipc_id = " << ipc_id
               << ", index = " << index;
@@ -251,7 +282,7 @@
    bool res = rime_api->highlight_candidate_on_current_page(
        to_session_id(ipc_id), index);
    _Respond(ipc_id, eat);
-@@ -379,13 +396,30 @@
+@@ -379,13 +397,30 @@
                                         EatLine eat) {
    DLOG(INFO) << "change page, ipc_id = " << ipc_id
               << (backward ? "backward" : "foreward");
@@ -282,7 +313,7 @@
    DLOG(INFO) << "Focus in: ipc_id = " << ipc_id
               << ", client_caps = " << client_caps;
    if (m_disabled)
-@@ -395,6 +429,7 @@
+@@ -395,6 +430,7 @@
  }
  
  void RimeWithWeaselHandler::FocusOut(DWORD param, WeaselSessionId ipc_id) {
@@ -290,7 +321,7 @@
    DLOG(INFO) << "Focus out: ipc_id = " << ipc_id;
    if (m_ui)
      m_ui->Hide();
-@@ -411,15 +446,12 @@
+@@ -411,15 +447,12 @@
    if (m_disabled)
      return;
    if (m_active_session != ipc_id) {
@@ -307,7 +338,7 @@
  
  void RimeWithWeaselHandler::OnNotify(void* context_object,
                                       uintptr_t session_id,
-@@ -430,9 +462,26 @@
+@@ -430,9 +463,26 @@
        reinterpret_cast<RimeWithWeaselHandler*>(context_object);
    if (!self || !message_type || !message_value)
      return;
@@ -337,7 +368,7 @@
        !strcmp(message_type, "option")) {
      Bool state = message_value[0] != '!';
      const char* option_name = message_value + !state;
-@@ -531,12 +580,14 @@
+@@ -531,12 +581,14 @@
      Initialize();
      _UpdateUI(0);
    }
@@ -352,7 +383,7 @@
    // from no-session client, not actual typing session
    if (!ipc_id) {
      if (m_global_ascii_mode && opt == "ascii_mode") {
-@@ -555,6 +606,9 @@
+@@ -555,6 +607,9 @@
  }
  
  bool RimeWithWeaselHandler::_IsDeployerRunning() {
@@ -362,7 +393,7 @@
    HANDLE hMutex = CreateMutex(NULL, TRUE, L"WeaselDeployerMutex");
    bool deployer_detected = hMutex && GetLastError() == ERROR_ALREADY_EXISTS;
    if (hMutex) {
-@@ -568,6 +622,7 @@
+@@ -568,6 +623,7 @@
    if (!m_ui)
      return;
  
@@ -370,7 +401,7 @@
    Status& weasel_status = m_ui->status();
    Context weasel_context;
  
-@@ -721,6 +776,7 @@
+@@ -721,6 +777,7 @@
  }
  
  bool RimeWithWeaselHandler::_ShowMessage(Context& ctx, Status& status) {
@@ -378,7 +409,7 @@
    // show as auxiliary string
    std::wstring& tips(ctx.aux.str);
    bool show_icon = false;
-@@ -784,14 +840,14 @@
+@@ -784,14 +841,14 @@
    return wtou8(std::wstring(buffer));
  }
  
@@ -395,7 +426,7 @@
      actions.insert("commit");
  
      std::string commit_text = escape_string<char>(commit.text);
-@@ -817,9 +873,11 @@
+@@ -817,9 +874,11 @@
      if (m_global_ascii_mode &&
          (session_status.status.is_ascii_mode != status.is_ascii_mode)) {
        for (auto& pair : m_session_status_map) {
@@ -408,7 +439,7 @@
        }
      }
      session_status.status = status;
-@@ -917,6 +975,12 @@
+@@ -917,6 +976,12 @@
        messages.push_back(std::string("ctx.cand=") + wtou8(ss.str()) + '\n');
      }
      rime_api->free_context(&ctx);
@@ -656,7 +687,25 @@
      return true;
    };
    return m_pRequestHandler->ProcessKeyEvent(KeyEvent(wParam), lParam, eat);
-@@ -337,7 +345,7 @@
+@@ -324,12 +332,11 @@
+   return 0;
+ }
+ 
+-DWORD ServerImpl::OnSelectCandidateOnCurrentPage(WEASEL_IPC_COMMAND uMsg,
+-                                                 DWORD wParam,
+-                                                 DWORD lParam) {
+-  if (m_pRequestHandler)
+-    m_pRequestHandler->SelectCandidateOnCurrentPage(wParam, lParam);
+-  return 0;
++DWORD ServerImpl::OnSelectCandidateOnCurrentPage(WEASEL_IPC_COMMAND,
++    DWORD index, DWORD session) {
++  if (!m_pRequestHandler || !requestChannel) return 0;
++  return m_pRequestHandler->SelectCandidateOnCurrentPage(index, session,
++      [this](std::wstring& message) { *requestChannel << message; return true; });
+ }
+ 
+ DWORD ServerImpl::OnHighlightCandidateOnCurrentPage(WEASEL_IPC_COMMAND uMsg,
+@@ -337,7 +344,7 @@
                                                      DWORD lParam) {
    if (m_pRequestHandler) {
      auto eat = [this](std::wstring& msg) -> bool {
@@ -665,7 +714,7 @@
        return true;
      };
      m_pRequestHandler->HighlightCandidateOnCurrentPage(wParam, lParam, eat);
-@@ -350,12 +358,19 @@
+@@ -350,12 +357,19 @@
                                 DWORD lParam) {
    if (m_pRequestHandler) {
      auto eat = [this](std::wstring& msg) -> bool {
@@ -686,7 +735,7 @@
  }
  
  #define MAP_PIPE_MSG_HANDLE(__msg, __wParam, __lParam) \
-@@ -397,44 +412,10 @@
+@@ -397,44 +411,10 @@
                    OnHighlightCandidateOnCurrentPage);
    PIPE_MSG_HANDLE(WEASEL_IPC_CHANGE_PAGE, OnChangePage);
    PIPE_MSG_HANDLE(WEASEL_IPC_TRAY_COMMAND, OnCommand);
@@ -809,7 +858,7 @@
  
  class CCandidateList;
  class CLangBarItemButton;
-@@ -120,13 +121,24 @@
+@@ -120,13 +121,27 @@
    void _SetComposition(com_ptr<ITfComposition> pComposition);
    void _SetCompositionPosition(const RECT& rc);
    BOOL _UpdateCompositionWindow(com_ptr<ITfContext> pContext);
@@ -824,6 +873,9 @@
 +  void _InvalidateStudy();
 +  bool _StudyAction(study::Action action, unsigned index, bool enabled = false);
 +  void _StudyMenu(unsigned index, HWND owner, POINT position);
++  void _StudyDetail(unsigned index, bool pinned);
++  bool _StudySetLearning(bool enabled);
++  bool _StudyPoll();
 +  bool _StudyKey(WPARAM key, LPARAM info, BOOL* eaten);
 +  void _QueueResponse(com_ptr<ITfContext> context,
 +                      std::shared_ptr<const study::WeaselResponse> response);
@@ -835,7 +887,7 @@
    /* IPC */
    bool _EnsureServerConnected();
  
-@@ -225,6 +237,10 @@
+@@ -225,6 +240,10 @@
    weasel::Client m_client;
    DWORD _activateFlags;
  
@@ -1104,19 +1156,105 @@
    }
    return S_OK;
  }
+--- a/WeaselTSF/CandidateList.h
++++ b/WeaselTSF/CandidateList.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ #include <WeaselUI.h>
++#include <study/windows/CandidateUi.h>
+ #include "ctffunc.h"
+ 
+ class WeaselTSF;
+@@ -64,6 +65,7 @@
+   }
+ 
+   weasel::UIStyle& style();
++  study::CandidateUi& StudyUi() { return *_ui; }
+ 
+  private:
+   // void _UpdateOwner();
+@@ -77,7 +79,7 @@
+   void _DisposeUIWindowAll();
+   void _MakeUIWindow();
+ 
+-  std::unique_ptr<weasel::UI> _ui;
++  std::unique_ptr<study::CandidateUi> _ui;
+   DWORD _cRef;
+   com_ptr<WeaselTSF> _tsf;
+   DWORD uiid;
 --- a/WeaselTSF/CandidateList.cpp
 +++ b/WeaselTSF/CandidateList.cpp
-@@ -284,6 +284,9 @@
+@@ -2,6 +2,7 @@
+ 
+ #include "WeaselTSF.h"
+ #include "CandidateList.h"
++#include "Globals.h"
+ #include <KeyEvent.h>
+ #include <math.h>
+ 
+@@ -9,8 +10,9 @@
+ using namespace weasel;
+ 
+ CCandidateList::CCandidateList(com_ptr<WeaselTSF> pTextService)
+-    : _ui(make_unique<UI>()), _tsf(pTextService), _pbShow(TRUE) {
++    : _ui(make_unique<study::CandidateUi>()), _tsf(pTextService), _pbShow(TRUE) {
+   _cRef = 1;
++  _ui->accessibilityLifetime = [](bool acquire) { if (acquire) DllAddRef(); else DllRelease(); };
+ }
+ 
+ CCandidateList::~CCandidateList() {}
+@@ -57,7 +59,7 @@
+ }
+ 
+ STDMETHODIMP CCandidateList::GetDescription(BSTR* pbstr) {
+-  static auto str = SysAllocString(L"Candidate List");
++  auto str = SysAllocString(L"英语学习候选");
+   if (pbstr) {
+     *pbstr = str;
+   }
+@@ -124,7 +126,7 @@
+     return E_INVALIDARG;
+ 
+   auto& str = cinfo.candies[uIndex].str;
+-  *pbstr = SysAllocStringLen(str.c_str(), static_cast<UINT>(str.size()) + 1);
++  *pbstr = SysAllocStringLen(str.c_str(), static_cast<UINT>(str.size()));
+ 
+   return S_OK;
+ }
+@@ -156,12 +158,16 @@
+ }
+ 
+ STDMETHODIMP CCandidateList::SetSelection(UINT nIndex) {
+-  _ui->ctx().cinfo.highlighted = nIndex;
++  if (nIndex >= _ui->ctx().cinfo.candies.size()) return E_INVALIDARG;
++  size_t index = nIndex;
++  _tsf->HandleUICallback(nullptr, &index, nullptr, nullptr);
+   return S_OK;
+ }
+ 
+ STDMETHODIMP CCandidateList::Finalize(void) {
+-  Destroy();
++  if (_ui->ctx().cinfo.empty()) return E_UNEXPECTED;
++  size_t index = _ui->ctx().cinfo.highlighted;
++  _tsf->HandleUICallback(&index, nullptr, nullptr, nullptr);
+   return S_OK;
+ }
+ 
+@@ -284,6 +290,13 @@
  }
  
  void CCandidateList::StartUI() {
 +  _ui->studyMenu = [this](unsigned index, HWND owner, POINT position) {
 +    _tsf->_StudyMenu(index, owner, position);
 +  };
++  _ui->studyLearning = [this](bool enabled) { _tsf->_StudySetLearning(enabled); };
++  _ui->studyDetail = [this](unsigned index, bool pinned) { _tsf->_StudyDetail(index, pinned); };
++  _ui->studyPoll = [this]() { return _tsf->_StudyPoll(); };
++  _ui->ReloadPreferences();
    com_ptr<ITfThreadMgr> pThreadMgr = _tsf->_GetThreadMgr();
    if (!pThreadMgr) {
      return;
-@@ -367,6 +370,7 @@
+@@ -367,6 +380,7 @@
  }
  
  void WeaselTSF::_HideUI() {
@@ -1124,7 +1262,7 @@
    _cand->Show(FALSE);
  }
  
-@@ -379,20 +383,14 @@
+@@ -379,20 +393,14 @@
  }
  
  void WeaselTSF::_SelectCandidateOnCurrentPage(size_t index) {
@@ -1148,7 +1286,7 @@
    // from scrolling event
    if (scrollNextPage) {
      if (_cand->style().paging_on_scroll)
-@@ -420,6 +418,7 @@
+@@ -420,6 +428,7 @@
  }
  
  void WeaselTSF::_HandleMouseHoverEvent(const size_t index) {
@@ -1271,7 +1409,7 @@
  }
  
  STDMETHODIMP WeaselTSF::OnActivated(REFCLSID clsid,
-@@ -222,6 +235,8 @@
+@@ -222,42 +235,29 @@
  }
  
  void WeaselTSF::_Reconnect() {
@@ -1280,7 +1418,22 @@
    m_client.Disconnect();
    m_client.Connect(NULL);
    m_client.StartSession();
-@@ -232,32 +247,8 @@
+-  weasel::ResponseParser parser(NULL, NULL, &_status, NULL, &_cand->style());
+-  bool ok = m_client.GetResponseData(std::ref(parser));
+-  if (ok) {
++  _cand->StudyUi().ReloadPreferences();
++  auto response = study::ReadResponse(m_client, _cand->style());
++  if (response && response->capability &&
++      response->action.learning != _cand->StudyUi().Preferences().learning) {
++    study::ActionRequest setting{study::Action::SetLearning, response->action.stamp, 0,
++        _cand->StudyUi().Preferences().learning};
++    m_client.StudyAction(setting);
++    response = study::ReadResponse(m_client, _cand->style());
++  }
++  if (response) {
++    _status = response->status; _cand->style() = response->style;
++    _studyCandidates.Accept(response);
+     _UpdateLanguageBar(_status);
    }
  }
  
@@ -1339,80 +1492,6 @@
    return S_OK;
  }
  
---- a/include/WeaselUI.h
-+++ b/include/WeaselUI.h
-@@ -36,6 +36,8 @@
-       pDWR.reset();
-     }
-   }
-+
-+  std::function<void(unsigned, HWND, POINT)> studyMenu;
- 
-   // 创建输入法界面
-   bool Create(HWND parent);
---- a/WeaselUI/WeaselPanel.h
-+++ b/WeaselUI/WeaselPanel.h
-@@ -26,6 +26,7 @@
-       CDoubleBufferImpl<WeaselPanel> {
-  public:
-   BEGIN_MSG_MAP(WeaselPanel)
-+  MESSAGE_HANDLER(WM_CONTEXTMENU, OnStudyMenu)
-   MESSAGE_HANDLER(WM_CREATE, OnCreate)
-   MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
-   MESSAGE_HANDLER(WM_DPICHANGED, OnDpiChanged)
-@@ -38,6 +39,7 @@
-   CHAIN_MSG_MAP(CDoubleBufferImpl<WeaselPanel>)
-   END_MSG_MAP()
- 
-+  LRESULT OnStudyMenu(UINT, WPARAM, LPARAM, BOOL&);
-   LRESULT OnCreate(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-   LRESULT OnDestroy(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-   LRESULT OnDpiChanged(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-@@ -104,6 +106,7 @@
-   void _LayerUpdate(const CRect& rc, CDCHandle dc);
- 
-   weasel::Layout* m_layout;
-+  weasel::UI& m_studyUI;
-   weasel::Context& m_ctx;
-   weasel::Context& m_octx;
-   weasel::Status& m_status;
---- a/WeaselUI/WeaselPanel.cpp
-+++ b/WeaselUI/WeaselPanel.cpp
-@@ -51,7 +51,7 @@
- 
- WeaselPanel::WeaselPanel(weasel::UI& ui)
-     : m_layout(NULL),
--      m_ctx(ui.ctx()),
-+      m_studyUI(ui), m_ctx(ui.ctx()),
-       m_octx(ui.octx()),
-       m_status(ui.status()),
-       m_style(ui.style()),
-@@ -1268,3 +1268,25 @@
- #endif
-   }
- }
-+
-+LRESULT WeaselPanel::OnStudyMenu(UINT, WPARAM, LPARAM lParam, BOOL&) {
-+  if (!m_layout || !m_studyUI.studyMenu) return 0;
-+  POINT screen{GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)};
-+  unsigned index = static_cast<unsigned>(m_ctx.cinfo.highlighted);
-+  if (screen.x == -1 && screen.y == -1) {
-+    RECT rc{}; GetWindowRect(&rc); screen = {rc.left, rc.bottom};
-+  } else {
-+    POINT local = screen; ScreenToClient(&local);
-+    bool found = false;
-+    for (unsigned i = 0; i < m_ctx.cinfo.candies.size() && i < MAX_CANDIDATES_COUNT; ++i) {
-+      auto rect = m_layout->GetCandidateRect(i);
-+      if (m_istorepos) rect.OffsetRect(0, m_offsetys[i]);
-+      rect.InflateRect(DPI_SCALE(m_style.hilite_padding_x), DPI_SCALE(m_style.hilite_padding_y));
-+      if (rect.PtInRect(local)) { index = i; found = true; break; }
-+    }
-+    if (!found) return 0;
-+  }
-+  auto callback = m_studyUI.studyMenu;
-+  callback(index, m_hWnd, screen);
-+  return 0;
-+}
 --- a/WeaselTSF/Server.cpp
 +++ b/WeaselTSF/Server.cpp
 @@ -101,6 +101,9 @@

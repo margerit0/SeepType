@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-07T00:00:18+08:00",
+  "scope": "Unregistered DLL factory activation; real Windows thread/document/context/range and edit sessions backed by a visible plain-text ITextStoreACP host. Host forwards key/focus callbacks to production sinks; actual Rime IPC and native candidate/menu windows.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "unregistered production TSF activated with two real text contexts",
+      "passed": true
+    },
+    {
+      "name": "real composition writes under synchronous text-store lock",
+      "passed": true
+    },
+    {
+      "name": "production candidate popup is visible",
+      "passed": true
+    },
+    {
+      "name": "space commits Chinese through ITfRange exactly once",
+      "passed": true
+    },
+    {
+      "name": "explicit English action commits through real TSF range",
+      "passed": true
+    },
+    {
+      "name": "repeated explicit action cannot duplicate English",
+      "passed": true
+    },
+    {
+      "name": "application defers actual TSF write grant",
+      "passed": true
+    },
+    {
+      "name": "deferred owned commit survives later key response",
+      "passed": true
+    },
+    {
+      "name": "focus switch rejects queued commit in both documents",
+      "passed": true
+    },
+    {
+      "name": "new focused document owns its composition and commit",
+      "passed": true
+    },
+    {
+      "name": "native TSF menu opens outside write lock and cancels",
+      "passed": true
+    },
+    {
+      "name": "focus change closes actual modal TSF menu",
+      "passed": true
+    },
+    {
+      "name": "service disconnect closes native menu by watchdog",
+      "passed": true
+    },
+    {
+      "name": "disconnected English action does not replay or insert",
+      "passed": true
+    },
+    {
+      "name": "all real TSF document writes respected edit locks",
+      "passed": true
+    },
+    {
+      "name": "deactivation releases frontend COM lifetime",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "binaries": {
+    "experiments\\phase4\\build\\tsf_text_host_x64.exe": "1c2e1bf45712969417a11d4d88c495d30d0c6f4b2669894be4e05c276d72304f",
+    "experiments\\phase4\\build\\tsf-x64\\study_weasel_x64.dll": "4adaaf54f9b19965e1ffec4aff1afedb1749f0e019a7b84d53a8bf2b40c54ea6",
+    "experiments\\phase4\\build\\study_service_x64.exe": "9377d32f96a4743ef6844729ec0c16f083960448633cdf040d720ee9a83c2164",
+    ".cache\\rime-1.13.1\\dist\\lib\\rime.dll": "2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b"
+  },
+  "sources": {
+    "experiments\\phase4\\tsf_text_host.cpp": "a5898601bfa9fb805b2dd469f27d0358157cf512e92ecc5e45e324d94dda09ac",
+    "experiments\\phase4\\text_store.h": "41c068f55f4496813e7351581a6dbc978b0005c886a2abdb05559ef1d918da1c",
+    "experiments\\phase4\\prepare-tsf.py": "d394ee055c82ce7b9bce7b384252036313f9cc93e260125b8b16a9c9c249dd56",
+    "experiments\\phase4\\build-service.py": "7fe25542455c4982c5b9b28d55ff294d2df0b8e465c380de33cd05d10d5895ca",
+    "experiments\\phase4\\verify-text-host.py": "1428a78eb6d0d9ee29e82328eef4a4c4f3f4e34b8c9e1d8c3c71bd9ca0137120",
+    "experiments\\phase4\\patches\\weasel-study-ipc.patch": "5e9bcc5360a53120eabd6ab4644e345d2a125199d98ffe3b73980e12250427ef",
+    "src\\study\\windows\\TsfStudy.inc": "56460e6ff163eb3aaf39712a4b59cf51c6bb441366c8e8e6c06376988d4dbeac",
+    "src\\study\\RimeSession.cpp": "263ba090c56b22bdba229bdc03c9455d802d8c6b1f2acbe64949f445af8d8ad9",
+    "src\\study\\RimeSession.h": "ffc36aa00476223f59e995807b74084d25460ce3ec1f6ea8d8aa4a220ae7b482",
+    "src\\study\\StudyService.cpp": "9c7ec3269096716f13c121e8f1bc404a1f85c0a5ec10123d774bd046256735c6",
+    "experiments\\phase4\\prepare-weasel.py": "871e5e3f43b12a38b430d4ae444170cb582d536bfa2b717f61619acbcb5694c9",
+    "experiments\\phase4\\service_rime.cpp": "4b2a33ce495e7e2359a3a2ceac962374e4a955ca38a449e0912ee2e35c179346",
+    "experiments\\phase4\\service_host.cpp": "66a720b67b6ac11b22a82eb3fb78e8bd4154c89337d7a86be8dd217eb6e8546e",
+    "src\\study\\windows\\CandidateAccessibility.cpp": "dee630c35f0d795a8b1c8d4ff8585a0d4861d9a5a7dc462f634fbd11e2e29948",
+    "src\\study\\windows\\CandidateUi.cpp": "54de032d3ee197978fbec17b2e8d7dd75bb427c4aec0779ae2052ed52fb9239a",
+    "src\\study\\windows\\CandidateAccessibility.h": "340aff2ea7cc74bd94bce2ad1938f03143ef4debb1bf77c5c557fa75d29ad601",
+    "src\\study\\windows\\CandidateUi.h": "da03159e2aeeeb365fb75e6f01cfb19fab71b0ba7d2bfce791f3bf0530b2f96b",
+    "src\\study\\windows\\StudyLayout.cpp": "c10226252a851c6a1b9c90356c393a84c17658657454867505c1cfdbe96aa0e5",
+    "src\\study\\windows\\StudyLayout.h": "e2825c6313337d2a82ab2472cf8e357b835363b907a4575f2f2a7cee332c1bde",
+    "src\\study\\windows\\StudyMotion.cpp": "d7303c4439a52f210342fd78ff2d64833d0eeadcef7ee5437c21ecd0a3508b87",
+    "src\\study\\windows\\StudyMotion.h": "846dbb6cde8c0a2988d6a71ebf598dbd9f1afbb9b22817cf31ce06f6644b043b",
+    "src\\study\\windows\\UiPreferences.cpp": "93911ea5d718e3dbd61734d2f295a133b264daa0fd93b02b7363d71f15ece965",
+    "src\\study\\windows\\UiPreferences.h": "0b5b1ac24937f67bea160f278f6630214c6f4b8f76d8df65fe1edda011df4843",
+    "src\\study\\windows\\EnglishMenu.cpp": "1468c8fb8ae3d309949ed49aee873aee268119db3e422f34eaec883929fcbbfc",
+    "src\\study\\windows\\EnglishMenu.h": "6fccf8c6a51b40394983721b88bd588d2048413c7cd8d845a5d1d4a2bc30616b"
+  },
+  "limits": [
+    "Programmatic key/focus callbacks; not Windows routing of an installed TIP or physical keyboard/mouse observations",
+    "Native menu open/cancel/focus/disconnect tested; physical selection of its English command remains unverified",
+    "No registration, installation, profile activation or input settings changes",
+    "Not Notepad/browser/VS Code compatibility evidence",
+    "x64 isolated service; test-only lexicon; no complete installable product package"
+  ],
+  "unchanged_evidence": [
+    "tsf-frontend.json",
+    "desktop-menu.json",
+    "service-ipc.json",
+    "service-dispatch.json"
+  ]
+}

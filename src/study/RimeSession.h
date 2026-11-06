@@ -17,7 +17,7 @@ class RimeSession {
   VersionStamp Version() const;
   void Invalidate();
   bool Learning() const;
-  void SetLearning(bool enabled);
+  bool SetLearning(bool enabled);
   EnglishTarget Inspect(std::size_t index);
   bool Commit(const EnglishTarget& target);
 

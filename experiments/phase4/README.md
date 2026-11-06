@@ -1,6 +1,10 @@
 # 阶段 4：会话动作、原生英文菜单与 Weasel IPC
 
-**2026-11-06 最新接续：** 已加入 `tsf_text_host.cpp` / `text_store.h`，`build-tsf.cmd` 同时构建 `build/tsf_text_host_x64.exe`。新增 `python experiments/phase4/verify-text-host.py` 验证真实 Windows TSF 文本编辑，16 项证据写入 `results/tsf-text-host.json`。宿主显式转发生产按键和焦点接口，不注册 profile；Windows 提供实际 context/range/composition/edit cookie。修复跨文档组合归属、异步结束与停用资源回收。详细边界和下一步见 [文本宿主说明](../../docs/tsf-text-host.md)。下文旧日期的“尚未执行编辑会话”是历史记录；旧报告未改动。下一步直接开发完整 v0.5 原生 UI。
+**2026-11-07 最新接续：v0.5 原生界面与 x64 服务已实现。** 双行候选、工具区、独立释义、原生设置、翻页定宽和两种动画已接入真实 TSF；修复普通选词无响应与学习开关重置页面/选中项。详见 [原生 UI 接续](../../docs/native-ui.md)。下文 2026-11-05 内容为历史实现及验证边界，旧报告保持原样。
+
+从项目根目录执行 `experiments/phase4/build-native-x64.cmd` 顺序构建 TSF、文本宿主、设置和 x64 服务。定向验证：`verify-native-ui.py`（47 项）、`verify-selection.py --service-x64`（7 项）、`verify-text-host.py --v05 --service-x64`（27 项）；编辑回归使用 `verify-text-host.py --service-x64 --report experiments/phase4/results/tsf-text-host-v05-x64.json`（16 项）。x86 服务的 7 项 IPC 和 27 项 TSF/UI 结果另有保留。
+
+交互运行：`python experiments/phase4/start-text-host.py --service-x64`；设置：`python experiments/phase4/start-settings.py`。目前仍依赖仓库与缓存，不是安装包。Computer Use 审批错误按用户要求留后修复，程序检查不等于物理键鼠验收。
 
 更新：2026-11-05。已实现会话版本模块、统一 Lua 英文动作、隔离宿主 Win32 菜单，以及真实 Weasel 服务端与客户端的版本化 IPC。菜单 16 项、IPC 27 项证据已保留；本轮新增服务窗口线程调度，14 项定向检查通过。后续新增真实 TSF 学习前端源码接入及完整 x64 TSF DLL 编译链接，16 项定向检查通过；实际 TSF 编辑/可见菜单未验证，当前仍不是系统输入法安装包。
 

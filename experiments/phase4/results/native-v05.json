@@ -1,0 +1,280 @@
+{
+  "date": "2026-11-06T23:59:57+08:00",
+  "scope": "Production v0.5 layout, DirectWrite rendering, action dispatch, menu construction, preference persistence and time-based animation components; own render buffers only.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "missing settings use documented defaults",
+      "passed": true
+    },
+    {
+      "name": "settings atomically round-trip all five preferences",
+      "passed": true
+    },
+    {
+      "name": "preferences contain no candidate or input fields",
+      "passed": true
+    },
+    {
+      "name": "duplicate preference keys fail to defaults",
+      "passed": true
+    },
+    {
+      "name": "oversized settings are bounded and rejected",
+      "passed": true
+    },
+    {
+      "name": "light settings saved for rendering",
+      "passed": true
+    },
+    {
+      "name": "failed preference write retains the current in-memory learning choice",
+      "passed": true
+    },
+    {
+      "name": "isolated host without a settings path retains memory-only preferences",
+      "passed": true
+    },
+    {
+      "name": "next page enters from right and fades in for 180 ms",
+      "passed": true
+    },
+    {
+      "name": "outgoing page exits left and is gone at 120 ms",
+      "passed": true
+    },
+    {
+      "name": "rapid reverse paging replaces rather than queues motion",
+      "passed": true
+    },
+    {
+      "name": "learning collapse interpolates height for 240 ms",
+      "passed": true
+    },
+    {
+      "name": "English fades out within 160 ms",
+      "passed": true
+    },
+    {
+      "name": "rapid learning reversal starts at current height",
+      "passed": true
+    },
+    {
+      "name": "reduced motion applies both state changes immediately",
+      "passed": true
+    },
+    {
+      "name": "five two-line candidates and toolbar measure 600 by 55 DIP",
+      "passed": true
+    },
+    {
+      "name": "outer corners are transparent and body is opaque",
+      "passed": true
+    },
+    {
+      "name": "English and Chinese rows share the same candidate hit target",
+      "passed": true
+    },
+    {
+      "name": "ordinary English-row action selects Chinese candidate independent of highlight",
+      "passed": true
+    },
+    {
+      "name": "previous-page boundary is disabled without dispatch",
+      "passed": true
+    },
+    {
+      "name": "next-page tool dispatches the existing page callback",
+      "passed": true
+    },
+    {
+      "name": "learning tool requests a versioned toggle without selection",
+      "passed": true
+    },
+    {
+      "name": "more tool uses the current candidate index",
+      "passed": true
+    },
+    {
+      "name": "last page keeps width and toolbar coordinates",
+      "passed": true
+    },
+    {
+      "name": "current page and hit targets switch before animation ends",
+      "passed": true
+    },
+    {
+      "name": "outgoing candidates are absent from accessible names",
+      "passed": true
+    },
+    {
+      "name": "returning to previous page retains fixed width",
+      "passed": true
+    },
+    {
+      "name": "learning-off immediately removes English accessibility during animation",
+      "passed": true
+    },
+    {
+      "name": "learning-off ends at 38 DIP without changing width",
+      "passed": true
+    },
+    {
+      "name": "missing study capability disables study controls but retains Chinese selection",
+      "passed": true
+    },
+    {
+      "name": "invalidated snapshot cannot dispatch a stale pointer action",
+      "passed": true
+    },
+    {
+      "name": "new single-candidate composition uses a short bar",
+      "passed": true
+    },
+    {
+      "name": "long Chinese expands its cell while English retains its full source value",
+      "passed": true
+    },
+    {
+      "name": "DPI 96 scales geometry and preserves both-line hit regions",
+      "passed": true
+    },
+    {
+      "name": "DPI 120 scales geometry and preserves both-line hit regions",
+      "passed": true
+    },
+    {
+      "name": "DPI 144 scales geometry and preserves both-line hit regions",
+      "passed": true
+    },
+    {
+      "name": "DPI 192 scales geometry and preserves both-line hit regions",
+      "passed": true
+    },
+    {
+      "name": "narrow work area constrains a single row without shrinking type",
+      "passed": true
+    },
+    {
+      "name": "keyboard selection reveals an overflow candidate within fixed viewport",
+      "passed": true
+    },
+    {
+      "name": "dark and light themes have identical geometry",
+      "passed": true
+    },
+    {
+      "name": "larger font preset increases line space without scaling the whole UI",
+      "passed": true
+    },
+    {
+      "name": "explicit English menu shows the configured shortcut and separate detail command",
+      "passed": true
+    },
+    {
+      "name": "settings menu is disabled during composition",
+      "passed": true
+    },
+    {
+      "name": "learning-off disables English and definition menu commands",
+      "passed": true
+    },
+    {
+      "name": "full definition is an independent nonactivating floating window",
+      "passed": true
+    },
+    {
+      "name": "candidate invalidation closes the definition immediately",
+      "passed": true
+    },
+    {
+      "name": "settings cannot open during a composing candidate state",
+      "passed": true
+    }
+  ],
+  "exit_code": 0,
+  "previews": {
+    "experiments\\phase4\\results\\previews-v05\\closed.png": {
+      "width": 600,
+      "height": 38,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\dark.png": {
+      "width": 600,
+      "height": 55,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\definition.png": {
+      "width": 300,
+      "height": 168,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\dpi-192.png": {
+      "width": 1200,
+      "height": 110,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\large.png": {
+      "width": 600,
+      "height": 59,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\learning-transition.png": {
+      "width": 600,
+      "height": 43,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\light.png": {
+      "width": 600,
+      "height": 55,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\long.png": {
+      "width": 324,
+      "height": 55,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\narrow.png": {
+      "width": 308,
+      "height": 55,
+      "source": "production offscreen DirectWrite renderer"
+    },
+    "experiments\\phase4\\results\\previews-v05\\page-transition.png": {
+      "width": 600,
+      "height": 55,
+      "source": "production offscreen DirectWrite renderer"
+    }
+  },
+  "binaries": {
+    "experiments\\phase4\\build\\native_ui_test_x64.exe": "92ca5ac7b8057dc894c7d2111e0bba1a843f6093201bed8e7c6df394b57724e8"
+  },
+  "sources": {
+    "src\\study\\windows\\CandidateAccessibility.cpp": "dee630c35f0d795a8b1c8d4ff8585a0d4861d9a5a7dc462f634fbd11e2e29948",
+    "src\\study\\windows\\CandidateUi.cpp": "54de032d3ee197978fbec17b2e8d7dd75bb427c4aec0779ae2052ed52fb9239a",
+    "src\\study\\windows\\EnglishMenu.cpp": "1468c8fb8ae3d309949ed49aee873aee268119db3e422f34eaec883929fcbbfc",
+    "src\\study\\windows\\StudyLayout.cpp": "c10226252a851c6a1b9c90356c393a84c17658657454867505c1cfdbe96aa0e5",
+    "src\\study\\windows\\StudyMotion.cpp": "d7303c4439a52f210342fd78ff2d64833d0eeadcef7ee5437c21ecd0a3508b87",
+    "src\\study\\windows\\UiPreferences.cpp": "93911ea5d718e3dbd61734d2f295a133b264daa0fd93b02b7363d71f15ece965",
+    "src\\study\\windows\\WeaselResponse.cpp": "162be7a8ea706eb5124a393c0611be9c0a456dfb6839a0413e95ddc81e831118",
+    "src\\study\\windows\\WindowDispatcher.cpp": "90ee74ed08f758df3cf9b63b8900b194620ae3b4ed926fc2fb5bff55e35ac7b4",
+    "src\\study\\windows\\CandidateAccessibility.h": "340aff2ea7cc74bd94bce2ad1938f03143ef4debb1bf77c5c557fa75d29ad601",
+    "src\\study\\windows\\CandidateUi.h": "da03159e2aeeeb365fb75e6f01cfb19fab71b0ba7d2bfce791f3bf0530b2f96b",
+    "src\\study\\windows\\EnglishMenu.h": "6fccf8c6a51b40394983721b88bd588d2048413c7cd8d845a5d1d4a2bc30616b",
+    "src\\study\\windows\\StudyLayout.h": "e2825c6313337d2a82ab2472cf8e357b835363b907a4575f2f2a7cee332c1bde",
+    "src\\study\\windows\\StudyMotion.h": "846dbb6cde8c0a2988d6a71ebf598dbd9f1afbb9b22817cf31ce06f6644b043b",
+    "src\\study\\windows\\UiPreferences.h": "0b5b1ac24937f67bea160f278f6630214c6f4b8f76d8df65fe1edda011df4843",
+    "src\\study\\windows\\WeaselResponse.h": "4213617191fc9be8cbf0854f03780003a887e4d1e4dd839133de833fc9d3d1b7",
+    "src\\study\\windows\\WindowDispatcher.h": "419fce0cfffc972d8b928628a83ea94820ae27ce296765a87095ad239560b0f1",
+    "experiments\\phase4\\native_ui_test.cpp": "2850d1953b0e28553cb0a4d8b849b9521f2c1004c6686810eec7689912fa2be0",
+    "experiments\\phase4\\verify-native-ui.py": "b992b5a44f4e71e6098f563b8cc2dcd1f02eb744e2772ac7d0a850739d6b9a22",
+    "experiments\\phase4\\prepare-tsf.py": "d394ee055c82ce7b9bce7b384252036313f9cc93e260125b8b16a9c9c249dd56",
+    "experiments\\phase4\\build-service.py": "7fe25542455c4982c5b9b28d55ff294d2df0b8e465c380de33cd05d10d5895ca"
+  },
+  "limits": [
+    "No Computer Use or physical mouse/keyboard acceptance",
+    "No Windows display-setting changes or multi-monitor desktop acceptance",
+    "No Notepad/browser/VS Code compatibility evidence",
+    "No installation or input method registration",
+    "Component callbacks alone do not establish TSF document edits; separate native-v05-tsf report covers those"
+  ]
+}

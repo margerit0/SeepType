@@ -22,7 +22,12 @@ std::filesystem::path WeaselUserDataPath() {
 std::string GetCustomResource(const char*, const char*) { return {}; }
 
 extern "C" RimeApi* rime_get_api(void) {
-  static HMODULE module = LoadLibraryExW((root() / L".cache/weasel-0.17.4/rime.dll").c_str(),
+#ifdef _WIN64
+  const auto library = root() / L".cache/rime-1.13.1/dist/lib/rime.dll";
+#else
+  const auto library = root() / L".cache/weasel-0.17.4/rime.dll";
+#endif
+  static HMODULE module = LoadLibraryExW(library.c_str(),
       nullptr, LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR | LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
   if (!module) throw std::runtime_error("Cannot load the fixed test Rime DLL");
   const auto entry = reinterpret_cast<RimeApi*(*)()>(GetProcAddress(module, "rime_get_api"));

@@ -45,6 +45,7 @@ class StudyResponseEditSession : public CEditSession {
 void WeaselTSF::_InvalidateStudy() {
   ++_studySerial;  // pending edits may commit, but may not republish old UI
   _studyCandidates.Clear();
+  if (_cand) _cand->StudyUi().Invalidate();
   if (_studyMenuOpen) EndMenu();
 }
 
@@ -108,6 +109,7 @@ HRESULT WeaselTSF::_ApplyResponse(TfEditCookie cookie, com_ptr<ITfContext> docum
   if (_IsComposing() && config.inline_preedit) _ShowInlinePreedit(document, context);
   if (serial == _studySerial && epoch == _studyEpoch) {
     _studyCandidates.Accept(response);
+    _cand->StudyUi().Present(response->action, response->capability);
     _UpdateCompositionWindow(document);
     _UpdateUI(*context, _status);
   }
@@ -158,14 +160,51 @@ void WeaselTSF::_StudyMenu(unsigned index, HWND, POINT position) {
   });
   if (!watch.Started()) { _QueueResponse(_pEditSessionContext, response); return; }
   _studyMenuOpen = true;
-  const UINT command = study::ShowEnglishMenu(_GetFocusedContextWindow(), position, target);
+  study::EnglishMenuOptions options;
+  options.details = options.settings = true;
+  options.learning = response->action.learning;
+  options.shortcut = study::ShortcutLabel(_cand->StudyUi().Preferences());
+  const UINT command = study::ShowEnglishMenu(_GetFocusedContextWindow(), position, target, options);
   watch.Stop();
   _studyMenuOpen = false;
   if (!_studyCandidates.Current(token)) return;
   if (command == study::kInputEnglish)
     _StudyAction(study::Action::CommitEnglish, index);
+  else if (command == study::kViewDefinition)
+    _StudyDetail(index, true);
   else
     _QueueResponse(_pEditSessionContext, response);
+}
+
+bool WeaselTSF::_StudySetLearning(bool enabled) {
+  if (!_StudyAction(study::Action::SetLearning, 0, enabled)) return false;
+  _cand->StudyUi().SaveLearning(enabled);
+  return true;
+}
+
+bool WeaselTSF::_StudyPoll() {
+  if (m_client.Echo()) return true;
+  _AbortComposition();
+  return false;
+}
+
+void WeaselTSF::_StudyDetail(unsigned index, bool pinned) {
+  com_ptr<WeaselTSF> keepAlive(this);
+  study::ActionRequest request;
+  if (_studyMenuOpen || !_studyCandidates.Request(study::Action::Inspect, index, false, request)) return;
+  auto current = _studyCandidates.Response();
+  if (!current || !current->action.learning || !m_client.Echo()) return;
+  _InvalidateStudy();
+  const bool accepted = m_client.StudyAction(request);
+  auto response = study::ReadResponse(m_client, _cand->style());
+  if (!response || !response->commit.empty()) return;
+  // Inspection never edits the document. Publish only its complete response;
+  // the floating view has no commit action or independent candidate identity.
+  _studyCandidates.Accept(response);
+  _cand->StudyUi().Present(response->action, response->capability);
+  _cand->UpdateUI(response->context, response->status);
+  if (accepted && response->capability)
+    _cand->StudyUi().ShowDefinition(response->action, index, pinned);
 }
 
 bool WeaselTSF::_StudyKey(WPARAM key, LPARAM info, BOOL* eaten) {
@@ -173,7 +212,45 @@ bool WeaselTSF::_StudyKey(WPARAM key, LPARAM info, BOOL* eaten) {
   const bool control = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
   const bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
   const bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
-  const bool commit = key == VK_RETURN && control && shift && !alt;
+  auto& ui = _cand->StudyUi();
+  if (!release) {
+    ui.ReloadPreferences();
+    // A standalone settings window may update the existing service session.
+    // Only this idempotent preference may retry a stale stamp, never a commit.
+    for (unsigned attempt = 0; attempt < 2; ++attempt) {
+      auto current = _studyCandidates.Response();
+      if (!current || !current->capability || current->action.learning == ui.Preferences().learning) break;
+      if (_StudyAction(study::Action::SetLearning, 0, ui.Preferences().learning)) break;
+    }
+  }
+  if (key == VK_ESCAPE && ui.DefinitionVisible()) {
+    *eaten = TRUE;
+    if (!release) ui.HideDefinition();
+    return true;
+  }
+  if (key == VK_F12 && control && shift && !alt) {
+    *eaten = TRUE;
+    if (!release && !_IsComposing()) {
+      com_ptr<WeaselTSF> keepAlive(this);
+      if (ui.ShowSettings(_GetFocusedContextWindow())) _Reconnect();
+    }
+    return true;
+  }
+  if (key == VK_F2 && !control && !shift && !alt) {
+    auto response = _studyCandidates.Response();
+    if (!response || !response->status.composing) return false;
+    *eaten = TRUE;
+    if (!release) {
+      if (ui.DefinitionVisible()) ui.HideDefinition();
+      else _StudyDetail(response->context.cinfo.highlighted, true);
+    }
+    return true;
+  }
+  ui.InputKey(key, release);
+  const bool alternate = ui.Preferences().shortcut == study::EnglishShortcut::AltEnter;
+  const bool defaultChord = key == VK_RETURN && control && shift && !alt;
+  if (alternate && defaultChord) { *eaten = TRUE; return true; } // suppress Lua's default chord
+  const bool commit = alternate ? key == VK_RETURN && alt && !control && !shift : defaultChord;
   const bool menu = key == VK_APPS || (key == VK_F10 && shift && !control && !alt);
   if (!commit && !menu) return false;
   auto response = _studyCandidates.Response();
@@ -183,7 +260,7 @@ bool WeaselTSF::_StudyKey(WPARAM key, LPARAM info, BOOL* eaten) {
   if (release) return true;
   const unsigned index = response->context.cinfo.highlighted;
   if (menu) {
-    POINT point{}; GetCursorPos(&point);
+    POINT point = ui.MenuPosition(index);
     _StudyMenu(index, _GetFocusedContextWindow(), point);
   } else {
     study::ActionRequest request;

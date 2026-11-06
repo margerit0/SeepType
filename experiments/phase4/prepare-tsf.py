@@ -5,6 +5,9 @@ def prepare(source, replace):
     replace(h, '  /* IPC */', '''  void _InvalidateStudy();
   bool _StudyAction(study::Action action, unsigned index, bool enabled = false);
   void _StudyMenu(unsigned index, HWND owner, POINT position);
+  void _StudyDetail(unsigned index, bool pinned);
+  bool _StudySetLearning(bool enabled);
+  bool _StudyPoll();
   bool _StudyKey(WPARAM key, LPARAM info, BOOL* eaten);
   void _QueueResponse(com_ptr<ITfContext> context,
                       std::shared_ptr<const study::WeaselResponse> response);
@@ -73,6 +76,21 @@ def prepare(source, replace):
     replace(k, '  _UpdateComposition(pContext);', '  if (!_studyKeyHandled) _UpdateComposition(pContext);', count=4)
     # UI callbacks read their response immediately instead of injecting VK_SELECT.
     ca = 'WeaselTSF/CandidateList.cpp'
+    replace('WeaselTSF/CandidateList.h', '#include <WeaselUI.h>', '#include <WeaselUI.h>\n#include <study/windows/CandidateUi.h>')
+    replace('WeaselTSF/CandidateList.h', '  weasel::UIStyle& style();', '  weasel::UIStyle& style();\n  study::CandidateUi& StudyUi() { return *_ui; }')
+    replace('WeaselTSF/CandidateList.h', 'std::unique_ptr<weasel::UI> _ui;', 'std::unique_ptr<study::CandidateUi> _ui;')
+    replace(ca, '_ui(make_unique<UI>())', '_ui(make_unique<study::CandidateUi>())')
+    replace(ca, '#include "CandidateList.h"', '#include "CandidateList.h"\n#include "Globals.h"')
+    replace(ca, '  _cRef = 1;', '  _cRef = 1;\n  _ui->accessibilityLifetime = [](bool acquire) { if (acquire) DllAddRef(); else DllRelease(); };')
+    replace(ca, '  _ui->ctx().cinfo.highlighted = nIndex;', '''  if (nIndex >= _ui->ctx().cinfo.candies.size()) return E_INVALIDARG;
+  size_t index = nIndex;
+  _tsf->HandleUICallback(nullptr, &index, nullptr, nullptr);''')
+    replace(ca, 'STDMETHODIMP CCandidateList::Finalize(void) {\n  Destroy();', '''STDMETHODIMP CCandidateList::Finalize(void) {
+  if (_ui->ctx().cinfo.empty()) return E_UNEXPECTED;
+  size_t index = _ui->ctx().cinfo.highlighted;
+  _tsf->HandleUICallback(&index, nullptr, nullptr, nullptr);''')
+    replace(ca, '  static auto str = SysAllocString(L"Candidate List");', '  auto str = SysAllocString(L"英语学习候选");')
+    replace(ca, 'static_cast<UINT>(str.size()) + 1', 'static_cast<UINT>(str.size())')
     data = source(ca)
     a = data.index('  // simulate a VK_SELECT')
     b = data.index('\n}', a)
@@ -85,7 +103,11 @@ def prepare(source, replace):
     replace(ca, 'void CCandidateList::StartUI() {', '''void CCandidateList::StartUI() {
   _ui->studyMenu = [this](unsigned index, HWND owner, POINT position) {
     _tsf->_StudyMenu(index, owner, position);
-  };''')
+  };
+  _ui->studyLearning = [this](bool enabled) { _tsf->_StudySetLearning(enabled); };
+  _ui->studyDetail = [this](unsigned index, bool pinned) { _tsf->_StudyDetail(index, pinned); };
+  _ui->studyPoll = [this]() { return _tsf->_StudyPoll(); };
+  _ui->ReloadPreferences();''')
     t = 'WeaselTSF/WeaselTSF.cpp'
     # Unregistered host calls ITfKeyEventSink directly; Windows refuses global
     # keystroke sink ownership for a TIP absent from the installed profiles.
@@ -110,6 +132,24 @@ def prepare(source, replace):
     replace(t, '  _AbortComposition();\n  return S_OK;', '  m_client.FocusOut();\n  _AbortComposition();\n  return S_OK;')
     replace(t, '    weasel::ResponseParser parser(NULL, NULL, &_status, NULL, &_cand->style());\n    bool ok = m_client.GetResponseData(std::ref(parser));\n    if (ok)\n      _UpdateLanguageBar(_status);', '    auto response = study::ReadResponse(m_client, _cand->style());\n    if (response) _QueueResponse(_pTextEditSinkContext, response);\n    else _InvalidateStudy();')
     replace(t, 'void WeaselTSF::_Reconnect() {', 'void WeaselTSF::_Reconnect() {\n  ++_studyEpoch;\n  _InvalidateStudy();')
+    replace(t, '''  weasel::ResponseParser parser(NULL, NULL, &_status, NULL, &_cand->style());
+  bool ok = m_client.GetResponseData(std::ref(parser));
+  if (ok) {
+    _UpdateLanguageBar(_status);
+  }''', '''  _cand->StudyUi().ReloadPreferences();
+  auto response = study::ReadResponse(m_client, _cand->style());
+  if (response && response->capability &&
+      response->action.learning != _cand->StudyUi().Preferences().learning) {
+    study::ActionRequest setting{study::Action::SetLearning, response->action.stamp, 0,
+        _cand->StudyUi().Preferences().learning};
+    m_client.StudyAction(setting);
+    response = study::ReadResponse(m_client, _cand->style());
+  }
+  if (response) {
+    _status = response->status; _cand->style() = response->style;
+    _studyCandidates.Accept(response);
+    _UpdateLanguageBar(_status);
+  }''')
     # No detached thread touching a COM apartment or launching an installed service.
     data = source(t)
     a = data.index('static unsigned int retry = 0;')
@@ -128,43 +168,6 @@ def prepare(source, replace):
     replace(f, 'STDAPI WeaselTSF::OnPopContext(ITfContext* pContext) {', '''STDAPI WeaselTSF::OnPopContext(ITfContext* pContext) {
   ++_studyEpoch;
   _InvalidateStudy();''')
-    # Right-click uses the actual candidate hit rectangles; ordinary left click
-    # and both lines still use the unchanged Chinese selection callback.
-    u = 'include/WeaselUI.h'
-    replace(u, '  // 创建输入法界面', '  std::function<void(unsigned, HWND, POINT)> studyMenu;\n\n  // 创建输入法界面')
-    p = 'WeaselUI/WeaselPanel.h'
-    replace(p, '  MESSAGE_HANDLER(WM_CREATE, OnCreate)', '  MESSAGE_HANDLER(WM_CONTEXTMENU, OnStudyMenu)\n  MESSAGE_HANDLER(WM_CREATE, OnCreate)')
-    replace(p, '  LRESULT OnCreate(', '  LRESULT OnStudyMenu(UINT, WPARAM, LPARAM, BOOL&);\n  LRESULT OnCreate(')
-    p = 'WeaselUI/WeaselPanel.cpp'
-    # Access the UI callback through the UI reference retained in the panel.
-    replace('WeaselUI/WeaselPanel.h', '  weasel::Context& m_ctx;', '  weasel::UI& m_studyUI;\n  weasel::Context& m_ctx;')
-    replace(p, '      m_ctx(ui.ctx()),', '      m_studyUI(ui), m_ctx(ui.ctx()),')
-    data = source(p)
-    source_text = '''
-LRESULT WeaselPanel::OnStudyMenu(UINT, WPARAM, LPARAM lParam, BOOL&) {
-  if (!m_layout || !m_studyUI.studyMenu) return 0;
-  POINT screen{GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)};
-  unsigned index = static_cast<unsigned>(m_ctx.cinfo.highlighted);
-  if (screen.x == -1 && screen.y == -1) {
-    RECT rc{}; GetWindowRect(&rc); screen = {rc.left, rc.bottom};
-  } else {
-    POINT local = screen; ScreenToClient(&local);
-    bool found = false;
-    for (unsigned i = 0; i < m_ctx.cinfo.candies.size() && i < MAX_CANDIDATES_COUNT; ++i) {
-      auto rect = m_layout->GetCandidateRect(i);
-      if (m_istorepos) rect.OffsetRect(0, m_offsetys[i]);
-      rect.InflateRect(DPI_SCALE(m_style.hilite_padding_x), DPI_SCALE(m_style.hilite_padding_y));
-      if (rect.PtInRect(local)) { index = i; found = true; break; }
-    }
-    if (!found) return 0;
-  }
-  auto callback = m_studyUI.studyMenu;
-  callback(index, m_hWnd, screen);
-  return 0;
-}
-'''
-    replace(p, data, data + source_text)
-
     server = 'WeaselTSF/Server.cpp'
     for name in ['DllRegisterServer', 'DllUnregisterServer']:
         data = source(server)

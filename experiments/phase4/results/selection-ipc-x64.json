@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-06T23:59:53+08:00",
+  "scope": "x64 production Weasel client and parser against the isolated x64 Rime service; ordinary selection response, pending commit protection and learning page preservation.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "ordinary selection returns Chinese commit and capability in the same response",
+      "passed": true
+    },
+    {
+      "name": "next key does not replay the selected Chinese commit",
+      "passed": true
+    },
+    {
+      "name": "rejected inspection leaves a pending Chinese commit untouched",
+      "passed": true
+    },
+    {
+      "name": "rejected ordinary selection does not consume the pending commit",
+      "passed": true
+    },
+    {
+      "name": "pending Chinese remains available to the next normal response",
+      "passed": true
+    },
+    {
+      "name": "learning toggle preserves Rime page selection input and commit ownership",
+      "passed": true
+    },
+    {
+      "name": "disabled learning is also enforced by authoritative Lua inspection",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "binaries": {
+    "experiments\\phase4\\build\\selection_test_x64.exe": "9a55aa3fca526e9e909c8982e8aad6fbe9ddb261c545bb7fb1fdee863625fd3d",
+    "experiments\\phase4\\build\\study_service_x64.exe": "9377d32f96a4743ef6844729ec0c16f083960448633cdf040d720ee9a83c2164",
+    ".cache\\rime-1.13.1\\dist\\lib\\rime.dll": "2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b"
+  },
+  "sources": {
+    "experiments\\phase4\\selection_test.cpp": "8529db4af35bba2688f60060814f8be4042328b5c721b92fe410e0c8aa984dba",
+    "experiments\\phase4\\verify-selection.py": "1aff15732233a1a9459522b12a565f73e150f0de49f890f87d8c6196643309b7",
+    "experiments\\phase4\\prepare-weasel.py": "871e5e3f43b12a38b430d4ae444170cb582d536bfa2b717f61619acbcb5694c9",
+    "experiments\\phase4\\patches\\weasel-study-ipc.patch": "5e9bcc5360a53120eabd6ab4644e345d2a125199d98ffe3b73980e12250427ef",
+    "experiments\\phase4\\service_rime.cpp": "4b2a33ce495e7e2359a3a2ceac962374e4a955ca38a449e0912ee2e35c179346",
+    "experiments\\phase4\\build-service.py": "7fe25542455c4982c5b9b28d55ff294d2df0b8e465c380de33cd05d10d5895ca",
+    "src\\study\\RimeSession.cpp": "263ba090c56b22bdba229bdc03c9455d802d8c6b1f2acbe64949f445af8d8ad9",
+    "src\\study\\RimeSession.h": "ffc36aa00476223f59e995807b74084d25460ce3ec1f6ea8d8aa4a220ae7b482",
+    "src\\study\\StudyService.cpp": "9c7ec3269096716f13c121e8f1bc404a1f85c0a5ec10123d774bd046256735c6"
+  },
+  "limits": [
+    "No desktop input, TSF activation, registration or installed-application compatibility observations"
+  ]
+}

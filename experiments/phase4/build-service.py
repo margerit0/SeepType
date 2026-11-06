@@ -1,13 +1,17 @@
 """Build only the new isolated IPC path with the installed VS2019 toolchain."""
 from pathlib import Path
 import json
+import os
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 TSF = "--tsf" in sys.argv
-BUILD = HERE / ("build/tsf-x64" if TSF else "build/service")
+SERVICE_X64 = "--service-x64" in sys.argv
+if TSF and SERVICE_X64:
+    raise SystemExit("Choose either the TSF DLL or the x64 service build")
+BUILD = HERE / ("build/tsf-x64" if TSF else "build/service-x64" if SERVICE_X64 else "build/service")
 UPSTREAM = ROOT / ".cache/src/weasel"
 OVERLAY = ROOT / ".cache/study-weasel"
 BOOST = ROOT / ".cache/src/boost_1_84_0"
@@ -17,9 +21,15 @@ BUILD.mkdir(parents=True, exist_ok=True)
 def run(args, name):
     print(name, flush=True)
     with (BUILD / f"{name}.log").open("w", encoding="utf-8") as output:
-        result = subprocess.run([str(arg) for arg in args], cwd=ROOT, stdout=output, stderr=subprocess.STDOUT)
+        result = subprocess.run([str(arg) for arg in args], cwd=ROOT, stdout=output, stderr=subprocess.STDOUT,
+                                env={**os.environ, "VSLANG": "1033"})
     if result.returncode:
-        print((BUILD / f"{name}.log").read_text(encoding="utf-8", errors="replace")[-12000:])
+        raw = (BUILD / f"{name}.log").read_bytes()
+        try:
+            detail = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            detail = raw.decode("gb18030", errors="replace")
+        print(detail[-12000:])
         raise SystemExit(result.returncode)
 
 
@@ -27,6 +37,8 @@ run([sys.executable, HERE / "prepare-weasel.py"], "prepare-weasel")
 run([sys.executable, HERE / "prepare-service-deps.py"], "prepare-deps")
 common = ["/nologo", "/std:c++17", "/EHsc", "/O2", "/MT", "/utf-8", "/DBOOST_ALL_NO_LIB", "/DBOOST_THREAD_USE_LIB", "/DUNICODE", "/D_UNICODE"]
 boostlib = BUILD / "boost_study.lib"
+if SERVICE_X64 and (HERE / 'build/tsf-x64/boost_study.lib').exists():
+    boostlib = HERE / 'build/tsf-x64/boost_study.lib'
 if not boostlib.exists():
     boost_objects = []
     groups = {
@@ -80,7 +92,7 @@ for path in UPSTREAM.glob("WeaselUI/*.cpp"):
     if path.name == "stdafx.cpp": continue
     overlay = OVERLAY / "WeaselUI" / path.name
     ui_objects.append(compile_source(overlay if TSF and overlay.exists() else path, "ui"))
-libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "advapi32.lib", "shell32.lib", "imm32.lib"]
+libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "oleacc.lib", "advapi32.lib", "shell32.lib", "imm32.lib"]
 
 
 def link(name, sources, objects):
@@ -96,7 +108,7 @@ if TSF:
         if path.name == "stdafx.cpp": continue
         overlay = OVERLAY / "WeaselTSF" / path.name
         tsf_objects.append(compile_source(overlay if overlay.exists() else path, "tsf"))
-    for name in ["WeaselResponse", "EnglishMenu"]:
+    for name in ["WeaselResponse", "EnglishMenu", "UiPreferences", "StudyMotion", "StudyLayout", "CandidateUi", "CandidateAccessibility"]:
         tsf_objects.append(compile_source(ROOT / "src/study/windows" / (name + ".cpp"), "study"))
     resource = BUILD / "WeaselTSF.res"
     run(["rc", "/nologo", "/c65001", "/d", "WIN64", "/i", UPSTREAM / "include", "/i", UPSTREAM / "WeaselTSF",
@@ -109,12 +121,20 @@ if TSF:
     if (HERE / "frontend_test.cpp").exists():
         link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
+    if (HERE / "selection_test.cpp").exists():
+        link("selection_test_x64", ["selection_test.cpp"], ipc_objects +
+             [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
     libraries += ["uuid.lib", "oleaut32.lib"]
     link("tsf_text_host_x64", ["tsf_text_host.cpp"], ipc_objects +
-         [o for o in study_objects if o.stem == "StudyProtocol"])
+         [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "UiPreferences"]])
+    if (HERE / "native_ui_test.cpp").exists():
+        link("native_ui_test_x64", ["native_ui_test.cpp"], ui_objects +
+             [o for o in tsf_objects if o.stem in ["UiPreferences", "StudyMotion", "StudyLayout", "CandidateUi", "CandidateAccessibility", "EnglishMenu"]])
+    if (HERE / "settings_main.cpp").exists():
+        link("study_settings_x64", ["settings_main.cpp"], [o for o in tsf_objects if o.stem == "UiPreferences"])
 else:
-    link("study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
+    link("study_service_x64" if SERVICE_X64 else "study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
     if (HERE / "service_client_test.cpp").exists():
-        link("service_client_test", ["service_client_test.cpp"], ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
-    link("dispatch_test", ["dispatch_test.cpp"], [obj for obj in server_objects if obj.stem != "RimeWithWeasel"] + ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
+        link("service_client_test_x64" if SERVICE_X64 else "service_client_test", ["service_client_test.cpp"], ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
+    link("dispatch_test_x64" if SERVICE_X64 else "dispatch_test", ["dispatch_test.cpp"], [obj for obj in server_objects if obj.stem != "RimeWithWeasel"] + ipc_objects + [obj for obj in study_objects if obj.stem == "StudyProtocol"])
     print("New Weasel IPC build complete; no installer or registered input method was run.")

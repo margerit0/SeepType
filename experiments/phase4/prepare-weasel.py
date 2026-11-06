@@ -50,6 +50,7 @@ replace(ipc, "  virtual void FocusIn(DWORD param, DWORD session_id) {}", '''  vi
   }
   virtual void FocusIn(DWORD param, DWORD session_id) {}''')
 replace(ipc, "  bool ChangePage(bool backward);", "  bool ChangePage(bool backward);\n  bool StudyAction(const study::ActionRequest& request);")
+replace(ipc, "  virtual void SelectCandidateOnCurrentPage(size_t index, DWORD session_id) {}", "  virtual bool SelectCandidateOnCurrentPage(size_t index, DWORD session_id, EatLine eat) { return false; }")
 replace(ipc, "inline std::wstring GetPipeName() {", '''inline std::wstring GetPipeName() {
 #ifdef WEASEL_STUDY_ISOLATED
   wchar_t name[96]{};
@@ -89,14 +90,31 @@ replace(rh, "  virtual void FocusIn(DWORD param, WeaselSessionId ipc_id);", ''' 
   virtual void FocusIn(DWORD param, WeaselSessionId ipc_id);''')
 replace(rh, "  bool _Respond(WeaselSessionId ipc_id, EatLine eat);", "  bool _Respond(WeaselSessionId ipc_id, EatLine eat, bool consume_commit = true);")
 replace(rh, "  SessionStatusMap m_session_status_map;", "  SessionStatusMap m_session_status_map;\n  study::StudyService m_study;")
+replace(rh, "  virtual void SelectCandidateOnCurrentPage(size_t index,\n                                            WeaselSessionId ipc_id);", "  virtual bool SelectCandidateOnCurrentPage(size_t index,\n                                            WeaselSessionId ipc_id, EatLine eat);")
 
 rime = "RimeWithWeasel/RimeWithWeasel.cpp"
 replace(rime, "void RimeWithWeaselHandler::Finalize() {", "void RimeWithWeaselHandler::Finalize() {\n  m_study.Clear();")
 replace(rime, "  m_ui->style() = session_status.style;\n  // show session's", "  m_study.Attach(ipc_id, rime_api, session_id);\n  m_ui->style() = session_status.style;\n  // show session's")
 replace(rime, "DWORD RimeWithWeaselHandler::RemoveSession(WeaselSessionId ipc_id) {", "DWORD RimeWithWeaselHandler::RemoveSession(WeaselSessionId ipc_id) {\n  m_study.Remove(ipc_id);")
 replace(rime, "  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,", "  m_study.Activate(ipc_id);\n  m_study.Invalidate(ipc_id);\n  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,")
-for call in ["commit_composition(to_session_id(ipc_id))", "clear_composition(to_session_id(ipc_id))", "select_candidate_on_current_page(to_session_id(ipc_id), index)"]:
+for call in ["commit_composition(to_session_id(ipc_id))", "clear_composition(to_session_id(ipc_id))"]:
     replace(rime, f"  rime_api->{call};", f"  m_study.Invalidate(ipc_id);\n  rime_api->{call};")
+data = source(rime)
+begin = data.index("void RimeWithWeaselHandler::SelectCandidateOnCurrentPage(")
+end = data.index("bool RimeWithWeaselHandler::HighlightCandidateOnCurrentPage(", begin)
+replace(rime, data[begin:end], '''bool RimeWithWeaselHandler::SelectCandidateOnCurrentPage(
+    size_t index, WeaselSessionId ipc_id, EatLine eat) {
+  if (m_disabled || !eat || !m_session_status_map.count(ipc_id)) return false;
+  m_study.Invalidate(ipc_id);
+  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);
+  // Deliver this ordinary Chinese commit in the selecting response itself.
+  // Rejected selection must not drain a pending commit owned by the application.
+  _Respond(ipc_id, eat, selected);
+  _UpdateUI(ipc_id);
+  return selected;
+}
+
+''')
 replace(rime, "  bool res = rime_api->highlight_candidate_on_current_page(", "  m_study.Invalidate(ipc_id);\n  bool res = rime_api->highlight_candidate_on_current_page(")
 replace(rime, "  bool res = rime_api->change_page(to_session_id(ipc_id), backward);", "  m_study.Invalidate(ipc_id);\n  bool res = rime_api->change_page(to_session_id(ipc_id), backward);")
 replace(rime, "void RimeWithWeaselHandler::FocusIn(DWORD client_caps, WeaselSessionId ipc_id) {", '''bool RimeWithWeaselHandler::StudyAction(const wchar_t* wire,
@@ -187,6 +205,17 @@ replace(sh, "  void _Finailize();", "  void _Finailize();\n  LRESULT OnDispatch(
 replace(sh, "  std::unique_ptr<PipeServer> channel;", "  std::unique_ptr<PipeServer> channel;\n  PipeServer* requestChannel = nullptr;  // window thread only\n  study::WindowDispatcher dispatcher;")
 replace(sh, "  std::unique_ptr<boost::thread> pipeThread;", "")
 server = "WeaselIPCServer/WeaselServerImpl.cpp"
+data = source(server)
+begin = data.index("DWORD ServerImpl::OnSelectCandidateOnCurrentPage(")
+end = data.index("DWORD ServerImpl::OnHighlightCandidateOnCurrentPage(", begin)
+replace(server, data[begin:end], '''DWORD ServerImpl::OnSelectCandidateOnCurrentPage(WEASEL_IPC_COMMAND,
+    DWORD index, DWORD session) {
+  if (!m_pRequestHandler || !requestChannel) return 0;
+  return m_pRequestHandler->SelectCandidateOnCurrentPage(index, session,
+      [this](std::wstring& message) { *requestChannel << message; return true; });
+}
+
+''')
 replace(server, "#include <mutex>", "#include <atomic>\n#include <thread>\n#include <vector>")
 data = source(server)
 begin = data.index("class PipeServer :")

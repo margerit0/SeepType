@@ -13,6 +13,7 @@ struct RimeSession::Impl {
     std::string input;
     std::size_t caret = 0;
     int page = 0;
+    int pageSize = 0;
     int highlighted = -1;
     std::vector<std::string> candidates;
   };
@@ -49,6 +50,7 @@ struct RimeSession::Impl {
     RIME_STRUCT(RimeContext, context);
     if (api->get_context(session, &context)) {
       result.page = context.menu.page_no;
+      result.pageSize = context.menu.page_size;
       result.highlighted = context.menu.highlighted_candidate_index;
       for (int i = 0; i < context.menu.num_candidates; ++i) {
         const char* text = context.menu.candidates[i].text;
@@ -73,10 +75,30 @@ void RimeSession::Invalidate() { impl_->version.Invalidate(); }
 bool RimeSession::Learning() const {
   return impl_->Ready() && impl_->api->get_option(impl_->session, "learning_mode");
 }
-void RimeSession::SetLearning(bool enabled) {
+bool RimeSession::SetLearning(bool enabled) {
   Invalidate();
-  if (impl_->Ready())
-    impl_->api->set_option(impl_->session, "learning_mode", enabled);
+  auto& s = *impl_;
+  if (!s.Ready()) return false;
+  const bool previous = Learning();
+  if (previous == enabled) return true;
+  const auto before = s.Read();
+  const bool hasCandidate = !before.candidates.empty() && before.highlighted >= 0 &&
+      before.highlighted < static_cast<int>(before.candidates.size());
+  if (hasCandidate && (before.pageSize <= 0 || !RIME_API_AVAILABLE(s.api, highlight_candidate))) return false;
+  const auto absolute = hasCandidate ? static_cast<size_t>(before.page) * before.pageSize + before.highlighted : 0;
+  s.api->set_option(s.session, "learning_mode", enabled);
+  // Rime refreshes the menu when a filter option changes. Restore its absolute
+  // selection without committing, changing input, or walking pages with keys.
+  if (hasCandidate) s.api->highlight_candidate(s.session, absolute);
+  const auto after = s.Read();
+  const bool preserved = after.input == before.input && after.caret == before.caret &&
+      (!hasCandidate || (after.page == before.page && after.highlighted == before.highlighted &&
+        after.highlighted < static_cast<int>(after.candidates.size()) &&
+        after.candidates[after.highlighted] == before.candidates[before.highlighted]));
+  if (preserved && Learning() == enabled) return true;
+  s.api->set_option(s.session, "learning_mode", previous);
+  if (hasCandidate) s.api->highlight_candidate(s.session, absolute);
+  return false;
 }
 
 EnglishTarget RimeSession::Inspect(std::size_t index) {

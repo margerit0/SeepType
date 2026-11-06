@@ -95,11 +95,12 @@ bool StudyService::Apply(std::uint32_t ipc, const ActionRequest& request) {
           target.Available() ? "stale-candidate" : target.reason;
       return committed;
     }
-    case Action::SetLearning:
+    case Action::SetLearning: {
       session.target.reset();
-      session.rime->SetLearning(request.enabled);
-      session.reason = "learning-changed";
-      return true;
+      const bool changed = session.rime->SetLearning(request.enabled);
+      session.reason = changed ? "learning-changed" : "unavailable";
+      return changed;
+    }
   }
   return false;
 }
