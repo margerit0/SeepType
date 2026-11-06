@@ -1,0 +1,3814 @@
+{
+  "schema_version": 1,
+  "id": "study-daily-200",
+  "version": "0.1.0",
+  "expected_entries": 200,
+  "source_id": "cc-cedict-20261106",
+  "prepared_by": "Codex; suggested senses and wording, not human approval",
+  "entries": [
+    {
+      "id": "daily-001",
+      "chinese": "你好",
+      "category": "问候与交流",
+      "display_english": "hello",
+      "commit_english": "hello",
+      "source_entry_sha256": "4e831a006f6cc344de5ff01c9ca7b32009bd07ee40ab789cc0f86c3a98943a98",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-002",
+      "chinese": "谢谢",
+      "category": "问候与交流",
+      "display_english": "thank you",
+      "commit_english": "thank you",
+      "source_entry_sha256": "2b0348a3a5ea48c613e2ff8bdf767784b828920f9b3be50b3b8c760ea356c01e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-003",
+      "chinese": "再见",
+      "category": "问候与交流",
+      "display_english": "goodbye",
+      "commit_english": "goodbye",
+      "source_entry_sha256": "34b535be11456a26ccc4b613625288078ec6ba1beb756cafa9e8093f7f84bd7e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-004",
+      "chinese": "对不起",
+      "category": "问候与交流",
+      "display_english": "sorry",
+      "commit_english": "sorry",
+      "source_entry_sha256": "8afb123080d627b3e4c8a89b107d9b7311d92e2881d5fda17ae2924bfc24ddfe",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用道歉义，缩写为 sorry；未覆盖“辜负”。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-005",
+      "chinese": "不客气",
+      "category": "问候与交流",
+      "display_english": "you're welcome",
+      "commit_english": "you're welcome",
+      "source_entry_sha256": "cd706a6a87b86980bf12305ed1c89cf47081c0906481bd7e0186db2f484b047e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用回答感谢的礼貌用语；未覆盖“不礼貌、直率”。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-006",
+      "chinese": "没关系",
+      "category": "问候与交流",
+      "display_english": "it doesn't matter",
+      "commit_english": "it doesn't matter",
+      "source_entry_sha256": "2df984d144a53b80f191a919207542513b1311178181a38ebdc068fcde3ff882",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-007",
+      "chinese": "请问",
+      "category": "问候与交流",
+      "display_english": "excuse me",
+      "commit_english": "excuse me",
+      "source_entry_sha256": "e99cf4f2dea402f3a70624c415841c26995d3908ce153ddfdb0e2ac0b2a6c007",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "从礼貌问句提取开场语 excuse me，移除原词条的省略号。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-008",
+      "chinese": "欢迎",
+      "category": "问候与交流",
+      "display_english": "welcome",
+      "commit_english": "welcome",
+      "source_entry_sha256": "0f2f4207d7883d792a666de2631848a247ef9f6b5b45146f977d088b69db529c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-009",
+      "chinese": "早安",
+      "category": "问候与交流",
+      "display_english": "good morning",
+      "commit_english": "good morning",
+      "source_entry_sha256": "f17c96673c24d6a076971978b7650bca58122bb51b410494c3ee4d49b951a967",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-010",
+      "chinese": "晚安",
+      "category": "问候与交流",
+      "display_english": "good night",
+      "commit_english": "good night",
+      "source_entry_sha256": "bf98e324572f91e14a15acda4872ba27a42abf92d6524d2af4fae254afdf82da",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用睡前道别 good night。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-011",
+      "chinese": "祝贺",
+      "category": "问候与交流",
+      "display_english": "congratulate",
+      "commit_english": "congratulate",
+      "source_entry_sha256": "4ab4bd5c6814f818040c4ec411384bf253536296e61f170ee1432032a5da307b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-012",
+      "chinese": "帮助",
+      "category": "问候与交流",
+      "display_english": "help",
+      "commit_english": "help",
+      "source_entry_sha256": "6deb83d711ce015e574bbc213b20a20774b33fff7a881a83251fd240a24596b8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-013",
+      "chinese": "同意",
+      "category": "问候与交流",
+      "display_english": "agree",
+      "commit_english": "agree",
+      "source_entry_sha256": "1d802e7ed4f86d8e1c8954851fac528134449c3df78bbb80094c54717c1ac982",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-014",
+      "chinese": "拒绝",
+      "category": "问候与交流",
+      "display_english": "refuse",
+      "commit_english": "refuse",
+      "source_entry_sha256": "343e13bef554fc3376cd0a1b9d9f7ffced8149a10763243b4edb54d2fa078f5b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-015",
+      "chinese": "邀请",
+      "category": "问候与交流",
+      "display_english": "invite",
+      "commit_english": "invite",
+      "source_entry_sha256": "134f38b0f36a30703dd79cad189a8478ea06b7cd7bae65d8da2e00a6f5c24d43",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-016",
+      "chinese": "回答",
+      "category": "问候与交流",
+      "display_english": "answer",
+      "commit_english": "answer",
+      "source_entry_sha256": "c49dccc4f09d6f5089e4cf771f2f62ab7debabc0db26c43b8487a47e11424003",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-017",
+      "chinese": "问题",
+      "category": "问候与交流",
+      "display_english": "question",
+      "commit_english": "question",
+      "source_entry_sha256": "b09dd7efe4ccdc42717145b978b6c321db9055d413a582bf2dde7f10e87a9f16",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用提问义 question；未覆盖 problem、issue。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-018",
+      "chinese": "建议",
+      "category": "问候与交流",
+      "display_english": "suggestion",
+      "commit_english": "suggestion",
+      "source_entry_sha256": "0332e7f92e295823f645ba40550f04d9d2f7506da283104d723280737b981223",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用名词 suggestion，未自动推断句中词性。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-019",
+      "chinese": "介绍",
+      "category": "问候与交流",
+      "display_english": "introduce",
+      "commit_english": "introduce",
+      "source_entry_sha256": "1d3858adada1e974d01e613830bcda74bc7bb52dc260545ab8d174ab3ffc1584",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用介绍人物的动词原形 introduce，移除参数注释。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-020",
+      "chinese": "解释",
+      "category": "问候与交流",
+      "display_english": "explain",
+      "commit_english": "explain",
+      "source_entry_sha256": "28e7e930915480e7f57082a60869272e905520238b8484e5b6477c7398837336",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-021",
+      "chinese": "今天",
+      "category": "日期与时间",
+      "display_english": "today",
+      "commit_english": "today",
+      "source_entry_sha256": "24101b60ca163c1bf34eec5e1a65c81bf89ab8b56e3106fa3eb05f60b741e0a9",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-022",
+      "chinese": "明天",
+      "category": "日期与时间",
+      "display_english": "tomorrow",
+      "commit_english": "tomorrow",
+      "source_entry_sha256": "b1370f78488d23f9105ec7d844d6883fbe65c4ec4bc8bf209a24af578d24a131",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-023",
+      "chinese": "昨天",
+      "category": "日期与时间",
+      "display_english": "yesterday",
+      "commit_english": "yesterday",
+      "source_entry_sha256": "af108d7dd0a855cc1f09f096bc5eccaa0ca5b9f9cdc2e77b095a8ac1fcb5f5ea",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-024",
+      "chinese": "现在",
+      "category": "日期与时间",
+      "display_english": "now",
+      "commit_english": "now",
+      "source_entry_sha256": "ab90a29e4acf8a466d75bb8f70bd123f087af81760f95191c1a35ece85741d06",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-025",
+      "chinese": "早晨",
+      "category": "日期与时间",
+      "display_english": "early morning",
+      "commit_english": "early morning",
+      "source_entry_sha256": "d54a32cae2ab4d770c3e962b389b1aac2c7922b3ae3414f043796d3afdbde128",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-026",
+      "chinese": "上午",
+      "category": "日期与时间",
+      "display_english": "morning",
+      "commit_english": "morning",
+      "source_entry_sha256": "c6eff3d6e3f74794d35816039ec564b278595f80803bdaa43dc3916424afae65",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-027",
+      "chinese": "下午",
+      "category": "日期与时间",
+      "display_english": "afternoon",
+      "commit_english": "afternoon",
+      "source_entry_sha256": "610ccd5e8822e38ba69155695af5f07b0e169574eb57d13a914e48bd3ef6741f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-028",
+      "chinese": "晚上",
+      "category": "日期与时间",
+      "display_english": "evening",
+      "commit_english": "evening",
+      "source_entry_sha256": "6224543e75b2fbbe690e8f6070d08d7b2e463ee451519f015261e7c2c3580c05",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-029",
+      "chinese": "中午",
+      "category": "日期与时间",
+      "display_english": "noon",
+      "commit_english": "noon",
+      "source_entry_sha256": "87abf3efe333d580b4fc6dd00df6d5789a06f7c408529facb248b053c9448e1a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-030",
+      "chinese": "时间",
+      "category": "日期与时间",
+      "display_english": "time",
+      "commit_english": "time",
+      "source_entry_sha256": "33f019c0eb18553f3667fe25ce20e688406050706a7352e3a1630f6dbe8f59a1",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-031",
+      "chinese": "小时",
+      "category": "日期与时间",
+      "display_english": "hour",
+      "commit_english": "hour",
+      "source_entry_sha256": "d9c3c673f5210fa598ba987b8249ac6e6ff05de052ab007323ef2723025b13e2",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-032",
+      "chinese": "分钟",
+      "category": "日期与时间",
+      "display_english": "minute",
+      "commit_english": "minute",
+      "source_entry_sha256": "8df382fc7bbd540c06fb103e69a0fb742a388caab9e168cab6659902546fa737",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-033",
+      "chinese": "星期",
+      "category": "日期与时间",
+      "display_english": "week",
+      "commit_english": "week",
+      "source_entry_sha256": "cff8fd14d13699c41bd0f7e3a1b262eda307af31a98e5a350b5541915e867a6f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用周期单位 week；未覆盖星期几或星期日。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-034",
+      "chinese": "周末",
+      "category": "日期与时间",
+      "display_english": "weekend",
+      "commit_english": "weekend",
+      "source_entry_sha256": "60dd61a2a8259af01ab4b470895024a108bd826af54a8b786a53eb1a865b27a7",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-035",
+      "chinese": "月份",
+      "category": "日期与时间",
+      "display_english": "month",
+      "commit_english": "month",
+      "source_entry_sha256": "1db984cfcb2e2c94b59db9784a83c4862061c4c72acfc6b820fae098b16ce650",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-036",
+      "chinese": "今年",
+      "category": "日期与时间",
+      "display_english": "this year",
+      "commit_english": "this year",
+      "source_entry_sha256": "50baee9f79153f8fb9c4c2b53406bf70ad8e79d66e17548859e1136b71b284b3",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-037",
+      "chinese": "明年",
+      "category": "日期与时间",
+      "display_english": "next year",
+      "commit_english": "next year",
+      "source_entry_sha256": "3df3a6a492a2294fbc32af9d3a3f8601c0ab2d2aa2c5807ab58e4b0b93c4bcbf",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-038",
+      "chinese": "去年",
+      "category": "日期与时间",
+      "display_english": "last year",
+      "commit_english": "last year",
+      "source_entry_sha256": "5a576d6aefd560ab4ecd54f8a52d25a60a379419241ec82c44eaf217bb19216f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-039",
+      "chinese": "生日",
+      "category": "日期与时间",
+      "display_english": "birthday",
+      "commit_english": "birthday",
+      "source_entry_sha256": "c9cf629bb89657bb8baf27f6e48c77848a1f30b12726da6d6f459f438fb9e8ce",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-040",
+      "chinese": "假期",
+      "category": "日期与时间",
+      "display_english": "vacation",
+      "commit_english": "vacation",
+      "source_entry_sha256": "28ba66461cf9ca6796393344c07153bc8f40d53c59b817169a510990252bdaf8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-041",
+      "chinese": "爸爸",
+      "category": "家庭与关系",
+      "display_english": "dad",
+      "commit_english": "dad",
+      "source_entry_sha256": "2be577106260c59f4a8aa77767685ab38913996cd1482cebfa8c7c4428ebff49",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-042",
+      "chinese": "妈妈",
+      "category": "家庭与关系",
+      "display_english": "mom",
+      "commit_english": "mom",
+      "source_entry_sha256": "862e5d28d7b854c5a57da8c744e44119523b74f992094e80c5efcef14311c21c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将口语母亲称呼整理为常用美式 mom。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-043",
+      "chinese": "父亲",
+      "category": "家庭与关系",
+      "display_english": "father",
+      "commit_english": "father",
+      "source_entry_sha256": "8e3d60f882bbab6c07d129e531e279b6320e5d6771d76557aeeb1460c0c00e3b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-044",
+      "chinese": "母亲",
+      "category": "家庭与关系",
+      "display_english": "mother",
+      "commit_english": "mother",
+      "source_entry_sha256": "dd84d8f3eea1f40726395c81de4ba0b504932b5d4c55f4fb14e38db880a1d1eb",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-045",
+      "chinese": "哥哥",
+      "category": "家庭与关系",
+      "display_english": "older brother",
+      "commit_english": "older brother",
+      "source_entry_sha256": "955526755469fec458e8f3f20a226fa3b185b6e1cc02584e36a8fbf8c52c75f5",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-046",
+      "chinese": "姐姐",
+      "category": "家庭与关系",
+      "display_english": "older sister",
+      "commit_english": "older sister",
+      "source_entry_sha256": "c39bfead7368a7f6450615ba3ea000e0175bbf057382ea874ded142145b36044",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-047",
+      "chinese": "弟弟",
+      "category": "家庭与关系",
+      "display_english": "younger brother",
+      "commit_english": "younger brother",
+      "source_entry_sha256": "ebd15d321ef401bb9090bac692f68b63a0c21ffb70ca6a65d918fd81f1e265c4",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-048",
+      "chinese": "妹妹",
+      "category": "家庭与关系",
+      "display_english": "younger sister",
+      "commit_english": "younger sister",
+      "source_entry_sha256": "259769274bcc96c78625f1cc2fa3d044ccf59a513a1a6db0944ea27ba76f4864",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-049",
+      "chinese": "儿子",
+      "category": "家庭与关系",
+      "display_english": "son",
+      "commit_english": "son",
+      "source_entry_sha256": "35255fdfa5454e27c7b1264ed3ae27bcd26516a73b6d8b69d94bf3bf07bec409",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-050",
+      "chinese": "女儿",
+      "category": "家庭与关系",
+      "display_english": "daughter",
+      "commit_english": "daughter",
+      "source_entry_sha256": "9563b39b4eed01cfc74b18d028392c4767a07fd2cbaf231cc7da9a56971680df",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-051",
+      "chinese": "丈夫",
+      "category": "家庭与关系",
+      "display_english": "husband",
+      "commit_english": "husband",
+      "source_entry_sha256": "6d2758cae1aa8e521a7d7f9eab53103f7dbdabbedaf88e51a6540e6b148b1773",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-052",
+      "chinese": "妻子",
+      "category": "家庭与关系",
+      "display_english": "wife",
+      "commit_english": "wife",
+      "source_entry_sha256": "88a137e7dd05e0ddf4c016ad666b704695d852870097265cde7026fe984f60da",
+      "alternative_source_entries": [
+        "90d73f04f559d42839d8f4d7bb6419012fe6fca3fbb1ee0386ef558d09ed125f"
+      ],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用现代常用读音 qi1 zi5 的 wife；不采用 qi1 zi3 的古义“妻儿”。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-053",
+      "chinese": "家庭",
+      "category": "家庭与关系",
+      "display_english": "family",
+      "commit_english": "family",
+      "source_entry_sha256": "7acb06df29c140b02bc2c344d93f06b04e1043813510de1f558397cc229afa14",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-054",
+      "chinese": "家人",
+      "category": "家庭与关系",
+      "display_english": "family member",
+      "commit_english": "family member",
+      "source_entry_sha256": "09f5549a0b1f1aec89e271bac2840bc947305a512e5be58691a924bba85e4f19",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用现代 family member；不采用旧义 servant。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-055",
+      "chinese": "朋友",
+      "category": "家庭与关系",
+      "display_english": "friend",
+      "commit_english": "friend",
+      "source_entry_sha256": "9ffb0485fcdb024db7f3231d9c7334ca67498a8a5ae2834befca517daeb4ffc2",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-056",
+      "chinese": "同事",
+      "category": "家庭与关系",
+      "display_english": "colleague",
+      "commit_english": "colleague",
+      "source_entry_sha256": "d899403dc2923a9c2c16ce82a524d0e21b56cdf6d28fb55d1b063b1da754592d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-057",
+      "chinese": "同学",
+      "category": "家庭与关系",
+      "display_english": "classmate",
+      "commit_english": "classmate",
+      "source_entry_sha256": "e9f50fe1b403a223869779a817dee3d65db307ddea6039061e1bdcf640d52ba9",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-058",
+      "chinese": "邻居",
+      "category": "家庭与关系",
+      "display_english": "neighbor",
+      "commit_english": "neighbor",
+      "source_entry_sha256": "8c9064362fc737f22476ab0c86df01b3e1bee9a06ea13f43cafc380b140c6710",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-059",
+      "chinese": "孩子",
+      "category": "家庭与关系",
+      "display_english": "child",
+      "commit_english": "child",
+      "source_entry_sha256": "5e82b71a8a9ed309510e046382b8007ea8cfc55f4e22ec5896e2f2fffbc46a98",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-060",
+      "chinese": "客人",
+      "category": "家庭与关系",
+      "display_english": "guest",
+      "commit_english": "guest",
+      "source_entry_sha256": "b0eb6921013ec910fc54b2aed6a5b7018657556af89cbe29ae983d4017e4f2bb",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-061",
+      "chinese": "苹果",
+      "category": "食物与饮食",
+      "display_english": "apple",
+      "commit_english": "apple",
+      "source_entry_sha256": "dbd896c66668b395ad1e56ef5286f67c3adcf957d3fbb3668a5d4f38877ca631",
+      "alternative_source_entries": [
+        "cd22b28e5fcac2aa230849a465e2d957e005190a47b581691a99a2756ef564f8"
+      ],
+      "license": "CC-BY-SA-4.0",
+      "modification": "只选水果 apple；同形科技公司专名 Apple 不在本条范围内。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-062",
+      "chinese": "香蕉",
+      "category": "食物与饮食",
+      "display_english": "banana",
+      "commit_english": "banana",
+      "source_entry_sha256": "e62698318f80fa569dbee40154b66f0ea663d6beb84733f8c9df40488177cd20",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-063",
+      "chinese": "橙子",
+      "category": "食物与饮食",
+      "display_english": "orange",
+      "commit_english": "orange",
+      "source_entry_sha256": "df6552047ef357a986037db91bae51c6a416be2aaadf46dbd160a7863c6cbe32",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-064",
+      "chinese": "葡萄",
+      "category": "食物与饮食",
+      "display_english": "grape",
+      "commit_english": "grape",
+      "source_entry_sha256": "33622a5ed1e1c9f7cbd7201fe3daaa6642d5dd55ac737275221287994afd103d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-065",
+      "chinese": "西瓜",
+      "category": "食物与饮食",
+      "display_english": "watermelon",
+      "commit_english": "watermelon",
+      "source_entry_sha256": "40ba78535033490664b4997b9a28a7eade9ade6d0eb3f340e6ca2d6a5e662b28",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-066",
+      "chinese": "草莓",
+      "category": "食物与饮食",
+      "display_english": "strawberry",
+      "commit_english": "strawberry",
+      "source_entry_sha256": "3b83f426273fccef4b9b0b3bc8db0b3e5204f87a579aec5cfb8e3b4580541c3a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "只选水果 strawberry；不采用地区俚语义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-067",
+      "chinese": "水果",
+      "category": "食物与饮食",
+      "display_english": "fruit",
+      "commit_english": "fruit",
+      "source_entry_sha256": "d6b2e3d6f43738a90e473279c9cf83649c5c756b281912ebda5456d0a4ddf954",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-068",
+      "chinese": "蔬菜",
+      "category": "食物与饮食",
+      "display_english": "vegetables",
+      "commit_english": "vegetables",
+      "source_entry_sha256": "201cbd2584a5d89bb15a04bfa3d6ba0f32e98d33b37071c75332c51de9e69015",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-069",
+      "chinese": "米饭",
+      "category": "食物与饮食",
+      "display_english": "cooked rice",
+      "commit_english": "cooked rice",
+      "source_entry_sha256": "523ca20bba5b49e0ebd20e56b9a7bc436b7eb15d88d9901c8e89a9aec131a8c7",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将 (cooked) rice 整理为可直接提交的 cooked rice。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-070",
+      "chinese": "面条",
+      "category": "食物与饮食",
+      "display_english": "noodles",
+      "commit_english": "noodles",
+      "source_entry_sha256": "a08398d9d2e6daa6ef362afa6fb1cf2d6b0599dfab95766a7b734812e3ffa068",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-071",
+      "chinese": "面包",
+      "category": "食物与饮食",
+      "display_english": "bread",
+      "commit_english": "bread",
+      "source_entry_sha256": "e35f9cbd8cbeef8740c69b2be36fc7f70e14ac04fbad56beb505a64ea1a6259e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-072",
+      "chinese": "鸡蛋",
+      "category": "食物与饮食",
+      "display_english": "egg",
+      "commit_english": "egg",
+      "source_entry_sha256": "716e349e40b2a12c1b2618cb2083d87c22d69526c2c647b781755c0c50e19073",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "保留常用短译 egg，省略鸡的限定和量词说明。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-073",
+      "chinese": "牛奶",
+      "category": "食物与饮食",
+      "display_english": "milk",
+      "commit_english": "milk",
+      "source_entry_sha256": "a4dad9cac4694aeab7066db3ee1f555b03ac4401ec090b243713ca5713210762",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "保留常用短译 milk，省略奶源限定。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-074",
+      "chinese": "咖啡",
+      "category": "食物与饮食",
+      "display_english": "coffee",
+      "commit_english": "coffee",
+      "source_entry_sha256": "775889d6c842122d59c37917f65923836f31847375d326950494d8cc5989d0ca",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-075",
+      "chinese": "茶叶",
+      "category": "食物与饮食",
+      "display_english": "tea leaves",
+      "commit_english": "tea leaves",
+      "source_entry_sha256": "7a58fba410a0fc025b7ddf887546ef025f2828e8546aff0e1cbcb51990d7da9f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-076",
+      "chinese": "饮料",
+      "category": "食物与饮食",
+      "display_english": "beverage",
+      "commit_english": "beverage",
+      "source_entry_sha256": "ab319e2aed0ffa23fb7bb315c171e30aab86d951f2a32ecc6a80d7fc6c445a6f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-077",
+      "chinese": "早餐",
+      "category": "食物与饮食",
+      "display_english": "breakfast",
+      "commit_english": "breakfast",
+      "source_entry_sha256": "13dafc738302b157eca0b52832d8f49ced1a08945dadf00e00c38f0dcd3e03f6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-078",
+      "chinese": "午餐",
+      "category": "食物与饮食",
+      "display_english": "lunch",
+      "commit_english": "lunch",
+      "source_entry_sha256": "f70ba73c379a9bb6a3df8cf18427ed96e3f9c7b58e91fa7cc9907107f864f069",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-079",
+      "chinese": "晚餐",
+      "category": "食物与饮食",
+      "display_english": "dinner",
+      "commit_english": "dinner",
+      "source_entry_sha256": "bd5e9ef5d61f4d606218c09d7c57be8f52068a7dfab5f66923ae593018148220",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-080",
+      "chinese": "餐厅",
+      "category": "食物与饮食",
+      "display_english": "restaurant",
+      "commit_english": "restaurant",
+      "source_entry_sha256": "ff2aa1fcb2a6802fda807ec8ae14135bbf2d93d1a83d7964632f31dbfdd82ef8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用经营用餐场所 restaurant；未覆盖住宅 dining room。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-081",
+      "chinese": "房间",
+      "category": "家居与生活",
+      "display_english": "room",
+      "commit_english": "room",
+      "source_entry_sha256": "60d000957c5327dfe23176f10e826dead9a5a0ed6c4884c5ae580fd545d3a31c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-082",
+      "chinese": "厨房",
+      "category": "家居与生活",
+      "display_english": "kitchen",
+      "commit_english": "kitchen",
+      "source_entry_sha256": "81bbd1a792d2335cf3ce350ed46440981ce0160865e2a53a3273b2c7f158047e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-083",
+      "chinese": "卧室",
+      "category": "家居与生活",
+      "display_english": "bedroom",
+      "commit_english": "bedroom",
+      "source_entry_sha256": "041d445d18f3d412e81f04ef341b0d6f1aef4920aab3383db1d57871ad900c1e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-084",
+      "chinese": "浴室",
+      "category": "家居与生活",
+      "display_english": "bathroom",
+      "commit_english": "bathroom",
+      "source_entry_sha256": "0f189e7b98e833f7465ea15f1ac2940f993572b034d4c43c6cfd73f897fc321d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 bathroom；未覆盖公共 bathhouse。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-085",
+      "chinese": "客厅",
+      "category": "家居与生活",
+      "display_english": "living room",
+      "commit_english": "living room",
+      "source_entry_sha256": "2a2963a25dfea280270063d2bcf1e4c4609b8be53b71172260a638f7150450b6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-086",
+      "chinese": "桌子",
+      "category": "家居与生活",
+      "display_english": "table",
+      "commit_english": "table",
+      "source_entry_sha256": "055541d2954f7ef8c8bcda3106320e360c56e207f31a747a6a8211eb4906aab6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 table；未覆盖具体办公桌 desk。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-087",
+      "chinese": "椅子",
+      "category": "家居与生活",
+      "display_english": "chair",
+      "commit_english": "chair",
+      "source_entry_sha256": "0b853344262af7b6bd81e2b41785bdbc164ec7d24c09cc0d10a009b217821e04",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-088",
+      "chinese": "沙发",
+      "category": "家居与生活",
+      "display_english": "sofa",
+      "commit_english": "sofa",
+      "source_entry_sha256": "51c6b5490ef5e04f9caa95fc074860f45c1eb27ce3e196d69b66c3ae5f55d1cc",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "只选家具 sofa；不采用论坛第一条回复的俚语义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-089",
+      "chinese": "窗户",
+      "category": "家居与生活",
+      "display_english": "window",
+      "commit_english": "window",
+      "source_entry_sha256": "5f81baa47287a2c616d5b29c80f08e1b5282c0070a1558243cf8a63c43bde740",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-090",
+      "chinese": "电视",
+      "category": "家居与生活",
+      "display_english": "television",
+      "commit_english": "television",
+      "source_entry_sha256": "58acdb7172a2015f12aafa257d0feec6d0027f1fed67dfe2f224a658c32e3f5c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-091",
+      "chinese": "冰箱",
+      "category": "家居与生活",
+      "display_english": "refrigerator",
+      "commit_english": "refrigerator",
+      "source_entry_sha256": "5abfebc515386feb5b1f5c7f3e0573e83f9f3b416d9d940e2f8ea37d71922fe2",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-092",
+      "chinese": "空调",
+      "category": "家居与生活",
+      "display_english": "air conditioner",
+      "commit_english": "air conditioner",
+      "source_entry_sha256": "c7cf7058d9c79305d051f5ac0ed0fff9c47d81fbd547910973302feec6723d6b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用设备 air conditioner，移除功能说明。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-093",
+      "chinese": "洗衣机",
+      "category": "家居与生活",
+      "display_english": "washing machine",
+      "commit_english": "washing machine",
+      "source_entry_sha256": "68c689eca6fa3ade398e0494e9dd5c8c603bee638a7bc651e02bd978c656b5f5",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-094",
+      "chinese": "衣服",
+      "category": "家居与生活",
+      "display_english": "clothes",
+      "commit_english": "clothes",
+      "source_entry_sha256": "49b833153d089e33c9e8e0e1d651032e2e17d3652eb40a2fb804991de33906c3",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-095",
+      "chinese": "鞋子",
+      "category": "家居与生活",
+      "display_english": "shoe",
+      "commit_english": "shoe",
+      "source_entry_sha256": "429a45f1b44c83583c2016fa0b965ef307bc4d2365d7eb39eb3aebfd36ca2c6c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-096",
+      "chinese": "袜子",
+      "category": "家居与生活",
+      "display_english": "socks",
+      "commit_english": "socks",
+      "source_entry_sha256": "e8f3d30645fe7cef773e95f42058e016df61d81ebbb3ff828dcf9b98a978b232",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-097",
+      "chinese": "帽子",
+      "category": "家居与生活",
+      "display_english": "hat",
+      "commit_english": "hat",
+      "source_entry_sha256": "9d48540cae53385239989e0ace7bc197fa42477ee16553301d79094560dd7f7f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-098",
+      "chinese": "雨伞",
+      "category": "家居与生活",
+      "display_english": "umbrella",
+      "commit_english": "umbrella",
+      "source_entry_sha256": "66a75046461e6fc6e9284264eace00d5c4dbe07b02517858a9dc936d83ab8cca",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-099",
+      "chinese": "钥匙",
+      "category": "家居与生活",
+      "display_english": "key",
+      "commit_english": "key",
+      "source_entry_sha256": "74e94f976455c624169fcab038f3a782776f03f71ae31c4e6d9666ae47bfad96",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-100",
+      "chinese": "钱包",
+      "category": "家居与生活",
+      "display_english": "wallet",
+      "commit_english": "wallet",
+      "source_entry_sha256": "f0fa6331bce532b1ff76594d6589d300ef0c0bc6aa29dccc5dfb6e34ba80df16",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-101",
+      "chinese": "学校",
+      "category": "出行与地点",
+      "display_english": "school",
+      "commit_english": "school",
+      "source_entry_sha256": "8c7981714a0684c7a63f790e1cc4bb817407f8090436502f2183b2a6fae6563b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-102",
+      "chinese": "医院",
+      "category": "出行与地点",
+      "display_english": "hospital",
+      "commit_english": "hospital",
+      "source_entry_sha256": "4d81c01e1f0b3534d1009204fd80b1a4bfe4d2f05b23cca6fc127d8be2f85098",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-103",
+      "chinese": "银行",
+      "category": "出行与地点",
+      "display_english": "bank",
+      "commit_english": "bank",
+      "source_entry_sha256": "e10b31687ae9060b5d582f799ba907a29195e7ad620bb420b034d04369c3a055",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-104",
+      "chinese": "超市",
+      "category": "出行与地点",
+      "display_english": "supermarket",
+      "commit_english": "supermarket",
+      "source_entry_sha256": "5de1a27a3d3c2275b44ad4f9e5568698c82d74d71c3af579cc2cfd878a9268ca",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-105",
+      "chinese": "商店",
+      "category": "出行与地点",
+      "display_english": "shop",
+      "commit_english": "shop",
+      "source_entry_sha256": "daa8650ee05c6dd06442d18ea5e5d89c9d8f829c3294bb68796e30f244161322",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-106",
+      "chinese": "图书馆",
+      "category": "出行与地点",
+      "display_english": "library",
+      "commit_english": "library",
+      "source_entry_sha256": "ecebb5979ac8b337a5fc28000007ea7fc1d2533e878a5c31efd8587da178c159",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-107",
+      "chinese": "公园",
+      "category": "出行与地点",
+      "display_english": "park",
+      "commit_english": "park",
+      "source_entry_sha256": "b795af76a38f862ea7d52dd81ecb410cb1c20731655ce53b9d570f517ddc1e19",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-108",
+      "chinese": "机场",
+      "category": "出行与地点",
+      "display_english": "airport",
+      "commit_english": "airport",
+      "source_entry_sha256": "406d1b5cd90684645e3a6faa1e93c12d9322176ab70ca011243a46483e488bf5",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "只选交通设施 airport；不采用网络俚语义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-109",
+      "chinese": "车站",
+      "category": "出行与地点",
+      "display_english": "station",
+      "commit_english": "station",
+      "source_entry_sha256": "64aa2e1e721d918e6faecfb8fff7c75ac06d6fd50e61965eeea6d92c0f56c173",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将交通站点释义简化为 station，需复核与 bus stop 的范围差异。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-110",
+      "chinese": "地铁",
+      "category": "出行与地点",
+      "display_english": "subway",
+      "commit_english": "subway",
+      "source_entry_sha256": "61b36b1a3e1faca869dd0aec34518a944078eda0b6bdc4764870573500f40f8d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-111",
+      "chinese": "火车",
+      "category": "出行与地点",
+      "display_english": "train",
+      "commit_english": "train",
+      "source_entry_sha256": "86a2576893f0e1ae26c59aa336379fbbfdbae876c0b5120e814eac59b1119711",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-112",
+      "chinese": "飞机",
+      "category": "出行与地点",
+      "display_english": "airplane",
+      "commit_english": "airplane",
+      "source_entry_sha256": "a9670134edb9ccef6b3109582a7dfa93c59504573dd586df15891dda344253d0",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-113",
+      "chinese": "出租车",
+      "category": "出行与地点",
+      "display_english": "taxi",
+      "commit_english": "taxi",
+      "source_entry_sha256": "827bc13ea2ddd5e9790960a5128603f8d3dc0340cf1bf6741c8005ca9293df3a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-114",
+      "chinese": "自行车",
+      "category": "出行与地点",
+      "display_english": "bicycle",
+      "commit_english": "bicycle",
+      "source_entry_sha256": "4facf435faab433b4a2cf78cfb632426db574f212dc5163a1a7664b850ec8e72",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-115",
+      "chinese": "地图",
+      "category": "出行与地点",
+      "display_english": "map",
+      "commit_english": "map",
+      "source_entry_sha256": "d3735f9b2a09b156084d18b6f44976b760943149ad179fcd23962df89b027f80",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-116",
+      "chinese": "地址",
+      "category": "出行与地点",
+      "display_english": "address",
+      "commit_english": "address",
+      "source_entry_sha256": "68284ac23f2a028de58b7e4e46e83bb44e54504ada79c735f03c49712add5311",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-117",
+      "chinese": "城市",
+      "category": "出行与地点",
+      "display_english": "city",
+      "commit_english": "city",
+      "source_entry_sha256": "b9d7ed5669f0753b826d9697d833230c00d4ffc6668b998aad2f291eabbafed8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-118",
+      "chinese": "街道",
+      "category": "出行与地点",
+      "display_english": "street",
+      "commit_english": "street",
+      "source_entry_sha256": "46798ba63c391c31e84f33e0a102b86bc356d3a59a9ebf94c9197a70b4053009",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用道路 street；未覆盖行政区划义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-119",
+      "chinese": "路口",
+      "category": "出行与地点",
+      "display_english": "intersection",
+      "commit_english": "intersection",
+      "source_entry_sha256": "16a482076961bf4ab99ffe38a6bb792b94d935401049946e33d845174381c369",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-120",
+      "chinese": "旅行",
+      "category": "出行与地点",
+      "display_english": "travel",
+      "commit_english": "travel",
+      "source_entry_sha256": "6e6b0c362386feb981877e7b57bd19446dac08871fc01c7cbcba301481483838",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-121",
+      "chinese": "工作",
+      "category": "工作与学习",
+      "display_english": "work",
+      "commit_english": "work",
+      "source_entry_sha256": "36e1c0f61a378cb68b6375c6bcbbce8bf92b1581bccc3b4f7781a7753990c37c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-122",
+      "chinese": "学习",
+      "category": "工作与学习",
+      "display_english": "study",
+      "commit_english": "study",
+      "source_entry_sha256": "b51e6ff8fd1b31bae87531bf2d7038891e4437597068796f8e5987ba7c0477ac",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-123",
+      "chinese": "会议",
+      "category": "工作与学习",
+      "display_english": "meeting",
+      "commit_english": "meeting",
+      "source_entry_sha256": "8abb72a29fe25593be15cf89b658d2dcd8239dc35334c5ea1b86dae713aa88e8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-124",
+      "chinese": "公司",
+      "category": "工作与学习",
+      "display_english": "company",
+      "commit_english": "company",
+      "source_entry_sha256": "2cf597a7bb2b4d937fc32cad293d54231cb64109d87ff3614d80c1136b6047a4",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-125",
+      "chinese": "办公室",
+      "category": "工作与学习",
+      "display_english": "office",
+      "commit_english": "office",
+      "source_entry_sha256": "54e605a12f8c02131365329d4c29a552f83bbaefedb9bfa5d63375609afc624a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-126",
+      "chinese": "经理",
+      "category": "工作与学习",
+      "display_english": "manager",
+      "commit_english": "manager",
+      "source_entry_sha256": "8306514bfd4b27604d3f07312c984ba1288a91bc2e38464735690651b9efb02a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-127",
+      "chinese": "员工",
+      "category": "工作与学习",
+      "display_english": "employee",
+      "commit_english": "employee",
+      "source_entry_sha256": "2ac229022a5e66d25c5408e70dae55a4646314910387a78ee70c872f08d4dc00",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-128",
+      "chinese": "项目",
+      "category": "工作与学习",
+      "display_english": "project",
+      "commit_english": "project",
+      "source_entry_sha256": "f386197dfc6cdc6513c48188acca803c0bee01c797ae15ab531a8447396a203f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 project；未覆盖 item 或体育项目。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-129",
+      "chinese": "计划",
+      "category": "工作与学习",
+      "display_english": "plan",
+      "commit_english": "plan",
+      "source_entry_sha256": "cab82f6a4eccbf2ad97706bca4e7e8fe6b2610e734d8fc922f6efc087134bee8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-130",
+      "chinese": "任务",
+      "category": "工作与学习",
+      "display_english": "task",
+      "commit_english": "task",
+      "source_entry_sha256": "1d797f0966c498666584b2ed21c1b35f99692d0f82769f2fee5b4b97f2cdf9b2",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-131",
+      "chinese": "文件",
+      "category": "工作与学习",
+      "display_english": "document",
+      "commit_english": "document",
+      "source_entry_sha256": "479746ac8913818d7e74556af5b85f778cedfd652d7f12fa688fe9e100d20ddf",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 document；未覆盖专指电脑文件的 file。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-132",
+      "chinese": "合同",
+      "category": "工作与学习",
+      "display_english": "contract",
+      "commit_english": "contract",
+      "source_entry_sha256": "947ad40f31e09f6de42b39e6029683ca97efe9bb4af05cdf6e27b615f4004136",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-133",
+      "chinese": "客户",
+      "category": "工作与学习",
+      "display_english": "client",
+      "commit_english": "client",
+      "source_entry_sha256": "75bcc62c4d3f212c9783d3701bd1a8cc3a7e91d388b2f705bae642a1c7d8998f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-134",
+      "chinese": "报告",
+      "category": "工作与学习",
+      "display_english": "report",
+      "commit_english": "report",
+      "source_entry_sha256": "5bd64d7d57b7f75c3927080d6bb3f68275e1dc2474819031944a2308c1a9efbb",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-135",
+      "chinese": "课程",
+      "category": "工作与学习",
+      "display_english": "course",
+      "commit_english": "course",
+      "source_entry_sha256": "79fcb620da0e2f8b11a9abd26a533939d3f4c1b57875d982130400fb1f92e8fc",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-136",
+      "chinese": "考试",
+      "category": "工作与学习",
+      "display_english": "exam",
+      "commit_english": "exam",
+      "source_entry_sha256": "962e905cd7d0cbdcd494f230f41ec2a43006dc8debdad5b61ae7b5450eb7fd2c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-137",
+      "chinese": "作业",
+      "category": "工作与学习",
+      "display_english": "homework",
+      "commit_english": "homework",
+      "source_entry_sha256": "32462d96e16f9f6698327a0fb53b126ae7c56a94a553871d8f541b5ce6b2161e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用学生 homework；未覆盖业务任务或操作。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-138",
+      "chinese": "老师",
+      "category": "工作与学习",
+      "display_english": "teacher",
+      "commit_english": "teacher",
+      "source_entry_sha256": "bb7a7926939d7455cd4ca70a98d6e8814f1710a9e21c2b2762f11b22d5ff3acb",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-139",
+      "chinese": "学生",
+      "category": "工作与学习",
+      "display_english": "student",
+      "commit_english": "student",
+      "source_entry_sha256": "4b331ac69fb4ecd82e6cc92cac60473541d27e6b6759e4d877957ff8fb4e0e7b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-140",
+      "chinese": "练习",
+      "category": "工作与学习",
+      "display_english": "practice",
+      "commit_english": "practice",
+      "source_entry_sha256": "01582a2cb106cd876de09a3ef303f9dc82c5e87357d97a068a5a081a53f0febf",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-141",
+      "chinese": "电脑",
+      "category": "数码与购物",
+      "display_english": "computer",
+      "commit_english": "computer",
+      "source_entry_sha256": "5df6ba8dd01a14f778afb8b15ecaaa92438174ac69d3ec16ddfba9f8411a6804",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-142",
+      "chinese": "手机",
+      "category": "数码与购物",
+      "display_english": "mobile phone",
+      "commit_english": "mobile phone",
+      "source_entry_sha256": "fc9131b696a6965372d25044e848b81f67d83dafb2ca25469907c2c2ef10440d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-143",
+      "chinese": "键盘",
+      "category": "数码与购物",
+      "display_english": "keyboard",
+      "commit_english": "keyboard",
+      "source_entry_sha256": "3cfc3df5793cbd69b51a7defc215a158644dc9fea851c779ab9b946f28c6e01a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-144",
+      "chinese": "鼠标",
+      "category": "数码与购物",
+      "display_english": "computer mouse",
+      "commit_english": "computer mouse",
+      "source_entry_sha256": "4680a602ba3047f933d7644262e1ec1ba20747e9f3e3c5cf3b00002ec58ecfd1",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将 (computing) mouse 整理为可直接提交的 computer mouse。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-145",
+      "chinese": "屏幕",
+      "category": "数码与购物",
+      "display_english": "screen",
+      "commit_english": "screen",
+      "source_entry_sha256": "822545c2b8a9147fddb4474f865530d739d5edd4cc84b9d9e4f088550be1f6c6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-146",
+      "chinese": "网络",
+      "category": "数码与购物",
+      "display_english": "network",
+      "commit_english": "network",
+      "source_entry_sha256": "f7b92b4c94ecc9a114532055efffba517cdc52c7e14746e192742627303abe78",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 network；未将全部用法等同于 Internet。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-147",
+      "chinese": "密码",
+      "category": "数码与购物",
+      "display_english": "password",
+      "commit_english": "password",
+      "source_entry_sha256": "3a2b558d83ed27c4e1a20dd6e51dd58bd73f2cbc79ab1ddbaabe6dffa118e63d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-148",
+      "chinese": "邮件",
+      "category": "数码与购物",
+      "display_english": "email",
+      "commit_english": "email",
+      "source_entry_sha256": "a24f464f69d23a91ad20530ab56dc4cbd73770930944deccaf3b3584abe28e13",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用常见数字通信义 email；未覆盖纸质邮政邮件。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-149",
+      "chinese": "照片",
+      "category": "数码与购物",
+      "display_english": "photo",
+      "commit_english": "photo",
+      "source_entry_sha256": "189c51adbf54942d3036efcc1270119de61e233bab57174bbe8ce2bfcdb4f0a5",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将 photograph 缩为常用词 photo。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-150",
+      "chinese": "视频",
+      "category": "数码与购物",
+      "display_english": "video",
+      "commit_english": "video",
+      "source_entry_sha256": "94f7c6f4cd4d25da831dc22f86c135fe7e19d5da6a4bfc3d7d35f3c918356790",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-151",
+      "chinese": "网站",
+      "category": "数码与购物",
+      "display_english": "website",
+      "commit_english": "website",
+      "source_entry_sha256": "066a1ba3b3949f83201694e4db7d237c094ce6d44d474494e221904467f6cfef",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-152",
+      "chinese": "软件",
+      "category": "数码与购物",
+      "display_english": "software",
+      "commit_english": "software",
+      "source_entry_sha256": "8cfe076b00589401aac91adab2685217f4e0ebce42e50d93536eec80f7693898",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-153",
+      "chinese": "下载",
+      "category": "数码与购物",
+      "display_english": "download",
+      "commit_english": "download",
+      "source_entry_sha256": "39d7ed6e66bbb44dbf343f65cd92c9fefcafa0ac15ef210300288abf00c363ee",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-154",
+      "chinese": "上传",
+      "category": "数码与购物",
+      "display_english": "upload",
+      "commit_english": "upload",
+      "source_entry_sha256": "7053227b8fac897c84917b0df50925d2c4f21c9c19ef31cfad89a86412349545",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-155",
+      "chinese": "保存",
+      "category": "数码与购物",
+      "display_english": "save",
+      "commit_english": "save",
+      "source_entry_sha256": "e436f0f714583f7303440f3cf2f22680f3ebfc934f0f9117705eabb6b594cf06",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用电脑操作中的 save；未覆盖实物保管、保存环境等用法。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-156",
+      "chinese": "删除",
+      "category": "数码与购物",
+      "display_english": "delete",
+      "commit_english": "delete",
+      "source_entry_sha256": "23479c27ff456bbf732c9bea7e8774151b659e91c95aafbaef87fb532b007d3a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-157",
+      "chinese": "价格",
+      "category": "数码与购物",
+      "display_english": "price",
+      "commit_english": "price",
+      "source_entry_sha256": "b4824a83e70066680c1e6069118d661b464b4119a7dbeb88dff19f9f9e3cde9c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-158",
+      "chinese": "付款",
+      "category": "数码与购物",
+      "display_english": "pay",
+      "commit_english": "pay",
+      "source_entry_sha256": "6b90c2cff8b57f50955d511a481f68a53d3f1af2bb3192a653faa248d9f45416",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "将 to pay a sum of money 简化为动词原形 pay。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-159",
+      "chinese": "订单",
+      "category": "数码与购物",
+      "display_english": "order",
+      "commit_english": "order",
+      "source_entry_sha256": "ae858d0b2ce6743e77c53ded8a434225d8e7060045a38826eee9c830601b69d8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用购买义 order，移除括号说明。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-160",
+      "chinese": "发票",
+      "category": "数码与购物",
+      "display_english": "invoice",
+      "commit_english": "invoice",
+      "source_entry_sha256": "188ad41fa4bb7906a81e0475f0ede8e635d314bbcc9cbfeeaac174d4660178aa",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 invoice；未覆盖泛指收据的 receipt。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-161",
+      "chinese": "身体",
+      "category": "身体与自然",
+      "display_english": "body",
+      "commit_english": "body",
+      "source_entry_sha256": "59ad7297bb9fa43affb521c4d97fe79edaac1e77ddda6e22c71f668df260b673",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-162",
+      "chinese": "眼睛",
+      "category": "身体与自然",
+      "display_english": "eye",
+      "commit_english": "eye",
+      "source_entry_sha256": "7022484caa585f16a8249521f833d22846433ccadc0b11b92cc9eacea877ca58",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-163",
+      "chinese": "耳朵",
+      "category": "身体与自然",
+      "display_english": "ear",
+      "commit_english": "ear",
+      "source_entry_sha256": "5f138dc2ac0c0bfad08cffc878a0cfc3de718dae0da7656e6ab7c2ce9297037f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-164",
+      "chinese": "鼻子",
+      "category": "身体与自然",
+      "display_english": "nose",
+      "commit_english": "nose",
+      "source_entry_sha256": "5170cebf90fcd1f798c8b1174b0565b730fcbdcb7ea1d473da0644b34a47f88c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-165",
+      "chinese": "牙齿",
+      "category": "身体与自然",
+      "display_english": "tooth",
+      "commit_english": "tooth",
+      "source_entry_sha256": "9c7ec8068c2057f765135d775a07aaedeba52d30bdcfa0e0a3bfd18e876bd97b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-166",
+      "chinese": "头发",
+      "category": "身体与自然",
+      "display_english": "hair",
+      "commit_english": "hair",
+      "source_entry_sha256": "8a376fb046b16dfb52d53cfe6760a6d13d14d66bc84503af6879a396b8dca302",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-167",
+      "chinese": "手指",
+      "category": "身体与自然",
+      "display_english": "finger",
+      "commit_english": "finger",
+      "source_entry_sha256": "3218f1658d13f34d4c34f46b94bcd5ab7e493a78d9053473cce54d5cda8a102b",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-168",
+      "chinese": "健康",
+      "category": "身体与自然",
+      "display_english": "health",
+      "commit_english": "health",
+      "source_entry_sha256": "074a20aea5f5435d664a2511df53738836fd6b3b3eecca312a691b92ac2cfcea",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-169",
+      "chinese": "感冒",
+      "category": "身体与自然",
+      "display_english": "common cold",
+      "commit_english": "common cold",
+      "source_entry_sha256": "aa362fd5b8bc971c3d522b61867f20991b064ec0af6f98eefef6665c0093206c",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用疾病 common cold，移除括号、量词和口语引申义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-170",
+      "chinese": "医生",
+      "category": "身体与自然",
+      "display_english": "doctor",
+      "commit_english": "doctor",
+      "source_entry_sha256": "4aac2099536ac94c59f3966dfa93df766e698ae55be9cfb1aeee02e816e437f6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-171",
+      "chinese": "天气",
+      "category": "身体与自然",
+      "display_english": "weather",
+      "commit_english": "weather",
+      "source_entry_sha256": "55ae278983af723c305da9b820f2267e8b137a3a6c3707f1dd818757e78348aa",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-172",
+      "chinese": "太阳",
+      "category": "身体与自然",
+      "display_english": "sun",
+      "commit_english": "sun",
+      "source_entry_sha256": "a34d403be26a1332a07668c5ef93c4fb7063e19614b416196a6117c1a10a9f87",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用天体 sun；未覆盖日光或太阳穴简称。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-173",
+      "chinese": "月亮",
+      "category": "身体与自然",
+      "display_english": "moon",
+      "commit_english": "moon",
+      "source_entry_sha256": "99799463d05f1df11ab1beaa220e5f017380f79cb11443389b5e15abadd57228",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "名词用 moon，移除词典中的定冠词。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-174",
+      "chinese": "星星",
+      "category": "身体与自然",
+      "display_english": "star",
+      "commit_english": "star",
+      "source_entry_sha256": "26ca34351be081bef6951331a882e5bc58dd89128f9ce0b0e0d0b97436b8fd06",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 star，移除口语标签和冠词，采用单数词形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-175",
+      "chinese": "下雨",
+      "category": "身体与自然",
+      "display_english": "rain",
+      "commit_english": "rain",
+      "source_entry_sha256": "95ba804342e7d36a531a14f946aab1a00fed856fb4a357ef1cd9dc1ea156559a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-176",
+      "chinese": "下雪",
+      "category": "身体与自然",
+      "display_english": "snow",
+      "commit_english": "snow",
+      "source_entry_sha256": "ab2f9e85c2cbf69c2f8c335cad740b0cbf091e2130687c14df4f8ab7f25b1b49",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-177",
+      "chinese": "春天",
+      "category": "身体与自然",
+      "display_english": "spring",
+      "commit_english": "spring",
+      "source_entry_sha256": "3dba15378cf66ece3e19f60e211a935a63192e4da1c8c16db4b3e2e389629b49",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用季节 spring，移除括号中的词义提示。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-178",
+      "chinese": "夏天",
+      "category": "身体与自然",
+      "display_english": "summer",
+      "commit_english": "summer",
+      "source_entry_sha256": "ed7dca7bb7e72f5da4a022d7a4f9ee5ff780e418f4ab756e3eb746d1a70f69d6",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-179",
+      "chinese": "秋天",
+      "category": "身体与自然",
+      "display_english": "autumn",
+      "commit_english": "autumn",
+      "source_entry_sha256": "6f7161d959e3dd5e5bad40c350d956c764caff8a72b57776f6d85b2338bf704a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-180",
+      "chinese": "冬天",
+      "category": "身体与自然",
+      "display_english": "winter",
+      "commit_english": "winter",
+      "source_entry_sha256": "4d98e4d07abde374138a3f97ef477b282bd7965814ea2af79987d626ba1e543d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-181",
+      "chinese": "吃饭",
+      "category": "活动与感受",
+      "display_english": "eat",
+      "commit_english": "eat",
+      "source_entry_sha256": "a3180a97dc6c27a75ef2e549f616c448cd97008dcc5cc197d693973815d42eb5",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用吃东西 eat；未覆盖谋生义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-182",
+      "chinese": "做饭",
+      "category": "活动与感受",
+      "display_english": "cook",
+      "commit_english": "cook",
+      "source_entry_sha256": "8e1a593cce1d26d91af863dfb60df6c84ab3739260d14a50f0c99858d406404d",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-183",
+      "chinese": "睡觉",
+      "category": "活动与感受",
+      "display_english": "sleep",
+      "commit_english": "sleep",
+      "source_entry_sha256": "00e0feccb0e379a77d87eac987e9ff60cff241b27aea38aa4339635dd4525702",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-184",
+      "chinese": "起床",
+      "category": "活动与感受",
+      "display_english": "get up",
+      "commit_english": "get up",
+      "source_entry_sha256": "d9757fcf9ce1967eb8d917601c625fda5830c26c6d433a19e9f96759a26dbf6a",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-185",
+      "chinese": "洗澡",
+      "category": "活动与感受",
+      "display_english": "bathe",
+      "commit_english": "bathe",
+      "source_entry_sha256": "e52c04a354cce6939b61dac1fae030ce1d3021fc24504f55509183501b43df50",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-186",
+      "chinese": "走路",
+      "category": "活动与感受",
+      "display_english": "walk",
+      "commit_english": "walk",
+      "source_entry_sha256": "d0123d8ae6da49359c8488ba02510108ae9faa8679e4a3d7b245bdbc2d429b79",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用步行 walk；未覆盖离开或离职等引申义。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-187",
+      "chinese": "跑步",
+      "category": "活动与感受",
+      "display_english": "run",
+      "commit_english": "run",
+      "source_entry_sha256": "60bb7a4305d7ac8215ad381d0b743dafeb2c71a958f67f2a67e893c615a93043",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 run；未覆盖军事术语和特指慢跑。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-188",
+      "chinese": "游泳",
+      "category": "活动与感受",
+      "display_english": "swim",
+      "commit_english": "swim",
+      "source_entry_sha256": "2b3d53de4d9440f45eca8a187896370234774a3a7bef9d1234bd7fbdece8fec8",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-189",
+      "chinese": "阅读",
+      "category": "活动与感受",
+      "display_english": "read",
+      "commit_english": "read",
+      "source_entry_sha256": "54c52c3d2393fec1df1a86e5db87cf492f5b5ad2baca6d726c11e1ee20bdbf07",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-190",
+      "chinese": "写字",
+      "category": "活动与感受",
+      "display_english": "write",
+      "commit_english": "write",
+      "source_entry_sha256": "dc5881c699b96651c2ff85c553a85bf3490566aab8997f5886144fca62947ddd",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用手写的 write，移除方式说明；未覆盖书法练习。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-191",
+      "chinese": "开始",
+      "category": "活动与感受",
+      "display_english": "begin",
+      "commit_english": "begin",
+      "source_entry_sha256": "289b6d053a25b939fdba0e8ea857711fa8c6abc9bc1a70085aa3729d0b640193",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-192",
+      "chinese": "结束",
+      "category": "活动与感受",
+      "display_english": "end",
+      "commit_english": "end",
+      "source_entry_sha256": "74c49b56679a8f12360a20a90cdff0e34f6ccd0f33a2c7a4caf1b93639921654",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-193",
+      "chinese": "喜欢",
+      "category": "活动与感受",
+      "display_english": "like",
+      "commit_english": "like",
+      "source_entry_sha256": "247ea1b3146954805d9e533085259dd03b2c053418a1fe1aae9d9ceb3785f02f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 like；未覆盖高兴或倾向于发生的用法。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-194",
+      "chinese": "高兴",
+      "category": "活动与感受",
+      "display_english": "happy",
+      "commit_english": "happy",
+      "source_entry_sha256": "e2087b6cdcc2d1d51ee97ff3835a21b2266fb3b9e006f009c16533e295c65870",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-195",
+      "chinese": "难过",
+      "category": "活动与感受",
+      "display_english": "feel sad",
+      "commit_english": "feel sad",
+      "source_entry_sha256": "3aa46829388254302ba51f0ee4335ffc2ffea2230530a16fdb40971abf502947",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用情绪 feel sad；未覆盖身体不适或生活困难。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-196",
+      "chinese": "害怕",
+      "category": "活动与感受",
+      "display_english": "be afraid",
+      "commit_english": "be afraid",
+      "source_entry_sha256": "87cbb544e48936599a9f04739a5eac51395a1f0af7fe1973f1565c10f3cfbf3f",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-197",
+      "chinese": "疲倦",
+      "category": "活动与感受",
+      "display_english": "tired",
+      "commit_english": "tired",
+      "source_entry_sha256": "6145a6a6713a0fe7eb259ab3492c17291a0f5bebbce3f2b336e939e74778bb7e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-198",
+      "chinese": "忙碌",
+      "category": "活动与感受",
+      "display_english": "busy",
+      "commit_english": "busy",
+      "source_entry_sha256": "2e8b26a062758d3a0808e92e05940eb3d56f114e3b320b99bd83066ced412b68",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-199",
+      "chinese": "安静",
+      "category": "活动与感受",
+      "display_english": "quiet",
+      "commit_english": "quiet",
+      "source_entry_sha256": "ea212d659b8c5987d341fbd6505ad961817aee715efb55725ea0d8090ff53c8e",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选取一个日常常用义；保留简短英文，去除其他近义表述及词典注释；动词使用原形。",
+      "review_attention": false,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "id": "daily-200",
+      "chinese": "舒服",
+      "category": "活动与感受",
+      "display_english": "comfortable",
+      "commit_english": "comfortable",
+      "source_entry_sha256": "6ac565f92c7b0763862614bd40474255137f8c5e0d110baad0ada9b0f7f48137",
+      "alternative_source_entries": [],
+      "license": "CC-BY-SA-4.0",
+      "modification": "选用 comfortable；未覆盖健康状况 feeling well。",
+      "review_attention": true,
+      "review": {
+        "status": "pending",
+        "method": null,
+        "reviewer": null,
+        "reviewed_at": null,
+        "content_sha256": null
+      }
+    }
+  ]
+}

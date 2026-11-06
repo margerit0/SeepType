@@ -3,6 +3,8 @@ experiments/phase3/build/
 experiments/phase3/runtime/
 experiments/phase4/build/
 experiments/phase4/runtime/
+experiments/phase5/build/
+experiments/phase5/runtime/
 __pycache__/
 *.pyc
 

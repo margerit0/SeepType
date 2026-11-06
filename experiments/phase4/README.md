@@ -2,7 +2,9 @@
 
 **2026-11-07 最新接续：v0.5 原生界面与 x64 服务已实现。** 双行候选、工具区、独立释义、原生设置、翻页定宽和两种动画已接入真实 TSF；修复普通选词无响应与学习开关重置页面/选中项。详见 [原生 UI 接续](../../docs/native-ui.md)。下文 2026-11-05 内容为历史实现及验证边界，旧报告保持原样。
 
-从项目根目录执行 `experiments/phase4/build-native-x64.cmd` 顺序构建 TSF、文本宿主、设置和 x64 服务。定向验证：`verify-native-ui.py`（47 项）、`verify-selection.py --service-x64`（7 项）、`verify-text-host.py --v05 --service-x64`（27 项）；编辑回归使用 `verify-text-host.py --service-x64 --report experiments/phase4/results/tsf-text-host-v05-x64.json`（16 项）。x86 服务的 7 项 IPC 和 27 项 TSF/UI 结果另有保留。
+从项目根目录执行 `experiments/phase4/build-native-x64.cmd` 顺序构建 TSF、文本宿主、设置和 x64 服务。高 DPI 修正后定向验证：`verify-native-ui.py`（50 项）、`verify-selection.py --service-x64`（7 项）、`verify-text-host.py --v05 --service-x64`（29 项）；编辑回归使用 `verify-text-host.py --service-x64 --report experiments/phase4/results/tsf-text-host-v05-x64.json`（16 项）。x86 服务的 7 项 IPC 和 27 项 TSF/UI 结果另有保留。
+
+词库准备已转入 [阶段 5](../phase5/README.md)：200 条待审稿、审核导出工具和独立 x64 Rime 验证已经完成，未替换本阶段的 21 条测试数据。
 
 交互运行：`python experiments/phase4/start-text-host.py --service-x64`；设置：`python experiments/phase4/start-settings.py`。目前仍依赖仓库与缓存，不是安装包。Computer Use 审批错误按用户要求留后修复，程序检查不等于物理键鼠验收。
 

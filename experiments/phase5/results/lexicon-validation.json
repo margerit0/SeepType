@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "study-daily-200",
+  "version": "0.1.0",
+  "entries": 200,
+  "categories": {
+    "问候与交流": 20,
+    "日期与时间": 20,
+    "家庭与关系": 20,
+    "食物与饮食": 20,
+    "家居与生活": 20,
+    "出行与地点": 20,
+    "工作与学习": 20,
+    "数码与购物": 20,
+    "身体与自然": 20,
+    "活动与感受": 20
+  },
+  "review_counts": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  },
+  "review_attention": 37,
+  "content_sha256": "5c1e242bbe677e33e6da90d79a2bf421446f03b03e6bdb2b904ab3f0905c68a6",
+  "source_snapshot": "cc-cedict-20261106",
+  "license": "CC-BY-SA-4.0",
+  "release_ready": false,
+  "passed": true,
+  "full_snapshot_checked": true,
+  "scope": "Structure, exact source linkage and approval metadata; not human language review"
+}

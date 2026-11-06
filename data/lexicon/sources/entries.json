@@ -1,0 +1,1015 @@
+{
+  "source_id": "cc-cedict-20261106",
+  "entries": [
+    {
+      "sha256": "6d2758cae1aa8e521a7d7f9eab53103f7dbdabbedaf88e51a6540e6b148b1773",
+      "line_number": 1183,
+      "text": "丈夫 丈夫 [zhang4 fu5] /husband/"
+    },
+    {
+      "sha256": "7053227b8fac897c84917b0df50925d2c4f21c9c19ef31cfad89a86412349545",
+      "line_number": 1609,
+      "text": "上傳 上传 [shang4 chuan2] /to upload/"
+    },
+    {
+      "sha256": "c6eff3d6e3f74794d35816039ec564b278595f80803bdaa43dc3916424afae65",
+      "line_number": 1620,
+      "text": "上午 上午 [shang4 wu3] /morning/"
+    },
+    {
+      "sha256": "610ccd5e8822e38ba69155695af5f07b0e169574eb57d13a914e48bd3ef6741f",
+      "line_number": 1929,
+      "text": "下午 下午 [xia4 wu3] /afternoon/CL:個|个[ge4]/p.m./"
+    },
+    {
+      "sha256": "39d7ed6e66bbb44dbf343f65cd92c9fefcafa0ac15ef210300288abf00c363ee",
+      "line_number": 2079,
+      "text": "下載 下载 [xia4 zai3] /to download/also pr. [xia4zai4]/"
+    },
+    {
+      "sha256": "95ba804342e7d36a531a14f946aab1a00fed856fb4a357ef1cd9dc1ea156559a",
+      "line_number": 2103,
+      "text": "下雨 下雨 [xia4 yu3] /to rain/"
+    },
+    {
+      "sha256": "ab2f9e85c2cbf69c2f8c335cad740b0cbf091e2130687c14df4f8ab7f25b1b49",
+      "line_number": 2104,
+      "text": "下雪 下雪 [xia4 xue3] /to snow/"
+    },
+    {
+      "sha256": "cd706a6a87b86980bf12305ed1c89cf47081c0906481bd7e0186db2f484b047e",
+      "line_number": 2437,
+      "text": "不客氣 不客气 [bu4 ke4 qi5] /you're welcome/don't mention it/impolite/rude/blunt/"
+    },
+    {
+      "sha256": "87abf3efe333d580b4fc6dd00df6d5789a06f7c408529facb248b053c9448e1a",
+      "line_number": 3307,
+      "text": "中午 中午 [zhong1 wu3] /noon/midday/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "24101b60ca163c1bf34eec5e1a65c81bf89ab8b56e3106fa3eb05f60b741e0a9",
+      "line_number": 6124,
+      "text": "今天 今天 [jin1 tian1] /today/the present time; now/"
+    },
+    {
+      "sha256": "50baee9f79153f8fb9c4c2b53406bf70ad8e79d66e17548859e1136b71b284b3",
+      "line_number": 6126,
+      "text": "今年 今年 [jin1 nian2] /this year/"
+    },
+    {
+      "sha256": "1d3858adada1e974d01e613830bcda74bc7bb52dc260545ab8d174ab3ffc1584",
+      "line_number": 6163,
+      "text": "介紹 介绍 [jie4 shao4] /to introduce (sb to sb)/to give a presentation/to present (sb for a job etc)/introduction/"
+    },
+    {
+      "sha256": "6b90c2cff8b57f50955d511a481f68a53d3f1af2bb3192a653faa248d9f45416",
+      "line_number": 6237,
+      "text": "付款 付款 [fu4 kuan3] /to pay a sum of money/payment/"
+    },
+    {
+      "sha256": "1d797f0966c498666584b2ed21c1b35f99692d0f82769f2fee5b4b97f2cdf9b2",
+      "line_number": 6629,
+      "text": "任務 任务 [ren4 wu5] /mission; assignment; task; duty; role/CL:項|项[xiang4]/"
+    },
+    {
+      "sha256": "32462d96e16f9f6698327a0fb53b126ae7c56a94a553871d8f541b5ce6b2161e",
+      "line_number": 7482,
+      "text": "作業 作业 [zuo4 ye4] /school assignment/homework/work/task/operation/CL:個|个[ge4]/to operate/"
+    },
+    {
+      "sha256": "4e831a006f6cc344de5ff01c9ca7b32009bd07ee40ab789cc0f86c3a98943a98",
+      "line_number": 7535,
+      "text": "你好 你好 [ni3 hao3] /hello; hi/"
+    },
+    {
+      "sha256": "e436f0f714583f7303440f3cf2f22680f3ebfc934f0f9117705eabb6b594cf06",
+      "line_number": 8150,
+      "text": "保存 保存 [bao3 cun2] /to conserve; to preserve; to keep; to store; (computing) to save (a file etc)/"
+    },
+    {
+      "sha256": "28ba66461cf9ca6796393344c07153bc8f40d53c59b817169a510990252bdaf8",
+      "line_number": 9013,
+      "text": "假期 假期 [jia4 qi1] /holiday period; vacation/"
+    },
+    {
+      "sha256": "8e1a593cce1d26d91af863dfb60df6c84ab3739260d14a50f0c99858d406404d",
+      "line_number": 9255,
+      "text": "做飯 做饭 [zuo4 fan4] /to prepare a meal/to cook/"
+    },
+    {
+      "sha256": "074a20aea5f5435d664a2511df53738836fd6b3b3eecca312a691b92ac2cfcea",
+      "line_number": 9334,
+      "text": "健康 健康 [jian4 kang1] /health/healthy/"
+    },
+    {
+      "sha256": "b4824a83e70066680c1e6069118d661b464b4119a7dbeb88dff19f9f9e3cde9c",
+      "line_number": 10133,
+      "text": "價格 价格 [jia4 ge2] /price/"
+    },
+    {
+      "sha256": "35255fdfa5454e27c7b1264ed3ae27bcd26516a73b6d8b69d94bf3bf07bec409",
+      "line_number": 10945,
+      "text": "兒子 儿子 [er2 zi5] /son/"
+    },
+    {
+      "sha256": "2cf597a7bb2b4d937fc32cad293d54231cb64109d87ff3614d80c1136b6047a4",
+      "line_number": 11821,
+      "text": "公司 公司 [gong1 si1] /company; firm; corporation/CL:家[jia1]/"
+    },
+    {
+      "sha256": "b795af76a38f862ea7d52dd81ecb410cb1c20731655ce53b9d570f517ddc1e19",
+      "line_number": 11837,
+      "text": "公園 公园 [gong1 yuan2] /park (for public recreation)/CL:座[zuo4]/"
+    },
+    {
+      "sha256": "34b535be11456a26ccc4b613625288078ec6ba1beb756cafa9e8093f7f84bd7e",
+      "line_number": 12410,
+      "text": "再見 再见 [zai4 jian4] /goodbye/see you again later/"
+    },
+    {
+      "sha256": "4d98e4d07abde374138a3f97ef477b282bd7965814ea2af79987d626ba1e543d",
+      "line_number": 12595,
+      "text": "冬天 冬天 [dong1 tian1] /winter/"
+    },
+    {
+      "sha256": "5abfebc515386feb5b1f5c7f3e0573e83f9f3b416d9d940e2f8ea37d71922fe2",
+      "line_number": 12713,
+      "text": "冰箱 冰箱 [bing1 xiang1] /refrigerator/(old) icebox/"
+    },
+    {
+      "sha256": "827bc13ea2ddd5e9790960a5128603f8d3dc0340cf1bf6741c8005ca9293df3a",
+      "line_number": 13292,
+      "text": "出租車 出租车 [chu1 zu1 che1] /taxi/(Tw) rental car/"
+    },
+    {
+      "sha256": "8df382fc7bbd540c06fb103e69a0fb742a388caab9e168cab6659902546fa737",
+      "line_number": 13683,
+      "text": "分鐘 分钟 [fen1 zhong1] /minute/"
+    },
+    {
+      "sha256": "23479c27ff456bbf732c9bea7e8774151b659e91c95aafbaef87fb532b007d3a",
+      "line_number": 14166,
+      "text": "刪除 删除 [shan1 chu2] /to delete/to cancel/"
+    },
+    {
+      "sha256": "f70ba73c379a9bb6a3df8cf18427ed96e3f9c7b58e91fa7cc9907107f864f069",
+      "line_number": 16826,
+      "text": "午餐 午餐 [wu3 can1] /lunch/luncheon/CL:份[fen4],頓|顿[dun4],次[ci4]/"
+    },
+    {
+      "sha256": "5a576d6aefd560ab4ecd54f8a52d25a60a379419241ec82c44eaf217bb19216f",
+      "line_number": 18111,
+      "text": "去年 去年 [qu4 nian2] /last year/"
+    },
+    {
+      "sha256": "a3180a97dc6c27a75ef2e549f616c448cd97008dcc5cc197d693973815d42eb5",
+      "line_number": 19670,
+      "text": "吃飯 吃饭 [chi1 fan4] /to have a meal/to eat/to make a living/"
+    },
+    {
+      "sha256": "947ad40f31e09f6de42b39e6029683ca97efe9bb4af05cdf6e27b615f4004136",
+      "line_number": 19756,
+      "text": "合同 合同 [he2 tong5] /contract; agreement/CL:份[fen4]/"
+    },
+    {
+      "sha256": "d899403dc2923a9c2c16ce82a524d0e21b56cdf6d28fb55d1b063b1da754592d",
+      "line_number": 20053,
+      "text": "同事 同事 [tong2 shi4] /colleague; co-worker/"
+    },
+    {
+      "sha256": "e9f50fe1b403a223869779a817dee3d65db307ddea6039061e1bdcf640d52ba9",
+      "line_number": 20092,
+      "text": "同學 同学 [tong2 xue2] /to study at the same school/fellow student/classmate/CL:位[wei4],個|个[ge4]/"
+    },
+    {
+      "sha256": "1d802e7ed4f86d8e1c8954851fac528134449c3df78bbb80094c54717c1ac982",
+      "line_number": 20121,
+      "text": "同意 同意 [tong2 yi4] /to agree/to consent/to approve/"
+    },
+    {
+      "sha256": "775889d6c842122d59c37917f65923836f31847375d326950494d8cc5989d0ca",
+      "line_number": 21373,
+      "text": "咖啡 咖啡 [ka1 fei1] /(loanword) coffee/CL:杯[bei1]/"
+    },
+    {
+      "sha256": "2ac229022a5e66d25c5408e70dae55a4646314910387a78ee70c872f08d4dc00",
+      "line_number": 21772,
+      "text": "員工 员工 [yuan2 gong1] /staff; personnel; employee/"
+    },
+    {
+      "sha256": "955526755469fec458e8f3f20a226fa3b185b6e1cc02584e36a8fbf8c52c75f5",
+      "line_number": 21789,
+      "text": "哥哥 哥哥 [ge1 ge5] /older brother/CL:個|个[ge4],位[wei4]/"
+    },
+    {
+      "sha256": "daa8650ee05c6dd06442d18ea5e5d89c9d8f829c3294bb68796e30f244161322",
+      "line_number": 22219,
+      "text": "商店 商店 [shang1 dian4] /store; shop/CL:家[jia1]/"
+    },
+    {
+      "sha256": "b09dd7efe4ccdc42717145b978b6c321db9055d413a582bf2dde7f10e87a9f16",
+      "line_number": 22329,
+      "text": "問題 问题 [wen4 ti2] /question/problem/issue/topic/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "247ea1b3146954805d9e533085259dd03b2c053418a1fe1aae9d9ceb3785f02f",
+      "line_number": 22642,
+      "text": "喜歡 喜欢 [xi3 huan5] /to like; to be fond of/to be happy; to be pleased/to tend to/"
+    },
+    {
+      "sha256": "c49dccc4f09d6f5089e4cf771f2f62ab7debabc0db26c43b8487a47e11424003",
+      "line_number": 24018,
+      "text": "回答 回答 [hui2 da2] /to reply; to answer/reply; answer/"
+    },
+    {
+      "sha256": "ecebb5979ac8b337a5fc28000007ea7fc1d2533e878a5c31efd8587da178c159",
+      "line_number": 24728,
+      "text": "圖書館 图书馆 [tu2 shu1 guan3] /library/CL:家[jia1],個|个[ge4]/"
+    },
+    {
+      "sha256": "d3735f9b2a09b156084d18b6f44976b760943149ad179fcd23962df89b027f80",
+      "line_number": 25072,
+      "text": "地圖 地图 [di4 tu2] /map/CL:張|张[zhang1],本[ben3]/"
+    },
+    {
+      "sha256": "68284ac23f2a028de58b7e4e46e83bb44e54504ada79c735f03c49712add5311",
+      "line_number": 25076,
+      "text": "地址 地址 [di4 zhi3] /address/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "61b36b1a3e1faca869dd0aec34518a944078eda0b6bdc4764870573500f40f8d",
+      "line_number": 25241,
+      "text": "地鐵 地铁 [di4 tie3] /underground railway; subway/subway train/"
+    },
+    {
+      "sha256": "b9d7ed5669f0753b826d9697d833230c00d4ffc6668b998aad2f291eabbafed8",
+      "line_number": 25720,
+      "text": "城市 城市 [cheng2 shi4] /city; town/CL:座[zuo4]/"
+    },
+    {
+      "sha256": "5bd64d7d57b7f75c3927080d6bb3f68275e1dc2474819031944a2308c1a9efbb",
+      "line_number": 26156,
+      "text": "報告 报告 [bao4 gao4] /to inform/to report/to make known/report/speech/talk/lecture/CL:篇[pian1],份[fen4],個|个[ge4],通[tong4]/"
+    },
+    {
+      "sha256": "ed7dca7bb7e72f5da4a022d7a4f9ee5ff780e418f4ab756e3eb746d1a70f69d6",
+      "line_number": 27033,
+      "text": "夏天 夏天 [xia4 tian1] /summer/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "55ae278983af723c305da9b820f2267e8b137a3a6c3707f1dd818757e78348aa",
+      "line_number": 28869,
+      "text": "天氣 天气 [tian1 qi4] /weather/"
+    },
+    {
+      "sha256": "a34d403be26a1332a07668c5ef93c4fb7063e19614b416196a6117c1a10a9f87",
+      "line_number": 29183,
+      "text": "太陽 太阳 [tai4 yang5] /sun/sunlight; sunshine/temple (on the side of the human head) (abbr. for 太陽穴|太阳穴[tai4 yang2 xue2])/"
+    },
+    {
+      "sha256": "9563b39b4eed01cfc74b18d028392c4767a07fd2cbaf231cc7da9a56971680df",
+      "line_number": 29908,
+      "text": "女兒 女儿 [nu:3 er2] /daughter/"
+    },
+    {
+      "sha256": "259769274bcc96c78625f1cc2fa3d044ccf59a513a1a6db0944ea27ba76f4864",
+      "line_number": 30470,
+      "text": "妹妹 妹妹 [mei4 mei5] /younger sister/young woman/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "90d73f04f559d42839d8f4d7bb6419012fe6fca3fbb1ee0386ef558d09ed125f",
+      "line_number": 30481,
+      "text": "妻子 妻子 [qi1 zi3] /wife and children/"
+    },
+    {
+      "sha256": "88a137e7dd05e0ddf4c016ad666b704695d852870097265cde7026fe984f60da",
+      "line_number": 30482,
+      "text": "妻子 妻子 [qi1 zi5] /wife/"
+    },
+    {
+      "sha256": "c39bfead7368a7f6450615ba3ea000e0175bbf057382ea874ded142145b36044",
+      "line_number": 30538,
+      "text": "姐姐 姐姐 [jie3 jie5] /older sister/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "862e5d28d7b854c5a57da8c744e44119523b74f992094e80c5efcef14311c21c",
+      "line_number": 31056,
+      "text": "媽媽 妈妈 [ma1 ma5] /mama/mommy/mother/CL:個|个[ge4],位[wei4]/"
+    },
+    {
+      "sha256": "5e82b71a8a9ed309510e046382b8007ea8cfc55f4e22ec5896e2f2fffbc46a98",
+      "line_number": 31680,
+      "text": "孩子 孩子 [hai2 zi5] /child/"
+    },
+    {
+      "sha256": "8c7981714a0684c7a63f790e1cc4bb817407f8090436502f2183b2a6fae6563b",
+      "line_number": 31789,
+      "text": "學校 学校 [xue2 xiao4] /school/CL:所[suo3]/"
+    },
+    {
+      "sha256": "4b331ac69fb4ecd82e6cc92cac60473541d27e6b6759e4d877957ff8fb4e0e7b",
+      "line_number": 31806,
+      "text": "學生 学生 [xue2 sheng5] /student/schoolchild/"
+    },
+    {
+      "sha256": "b51e6ff8fd1b31bae87531bf2d7038891e4437597068796f8e5987ba7c0477ac",
+      "line_number": 31819,
+      "text": "學習 学习 [xue2 xi2] /to learn; to study/"
+    },
+    {
+      "sha256": "ea212d659b8c5987d341fbd6505ad961817aee715efb55725ea0d8090ff53c8e",
+      "line_number": 32235,
+      "text": "安靜 安静 [an1 jing4] /quiet/peaceful/calm/"
+    },
+    {
+      "sha256": "b0eb6921013ec910fc54b2aed6a5b7018657556af89cbe29ae983d4017e4f2bb",
+      "line_number": 32639,
+      "text": "客人 客人 [ke4 ren2] /visitor; guest/customer/"
+    },
+    {
+      "sha256": "2a2963a25dfea280270063d2bcf1e4c4609b8be53b71172260a638f7150450b6",
+      "line_number": 32656,
+      "text": "客廳 客厅 [ke4 ting1] /living room; sitting room/CL:間|间[jian1]/"
+    },
+    {
+      "sha256": "75bcc62c4d3f212c9783d3701bd1a8cc3a7e91d388b2f705bae642a1c7d8998f",
+      "line_number": 32657,
+      "text": "客戶 客户 [ke4 hu4] /client; customer/"
+    },
+    {
+      "sha256": "87cbb544e48936599a9f04739a5eac51395a1f0af7fe1973f1565c10f3cfbf3f",
+      "line_number": 32824,
+      "text": "害怕 害怕 [hai4 pa4] /to be afraid; to be scared/"
+    },
+    {
+      "sha256": "09f5549a0b1f1aec89e271bac2840bc947305a512e5be58691a924bba85e4f19",
+      "line_number": 32858,
+      "text": "家人 家人 [jia1 ren2] /family member/(old) servant/"
+    },
+    {
+      "sha256": "7acb06df29c140b02bc2c344d93f06b04e1043813510de1f558397cc229afa14",
+      "line_number": 32907,
+      "text": "家庭 家庭 [jia1 ting2] /family; household/CL:戶|户[hu4]/"
+    },
+    {
+      "sha256": "3a2b558d83ed27c4e1a20dd6e51dd58bd73f2cbc79ab1ddbaabe6dffa118e63d",
+      "line_number": 33194,
+      "text": "密碼 密码 [mi4 ma3] /cipher; secret code/password; PIN/"
+    },
+    {
+      "sha256": "dc5881c699b96651c2ff85c553a85bf3490566aab8997f5886144fca62947ddd",
+      "line_number": 33672,
+      "text": "寫字 写字 [xie3 zi4] /to write (by hand)/to practice calligraphy/"
+    },
+    {
+      "sha256": "8afb123080d627b3e4c8a89b107d9b7311d92e2881d5fda17ae2924bfc24ddfe",
+      "line_number": 34195,
+      "text": "對不起 对不起 [dui4 bu5 qi3] /I'm sorry; excuse me; I beg your pardon/to let (sb) down; to disappoint/"
+    },
+    {
+      "sha256": "d9c3c673f5210fa598ba987b8249ac6e6ff05de052ab007323ef2723025b13e2",
+      "line_number": 34636,
+      "text": "小時 小时 [xiao3 shi2] /hour/"
+    },
+    {
+      "sha256": "822545c2b8a9147fddb4474f865530d739d5edd4cc84b9d9e4f088550be1f6c6",
+      "line_number": 35479,
+      "text": "屏幕 屏幕 [ping2 mu4] /screen (TV, computer or movie)/"
+    },
+    {
+      "sha256": "36e1c0f61a378cb68b6375c6bcbbce8bf92b1581bccc3b4f7781a7753990c37c",
+      "line_number": 36429,
+      "text": "工作 工作 [gong1 zuo4] /to work/(of a machine) to operate/job/work/task/CL:個|个[ge4],份[fen4],項|项[xiang4]/"
+    },
+    {
+      "sha256": "9d48540cae53385239989e0ace7bc197fa42477ee16553301d79094560dd7f7f",
+      "line_number": 37620,
+      "text": "帽子 帽子 [mao4 zi5] /hat/cap/(fig.) label/bad name/CL:頂|顶[ding3]/"
+    },
+    {
+      "sha256": "6deb83d711ce015e574bbc213b20a20774b33fff7a881a83251fd240a24596b8",
+      "line_number": 37687,
+      "text": "幫助 帮助 [bang1 zhu4] /assistance; aid/to help; to assist/"
+    },
+    {
+      "sha256": "81bbd1a792d2335cf3ce350ed46440981ce0160865e2a53a3273b2c7f158047e",
+      "line_number": 38665,
+      "text": "廚房 厨房 [chu2 fang2] /kitchen/CL:間|间[jian1]/"
+    },
+    {
+      "sha256": "0332e7f92e295823f645ba40550f04d9d2f7506da283104d723280737b981223",
+      "line_number": 39018,
+      "text": "建議 建议 [jian4 yi4] /to propose; to suggest; to recommend/proposal; suggestion; recommendation (CL:點|点[dian3])/"
+    },
+    {
+      "sha256": "ebd15d321ef401bb9090bac692f68b63a0c21ffb70ca6a65d918fd81f1e265c4",
+      "line_number": 39276,
+      "text": "弟弟 弟弟 [di4 di5] /younger brother/CL:個|个[ge4],位[wei4]/"
+    },
+    {
+      "sha256": "2e8b26a062758d3a0808e92e05940eb3d56f114e3b320b99bd83066ced412b68",
+      "line_number": 41258,
+      "text": "忙碌 忙碌 [mang2 lu4] /busy; bustling/"
+    },
+    {
+      "sha256": "aa362fd5b8bc971c3d522b61867f20991b064ec0af6f98eefef6665c0093206c",
+      "line_number": 42937,
+      "text": "感冒 感冒 [gan3 mao4] /to catch cold/(common) cold/CL:場|场[chang2],次[ci4]/(coll.) to be interested in (often used in the negative)/(Tw) to detest/can't stand/"
+    },
+    {
+      "sha256": "60d000957c5327dfe23176f10e826dead9a5a0ed6c4884c5ae580fd545d3a31c",
+      "line_number": 44312,
+      "text": "房間 房间 [fang2 jian1] /room/CL:間|间[jian1]/"
+    },
+    {
+      "sha256": "3218f1658d13f34d4c34f46b94bcd5ab7e493a78d9053473cce54d5cda8a102b",
+      "line_number": 44474,
+      "text": "手指 手指 [shou3 zhi3] /finger/CL:個|个[ge4],隻|只[zhi1]/"
+    },
+    {
+      "sha256": "fc9131b696a6965372d25044e848b81f67d83dafb2ca25469907c2c2ef10440d",
+      "line_number": 44500,
+      "text": "手機 手机 [shou3 ji1] /cell phone; mobile phone/CL:部[bu4],臺|台[tai2]/"
+    },
+    {
+      "sha256": "343e13bef554fc3376cd0a1b9d9f7ffced8149a10763243b4edb54d2fa078f5b",
+      "line_number": 46369,
+      "text": "拒絕 拒绝 [ju4 jue2] /to refuse; to decline; to reject/"
+    },
+    {
+      "sha256": "479746ac8913818d7e74556af5b85f778cedfd652d7f12fa688fe9e100d20ddf",
+      "line_number": 51392,
+      "text": "文件 文件 [wen2 jian4] /document/file/CL:份[fen4]/"
+    },
+    {
+      "sha256": "6e6b0c362386feb981877e7b57bd19446dac08871fc01c7cbcba301481483838",
+      "line_number": 52481,
+      "text": "旅行 旅行 [lu:3 xing2] /to travel/journey; trip/CL:趟[tang4],次[ci4]/"
+    },
+    {
+      "sha256": "f17c96673c24d6a076971978b7650bca58122bb51b410494c3ee4d49b951a967",
+      "line_number": 52825,
+      "text": "早安 早安 [zao3 an1] /Good morning!/"
+    },
+    {
+      "sha256": "d54a32cae2ab4d770c3e962b389b1aac2c7922b3ae3414f043796d3afdbde128",
+      "line_number": 52841,
+      "text": "早晨 早晨 [zao3 chen2] /early morning/also pr. [zao3chen5]/"
+    },
+    {
+      "sha256": "13dafc738302b157eca0b52832d8f49ced1a08945dadf00e00c38f0dcd3e03f6",
+      "line_number": 52871,
+      "text": "早餐 早餐 [zao3 can1] /breakfast/CL:份[fen4],頓|顿[dun4],次[ci4]/"
+    },
+    {
+      "sha256": "b1370f78488d23f9105ec7d844d6883fbe65c4ec4bc8bf209a24af578d24a131",
+      "line_number": 53043,
+      "text": "明天 明天 [ming2 tian1] /tomorrow/"
+    },
+    {
+      "sha256": "3df3a6a492a2294fbc32af9d3a3f8601c0ab2d2aa2c5807ab58e4b0b93c4bcbf",
+      "line_number": 53062,
+      "text": "明年 明年 [ming2 nian2] /next year/"
+    },
+    {
+      "sha256": "26ca34351be081bef6951331a882e5bc58dd89128f9ce0b0e0d0b97436b8fd06",
+      "line_number": 53262,
+      "text": "星星 星星 [xing1 xing5] /(coll.) a star; the stars in the sky/"
+    },
+    {
+      "sha256": "cff8fd14d13699c41bd0f7e3a1b262eda307af31a98e5a350b5541915e867a6f",
+      "line_number": 53268,
+      "text": "星期 星期 [xing1 qi1] /week/CL:個|个[ge4]/day of the week/Sunday/"
+    },
+    {
+      "sha256": "3dba15378cf66ece3e19f60e211a935a63192e4da1c8c16db4b3e2e389629b49",
+      "line_number": 53356,
+      "text": "春天 春天 [chun1 tian1] /spring (season)/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "af108d7dd0a855cc1f09f096bc5eccaa0ca5b9f9cdc2e77b095a8ac1fcb5f5ea",
+      "line_number": 53438,
+      "text": "昨天 昨天 [zuo2 tian1] /yesterday/"
+    },
+    {
+      "sha256": "33f019c0eb18553f3667fe25ce20e688406050706a7352e3a1630f6dbe8f59a1",
+      "line_number": 53596,
+      "text": "時間 时间 [shi2 jian1] /(concept of) time/(duration of) time/(point in) time/"
+    },
+    {
+      "sha256": "6224543e75b2fbbe690e8f6070d08d7b2e463ee451519f015261e7c2c3580c05",
+      "line_number": 53670,
+      "text": "晚上 晚上 [wan3 shang5] /evening/night/CL:個|个[ge4]/in the evening/"
+    },
+    {
+      "sha256": "bf98e324572f91e14a15acda4872ba27a42abf92d6524d2af4fae254afdf82da",
+      "line_number": 53677,
+      "text": "晚安 晚安 [wan3 an1] /Good night!/Good evening!/"
+    },
+    {
+      "sha256": "bd5e9ef5d61f4d606218c09d7c57be8f52068a7dfab5f66923ae593018148220",
+      "line_number": 53701,
+      "text": "晚餐 晚餐 [wan3 can1] /evening meal; dinner/CL:份[fen4],頓|顿[dun4],次[ci4]/"
+    },
+    {
+      "sha256": "8abb72a29fe25593be15cf89b658d2dcd8239dc35334c5ea1b86dae713aa88e8",
+      "line_number": 54832,
+      "text": "會議 会议 [hui4 yi4] /meeting/conference/CL:場|场[chang3],屆|届[jie4]/"
+    },
+    {
+      "sha256": "99799463d05f1df11ab1beaa220e5f017380f79cb11443389b5e15abadd57228",
+      "line_number": 54857,
+      "text": "月亮 月亮 [yue4 liang5] /the moon/"
+    },
+    {
+      "sha256": "1db984cfcb2e2c94b59db9784a83c4862061c4c72acfc6b820fae098b16ce650",
+      "line_number": 54861,
+      "text": "月份 月份 [yue4 fen4] /month/"
+    },
+    {
+      "sha256": "9ffb0485fcdb024db7f3231d9c7334ca67498a8a5ae2834befca517daeb4ffc2",
+      "line_number": 55316,
+      "text": "朋友 朋友 [peng2 you5] /friend/CL:個|个[ge4],位[wei4]/"
+    },
+    {
+      "sha256": "055541d2954f7ef8c8bcda3106320e360c56e207f31a747a6a8211eb4906aab6",
+      "line_number": 57818,
+      "text": "桌子 桌子 [zhuo1 zi5] /table/desk/CL:張|张[zhang1],套[tao4]/"
+    },
+    {
+      "sha256": "0b853344262af7b6bd81e2b41785bdbc164ec7d24c09cc0d10a009b217821e04",
+      "line_number": 58442,
+      "text": "椅子 椅子 [yi3 zi5] /chair/CL:把[ba3],張|张[zhang1]/"
+    },
+    {
+      "sha256": "df6552047ef357a986037db91bae51c6a416be2aaadf46dbd160a7863c6cbe32",
+      "line_number": 59525,
+      "text": "橙子 橙子 [cheng2 zi5] /orange/"
+    },
+    {
+      "sha256": "406d1b5cd90684645e3a6faa1e93c12d9322176ab70ca011243a46483e488bf5",
+      "line_number": 59569,
+      "text": "機場 机场 [ji1 chang3] /airport; airfield/(slang) service provider for Shadowsocks or similar software for circumventing Internet censorship/CL:家[jia1],處|处[chu4]/"
+    },
+    {
+      "sha256": "0f2f4207d7883d792a666de2631848a247ef9f6b5b45146f977d088b69db529c",
+      "line_number": 60445,
+      "text": "歡迎 欢迎 [huan1 ying2] /to welcome/welcome/"
+    },
+    {
+      "sha256": "dd84d8f3eea1f40726395c81de4ba0b504932b5d4c55f4fb14e38db880a1d1eb",
+      "line_number": 61509,
+      "text": "母親 母亲 [mu3 qin1] /mother/"
+    },
+    {
+      "sha256": "d6b2e3d6f43738a90e473279c9cf83649c5c756b281912ebda5456d0a4ddf954",
+      "line_number": 62437,
+      "text": "水果 水果 [shui3 guo3] /fruit/"
+    },
+    {
+      "sha256": "2df984d144a53b80f191a919207542513b1311178181a38ebdc068fcde3ff882",
+      "line_number": 63376,
+      "text": "沒關係 没关系 [mei2 guan1 xi5] /it doesn't matter/"
+    },
+    {
+      "sha256": "51c6b5490ef5e04f9caa95fc074860f45c1eb27ce3e196d69b66c3ae5f55d1cc",
+      "line_number": 63518,
+      "text": "沙發 沙发 [sha1 fa1] /(loanword) sofa (CL:條|条[tiao2],張|张[zhang1])/(Internet slang) first reply to a forum post/"
+    },
+    {
+      "sha256": "e52c04a354cce6939b61dac1fae030ce1d3021fc24504f55509183501b43df50",
+      "line_number": 64622,
+      "text": "洗澡 洗澡 [xi3 zao3] /to bathe/to take a shower/"
+    },
+    {
+      "sha256": "68c689eca6fa3ade398e0494e9dd5c8c603bee638a7bc651e02bd978c656b5f5",
+      "line_number": 64654,
+      "text": "洗衣機 洗衣机 [xi3 yi1 ji1] /washing machine; washer/CL:臺|台[tai2]/"
+    },
+    {
+      "sha256": "0f189e7b98e833f7465ea15f1ac2940f993572b034d4c43c6cfd73f897fc321d",
+      "line_number": 65327,
+      "text": "浴室 浴室 [yu4 shi4] /bathroom; shower room (CL:間|间[jian1])/bathhouse/"
+    },
+    {
+      "sha256": "2b3d53de4d9440f45eca8a187896370234774a3a7bef9d1234bd7fbdece8fec8",
+      "line_number": 66932,
+      "text": "游泳 游泳 [you2 yong3] /swimming/to swim/"
+    },
+    {
+      "sha256": "86a2576893f0e1ae26c59aa336379fbbfdbae876c0b5120e814eac59b1119711",
+      "line_number": 69173,
+      "text": "火車 火车 [huo3 che1] /train/CL:列[lie4],節|节[jie2],班[ban1],趟[tang4]/"
+    },
+    {
+      "sha256": "189c51adbf54942d3036efcc1270119de61e233bab57174bbe8ce2bfcdb4f0a5",
+      "line_number": 70565,
+      "text": "照片 照片 [zhao4 pian4] /photograph/CL:張|张[zhang1],幅[fu2]/"
+    },
+    {
+      "sha256": "8e3d60f882bbab6c07d129e531e279b6320e5d6771d76557aeeb1460c0c00e3b",
+      "line_number": 71481,
+      "text": "父親 父亲 [fu4 qin1] /father/also pr. [fu4 qin5]/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "2be577106260c59f4a8aa77767685ab38913996cd1482cebfa8c7c4428ebff49",
+      "line_number": 71487,
+      "text": "爸爸 爸爸 [ba4 ba5] /(coll.) father; dad/CL:位[wei4]/"
+    },
+    {
+      "sha256": "9c7ec8068c2057f765135d775a07aaedeba52d30bdcfa0e0a3bfd18e876bd97b",
+      "line_number": 71676,
+      "text": "牙齒 牙齿 [ya2 chi3] /tooth/dental/CL:顆|颗[ke1]/"
+    },
+    {
+      "sha256": "a4dad9cac4694aeab7066db3ee1f555b03ac4401ec090b243713ca5713210762",
+      "line_number": 71693,
+      "text": "牛奶 牛奶 [niu2 nai3] /cow's milk/CL:瓶[ping2],杯[bei1]/"
+    },
+    {
+      "sha256": "ab90a29e4acf8a466d75bb8f70bd123f087af81760f95191c1a35ece85741d06",
+      "line_number": 73510,
+      "text": "現在 现在 [xian4 zai4] /now; at present; currently/"
+    },
+    {
+      "sha256": "c9cf629bb89657bb8baf27f6e48c77848a1f30b12726da6d6f459f438fb9e8ce",
+      "line_number": 74511,
+      "text": "生日 生日 [sheng1 ri4] /birthday/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "6145a6a6713a0fe7eb259ab3492c17291a0f5bebbce3f2b336e939e74778bb7e",
+      "line_number": 75794,
+      "text": "疲倦 疲倦 [pi2 juan4] /to tire/tired/"
+    },
+    {
+      "sha256": "188ad41fa4bb7906a81e0475f0ede8e635d314bbcc9cbfeeaac174d4660178aa",
+      "line_number": 76479,
+      "text": "發票 发票 [fa1 piao4] /invoice; receipt; bill/uniform invoice (abbr. for 統一發票|统一发票[tong3 yi1 fa1 piao4])/"
+    },
+    {
+      "sha256": "7022484caa585f16a8249521f833d22846433ccadc0b11b92cc9eacea877ca58",
+      "line_number": 78654,
+      "text": "眼睛 眼睛 [yan3 jing5] /eye/CL:隻|只[zhi1],雙|双[shuang1]/"
+    },
+    {
+      "sha256": "00e0feccb0e379a77d87eac987e9ff60cff241b27aea38aa4339635dd4525702",
+      "line_number": 78821,
+      "text": "睡覺 睡觉 [shui4 jiao4] /to go to bed/to sleep/"
+    },
+    {
+      "sha256": "4ab4bd5c6814f818040c4ec411384bf253536296e61f170ee1432032a5da307b",
+      "line_number": 80629,
+      "text": "祝賀 祝贺 [zhu4 he4] /to congratulate/congratulations/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "6f7161d959e3dd5e5bad40c350d956c764caff8a72b57776f6d85b2338bf704a",
+      "line_number": 81336,
+      "text": "秋天 秋天 [qiu1 tian1] /autumn/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "c7cf7058d9c79305d051f5ac0ed0fff9c47d81fbd547910973302feec6723d6b",
+      "line_number": 82288,
+      "text": "空調 空调 [kong1 tiao2] /air conditioning/air conditioner (including units that have a heating mode)/CL:臺|台[tai2]/"
+    },
+    {
+      "sha256": "5f81baa47287a2c616d5b29c80f08e1b5282c0070a1558243cf8a63c43bde740",
+      "line_number": 82434,
+      "text": "窗戶 窗户 [chuang1 hu5] /window/CL:個|个[ge4],扇[shan4]/"
+    },
+    {
+      "sha256": "523ca20bba5b49e0ebd20e56b9a7bc436b7eb15d88d9901c8e89a9aec131a8c7",
+      "line_number": 84043,
+      "text": "米飯 米饭 [mi3 fan4] /(cooked) rice/"
+    },
+    {
+      "sha256": "74c49b56679a8f12360a20a90cdff0e34f6ccd0f33a2c7a4caf1b93639921654",
+      "line_number": 85709,
+      "text": "結束 结束 [jie2 shu4] /to end; to finish; to conclude/"
+    },
+    {
+      "sha256": "8306514bfd4b27604d3f07312c984ba1288a91bc2e38464735690651b9efb02a",
+      "line_number": 86182,
+      "text": "經理 经理 [jing1 li3] /manager/director/CL:個|个[ge4],位[wei4],名[ming2]/"
+    },
+    {
+      "sha256": "066a1ba3b3949f83201694e4db7d237c094ce6d44d474494e221904467f6cfef",
+      "line_number": 86486,
+      "text": "網站 网站 [wang3 zhan4] /website/"
+    },
+    {
+      "sha256": "f7b92b4c94ecc9a114532055efffba517cdc52c7e14746e192742627303abe78",
+      "line_number": 86494,
+      "text": "網絡 网络 [wang3 luo4] /network/Internet/"
+    },
+    {
+      "sha256": "01582a2cb106cd876de09a3ef303f9dc82c5e87357d97a068a5a081a53f0febf",
+      "line_number": 86910,
+      "text": "練習 练习 [lian4 xi2] /to practice/exercise/drill/practice/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "bb7a7926939d7455cd4ca70a98d6e8814f1710a9e21c2b2762f11b22d5ff3acb",
+      "line_number": 88777,
+      "text": "老師 老师 [lao3 shi1] /teacher/"
+    },
+    {
+      "sha256": "962e905cd7d0cbdcd494f230f41ec2a43006dc8debdad5b61ae7b5450eb7fd2c",
+      "line_number": 88994,
+      "text": "考試 考试 [kao3 shi4] /to take an exam/exam/CL:次[ci4]/"
+    },
+    {
+      "sha256": "5f138dc2ac0c0bfad08cffc878a0cfc3de718dae0da7656e6ab7c2ce9297037f",
+      "line_number": 89184,
+      "text": "耳朵 耳朵 [er3 duo5] /ear/CL:隻|只[zhi1],個|个[ge4],對|对[dui4]/handle (on a cup)/"
+    },
+    {
+      "sha256": "041d445d18f3d412e81f04ef341b0d6f1aef4920aab3383db1d57871ad900c1e",
+      "line_number": 91641,
+      "text": "臥室 卧室 [wo4 shi4] /bedroom/CL:間|间[jian1]/"
+    },
+    {
+      "sha256": "4facf435faab433b4a2cf78cfb632426db574f212dc5163a1a7664b850ec8e72",
+      "line_number": 92166,
+      "text": "自行車 自行车 [zi4 xing2 che1] /bicycle; bike/CL:輛|辆[liang4]/"
+    },
+    {
+      "sha256": "6ac565f92c7b0763862614bd40474255137f8c5e0d110baad0ada9b0f7f48137",
+      "line_number": 92732,
+      "text": "舒服 舒服 [shu1 fu5] /comfortable/feeling well/"
+    },
+    {
+      "sha256": "7a58fba410a0fc025b7ddf887546ef025f2828e8546aff0e1cbcb51990d7da9f",
+      "line_number": 94125,
+      "text": "茶葉 茶叶 [cha2 ye4] /tea/tea leaves/CL:盒[he2],罐[guan4],包[bao1],片[pian4]/"
+    },
+    {
+      "sha256": "3b83f426273fccef4b9b0b3bc8db0b3e5204f87a579aec5cfb8e3b4580541c3a",
+      "line_number": 94250,
+      "text": "草莓 草莓 [cao3 mei2] /strawberry/CL:顆|颗[ke1]/(Tw) hickey/love bite/"
+    },
+    {
+      "sha256": "33622a5ed1e1c9f7cbd7201fe3daaa6642d5dd55ac737275221287994afd103d",
+      "line_number": 95367,
+      "text": "葡萄 葡萄 [pu2 tao5] /grape/"
+    },
+    {
+      "sha256": "201cbd2584a5d89bb15a04bfa3d6ba0f32e98d33b37071c75332c51de9e69015",
+      "line_number": 95936,
+      "text": "蔬菜 蔬菜 [shu1 cai4] /vegetables/"
+    },
+    {
+      "sha256": "cd22b28e5fcac2aa230849a465e2d957e005190a47b581691a99a2756ef564f8",
+      "line_number": 96757,
+      "text": "蘋果 苹果 [Ping2 guo3] /Apple (American tech company)/"
+    },
+    {
+      "sha256": "dbd896c66668b395ad1e56ef5286f67c3adcf957d3fbb3668a5d4f38877ca631",
+      "line_number": 96758,
+      "text": "蘋果 苹果 [ping2 guo3] /apple/CL:個|个[ge4],顆|颗[ke1]/"
+    },
+    {
+      "sha256": "46798ba63c391c31e84f33e0a102b86bc356d3a59a9ebf94c9197a70b4053009",
+      "line_number": 98405,
+      "text": "街道 街道 [jie1 dao4] /street/CL:條|条[tiao2]/subdistrict/residential district/"
+    },
+    {
+      "sha256": "49b833153d089e33c9e8e0e1d651032e2e17d3652eb40a2fb804991de33906c3",
+      "line_number": 98563,
+      "text": "衣服 衣服 [yi1 fu5] /clothes/CL:件[jian4],套[tao4]/"
+    },
+    {
+      "sha256": "e8f3d30645fe7cef773e95f42058e016df61d81ebbb3ff828dcf9b98a978b232",
+      "line_number": 99470,
+      "text": "襪子 袜子 [wa4 zi5] /socks/stockings/CL:隻|只[zhi1],對|对[dui4],雙|双[shuang1]/"
+    },
+    {
+      "sha256": "40ba78535033490664b4997b9a28a7eade9ade6d0eb3f340e6ca2d6a5e662b28",
+      "line_number": 99672,
+      "text": "西瓜 西瓜 [xi1 gua1] /watermelon/CL:顆|颗[ke1]/"
+    },
+    {
+      "sha256": "94f7c6f4cd4d25da831dc22f86c135fe7e19d5da6a4bfc3d7d35f3c918356790",
+      "line_number": 100060,
+      "text": "視頻 视频 [shi4 pin2] /video/"
+    },
+    {
+      "sha256": "28e7e930915480e7f57082a60869272e905520238b8484e5b6477c7398837336",
+      "line_number": 100409,
+      "text": "解釋 解释 [jie3 shi4] /explanation/to explain/to interpret/to resolve/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "ae858d0b2ce6743e77c53ded8a434225d8e7060045a38826eee9c830601b69d8",
+      "line_number": 100560,
+      "text": "訂單 订单 [ding4 dan1] /(purchase) order/"
+    },
+    {
+      "sha256": "cab82f6a4eccbf2ad97706bca4e7e8fe6b2610e734d8fc922f6efc087134bee8",
+      "line_number": 100594,
+      "text": "計劃 计划 [ji4 hua4] /plan/project/program/to plan/to map out/CL:個|个[ge4],項|项[xiang4]/"
+    },
+    {
+      "sha256": "79fcb620da0e2f8b11a9abd26a533939d3f4c1b57875d982130400fb1f92e8fc",
+      "line_number": 101650,
+      "text": "課程 课程 [ke4 cheng2] /course; academic program/CL:堂[tang2],節|节[jie2],門|门[men2]/"
+    },
+    {
+      "sha256": "e99cf4f2dea402f3a70624c415841c26995d3908ce153ddfdb0e2ac0b2a6c007",
+      "line_number": 101847,
+      "text": "請問 请问 [qing3 wen4] /Excuse me, may I ask...?/"
+    },
+    {
+      "sha256": "2b0348a3a5ea48c613e2ff8bdf767784b828920f9b3be50b3b8c760ea356c01e",
+      "line_number": 102207,
+      "text": "謝謝 谢谢 [xie4 xie5] /to thank/thanks/thank you/"
+    },
+    {
+      "sha256": "d0123d8ae6da49359c8488ba02510108ae9faa8679e4a3d7b245bdbc2d429b79",
+      "line_number": 104556,
+      "text": "走路 走路 [zou3 lu4] /to walk; to go on foot/to leave; to depart/(informal) to clear off; to beat it/(of sb who gets fired or resigns) to leave the job; to get out/"
+    },
+    {
+      "sha256": "d9757fcf9ce1967eb8d917601c625fda5830c26c6d433a19e9f96759a26dbf6a",
+      "line_number": 104632,
+      "text": "起床 起床 [qi3 chuang2] /to get out of bed; to get up/"
+    },
+    {
+      "sha256": "5de1a27a3d3c2275b44ad4f9e5568698c82d74d71c3af579cc2cfd878a9268ca",
+      "line_number": 104758,
+      "text": "超市 超市 [chao1 shi4] /supermarket (abbr. for 超級市場|超级市场[chao1 ji2 shi4 chang3])/CL:家[jia1]/"
+    },
+    {
+      "sha256": "60bb7a4305d7ac8215ad381d0b743dafeb2c71a958f67f2a67e893c615a93043",
+      "line_number": 105161,
+      "text": "跑步 跑步 [pao3 bu4] /to run/to jog/(military) to march at the double/"
+    },
+    {
+      "sha256": "16a482076961bf4ab99ffe38a6bb792b94d935401049946e33d845174381c369",
+      "line_number": 105317,
+      "text": "路口 路口 [lu4 kou3] /crossing/intersection (of roads)/"
+    },
+    {
+      "sha256": "59ad7297bb9fa43affb521c4d97fe79edaac1e77ddda6e22c71f668df260b673",
+      "line_number": 105858,
+      "text": "身體 身体 [shen1 ti3] /the body/one's health/"
+    },
+    {
+      "sha256": "64aa2e1e721d918e6faecfb8fff7c75ac06d6fd50e61965eeea6d92c0f56c173",
+      "line_number": 105962,
+      "text": "車站 车站 [che1 zhan4] /rail station/bus stop/CL:處|处[chu4],個|个[ge4]/"
+    },
+    {
+      "sha256": "8cfe076b00589401aac91adab2685217f4e0ebce42e50d93536eec80f7693898",
+      "line_number": 106169,
+      "text": "軟件 软件 [ruan3 jian4] /software/"
+    },
+    {
+      "sha256": "54e605a12f8c02131365329d4c29a552f83bbaefedb9bfa5d63375609afc624a",
+      "line_number": 106947,
+      "text": "辦公室 办公室 [ban4 gong1 shi4] /office; business premises/"
+    },
+    {
+      "sha256": "60dd61a2a8259af01ab4b470895024a108bd826af54a8b786a53eb1a865b27a7",
+      "line_number": 108356,
+      "text": "週末 周末 [zhou1 mo4] /weekend/"
+    },
+    {
+      "sha256": "134f38b0f36a30703dd79cad189a8478ea06b7cd7bae65d8da2e00a6f5c24d43",
+      "line_number": 109555,
+      "text": "邀請 邀请 [yao1 qing3] /to invite/invitation/CL:個|个[ge4]/"
+    },
+    {
+      "sha256": "a24f464f69d23a91ad20530ab56dc4cbd73770930944deccaf3b3584abe28e13",
+      "line_number": 109975,
+      "text": "郵件 邮件 [you2 jian4] /mail/post/email/"
+    },
+    {
+      "sha256": "8c9064362fc737f22476ab0c86df01b3e1bee9a06ea13f43cafc380b140c6710",
+      "line_number": 110234,
+      "text": "鄰居 邻居 [lin2 ju1] /neighbor/"
+    },
+    {
+      "sha256": "4aac2099536ac94c59f3966dfa93df766e698ae55be9cfb1aeee02e816e437f6",
+      "line_number": 110755,
+      "text": "醫生 医生 [yi1 sheng1] /doctor; medical practitioner/"
+    },
+    {
+      "sha256": "4d81c01e1f0b3534d1009204fd80b1a4bfe4d2f05b23cca6fc127d8be2f85098",
+      "line_number": 110776,
+      "text": "醫院 医院 [yi1 yuan4] /hospital/CL:所[suo3],家[jia1],座[zuo4]/"
+    },
+    {
+      "sha256": "e10b31687ae9060b5d582f799ba907a29195e7ad620bb420b034d04369c3a055",
+      "line_number": 111937,
+      "text": "銀行 银行 [yin2 hang2] /bank/CL:家[jia1],個|个[ge4]/"
+    },
+    {
+      "sha256": "f0fa6331bce532b1ff76594d6589d300ef0c0bc6aa29dccc5dfb6e34ba80df16",
+      "line_number": 112339,
+      "text": "錢包 钱包 [qian2 bao1] /purse/wallet/"
+    },
+    {
+      "sha256": "3cfc3df5793cbd69b51a7defc215a158644dc9fea851c779ab9b946f28c6e01a",
+      "line_number": 112547,
+      "text": "鍵盤 键盘 [jian4 pan2] /keyboard/"
+    },
+    {
+      "sha256": "74e94f976455c624169fcab038f3a782776f03f71ae31c4e6d9666ae47bfad96",
+      "line_number": 113069,
+      "text": "鑰匙 钥匙 [yao4 shi5] /key/CL:把[ba3]/"
+    },
+    {
+      "sha256": "289b6d053a25b939fdba0e8ea857711fa8c6abc9bc1a70085aa3729d0b640193",
+      "line_number": 113705,
+      "text": "開始 开始 [kai1 shi3] /to begin; to start/beginning; start/"
+    },
+    {
+      "sha256": "54c52c3d2393fec1df1a86e5db87cf492f5b5ad2baca6d726c11e1ee20bdbf07",
+      "line_number": 114146,
+      "text": "閱讀 阅读 [yue4 du2] /to read/"
+    },
+    {
+      "sha256": "716e349e40b2a12c1b2618cb2083d87c22d69526c2c647b781755c0c50e19073",
+      "line_number": 116590,
+      "text": "雞蛋 鸡蛋 [ji1 dan4] /(chicken) egg/hen's egg/CL:個|个[ge4],打[da2]/"
+    },
+    {
+      "sha256": "3aa46829388254302ba51f0ee4335ffc2ffea2230530a16fdb40971abf502947",
+      "line_number": 116741,
+      "text": "難過 难过 [nan2 guo4] /to feel sad/to feel unwell/(of life) to be difficult/"
+    },
+    {
+      "sha256": "66a75046461e6fc6e9284264eace00d5c4dbe07b02517858a9dc936d83ab8cca",
+      "line_number": 116749,
+      "text": "雨傘 雨伞 [yu3 san3] /umbrella/CL:把[ba3]/"
+    },
+    {
+      "sha256": "5df6ba8dd01a14f778afb8b15ecaaa92438174ac69d3ec16ddfba9f8411a6804",
+      "line_number": 117314,
+      "text": "電腦 电脑 [dian4 nao3] /computer/CL:臺|台[tai2]/"
+    },
+    {
+      "sha256": "58acdb7172a2015f12aafa257d0feec6d0027f1fed67dfe2f224a658c32e3f5c",
+      "line_number": 117334,
+      "text": "電視 电视 [dian4 shi4] /television; TV/CL:臺|台[tai2],部[bu4]/"
+    },
+    {
+      "sha256": "429a45f1b44c83583c2016fa0b965ef307bc4d2365d7eb39eb3aebfd36ca2c6c",
+      "line_number": 118359,
+      "text": "鞋子 鞋子 [xie2 zi5] /shoe/"
+    },
+    {
+      "sha256": "f386197dfc6cdc6513c48188acca803c0bee01c797ae15ab531a8447396a203f",
+      "line_number": 118777,
+      "text": "項目 项目 [xiang4 mu4] /item; project; (sports) event/"
+    },
+    {
+      "sha256": "8a376fb046b16dfb52d53cfe6760a6d13d14d66bc84503af6879a396b8dca302",
+      "line_number": 119248,
+      "text": "頭髮 头发 [tou2 fa5] /hair (on the head)/"
+    },
+    {
+      "sha256": "a9670134edb9ccef6b3109582a7dfa93c59504573dd586df15891dda344253d0",
+      "line_number": 119846,
+      "text": "飛機 飞机 [fei1 ji1] /airplane/CL:架[jia4]/"
+    },
+    {
+      "sha256": "ab319e2aed0ffa23fb7bb315c171e30aab86d951f2a32ecc6a80d7fc6c445a6f",
+      "line_number": 120080,
+      "text": "飲料 饮料 [yin3 liao4] /drink/beverage/"
+    },
+    {
+      "sha256": "ff2aa1fcb2a6802fda807ec8ae14135bbf2d93d1a83d7964632f31dbfdd82ef8",
+      "line_number": 120255,
+      "text": "餐廳 餐厅 [can1 ting1] /dining hall/dining room/restaurant/CL:間|间[jian1],家[jia1]/"
+    },
+    {
+      "sha256": "e62698318f80fa569dbee40154b66f0ea663d6beb84733f8c9df40488177cd20",
+      "line_number": 120684,
+      "text": "香蕉 香蕉 [xiang1 jiao1] /banana/CL:根[gen1],把[ba3]/"
+    },
+    {
+      "sha256": "e2087b6cdcc2d1d51ee97ff3835a21b2266fb3b9e006f009c16533e295c65870",
+      "line_number": 122135,
+      "text": "高興 高兴 [gao1 xing4] /happy/glad/willing (to do sth)/in a cheerful mood/"
+    },
+    {
+      "sha256": "e35f9cbd8cbeef8740c69b2be36fc7f70e14ac04fbad56beb505a64ea1a6259e",
+      "line_number": 123802,
+      "text": "麵包 面包 [mian4 bao1] /bread/CL:片[pian4],塊|块[kuai4]/"
+    },
+    {
+      "sha256": "a08398d9d2e6daa6ef362afa6fb1cf2d6b0599dfab95766a7b734812e3ffa068",
+      "line_number": 123822,
+      "text": "麵條 面条 [mian4 tiao2] /noodles/"
+    },
+    {
+      "sha256": "4680a602ba3047f933d7644262e1ec1ba20747e9f3e3c5cf3b00002ec58ecfd1",
+      "line_number": 124902,
+      "text": "鼠標 鼠标 [shu3 biao1] /(computing) mouse/"
+    },
+    {
+      "sha256": "5170cebf90fcd1f798c8b1174b0565b730fcbdcb7ea1d473da0644b34a47f88c",
+      "line_number": 124948,
+      "text": "鼻子 鼻子 [bi2 zi5] /nose/CL:個|个[ge4],隻|只[zhi1]/"
+    }
+  ]
+}

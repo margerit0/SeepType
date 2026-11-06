@@ -1,0 +1,33 @@
+Study IME daily English lexicon — source and changes
+
+This data is adapted from CC-CEDICT, the community-maintained Chinese-English
+dictionary published by MDBG. Attribution: CC-CEDICT community contributors
+and editor team. Referenced work: CEDICT — Copyright (C) 1997, 1998
+Paul Andrew Denisowski.
+
+Source: https://cc-cedict.org/wiki/
+Download: https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz
+Snapshot: 2026-11-06T08:10:12Z; CC-CEDICT v1, UTF-8, 125369 entries.
+Full text SHA256:
+ff107587bc1d593dd5d7a49c179d4aa749cb89b3a1423876e0cd2dca197b672b
+
+The source excerpts and adapted lexicon data are licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International License:
+https://creativecommons.org/licenses/by-sa/4.0/
+The complete license is included at licenses/CC-BY-SA-4.0.txt, including
+its disclaimer of warranties. Preserve this attribution, the source
+information, the license and the indication of changes when sharing.
+
+Changes: selected 200 everyday simplified-Chinese words and phrases across
+10 categories; proposed one common English sense for each; removed unused
+senses, classifiers and dictionary notation; normalized short wording and
+verb forms. Per-entry changes and exact source references are retained.
+202 source lines include the two alternative homograph entries.
+Prepared with Codex. No endorsement by CC-CEDICT or MDBG is implied.
+
+Quality status is recorded separately from the data license. The initial
+200-entry batch awaits human language review. A review preview is development
+data, not an assertion that the entries were accepted for the product.
+These quality labels do not add restrictions to the Creative Commons license.
+
+This notice covers the lexicon data, not the application's software license.

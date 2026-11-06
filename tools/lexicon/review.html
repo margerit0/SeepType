@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>日常英文词库审核</title>
+<style>
+  :root { color-scheme: light; font: 15px/1.65 "Segoe UI", "Microsoft YaHei UI", sans-serif; color: #202a36; background: #f5f7fa; }
+  body { margin: 0; }
+  main { max-width: 1080px; margin: auto; padding: 28px 24px 48px; }
+  h1 { font-size: 25px; margin: 0 0 8px; }
+  p { margin: 8px 0 14px; }
+  .muted, small { color: #596878; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 16px 0; }
+  label { display: flex; flex-direction: column; gap: 4px; }
+  input, select, button { font: inherit; padding: 7px 10px; border: 1px solid #b7c4d2; border-radius: 6px; background: white; color: inherit; }
+  input[type=checkbox] { width: auto; }
+  input.english { width: 100%; box-sizing: border-box; min-width: 180px; }
+  input:invalid { border-color: #a82432; }
+  button { cursor: pointer; }
+  button.primary { color: white; background: #205ba9; border-color: #205ba9; }
+  button:disabled { opacity: .45; cursor: default; }
+  .check { flex-direction: row; align-items: center; padding-bottom: 8px; }
+  .table { overflow-x: auto; background: white; border: 1px solid #dce3eb; border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; min-width: 700px; }
+  th, td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid #e7ecf2; }
+  th { background: #edf2f8; font-weight: 600; }
+  td.word { width: 16%; }
+  td.translation { width: 25%; }
+  td.decision { width: 17%; }
+  td strong { font-size: 18px; }
+  small { display: block; }
+  .attention { display: inline-block; margin-top: 5px; padding: 1px 7px; border-radius: 4px; color: #865014; background: #fff0d6; font-size: 12px; }
+  details { font-size: 13px; overflow-wrap: anywhere; }
+  summary { cursor: pointer; color: #245c9e; }
+  details p { margin: 8px 0; }
+  #message { min-height: 1.65em; color: #985b16; }
+  #stats { font-weight: 600; }
+  nav { display: flex; align-items: center; gap: 16px; justify-content: center; padding-top: 20px; }
+  footer { border-top: 1px solid #dce3eb; margin-top: 28px; padding-top: 18px; color: #596878; font-size: 13px; }
+</style>
+<main>
+  <h1>日常英文词库 · 审核稿</h1>
+  <p>逐条核对中文词形、选定词义和实际要输入的英文。确认后选“通过”；不宜固定为单一释义的词可选“暂不收录”。修改英文后，该条会重新变为待审核。</p>
+  <p class="muted" id="provenance"></p>
+  <div class="toolbar">
+    <label>审核者<input id="reviewer" maxlength="40" placeholder="填写姓名或署名"></label>
+    <button class="primary" id="download">下载本次审核记录</button>
+    <span class="muted">草稿保存在本浏览器；下载记录后可导入项目。</span>
+  </div>
+  <div id="message" role="status" aria-live="polite"></div>
+  <div id="stats" aria-live="polite"></div>
+  <div class="toolbar">
+    <label>搜索<input id="search" placeholder="中文或英文"></label>
+    <label>类别<select id="category"><option value="">全部类别</option></select></label>
+    <label>状态<select id="status"><option value="">全部状态</option><option value="pending">待审核</option><option value="approved-for-distribution">通过</option><option value="rejected">暂不收录</option></select></label>
+    <label class="check"><input type="checkbox" id="attention">只看重点复核</label>
+  </div>
+  <div class="table">
+    <table><thead><tr><th>中文与读音</th><th>显示及提交英文</th><th>审核决定</th><th>词义、来源与修改说明</th></tr></thead><tbody id="rows"></tbody></table>
+  </div>
+  <nav><button id="previous">上一页</button><span id="page"></span><button id="next">下一页</button></nav>
+  <footer>数据改编自 <a href="https://cc-cedict.org/wiki/">CC-CEDICT</a> 社区词典，MDBG 发布；源快照日期与原始词条已保留。源数据及改编词库遵循 <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>。英文为待审核建议，来源许可核对和程序检查不代替人工释义审核。本页不联网查词，不自动安装或应用词库。</footer>
+</main>
+<script type="application/json" id="lexicon-data">__LEXICON_DATA__</script>
+<script>
+"use strict";
+const data = JSON.parse(document.getElementById("lexicon-data").textContent);
+const storageKey = "study-lexicon-review-v1:" + data.content_sha256;
+const $ = (id) => document.getElementById(id);
+const states = ["pending", "approved-for-distribution", "rejected"];
+const labels = ["待审核", "通过", "暂不收录"];
+let page = 0;
+let state = {reviewer: "", entries: Object.fromEntries(data.entries.map(e =>
+  [e.id, {english: e.commit_english, status: e.review.status, dirty: false}]))};
+try {
+  const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+  if (saved && typeof saved.reviewer === "string" && data.entries.every(e => {
+    const item = saved.entries && saved.entries[e.id];
+    return item && typeof item.english === "string" && states.includes(item.status) && typeof item.dirty === "boolean";
+  })) state = saved;
+} catch (_) { $("message").textContent = "浏览器未提供草稿存储，请在关闭页面前下载审核记录。"; }
+$("reviewer").value = state.reviewer;
+$("provenance").textContent = "共 " + data.entries.length + " 条 · 版本 " + data.version +
+  " · CC-CEDICT 源快照 " + data.source_date + " · 默认草稿尚未人工通过";
+for (const value of new Set(data.entries.map(e => e.category))) {
+  const option = document.createElement("option"); option.value = option.textContent = value; $("category").append(option);
+}
+function save() {
+  state.reviewer = $("reviewer").value;
+  try { localStorage.setItem(storageKey, JSON.stringify(state)); }
+  catch (_) { $("message").textContent = "未能保存浏览器草稿，请下载审核记录后再关闭。"; }
+}
+function stats() {
+  const counts = states.map(s => data.entries.filter(e => state.entries[e.id].status === s).length);
+  $("stats").textContent = "待审核 " + counts[0] + " · 通过 " + counts[1] + " · 暂不收录 " + counts[2] +
+    " · 本次有记录 " + data.entries.filter(e => state.entries[e.id].dirty).length;
+}
+function filtered() {
+  const query = $("search").value.trim().toLowerCase();
+  return data.entries.filter(e =>
+    (!query || (e.chinese + " " + state.entries[e.id].english).toLowerCase().includes(query)) &&
+    (!$("category").value || e.category === $("category").value) &&
+    (!$("status").value || state.entries[e.id].status === $("status").value) &&
+    (!$("attention").checked || e.review_attention));
+}
+function element(tag, value, className) {
+  const node = document.createElement(tag); if (value !== undefined) node.textContent = value;
+  if (className) node.className = className; return node;
+}
+function render() {
+  const entries = filtered(), pages = Math.max(1, Math.ceil(entries.length / 20));
+  page = Math.max(0, Math.min(page, pages - 1)); $("rows").replaceChildren();
+  for (const entry of entries.slice(page * 20, (page + 1) * 20)) {
+    const item = state.entries[entry.id], row = element("tr");
+    const word = element("td", undefined, "word");
+    word.append(element("strong", entry.chinese), element("small", entry.pinyin), element("small", entry.category));
+    if (entry.review_attention) word.append(element("span", "重点复核", "attention"));
+    const translation = element("td", undefined, "translation");
+    const input = document.createElement("input"); input.className = "english"; input.value = item.english;
+    input.maxLength = 128; input.required = true; input.setAttribute("aria-label", entry.chinese + "的英文");
+    translation.append(input, element("small", entry.id));
+    const decision = element("td", undefined, "decision"), select = document.createElement("select");
+    select.setAttribute("aria-label", entry.chinese + "的审核决定");
+    states.forEach((value, i) => { const option = element("option", labels[i]); option.value = value; select.append(option); });
+    select.value = item.status; decision.append(select);
+    input.addEventListener("input", () => {
+      item.english = input.value; item.status = "pending"; item.dirty = true; select.value = "pending"; save(); stats();
+    });
+    select.addEventListener("change", () => { item.status = select.value; item.dirty = true; save(); stats(); });
+    const evidence = element("td"), details = element("details");
+    evidence.append(element("small", entry.modification));
+    details.append(element("summary", "查看原始词条"), element("p", entry.source_text));
+    for (const other of entry.alternative_texts) details.append(element("p", "同形其他条目：" + other));
+    evidence.append(details); row.append(word, translation, decision, evidence); $("rows").append(row);
+  }
+  $("page").textContent = (page + 1) + " / " + pages + " 页 · 筛选结果 " + entries.length + " 条";
+  $("previous").disabled = page === 0; $("next").disabled = page === pages - 1; stats();
+}
+$("reviewer").addEventListener("input", save);
+["search", "category", "status", "attention"].forEach(id => $(id).addEventListener("input", () => { page = 0; render(); }));
+$("previous").addEventListener("click", () => { page--; render(); });
+$("next").addEventListener("click", () => { page++; render(); });
+$("download").addEventListener("click", () => {
+  const reviewer = $("reviewer").value.trim();
+  const changed = data.entries.filter(e => state.entries[e.id].dirty);
+  if (!reviewer) { $("message").textContent = "请先填写审核署名。"; $("reviewer").focus(); return; }
+  if (!changed.length) { $("message").textContent = "还没有本次修改或审核决定。"; return; }
+  if (changed.some(e => {
+    const value = state.entries[e.id].english;
+    return !/^[A-Za-z][A-Za-z0-9 ',.!?;:()&/-]*$/.test(value) || value !== value.trim() || value.includes("...");
+  })) { $("message").textContent = "请检查英文：使用完整英文词或短语，勿保留省略号、中文或控制字符。"; return; }
+  const review = {schema_version: 1, base_sha256: data.content_sha256, method: "human",
+    reviewer, reviewed_at: new Date().toISOString(),
+    decisions: changed.map(e => ({id: e.id, original_sha256: e.original_sha256,
+      english: state.entries[e.id].english, status: state.entries[e.id].status}))};
+  const blob = new Blob([JSON.stringify(review, null, 2) + "\n"], {type: "application/json;charset=utf-8"});
+  const url = URL.createObjectURL(blob), link = document.createElement("a");
+  link.href = url; link.download = "study-lexicon-review-" + new Date().toISOString().slice(0, 10) + ".json";
+  link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  $("message").textContent = "已生成 " + changed.length + " 条本次审核记录。下载不会自动应用词库。";
+});
+render();
+</script>
+</html>

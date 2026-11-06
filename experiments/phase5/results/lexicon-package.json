@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-06T16:53:36+00:00",
+  "passed": true,
+  "scope": "Local review data bundle; no software binary distribution or installation",
+  "mode": "preview",
+  "entries": 200,
+  "archive": ".cache/lexicon-preview/study-daily-200-preview.zip",
+  "archive_sha256": "ca9a8a5b998fdb18cfb79621e81d3f104b897c9bc53a955714639acd578e4d20",
+  "archive_bytes": 82096,
+  "deterministic_rebuild": true,
+  "python": "3.13.5",
+  "zlib": "1.3.1",
+  "release_export": "Release export blocked: 200 entries await human review",
+  "review_counts": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  },
+  "review_page": {
+    "path": "docs/lexicon-review.html",
+    "sha256": "c119107480502427729afe9c729ecdcc0115510ef485e5b9796c45409c9de779",
+    "validation": "200-entry payload and JavaScript syntax checked; browser interaction not performed"
+  },
+  "files": {
+    "NOTICE.txt": "136cb11a14eb803b4c06fa31440fc0b80072ae6f83ca592cc8eeeae879ae6a69",
+    "lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "licenses/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+    "records.json": "1414cd5722606608c99ff6abf3a42ac4b47ae40931e4fa48d7e340d778b39d93",
+    "review.html": "c119107480502427729afe9c729ecdcc0115510ef485e5b9796c45409c9de779",
+    "source.lock.json": "6801acf2118b069e78afda930df33909399a14ab7a19b0ae7ffe766a45981fff",
+    "sources/entries.json": "44c2e97eba73b2dda69d65f62c8b75d9ce56004fb9ca8d8944f88846e5d81d35"
+  },
+  "builder_sources": {
+    "tools\\lexicon\\pipeline.py": "d6dc08969b8a65b1bf011585b998cfb69a1d17fc463136e6d58b237466f657d4",
+    "tools\\lexicon\\review.html": "3b71ea6f4b15424e1a837da186761b60d709b322a665db78d80a09be88c983b4",
+    ".gitattributes": "6ec1619e644e54edafa7b73f30d94f0ff3f864eb837beee4dd73713b983faefa"
+  }
+}

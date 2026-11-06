@@ -1,3 +1,8 @@
 # Unified diffs use one space for an empty context line; preserve valid patches.
 experiments/phase3/patches/*.patch whitespace=-blank-at-eol
 experiments/phase4/patches/*.patch whitespace=-blank-at-eol
+
+data/lexicon/** text eol=lf
+# Preserve upstream license bytes, including its final blank line.
+data/lexicon/licenses/*.txt -text whitespace=-blank-at-eof
+tools/lexicon/** text eol=lf

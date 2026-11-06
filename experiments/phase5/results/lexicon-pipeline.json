@@ -1,0 +1,130 @@
+{
+  "date": "2026-11-06T16:39:37+00:00",
+  "scope": "Pinned data validation, review invalidation, import atomicity and deterministic export; synthetic approval fixtures only.",
+  "python": "3.13.5",
+  "passed": true,
+  "checks": [
+    {
+      "name": "test_pipeline.LexiconTests.test_all_rejected_cannot_create_empty_release",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_altered_source_excerpt_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_changed_text_invalidates_prior_approval",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_dictionary_metadata_and_control_characters_cannot_commit",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_duplicate_chinese_words_are_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_duplicate_ids_are_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_duplicate_review_decision_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_human_edit_records_exact_new_text_and_provenance",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_invalid_import_never_replaces_authoritative_file",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_machine_method_cannot_become_human_approval",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_old_batch_review_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_one_human_decision_does_not_approve_other_entries",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_path_escape_and_duplicate_json_keys_are_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_pending_decision_clears_approval",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_preview_is_reproducible_with_complete_attribution",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_preview_remains_explicitly_development_data",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_real_batch_has_no_human_approvals",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_rejected_entry_is_not_in_a_completed_release",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_review_payload_cannot_close_script_element",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_reviewer_and_timezone_are_required",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_stale_entry_review_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_unreviewed_release_is_rejected_before_output",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_unverified_source_license_is_rejected",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_v1_cannot_silently_export_different_display_and_commit",
+      "passed": true
+    },
+    {
+      "name": "test_pipeline.LexiconTests.test_wrong_source_word_cannot_be_attached",
+      "passed": true
+    }
+  ],
+  "test_count": 25,
+  "product_review_counts": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  },
+  "sources": {
+    "tools\\lexicon\\pipeline.py": "d6dc08969b8a65b1bf011585b998cfb69a1d17fc463136e6d58b237466f657d4",
+    "tools\\lexicon\\test_pipeline.py": "b5d924329cb4d6fa13d7a6ac0dc3d2440e617d57ceb3ced8fa8e4aa2d3720d53",
+    "tools\\lexicon\\verify.py": "3607ddcbae5399719799e95a1e5b118ffe93d628698ea1fddb83f59ac24ce430",
+    "tools\\lexicon\\review.html": "3b71ea6f4b15424e1a837da186761b60d709b322a665db78d80a09be88c983b4",
+    "data\\lexicon\\entries.json": "b65884e416b17d5a9ca8a7a77125d80cb19b12ac9a646ea95a68b2ed5c616f44",
+    "data\\lexicon\\source.lock.json": "6801acf2118b069e78afda930df33909399a14ab7a19b0ae7ffe766a45981fff",
+    "data\\lexicon\\sources\\entries.json": "44c2e97eba73b2dda69d65f62c8b75d9ce56004fb9ca8d8944f88846e5d81d35",
+    "data\\lexicon\\licenses\\CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+    "data\\lexicon\\NOTICE.txt": "136cb11a14eb803b4c06fa31440fc0b80072ae6f83ca592cc8eeeae879ae6a69"
+  },
+  "limits": [
+    "No human approval of product entries",
+    "No browser/desktop interaction acceptance",
+    "No native input method installation or application compatibility evidence"
+  ]
+}
