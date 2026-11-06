@@ -1,0 +1,39 @@
+{
+  "compiler": "MSVC 19.29.30159 (x64)",
+  "fresh_cache_native_build_passed": true,
+  "historical_tests_executed": false,
+  "log": ".\\.cache\\packaging\\source-check\\2b77d9f827a1\\source-workflow.log",
+  "native_binaries": {
+    "StudyIME.Registrar.exe": {
+      "byte_identical": true,
+      "fresh_build_sha256": "ad31810888fbc2b8cfa79b35dde556a07f71d98074deeb9981f79259077fa42a",
+      "original_sha256": "ad31810888fbc2b8cfa79b35dde556a07f71d98074deeb9981f79259077fa42a"
+    },
+    "StudyIME.Service.exe": {
+      "byte_identical": false,
+      "fresh_build_sha256": "fe2260f9730f4630e4893e1a7b757a09fee876090f7ac7c9deacdc907886da2f",
+      "original_sha256": "e19c9fbcbe500ed4a53241d9b73bcb4153f8c5e7072014cb50fd08916287e4c9"
+    },
+    "StudyIME.Settings.exe": {
+      "byte_identical": true,
+      "fresh_build_sha256": "04b9335cd5adbbd14b4181f5cafc999eb1155a053242b11434fbeb08c347f8d3",
+      "original_sha256": "04b9335cd5adbbd14b4181f5cafc999eb1155a053242b11434fbeb08c347f8d3"
+    },
+    "StudyIME.TSF.x64.dll": {
+      "byte_identical": false,
+      "fresh_build_sha256": "1077c474617cf34315ec6b6e4ffecb46d731ac8271f6c4ea11fc6fff50b97aca",
+      "original_sha256": "dcb0157ad0afba18dd961849f3d4a291ace67abe81ed7223ceb75253575cada0"
+    }
+  },
+  "network_used": false,
+  "offline_restore_passed": true,
+  "recorded_at": "2026-11-06T17:59:18.800832+00:00",
+  "same_machine_toolchain": true,
+  "scope_limit": "Buildability verified with the existing local VS2019 toolchain in a fresh project/cache. Cross-machine native binary identity is not asserted.",
+  "second_export_identical": true,
+  "seconds": 234.943,
+  "source_archive_sha256": "ecde001d990a1ec543ee21707cdf9e54c0ac8a1e08d0dce7930f4c4414193062",
+  "system_install_executed": false,
+  "tsf_registration_executed": false,
+  "workspace": ".\\.cache\\packaging\\source-check\\2b77d9f827a1\\materials\\project"
+}

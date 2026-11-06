@@ -1,0 +1,260 @@
+{
+  "basis": "Rime version-info.txt, librime pinned gitlinks, and pre-release data repository commits; per-file matching is recorded separately.",
+  "collection_date": "2026-11-07",
+  "schema_version": 1,
+  "sources": [
+    {
+      "archive": ".cache/packaging/sources/librime-1c23358157934bd6e6d6981f0c0164f05393b497.tar.gz",
+      "archive_sha256": "b6489ca8f4824a9fcd411aebe9e5553b6525651d7dff8f0f700bdff5e0d06d2f",
+      "commit": "1c23358157934bd6e6d6981f0c0164f05393b497",
+      "id": "librime",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/librime/LICENSE",
+          "sha256": "f67d27a6d2d586fcfed4b4c886a83747095396a39b6641e18e855086be2ec400",
+          "source_path": "LICENSE"
+        },
+        {
+          "path": "licensing/third-party/librime/include/COPYING.darts-clone",
+          "sha256": "11bf6ca180d01e60656cd3cbe65cff95b738afe4ca5a8a66b9dd1ec594a41d2f",
+          "source_path": "include/COPYING.darts-clone"
+        }
+      ],
+      "repository": "https://github.com/rime/librime",
+      "url": "https://codeload.github.com/rime/librime/tar.gz/1c23358157934bd6e6d6981f0c0164f05393b497"
+    },
+    {
+      "archive": ".cache/packaging/sources/librime-lua-e3912a4b3ac2c202d89face3fef3d41eb1d7fcd6.tar.gz",
+      "archive_sha256": "073bd2fad980fe293f65ca9da84ac0e2170a1755e38213de35dd1f34a05a4f74",
+      "commit": "e3912a4b3ac2c202d89face3fef3d41eb1d7fcd6",
+      "id": "librime-lua",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/librime-lua/LICENSE",
+          "sha256": "c6bd4f58b13ae9d45c5e53adddeea5049114a25862797c6c6f64920431eea249",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/hchunhui/librime-lua",
+      "url": "https://codeload.github.com/hchunhui/librime-lua/tar.gz/e3912a4b3ac2c202d89face3fef3d41eb1d7fcd6"
+    },
+    {
+      "archive": ".cache/packaging/sources/lua-thirdparty-115e000c878d1170337f7ca934d7a84f68986e39.tar.gz",
+      "archive_sha256": "3cff5049beb4f2fb48da256d9b9614feee99da439b0a4dbddae6eb19b8e72275",
+      "commit": "115e000c878d1170337f7ca934d7a84f68986e39",
+      "id": "lua-thirdparty",
+      "license_hint": "MIT",
+      "notices": [],
+      "repository": "https://github.com/hchunhui/librime-lua",
+      "url": "https://codeload.github.com/hchunhui/librime-lua/tar.gz/115e000c878d1170337f7ca934d7a84f68986e39"
+    },
+    {
+      "archive": ".cache/packaging/sources/librime-octagram-dfcc15115788c828d9dd7b4bff68067d3ce2ffb8.tar.gz",
+      "archive_sha256": "7da3df7a5dae82557f7a4842b94dfe81dd21ef7e036b132df0f462f2dae18393",
+      "commit": "dfcc15115788c828d9dd7b4bff68067d3ce2ffb8",
+      "id": "librime-octagram",
+      "license_hint": "GPLv3 (upstream notice)",
+      "notices": [
+        {
+          "path": "licensing/third-party/librime-octagram/LICENSE",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/lotem/librime-octagram",
+      "url": "https://codeload.github.com/lotem/librime-octagram/tar.gz/dfcc15115788c828d9dd7b4bff68067d3ce2ffb8"
+    },
+    {
+      "archive": ".cache/packaging/sources/librime-predict-920bd41ebf6f9bf6855d14fbe80212e54e749791.tar.gz",
+      "archive_sha256": "38b2f32254e1a35ac04dba376bc8999915c8fbdb35be489bffdf09079983400c",
+      "commit": "920bd41ebf6f9bf6855d14fbe80212e54e749791",
+      "id": "librime-predict",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/librime-predict/LICENSE",
+          "sha256": "9b1bbdf15a381884b47dfd9422e68f6382170b2841c476afc076f2d448c7a59f",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/rime/librime-predict",
+      "url": "https://codeload.github.com/rime/librime-predict/tar.gz/920bd41ebf6f9bf6855d14fbe80212e54e749791"
+    },
+    {
+      "archive": ".cache/packaging/sources/glog-7b134a5c82c0c0b5698bb6bf7a835b230c5638e4.tar.gz",
+      "archive_sha256": "9c48c7c631be5af3502a19d06ebdb5c2f67d8d0bf216f896848089c1792e6193",
+      "commit": "7b134a5c82c0c0b5698bb6bf7a835b230c5638e4",
+      "id": "glog",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/glog/COPYING",
+          "sha256": "136d48dea7a681413691f3db3098f6cf5ffaa3119d96d97bb83b8cff3ce38c4a",
+          "source_path": "COPYING"
+        }
+      ],
+      "repository": "https://github.com/google/glog",
+      "url": "https://codeload.github.com/google/glog/tar.gz/7b134a5c82c0c0b5698bb6bf7a835b230c5638e4"
+    },
+    {
+      "archive": ".cache/packaging/sources/leveldb-99b3c03b3284f5886f9ef9a4ef703d57373e61be.tar.gz",
+      "archive_sha256": "bc87b9bbc5674c91246a89813355e78401759761342cc049e1c3d56350a8a9d1",
+      "commit": "99b3c03b3284f5886f9ef9a4ef703d57373e61be",
+      "id": "leveldb",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/leveldb/LICENSE",
+          "sha256": "ccc19f1da0798ed666609b65a5b44dd8b3abe6fc08b9c0592eb76e82e174db19",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/google/leveldb",
+      "url": "https://codeload.github.com/google/leveldb/tar.gz/99b3c03b3284f5886f9ef9a4ef703d57373e61be"
+    },
+    {
+      "archive": ".cache/packaging/sources/marisa-trie-0d4e8ab58eec355facf8f65ff11ef811b330e373.tar.gz",
+      "archive_sha256": "ab87bd9bff51382cf67e00605330945dec158911dde4504f93fde0dc8acfaaf2",
+      "commit": "0d4e8ab58eec355facf8f65ff11ef811b330e373",
+      "id": "marisa-trie",
+      "license_hint": "BSD-2-Clause OR LGPL-2.1-or-later",
+      "notices": [
+        {
+          "path": "licensing/third-party/marisa-trie/COPYING.md",
+          "sha256": "c0e214362b4dcf118371b02c87321f64a4d8317112d732b6d768167a635f383a",
+          "source_path": "COPYING.md"
+        }
+      ],
+      "repository": "https://github.com/rime/marisa-trie",
+      "url": "https://codeload.github.com/rime/marisa-trie/tar.gz/0d4e8ab58eec355facf8f65ff11ef811b330e373"
+    },
+    {
+      "archive": ".cache/packaging/sources/opencc-e5d6c5f1b78e28a5797e7ad3ede3513314e544b7.tar.gz",
+      "archive_sha256": "08b54987a651d14dc7afb688381a5007680e925a224e10426f3800d35ef68835",
+      "commit": "e5d6c5f1b78e28a5797e7ad3ede3513314e544b7",
+      "id": "opencc",
+      "license_hint": "Apache-2.0",
+      "notices": [
+        {
+          "path": "licensing/third-party/opencc/LICENSE",
+          "sha256": "b534e465949558eec2597b04f5092b5e161236a68dfbfd04d547592ac3964308",
+          "source_path": "LICENSE"
+        },
+        {
+          "path": "licensing/third-party/opencc/deps/google-benchmark/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "source_path": "deps/google-benchmark/LICENSE"
+        },
+        {
+          "path": "licensing/third-party/opencc/deps/gtest-1.12.1/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "source_path": "deps/gtest-1.12.1/LICENSE"
+        },
+        {
+          "path": "licensing/third-party/opencc/deps/marisa-0.2.6/COPYING.md",
+          "sha256": "c0e214362b4dcf118371b02c87321f64a4d8317112d732b6d768167a635f383a",
+          "source_path": "deps/marisa-0.2.6/COPYING.md"
+        },
+        {
+          "path": "licensing/third-party/opencc/deps/pybind11-2.10.0/LICENSE",
+          "sha256": "83965b843b98f670d3a85bd041ed4b372c8ec50d7b4a5995a83ac697ba675dcb",
+          "source_path": "deps/pybind11-2.10.0/LICENSE"
+        }
+      ],
+      "repository": "https://github.com/BYVoid/OpenCC",
+      "url": "https://codeload.github.com/BYVoid/OpenCC/tar.gz/e5d6c5f1b78e28a5797e7ad3ede3513314e544b7"
+    },
+    {
+      "archive": ".cache/packaging/sources/yaml-cpp-f7320141120f720aecc4c32be25586e7da9eb978.tar.gz",
+      "archive_sha256": "2fd3bf695ccc056835a70dd6d3046312cc1004e8338b8b5c91646918a27b7ef6",
+      "commit": "f7320141120f720aecc4c32be25586e7da9eb978",
+      "id": "yaml-cpp",
+      "license_hint": "MIT",
+      "notices": [
+        {
+          "path": "licensing/third-party/yaml-cpp/LICENSE",
+          "sha256": "aa6fcc27be034e41e21dd832f9175bfe694a48491d9e14ff0fa278e19ad14f1b",
+          "source_path": "LICENSE"
+        },
+        {
+          "path": "licensing/third-party/yaml-cpp/test/gtest-1.11.0/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "source_path": "test/gtest-1.11.0/LICENSE"
+        },
+        {
+          "path": "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock/scripts/generator/LICENSE",
+          "sha256": "5e0df8c845c742e76f2f64d2d9ce1b7e74a2422fddbc577ae6a56319083de0bf",
+          "source_path": "test/gtest-1.11.0/googlemock/scripts/generator/LICENSE"
+        }
+      ],
+      "repository": "https://github.com/jbeder/yaml-cpp",
+      "url": "https://codeload.github.com/jbeder/yaml-cpp/tar.gz/f7320141120f720aecc4c32be25586e7da9eb978"
+    },
+    {
+      "archive": ".cache/packaging/sources/googletest-f8d7d77c06936315286eb55f8de22cd23c188571.tar.gz",
+      "archive_sha256": "7ff5db23de232a39cbb5c9f5143c355885e30ac596161a6b9fc50c4538bfbf01",
+      "commit": "f8d7d77c06936315286eb55f8de22cd23c188571",
+      "id": "googletest",
+      "license_hint": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "licensing/third-party/googletest/LICENSE",
+          "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/google/googletest",
+      "url": "https://codeload.github.com/google/googletest/tar.gz/f8d7d77c06936315286eb55f8de22cd23c188571"
+    },
+    {
+      "archive": ".cache/packaging/sources/rime-luna-pinyin-9593090080294a7dfc3c864c087e4070459c0168.tar.gz",
+      "archive_sha256": "92876b25e1c9d4222b040682b8700ce9a3427490bda89589d6aa04a43f3718cb",
+      "commit": "9593090080294a7dfc3c864c087e4070459c0168",
+      "id": "rime-luna-pinyin",
+      "license_hint": "LGPL-3.0",
+      "notices": [
+        {
+          "path": "licensing/third-party/rime-luna-pinyin/LICENSE",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/rime/rime-luna-pinyin",
+      "url": "https://codeload.github.com/rime/rime-luna-pinyin/tar.gz/9593090080294a7dfc3c864c087e4070459c0168"
+    },
+    {
+      "archive": ".cache/packaging/sources/rime-prelude-3c602fdb0dcca7825103e281efc50ef7580f99ec.tar.gz",
+      "archive_sha256": "6aea8ad089595d2f9b8458e4804d70262c9ff693f75f843d3ffd1f66a24b65e9",
+      "commit": "3c602fdb0dcca7825103e281efc50ef7580f99ec",
+      "id": "rime-prelude",
+      "license_hint": "LGPL-3.0",
+      "notices": [
+        {
+          "path": "licensing/third-party/rime-prelude/LICENSE",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/rime/rime-prelude",
+      "url": "https://codeload.github.com/rime/rime-prelude/tar.gz/3c602fdb0dcca7825103e281efc50ef7580f99ec"
+    },
+    {
+      "archive": ".cache/packaging/sources/rime-essay-573bbeb53e53d4331fff5fae151b814c67b8d0cd.tar.gz",
+      "archive_sha256": "5af101aa46d413ee115b99ea86c59111ab03d84655cb203667238e0cfcbe1732",
+      "commit": "573bbeb53e53d4331fff5fae151b814c67b8d0cd",
+      "id": "rime-essay",
+      "license_hint": "LGPL-3.0",
+      "notices": [
+        {
+          "path": "licensing/third-party/rime-essay/LICENSE",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+          "source_path": "LICENSE"
+        }
+      ],
+      "repository": "https://github.com/rime/rime-essay",
+      "url": "https://codeload.github.com/rime/rime-essay/tar.gz/573bbeb53e53d4331fff5fae151b814c67b8d0cd"
+    }
+  ]
+}

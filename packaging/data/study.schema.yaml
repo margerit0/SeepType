@@ -1,0 +1,38 @@
+__include: luna_pinyin_simp.schema:/
+schema:
+  schema_id: study
+  name: 拾词全拼
+  version: '0.5'
+  dependencies: []
+switches:
+  - {name: ascii_mode, reset: 0}
+  - {name: full_shape, reset: 0}
+  - {name: zh_simp, reset: 1}
+  - {name: ascii_punct, reset: 0}
+  - {name: learning_mode, reset: 1}
+engine:
+  processors:
+    - lua_processor@study_keys
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+    - lua_filter@study_filter
+translator:
+  prism: study
+  enable_user_dict: false
+recognizer:
+  patterns:
+    reverse_lookup: ''
+menu:
+  page_size: 5

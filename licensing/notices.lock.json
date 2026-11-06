@@ -1,0 +1,35 @@
+{
+  "notices": [
+    {
+      "path": "licensing/third-party/wtl/MS-PL.txt",
+      "sha256": "7a162b1da10f1c22db4c68f07bec4a8355259f8d4aab5b00a2b2bbd423d833dd",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/v3.26.0/text/MS-PL.txt"
+    },
+    {
+      "path": "licensing/third-party/rapidjson/license.txt",
+      "sha256": "a140e5d46fe734a1c78f1a3c3ef207871dd75648be71fdda8e309b23ab8b1f32",
+      "url": "https://raw.githubusercontent.com/Tencent/rapidjson/v1.1.0/license.txt"
+    },
+    {
+      "path": "licensing/third-party/wtl/UPSTREAM-NOTICE.txt",
+      "sha256": "2579f36bce7471b1fad1489d248bc6966c43076134fb1a75fdcf024649a06795",
+      "source": "Weasel 9cc96e20dc71b80876b12f689bb5863c76c2a7ed:include/wtl/atlapp.h (header)"
+    },
+    {
+      "path": "licensing/third-party/lua/lua.h",
+      "sha256": "341014ee8b49570fc01c1fb2afc6a7decc853525636c74e7a6a9507a933aa62e",
+      "source": "115e000c878d1170337f7ca934d7a84f68986e39:lua5.4/lua.h"
+    },
+    {
+      "path": "licensing/third-party/weasel/LICENSE.txt",
+      "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+      "source": "Weasel 9cc96e20dc71b80876b12f689bb5863c76c2a7ed:LICENSE.txt"
+    },
+    {
+      "path": "licensing/third-party/boost/LICENSE_1_0.txt",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "source": "Boost 1.84.0 archive cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454:LICENSE_1_0.txt"
+    }
+  ],
+  "schema_version": 1
+}

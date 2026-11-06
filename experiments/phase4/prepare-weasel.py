@@ -4,6 +4,7 @@ Does not change the original checkout, installed Weasel, the registry or PATH.
 The isolated build fails closed unless its unique test pipe name is supplied.
 """
 from pathlib import Path
+import argparse
 import difflib
 import json
 import subprocess
@@ -11,6 +12,11 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[2]
 UPSTREAM = ROOT / ".cache/src/weasel"
 OVERLAY = ROOT / ".cache/study-weasel"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=OVERLAY)
+parser.add_argument("--patch-output", type=Path, default=ROOT / "experiments/phase4/patches/weasel-study-ipc.patch")
+args = parser.parse_args()
+OVERLAY = args.output
 PIN = json.loads((ROOT / "experiments/phase3/dependencies.lock.json").read_text())["weasel_source"]["commit"]
 originals = {}
 files = {}
@@ -310,9 +316,10 @@ tsf.prepare(source, replace)
 # Quoted includes must resolve to one coherent header tree, never a mix of
 # upstream and overlay class definitions.
 for directory in ["WeaselTSF", "WeaselUI"]:
-    for path in (UPSTREAM / directory).iterdir():
-        if path.suffix in [".h", ".cpp"]:
-            source(f"{directory}/{path.name}")
+    names = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", PIN, directory], cwd=UPSTREAM).decode("utf-8").splitlines()
+    for name in names:
+        if Path(name).suffix in [".h", ".cpp"]:
+            source(name)
 
 patch = []
 for path, content in files.items():
@@ -323,7 +330,8 @@ for directory in ["RimeWithWeasel", "WeaselIPC", "WeaselIPCServer", "WeaselTSF",
     for name in ["stdafx.h", "targetver.h"]:
         path = f"{directory}/{name}"
         write_changed(OVERLAY / path, source(path))
-patch_path = ROOT / "experiments/phase4/patches/weasel-study-ipc.patch"
+patch_path = args.patch_output
 patch_path.parent.mkdir(parents=True, exist_ok=True)
 write_changed(patch_path, "".join(patch))
+write_changed(OVERLAY / "overlay-files.json", json.dumps(sorted(files), indent=2) + "\n")
 print(f"Prepared {len(files)} files from Weasel {PIN[:12]}; original checkout retained.")

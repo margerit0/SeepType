@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "name": "package archive is byte-identical with reversed input order and another output directory",
+      "passed": true
+    },
+    {
+      "name": "archive paths timestamps permissions and compression are canonical",
+      "passed": true
+    },
+    {
+      "name": "all archive entries match their declared payload bytes",
+      "passed": true
+    },
+    {
+      "name": "Windows path traversal aliases devices and alternate streams are rejected",
+      "passed": true
+    },
+    {
+      "name": "case-insensitive archive collisions are rejected",
+      "passed": true
+    },
+    {
+      "name": "release packaging refuses pending human review and unresolved licenses",
+      "passed": true
+    },
+    {
+      "name": "review preview is explicit and retains zero human approvals",
+      "passed": true
+    },
+    {
+      "name": "runtime payload excludes historical fixtures and unrelated installer tools",
+      "passed": true
+    },
+    {
+      "name": "all four product binaries are recorded x64 images",
+      "passed": true
+    },
+    {
+      "name": "product PE images contain no checkout-specific absolute path",
+      "passed": true
+    },
+    {
+      "name": "changed generated headers are rejected even when mtime is preserved",
+      "passed": true
+    },
+    {
+      "detail": [
+        "advapi32.dll",
+        "api-ms-win-shcore-scaling-l1-1-1.dll",
+        "bcrypt.dll",
+        "d2d1.dll",
+        "dbghelp.dll",
+        "dwrite.dll",
+        "gdi32.dll",
+        "gdiplus.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "oleacc.dll",
+        "oleaut32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "name": "all static and delayed DLL imports are Windows system libraries",
+      "passed": true
+    }
+  ],
+  "computer_use_executed": false,
+  "package_sha256": "b34a20fe618fbff7048b9b26c03dab2e85d45f9372926b2f9cfaebec679ad9c2",
+  "passed": 12,
+  "recorded_at": "2026-11-06T18:33:27.953618+00:00",
+  "system_install_executed": false,
+  "total": 12,
+  "tsf_registration_executed": false
+}

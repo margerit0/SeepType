@@ -1,0 +1,78 @@
+{
+  "basis": "Weasel 0.17.4 installer cf509534... and pinned upstream source archives",
+  "files": [
+    {
+      "cached_sha256": "5a438c92aa7ddd749644c7c799967074634d41ace924859be2a371f29565c892",
+      "commit": "3c602fdb0dcca7825103e281efc50ef7580f99ec",
+      "component": "rime-prelude",
+      "lf_normalized_match": true,
+      "path": "data/shared/default.yaml",
+      "source_sha256": "dd55653a991f9418eb425ee2112666f82e3e753c5ce3ed5702dd243041a45382"
+    },
+    {
+      "cached_sha256": "ae37983a4216145a6854375f21016358470c5dcf5ae9f6a54c29801e70b4d824",
+      "commit": "573bbeb53e53d4331fff5fae151b814c67b8d0cd",
+      "component": "rime-essay",
+      "lf_normalized_match": true,
+      "path": "data/shared/essay.txt",
+      "source_sha256": "24a536267efc0b6c732d647415f13fe72ae8dd6b862410b734d2dfc41ff9ba21"
+    },
+    {
+      "cached_sha256": "19c52d80a4bf043c16c49fdfeb58cfa4d7a9f2b94bd18c79ff2485bd7627db5f",
+      "commit": "3c602fdb0dcca7825103e281efc50ef7580f99ec",
+      "component": "rime-prelude",
+      "lf_normalized_match": true,
+      "path": "data/shared/key_bindings.yaml",
+      "source_sha256": "5c484257cccbab899bc874dfeb9257ce7190c99fee3abc33321767c8dac56af9"
+    },
+    {
+      "cached_sha256": "dc15421f70e80b5d9dc0339db79856b671a58f8e6779c1b5b7592b83a57b0817",
+      "commit": "9593090080294a7dfc3c864c087e4070459c0168",
+      "component": "rime-luna-pinyin",
+      "lf_normalized_match": true,
+      "path": "data/shared/luna_pinyin.dict.yaml",
+      "source_sha256": "9bb8b1c123b6df07b3e68007143e9b1a161cd8ddb1854dc55bbd8af06b0078d0"
+    },
+    {
+      "cached_sha256": "a80c89bd16d31842bacbee6b17b9ba1a4f5fd862b7db31049a229aed8628299e",
+      "commit": "9593090080294a7dfc3c864c087e4070459c0168",
+      "component": "rime-luna-pinyin",
+      "lf_normalized_match": true,
+      "path": "data/shared/luna_pinyin.schema.yaml",
+      "source_sha256": "df48caa2901ca04d79978af926c79b118b3e6e5b5cf97b9d8c9b9d67d748a744"
+    },
+    {
+      "cached_sha256": "ccbbc1504f0aa730f054938d9ae22cc3a7019d2fa023399fba795371323077d5",
+      "commit": "9593090080294a7dfc3c864c087e4070459c0168",
+      "component": "rime-luna-pinyin",
+      "lf_normalized_match": true,
+      "path": "data/shared/luna_pinyin_simp.schema.yaml",
+      "source_sha256": "82d9a2b44fa207d4d49416d16af5d2fcab6b1604f4083c384372360c824ea919"
+    },
+    {
+      "cached_sha256": "f2d291166946a848fd88e541844567415f1ed3d9c5a7477757b88aeb3a69c0ca",
+      "commit": "9593090080294a7dfc3c864c087e4070459c0168",
+      "component": "rime-luna-pinyin",
+      "lf_normalized_match": true,
+      "path": "data/shared/pinyin.yaml",
+      "source_sha256": "22915339d6505d8911edd929b055145235eb4f66ee6d4dbdedb832e31be40c35"
+    },
+    {
+      "cached_sha256": "c9e5147fda24d1a13085075df5a2e73deecb643069be3751c6d4d793ceb2de5b",
+      "commit": "3c602fdb0dcca7825103e281efc50ef7580f99ec",
+      "component": "rime-prelude",
+      "lf_normalized_match": true,
+      "path": "data/shared/punctuation.yaml",
+      "source_sha256": "d6f89592149098f0a2d0ed3e5c83f49adb6226cdf1d967b0bc0d293f4e5c496a"
+    },
+    {
+      "cached_sha256": "d3c1823f0e3bae5fb2dac338f4863a0d7164436d1ee132727ff5c4687f53601a",
+      "commit": "3c602fdb0dcca7825103e281efc50ef7580f99ec",
+      "component": "rime-prelude",
+      "lf_normalized_match": true,
+      "path": "data/shared/symbols.yaml",
+      "source_sha256": "f12ee3a61bb9739c29fe6ba12890c5c9c50ca38f63ce9c85e1a16e223ae0b04f"
+    }
+  ],
+  "schema_version": 1
+}

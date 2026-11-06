@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "scope": "StudyIME 0.5.0-dev.1 x64 developer package",
+  "release_blockers": [
+    {"id": "wtl-gpl-compatibility", "detail": "The vendored WTL headers specify MS-PL. Its source distribution condition needs resolution for the GPL combined work; including both notices alone does not establish compatibility."},
+    {"id": "rime-original-build-attestation", "detail": "Official rime.dll, plugin version-info, Lua 5.4.7 embedded string and pinned dependency source materials are recorded. The original CI toolchain/cache and all static dependency build inputs have not been reproduced or independently attested."},
+    {"id": "chinese-data-underlying-sources", "detail": "Pinned Luna Pinyin, prelude and essay source files match cached input data after CRLF normalization. Their aggregate LGPL notices and original source acknowledgments are preserved; the underlying mixed dictionary-source redistribution review is still incomplete."}
+  ],
+  "components": [
+    {"id": "studyime", "role": "runtime", "license": "GPL-3.0-or-later", "status": "user-approved", "scope": "Original code and artwork; not an override of upstream terms"},
+    {"id": "weasel", "role": "runtime-and-source", "license": "GPLv3 (upstream grant)", "version": "0.17.4", "commit": "9cc96e20dc71b80876b12f689bb5863c76c2a7ed", "status": "notices-and-modified-source-preserved"},
+    {"id": "wtl", "role": "compiled-headers", "license": "MS-PL", "source": "Weasel pinned include/wtl", "status": "compatibility-unresolved"},
+    {"id": "boost", "role": "static-library-and-headers", "license": "BSL-1.0", "version": "1.84.0", "status": "source-and-notice-preserved"},
+    {"id": "librime", "role": "runtime", "license": "BSD-3-Clause", "version": "1.13.1", "status": "official-binary-and-source-pinned"},
+    {"id": "librime-lua", "role": "embedded-runtime-plugin", "license": "BSD-3-Clause", "status": "version-info-and-source-pinned"},
+    {"id": "lua-thirdparty", "role": "embedded-runtime", "license": "MIT", "version": "5.4.7", "status": "embedded-version-and-matching-source-release-recorded"},
+    {"id": "librime-octagram", "role": "embedded-runtime-plugin-not-selected", "license": "GPLv3 (upstream notice)", "status": "version-info-and-source-pinned; GPL source obligations still apply while embedded"},
+    {"id": "librime-predict", "role": "embedded-runtime-plugin-not-selected", "license": "BSD-3-Clause", "status": "version-info-and-source-pinned"},
+    {"id": "glog", "role": "librime-static-dependency", "license": "BSD-3-Clause", "status": "pinned-gitlink-source"},
+    {"id": "leveldb", "role": "librime-static-dependency", "license": "BSD-3-Clause", "status": "pinned-gitlink-source"},
+    {"id": "marisa-trie", "role": "librime-static-dependency", "license": "BSD-2-Clause OR LGPL-2.1-or-later", "selected_license": "BSD-2-Clause", "status": "dual-license-notice-preserved"},
+    {"id": "opencc", "role": "librime-static-dependency-and-conversion-data", "license": "Apache-2.0", "version": "1.1.7", "status": "pinned-gitlink-source-and-text-data"},
+    {"id": "yaml-cpp", "role": "librime-static-dependency", "license": "MIT", "status": "pinned-gitlink-source"},
+    {"id": "darts-clone", "role": "embedded-headers-in-librime-and-opencc", "license": "BSD-3-Clause", "status": "librime-include-COPYING.darts-clone-preserved"},
+    {"id": "rapidjson", "role": "embedded-opencc-headers", "license": "MIT and bundled notices", "version": "1.1.0", "status": "full-v1.1.0-license-and-vendored-source-preserved"},
+    {"id": "opencc-marisa", "role": "embedded-opencc-dependency", "license": "BSD-2-Clause OR LGPL-2.1-or-later", "selected_license": "BSD-2-Clause", "version": "0.2.6", "status": "bundled-COPYING-preserved"},
+    {"id": "rime-luna-pinyin", "role": "chinese-input-data", "license": "LGPLv3 (upstream notice)", "status": "aggregate-notice-preserved-underlying-sources-pending"},
+    {"id": "rime-prelude", "role": "input-presets", "license": "LGPLv3 (upstream notice)", "status": "source-and-notice-preserved"},
+    {"id": "rime-essay", "role": "chinese-word-frequencies", "license": "LGPLv3 (upstream notice)", "status": "aggregate-notice-preserved-underlying-sources-pending"},
+    {"id": "cc-cedict-study-daily-200", "role": "english-learning-preview-data", "license": "CC-BY-SA-4.0", "status": "license-verified-human-review-pending", "source_lock": "data/lexicon/source.lock.json"},
+    {"id": "msvc-runtime-and-windows-sdk", "role": "toolchain-static-runtime-and-system-libraries", "license": "Microsoft toolchain/system-library terms", "status": "MSVC 19.29 /MT; no standalone redist or Windows system DLLs copied"},
+    {"id": "googletest-and-vendored-build-tools", "role": "source-materials-only", "license": "See per-component notices", "status": "Test, benchmark, pybind11 and tool source notices preserved; no such executables in the product payload"}
+  ],
+  "excluded_from_runtime_payload": ["Weasel installer", "WeaselServer.exe", "WeaselDeployer.exe", "curl", "WinSparkle DLL", "plum", "7-Zip executables", "cangjie5", "bopomofo", "terra_pinyin", "stroke", "historical test executables", "21-entry test-only English fixture"]
+}

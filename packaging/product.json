@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "拾词输入法",
+  "name_en": "StudyIME",
+  "id": "StudyIME.InputMethod",
+  "version": "0.5.0-dev.1",
+  "file_version": [0, 5, 0, 1],
+  "channel": "developer-preview",
+  "architecture": "x64",
+  "minimum_windows_build": 22000,
+  "install_folder": "StudyIME",
+  "user_data_folder": "StudyIME",
+  "registry_key": "Software\\StudyIME",
+  "pipe_prefix": "StudyIME-v1",
+  "language_id": 2052,
+  "guids": {
+    "product": "D89859C5-5A51-53E6-8199-DF3407D2908B",
+    "text_service": "FEB10355-3C08-5342-B75C-5873F1CA04DF",
+    "language_profile": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+    "language_bar": "1EEDB1BD-094F-5D7E-A16C-AC24EE0D3D10",
+    "display_attribute": "333E6CF1-261B-53A3-8DB1-7555E0C90E8A",
+    "input_mode": "137E3B66-EB3A-5493-83D7-B3155CEDB738",
+    "preserved_key": "673B0BA5-79C9-5480-8516-4BB76510BB0F"
+  }
+}

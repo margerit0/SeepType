@@ -1,0 +1,14 @@
+{
+  "byte_identical": true,
+  "bytes": 13959696,
+  "log": ".\\.cache\\packaging\\source-check\\fresh 中文 ab8f81e284c7\\source-package.log",
+  "network_used": false,
+  "original_package_sha256": "b34a20fe618fbff7048b9b26c03dab2e85d45f9372926b2f9cfaebec679ad9c2",
+  "rebuilt_package_sha256": "b34a20fe618fbff7048b9b26c03dab2e85d45f9372926b2f9cfaebec679ad9c2",
+  "recorded_at": "2026-11-06T18:41:51.539783+00:00",
+  "scope": "Complete preview ZIP regenerated from the restored source materials with the same local toolchain and fresh dependency cache.",
+  "source_archive_sha256": "5a6e4585966a92592152f148c891c9af7d2349c4016038b6ef955f5107fbf56b",
+  "system_install_executed": false,
+  "tsf_registration_executed": false,
+  "workspace": ".\\.cache\\packaging\\source-check\\fresh 中文 ab8f81e284c7\\materials\\project"
+}

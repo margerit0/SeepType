@@ -2,20 +2,32 @@
 
 更新：2026-11-07（Asia/Shanghai）。工作目录：`.`。分支：`codex/technical-spike`。
 
-本文件用于新聊天快速接续；交接前已核对工作区干净。最近的功能提交为 `ebd4e9e`。本轮只整理上下文，没有重新运行历史测试、启动桌面验收或修改系统设置。新窗口先核对当前 Git 状态，再按下述断点继续。
+本文件用于新聊天快速接续。产品化开发基于 `135157a`；本次从中断聊天继承了未提交的实现，继续修正可重复构建与注册恢复。最新提交请以 `git log` 为准。仅运行受改动影响的阶段 6 检查，没有重跑历史测试、启动 Computer Use 或执行系统安装/注册。新窗口先核对当前 Git 状态，再按下述断点继续。
 
 ## 当前任务与下一步
 
-项目是 Windows 英语学习输入法，采用 Weasel + Rime + Lua，目标为 Windows 11 x64、简体中文全拼，开源路线已确认。v0.5 原生界面、x64 隔离服务和高 DPI 修正已经实现；200 条词库审核稿、来源追溯、审核工具和确定性数据导出已完成准备。当前仍是依赖仓库与缓存的隔离开发版，不是可安装成品。
+项目已命名为 **拾词输入法（StudyIME）**，采用 Weasel + Rime + Lua，目标为 Windows 11 x64、简体中文全拼。v0.5 原生界面、x64 服务和高 DPI 修正保持不变。现已提供可脱离仓库运行的 **0.5.0-dev.1 开发预览包**、对应源码材料和默认只预演的安装/卸载脚本；实际安装/注册及公开发布条件仍未完成。现有 200 条词库人工审核状态保持 0/200。
 
-用户最新要求是准备上下文，随后自行开新窗口继续；没有要求创建新聊天。新窗口的开发断点是：
+用户要求继续许可、标识、打包与安装产物开发，并明确实际安装/注册前另行授权。下一断点是：
 
-1. **继续软件第三方许可汇总、产品标识方案、可重复产品打包和具体安装/卸载产物。** 先核对实际拟随包交付的二进制、中文输入方案及其来源版本，整理完整许可、声明和对应源码/构建材料；复用已有构建链。无需等待词义审核才能推进这些独立工作。
+1. **先看 [产品打包](packaging.md) 和 [软件许可汇总](software-licenses.md)，复用现有产物继续。** 独立 GUID/管道/目录、图标与版本资源、四个 x64 程序、最小中文数据、固定 ZIP、源码材料和安装/卸载脚本已实现。仍须处理 WTL/MS-PL 与 GPL 相容性、原始 Rime CI 构建输入核验、中文词典底层混合来源三项许可/来源阻止项。官方 DLL 内的 octagram 是 GPLv3，不能统一标为 BSD。
 2. 复用现有 200 条审核稿，收到真实人工审核记录后再导入。不要重选一批词、自动批准词义，或将程序验证当成人工审核。当前正式词库导出被正确阻止。
 3. **Computer Use 按用户要求留后处理。** 后续修复正常审批通路后，再做真实键鼠、设置、动画、多显示器及记事本/浏览器/VS Code 验收。
-4. 实际安装、输入法注册和系统输入设置修改尚未授权。先完成具体可审阅的产物；需要执行这些系统变更时再取得明确授权。
+4. 实际安装、输入法注册、卸载验收和系统输入设置修改尚未授权。具体产物和默认预演计划已经可审阅；需要执行 `-Apply` 或这些系统变更时再取得明确授权。不要把脚本预演当成实际安装成功。
 
-新代码的具体许可证尚未最终选择；此前推荐与 Weasel 修改版一致的 GPLv3 路线。软件及中文输入数据的全部再分发核验未完成，不能将词库的 CC BY-SA 4.0 写成整个软件的许可证。产品名称和安装标识也尚未最终确定。
+**用户已明确确认产品名「拾词输入法（StudyIME）」及新代码 GPL-3.0-or-later。不要再问同一选择。** 词库单独 CC BY-SA 4.0，见 [COPYING.md](../COPYING.md)。上游文件保留自己的许可，全部再分发核验仍未完成；源码材料齐备不等于许可问题已经解决。
+
+## 本轮产品产物与证据
+
+- 产物在 `.\.cache\packaging\dist`：`StudyIME-0.5.0-dev.1-windows-x64-preview.zip`、`StudyIME-0.5.0-dev.1-source-materials.zip`、`SHA256SUMS.txt` 和 `package-report.json`。摘要和大小以该目录清单为准，不复制易过期的值到交接文档。
+- 展开包在 `.cache/packaging/stage/StudyIME-0.5.0-dev.1`。`Install.cmd` / `Uninstall.cmd` 默认只输出计划；实际命令要求显式 `-Apply`，且开发预览另需 `-AllowDevelopment`。
+- 产品原生输出：`.cache/packaging/build/bin/StudyIME.TSF.x64.dll`、`StudyIME.Service.exe`、`StudyIME.Settings.exe`、`StudyIME.Registrar.exe`。正式源码在 `src/study/windows/Product*`，产品配置在 `packaging/product.json`，构建仍复用阶段 4 构建器的 `--product` 模式。
+- **12 项打包、12 项预演与校验、8 项独立目录检查通过，其中实际 Rime IPC 子检查为 22/22；新增注册恢复内存模拟 28/28。** 报告在 `experiments/phase6/results`。运行检查使用包含中文和空格的目录及独立用户数据，服务已正常停止；没有注册或改变系统输入配置。
+- 产品源码树从固定提交和正式生成器完整生成，忽略旧 `.cache/study-weasel` 的残留头文件及上游工作区修改；不要重新把这些缓存作为编译输入。MSVC 使用 `/experimental:deterministic` 与 `/pathmap`，项目/生成源码及 Boost/Rime 依赖内容均有摘要。
+- **同机不同目录空缓存复建已通过：** 源码 ZIP 在含中文和空格的目录恢复后，记录输入及四个原生程序全部一致，再生成的完整运行 ZIP 也逐字节相同；约 390 秒，未联网。见 `source-materials.json` 与 `source-package-rebuild.json`。不要把早期 `source-materials-initial.json`、`source-materials-relative-paths.json` 的不一致记录当作当前结果。跨机器和官方 Rime DLL 的原始 CI 环境仍未重现。
+- 后续仅脚本/说明改动时，通过 `runtime-evidence-binding.json` 核对既有原生和数据摘要，不重跑已通过的真实引擎检查。源码包只调整说明时，通过 `source-evidence-binding.json` 核对非文档成员及原生构建输入，避免再次完整编译。
+- 14 份固定源码归档和完整许可在 `licensing` 的锁中记录，缓存已准备；普通构建与打包默认离线，不重复下载。
+- 当前仅 x64 前端、未签名，不支持原地升级；真实注册、应用路由、失败恢复、占用卸载、32 位应用与多用户场景仍未验收。
 
 ## 接续阅读入口
 
@@ -27,6 +39,7 @@
 | [native-ui.md](native-ui.md) | 正式 v0.5、DPI、构建命令及验证边界 |
 | [lexicon.md](lexicon.md) | 200 条审核稿、审核导入与数据导出流程 |
 | [data-sources.md](data-sources.md) | 数据许可、软件许可现状与尚未完成的再分发工作 |
+| [packaging.md](packaging.md) / [software-licenses.md](software-licenses.md) | 当前产品、安装产物、源码材料和许可阻止项 |
 | [computer-use-issue.md](computer-use-issue.md) | 审批服务故障和用户指定的处理顺序 |
 | [阶段 4 README](../experiments/phase4/README.md) / [study-ipc.md](study-ipc.md) | 隔离服务、真实 TSF 及会话动作细节，修改相应路径时再读 |
 | [dependencies.lock.json](../experiments/phase3/dependencies.lock.json) | 固定依赖、下载来源及哈希 |
@@ -43,7 +56,7 @@
 - 当前 Lua 使用单一英文值，显示和提交文本必须相同；审核工具会拒绝不一致记录。
 - 正式源码在 `src/study/windows/`，通过 `experiments/phase4/prepare-tsf.py` 和 `prepare-weasel.py` 生成覆盖层。不要只修改 `.cache` 中的生成文件或上游源码副本。
 
-## 最近的功能提交
+## 前期功能提交
 
 | 提交 | 内容 |
 | --- | --- |
@@ -72,7 +85,7 @@
 - 审核页支持搜索、类别/状态/重点筛选、修改英文与逐条决定；修改英文后重新待审。审核绑定整批和逐条摘要，导入先全量校验再原子替换。
 - 审核导出的 JSON 仅包含本次实际修改/决定，避免重新署名已有审核；测试中的假审核者只存在于临时测试目录，没有写入产品数据。
 - 默认正式导出在存在任何待审核项时失败；全部审核后只导出通过项，拒绝空词库。
-- **200 条仅在独立阶段 5 运行目录验证；默认阶段 4 交互宿主仍使用 21 条 test-only 词对。**
+- **200 条现进入明确标识的产品开发预览；仍是待人工审核数据。默认阶段 4 交互宿主继续使用 21 条 test-only 词对。**
 
 以下是操作入口，不要求接续时全部重跑；只有相关修改或新审核记录才运行必要检查。
 
@@ -134,7 +147,7 @@ python experiments/phase4/start-settings.py
 - `.\experiments\phase4\build\tsf_text_host_x64.exe`
 - `.\experiments\phase4\build\study_settings_x64.exe`
 
-运行依赖仓库目录与缓存，不能只复制 EXE 作为成品。隔离宿主与设置共用 `experiments/phase4/runtime/interactive-settings.ini`；未安装或注册系统输入法。新窗口不要假设以前的交互进程仍在运行。
+上面列出的是阶段 4 隔离宿主，仍依赖仓库与缓存，共用 `experiments/phase4/runtime/interactive-settings.ini`。新产品包使用独立完整目录，不依赖仓库；两者都尚未被安装/注册为系统输入法。新窗口不要假设旧交互进程仍在运行。
 
 ## Computer Use 记录与协作约束
 

@@ -1,0 +1,17 @@
+{
+  "all_native_binaries_identical": true,
+  "complete_preview_zip_identical": true,
+  "findings": [
+    "Brepro plus relative arguments alone left absolute assert paths and anonymous-namespace symbols.",
+    "Legacy overlay had an extra UI class field absent in a fresh source tree.",
+    "The product now generates its complete source tree from the pinned commit and official project generators.",
+    "MSVC experimental:deterministic and pathmap remove checkout paths; content hashes track actual generated/dependency inputs."
+  ],
+  "identical_recorded_inputs": true,
+  "legacy_ui_header_has_extra_menu_field": true,
+  "legacy_ui_header_retained_unchanged": true,
+  "previous_relative_only_report": "source-materials-relative-paths.json",
+  "product_ui_header_matches_pinned_upstream": true,
+  "product_ui_header_sha256": "bcae6f95b8a910063915fb1d56e2a1064af1c961d23d55f5eaa24219bc13d0b6",
+  "scope": "Same installed toolchain, fresh cache, and a different project directory containing spaces and Chinese characters. No cross-machine or original Rime CI reproduction claim."
+}

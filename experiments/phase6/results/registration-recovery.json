@@ -1,0 +1,128 @@
+{
+  "checks": [
+    {
+      "name": "complete registration creates all owned records",
+      "passed": true
+    },
+    {
+      "name": "duplicate registration cannot claim success or erase the owner",
+      "passed": true
+    },
+    {
+      "name": "complete removal clears references before the owner",
+      "passed": true
+    },
+    {
+      "name": "removal tolerates already absent records",
+      "passed": true
+    },
+    {
+      "name": "failed class before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed class after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed profile before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed profile after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category0 before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category0 after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category1 before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category1 after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category2 before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category2 after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category3 before write rolls back",
+      "passed": true
+    },
+    {
+      "name": "failed category3 after partial write rolls back",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at profile retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed profile completes cleanup",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at category0 retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed category0 completes cleanup",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at category1 retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed category1 completes cleanup",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at category2 retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed category2 completes cleanup",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at category3 retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed category3 completes cleanup",
+      "passed": true
+    },
+    {
+      "name": "rollback failure at class retains its owner",
+      "passed": true
+    },
+    {
+      "name": "retry after failed class completes cleanup",
+      "passed": true
+    }
+  ],
+  "inputs": {
+    "src/study/windows/ProductRegistrationFlow.h": "256f4b385119c30c8206c5dc4828174b1a27be752514da7c55135db520950130",
+    "tools/packaging/registration_flow_test.cpp": "eae1c6c1c223b3b18a9fa1d1e424f040334c15060229e6a2da694dbd9df54f8b"
+  },
+  "passed": 28,
+  "recorded_at": "2026-11-06T18:29:58.415300+00:00",
+  "registry_unchanged": true,
+  "scope_limit": "The production registration flow runs against an in-memory operation adapter. Windows registry/TSF API behavior and actual installation still require authorized acceptance.",
+  "system_install_executed": false,
+  "test_executable_sha256": "7b13078637750115fcff4bcc3dfc5fd1e3bfb3b8004eeb0c4817350215970dbd",
+  "total": 28,
+  "tsf_registration_executed": false
+}

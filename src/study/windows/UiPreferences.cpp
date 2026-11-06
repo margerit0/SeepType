@@ -2,6 +2,10 @@
 #include <shlobj.h>
 #include <fstream>
 #include <map>
+#ifdef WEASEL_STUDY_PRODUCT
+#include "ProductRuntime.h"
+#include <ProductIdentity.h>
+#endif
 
 namespace study {
 bool UiPreferences::operator==(const UiPreferences& p) const {
@@ -9,6 +13,9 @@ bool UiPreferences::operator==(const UiPreferences& p) const {
       theme == p.theme && shortcut == p.shortcut;
 }
 std::filesystem::path PreferencesPath() {
+#ifdef WEASEL_STUDY_PRODUCT
+  return ProductUserRoot() / L"settings.ini";
+#else
   wchar_t path[32768]{};
   const DWORD count = GetEnvironmentVariableW(L"STUDY_SETTINGS_PATH", path, 32768);
   if (count && count < 32768) return path;
@@ -20,6 +27,7 @@ std::filesystem::path PreferencesPath() {
   auto result = std::filesystem::path(local) / L"StudyIme" / L"settings.ini";
   CoTaskMemFree(local);
   return result;
+#endif
 #endif
 }
 UiPreferences LoadPreferences(const std::filesystem::path& path) {
@@ -127,7 +135,11 @@ struct SettingsDialog {
     Control(L"STATIC", L"仅明确操作输入英文；空格、数字和普通点击仍输入中文。\r\n快捷键如与应用冲突，可更换预设。F2 查看完整释义。", 0, 24, 238, 440, 48);
     auto motion = Control(L"BUTTON", L"减少动态效果", 105, 24, 298, 420, 26, BS_AUTOCHECKBOX | WS_TABSTOP);
     SendMessageW(motion, BM_SETCHECK, value.reduceMotion ? BST_CHECKED : BST_UNCHECKED, 0);
+#ifdef WEASEL_STUDY_PRODUCT
+    Control(L"STATIC", L"词库：日常 200 条 · 审核预览\r\n词义待人工审核，仅供开发验证。\r\n软件与词库许可见随附的许可与来源说明。\r\n仅在本机保存以上偏好，不保存输入内容。", 0, 24, 342, 450, 94);
+#else
     Control(L"STATIC", L"词库：study-fixtures v0.1 · 21 条测试词对\r\n测试数据尚未人工验收，不作为正式词库分发。\r\nWeasel：GPL-3.0；librime / librime-lua：BSD-3-Clause。\r\n仅在本机保存以上偏好，不保存输入内容。", 0, 24, 342, 450, 94);
+#endif
     Control(L"STATIC", L"", 106, 24, 440, 280, 34);
     Control(L"BUTTON", L"取消", IDCANCEL, 278, 442, 80, 32, WS_TABSTOP);
     Control(L"BUTTON", L"保存", IDOK, 374, 442, 80, 32, BS_DEFPUSHBUTTON | WS_TABSTOP);
@@ -170,7 +182,12 @@ bool EditPreferences(HWND owner, const std::filesystem::path& path, UiPreference
   cls.hbrBackground = reinterpret_cast<HBRUSH>(COLOR_WINDOW + 1);
   const ATOM atom = RegisterClassW(&cls);
   if (!atom && GetLastError() != ERROR_CLASS_ALREADY_EXISTS) return false;
-  HWND window = CreateWindowExW(WS_EX_DLGMODALFRAME, cls.lpszClassName, L"英语学习输入法 · 设置",
+#ifdef WEASEL_STUDY_PRODUCT
+  const auto title = std::wstring(kProductName) + L" · 设置";
+#else
+  const std::wstring title = L"英语学习输入法 · 设置";
+#endif
+  HWND window = CreateWindowExW(WS_EX_DLGMODALFRAME, cls.lpszClassName, title.c_str(),
       WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, 500, 550, owner, nullptr, cls.hInstance, &dialog);
   if (!window) return false;
   ShowWindow(window, SW_SHOW); SetFocus(GetDlgItem(window, 101));

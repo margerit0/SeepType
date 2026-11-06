@@ -1,0 +1,7 @@
+LIBRARY "StudyIME.TSF.x64"
+EXPORTS
+    DllCanUnloadNow PRIVATE
+    DllGetClassObject PRIVATE
+    DllRegisterServer PRIVATE
+    DllUnregisterServer PRIVATE
+    StudyProductIdentity

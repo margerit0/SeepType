@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "approved",
+  "proposed_spdx": "GPL-3.0-or-later",
+  "decision": {"spdx": "GPL-3.0-or-later", "date": "2026-11-07", "authority": "Explicit user confirmation in the continuation chat"},
+  "scope": "New StudyIME code only; upstream code and data retain their own notices and terms.",
+  "data_spdx": "CC-BY-SA-4.0",
+  "note": "Upstream notices and data licenses are not replaced by this choice."
+}

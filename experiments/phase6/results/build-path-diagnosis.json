@@ -1,0 +1,21 @@
+{
+  "images": {
+    "initial": {
+      "absolute_project_path_count": 19,
+      "examples": [
+        ".\\src\\study\\windows\\WindowDispatcher.cpp",
+        ".\\.cache\\src\\boost_1_84_0\\boost/thread/win32/thread_primitives.hpp",
+        ".\\.cache\\src\\boost_1_84_0\\boost/thread/win32/thread_heap_alloc.hpp"
+      ]
+    },
+    "other_directory": {
+      "absolute_project_path_count": 19,
+      "examples": [
+        ".\\.cache\\packaging\\source-check\\2b77d9f827a1\\materials\\project\\src\\study\\windows\\WindowDispatcher.cpp",
+        ".\\.cache\\packaging\\source-check\\2b77d9f827a1\\materials\\project\\.cache\\src\\boost_1_84_0\\boost/thread/win32/thread_primitives.hpp",
+        ".\\.cache\\packaging\\source-check\\2b77d9f827a1\\materials\\project\\.cache\\src\\boost_1_84_0\\boost/thread/win32/thread_heap_alloc.hpp"
+      ]
+    }
+  },
+  "initial_source_inputs_equal": true
+}

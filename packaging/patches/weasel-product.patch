@@ -1,0 +1,459 @@
+--- a/RimeWithWeasel/RimeWithWeasel.cpp
++++ b/RimeWithWeasel/RimeWithWeasel.cpp
+@@ -46,7 +46,7 @@
+   time_t now = time(NULL);
+   strftime(ymd, sizeof(ymd), ".%Y%m%d", localtime(&now));
+   std::string today(ymd);
+-  const std::string app_name = "rime.weasel";
++  const std::string app_name = "rime.studyime";
+   std::string dir = WeaselLogPath().string();
+   if (!fs::exists(fs::path(dir)))
+     return;
+@@ -137,9 +137,9 @@
+   weasel_traits.distribution_name = distribution_name.c_str();
+   weasel_traits.distribution_code_name = WEASEL_CODE_NAME;
+   weasel_traits.distribution_version = WEASEL_VERSION;
+-  weasel_traits.app_name = "rime.weasel";
++  weasel_traits.app_name = "rime.studyime";
+ #ifdef WEASEL_STUDY_ISOLATED
+-  weasel_traits.app_name = "rime.study-service-test";
++  weasel_traits.app_name = "rime.studyime";
+   weasel_traits.min_log_level = 2;
+   const char* modules[] = {"default", "lua", nullptr};
+   weasel_traits.modules = modules;
+@@ -158,6 +158,7 @@
+ 
+   LOG(INFO) << "Initializing la rime.";
+   rime_api->initialize(NULL);
++  if (rime_api->start_maintenance(False)) rime_api->join_maintenance_thread();
+ #if 0
+   if (rime_api->start_maintenance(/*full_check = */ False)) {
+     m_disabled = true;
+--- a/WeaselIPC/PipeChannel.cpp
++++ b/WeaselIPC/PipeChannel.cpp
+@@ -1,6 +1,7 @@
+ #include "stdafx.h"
+ 
+ #include <PipeChannel.h>
++#include <study/windows/ProductRuntime.h>
+ 
+ using namespace weasel;
+ using namespace std;
+@@ -54,8 +55,11 @@
+ 
+ HANDLE PipeChannelBase::_Connect(const wchar_t* name) {
+   HANDLE pipe = INVALID_HANDLE_VALUE;
+-  while (_Invalid(pipe = _TryConnect()))
+-    ::WaitNamedPipe(name, 500);
++  const auto deadline = GetTickCount64() + 500;
++  while (_Invalid(pipe = _TryConnect())) {
++    if (GetTickCount64() >= deadline) throw static_cast<DWORD>(ERROR_TIMEOUT);
++    ::WaitNamedPipe(name, 50);
++  }
+   DWORD mode = PIPE_READMODE_MESSAGE;
+   if (!SetNamedPipeHandleState(pipe, &mode, NULL, NULL)) {
+     _ThrowLastError;
+@@ -72,7 +76,10 @@
+   auto pipe = ::CreateFile(pname.c_str(), GENERIC_READ | GENERIC_WRITE, 0, NULL,
+                            OPEN_EXISTING, 0, NULL);
+   if (!_Invalid(pipe)) {
+-    // connected to the pipe
++    if (!study::ProductPipeServerMatchesUser(pipe)) {
++      CloseHandle(pipe);
++      throw static_cast<DWORD>(ERROR_ACCESS_DENIED);
++    }
+     return pipe;
+   }
+   // being busy is not really an error since we just need to wait.
+@@ -118,7 +125,7 @@
+ HANDLE PipeChannelBase::_ConnectServerPipe(std::wstring& pn) {
+   HANDLE pipe =
+       CreateNamedPipe(pn.c_str(), PIPE_ACCESS_DUPLEX,
+-                      PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT,
++                      PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
+                       PIPE_UNLIMITED_INSTANCES, buff_size, buff_size, 0, sa);
+   if (pipe == INVALID_HANDLE_VALUE) { _ThrowLastError; }
+   if (!::ConnectNamedPipe(pipe, NULL) && GetLastError() != ERROR_PIPE_CONNECTED) {
+--- a/WeaselIPCServer/SecurityAttribute.cpp
++++ b/WeaselIPCServer/SecurityAttribute.cpp
+@@ -1,78 +1,14 @@
+ #include "stdafx.h"
+ #include "SecurityAttribute.h"
+-#include <Sddl.h>
+-
+-#ifndef SDDL_ALL_APP_PACKAGES
+-#define SDDL_ALL_APP_PACKAGES TEXT("AC")
+-#endif
+-
+-#define LOW_INTEGRITY_SDDL_SACL \
+-  SDDL_SACL                     \
+-  SDDL_DELIMINATOR              \
+-  SDDL_ACE_BEGIN                \
+-  SDDL_MANDATORY_LABEL          \
+-  SDDL_SEPERATOR                \
+-  SDDL_SEPERATOR                \
+-  SDDL_NO_WRITE_UP              \
+-  SDDL_SEPERATOR                \
+-  SDDL_SEPERATOR                \
+-  SDDL_SEPERATOR                \
+-  SDDL_ML_LOW                   \
+-  SDDL_ACE_END
+-
+-#define LOCAL_SYSTEM_FILE_ACCESS \
+-  SDDL_ACE_BEGIN                 \
+-  SDDL_ACCESS_ALLOWED            \
+-  SDDL_SEPERATOR                 \
+-  SDDL_SEPERATOR                 \
+-  SDDL_FILE_ALL                  \
+-  SDDL_SEPERATOR                 \
+-  SDDL_SEPERATOR                 \
+-  SDDL_SEPERATOR                 \
+-  SDDL_LOCAL_SYSTEM              \
+-  SDDL_ACE_END
+-
+-#define EVERYONE_FILE_ACCESS \
+-  SDDL_ACE_BEGIN             \
+-  SDDL_ACCESS_ALLOWED        \
+-  SDDL_SEPERATOR             \
+-  SDDL_SEPERATOR             \
+-  SDDL_FILE_ALL              \
+-  SDDL_SEPERATOR             \
+-  SDDL_SEPERATOR             \
+-  SDDL_SEPERATOR             \
+-  SDDL_EVERYONE              \
+-  SDDL_ACE_END
+-
+-#define ALL_APP_PACKAGES_FILE_ACCESS \
+-  SDDL_ACE_BEGIN                     \
+-  SDDL_ACCESS_ALLOWED                \
+-  SDDL_SEPERATOR                     \
+-  SDDL_SEPERATOR                     \
+-  SDDL_FILE_ALL                      \
+-  SDDL_SEPERATOR                     \
+-  SDDL_SEPERATOR                     \
+-  SDDL_SEPERATOR                     \
+-  SDDL_ALL_APP_PACKAGES              \
+-  SDDL_ACE_END
+-
++#include <study/windows/ProductRuntime.h>
++#include <sddl.h>
++#include <stdexcept>
+ namespace weasel {
+-
+ void SecurityAttribute::_Init() {
+-  // Privileges for UWP and IE protected mode
+-  // https://stackoverflow.com/questions/39138674/accessing-named-pipe-servers-from-within-ie-epm-bho
+-
+-  ConvertStringSecurityDescriptorToSecurityDescriptor(
+-      LOW_INTEGRITY_SDDL_SACL SDDL_DACL SDDL_DELIMINATOR
+-          LOCAL_SYSTEM_FILE_ACCESS EVERYONE_FILE_ACCESS
+-              ALL_APP_PACKAGES_FILE_ACCESS,
+-      SDDL_REVISION_1, &pd, NULL);
+-  sa.nLength = sizeof(SECURITY_ATTRIBUTES);
+-  sa.lpSecurityDescriptor = pd;
+-  sa.bInheritHandle = TRUE;
++  const auto descriptor = L"D:P(A;;GA;;;SY)(A;;GA;;;" + study::ProductUserSid() + L")S:(ML;;NW;;;LW)";
++  if (!ConvertStringSecurityDescriptorToSecurityDescriptorW(descriptor.c_str(), SDDL_REVISION_1, &pd, nullptr))
++    throw std::runtime_error("Cannot create the StudyIME pipe security descriptor");
++  sa.nLength = sizeof(sa); sa.lpSecurityDescriptor = pd; sa.bInheritHandle = FALSE;
+ }
+-
+-SECURITY_ATTRIBUTES* SecurityAttribute::get_attr() {
+-  return &sa;
++SECURITY_ATTRIBUTES* SecurityAttribute::get_attr() { return &sa; }
+ }
+-};  // namespace weasel
+--- a/WeaselTSF/Globals.cpp
++++ b/WeaselTSF/Globals.cpp
+@@ -1,5 +1,6 @@
+ #include "stdafx.h"
+ #include "Globals.h"
++#include <ProductIdentity.h>
+ 
+ HINSTANCE g_hInst;
+ 
+@@ -8,32 +9,16 @@
+ CRITICAL_SECTION g_cs;
+ 
+ // {A3F4CDED-B1E9-41EE-9CA6-7B4D0DE6CB0A}
+-static const GUID c_clsidTextService = {
+-    0xa3f4cded,
+-    0xb1e9,
+-    0x41ee,
+-    {0x9c, 0xa6, 0x7b, 0x4d, 0xd, 0xe6, 0xcb, 0xa}};
++const GUID c_clsidTextService = {0xfeb10355,0x3c08,0x5342,{0xb7,0x5c,0x58,0x73,0xf1,0xca,0x04,0xdf}};
+ 
+ // {3D02CAB6-2B8E-4781-BA20-1C9267529467}
+-static const GUID c_guidProfile = {
+-    0x3d02cab6,
+-    0x2b8e,
+-    0x4781,
+-    {0xba, 0x20, 0x1c, 0x92, 0x67, 0x52, 0x94, 0x67}};
++const GUID c_guidProfile = {0xc126f14a,0xe78d,0x57ff,{0x91,0x0f,0x20,0x5a,0x39,0x3a,0xe9,0xd9}};
+ 
+ // {341F9E3A-B8AD-499D-936C-48701E329FB2}
+-static const GUID c_guidLangBarItemButton = {
+-    0x341f9e3a,
+-    0xb8ad,
+-    0x499d,
+-    {0x93, 0x6c, 0x48, 0x70, 0x1e, 0x32, 0x9f, 0xb2}};
++const GUID c_guidLangBarItemButton = {0x1eedb1bd,0x94f,0x5d7e,{0xa1,0x6c,0xac,0x24,0xee,0x0d,0x3d,0x10}};
+ 
+ // {2AC87E79-3260-4B32-9DEA-F8390976C20B}
+-static const GUID c_guidDisplayAttributeInput = {
+-    0x2ac87e79,
+-    0x3260,
+-    0x4b32,
+-    {0x9d, 0xea, 0xf8, 0x39, 0x09, 0x76, 0xc2, 0x0b}};
++const GUID c_guidDisplayAttributeInput = {0x333e6cf1,0x261b,0x53a3,{0x8d,0xb1,0x75,0x55,0xe0,0xc9,0x0e,0x8a}};
+ 
+ #ifdef WEASEL_USING_OLDER_TSF_SDK
+ 
+@@ -52,14 +37,6 @@
+ 
+ #endif
+ 
+-const GUID GUID_LBI_INPUTMODE = {
+-    0x2C77A81E,
+-    0x41CC,
+-    0x4178,
+-    {0xA3, 0xA7, 0x5F, 0x8A, 0x98, 0x75, 0x68, 0xE6}};
++const GUID GUID_LBI_INPUTMODE = {0x137e3b66,0xeb3a,0x5493,{0x83,0xd7,0xb3,0x15,0x5c,0xed,0xb7,0x38}};
+ 
+-const GUID GUID_IME_MODE_PRESERVED_KEY = {
+-    0x0bd899fc,
+-    0xa8f7,
+-    0x4b42,
+-    {0xa9, 0x6d, 0xce, 0xc7, 0xc5, 0x0e, 0x0e, 0xae}};
++const GUID GUID_IME_MODE_PRESERVED_KEY = {0x673b0ba5,0x79c9,0x5480,{0x85,0x16,0x4b,0xb7,0x65,0x10,0xbb,0x0f}};
+--- a/WeaselTSF/Server.cpp
++++ b/WeaselTSF/Server.cpp
+@@ -1,7 +1,8 @@
+ #include "stdafx.h"
+ 
+ #include "Globals.h"
+-#include "Register.h"
++#include <study/windows/ProductRegistration.h>
++#include <ProductIdentity.h>
+ #include "WeaselTSF.h"
+ #include <VersionHelpers.hpp>
+ 
+@@ -79,6 +80,9 @@
+ }
+ 
+ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, void** ppvObject) {
++  if (!ppvObject) return E_INVALIDARG;
++  *ppvObject = nullptr;
++  if (!IsEqualCLSID(rclsid, study::kTextServiceGuid)) return CLASS_E_CLASSNOTAVAILABLE;
+   if (g_classFactory == NULL) {
+     EnterCriticalSection(&g_cs);
+     if (g_classFactory == NULL)
+@@ -100,23 +104,6 @@
+   return S_OK;
+ }
+ 
+-STDAPI DllRegisterServer() {
+-#ifdef WEASEL_STUDY_ISOLATED
+-  return E_ACCESSDENIED;
+-#endif
+-  if (!RegisterServer() || !RegisterProfiles() || !RegisterCategories()) {
+-    DllUnregisterServer();
+-    return E_FAIL;
+-  }
+-  return S_OK;
+-}
+-
+-STDAPI DllUnregisterServer() {
+-#ifdef WEASEL_STUDY_ISOLATED
+-  return E_ACCESSDENIED;
+-#endif
+-  UnregisterProfiles();
+-  UnregisterCategories();
+-  UnregisterServer();
+-  return S_OK;
+-}
++STDAPI DllRegisterServer() { return study::RegisterProductModule(g_hInst); }
++STDAPI DllUnregisterServer() { return study::UnregisterProductModule(g_hInst); }
++extern "C" const char* WINAPI StudyProductIdentity() { return study::kProductIdentityJson; }
+--- a/WeaselTSF/WeaselTSF.cpp
++++ b/WeaselTSF/WeaselTSF.cpp
+@@ -103,9 +103,7 @@
+ 
+   _UninitThreadMgrEventSink();
+ 
+-#ifndef WEASEL_STUDY_ISOLATED
+   _UninitKeyEventSink();
+-#endif
+   _UninitPreservedKey();
+   _UninitThreadFocusSink();
+ 
+@@ -144,30 +142,18 @@
+     _InitTextEditSink(pDocMgrFocus);
+   }
+ 
+-#ifndef WEASEL_STUDY_ISOLATED
+   if (!_InitKeyEventSink())
+     goto ExitError;
+-#endif
+ 
+   // if (!_InitDisplayAttributeGuidAtom())
+   //	goto ExitError;
+   //	some app might init failed because it not provide DisplayAttributeInfo,
+   // like some opengl stuff
+   _InitDisplayAttributeGuidAtom();
+-#ifndef WEASEL_STUDY_ISOLATED
+-
+-  if (!_InitPreservedKey())
+-    goto ExitError;
+-
+-  if (!_InitLanguageBar())
+-    goto ExitError;
+-
+-  if (!_IsKeyboardOpen())
+-    _SetKeyboardOpen(TRUE);
+-
+-  if (!_InitCompartment())
+-    goto ExitError;
+-#endif
++  // The installed TIP owns only its own compartment and key sink.
++  // Upstream tray/menu, updater and global preserved shortcuts are not enabled.
++  if (!_IsKeyboardOpen()) _SetKeyboardOpen(TRUE);
++  if (!_InitCompartment()) goto ExitError;
+   if (!_InitThreadFocusSink())
+     goto ExitError;
+ 
+@@ -182,7 +168,7 @@
+ 
+ STDMETHODIMP WeaselTSF::OnSetThreadFocus() {
+   std::wstring _ToggleImeOnOpenClose{};
+-  RegGetStringValue(HKEY_CURRENT_USER, L"Software\\Rime\\weasel",
++  RegGetStringValue(HKEY_CURRENT_USER, study::kProductRegistryKey,
+                     L"ToggleImeOnOpenClose", _ToggleImeOnOpenClose);
+   _isToOpenClose = (_ToggleImeOnOpenClose == L"yes");
+   if (m_client.Echo()) {
+@@ -258,6 +244,7 @@
+ 
+ bool WeaselTSF::_EnsureServerConnected() {
+   if (m_client.Echo()) return true;
++  if (!study::EnsureProductService()) return false;
+   _Reconnect();
+   return m_client.Echo();
+ }
+--- a/include/WeaselConstants.h
++++ b/include/WeaselConstants.h
+@@ -1,9 +1,6 @@
+ #pragma once
+-
+-#define WEASEL_CODE_NAME "Weasel"
+-#define WEASEL_REG_KEY L"Software\\Rime\\Weasel"
+-#define RIME_REG_KEY L"Software\\Rime"
+-
+-#define STRINGIZE(x) #x
+-#define VERSION_STR(x) STRINGIZE(x)
+-#define WEASEL_VERSION VERSION_STR(VERSION_MAJOR.VERSION_MINOR.VERSION_PATCH)
++#include <ProductIdentity.h>
++#define WEASEL_CODE_NAME "StudyIME"
++#define WEASEL_REG_KEY study::kProductRegistryKey
++#define RIME_REG_KEY study::kProductRegistryKey
++#define WEASEL_VERSION study::kProductVersion
+--- a/include/WeaselIPC.h
++++ b/include/WeaselIPC.h
+@@ -7,9 +7,10 @@
+ #include <KeyEvent.h>
+ #include <study/StudyProtocol.h>
+ #include <stdexcept>
++#include <study/windows/ProductRuntime.h>
+ 
+ #ifdef WEASEL_STUDY_ISOLATED
+-#define WEASEL_IPC_WINDOW L"StudyImePhase4IPCWindow"
++#define WEASEL_IPC_WINDOW L"StudyIME.IPC.v1"
+ #else
+ #define WEASEL_IPC_WINDOW L"WeaselIPCWindow_1.0"
+ #endif
+@@ -178,24 +179,5 @@
+   ServerImpl* m_pImpl;
+ };
+ 
+-inline std::wstring GetPipeName() {
+-#ifdef WEASEL_STUDY_ISOLATED
+-  wchar_t name[96]{};
+-  const DWORD length = GetEnvironmentVariableW(L"STUDY_IPC_TEST_NAME", name, 96);
+-  if (length < 16 || length >= 96)
+-    throw std::runtime_error("Missing isolated study pipe name");
+-  for (DWORD i = 0; i < length; ++i)
+-    if (!((name[i] >= L'a' && name[i] <= L'z') ||
+-          (name[i] >= L'0' && name[i] <= L'9') || name[i] == L'-'))
+-      throw std::runtime_error("Invalid isolated study pipe name");
+-  return std::wstring(L"\\\\.\\pipe\\StudyIme-Phase4-") + name;
+-#else
+-  std::wstring pipe_name;
+-  pipe_name += L"\\\\.\\pipe\\";
+-  pipe_name += getUsername();
+-  pipe_name += L"\\";
+-  pipe_name += WEASEL_IPC_PIPE_NAME;
+-  return pipe_name;
+-#endif
+-}
++inline std::wstring GetPipeName() { return study::ProductPipeName(); }
+ }  // namespace weasel
+--- a/include/WeaselUtility.h
++++ b/include/WeaselUtility.h
+@@ -34,25 +34,12 @@
+ // data directories
+ std::filesystem::path WeaselSharedDataPath();
+ std::filesystem::path WeaselUserDataPath();
++#include <study/windows/ProductRuntime.h>
++#include <ProductIdentity.h>
+ inline fs::path WeaselLogPath() {
+-#ifdef WEASEL_STUDY_ISOLATED
+-#ifdef WEASEL_STUDY_TSF
+-  const auto logs = fs::temp_directory_path() / L"StudyIme-Phase4-TSF";
+-#else
+-  const auto logs = WeaselUserDataPath() / L"logs";
+-#endif
++  const auto logs = study::ProductUserRoot() / L"rime/logs";
+   fs::create_directories(logs);
+   return logs;
+-#else
+-  WCHAR _path[MAX_PATH] = {0};
+-  // default location
+-  ExpandEnvironmentStringsW(L"%TEMP%\\rime.weasel", _path, _countof(_path));
+-  fs::path path = fs::path(_path);
+-  if (!fs::exists(path)) {
+-    fs::create_directories(path);
+-  }
+-  return path;
+-#endif
+ }
+ 
+ inline BOOL IsUserDarkMode() {
+@@ -196,19 +183,7 @@
+ // resource
+ std::string GetCustomResource(const char* name, const char* type);
+ 
+-inline std::wstring get_weasel_ime_name() {
+-  LANGID langId = GetUserDefaultUILanguage();
+-
+-  if (langId == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL) ||
+-      langId == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED) ||
+-      langId == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_HONGKONG) ||
+-      langId == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_SINGAPORE) ||
+-      langId == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_MACAU)) {
+-    return L"小狼毫";
+-  } else {
+-    return L"Weasel";
+-  }
+-}
++inline std::wstring get_weasel_ime_name() { return study::kProductName; }
+ 
+ inline LONG RegGetStringValue(HKEY key,
+                               LPCWSTR lpSubKey,
+@@ -227,7 +202,7 @@
+ 
+ inline LANGID get_language_id() {
+   std::wstring lang{};
+-  if (RegGetStringValue(HKEY_CURRENT_USER, L"Software\\Rime\\Weasel",
++  if (RegGetStringValue(HKEY_CURRENT_USER, study::kProductRegistryKey,
+                         L"Language", lang) == ERROR_SUCCESS) {
+     if (lang == L"chs")
+       return MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED);
