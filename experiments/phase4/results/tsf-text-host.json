@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-06T21:17:13+08:00",
+  "scope": "Unregistered DLL factory activation; real Windows thread/document/context/range and edit sessions backed by a visible plain-text ITextStoreACP host. Host forwards key/focus callbacks to production sinks; actual Rime IPC and native candidate/menu windows.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "unregistered production TSF activated with two real text contexts",
+      "passed": true
+    },
+    {
+      "name": "real composition writes under synchronous text-store lock",
+      "passed": true
+    },
+    {
+      "name": "production candidate popup is visible",
+      "passed": true
+    },
+    {
+      "name": "space commits Chinese through ITfRange exactly once",
+      "passed": true
+    },
+    {
+      "name": "explicit English action commits through real TSF range",
+      "passed": true
+    },
+    {
+      "name": "repeated explicit action cannot duplicate English",
+      "passed": true
+    },
+    {
+      "name": "application defers actual TSF write grant",
+      "passed": true
+    },
+    {
+      "name": "deferred owned commit survives later key response",
+      "passed": true
+    },
+    {
+      "name": "focus switch rejects queued commit in both documents",
+      "passed": true
+    },
+    {
+      "name": "new focused document owns its composition and commit",
+      "passed": true
+    },
+    {
+      "name": "native TSF menu opens outside write lock and cancels",
+      "passed": true
+    },
+    {
+      "name": "focus change closes actual modal TSF menu",
+      "passed": true
+    },
+    {
+      "name": "service disconnect closes native menu by watchdog",
+      "passed": true
+    },
+    {
+      "name": "disconnected English action does not replay or insert",
+      "passed": true
+    },
+    {
+      "name": "all real TSF document writes respected edit locks",
+      "passed": true
+    },
+    {
+      "name": "deactivation releases frontend COM lifetime",
+      "passed": true
+    }
+  ],
+  "error": null,
+  "binaries": {
+    "experiments\\phase4\\build\\tsf_text_host_x64.exe": "883d802e18b8cf6b41a9e07cb42d6c555791503012aba3761dd6c3e693c6930d",
+    "experiments\\phase4\\build\\tsf-x64\\study_weasel_x64.dll": "a6fe10347039ca07dec31448812b02a5ee4604cde7e39dbea24b1f1bf64ae910",
+    "experiments\\phase4\\build\\study_service.exe": "d8f9d2615fb89bfb957ad1df0d15e3164f5abbb3d976d60f192cf8a8f31bf5f3"
+  },
+  "sources": {
+    "experiments\\phase4\\tsf_text_host.cpp": "7dc1d4f8c91dea01af6543ba8000684c4d0c9cf9082b70f72fd2e676f47f84fd",
+    "experiments\\phase4\\text_store.h": "41c068f55f4496813e7351581a6dbc978b0005c886a2abdb05559ef1d918da1c",
+    "experiments\\phase4\\prepare-tsf.py": "0c229628010ff3190341ec40c6550b127f6caba09b222d6358a61dc8f131bcf1",
+    "experiments\\phase4\\build-service.py": "320b054d19b7fa51b985291d65a0d1b07606e3472249dcf32c298ad0a807e01b",
+    "experiments\\phase4\\verify-text-host.py": "18adc278c0d3a791791d9655ff94f3b0d8bbb3b7d0bc8b1811c3000c1f886ace",
+    "experiments\\phase4\\patches\\weasel-study-ipc.patch": "f5dc87327537641cc623f96f0a25111803742e21f0e1ed93a453ee46f6e934b3",
+    "src\\study\\windows\\TsfStudy.inc": "cb04f64d39abf8485c176b5252dda64347ab73b3c536fe080ab68945b103695c"
+  },
+  "limits": [
+    "Programmatic key/focus callbacks; not Windows routing of an installed TIP or physical keyboard/mouse observations",
+    "Native menu open/cancel/focus/disconnect tested; physical selection of its English command remains unverified",
+    "No registration, installation, profile activation or input settings changes",
+    "Not Notepad/browser/VS Code compatibility evidence",
+    "x86 isolated service, test-only lexicon; v0.5 full UI and x64 service/package still pending"
+  ],
+  "unchanged_evidence": [
+    "tsf-frontend.json",
+    "desktop-menu.json",
+    "service-ipc.json",
+    "service-dispatch.json"
+  ]
+}

@@ -34,7 +34,23 @@ def prepare(source, replace):
     # response application. No nested asynchronous insertion of a stale commit.
     replace(c, 'pContext->RequestEditSession(_tfClientId,', '_RunEdit(pContext,', count=5)
     replace(c, 'void WeaselTSF::_AbortComposition(bool clear) {', 'void WeaselTSF::_AbortComposition(bool clear) {\n  ++_studyEpoch;\n  _InvalidateStudy();')
-    replace(c, '  _AbortComposition();\n  return S_OK;', '  if (!_studyApplying) _AbortComposition();\n  return S_OK;')
+    replace(c, '  _AbortComposition();\n  return S_OK;', '  if (!_studyApplying && _pComposition == pComposition) _AbortComposition();\n  return S_OK;')
+    # A deferred termination owns the OLD composition. Detach it immediately so
+    # focus can create a new document's composition; its eventual callback may
+    # not finalize a newer composition belonging to that other document.
+    replace(h, 'void _FinalizeComposition();', 'void _FinalizeComposition(ITfComposition* expected);')
+    replace(c, '_pTextService->_FinalizeComposition();', '_pTextService->_FinalizeComposition(_pComposition);')
+    replace(c, 'void WeaselTSF::_FinalizeComposition() {\n  _pComposition = nullptr;', 'void WeaselTSF::_FinalizeComposition(ITfComposition* expected) {\n  if (_pComposition == expected) _pComposition = nullptr;')
+    replace(c, '  _cand->EndUI();\n  if ((pEditSession', '  _cand->EndUI();\n  auto ending = _pComposition;\n  if ((pEditSession')
+    replace(c, 'this, pContext, _pComposition, clear)) != NULL) {', 'this, pContext, ending, clear)) != NULL) {\n    _pComposition = nullptr;')
+    # Clear attributes using the captured composition, never mutable service state.
+    replace(c, '  _pTextService->_ClearCompositionDisplayAttributes(ec, _pContext);', '''  com_ptr<ITfProperty> attribute;
+  com_ptr<ITfRange> endingRange;
+  if (SUCCEEDED(_pComposition->GetRange(&endingRange)) &&
+      SUCCEEDED(_pContext->GetProperty(GUID_PROP_ATTRIBUTE, &attribute)))
+    attribute->Clear(ec, endingRange);''')
+    replace(c, '  ITfRange* pCompositionRange;', '  com_ptr<ITfRange> pCompositionRange;')
+    replace('WeaselTSF/TextEditSink.cpp', '  BOOL fSelectionChanged;', '  if (pContext != _pEditSessionContext) return S_OK;\n  BOOL fSelectionChanged;')
     # Bind each request to its own COM context and immutable pipe response.
     e = 'WeaselTSF/EditSession.cpp'
     replace(e, source(e), '''#include "stdafx.h"
@@ -71,7 +87,26 @@ def prepare(source, replace):
     _tsf->_StudyMenu(index, owner, position);
   };''')
     t = 'WeaselTSF/WeaselTSF.cpp'
-    replace(t, 'STDAPI WeaselTSF::Deactivate() {', 'STDAPI WeaselTSF::Deactivate() {\n  ++_studyEpoch;\n  _InvalidateStudy();')
+    # Unregistered host calls ITfKeyEventSink directly; Windows refuses global
+    # keystroke sink ownership for a TIP absent from the installed profiles.
+    replace(t, '  if (!_InitKeyEventSink())\n    goto ExitError;', '#ifndef WEASEL_STUDY_ISOLATED\n  if (!_InitKeyEventSink())\n    goto ExitError;\n#endif')
+    replace(t, '  _UninitKeyEventSink();', '#ifndef WEASEL_STUDY_ISOLATED\n  _UninitKeyEventSink();\n#endif')
+    # The isolated DLL is activated directly by a text host. Do not publish a
+    # language bar or alter the user's keyboard compartments/profile settings.
+    replace(t, '  _InitDisplayAttributeGuidAtom();', '  _InitDisplayAttributeGuidAtom();\n#ifndef WEASEL_STUDY_ISOLATED')
+    replace(t, '  if (!_InitThreadFocusSink())', '#endif\n  if (!_InitThreadFocusSink())')
+    replace(t, '  _UninitPreservedKey();', '  _UninitPreservedKey();\n  _UninitThreadFocusSink();')
+    replace(t, 'STDAPI WeaselTSF::Deactivate() {', 'STDAPI WeaselTSF::Deactivate() {\n  if (!_pThreadMgr) return S_OK;\n  _AbortComposition();')
+    replace(t, '  _cand = new CCandidateList(this);', '  _cand.Attach(new CCandidateList(this));')
+    replace(t, '  _activateFlags = dwFlags;', '  if (!_cand) _cand.Attach(new CCandidateList(this));\n  _activateFlags = dwFlags;')
+    replace(t, '  _pThreadMgr = NULL;', '''  _cand->EndUI();
+  _cand->DestroyAll();
+  _cand.Release();
+  _pEditSessionContext.Release();
+  _pThreadMgr = NULL;''')
+    replace(t, '  _cand->DestroyAll();\n\n  return S_OK;', '  return S_OK;')
+    replace(t, 'void WeaselTSF::_UninitThreadFocusSink() {', 'void WeaselTSF::_UninitThreadFocusSink() {\n  if (_dwThreadFocusSinkCookie == TF_INVALID_COOKIE) return;')
+    replace(t, '  if (FAILED(pSource->UnadviseSink(_dwThreadFocusSinkCookie)))\n    return;', '  pSource->UnadviseSink(_dwThreadFocusSinkCookie);\n  _dwThreadFocusSinkCookie = TF_INVALID_COOKIE;')
     replace(t, '  _AbortComposition();\n  return S_OK;', '  m_client.FocusOut();\n  _AbortComposition();\n  return S_OK;')
     replace(t, '    weasel::ResponseParser parser(NULL, NULL, &_status, NULL, &_cand->style());\n    bool ok = m_client.GetResponseData(std::ref(parser));\n    if (ok)\n      _UpdateLanguageBar(_status);', '    auto response = study::ReadResponse(m_client, _cand->style());\n    if (response) _QueueResponse(_pTextEditSinkContext, response);\n    else _InvalidateStudy();')
     replace(t, 'void WeaselTSF::_Reconnect() {', 'void WeaselTSF::_Reconnect() {\n  ++_studyEpoch;\n  _InvalidateStudy();')
@@ -86,8 +121,7 @@ def prepare(source, replace):
 ''')
     f = 'WeaselTSF/ThreadMgrEventSink.cpp'
     replace(f, '  _InitTextEditSink(pDocMgrFocus);', '''  if (pDocMgrFocus != pDocMgrPrevFocus) {
-    ++_studyEpoch;
-    _InvalidateStudy();
+    _AbortComposition();
     m_client.FocusOut();
   }
   _InitTextEditSink(pDocMgrFocus);''')

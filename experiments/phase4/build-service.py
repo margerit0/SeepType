@@ -56,7 +56,10 @@ def compile_source(source, group):
     directory = BUILD / group
     directory.mkdir(exist_ok=True)
     obj = directory / (source.stem + ".obj")
-    if not obj.exists() or obj.stat().st_mtime < max(source.stat().st_mtime, header_time):
+    dependency_time = max(source.stat().st_mtime, header_time)
+    if source.name == "tsf_text_host.cpp":
+        dependency_time = max(dependency_time, (HERE / "text_store.h").stat().st_mtime)
+    if not obj.exists() or obj.stat().st_mtime < dependency_time:
         run(["cl", *flags, "/c", source, "/Fo" + str(obj)], "compile-" + group + "-" + source.stem)
     return obj
 
@@ -106,6 +109,9 @@ if TSF:
     if (HERE / "frontend_test.cpp").exists():
         link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
+    libraries += ["uuid.lib", "oleaut32.lib"]
+    link("tsf_text_host_x64", ["tsf_text_host.cpp"], ipc_objects +
+         [o for o in study_objects if o.stem == "StudyProtocol"])
 else:
     link("study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
     if (HERE / "service_client_test.cpp").exists():

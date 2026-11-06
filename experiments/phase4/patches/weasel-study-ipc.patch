@@ -809,7 +809,15 @@
  
  class CCandidateList;
  class CLangBarItemButton;
-@@ -127,6 +128,17 @@
+@@ -120,13 +121,24 @@
+   void _SetComposition(com_ptr<ITfComposition> pComposition);
+   void _SetCompositionPosition(const RECT& rc);
+   BOOL _UpdateCompositionWindow(com_ptr<ITfContext> pContext);
+-  void _FinalizeComposition();
++  void _FinalizeComposition(ITfComposition* expected);
+   void _AbortComposition(bool clear = true);
+ 
+   /* Language bar */
    HWND _GetFocusedContextWindow();
    void _HandleLangBarMenuSelect(UINT wID);
  
@@ -849,16 +857,44 @@
                                   TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
    }
  }
-@@ -125,7 +125,7 @@
+@@ -107,14 +107,18 @@
+   if (_pComposition == nullptr)
+     return S_OK;
+ 
+-  _pTextService->_ClearCompositionDisplayAttributes(ec, _pContext);
+-
+-  ITfRange* pCompositionRange;
++  com_ptr<ITfProperty> attribute;
++  com_ptr<ITfRange> endingRange;
++  if (SUCCEEDED(_pComposition->GetRange(&endingRange)) &&
++      SUCCEEDED(_pContext->GetProperty(GUID_PROP_ATTRIBUTE, &attribute)))
++    attribute->Clear(ec, endingRange);
++
++  com_ptr<ITfRange> pCompositionRange;
+   if (_clear && _pComposition->GetRange(&pCompositionRange) == S_OK)
+     pCompositionRange->SetText(ec, 0, L"", 0);
+ 
+   _pComposition->EndComposition(ec);
+-  _pTextService->_FinalizeComposition();
++  _pTextService->_FinalizeComposition(_pComposition);
+   return S_OK;
+ }
+ 
+@@ -123,9 +127,11 @@
+   HRESULT hr;
+ 
    _cand->EndUI();
++  auto ending = _pComposition;
    if ((pEditSession = new CEndCompositionEditSession(
-            this, pContext, _pComposition, clear)) != NULL) {
+-           this, pContext, _pComposition, clear)) != NULL) {
 -    pContext->RequestEditSession(_tfClientId, pEditSession,
++           this, pContext, ending, clear)) != NULL) {
++    _pComposition = nullptr;
 +    _RunEdit(pContext, pEditSession,
                                   TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
      pEditSession->Release();
    }
-@@ -220,7 +220,7 @@
+@@ -220,7 +226,7 @@
      return FALSE;
    }
    HRESULT hr;
@@ -867,7 +903,7 @@
                                 TF_ES_ASYNCDONTCARE | TF_ES_READ, &hr);
    return SUCCEEDED(hr);
  }
-@@ -311,7 +311,7 @@
+@@ -311,7 +317,7 @@
        new CInlinePreeditEditSession(this, pContext, _pComposition, context));
    if (pEditSession != NULL) {
      HRESULT hr;
@@ -876,7 +912,7 @@
                                   TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
    }
    return TRUE;
-@@ -369,7 +369,7 @@
+@@ -369,7 +375,7 @@
  
    if ((pEditSession = new CInsertTextEditSession(this, pContext, _pComposition,
                                                   text)) != NULL) {
@@ -885,7 +921,7 @@
                                   TF_ES_ASYNCDONTCARE | TF_ES_READWRITE, &hr);
      pEditSession->Release();
    }
-@@ -378,14 +378,9 @@
+@@ -378,14 +384,9 @@
  }
  
  void WeaselTSF::_UpdateComposition(com_ptr<ITfContext> pContext) {
@@ -903,12 +939,12 @@
  }
  
  /* Composition State */
-@@ -395,11 +390,13 @@
+@@ -395,11 +396,13 @@
    // This will be called when an edit session ended up with an empty composition
    // string, Even if it is closed normally. Silly M$.
  
 -  _AbortComposition();
-+  if (!_studyApplying) _AbortComposition();
++  if (!_studyApplying && _pComposition == pComposition) _AbortComposition();
    return S_OK;
  }
  
@@ -918,6 +954,27 @@
    m_client.ClearComposition();
    if (_IsComposing()) {
      _EndComposition(_pEditSessionContext, clear);
+@@ -408,8 +411,8 @@
+   _cand->Destroy();
+ }
+ 
+-void WeaselTSF::_FinalizeComposition() {
+-  _pComposition = nullptr;
++void WeaselTSF::_FinalizeComposition(ITfComposition* expected) {
++  if (_pComposition == expected) _pComposition = nullptr;
+ }
+ 
+ void WeaselTSF::_SetComposition(com_ptr<ITfComposition> pComposition) {
+--- a/WeaselTSF/TextEditSink.cpp
++++ b/WeaselTSF/TextEditSink.cpp
+@@ -20,6 +20,7 @@
+ STDAPI WeaselTSF::OnEndEdit(ITfContext* pContext,
+                             TfEditCookie ecReadOnly,
+                             ITfEditRecord* pEditRecord) {
++  if (pContext != _pEditSessionContext) return S_OK;
+   BOOL fSelectionChanged;
+   IEnumTfRanges* pEnumTextChanges;
+   ITfRange* pRange;
 --- a/WeaselTSF/EditSession.cpp
 +++ b/WeaselTSF/EditSession.cpp
 @@ -1,47 +1,5 @@
@@ -1101,16 +1158,86 @@
  
 --- a/WeaselTSF/WeaselTSF.cpp
 +++ b/WeaselTSF/WeaselTSF.cpp
-@@ -95,6 +95,8 @@
+@@ -31,7 +31,7 @@
+ 
+   _fCUASWorkaroundTested = _fCUASWorkaroundEnabled = FALSE;
+ 
+-  _cand = new CCandidateList(this);
++  _cand.Attach(new CCandidateList(this));
+ 
+   DllAddRef();
+ }
+@@ -95,14 +95,19 @@
  }
  
  STDAPI WeaselTSF::Deactivate() {
-+  ++_studyEpoch;
-+  _InvalidateStudy();
++  if (!_pThreadMgr) return S_OK;
++  _AbortComposition();
    m_client.EndSession();
  
    _InitTextEditSink(com_ptr<ITfDocumentMgr>());
-@@ -175,14 +177,14 @@
+ 
+   _UninitThreadMgrEventSink();
+ 
++#ifndef WEASEL_STUDY_ISOLATED
+   _UninitKeyEventSink();
++#endif
+   _UninitPreservedKey();
++  _UninitThreadFocusSink();
+ 
+   _UninitLanguageBar();
+ 
+@@ -110,11 +115,13 @@
+ 
+   _UninitThreadMgrEventSink();
+ 
++  _cand->EndUI();
++  _cand->DestroyAll();
++  _cand.Release();
++  _pEditSessionContext.Release();
+   _pThreadMgr = NULL;
+ 
+   _tfClientId = TF_CLIENTID_NULL;
+-
+-  _cand->DestroyAll();
+ 
+   return S_OK;
+ }
+@@ -123,6 +130,7 @@
+                              TfClientId tfClientId,
+                              DWORD dwFlags) {
+   com_ptr<ITfDocumentMgr> pDocMgrFocus;
++  if (!_cand) _cand.Attach(new CCandidateList(this));
+   _activateFlags = dwFlags;
+ 
+   _pThreadMgr = pThreadMgr;
+@@ -136,14 +144,17 @@
+     _InitTextEditSink(pDocMgrFocus);
+   }
+ 
++#ifndef WEASEL_STUDY_ISOLATED
+   if (!_InitKeyEventSink())
+     goto ExitError;
++#endif
+ 
+   // if (!_InitDisplayAttributeGuidAtom())
+   //	goto ExitError;
+   //	some app might init failed because it not provide DisplayAttributeInfo,
+   // like some opengl stuff
+   _InitDisplayAttributeGuidAtom();
++#ifndef WEASEL_STUDY_ISOLATED
+ 
+   if (!_InitPreservedKey())
+     goto ExitError;
+@@ -156,6 +167,7 @@
+ 
+   if (!_InitCompartment())
+     goto ExitError;
++#endif
+   if (!_InitThreadFocusSink())
+     goto ExitError;
+ 
+@@ -175,14 +187,14 @@
    _isToOpenClose = (_ToggleImeOnOpenClose == L"yes");
    if (m_client.Echo()) {
      m_client.ProcessKeyEvent(0);
@@ -1129,7 +1256,22 @@
    _AbortComposition();
    return S_OK;
  }
-@@ -222,6 +224,8 @@
+@@ -197,11 +209,12 @@
+   return TRUE;
+ }
+ void WeaselTSF::_UninitThreadFocusSink() {
++  if (_dwThreadFocusSinkCookie == TF_INVALID_COOKIE) return;
+   com_ptr<ITfSource> pSource;
+   if (FAILED(_pThreadMgr->QueryInterface(&pSource)))
+     return;
+-  if (FAILED(pSource->UnadviseSink(_dwThreadFocusSinkCookie)))
+-    return;
++  pSource->UnadviseSink(_dwThreadFocusSinkCookie);
++  _dwThreadFocusSinkCookie = TF_INVALID_COOKIE;
+ }
+ 
+ STDMETHODIMP WeaselTSF::OnActivated(REFCLSID clsid,
+@@ -222,6 +235,8 @@
  }
  
  void WeaselTSF::_Reconnect() {
@@ -1138,7 +1280,7 @@
    m_client.Disconnect();
    m_client.Connect(NULL);
    m_client.StartSession();
-@@ -232,32 +236,8 @@
+@@ -232,32 +247,8 @@
    }
  }
  
@@ -1177,19 +1319,18 @@
 +}
 --- a/WeaselTSF/ThreadMgrEventSink.cpp
 +++ b/WeaselTSF/ThreadMgrEventSink.cpp
-@@ -11,6 +11,11 @@
+@@ -11,6 +11,10 @@
  
  STDAPI WeaselTSF::OnSetFocus(ITfDocumentMgr* pDocMgrFocus,
                               ITfDocumentMgr* pDocMgrPrevFocus) {
 +  if (pDocMgrFocus != pDocMgrPrevFocus) {
-+    ++_studyEpoch;
-+    _InvalidateStudy();
++    _AbortComposition();
 +    m_client.FocusOut();
 +  }
    _InitTextEditSink(pDocMgrFocus);
  
    com_ptr<ITfDocumentMgr> pCandidateListDocumentMgr;
-@@ -32,6 +37,8 @@
+@@ -32,6 +36,8 @@
  }
  
  STDAPI WeaselTSF::OnPopContext(ITfContext* pContext) {

@@ -1,5 +1,7 @@
 # 阶段 4：会话动作、原生英文菜单与 Weasel IPC
 
+**2026-11-06 最新接续：** 已加入 `tsf_text_host.cpp` / `text_store.h`，`build-tsf.cmd` 同时构建 `build/tsf_text_host_x64.exe`。新增 `python experiments/phase4/verify-text-host.py` 验证真实 Windows TSF 文本编辑，16 项证据写入 `results/tsf-text-host.json`。宿主显式转发生产按键和焦点接口，不注册 profile；Windows 提供实际 context/range/composition/edit cookie。修复跨文档组合归属、异步结束与停用资源回收。详细边界和下一步见 [文本宿主说明](../../docs/tsf-text-host.md)。下文旧日期的“尚未执行编辑会话”是历史记录；旧报告未改动。下一步直接开发完整 v0.5 原生 UI。
+
 更新：2026-11-05。已实现会话版本模块、统一 Lua 英文动作、隔离宿主 Win32 菜单，以及真实 Weasel 服务端与客户端的版本化 IPC。菜单 16 项、IPC 27 项证据已保留；本轮新增服务窗口线程调度，14 项定向检查通过。后续新增真实 TSF 学习前端源码接入及完整 x64 TSF DLL 编译链接，16 项定向检查通过；实际 TSF 编辑/可见菜单未验证，当前仍不是系统输入法安装包。
 
 ## 实现
