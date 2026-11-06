@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-07T00:15:43+08:00",
+  "scope": "Pixel comparison of the user-provided screenshot with the old low-density preview; no screen capture or Computer Use.",
+  "screenshot": {
+    "filename": "codex-clipboard-fdf69099-f720-483c-a474-3cad3c588f58.png",
+    "sha256": "863e1532d538adccb4e9c97c33cd46b582b944317e40243cb260908f2ad549c7",
+    "pixels": [
+      970,
+      150
+    ],
+    "png_dpi": [
+      143.99259999999998,
+      143.99259999999998
+    ]
+  },
+  "reference_preview": {
+    "path": "experiments/phase4/results/previews-v05/light.png",
+    "pixels": [
+      600,
+      55
+    ],
+    "rgba_sha256": "caf9aed43cfb30fbd95af837b67c1827251384484c6a512a10950c04edd772aa"
+  },
+  "match": {
+    "resampling": "bilinear",
+    "enlarged_pixels": [
+      900,
+      82
+    ],
+    "screenshot_region": [
+      10,
+      35,
+      910,
+      91
+    ],
+    "mean_absolute_channel_error_out_of_255": 0.06803571428571428,
+    "note": "Only the unobscured top 56 rows are compared. The lower part is covered by the system candidate window."
+  },
+  "diagnosis": "The upper strip matches the 600x55 preview enlarged approximately 1.5 times. Text edges were interpolated after rasterization.",
+  "native_previews": {
+    "96": {
+      "pixels": [
+        600,
+        55
+      ],
+      "png_dpi": [
+        96.012,
+        96.012
+      ],
+      "sha256": "7142ac5667116ce79536920d4d2359c2ae373ea6a1f344d74f4236096cfa38eb"
+    },
+    "120": {
+      "pixels": [
+        752,
+        69
+      ],
+      "png_dpi": [
+        119.9896,
+        119.9896
+      ],
+      "sha256": "b415a541565d4abee4e868b9d465aa5665d3f67498c243972ea947c500d4c710"
+    },
+    "144": {
+      "pixels": [
+        900,
+        83
+      ],
+      "png_dpi": [
+        143.99259999999998,
+        143.99259999999998
+      ],
+      "sha256": "d0d4f19242d3301b3c145034bcaa4a9aa3037e94e7105b1af9ddb9be58436223"
+    },
+    "192": {
+      "pixels": [
+        1200,
+        110
+      ],
+      "png_dpi": [
+        191.99859999999998,
+        191.99859999999998
+      ],
+      "sha256": "e9a3e8afe74b62126245093822418c67157dc545d81625f805574b48486423bc"
+    }
+  },
+  "verified_tsf": {
+    "report": "experiments/phase4/results/native-v05-dpi-tsf-x64.json",
+    "native_dpi": 144,
+    "candidate_pixels": [
+      900,
+      83
+    ],
+    "passed_checks": 29
+  },
+  "limits": [
+    "Single-monitor programmatic native checks; no display-setting changes or physical desktop acceptance.",
+    "The TSF DLL inherits the caller application DPI awareness; compatibility with DPI-unaware applications remains unverified."
+  ]
+}

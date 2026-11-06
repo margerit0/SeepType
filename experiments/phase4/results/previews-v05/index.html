@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>候选条清晰度对比</title>
+<style>
+  body { margin: 32px; color: #20252b; background: #fff; font: 15px/1.7 "Segoe UI", "Microsoft YaHei UI", sans-serif; }
+  main { max-width: 720px; margin: auto; }
+  h1 { font-size: 22px; font-weight: 600; }
+  figure { margin: 32px 0; }
+  figcaption { margin-bottom: 12px; }
+  img { display: block; max-width: 100%; height: auto; }
+  p { color: #59636d; }
+</style>
+<main>
+  <h1>同样大小，不同绘制密度</h1>
+  <p>两条均来自原生候选界面的 DirectWrite 绘制缓冲区。请保持浏览器缩放为 100%，在当前显示器上比较文字边缘。</p>
+  <figure>
+    <figcaption>旧预览：只有 600 像素宽，随 Windows 缩放而拉伸</figcaption>
+    <img src="light.png" width="600" height="55" alt="旧的 96 DPI 候选条预览">
+  </figure>
+  <figure>
+    <figcaption>修正预览：为 100%、125%、150%、200% 分别绘制</figcaption>
+    <img src="dpi-192.png"
+      srcset="dpi-96.png 1x, dpi-120.png 1.25x, dpi-144.png 1.5x, dpi-192.png 2x"
+      alt="按显示密度绘制的候选条预览">
+  </figure>
+  <p>150% 对应 900 像素宽，200% 对应 1200 像素宽。布局大小相同，文字在目标分辨率重新绘制；这些是渲染预览，真实桌面验收另行记录。</p>
+</main>
+</html>

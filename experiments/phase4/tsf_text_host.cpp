@@ -55,10 +55,19 @@ class Host {
   bool interactive=false;
   std::filesystem::path observation;
   std::function<void()> menuTask;
+  void Layout() {
+    for(int i=0;i<2;++i) if(stores[i] && stores[i]->window) {
+      SetWindowPos(stores[i]->window,nullptr,TextHostPixels(window,20),TextHostPixels(window,60+i*160),
+          TextHostPixels(window,850),TextHostPixels(window,135),SWP_NOZORDER|SWP_NOACTIVATE);
+      if(stores[i]->sink)stores[i]->sink->OnLayoutChange(TS_LC_CHANGE,1);
+    }
+    InvalidateRect(window,nullptr,TRUE);
+  }
   static LRESULT CALLBACK WindowProc(HWND w,UINT m,WPARAM a,LPARAM b) {
     auto* host=reinterpret_cast<Host*>(GetWindowLongPtrW(w,GWLP_USERDATA));
     if(m==WM_NCCREATE) {
       host=static_cast<Host*>(reinterpret_cast<CREATESTRUCT*>(b)->lpCreateParams);
+      host->window=w;
       SetWindowLongPtrW(w,GWLP_USERDATA,reinterpret_cast<LONG_PTR>(host));
     }
     if(host) {
@@ -66,8 +75,17 @@ class Host {
         PAINTSTRUCT ps; auto dc=BeginPaint(w,&ps); RECT rc; GetClientRect(w,&rc);
         FillRect(dc,&rc,reinterpret_cast<HBRUSH>(COLOR_WINDOW+1)); SetBkMode(dc,TRANSPARENT);
         std::wstring title=L"Unregistered TSF text host — real Windows edit sessions";
-        TextOutW(dc,18,18,title.c_str(),static_cast<int>(title.size()));
+        auto font=CreateFontW(-TextHostPixels(w,14),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");
+        auto old=SelectObject(dc,font);
+        TextOutW(dc,TextHostPixels(w,18),TextHostPixels(w,18),title.c_str(),static_cast<int>(title.size()));
+        SelectObject(dc,old); DeleteObject(font);
         EndPaint(w,&ps); return 0;
+      }
+      if(m==WM_DPICHANGED) {
+        const auto& suggested=*reinterpret_cast<RECT*>(b);
+        SetWindowPos(w,nullptr,suggested.left,suggested.top,suggested.right-suggested.left,suggested.bottom-suggested.top,
+            SWP_NOZORDER|SWP_NOACTIVATE);
+        host->Layout(); return 0;
       }
       if(m==WM_TIMER && a==92) {
         KillTimer(w,92);
@@ -103,9 +121,12 @@ class Host {
         RECT rc; GetClientRect(w,&rc); FillRect(dc,&rc,reinterpret_cast<HBRUSH>(COLOR_WINDOW+1));
         FrameRect(dc,&rc,reinterpret_cast<HBRUSH>(COLOR_WINDOWFRAME+1)); SetBkMode(dc,TRANSPARENT);
         std::wstring label=index?L"Document B":L"Document A";
-        TextOutW(dc,16,12,label.c_str(),static_cast<int>(label.size()));
-        auto font=CreateFontW(-24,0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");
-        auto old=SelectObject(dc,font); TextOutW(dc,16,40,store.text.c_str(),static_cast<int>(store.text.size()));
+        auto labelFont=CreateFontW(-TextHostPixels(w,14),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");
+        auto old=SelectObject(dc,labelFont);
+        TextOutW(dc,TextHostPixels(w,16),TextHostPixels(w,12),label.c_str(),static_cast<int>(label.size()));
+        auto font=CreateFontW(-TextHostPixels(w,24),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,CLEARTYPE_QUALITY,0,L"Segoe UI");
+        SelectObject(dc,font); TextOutW(dc,TextHostPixels(w,16),TextHostPixels(w,40),store.text.c_str(),static_cast<int>(store.text.size()));
+        DeleteObject(labelFont);
         SelectObject(dc,old); DeleteObject(font); EndPaint(w,&ps); return 0;
       }
       if(m==WM_LBUTTONDOWN) { host->Focus(index); return 0; }
@@ -130,8 +151,10 @@ class Host {
     WNDCLASSW wc{}; wc.hInstance=GetModuleHandleW(nullptr); wc.lpfnWndProc=WindowProc;
     wc.lpszClassName=L"StudyTsfTextHost"; wc.hCursor=LoadCursor(nullptr,IDC_ARROW); RegisterClassW(&wc);
     wc.lpfnWndProc=TextProc; wc.lpszClassName=L"StudyTsfTextStore"; RegisterClassW(&wc);
-    window=CreateWindowW(L"StudyTsfTextHost",L"Study IME — isolated TSF host",WS_OVERLAPPEDWINDOW|WS_VISIBLE,
+    window=CreateWindowW(L"StudyTsfTextHost",L"Study IME — isolated TSF host",WS_OVERLAPPEDWINDOW,
         120,120,920,470,nullptr,nullptr,wc.hInstance,this);
+    SetWindowPos(window,nullptr,0,0,TextHostPixels(window,920),TextHostPixels(window,470),SWP_NOMOVE|SWP_NOZORDER|SWP_NOACTIVATE);
+    ShowWindow(window,SW_SHOWNORMAL);
     ImmAssociateContext(window,nullptr);
     Require(manager.CoCreateInstance(CLSID_TF_ThreadMgr),"Create Windows thread manager");
     CComQIPtr<ITfThreadMgrEx> ex(manager);
@@ -144,7 +167,8 @@ class Host {
     for(int i=0;i<2;++i) {
       stores[i].Attach(new TextStore);
       stores[i]->window=CreateWindowW(L"StudyTsfTextStore",L"",WS_CHILD|WS_VISIBLE|WS_TABSTOP,
-          20,60+i*160,850,135,window,reinterpret_cast<HMENU>(static_cast<INT_PTR>(100+i)),wc.hInstance,this);
+          TextHostPixels(window,20),TextHostPixels(window,60+i*160),TextHostPixels(window,850),TextHostPixels(window,135),
+          window,reinterpret_cast<HMENU>(static_cast<INT_PTR>(100+i)),wc.hInstance,this);
       ImmAssociateContext(stores[i]->window,nullptr);
       Require(manager->CreateDocumentMgr(&docs[i]),"Create document manager");
       TfEditCookie cookie;
@@ -283,7 +307,19 @@ class Host {
 
 static void NativeUiChecks(Host& host,Report& report) {
   auto& a=*host.stores[0]; auto& b=*host.stores[1];
+  report.Check("TSF host and text stores start per-monitor V2 aware",
+      AreDpiAwarenessContextsEqual(GetThreadDpiAwarenessContext(),DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2) &&
+      AreDpiAwarenessContextsEqual(GetWindowDpiAwarenessContext(host.window),DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2) &&
+      GetDpiForWindow(a.window)==GetDpiForWindow(host.window) && GetDpiForWindow(b.window)==GetDpiForWindow(host.window));
   host.Type("nihao");
+  const UINT candidateDpi=GetDpiForWindow(host.Candidate());
+  RECT pixels{}; GetWindowRect(host.Candidate(),&pixels);
+  report.Check("TSF candidate uses monitor DPI and a native physical-pixel surface",
+      candidateDpi==GetDpiForWindow(host.window) && candidateDpi>0 &&
+      AreDpiAwarenessContextsEqual(GetWindowDpiAwarenessContext(host.Candidate()),DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2) &&
+      abs((pixels.bottom-pixels.top)-MulDiv(55,candidateDpi,96))<=1);
+  std::cout<<"Native candidate DPI: "<<candidateDpi<<"; physical pixels: "
+      <<pixels.right-pixels.left<<'x'<<pixels.bottom-pixels.top<<std::endl;
   auto access=host.Access(); LONG children=0; access->get_accChildCount(&children);
   report.Check("native v0.5 candidate exposes current candidates and four accessible tools",children>=5 && host.Candidate());
   const auto selectedText=host.CandidateText(1);

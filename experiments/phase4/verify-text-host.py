@@ -54,7 +54,7 @@ with (RUNTIME / 'text-host-server.log').open('wb') as output:
             service.wait(timeout=5)
 items = json.loads(checks.read_text(encoding='utf-8'))['checks'] if checks.exists() else []
 sources = [HERE / name for name in ['tsf_text_host.cpp', 'text_store.h', 'prepare-tsf.py',
-    'build-service.py', 'verify-text-host.py', 'patches/weasel-study-ipc.patch']]
+    'build-service.py', 'native-host.manifest', 'verify-text-host.py', 'patches/weasel-study-ipc.patch']]
 sources += [ROOT / 'src/study/windows/TsfStudy.inc']
 sources += [ROOT / 'src/study' / name for name in ['RimeSession.cpp', 'RimeSession.h', 'StudyService.cpp']]
 sources += [HERE / name for name in ['prepare-weasel.py', 'service_rime.cpp', 'service_host.cpp']]
@@ -63,7 +63,7 @@ sources += [ROOT / 'src/study/windows' / name for name in ['StudyLayout.cpp', 'S
 report = {
     'date': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
     'scope': 'Unregistered DLL factory activation; real Windows thread/document/context/range and edit sessions backed by a visible plain-text ITextStoreACP host. Host forwards key/focus callbacks to production sinks; actual Rime IPC and native candidate/menu windows.',
-    'passed': not error and len(items) == (27 if args.v05 else 16) and all(c['passed'] for c in items),
+    'passed': not error and len(items) == (29 if args.v05 else 16) and all(c['passed'] for c in items),
     'checks': items, 'error': error,
     'binaries': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in [exe, dll, service_exe, rime_dll]},
     'sources': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},

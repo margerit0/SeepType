@@ -89,6 +89,10 @@ bool CandidateUi::Create(HWND parent) {
   if (!RegisterClassW(&cls) && GetLastError() != ERROR_CLASS_ALREADY_EXISTS) return false;
   window_ = CreateWindowExW(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_LAYERED,
       CandidateClass, L"英语学习候选", WS_POPUP, 0, 0, 1, 1, parent, nullptr, cls.hInstance, this);
+  if (window_ && !renderEnvironment_) {
+    dpi_ = WindowDpi(window_);
+    dirtyResources_ = true;
+  }
   return window_ != nullptr;
 }
 void CandidateUi::CloseWindows() {
@@ -208,6 +212,8 @@ void CandidateUi::ConfigureResources() {
   ComPtr<IDWriteInlineObject> ellipsis;
   resources_->pDWFactory->CreateEllipsisTrimmingSign(resources_->pCommentTextFormat.Get(), &ellipsis);
   resources_->pCommentTextFormat->SetTrimming(&trim, ellipsis.Get());
+  // Geometry, glyph sizes and the DIB already use physical pixels. Keep the
+  // render target at 1:1 so Direct2D does not apply the monitor scale twice.
   resources_->pRenderTarget->SetDpi(96, 96);
   dirtyResources_ = false;
 }
@@ -290,7 +296,7 @@ void CandidateUi::UpdateInputPosition(const RECT& rectangle) {
   if (!renderEnvironment_) {
     MONITORINFO info{sizeof(info)};
     GetMonitorInfoW(MonitorFromRect(&anchor_, MONITOR_DEFAULTTONEAREST), &info);
-    const UINT nextDpi = WindowDpi(owner_);
+    const UINT nextDpi = WindowDpi(window_ ? window_ : owner_);
     if (nextDpi && nextDpi != dpi_) { dpi_ = nextDpi; dirtyResources_ = true; viewportDip_ = scrollDip_ = 0; }
     const int width = MulDiv(info.rcWork.right - info.rcWork.left, 96, dpi_);
     if (width > 0 && width != workWidth_) { workWidth_ = width; viewportDip_ = scrollDip_ = 0; }

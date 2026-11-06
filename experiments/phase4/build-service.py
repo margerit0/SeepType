@@ -98,8 +98,14 @@ libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "
 def link(name, sources, objects):
     objects = objects + [compile_source(HERE / path, "test") for path in sources]
     output = HERE / "build" / (name + ".exe")
-    if not output.exists() or output.stat().st_mtime < max(path.stat().st_mtime for path in objects + [boostlib, Path(__file__)]):
-        run(["link", "/nologo", "/INCREMENTAL:NO", "/SUBSYSTEM:CONSOLE", "/MANIFEST:EMBED", "/MANIFESTUAC:level='asInvoker' uiAccess='false'", "/OUT:" + str(output), *objects, *libraries], "link-" + name)
+    # Declare awareness before Windows/COM can create any windows. A TSF DLL
+    # must never change the DPI awareness of the application loading it.
+    manifest = HERE / "native-host.manifest" if name in {
+        "tsf_text_host_x64", "native_ui_test_x64", "study_settings_x64"} else None
+    dependencies = objects + [boostlib, Path(__file__)] + ([manifest] if manifest else [])
+    manifest_flags = ["/MANIFESTINPUT:" + str(manifest)] if manifest else []
+    if not output.exists() or output.stat().st_mtime < max(path.stat().st_mtime for path in dependencies):
+        run(["link", "/nologo", "/INCREMENTAL:NO", "/SUBSYSTEM:CONSOLE", "/MANIFEST:EMBED", "/MANIFESTUAC:level='asInvoker' uiAccess='false'", *manifest_flags, "/OUT:" + str(output), *objects, *libraries], "link-" + name)
 
 
 if TSF:

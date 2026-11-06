@@ -13,6 +13,9 @@ RUNTIME = HERE / 'runtime/native-v05'
 RUNTIME.mkdir(parents=True, exist_ok=True)
 FRAMES = RUNTIME / 'frames'
 FRAMES.mkdir(exist_ok=True)
+for artifact in FRAMES.iterdir():
+    if artifact.suffix in {'.json', '.bgra'}:
+        artifact.unlink()
 checks = RUNTIME / 'checks.json'
 checks.unlink(missing_ok=True)
 exe = HERE / 'build/native_ui_test_x64.exe'
@@ -36,14 +39,16 @@ for metadata in sorted(FRAMES.glob('*.json')):
             for c in range(3):
                 rgba[i + c] = min(255, round(rgba[i + c] * 255 / alpha))
     output = preview_dir / (metadata.stem + '.png')
-    Image.frombytes('RGBA', (data['width'], data['height']), bytes(rgba)).save(output)
+    Image.frombytes('RGBA', (data['width'], data['height']), bytes(rgba)).save(
+        output, dpi=(data['dpi'], data['dpi']))
     previews[str(output.relative_to(ROOT))] = data
 sources = list((ROOT / 'src/study/windows').glob('*.cpp')) + list((ROOT / 'src/study/windows').glob('*.h'))
-sources += [HERE / 'native_ui_test.cpp', HERE / 'verify-native-ui.py', HERE / 'prepare-tsf.py', HERE / 'build-service.py']
+sources += [HERE / 'native_ui_test.cpp', HERE / 'verify-native-ui.py', HERE / 'prepare-tsf.py',
+            HERE / 'build-service.py', HERE / 'native-host.manifest']
 report = {
     'date': datetime.now(timezone(timedelta(hours=8))).isoformat(timespec='seconds'),
     'scope': 'Production v0.5 layout, DirectWrite rendering, action dispatch, menu construction, preference persistence and time-based animation components; own render buffers only.',
-    'passed': run.returncode == 0 and len(items) >= 40 and all(item['passed'] for item in items),
+    'passed': run.returncode == 0 and len(items) == 50 and all(item['passed'] for item in items),
     'checks': items, 'exit_code': run.returncode, 'previews': previews,
     'binaries': {str(exe.relative_to(ROOT)): hashlib.sha256(exe.read_bytes()).hexdigest()},
     'sources': {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sources},

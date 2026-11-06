@@ -24,12 +24,13 @@ struct Checks {
     if (!pass) throw std::runtime_error(name);
   }
 };
-static void Frame(const std::filesystem::path& directory, const std::string& name, const study::CandidateFrame& frame) {
+static void Frame(const std::filesystem::path& directory, const std::string& name, const study::CandidateFrame& frame, UINT dpi = 96) {
   if (frame.bgra.empty()) throw std::runtime_error("Empty native render");
   std::ofstream data(directory / (name + ".bgra"), std::ios::binary);
   data.write(reinterpret_cast<const char*>(frame.bgra.data()), static_cast<std::streamsize>(frame.bgra.size()));
   std::ofstream meta(directory / (name + ".json"));
-  meta << "{\"width\":" << frame.width << ",\"height\":" << frame.height << ",\"source\":\"production offscreen DirectWrite renderer\"}\n";
+  meta << "{\"width\":" << frame.width << ",\"height\":" << frame.height << ",\"dpi\":" << dpi
+       << ",\"source\":\"production offscreen DirectWrite renderer\"}\n";
 }
 static weasel::Context Context() {
   weasel::Context context;
@@ -56,6 +57,16 @@ int wmain(int argc, wchar_t** argv) {
   SetEnvironmentVariableW(L"STUDY_SETTINGS_PATH", settings.c_str());
   try {
     using namespace study;
+    // The pinned Weasel headers target Windows 8.1. Resolve the Windows 10+
+    // diagnostics at runtime, just as the production view resolves its DPI.
+    const auto user32 = GetModuleHandleW(L"user32.dll");
+    const auto threadContext = reinterpret_cast<DPI_AWARENESS_CONTEXT(WINAPI*)()>(GetProcAddress(user32, "GetThreadDpiAwarenessContext"));
+    const auto windowContext = reinterpret_cast<DPI_AWARENESS_CONTEXT(WINAPI*)(HWND)>(GetProcAddress(user32, "GetWindowDpiAwarenessContext"));
+    const auto sameContext = reinterpret_cast<BOOL(WINAPI*)(DPI_AWARENESS_CONTEXT, DPI_AWARENESS_CONTEXT)>(GetProcAddress(user32, "AreDpiAwarenessContextsEqual"));
+    const auto windowDpi = reinterpret_cast<UINT(WINAPI*)(HWND)>(GetProcAddress(user32, "GetDpiForWindow"));
+    checks.Check("native host starts per-monitor V2 aware before creating windows",
+        threadContext && windowContext && sameContext && windowDpi &&
+        sameContext(threadContext(), DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2));
     UiPreferences preferences;
     checks.Check("missing settings use documented defaults", LoadPreferences(settings / L"absent") == preferences);
     preferences.theme = Theme::Dark; preferences.largeText = true; preferences.learning = false;
@@ -105,6 +116,19 @@ int wmain(int argc, wchar_t** argv) {
     weasel::Status status; status.composing = true;
     ActionState state; state.learning = true; state.stamp = {19, {23, 1}};
     auto context = Context();
+    {
+      CandidateUi live;
+      checks.Check("candidate creates a per-monitor V2 aware native window", live.Create(nullptr) &&
+          sameContext(windowContext(live.Window()), DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2));
+      live.Present(state, true); live.Update(context, status);
+      const RECT anchor{64, 64, 66, 92}; live.UpdateInputPosition(anchor);
+      const auto frame = live.Render(GetTickCount64());
+      const UINT dpi = windowDpi(live.Window());
+      checks.Check("ownerless candidate renders at its actual window DPI instead of falling back to 96",
+          dpi > 0 && std::abs(frame.height - 55.0 * dpi / 96) <= 1 &&
+          std::abs(frame.width - 600.0 * dpi / 96) <= 4);
+      live.Destroy(true);
+    }
     CandidateUi ui; ui.SetRenderEnvironment(96, 1600, false);
     ui.Present(state, true); ui.Update(context, status);
     auto light = ui.Render(GetTickCount64());
@@ -174,7 +198,7 @@ int wmain(int argc, wchar_t** argv) {
       bool hits = true;
       for (int i = 0; i < 5; ++i) hits = hits && geometry->Hit(geometry->GetCandidateCommentRect(i).CenterPoint()) == i && geometry->Hit(geometry->GetCandidateTextRect(i).CenterPoint()) == i;
       checks.Check("DPI " + std::to_string(dpi) + " scales geometry and preserves both-line hit regions", std::abs(frame.height - 55.0 * dpi / 96) <= 1 && hits && geometry->tools[3].right < frame.width);
-      if (dpi == 192) Frame(frames, "dpi-192", frame);
+      Frame(frames, "dpi-" + std::to_string(dpi), frame, dpi);
     }
     CandidateUi narrow; narrow.SetRenderEnvironment(96, 320, true); narrow.Present(state, true); narrow.Update(context, status);
     auto constrained = narrow.Render(GetTickCount64());

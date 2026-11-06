@@ -24,6 +24,18 @@
 3. TSF UI element 的 SetSelection/Finalize 原先只改本地显示或关闭窗口，现在接到同一中文选择路径；候选 BSTR 不再多包含一个结尾 NUL。
 4. 普通命中直接使用按下/抬起位置及当前候选版本，不依赖异步更新后的高亮矩形；英文行不会变成英文提交入口。
 
+## 清晰度与高 DPI 修正
+
+2026-11-07 用户附图中的上方候选条，是此前 600×55 像素的预览放大至约 900×82 像素。未遮挡区域与旧图经过双线性放大的结果吻合，平均通道误差仅为 0.068/255；文字已经栅格化后再被插值放大，因此比同屏系统输入法模糊。分析记录见 [截图诊断](../experiments/phase4/results/dpi-preview-diagnosis.json)。
+
+同时修复了真实宿主的 DPI 缺口：文本宿主、原生组件检查程序和设置程序现在通过嵌入的 Per Monitor V2 清单，在创建窗口前确定 DPI 感知。宿主的字号、文档区域和 TSF 光标坐标随 DPI 缩放；收到 DPI 变化时调整窗口和文档布局。候选窗在创建时取得自身 DPI，更新位置时也不再因缺少 owner 而退回 96 DPI。TSF DLL 不修改加载它的应用的进程 DPI 设置。
+
+DirectWrite 的字体、布局和位图使用物理像素，渲染目标的 96 DPI 设置用于保持 1:1 绘制，不能再额外乘一次缩放。分层窗口继续使用灰度抗锯齿。
+
+预览导出现在记录实际 DPI，并分别绘制 96 / 120 / 144 / 192 DPI；150% 为 900×83 像素，200% 为 1200×110 像素。[同尺寸对比页](../experiments/phase4/results/previews-v05/index.html) 用 srcset 按屏幕密度选图，避免将 96 DPI 图片直接拉大。125% 的逐单元像素取整产生 752 像素宽，页面保留其原生尺寸，不强行重采样成 750 像素。
+
+本次 50/50 原生组件检查通过；29/29 TSF/UI 检查在 x64 服务上通过，实际窗口报告 DPI 144、900×83 物理像素，见 [本次 TSF 结果](../experiments/phase4/results/native-v05-dpi-tsf-x64.json)。旧 x86 服务、选词 IPC 和编辑会话报告保留。多显示器移动、真实键鼠以及 DPI 不感知应用仍待桌面兼容性验收，Computer Use 问题继续暂缓。
+
 ## 构建与验证
 
 ```powershell
@@ -36,9 +48,10 @@ python experiments/phase4/verify-text-host.py --v05 --service-x64
 
 `build-native-x64.cmd` 顺序构建两部分。x64 服务使用已固定下载缓存中的 `.cache/rime-1.13.1/dist/lib/rime.dll`；旧 x86 服务仍可以通过 `build-service.cmd` 构建，供跨架构检查。没有安装、下载、注册或输入设置修改。
 
-- 原生组件：`results/native-v05.json`，47 项布局、回调、浮层、设置文件和动画检查（包括设置保存失败与仅内存偏好）。预览仅取自身 DirectWrite 绘制缓冲区，不是桌面截图。
+- 原生组件：`results/native-v05.json`，50 项布局、回调、浮层、设置文件、动画和 DPI 检查（包括设置保存失败与仅内存偏好）。预览仅取自身 DirectWrite 绘制缓冲区，不是桌面截图。
 - 普通选词 IPC：`results/selection-ipc.json` 与 `selection-ipc-x64.json`，针对选词响应、待取中文保护和学习开关页码保持。
 - 真实 TSF 集成：`results/native-v05-tsf.json` 与 `native-v05-tsf-x64.json`，通过实际 Windows TSF 和 MSAA 接口调用，检查普通中文、英文快捷键、F2、学习按钮、设置同步、焦点、断线和 DLL 引用生命周期。
+- 高 DPI 修正后的 TSF 集成另存 `results/native-v05-dpi-tsf-x64.json`，包含新增的进程/窗口 DPI 和物理尺寸检查，保留前一轮的 27 项报告。
 - 原有 16 项编辑会话回归在 x64 服务上通过，另存 `results/tsf-text-host-v05-x64.json`；旧引擎、布局、桌面菜单、IPC、调度和旧文本宿主报告不覆盖。
 
 x64 Rime 库 SHA256 为 `2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b`，来自已固定的 `rime-1c23358-Windows-msvc-x64.7z`（归档哈希在阶段 3 依赖锁中）。包内 `version-info.txt` 标记 librime `1c23358`、librime-lua `e3912a4`；实际 Lua 查询与英文动作已通过新 x64 报告验证。

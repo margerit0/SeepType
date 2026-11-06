@@ -6,7 +6,7 @@ int wmain(int argc, wchar_t** argv) {
     std::cerr << "Usage: study_settings_x64.exe <isolated-settings-file>\n";
     return 2;
   }
-  SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+  // Per-monitor V2 awareness is established by the embedded host manifest.
   const std::filesystem::path path = argv[1];
   auto preferences = study::LoadPreferences(path);
   study::EditPreferences(nullptr, path, preferences);

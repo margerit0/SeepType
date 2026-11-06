@@ -9,6 +9,11 @@
 #include <string>
 #include <vector>
 
+inline int TextHostPixels(HWND window, int dip) {
+  const UINT dpi = GetDpiForWindow(window);
+  return MulDiv(dip, dpi ? dpi : 96, 96);
+}
+
 class TextStore : public ITextStoreACP, public ITfContextOwnerCompositionSink {
  public:
   HWND window = nullptr;
@@ -138,8 +143,9 @@ class TextStore : public ITextStoreACP, public ITfContextOwnerCompositionSink {
   STDMETHODIMP GetTextExt(TsViewCookie,LONG a,LONG b,RECT* out,BOOL* clipped) override {
     if(!Locked())return TS_E_NOLOCK;
     if(!Range(a,b) || !out || !clipped)return E_INVALIDARG;
-    POINT point{16+static_cast<LONG>(a*14),40}; ClientToScreen(window,&point);
-    *out={point.x,point.y,point.x+std::max<LONG>(2,(b-a)*14),point.y+28}; *clipped=FALSE; return S_OK;
+    POINT point{TextHostPixels(window,16+a*14),TextHostPixels(window,40)}; ClientToScreen(window,&point);
+    *out={point.x,point.y,point.x+TextHostPixels(window,std::max<LONG>(2,(b-a)*14)),point.y+TextHostPixels(window,28)};
+    *clipped=FALSE; return S_OK;
   }
   STDMETHODIMP GetScreenExt(TsViewCookie,RECT* out) override { if(!out)return E_POINTER; GetWindowRect(window,out); return S_OK; }
   STDMETHODIMP GetWnd(TsViewCookie,HWND* out) override { if(!out)return E_POINTER; *out=window; return S_OK; }
