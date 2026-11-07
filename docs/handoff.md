@@ -2,6 +2,22 @@
 
 项目：`.`，分支 `codex/technical-spike`。本轮继续推进用户已授权的开发、许可来源处理与验证；真实系统安装仍未执行。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。
 
+## 2026-11-07 新窗口先读
+
+用户最新原话：**“我会开一个新的窗口继续任务，帮我准备上下文，可以用 computer use”**。此前暂缓 Computer Use 的安排已被这条新指令更新；新窗口可以直接使用 Computer Use 推进本项目的界面操作和验收，不重复询问工具使用许可。本轮只准备交接，没有进行新的桌面操作，也没有确认旧审批错误已恢复。
+
+当前产品提交为 **`503e8a6`**（`feat: build StudyIME dev.2 from traced sources`）；其后的交接提交仅更新文档。dev.2 收尾完成：最终 15 项归档检查和 12 项安装默认预演全部通过，工作区在交接编辑前干净。最终运行 ZIP 与已复建版本一致；源码包仅更新 README 与打包说明，55 项产品构建输入、9 项 Rime 构建输入未变。全项目仍有人工审核及安装后桌面验收待办。
+
+新窗口建议顺序：
+
+1. 读取本文件、`docs/computer-use-issue.md`，检查 Git 状态。直接沿用已有产品和报告，不重复完整构建、历史测试或许可调查。
+2. 使用当前会话提供的 Computer Use 正常入口读取窗口状态，再针对项目测试窗口操作。先阅读当前 `computer-use` 技能及其所需 guidance/confirmations；旧的 `sky.list_apps` 审批 404 只是历史故障，不代表当前工具仍不可用。不要擅自修改审批配置或用其他 UI 自动化绕过工具限制。
+3. 可先进行无需系统注册的 v0.5 真实键鼠复验。现成入口为 `python experiments/phase4/start-text-host.py --service-x64`，设置入口为 `python experiments/phase4/start-settings.py`。宿主状态、日志和 PID 在 `experiments/phase4/runtime/interactive-*`；该入口是阶段 4 的 21 条测试数据及旧实验二进制，不是 dev.2 产品安装验收。需要验证 dev.2 时先明确绑定当前产品二进制和隔离数据；不可把旧宿主通过写成新产品或外部应用通过。
+4. 优先检查普通点击上下两行都提交中文、明确英文菜单/快捷键、F2/悬停完整释义、翻页、学习开关、设置、失焦及动画中输入。保存实际观察及对应二进制/环境，只有改动影响到已测路径时才补必要程序检查。
+5. 原有 200 条英文保持待人工审核；收到实际审核记录后再导入。系统安装/注册/卸载、与已有小狼毫并存以及记事本/浏览器/VS Code 的安装后路由仍待验收。最新话语明确允许 Computer Use，未明确答复上一轮“是否授权在本机进行安装、注册及卸载恢复测试”的问题；实际 `-Apply` 前再就这项系统操作确认，不要重复询问已经允许的普通工具操作。
+
+本次只修改交接、进度与历史故障文档，这三份文件不进入现有源码材料包；交付包、产品代码和验证结果不需因此重建。
+
 ## 当前版本
 
 **0.5.0-dev.2**，产品名拾词输入法（StudyIME），Windows 11 x64。新代码和原创图标 GPL-3.0-or-later 已获用户确认，不要重新询问。英文学习数据及中文基础词库的适用改编为 CC BY-SA 4.0；Unicode 原始数据保留自己的 Unicode License V3。
@@ -53,6 +69,8 @@ python tools/packaging/verify_sources.py --build
 - 发布材料：`.cache/packaging/dist/StudyIME-0.5.0-dev.2-windows-x64-preview.zip` 及 `StudyIME-0.5.0-dev.2-source-materials.zip`。摘要和大小以该目录中的清单为准。
 - `Install.cmd` / `Uninstall.cmd` 默认只输出计划。实际操作需要显式 `-Apply -AllowDevelopment`。
 
+交接时的最终归档摘要：运行 ZIP 为 `7db1bf59ea0d918c6c132c717a9c7e7385426dd1bba3890479d5517f2c8d23a1`（23,800,449 字节）；源码 ZIP 为 `926e8ce52f14b50f4e94471806502f0fcb3fef7f547b7e24ef6e3230a221bb25`（252,967,645 字节）。展开目录为 `.cache/packaging/stage/StudyIME-0.5.0-dev.2`。
+
 源码包会恢复固定的代码、Boost、CMake、CC-CEDICT、wordfreq 和 Unihan。`build.cmd` 先编译专用 Rime，再构建产品；不依赖旧官方 Rime 缓存。为 CL/Ninja 的中文诊断统一 UTF-8，复建验证通过独立隐藏控制台执行，避免改变用户终端。
 
 首个 dev.2 复建目录 `fresh 中文 b82394308668` 在编译前因无控制台输出使用 GBK 而失败，不能作为成功证据。最终使用 `fresh 中文 a54add1526b2`：从空缓存离线构建后，五个二进制均一致；随后在同一独立目录修正 glog 测试路径宏和 RC 头文件记录，再构建并核对全部最终材料，未从原目录复制二进制。这是有记录的续建验证，同机工具链范围内通过，不声称最终源码包另做过一次全新空目录复建。不要用 cmd/PowerShell UI 自动化绕过 Computer Use 审批。
@@ -73,6 +91,6 @@ python tools/packaging/verify_sources.py --build
 
 本轮至今没有获得实际安装/注册的授权；之前的“继续”用于推进开发。后续如果用户对明确的安装问句同意，应直接在其已批准范围内推进，不重复询问。不要自行改默认输入法。
 
-Computer Use 按用户 2026-11-06 的要求暂缓：此前 sky.list_apps 在执行前遭审批服务 404（所选 gpt-6-luna 模型不受该服务支持），见 `docs/computer-use-issue.md`。本轮没有重试或修改配置，也没有声称恢复。用户允许操作旧 ui_probe.exe 的授权不等于系统输入法安装授权。
+**Computer Use 已获用户 2026-11-07 最新指令允许，可以恢复。** 2026-11-06 的暂缓安排已过时。此前 sky.list_apps 在执行前遭审批服务 404（所选 gpt-6-luna 模型不受该服务支持），历史记录见 `docs/computer-use-issue.md`；本次交接没有重试或修改配置，不声称工具已实测恢复。使用当前窗口的工具与技能，不照搬旧 API 或假定旧模型、端点仍是当前配置。工具使用授权不自动等于输入法系统安装授权。
 
 用户已允许必要时 commit；继续复用当前工作区，不主动开新聊天/工作树。不主动委派子 agent；当前没有适用的 AGENTS.md。用户后续明确指令优先于此交接快照。
