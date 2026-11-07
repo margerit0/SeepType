@@ -33,6 +33,18 @@
       "passed": true
     },
     {
+      "name": "Chinese input uses the traced CC-CEDICT wordfreq base without mixed preset dictionaries",
+      "passed": true
+    },
+    {
+      "name": "product compiler trace contains no WTL headers",
+      "passed": true
+    },
+    {
+      "name": "Rime runtime is built from the recorded sources with only Lua",
+      "passed": true
+    },
+    {
       "name": "all four product binaries are recorded x64 images",
       "passed": true
     },
@@ -47,13 +59,11 @@
     {
       "detail": [
         "advapi32.dll",
-        "api-ms-win-shcore-scaling-l1-1-1.dll",
         "bcrypt.dll",
         "d2d1.dll",
         "dbghelp.dll",
         "dwrite.dll",
         "gdi32.dll",
-        "gdiplus.dll",
         "kernel32.dll",
         "ole32.dll",
         "oleacc.dll",
@@ -66,10 +76,10 @@
     }
   ],
   "computer_use_executed": false,
-  "package_sha256": "b34a20fe618fbff7048b9b26c03dab2e85d45f9372926b2f9cfaebec679ad9c2",
-  "passed": 12,
-  "recorded_at": "2026-11-06T18:33:27.953618+00:00",
+  "package_sha256": "7db1bf59ea0d918c6c132c717a9c7e7385426dd1bba3890479d5517f2c8d23a1",
+  "passed": 15,
+  "recorded_at": "2026-11-07T11:02:16.566367+00:00",
   "system_install_executed": false,
-  "total": 12,
+  "total": 15,
   "tsf_registration_executed": false
 }

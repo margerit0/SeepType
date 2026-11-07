@@ -1,16 +1,16 @@
 # 拾词输入法产品打包与安装产物
 
-2026-11-07。用户已确定产品名称 **拾词输入法（StudyIME）**，新写代码采用 **GPL-3.0-or-later**，英文词库单独遵循 **CC BY-SA 4.0**。本轮交付 `0.5.0-dev.1` 开发预览，沿用已确认的 v0.5 原生设计。
+2026-11-07。用户已确定产品名称 **拾词输入法（StudyIME）**，新写代码采用 **GPL-3.0-or-later**，中文基础词库和英文学习数据分别遵循 **CC BY-SA 4.0**。本轮交付 `0.5.0-dev.2` 开发预览，沿用已确认的 v0.5 原生设计。
 
 ## 当前产物
 
 输出目录为 `.\.cache\packaging\dist`，包含：
 
-- `StudyIME-0.5.0-dev.1-windows-x64-preview.zip`：完整运行目录，含四个产品二进制、固定 x64 Rime、最小中文输入数据、原有 200 条审核预览、许可与逐文件摘要，以及安装/卸载脚本。
-- `StudyIME-0.5.0-dev.1-source-materials.zip`：当前项目源码、14 份固定上游源码归档、Weasel Git bundle、Boost 原始归档、Rime 固定构建材料及离线恢复脚本。
+- `StudyIME-0.5.0-dev.2-windows-x64-preview.zip`：完整运行目录，含四个产品二进制、从源码构建的 Rime/Lua、121,505 条中文词形/读音记录、原有 200 条审核预览、许可与逐文件摘要，以及安装/卸载脚本。
+- `StudyIME-0.5.0-dev.2-source-materials.zip`：当前项目源码、10 份选择后的固定上游材料、Weasel Git bundle、Boost、固定 CMake、词库原始数据及离线恢复脚本。
 - `SHA256SUMS.txt`、`package-report.json`：实际产物摘要与大小。SHA256 用于完整性核对，不是代码签名；当前产物未签名。
 
-供审阅的展开目录：`.\.cache\packaging\stage\StudyIME-0.5.0-dev.1`。开发预览不代表正式发布条件已满足；人工审核仍为 **0/200**，软件许可与来源仍有 [明确的阻止项](software-licenses.md)。
+供审阅的展开目录：`.\.cache\packaging\stage\StudyIME-0.5.0-dev.2`。开发预览不代表正式发布条件已满足；人工审核仍为 **0/200**，原三项许可/来源阻止项已处理，剩余产品验收边界见 [许可与来源说明](software-licenses.md)。
 
 ## 标识与运行目录
 
@@ -22,7 +22,7 @@
 | 安装/应用列表 ID | `{D89859C5-5A51-53E6-8199-DF3407D2908B}` |
 | TSF CLSID | `{FEB10355-3C08-5342-B75C-5873F1CA04DF}` |
 | 简体中文 profile | `{C126F14A-E78D-57FF-910F-205A393AE9D9}`，`0x0804` |
-| 安装目录 | `%ProgramFiles%\StudyIME\0.5.0-dev.1` |
+| 安装目录 | `%ProgramFiles%\StudyIME\0.5.0-dev.2` |
 | 用户数据与偏好 | `%LocalAppData%\StudyIME` |
 | IPC | `StudyIME-v1` + 用户 SID + Windows 会话；开发验证额外加入独立标记 |
 
@@ -38,19 +38,19 @@
 
 # 离线打包；保留原有人工审核状态
 python tools/packaging/package.py --mode preview --with-sources `
-  --stage .cache/packaging/stage/StudyIME-0.5.0-dev.1
+  --stage .cache/packaging/stage/StudyIME-0.5.0-dev.2
 
 # 存在词义审核、许可或验收阻止项时，这个命令应失败
 python tools/packaging/package.py --mode release
 ```
 
-原生构建复用阶段 4 构建器的 `--product` 模式，输出到独立目录。产品源码树从固定 Weasel Git 提交和正式覆盖层生成，不读取旧实验目录中残留的头文件或上游工作区修改。原开发缓存保留；产品生成目录中的过期文件才会被清理。
+构建先从固定源码编译仅含 Lua 插件的 Rime，再复用阶段 4 构建器的 `--product` 模式，输出到独立目录。产品源码树从固定 Weasel Git 提交和正式覆盖层生成，不读取旧实验目录中残留的头文件或上游工作区修改。原开发缓存保留；产品生成目录中的过期文件才会被清理。
 
 VS2019 使用 `/Brepro /experimental:deterministic /pathmap:<project>=.`。仅 `/Brepro` 或仅把命令行改成相对路径仍会留下断言路径、对象路径和匿名命名空间差异；当前编译和资源生成均已消除项目绝对路径。构建记录包含项目源码、完整生成树、实际 Boost/Rime 头文件与源码树摘要、工具链摘要，以及四个二进制的架构、导入和摘要。内容变化会使编译缓存失效；打包也拒绝未重新构建的源文件、生成头文件或依赖变化，即使文件修改时间未变。
 
-ZIP 固定排序、时间、权限，使用不依赖压缩器版本的 `ZIP_STORED`；不同输出位置及反向文件枚举下已验证字节一致。源码包验证入口为 `python tools/packaging/verify_sources.py --build`：在含中文和空格的新目录离线恢复空缓存并构建，要求记录的输入及四个原生程序均逐字节一致，否则返回失败。最终结果见下方证据表。此验证使用同一台机器上已有的 VS2019，不代表跨机器验证，也没有重现官方 Rime DLL 的原始 CI 环境。
+ZIP 固定排序、时间、权限，使用不依赖压缩器版本的 `ZIP_STORED`；不同输出位置及反向文件枚举下已验证字节一致。源码包验证入口为 `python tools/packaging/verify_sources.py --build`：在含中文和空格的新目录离线恢复空缓存并构建，要求记录的输入、四个产品原生文件、Rime DLL 和完整运行 ZIP 均逐字节一致，否则返回失败。最终结果见下方证据表。此验证使用同一台机器上已有的 VS2019，不代表跨机器验证，不使用官方 Rime DLL 或其原始 CI 缓存。
 
-**2026-11-07 已通过完整复建：** 从源码 ZIP 恢复空缓存后，四个原生程序及记录输入全部一致；继续在该新目录运行 `package.py --mode preview`，生成的完整运行 ZIP 也逐字节一致。本次恢复与编译约 390 秒，全程离线。最终仅更新交付说明，再用归档成员摘要绑定这份已完成的构建证据。
+本版复建已通过，记录见 `experiments/phase6/results/source-materials.json`。独立目录最初由源码包恢复空缓存，五个原生文件均与原目录一致；随后在同一目录修正 glog 测试路径宏和 RC 头文件记录并续建，Rime 构建记录及完整运行 ZIP 也一致。最终核对 209 份项目文件、16 份恢复材料；未从原目录复制二进制。该结果属于同机工具链、带元数据修正的独立目录验证，未额外声称最终包重新做过全新空缓存构建。最终说明文档调整通过 `source-evidence-binding.json` 关联到已验证输入。
 
 源码材料解包后，在 `project` 中运行：
 
@@ -60,7 +60,13 @@ python tools/packaging/bootstrap_sources.py ..
 python tools/packaging/package.py --mode preview
 ```
 
-恢复脚本先校验所有归档摘要，再恢复项目缓存。Windows 自带 `tar.exe` 的固定 7z 读取及本地 Weasel bundle 克隆已核对；脚本不会联网、安装编译器、注册输入法或改变系统输入设置。
+恢复脚本先校验所有归档摘要，再恢复项目缓存。由 Python 读取固定 ZIP/tar/gzip 数据，使用本地 Weasel bundle 克隆；脚本不会联网、安装编译器、注册输入法或改变系统输入设置。
+
+## 中文基础词库与英文审核
+
+中文基础使用固定 CC-CEDICT 简体词形与读音，加上 wordfreq 3.1.1 中文词频。121,505 条词形/读音记录对应 120,786 个不同词形，原始行摘要和词频许可随包提供。Luna/essay 混合词典不再分发；保留的 Luna 文件只承担方案和拼写规则。比较中，原有 200 个学习词均在第一页，193 个排首位；20 个常用输入样例均排首位。这些样例不能替代实际打字体验验收。
+
+英文数据仍是原来的 200 条审核稿，人工通过 0 条。中文基础词库的扩大不会把其他词条的英文释义自动加入产品。普通点击上下两行仍提交中文，英文只通过明确动作提交。资料见 [中文基础词库](../data/chinese/README.md)。
 
 ## 安装与卸载的具体行为
 
@@ -88,13 +94,17 @@ python tools/packaging/package.py --mode preview
 
 | 报告 | 已验证范围 |
 | --- | --- |
-| [package-validation.json](../experiments/phase6/results/package-validation.json) | 12 项归档一致性、路径约束、发布阻止、x64、路径映射及生成头文件漂移检查 |
+| [package-validation.json](../experiments/phase6/results/package-validation.json) | 15 项归档一致性、来源明确的中文数据、无 WTL 编译、Rime 源码构建、路径约束、发布阻止及生成头文件漂移检查 |
 | [installer-plans.json](../experiments/phase6/results/installer-plans.json) | 12 项真实默认脚本预演、摘要/额外文件/路径校验、PE 标识及系统状态未变检查 |
 | [product-runtime-x64.json](../experiments/phase6/results/product-runtime-x64.json) | 8 项独立目录检查，其中包含 22 项真实 Rime IPC 子检查；首次文本词典部署、服务按需启动/停止、产品 GUID、5 个样本的中英文提交 |
 | [runtime-evidence-binding.json](../experiments/phase6/results/runtime-evidence-binding.json) | 最终包与已验证的原生程序、Rime 数据、产品标识逐文件相同；脚本/文档调整后复用既有运行证据 |
+| [artifact-evidence-binding.json](../experiments/phase6/results/artifact-evidence-binding.json) | 当前构建的绘制探针及头文件、引擎探针及运行数据、中文词库及来源映射均与已通过报告一致；构建元数据修正后保留原行为验证 |
+| [product-renderer.json](../experiments/phase6/results/product-renderer.json) | 15 项布局/回调/动画检查，9 张原生预览与既有 v0.5 PNG 逐像素一致 |
+| [source-built-engine.json](../experiments/phase6/results/source-built-engine.json) | 当前包的 200 条释义、中英文提交，以及 16 组各 200 次的合成输入耗时 |
+| [chinese-source-validation.json](../experiments/phase6/results/chinese-source-validation.json) | 121,505 条中文词条对应 124,551 条源记录，重复导出字节一致 |
 | [registration-recovery.json](../experiments/phase6/results/registration-recovery.json) | 28 项生产注册流程的内存失败模拟：部分写入、清理失败保留所有权、重试完成；系统注册未执行 |
-| [source-materials.json](../experiments/phase6/results/source-materials.json) | 源码 ZIP 的确定性导出、离线空缓存恢复、同机不同目录原生构建及四个程序的逐字节比较 |
-| [source-package-rebuild.json](../experiments/phase6/results/source-package-rebuild.json) | 在上述恢复目录继续打包，完整运行 ZIP 与原产物逐字节相同 |
+| [source-materials.json](../experiments/phase6/results/source-materials.json) | 源码 ZIP 的确定性导出、离线空缓存恢复、同机不同目录构建；四个产品文件、Rime DLL、依赖记录与完整运行 ZIP 的逐字节比较 |
+| [source-package-rebuild.json](../experiments/phase6/results/source-package-rebuild.json) | dev.1 历史复建记录；dev.2 的完整 ZIP 比较已并入 source-materials.json |
 | [source-evidence-binding.json](../experiments/phase6/results/source-evidence-binding.json) | 最终源码包仅文档调整时，核对所有非文档成员和已验证原生输入，避免重复完整构建 |
 
-程序放在包含中文和空格的独立目录，测试用户数据也在专用缓存子目录。系统产品注册、键盘设置和真实用户数据目录均未改变。修正原生输入和注册代码后只重跑上述阶段 6 相关检查；原有 50/29 项界面、25 项词库流程、200 条引擎、旧 IPC/菜单等报告均保留。程序接口检查和内存模拟不替代物理键鼠、实际安装或 Windows TSF 失败恢复验收。
+程序放在包含中文和空格的独立目录，测试用户数据也在专用缓存子目录。系统产品注册、键盘设置和真实用户数据目录均未改变。修正原生输入和注册代码后只重跑上述阶段 6 相关检查；原有 50/29 项界面、25 项词库流程及旧 IPC/菜单报告均保留；因引擎与中文数据变化，当前 200 条引擎检查已另行验证。程序接口检查和内存模拟不替代物理键鼠、实际安装或 Windows TSF 失败恢复验收。

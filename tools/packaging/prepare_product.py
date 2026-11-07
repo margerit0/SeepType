@@ -146,11 +146,39 @@ SECURITY_ATTRIBUTES* SecurityAttribute::get_attr() { return &sa; }
     if (GetTickCount64() >= deadline) throw static_cast<DWORD>(ERROR_TIMEOUT);
     ::WaitNamedPipe(name, 50);
   }''')
+    # The product's candidate windows use CandidateUi. Keep the shared
+    # DirectWrite/layout code, use ATL's geometry types and Win32 HDC directly,
+    # and remove the unused legacy WTL window implementation from the build.
+    for relative in ["WeaselUI/stdafx.h", "WeaselIPCServer/stdafx.h"]:
+        for header in ["atlapp.h", "atlframe.h", "atlgdi.h", "atlmisc.h"]:
+            line = f"#include <wtl/{header}>\n"
+            if line in source(relative): replace(relative, line, "")
+        replace(relative, "#include <atlwin.h>", "#include <atlwin.h>\n#include <atltypes.h>")
+    for relative in ["WeaselUI/Layout.h", "WeaselUI/StandardLayout.h", "WeaselUI/StandardLayout.cpp"]:
+        value = source(relative)
+        if "CDCHandle" not in value or re.search(r"\bdc\.", value):
+            raise ValueError("Unexpected layout device usage: " + relative)
+        replace(relative, "CDCHandle", "HDC", count=value.count("CDCHandle"))
+    server = "WeaselIPCServer/WeaselServerImpl.cpp"
+    replace(server, "extern CAppModule _Module;\n", "")
+    replace(server, """  CMessageLoop theLoop;
+  _Module.AddMessageLoop(&theLoop);
+  int nRet = theLoop.Run();
+  _Module.RemoveMessageLoop();""", """  MSG message{};
+  BOOL status = 0;
+  while ((status = GetMessageW(&message, nullptr, 0, 0)) > 0) {
+    TranslateMessage(&message);
+    DispatchMessageW(&message);
+  }
+  const int nRet = status < 0 ? static_cast<int>(GetLastError()) : static_cast<int>(message.wParam);""")
     patches = []
     for relative, value in sorted(files.items()):
         committed[relative] = value.encode("utf-8")
         if relative in originals:
             patches.extend(difflib.unified_diff(originals[relative].splitlines(True), value.splitlines(True), fromfile="a/" + relative, tofile="b/" + relative))
+    # No WTL headers exist on a product include path. Unmodified upstream WTL
+    # remains available as separate source material with its original license.
+    committed = {name: content for name, content in committed.items() if not name.startswith("include/wtl/")}
     # This named cache directory contains generated output only. Check every
     # target before replacing/pruning it; leave the old developer trees alone.
     if output.is_symlink() or output.is_junction() or not output.resolve().is_relative_to(CACHE.resolve()):

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "cc_cedict_lock": "data/lexicon/source.lock.json",
+  "wordfreq": {
+    "name": "wordfreq Chinese frequency data",
+    "version": "3.1.1",
+    "archive": ".cache/dictionaries/wordfreq-3.1.1.tar.gz",
+    "url": "https://files.pythonhosted.org/packages/4c/cd/9581ff0ea2c581012d0caae4bba024f3ff6b46e030a55ddec1ce545e2caf/wordfreq-3.1.1.tar.gz",
+    "archive_sha256": "7943098975f25c2a70e1151ee5a62083b14a5f86f6cc5703cc9526f716ceb408",
+    "archive_bytes": 56846562,
+    "source_file": "wordfreq-3.1.1/wordfreq/data/large_zh.msgpack.gz",
+    "source_sha256": "e079d7aaff1cfb92874850cb3ffbc7b611af939d9d671c1cbda932d968467cdd",
+    "license": "CC-BY-SA-4.0",
+    "software_license": "Apache-2.0",
+    "license_file": "licensing/third-party/wordfreq/LICENSE.txt",
+    "license_sha256": "262b51ebd3e7e29d3e5b82cb1fceefcf0a0db5627f119d4ad85157adfb6e16fe",
+    "data_license_statement": "licensing/third-party/wordfreq/README.md",
+    "data_license_statement_sha256": "f10dea4b82f84be023c3a4beeb872480513e1b28523331e9eec8f50dba460a99",
+    "homepage": "https://github.com/rspeer/wordfreq",
+    "citation": "Robyn Speer (2022), rspeer/wordfreq v3.0, https://doi.org/10.5281/zenodo.7199437",
+    "attribution": "Robyn Speer and wordfreq contributors; source corpora and SUBTLEX authors are credited in the preserved README. SUBTLEX is freely available data; the README records permission from Marc Brysbaert for redistribution for any purpose with author credit.",
+    "scope": "Exact Chinese headword frequency bins only; no tokenizer or Python wordfreq runtime is bundled"
+  },
+  "unicode": {
+    "name": "Unicode Character Database / Unihan",
+    "version": "17.0.0",
+    "archive": ".cache/dictionaries/unicode-17.0.0/Unihan.zip",
+    "url": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "archive_sha256": "f7a48b2b545acfaa77b2d607ae28747404ce02baefee16396c5d2d7a8ef34b5e",
+    "archive_bytes": 8518517,
+    "source_file": "Unihan_Readings.txt",
+    "source_sha256": "575e69c9ad85a4737a889a4f94cbd987042a90a1a6cc16dd3f4ed995c715b17c",
+    "property": "kHanyuPinlu",
+    "records": 3799,
+    "documentation": "https://www.unicode.org/reports/tr38/#kHanyuPinlu",
+    "license": "Unicode-3.0",
+    "license_url": "https://www.unicode.org/license.txt",
+    "license_file": "licensing/third-party/unicode-data/LICENSE",
+    "license_sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "attribution": "Unicode, Inc. (Unihan 17.0.0 data copyright 2025); kHanyuPinlu credits Richard Cook, Ross Paterson and Tom Bishop, based in part on Xiandai Hanyu Pinlu Cidian (1986).",
+    "scope": "Character-pronunciation counts only; no modern word-frequency corpus is claimed"
+  }
+}

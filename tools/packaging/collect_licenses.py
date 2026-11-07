@@ -16,9 +16,10 @@ import subprocess
 import sys
 import tarfile
 import urllib.request
+import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from tools.packaging.common import ROOT, CACHE, file_hash, json_bytes, sha256, write_changed
+from tools.packaging.common import ROOT, CACHE, file_hash, json_bytes, package_path, sha256, write_changed
 
 SPECS = [
     ("librime", "rime/librime", "1c23358157934bd6e6d6981f0c0164f05393b497", "BSD-3-Clause"),
@@ -50,6 +51,13 @@ def fetch(url: str, path: Path):
 
 
 def source_files(path: Path):
+    if path.suffix == ".zip":
+        with zipfile.ZipFile(path) as archive:
+            for member in archive.infolist():
+                if member.is_dir(): continue
+                package_path(member.filename)
+                yield member.filename, archive.read(member)
+        return
     with tarfile.open(path, "r:*") as archive:
         for member in archive:
             if not member.isfile():

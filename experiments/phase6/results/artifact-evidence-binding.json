@@ -1,0 +1,22 @@
+{
+  "chinese": {
+    "report_sha256": "e42c3f07209ab78c60d740f83a0dbbf2b8c02935f466c36da8b5b1756b3597bc",
+    "same_dictionary_and_source_mapping": true,
+    "same_english_review_entries": true
+  },
+  "engine": {
+    "report_sha256": "ebc6819cef026369aac62eb54f358146a20330bab25eb227d1b0ac9f6f8e2c8d",
+    "same_probe_and_runtime_inputs": true
+  },
+  "native_build_sha256": "fa0e8b8da670b8b5a1348a526c41fc32c2d80fe99a9a2bc3d9ada1f505f97397",
+  "passed": true,
+  "recorded_at": "2026-11-07T11:02:35.720532+00:00",
+  "renderer": {
+    "report_sha256": "cfa73ca8a4bfe22d1d87547e737ad4b478ab1dfcb79443d9f9e5e34ca2a4e710",
+    "same_golden_images": true,
+    "same_probe_and_headers": true
+  },
+  "rime_build_sha256": "def726640f3f2f7ca67b02d707c57afe6a4d03bcbe8306dce61ee7ca97d4be19",
+  "scope": "Bind passed behavior/source checks to identical current binaries, headers and runtime data after build-runner/provenance-only changes.",
+  "tests_reexecuted": false
+}

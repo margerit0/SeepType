@@ -1,0 +1,112 @@
+--- a/glog/src/config.h.cmake.in
++++ b/glog/src/config.h.cmake.in
+@@ -119,7 +119,7 @@
+ #cmakedefine SIZEOF_VOID_P ${SIZEOF_VOID_P}
+ 
+ /* location of source code */
+-#cmakedefine TEST_SRC_DIR ${TEST_SRC_DIR}
++#define TEST_SRC_DIR "." /* StudyIME: tests are disabled; no checkout path in generated headers. */
+ 
+ /* Define if thread-local storage is enabled. */
+ #cmakedefine GLOG_THREAD_LOCAL_STORAGE
+--- a/librime/CMakeLists.txt
++++ b/librime/CMakeLists.txt
+@@ -165,8 +165,8 @@
+ 
+ if(MSVC)
+   # https://stackoverflow.com/a/31264946
+-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
+-  set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
++  # StudyIME: reproducible release build without a PDB.
++  set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /OPT:REF /OPT:ICF")
+   add_definitions("/wd4244 /wd4996")
+ 
+   # large address aware
+@@ -273,7 +273,7 @@
+ add_subdirectory(src)
+ 
+ if(BUILD_SHARED_LIBS)
+-  add_subdirectory(tools)
++  # StudyIME uses the C API; standalone tools and their historical preset data are omitted.
+ 
+   if(BUILD_TEST)
+     add_subdirectory(test)
+--- a/librime/cmake/AddRCInfo.cmake
++++ b/librime/cmake/AddRCInfo.cmake
+@@ -1,35 +1,5 @@
+-# check if git is installed in system
+-find_program(git_executable git)
+-# check if ${CMAKE_SOURCE_DIR} is git repository if git is installed
+-# and set git_branch
+-if(git_executable)
+-  execute_process(
+-    COMMAND git rev-parse --is-inside-work-tree
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    RESULT_VARIABLE git_repo)
+-  if(NOT git_repo EQUAL 0)
+-    set(git_executable "")
+-  else()
+-    # git_branch
+-    execute_process(
+-      COMMAND git rev-parse --abbrev-ref HEAD
+-      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-      OUTPUT_VARIABLE git_branch
+-      OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  endif()
+-endif()
+-# set build_release
+-if ("${git_branch}" STREQUAL "master")
+-  # git_commit
+-  execute_process(
+-    COMMAND git rev-parse --short HEAD
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    OUTPUT_VARIABLE git_commit
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  set(build_release OFF)
+-else()
+-  set(build_release ON)
+-endif()
++# StudyIME: sources come from the fixed archive, never a parent Git checkout.
++set(build_release ON)
+ set(original_filename "rime.dll")
+ if(MSVC)
+   set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} -DLOCALIZE_VERSION_INFO")
+--- a/opencc/CMakeLists.txt
++++ b/opencc/CMakeLists.txt
+@@ -146,8 +146,7 @@
+ ######## Compiler flags
+ 
+ add_definitions(
+-  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
+-  -DLOCALEDIR="${DIR_SHARE_LOCALE}"
++  -DLOCALEDIR="locale"
+   -DVERSION="${OPENCC_VERSION}"
+   -DPACKAGE_NAME="${PACKAGE_NAME}"
+ )
+@@ -210,7 +209,8 @@
+   message(STATUS "Use bundled marisa library.")
+   add_subdirectory(deps/marisa-0.2.6)
+ else()
+-  find_library(LIBMARISA NAMES marisa)
++  find_package(marisa CONFIG REQUIRED)
++  set(LIBMARISA marisa)
+   if (LIBMARISA)
+     message(STATUS "libmarisa found: ${LIBMARISA}")
+   else()
+@@ -222,7 +222,7 @@
+ 
+ add_subdirectory(src)
+ add_subdirectory(doc)
+-add_subdirectory(data)
++# StudyIME: no standalone conversion data.
+ add_subdirectory(test)
+ 
+ ######## Testing
+--- a/opencc/src/CMakeLists.txt
++++ b/opencc/src/CMakeLists.txt
+@@ -205,4 +205,4 @@
+ 
+ # Subdir
+ 
+-add_subdirectory(tools)
++# StudyIME: library and headers only.

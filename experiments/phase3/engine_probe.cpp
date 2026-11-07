@@ -52,11 +52,11 @@ static void snapshot() {
 static void type(const std::string& text) {
   for(unsigned char key : text) api->process_key(session,key,0);
 }
-static void bench(int count) {
+static void bench(int count, const std::string& input) {
   std::vector<double> times;
   for(int i=-20;i<count;++i) {
     auto start=std::chrono::steady_clock::now();
-    api->clear_composition(session); type("pingguo");
+    api->clear_composition(session); type(input);
     RIME_STRUCT(RimeContext, ctx);
     if(api->get_context(session,&ctx)) api->free_context(&ctx);
     double us=std::chrono::duration<double,std::micro>(std::chrono::steady_clock::now()-start).count();
@@ -64,7 +64,7 @@ static void bench(int count) {
   }
   std::sort(times.begin(),times.end());
   auto percentile=[&](double p){return times[std::min(times.size()-1,size_t(p*(times.size()-1)))];};
-  std::cout << "{\"samples\":" << count << ",\"unit\":\"us per synthetic composition + first page\",\"p50\":"
+  std::cout << "{\"samples\":" << count << ",\"query\":" << q(input) << ",\"unit\":\"us per synthetic composition + first page\",\"p50\":"
     << percentile(.50) << ",\"p95\":" << percentile(.95) << ",\"p99\":" << percentile(.99) << '}' << std::endl;
 }
 int wmain(int argc,wchar_t** argv) {
@@ -96,7 +96,9 @@ int wmain(int argc,wchar_t** argv) {
     std::cerr << "Failed to create isolated schema session\n";api->finalize();return 5;
   }
   std::cout << "{\"version\":" << q(api->get_version()) << ",\"lua_module\":"
-    << (api->find_module("lua")?"true":"false") << ",\"pointer_bits\":" << sizeof(void*)*8
+    << (api->find_module("lua")?"true":"false")
+    << ",\"octagram_module\":" << (api->find_module("octagram")?"true":"false")
+    << ",\"predict_module\":" << (api->find_module("predict")?"true":"false") << ",\"pointer_bits\":" << sizeof(void*)*8
     << ",\"maintenance_ms\":" << std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count()
     << '}' << std::endl;
   std::string line;
@@ -110,7 +112,7 @@ int wmain(int argc,wchar_t** argv) {
     else if(command=="schema") {std::string name;in>>name;api->clear_composition(session);api->select_schema(session,name.c_str());}
     else if(command=="highlight") {size_t index=0;in>>index;if(RIME_API_AVAILABLE(api,highlight_candidate_on_current_page))api->highlight_candidate_on_current_page(session,index);}
     else if(command=="choose") {size_t index=0;in>>index;api->select_candidate_on_current_page(session,index);}
-    else if(command=="bench") {int count=0;in>>count;bench(std::clamp(count,1,2000));continue;}
+    else if(command=="bench") {int count=0;std::string input;in>>count>>input;bench(std::clamp(count,1,2000),input.empty()?"pingguo":input);continue;}
     snapshot();
   }
   api->destroy_session(session);api->finalize();FreeLibrary(module);return 0;

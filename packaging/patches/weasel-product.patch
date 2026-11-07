@@ -163,6 +163,46 @@
 +SECURITY_ATTRIBUTES* SecurityAttribute::get_attr() { return &sa; }
  }
 -};  // namespace weasel
+--- a/WeaselIPCServer/WeaselServerImpl.cpp
++++ b/WeaselIPCServer/WeaselServerImpl.cpp
+@@ -13,7 +13,6 @@
+ 
+ using namespace weasel;
+ 
+-extern CAppModule _Module;
+ 
+ ServerImpl::ServerImpl()
+     : m_pRequestHandler(NULL),
+@@ -184,10 +183,13 @@
+   dispatcher.Open(m_hWnd);
+   channel->Start(listener);
+ 
+-  CMessageLoop theLoop;
+-  _Module.AddMessageLoop(&theLoop);
+-  int nRet = theLoop.Run();
+-  _Module.RemoveMessageLoop();
++  MSG message{};
++  BOOL status = 0;
++  while ((status = GetMessageW(&message, nullptr, 0, 0)) > 0) {
++    TranslateMessage(&message);
++    DispatchMessageW(&message);
++  }
++  const int nRet = status < 0 ? static_cast<int>(GetLastError()) : static_cast<int>(message.wParam);
+   dispatcher.Close();
+   channel->Stop();
+   return nRet;
+--- a/WeaselIPCServer/stdafx.h
++++ b/WeaselIPCServer/stdafx.h
+@@ -13,8 +13,7 @@
+ 
+ #include <atlbase.h>
+ #include <atlwin.h>
++#include <atltypes.h>
+ 
+-#include <wtl/atlapp.h>
+-#include <wtl/atlframe.h>
+ 
+ #include <boost/thread.hpp>
 --- a/WeaselTSF/Globals.cpp
 +++ b/WeaselTSF/Globals.cpp
 @@ -1,5 +1,6 @@
@@ -339,6 +379,88 @@
    _Reconnect();
    return m_client.Echo();
  }
+--- a/WeaselUI/Layout.h
++++ b/WeaselUI/Layout.h
+@@ -69,7 +69,7 @@
+          const Status& status,
+          PDWR pDWR);
+ 
+-  virtual void DoLayout(CDCHandle dc, PDWR pDWR = NULL) = 0;
++  virtual void DoLayout(HDC dc, PDWR pDWR = NULL) = 0;
+   /* All points in this class is based on the content area */
+   /* The top-left corner of the content area is always (0, 0) */
+   virtual CSize GetContentSize() const = 0;
+--- a/WeaselUI/StandardLayout.cpp
++++ b/WeaselUI/StandardLayout.cpp
+@@ -81,7 +81,7 @@
+   }
+ }
+ 
+-CSize StandardLayout::GetPreeditSize(CDCHandle dc,
++CSize StandardLayout::GetPreeditSize(HDC dc,
+                                      const weasel::Text& text,
+                                      ComPtr<IDWriteTextFormat1> pTextFormat,
+                                      PDWR pDWR) {
+@@ -131,7 +131,7 @@
+ 
+ // check if a candidate back path over _bgRect path
+ bool weasel::StandardLayout::_IsHighlightOverCandidateWindow(CRect& rc,
+-                                                             CDCHandle& dc) {
++                                                             HDC& dc) {
+   GraphicsRoundRectPath bgPath(_bgRect, _style.round_corner_ex);
+   GraphicsRoundRectPath hlPath(rc, _style.round_corner);
+ 
+@@ -150,7 +150,7 @@
+ }
+ 
+ // prepare Hemispherical rounding info
+-void weasel::StandardLayout::_PrepareRoundInfo(CDCHandle& dc) {
++void weasel::StandardLayout::_PrepareRoundInfo(HDC& dc) {
+   const int tmp[5] = {UIStyle::LAYOUT_VERTICAL, UIStyle::LAYOUT_HORIZONTAL,
+                       UIStyle::LAYOUT_VERTICAL_TEXT, UIStyle::LAYOUT_VERTICAL,
+                       UIStyle::LAYOUT_HORIZONTAL};
+--- a/WeaselUI/StandardLayout.h
++++ b/WeaselUI/StandardLayout.h
+@@ -20,7 +20,7 @@
+ 
+   /* Layout */
+ 
+-  virtual void DoLayout(CDCHandle dc, PDWR pDWR = NULL) = 0;
++  virtual void DoLayout(HDC dc, PDWR pDWR = NULL) = 0;
+   virtual CSize GetContentSize() const { return _contentSize; }
+   virtual CRect GetPreeditRect() const { return _preeditRect; }
+   virtual CRect GetAuxiliaryRect() const { return _auxiliaryRect; }
+@@ -59,12 +59,12 @@
+ 
+  protected:
+   /* Utility functions */
+-  CSize GetPreeditSize(CDCHandle dc,
++  CSize GetPreeditSize(HDC dc,
+                        const weasel::Text& text,
+                        ComPtr<IDWriteTextFormat1> pTextFormat = NULL,
+                        PDWR pDWR = NULL);
+-  bool _IsHighlightOverCandidateWindow(CRect& rc, CDCHandle& dc);
+-  void _PrepareRoundInfo(CDCHandle& dc);
++  bool _IsHighlightOverCandidateWindow(CRect& rc, HDC& dc);
++  void _PrepareRoundInfo(HDC& dc);
+ 
+   void UpdateStatusIconLayout(int* width, int* height);
+ 
+--- a/WeaselUI/stdafx.h
++++ b/WeaselUI/stdafx.h
+@@ -11,11 +11,8 @@
+ 
+ #include <atlbase.h>
+ #include <atlwin.h>
++#include <atltypes.h>
+ 
+-#include <wtl/atlapp.h>
+-#include <wtl/atlframe.h>
+-#include <wtl/atlgdi.h>
+-#include <wtl/atlmisc.h>
+ 
+ #include <string>
+ #include <vector>
 --- a/include/WeaselConstants.h
 +++ b/include/WeaselConstants.h
 @@ -1,9 +1,6 @@

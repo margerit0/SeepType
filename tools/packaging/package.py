@@ -13,18 +13,18 @@ from tools.packaging.collect_licenses import source_files
 from tools.lexicon import pipeline as lex
 from tools.packaging.pe import inspect_pe
 from tools.packaging.native_inputs import snapshot
+from tools.packaging import rime_inputs
+from tools.packaging.product_sources import locked_sources
+from tools.dictionary.cedict import files as chinese_dictionary
 
-RIME_HASH = "2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b"
 DATA = {
-    "rime-luna-pinyin": ["luna_pinyin.schema.yaml", "luna_pinyin_simp.schema.yaml", "luna_pinyin.dict.yaml", "pinyin.yaml"],
+    "rime-luna-pinyin": ["luna_pinyin.schema.yaml", "luna_pinyin_simp.schema.yaml", "pinyin.yaml"],
     "rime-prelude": ["default.yaml", "key_bindings.yaml", "punctuation.yaml", "symbols.yaml"],
-    "rime-essay": ["essay.txt"],
-    "opencc": ["data/config/t2s.json", "data/dictionary/TSCharacters.txt", "data/dictionary/TSPhrases.txt"],
 }
 
 
 def source_lock():
-    value = json.loads((ROOT / "licensing/sources.lock.json").read_text(encoding="utf-8"))
+    value = locked_sources()
     for item in value["sources"]:
         if file_hash(ROOT / item["archive"]) != item["archive_sha256"]:
             raise ValueError(f"Changed source archive: {item['id']}")
@@ -70,6 +70,18 @@ def chinese_data(lock):
             provenance.append({"path": target, "component": source["id"], "commit": source["commit"],
                                "source_path": name, "source_sha256": sha256(original), "sha256": sha256(content),
                                "changes": changes, "matches_legacy_cache_after_lf_normalization": cache_match})
+    base = chinese_dictionary()
+    for name, content in base.items():
+        target = "data/shared/" + name if name.endswith(".dict.yaml") else "data/chinese/" + name
+        payload[target] = content
+    payload["data/chinese/README.md"] = (ROOT / "data/chinese/README.md").read_bytes()
+    payload["data/chinese/sources.lock.json"] = (ROOT / "data/chinese/sources.lock.json").read_bytes()
+    payload["data/chinese/cc-cedict-source.lock.json"] = (ROOT / "data/lexicon/source.lock.json").read_bytes()
+    metadata = json.loads(base["provenance.json"])
+    provenance.append({"path": "data/shared/cedict_study.dict.yaml", "component": "cc-cedict-and-wordfreq",
+        "sha256": metadata["dictionary_sha256"], "source_provenance": "data/chinese/provenance.json",
+        "source_mapping": "data/chinese/source-mapping.json", "license": "CC-BY-SA-4.0",
+        "changes": ["Use CC-CEDICT simplified headwords and explicit Mandarin readings", "Apply exact wordfreq Chinese headword frequencies; missing words get weight 1", "No mixed Luna dictionary or essay frequencies"]})
     return payload, sorted(provenance, key=lambda item: item["path"])
 
 
@@ -92,6 +104,11 @@ def native_build():
     current = snapshot()
     if current != {"project": record["inputs"], "generated": record["generated_inputs"], "dependencies": record["dependency_inputs"]}:
         raise ValueError("Native project/generated/dependency input tree changed; rebuild before packaging")
+    if file_hash(CACHE / "build/include-trace.json") != record["include_trace_sha256"]:
+        raise ValueError("Native compiler include trace changed")
+    for name, digest in json.loads((CACHE / "build/include-trace.json").read_bytes()).items():
+        if file_hash(ROOT / name) != digest:
+            raise ValueError("Native included header changed; rebuild: " + name)
     for name, item in record["binaries"].items():
         if file_hash(CACHE / "build/bin" / name) != item["sha256"]:
             raise ValueError(f"Native binary changed after its build record: {name}")
@@ -108,8 +125,8 @@ def payload(mode="preview"):
     lock = source_lock()
     files, provenance = chinese_data(lock)
     for name in record["binaries"]: files["bin/" + name] = (CACHE / "build/bin" / name).read_bytes()
-    runtime = ROOT / ".cache/rime-1.13.1/dist/lib/rime.dll"
-    if file_hash(runtime) != RIME_HASH: raise ValueError("The fixed x64 Rime DLL has changed")
+    engine = rime_inputs.validate()
+    runtime = ROOT / engine["binary"]["path"]
     files["bin/rime.dll"] = runtime.read_bytes()
     for name in ["study.schema.yaml", "weasel.yaml"]:
         files["data/shared/" + name] = (ROOT / "packaging/data" / name).read_bytes()
@@ -128,8 +145,14 @@ def payload(mode="preview"):
     files["product.json"] = json_bytes(product())
     files["source-provenance/chinese-data.json"] = json_bytes(provenance)
     files["source-provenance/native-build.json"] = json_bytes(record)
-    files["source-provenance/rime-version-info.txt"] = (ROOT / ".cache/rime-1.13.1/version-info.txt").read_bytes()
-    files["source-provenance/runtime-dependencies.json"] = json_bytes({"rime.dll": {"sha256": RIME_HASH, **inspect_pe(runtime)},
+    files["source-provenance/include-trace.json"] = (CACHE / "build/include-trace.json").read_bytes()
+    files["source-provenance/rime-build.json"] = json_bytes(engine)
+    for name in ["source-tree.json", "include-trace.json", "compile-commands.json"]:
+        files["source-provenance/rime-" + name] = (rime_inputs.WORK / name).read_bytes()
+    files["source-provenance/rime-version-info.txt"] = (
+        "StudyIME source build: librime 1.13.1; merged plugins: lua only\n" +
+        "\n".join(name + " " + item["commit"] for name, item in sorted(engine["source_archives"].items())) + "\n").encode("utf-8")
+    files["source-provenance/runtime-dependencies.json"] = json_bytes({"rime.dll": {"sha256": engine["binary"]["sha256"], **inspect_pe(runtime)},
             "scope": "PE imports plus explicitly loaded packaged Rime; system DLLs are not copied."})
     files["assets/StudyIME.ico"] = (CACHE / "generated/StudyIME.ico").read_bytes()
     files["assets/StudyIME.svg"] = (ROOT / "packaging/artwork/StudyIME.svg").read_bytes()
@@ -147,7 +170,7 @@ def payload(mode="preview"):
 def source_materials():
     lock = source_lock()
     files = {}
-    allowed = ("src/", "tools/", "packaging/", "licensing/", "data/lexicon/")
+    allowed = ("src/", "tools/", "packaging/", "licensing/", "data/lexicon/", "data/chinese/")
     candidates = subprocess.check_output(["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=ROOT).decode("utf-8").split("\0")
     for name in sorted(set(candidates)):
         if not name: continue
@@ -155,6 +178,7 @@ def source_materials():
         if name.startswith("experiments/phase3/") or name.startswith("experiments/phase4/"):
             include = "/results/" not in name and Path(name).suffix in [".py", ".cmd", ".cpp", ".h", ".json", ".yaml", ".lua", ".patch", ".manifest", ".md"]
         if name in ["docs/software-licenses.md", "docs/packaging.md", "docs/license-proposal.md"]: include = True
+        if name.startswith("experiments/phase4/results/previews-v05/") and name.endswith(".png"): include = True
         if include and (ROOT / name).is_file(): files["project/" + name] = (ROOT / name).read_bytes()
     materials = []
     for source in lock["sources"]:
@@ -172,19 +196,39 @@ def source_materials():
     materials.append({"path": path, "sha256": sha256(files[path]), "restore": ".cache/packaging/sources/" + bundle.name})
     dependencies = json.loads((ROOT / "experiments/phase3/dependencies.lock.json").read_text(encoding="utf-8"))
     for artifact in dependencies["artifacts"]:
-        if artifact["name"] not in ["boost_1_84_0.tar.bz2", "rime-1c23358-Windows-msvc-x64.7z"]: continue
+        if artifact["name"] != "boost_1_84_0.tar.bz2": continue
         file = ROOT / ".cache/downloads" / artifact["name"]
         if file_hash(file) != artifact["sha256"]: raise ValueError("Changed build dependency archive: " + artifact["name"])
         name = "upstream/" + artifact["name"]
         files[name] = file.read_bytes()
         materials.append({"path": name, "sha256": artifact["sha256"], "restore": ".cache/downloads/" + artifact["name"]})
+    for tool in json.loads((ROOT / "licensing/build-tools.lock.json").read_bytes())["tools"]:
+        file = ROOT / tool["archive"]
+        if file_hash(file) != tool["archive_sha256"]: raise ValueError("Changed fixed build tool: " + tool["id"])
+        name = "build-tools/" + file.name
+        files[name] = file.read_bytes()
+        materials.append({"path": name, "sha256": tool["archive_sha256"], "restore": tool["archive"]})
+    cedict = json.loads((ROOT / "data/lexicon/source.lock.json").read_bytes())["artifact"]
+    unicode = json.loads((ROOT / "data/chinese/sources.lock.json").read_bytes())["unicode"]
+    wordfreq = json.loads((ROOT / "data/chinese/sources.lock.json").read_bytes())["wordfreq"]
+    data_materials = [
+        (".cache/dictionaries/cc-cedict/" + cedict["archive_sha256"] + ".txt.gz", cedict["archive_sha256"]),
+        (unicode["archive"], unicode["archive_sha256"]),
+        (wordfreq["archive"], wordfreq["archive_sha256"]),
+    ]
+    for path, digest in data_materials:
+        file = ROOT / path
+        if file_hash(file) != digest: raise ValueError("Changed fixed dictionary source: " + path)
+        name = "dictionary-sources/" + file.name
+        files[name] = file.read_bytes()
+        materials.append({"path": name, "sha256": digest, "restore": path})
     files["source-materials.json"] = json_bytes({"schema_version": 1, "product": product(), "materials": materials,
-        "completeness": "Project and pinned upstream source/build materials. Original Rime CI reproduction and license/data blockers remain; see project/docs/software-licenses.md."})
+        "completeness": "Project, fixed source archives and portable CMake for building the product and Rime/Lua locally. No official prebuilt Rime DLL is supplied or used. Remaining release limitations: project/docs/software-licenses.md."})
     files["BUILD.txt"] = ("StudyIME source and build materials\n\n"
         "Prerequisites: Windows 11 x64, Python 3.13+, Git, VS2019 14.29 C++ tools, ATL and SDK 10.0.19041.0.\n"
-        "No compiler or SDK installation is performed by these scripts.\n"
+        "The existing VS Ninja is used; a fixed portable CMake is supplied. No compiler or SDK installation is performed.\n"
         "From project/: python tools/packaging/bootstrap_sources.py ..\n"
-        "Then: tools\\packaging\\build.cmd\n"
+        "Then: tools\\packaging\\build.cmd (builds Rime/Lua and all four product binaries)\n"
         "Then: python tools/packaging/package.py --mode preview\n"
         "All commands above are offline. No input method is installed or registered.\n"
         "Source and license review limitations: project/docs/software-licenses.md\n").encode("utf-8")

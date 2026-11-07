@@ -1,7 +1,8 @@
-拾词输入法（StudyIME）0.5.0-dev.1
+拾词输入法（StudyIME）0.5.0-dev.2
 Windows 11 x64 开发预览包
 
 本包保留已确认的 v0.5 候选界面，包含独立前端、服务与设置程序。
+中文全拼使用有固定来源和署名的 CC-CEDICT＋wordfreq 简体词库。
 200 条英文数据仍待人工审核；本包不是正式发布版。
 
 检查安装计划：
@@ -17,7 +18,7 @@ Windows 11 x64 开发预览包
 也可以在“已安装的应用”中使用该卸载入口。
 脚本不会修改执行策略；请遵循本机现有脚本策略。
 
-安装位置：Program Files\StudyIME\0.5.0-dev.1
+安装位置：Program Files\StudyIME\0.5.0-dev.2
 数据位置：当前用户 LocalAppData\StudyIME
 只注册拾词自己的简体中文 TSF 标识，不设为默认输入法，不立即激活。
 服务在选用拾词时按用户和登录会话启动，不是 Windows 系统服务。
@@ -29,6 +30,7 @@ Windows 11 x64 开发预览包
 
 许可与来源：COPYING.md、LICENSE、docs/software-licenses.md、licensing。
 词库预览、原文、署名与许可：data\lexicon。
+中文基础词库、逐条来源及词频声明：data\chinese。
 该版本附有单独的 source-materials.zip 和 SHA256 清单，供源码审阅与构建。
 当前源码/许可核验的未决项见 package-manifest.json 的 release_blockers。
 

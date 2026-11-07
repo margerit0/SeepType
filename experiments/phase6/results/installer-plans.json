@@ -50,7 +50,7 @@
     }
   ],
   "computer_use_executed": false,
-  "package_sha256": "b34a20fe618fbff7048b9b26c03dab2e85d45f9372926b2f9cfaebec679ad9c2",
+  "package_sha256": "7db1bf59ea0d918c6c132c717a9c7e7385426dd1bba3890479d5517f2c8d23a1",
   "passed": 12,
   "plans": {
     "install": {
@@ -63,25 +63,13 @@
       "current_profile_activated": false,
       "data_directory": "<local profile>\\AppData\\Local\\StudyIME",
       "default_input_method_changed": false,
-      "files": 79,
+      "files": 94,
       "language_id": "0x0804",
       "language_profile": "C126F14A-E78D-57FF-910F-205A393AE9D9",
-      "package_sha256": "ebe229ade1372f4d5f071b9f8a45c46d97b251f1a99dbb1399a9969c23f7b6e6",
+      "package_sha256": "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
       "product": "拾词输入法",
       "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
       "release_blockers": [
-        {
-          "detail": "The vendored WTL headers specify MS-PL. Its source distribution condition needs resolution for the GPL combined work; including both notices alone does not establish compatibility.",
-          "id": "wtl-gpl-compatibility"
-        },
-        {
-          "detail": "Official rime.dll, plugin version-info, Lua 5.4.7 embedded string and pinned dependency source materials are recorded. The original CI toolchain/cache and all static dependency build inputs have not been reproduced or independently attested.",
-          "id": "rime-original-build-attestation"
-        },
-        {
-          "detail": "Pinned Luna Pinyin, prelude and essay source files match cached input data after CRLF normalization. Their aggregate LGPL notices and original source acknowledgments are preserved; the underlying mixed dictionary-source redistribution review is still incomplete.",
-          "id": "chinese-data-underlying-sources"
-        },
         {
           "detail": "200 entries await human review; 0 approved.",
           "id": "human-lexicon-review"
@@ -96,9 +84,9 @@
         }
       ],
       "release_ready": false,
-      "source": ".\\.cache\\packaging\\verification\\d72f10fb4410\\relocated 中文 path",
-      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.1",
-      "version": "0.5.0-dev.1"
+      "source": ".\\.cache\\packaging\\verification\\final-dev2-5c0b4df2e47e\\relocated 中文 path",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+      "version": "0.5.0-dev.2"
     },
     "uninstall": {
       "action": "uninstall",
@@ -112,12 +100,12 @@
       "profile_guid": "C126F14A-E78D-57FF-910F-205A393AE9D9",
       "receipt_present": false,
       "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
-      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.1",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
       "terminate_other_applications": false,
-      "version": "0.5.0-dev.1"
+      "version": "0.5.0-dev.2"
     }
   },
-  "recorded_at": "2026-11-06T18:33:31.173077+00:00",
+  "recorded_at": "2026-11-07T11:02:25.397839+00:00",
   "registry_after": {
     "app_entry": {
       "exists": false

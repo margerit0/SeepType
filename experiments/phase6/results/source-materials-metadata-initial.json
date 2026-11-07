@@ -1,0 +1,56 @@
+{
+  "all_native_binaries_identical": true,
+  "compiler": "MSVC 19.29.30159 (x64)",
+  "fresh_cache_native_build_passed": true,
+  "historical_tests_executed": false,
+  "identical_recorded_inputs": true,
+  "log": ".\\.cache\\packaging\\source-check\\fresh 中文 a54add1526b2\\source-workflow.log",
+  "native_binaries": {
+    "StudyIME.Registrar.exe": {
+      "byte_identical": true,
+      "fresh_build_sha256": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
+      "original_sha256": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d"
+    },
+    "StudyIME.Service.exe": {
+      "byte_identical": true,
+      "fresh_build_sha256": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
+      "original_sha256": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4"
+    },
+    "StudyIME.Settings.exe": {
+      "byte_identical": true,
+      "fresh_build_sha256": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
+      "original_sha256": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a"
+    },
+    "StudyIME.TSF.x64.dll": {
+      "byte_identical": true,
+      "fresh_build_sha256": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+      "original_sha256": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5"
+    }
+  },
+  "network_used": false,
+  "offline_restore_passed": true,
+  "recorded_at": "2026-11-06T21:00:18.156337+00:00",
+  "rime_engine": {
+    "byte_identical": true,
+    "fresh_build_sha256": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "official_binary_used": false,
+    "original_sha256": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "plugins": [
+      "lua"
+    ],
+    "record_identical": false
+  },
+  "runtime_archive": {
+    "byte_identical": false,
+    "fresh_build_sha256": "a1a3f6fc735417b13d0e16db4e6a497d19652f56178d0d6bd0fc9edee9368f1f",
+    "original_sha256": "4260876bd10fcf346d203ae159c52a53e4491a39160b7940386cbd8312b92100"
+  },
+  "same_machine_toolchain": true,
+  "scope_limit": "Buildability verified with the existing local VS2019 toolchain in a fresh project/cache. Cross-machine native binary identity is not asserted.",
+  "second_export_identical": true,
+  "seconds": 638.813,
+  "source_archive_sha256": "72bc060824bca1b433ff416e5c8d9cd8f180ad8531d337857324d7eb33458605",
+  "system_install_executed": false,
+  "tsf_registration_executed": false,
+  "workspace": ".\\.cache\\packaging\\source-check\\fresh 中文 a54add1526b2\\materials\\project"
+}

@@ -107,19 +107,33 @@ def verify_archive(files, archive, work):
         payload("release")
         blocked = ""
     except ValueError as error: blocked = str(error)
-    report.check("release packaging refuses pending human review and unresolved licenses", "human-lexicon-review" in blocked and "wtl-gpl-compatibility" in blocked)
+    unresolved = json.loads((ROOT / "licensing/components.json").read_text(encoding="utf-8"))["release_blockers"]
+    report.check("release packaging refuses pending human review and unresolved licenses",
+        "human-lexicon-review" in blocked and all(item["id"] in blocked for item in unresolved))
     manifest = json.loads(files["package-manifest.json"])
     report.check("review preview is explicit and retains zero human approvals", manifest["mode"] == "preview" and not manifest["release_ready"] and manifest["lexicon_review"] == {"approved-for-distribution": 0, "pending": 200, "rejected": 0})
     report.check("runtime payload excludes historical fixtures and unrelated installer tools",
         "21 条测试".encode() not in files["data/user-template/lua/lexicon.lua"] and not any(
-            any(word in name.lower() for word in ["cangjie", "bopomofo", "terra_pinyin", "stroke.", "7z.exe", "ui_probe", "packageprobe", "weaseldeployer"])
+            any(word in name.lower() for word in ["cangjie", "bopomofo", "terra_pinyin", "stroke.", "7z.exe", "ui_probe", "packageprobe", "renderprobe", "engineprobe", "weaseldeployer"])
             for name in files))
+    chinese = json.loads(files["data/chinese/provenance.json"])
+    report.check("Chinese input uses the traced CC-CEDICT wordfreq base without mixed preset dictionaries",
+        chinese["weighting"] == "wordfreq" and chinese["dictionary_entries"] > 100000 and
+        "data/shared/luna_pinyin.dict.yaml" not in files and "data/shared/essay.txt" not in files and
+        chinese["dictionary_sha256"] == sha256(files["data/shared/cedict_study.dict.yaml"]))
     record = json.loads(files["source-provenance/native-build.json"])
+    trace = json.loads(files["source-provenance/include-trace.json"])
+    report.check("product compiler trace contains no WTL headers", record["wtl_compiled"] is False and
+        bool(trace) and not any("/wtl/" in name.casefold() for name in trace))
+    engine = json.loads(files["source-provenance/rime-build.json"])
+    report.check("Rime runtime is built from the recorded sources with only Lua",
+        engine["plugins"] == ["lua"] and engine["binary"]["sha256"] == sha256(files["bin/rime.dll"]) and
+        engine["compiled_source_count"] > 0 and not engine["network_used"])
     report.check("all four product binaries are recorded x64 images", len(record["binaries"]) == 4 and all(item["architecture"] == "x64" for item in record["binaries"].values()))
     roots = [str(ROOT), ROOT.as_posix()]
     encoded_roots = [path.encode(encoding) for path in roots for encoding in ["utf-8", "utf-16le"]]
     report.check("product PE images contain no checkout-specific absolute path",
-        all(not any(path in files["bin/" + name] for path in encoded_roots) for name in record["binaries"]))
+        all(not any(path in files["bin/" + name] for path in encoded_roots) for name in [*record["binaries"], "rime.dll"]))
     # The previous build trusted timestamps and ignored a legacy class header.
     # Change its bytes without changing mtime and require the package gate to fail.
     header = CACHE / "weasel/include/WeaselUI.h"

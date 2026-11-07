@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "id": "cmake",
+      "version": "3.31.6",
+      "role": "build-only; never included in the runtime package",
+      "license": "BSD-3-Clause and bundled third-party notices",
+      "archive": ".cache/downloads/cmake-3.31.6-windows-x86_64.zip",
+      "archive_sha256": "d163cd3ab4959b0a53fa8988f2ddbd2e6c501658201e6a154386bad9dbe4f836",
+      "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip",
+      "checksum_url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-SHA-256.txt",
+      "directory": "cmake-3.31.6-windows-x86_64"
+    }
+  ]
+}

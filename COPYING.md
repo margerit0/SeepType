@@ -22,7 +22,9 @@ The CC-CEDICT-derived English learning data is separately licensed under
 license are in [data/lexicon](data/lexicon/README.md). Human review is a release
 quality requirement; pending review is not removed by choosing a code license.
 
-Chinese input data and other software components retain their own licenses and
+The CC-CEDICT/wordfreq-derived Chinese input data is also under CC-BY-SA-4.0,
+with its separate source and contributor records in [data/chinese](data/chinese/README.md).
+Other software components retain their own licenses and
 notices. See [the software license inventory](docs/software-licenses.md) and
 [licensing/third-party](licensing/third-party). A license inventory containing
 unresolved items is not an assertion that the complete product is ready for

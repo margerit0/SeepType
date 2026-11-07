@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -29,6 +30,7 @@ if PRODUCT:
 BOOST = ROOT / ".cache/src/boost_1_84_0"
 BUILD.mkdir(parents=True, exist_ok=True)
 OUTPUT.mkdir(parents=True, exist_ok=True)
+native_include_paths = set()
 
 
 def run(args, name):
@@ -60,6 +62,26 @@ def run(args, name):
             detail = raw.decode("gb18030", errors="replace")
         print(detail[-12000:])
         raise SystemExit(result.returncode)
+    if PRODUCT and str(args[0]).casefold() == "cl":
+        raw = (BUILD / f"{name}.log").read_bytes()
+        try:
+            detail = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            detail = raw.decode("gb18030", errors="replace")
+        headers = []
+        # VSLANG only selects English when that VS language pack is installed.
+        for found in re.finditer(r"^(?:Note: including file:|注意: 包含文件:)\s+(.+)$", detail, re.M):
+            path = Path(found[1].strip()).resolve()
+            relative = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else path.as_posix()
+            if "/wtl/" in relative.casefold():
+                raise SystemExit("Unexpected WTL header in product compilation: " + relative)
+            headers.append(relative)
+        if not headers:
+            raise SystemExit("MSVC did not record included headers for " + name)
+        (BUILD / f"{name}.headers.json").write_text(json.dumps(sorted(set(headers))), encoding="utf-8")
+        native_include_paths.update(headers)
+        return headers
+    return []
 
 
 if not PRODUCT:
@@ -71,7 +93,7 @@ common = ["/nologo", "/std:c++17", "/EHsc", "/O2", "/MT", "/utf-8", "/DBOOST_ALL
 if PRODUCT:
     # VS2019 requires experimental:deterministic for pathmap. Brepro alone
     # leaves absolute assert paths and anonymous-namespace hashes in objects.
-    common += ["/Brepro", "/experimental:deterministic", "/pathmap:" + str(ROOT) + "=."]
+    common += ["/Brepro", "/experimental:deterministic", "/pathmap:" + str(ROOT) + "=.", "/showIncludes"]
     sys.path.insert(0, str(ROOT))
     from tools.packaging.native_inputs import snapshot
     native_inputs = snapshot()
@@ -94,7 +116,8 @@ if PRODUCT:
     build_stamp = BUILD / "compile-inputs.sha256"
     force_compile = not build_stamp.exists() or build_stamp.read_text() != build_signature
     boost_stamp = PRODUCT_ROOT / "build/boost-inputs.sha256"
-    force_boost = not boost_stamp.exists() or boost_stamp.read_text() != boost_signature
+    boost_trace = PRODUCT_ROOT / "build/boost-includes.json"
+    force_boost = not boost_stamp.exists() or boost_stamp.read_text() != boost_signature or not boost_trace.exists()
 else:
     force_compile = force_boost = False
 boostlib = BUILD / "boost_study.lib"
@@ -104,6 +127,7 @@ elif SERVICE_X64 and (HERE / 'build/tsf-x64/boost_study.lib').exists():
     boostlib = HERE / 'build/tsf-x64/boost_study.lib'
 if not boostlib.exists() or force_boost:
     boost_objects = []
+    boost_headers = set()
     groups = {
         "serialization": sorted((BOOST / "libs/serialization/src").glob("*.cpp")),
         "thread": [BOOST / "libs/thread/src" / name for name in ["win32/thread.cpp", "win32/tss_dll.cpp", "win32/tss_pe.cpp", "win32/thread_primitives.cpp", "future.cpp"]],
@@ -113,15 +137,27 @@ if not boostlib.exists() or force_boost:
         directory = BUILD / ("boost-" + group)
         directory.mkdir(exist_ok=True)
         flags = ["/DBOOST_THREAD_BUILD_LIB", "/DBOOST_USE_WINDOWS_H", "/DWIN32_LEAN_AND_MEAN"] if group == "thread" else []
-        run(["cl", *common, *flags, "/c", "/I", BOOST, *sources, "/Fo" + str(directory) + "\\"], "build-boost-" + group)
+        boost_headers.update(run(["cl", *common, *flags, "/c", "/I", BOOST, *sources, "/Fo" + str(directory) + "\\"], "build-boost-" + group))
         boost_objects.extend(sorted(directory.glob("*.obj")))
     run(["lib", "/nologo", *(["/Brepro"] if PRODUCT else []), "/OUT:" + str(boostlib), *boost_objects], "link-boost")
     if PRODUCT:
+        boost_trace.write_text(json.dumps(sorted(boost_headers)), encoding="utf-8")
         boost_stamp.write_text(boost_signature, encoding="ascii")
+if PRODUCT:
+    # The shared static library is normally reused by the second target.
+    # Replaying its trace also makes fresh and incremental evidence identical.
+    boost_headers = json.loads(boost_trace.read_text(encoding="utf-8"))
+    if not boost_headers or any("/wtl/" in path.casefold() for path in boost_headers):
+        raise SystemExit("Missing or invalid shared Boost include trace")
+    native_include_paths.update(boost_headers)
 
-includes = [OVERLAY / "include", ROOT / "src", UPSTREAM / "include", BOOST, ROOT / ".cache/rime-1.13.1/dist/include", UPSTREAM / "WeaselServer", OVERLAY / "WeaselUI", UPSTREAM / "WeaselUI", UPSTREAM / "WeaselIPC", UPSTREAM / "WeaselIPCServer", UPSTREAM / "RimeWithWeasel", OVERLAY / "WeaselTSF", UPSTREAM / "WeaselTSF"]
+rime_include = ROOT / (".cache/rime-build/dist/include" if PRODUCT else ".cache/rime-1.13.1/dist/include")
+includes = [OVERLAY / "include", ROOT / "src", UPSTREAM / "include", BOOST, rime_include, UPSTREAM / "WeaselServer", OVERLAY / "WeaselUI", UPSTREAM / "WeaselUI", UPSTREAM / "WeaselIPC", UPSTREAM / "WeaselIPCServer", UPSTREAM / "RimeWithWeasel", OVERLAY / "WeaselTSF", UPSTREAM / "WeaselTSF"]
 if PRODUCT:
     includes.insert(0, PRODUCT_ROOT / "generated")
+    # StudyLayout/CandidateUi use WeaselUI's shared precompiled-header inputs.
+    # The unrelated legacy tray-server stdafx.h includes WTL window wrappers.
+    includes.remove(UPSTREAM / "WeaselServer")
 flags = [*common, "/DWEASEL_STUDY_ISOLATED"]
 if PRODUCT: flags += ["/DWEASEL_STUDY_PRODUCT"]
 if TSF: flags += ["/DWEASEL_STUDY_TSF"]
@@ -138,11 +174,14 @@ def compile_source(source, group):
     directory = BUILD / group
     directory.mkdir(exist_ok=True)
     obj = directory / (source.stem + ".obj")
+    header_trace = BUILD / ("compile-" + group + "-" + source.stem + ".headers.json")
     dependency_time = max(source.stat().st_mtime, header_time)
     if source.name == "tsf_text_host.cpp":
         dependency_time = max(dependency_time, (HERE / "text_store.h").stat().st_mtime)
-    if force_compile or not obj.exists() or obj.stat().st_mtime < dependency_time:
+    if force_compile or not obj.exists() or obj.stat().st_mtime < dependency_time or (PRODUCT and not header_trace.exists()):
         run(["cl", *flags, "/c", source, "/Fo" + str(obj)], "compile-" + group + "-" + source.stem)
+    elif PRODUCT:
+        native_include_paths.update(json.loads(header_trace.read_text(encoding="utf-8")))
     return obj
 
 
@@ -160,6 +199,7 @@ else:
 ui_objects = []
 for path in sorted(UPSTREAM.glob("WeaselUI/*.cpp")):
     if path.name == "stdafx.cpp": continue
+    if PRODUCT and path.stem not in ["DirectWriteResources", "Layout", "StandardLayout"]: continue
     overlay = OVERLAY / "WeaselUI" / path.name
     ui_objects.append(compile_source(overlay if TSF and overlay.exists() else path, "ui"))
 libraries = [boostlib, "user32.lib", "gdi32.lib", "comctl32.lib", "ole32.lib", "oleacc.lib", "advapi32.lib", "shell32.lib", "imm32.lib"]
@@ -214,6 +254,9 @@ if TSF:
         probe = ROOT / "tools/packaging/runtime_probe.cpp"
         if probe.exists():
             link("StudyIME.PackageProbe", [probe], [product_runtime] + ipc_objects + [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
+        link("StudyIME.RenderProbe", [ROOT / "tools/packaging/render_probe.cpp"], [product_runtime] + ui_objects +
+             [o for o in tsf_objects if o.stem in ["UiPreferences", "StudyMotion", "StudyLayout", "CandidateUi", "CandidateAccessibility", "EnglishMenu"]])
+        link("StudyIME.EngineProbe", [ROOT / "experiments/phase3/engine_probe.cpp"], [])
     if not PRODUCT and (HERE / "frontend_test.cpp").exists():
         link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
@@ -231,7 +274,7 @@ if TSF:
         link("study_settings_x64", ["settings_main.cpp"], [o for o in tsf_objects if o.stem == "UiPreferences"])
 else:
     if PRODUCT:
-        link("StudyIME.Service", [ROOT / "src/study/windows/ProductServiceMain.cpp", ROOT / "src/study/windows/ProductRime.cpp"], [product_runtime] + server_objects + ipc_objects + ui_objects + study_objects)
+        link("StudyIME.Service", [ROOT / "src/study/windows/ProductServiceMain.cpp", ROOT / "src/study/windows/ProductRime.cpp", ROOT / "src/study/windows/ProductUiState.cpp"], [product_runtime] + server_objects + ipc_objects + ui_objects + study_objects)
     else:
         link("study_service_x64" if SERVICE_X64 else "study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
     if not PRODUCT and (HERE / "service_client_test.cpp").exists():
@@ -242,4 +285,7 @@ else:
 
 if PRODUCT:
     build_stamp.write_text(build_signature, encoding="ascii")
-    (BUILD / "native-inputs.json").write_text(json.dumps({"inputs": native_inputs, "toolchain": toolchain}, sort_keys=True), encoding="utf-8")
+    if any("/wtl/" in path.casefold() for path in native_include_paths):
+        raise SystemExit("Unexpected WTL dependency in product input trace")
+    (BUILD / "native-inputs.json").write_text(json.dumps({"inputs": native_inputs, "toolchain": toolchain,
+        "included_headers": sorted(native_include_paths)}, sort_keys=True), encoding="utf-8")

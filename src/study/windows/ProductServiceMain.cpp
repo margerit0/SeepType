@@ -1,7 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <atlbase.h>
-#include <wtl/atlapp.h>
 #include <WeaselIPC.h>
 #include <WeaselUI.h>
 #include <ProductIdentity.h>
@@ -9,7 +8,7 @@
 #include <iostream>
 #include <thread>
 
-CAppModule _Module;
+CComModule _Module;
 weasel::RequestHandler* CreateProductRimeHandler(weasel::UI* ui);
 
 int wmain(int argc, wchar_t** argv) {

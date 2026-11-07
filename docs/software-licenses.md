@@ -1,26 +1,36 @@
-# 拾词输入法软件许可与来源汇总
+# 拾词输入法软件与数据许可
 
-2026-11-07。范围为 **StudyIME 0.5.0-dev.1 / Windows 11 x64 开发预览包**。新写代码与原创图标已由用户确认使用 GPL-3.0-or-later；英文词库继续遵循 CC BY-SA 4.0。此清单记录已取得的材料和尚未解决的事项，不把“已收集许可”标成“全部可以发布”。
+2026-11-07，**StudyIME 0.5.0-dev.2 / Windows 11 x64 开发预览**。新代码和原创图标为用户已确认的 GPL-3.0-or-later；中文基础词库与英文学习数据分别遵循 CC BY-SA 4.0。
 
-机器可读清单：[components.json](../licensing/components.json)。固定源码归档、URL、提交和摘要：[sources.lock.json](../licensing/sources.lock.json)。补充许可原文与摘要：[notices.lock.json](../licensing/notices.lock.json)。完整许可保存在 [licensing/third-party](../licensing/third-party)，数据声明保存在 [data/lexicon](../data/lexicon/README.md)。
+这版通过移除 WTL、从固定源码构建专用 Rime/Lua，以及更换中文基础词库，处理了 dev.1 的三个具体许可/来源阻止项。人工词义审核、实际安装/卸载及桌面验收仍未完成，开发预览不能视为正式发布。
 
-| 实际组成 | 许可及证据 | 当前处理 |
-| --- | --- | --- |
-| StudyIME 新代码、原创图标 | GPL-3.0-or-later；[用户确认后的声明](../COPYING.md) | 随包附完整 GPL 文本与对应项目源文件 |
-| 修改版 Weasel | 0.17.4，`9cc96e20dc71b80876b12f689bb5863c76c2a7ed`；GPLv3 | 保留原始源码、许可、v0.5 覆盖层与产品覆盖层；品牌资源换为拾词，版权声明保留在随附材料 |
-| WTL 头文件 | 随上述 Weasel 提交；原头文件标明 MS-PL | 保存原声明和完整 MS-PL；与 GPL 结合的相容性尚待解决，列为发布阻止项 |
-| Boost serialization/thread/chrono 与头文件 | 1.84.0，BSL-1.0；固定原始归档摘要 | 使用已有工具链编译，源码材料附原始归档与声明 |
-| 官方 x64 `rime.dll` | 1.13.1；SHA256 `2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b` | 记录原归档及文件摘要、PE 架构和导入；核心为 BSD-3-Clause，但 DLL 内还包含 GPLv3 插件，不能统一标为 BSD |
-| librime-lua / octagram / predict | 包内 version-info 分别为 `e3912a4` / `dfcc151` / `920bd41`；完整提交已固定 | lua、predict 为 BSD-3-Clause；**octagram 为 GPLv3**。未启用模块不会消除已嵌入代码的许可义务，均收录原文及源码 |
-| Lua | 二进制包含 Lua 5.4.7 版本和版权字符串；匹配 `thirdparty` 固定提交 `115e000c...` 的 5.4.7 源码 | 保存完整 `lua.h` 中的 MIT 授权；不把插件的 BSD 许可当成 Lua 的许可 |
-| glog、LevelDB、yaml-cpp、marisa-trie、OpenCC | 从固定 librime 提交的 gitlink 取得版本；分别 BSD-3-Clause、BSD-3-Clause、MIT、BSD-2-Clause/LGPL-2.1 双许可、Apache-2.0 | 保存归档及所有随附许可；marisa 使用其 BSD 选项；保留 OpenCC 内嵌 marisa、RapidJSON、Darts（BSD-3-Clause）声明 |
-| Windows / MSVC | VS2019、MSVC 19.29，静态 CRT；Windows 系统 API | 工具链单独安装；不复制 Windows 系统 DLL 或随包提供完整 VS 工具链 |
-| 中文方案与预设 | 固定 Luna Pinyin `95930900...`、prelude `3c602fdb...`、essay `573bbeb5...`；上游 LGPLv3 | 内容与原缓存逐文件换行归一化后匹配，保存完整源文本、来源感谢和 LGPL/GPL 文本；底层混合词典来源核验尚未全部完成 |
-| OpenCC 转换数据 | 固定 OpenCC 1.1.7 源码中的 TSCharacters/TSPhrases 与 t2s 配置 | 使用可直接追溯的文本词典；配置中的 `ocd2` 改为 `text`，逐文件记录改动；不分发无法逐字追溯的缓存编译词典 |
-| 英文 200 条审核稿 | 固定 CC-CEDICT 快照，CC BY-SA 4.0 | 来源许可、署名、变更记录齐备；人工审核仍为 0/200，只能作明确标识的开发预览 |
+机器清单：[components.json](../licensing/components.json)。实际随产品源码包提供的材料：[product-sources.lock.json](../licensing/product-sources.lock.json)。早期原始收集记录：[sources.lock.json](../licensing/sources.lock.json)。完整软件许可保存在 `licensing/third-party`；选择后的源码文件保留原始字节与原归档摘要。
 
-公开发布仍有三个许可/来源阻止项：WTL 的 MS-PL 与 GPL 组合问题；官方 Rime 二进制原始 CI 缓存、工具链与全部静态依赖构建输入尚未独立重现；中文词典底层混合来源再分发核验未完成。完整源码材料、来源锁和许可文本有助于解决这些问题，但不能替代解决结果。除此之外，词义人工审核、实际安装/卸载与桌面验收仍是独立的产品发布门槛。
+| 实际组成 | 许可与处理 |
+| --- | --- |
+| StudyIME 新代码、原创图标 | GPL-3.0-or-later；完整文本与 [版权声明](../COPYING.md) 随包提供 |
+| 修改版 Weasel 0.17.4 | 固定 `9cc96e20dc71b80876b12f689bb5863c76c2a7ed`，保留上游 GPLv3、原源码 bundle、正式生成器与修改补丁 |
+| WTL | MS-PL；**不再编译或链接到产品**。只有未修改的独立 Weasel 源码 bundle 保留原 WTL 源文件与声明 |
+| Boost 1.84.0 | BSL-1.0；固定原始归档，编译 serialization/thread/chrono，保留实际包含头文件与库摘要 |
+| Rime 1.13.1 | 核心 BSD-3-Clause；从固定源码构建，记录编译命令、源文件、头文件、静态库和工具链。运行包和源码包均不使用官方预编译 DLL |
+| librime-lua / Lua 5.4.7 | 插件 BSD-3-Clause，Lua MIT。只编入 Lua 插件；octagram、predict 不在新 DLL 或产品源码材料中 |
+| glog、LevelDB、yaml-cpp | 分别 BSD-3-Clause、BSD-3-Clause、MIT；由固定源码编译 |
+| marisa-trie | BSD-2-Clause / LGPL-2.1 双许可，选用 BSD 条件；OpenCC 使用同一份单独构建的 marisa 库 |
+| OpenCC 1.1.7、Darts、RapidJSON | 分别 Apache-2.0、BSD-3-Clause、MIT 及随附声明；代码仍为 Rime 静态依赖。产品直接输出来源中的简体词形，不分发旧转换词典 |
+| Luna Pinyin 方案代码与 prelude 预设 | LGPLv3；Luna 只保留三个方案/拼写规则文件及许可证。**Luna 混合词典、essay 和 librime 的旧 data/ 预设不在交付源码材料中** |
+| CC-CEDICT 中文词形/读音 | 固定 2026-11-06 快照，CC BY-SA 4.0；简体字段、明确普通话读音、逐条原文行摘要、转换说明与署名齐备 |
+| wordfreq 3.1.1 中文词频 | 数据明确允许按 CC BY-SA 4.0 再分发；保留 Robyn Speer、源语料及 SUBTLEX 作者的完整署名，注明 SUBTLEX 为免费开放数据。原始再分发声明完整随包保存；运行包不包含其 Python 运行库或 jieba 词典 |
+| 英文 200 条审核稿 | 固定 CC-CEDICT 来源，CC BY-SA 4.0；仍为 **0 条人工通过、200 条待审**，没有扩大、替换或自动批准 |
+| Unicode Unihan 17.0.0 | Unicode License V3；使用 kHanyuPinlu 分配多音单字的读音权重，保留原始频率和贡献者说明 |
+| CMake 3.31.6 | 仅为源码复建提供固定官方便携包，保留 BSD-3-Clause 及全部随附声明；不进入运行包 |
+| Windows / MSVC / SDK / Ninja | 使用已有 VS2019 / SDK，静态 CRT；不复制 Windows 系统 DLL 或完整 VS 工具链 |
 
-产品运行包只选择所需文件，不复制上游安装器、更新器、curl/WinSparkle、plum、7-Zip 程序或无关输入方案。源码材料保留依赖仓库原有测试/工具源码及其许可，这不表示这些测试程序进入运行包。
+WTL 的处理依据是 [GNU 对 MS-PL 的说明](https://www.gnu.org/licenses/license-list.html#ms-pl)。解决方式是从组合程序中移除 WTL，未声称 MS-PL 与 GPL 变得相容。产品使用 Win32 消息循环和 ATL 几何类型，v0.5 候选窗继续由 `CandidateUi` 绘制。编译包含记录拒绝任何 WTL 头文件。
 
-所有收集工具默认复用本地固定材料。首次收集或恢复缺失材料须显式传 `--fetch`，下载后核对锁定摘要；普通构建、打包、验证不联网。新增依赖只能显式扩展锁，不能静默移动已有版本。
+专用引擎入口为 `tools/packaging/build_rime.py`。librime 不含旧 `data/`，不构建需要那些预设的独立命令行工具；所需部署功能仍由 DLL 的 C API 提供。上游字节、选择规则、原始归档摘要、选择后归档摘要及补丁均可核对。新 DLL 只包含 Lua 插件，不沿用 dev.1 官方 DLL 内嵌 octagram 的组成声明。
+
+中文基础词库说明见 [data/chinese](../data/chinese/README.md)，固定来源见 [sources.lock.json](../data/chinese/sources.lock.json)。wordfreq 的 [原始 README](../licensing/third-party/wordfreq/README.md) 明确写明数据可以按 CC BY-SA 4.0 再分发，保留了作者取得的 SUBTLEX 再分发许可及完整引用。导出只使用精确中文词形的频率档位，没有从用户输入中收集数据。
+
+普通构建、导出及复建验证默认离线，复用固定材料。首次收集或恢复缺失文件需显式下载并核对锁定摘要，不自动跟随最新版。历史官方二进制和旧混合词典可留在原开发缓存用于既有实验，但不属于本版运行包或产品源码包。
+
+剩余产品发布门槛由 `package-manifest.json` 列出：真实人工词义审核、安装/卸载及实际 TSF/桌面验收，以及开发通道标识。安装、注册和 Computer Use 的既有授权边界保持有效。

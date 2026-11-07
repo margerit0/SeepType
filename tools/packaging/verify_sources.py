@@ -46,9 +46,19 @@ def main():
             stdout=output, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW, timeout=180)
         if result.returncode: raise RuntimeError(f"Offline source restore failed; see {log}")
         if args.build:
+            # CL/Ninja need a shared output code page even when launched by a
+            # headless verifier. Give this build its own hidden console;
+            # build.cmd selects UTF-8 without affecting the user's terminal.
+            startup = subprocess.STARTUPINFO()
+            startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startup.wShowWindow = 0
             result = subprocess.run(["cmd.exe", "/d", "/c", "tools\\packaging\\build.cmd"], cwd=project,
-                stdout=output, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW, timeout=600)
+                stdout=output, stderr=subprocess.STDOUT, startupinfo=startup,
+                creationflags=subprocess.CREATE_NEW_CONSOLE, timeout=1200)
             if result.returncode: raise RuntimeError(f"Fresh-cache native build failed; see {log}")
+            result = subprocess.run([sys.executable, "tools/packaging/package.py", "--mode", "preview"], cwd=project,
+                stdout=output, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW, timeout=120)
+            if result.returncode: raise RuntimeError(f"Fresh-cache package export failed; see {log}")
     report = {"recorded_at": datetime.now(timezone.utc).isoformat(), "source_archive_sha256": file_hash(archive),
               "second_export_identical": True, "offline_restore_passed": True, "fresh_cache_native_build_passed": args.build,
               "workspace": str(project), "log": str(log), "seconds": round(time.monotonic() - started, 3),
@@ -59,14 +69,26 @@ def main():
         rebuilt = json.loads((project / ".cache/packaging/build/native-build.json").read_text(encoding="utf-8"))
         report["compiler"] = rebuilt["compiler"]
         report["identical_recorded_inputs"] = all(original[key] == rebuilt[key]
-            for key in ["inputs", "generated_inputs", "dependency_inputs", "toolchain", "cache_fingerprint"])
+            for key in ["inputs", "generated_inputs", "dependency_inputs", "toolchain", "cache_fingerprint",
+                        "include_trace_sha256", "included_header_count", "wtl_compiled"])
         report["native_binaries"] = {name: {"original_sha256": item["sha256"], "fresh_build_sha256": rebuilt["binaries"][name]["sha256"],
             "byte_identical": item["sha256"] == rebuilt["binaries"][name]["sha256"]} for name, item in original["binaries"].items()}
         report["scope_limit"] = "Buildability verified with the existing local VS2019 toolchain in a fresh project/cache. Cross-machine native binary identity is not asserted."
         report["all_native_binaries_identical"] = all(item["byte_identical"] for item in report["native_binaries"].values())
+        engine = json.loads((ROOT / ".cache/rime-build/rime-build.json").read_bytes())
+        fresh_engine = json.loads((project / ".cache/rime-build/rime-build.json").read_bytes())
+        report["rime_engine"] = {"record_identical": engine == fresh_engine,
+            "original_sha256": engine["binary"]["sha256"], "fresh_build_sha256": fresh_engine["binary"]["sha256"],
+            "byte_identical": engine["binary"]["sha256"] == fresh_engine["binary"]["sha256"],
+            "plugins": fresh_engine["plugins"], "official_binary_used": False}
+        runtime_name = f"StudyIME-{product()['version']}-windows-x64-preview.zip"
+        report["runtime_archive"] = {"original_sha256": file_hash(CACHE / "dist" / runtime_name),
+            "fresh_build_sha256": file_hash(project / ".cache/packaging/dist" / runtime_name)}
+        report["runtime_archive"]["byte_identical"] = report["runtime_archive"]["original_sha256"] == report["runtime_archive"]["fresh_build_sha256"]
     write_changed(ROOT / "experiments/phase6/results/source-materials.json", json_bytes(report))
     print(json.dumps(report, ensure_ascii=True, indent=2))
-    if args.build and not (report["identical_recorded_inputs"] and report["all_native_binaries_identical"]):
+    if args.build and not (report["identical_recorded_inputs"] and report["all_native_binaries_identical"] and
+                          report["rime_engine"]["record_identical"] and report["rime_engine"]["byte_identical"] and report["runtime_archive"]["byte_identical"]):
         raise RuntimeError("Fresh-directory native build differs; see the saved source-materials report")
 
 

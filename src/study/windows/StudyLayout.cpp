@@ -4,7 +4,7 @@
 #include <cmath>
 
 namespace study {
-void StudyLayout::DoLayout(CDCHandle, weasel::PDWR resources) {
+void StudyLayout::DoLayout(LayoutDevice, weasel::PDWR resources) {
   const float scale = resources->dpiScaleLayout;
   auto px = [&](double dip) { return static_cast<int>(std::lround(dip * scale)); };
   const int count = (std::min)(candidates_count, weasel::MAX_CANDIDATES_COUNT);

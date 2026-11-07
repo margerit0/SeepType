@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "include_trace_byte_identical": true,
+  "native_build_record_byte_identical": true,
+  "native_build_sha256": "08f79dc4e817b9a75d1537a4b05f47a06cc2147a1f2d556704375ab358a46c76",
+  "scope": "Warm object/library cache against the previous product build"
+}

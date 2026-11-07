@@ -5,6 +5,7 @@ change. All inputs must match the source-materials manifest before extraction.
 """
 from pathlib import Path
 import argparse
+import gzip
 import json
 import shutil
 import subprocess
@@ -46,15 +47,14 @@ def main():
                 if (member.name.startswith("boost_1_84_0/boost/") or member.name == "boost_1_84_0/LICENSE_1_0.txt") and (member.isfile() or member.isdir()):
                     archive.extract(member, ROOT / ".cache/src", filter="data")
         (boost / ".study-headers-complete").write_text("Restored from supplied fixed source archive\n", encoding="ascii")
-    rime = ROOT / ".cache/rime-1.13.1"
-    if not (rime / "dist/lib/rime.dll").exists():
-        archive = ROOT / ".cache/downloads/rime-1c23358-Windows-msvc-x64.7z"
-        members = subprocess.check_output(["tar.exe", "-tf", str(archive)], text=True).splitlines()
-        for name in members: package_path(name.rstrip("/"))
-        rime.mkdir(parents=True, exist_ok=True)
-        subprocess.run(["tar.exe", "-xf", str(archive), "-C", str(rime)], check=True)
-    if file_hash(rime / "dist/lib/rime.dll") != "2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b":
-        raise ValueError("Restored Rime DLL digest mismatch")
+    # build.cmd builds Rime and the API headers from the supplied archives.
+    # The product workflow no longer restores or links an official Rime DLL.
+    cedict = json.loads((ROOT / "data/lexicon/source.lock.json").read_bytes())["artifact"]
+    archive = ROOT / ".cache/dictionaries/cc-cedict" / (cedict["archive_sha256"] + ".txt.gz")
+    text = gzip.decompress(archive.read_bytes())
+    from tools.packaging.common import sha256, write_changed
+    if sha256(text) != cedict["text_sha256"]: raise ValueError("Restored CC-CEDICT text digest mismatch")
+    write_changed(archive.with_suffix(""), text)
     print("Local source cache restored. Run tools\\packaging\\build.cmd; no installation or registration was performed.")
 
 

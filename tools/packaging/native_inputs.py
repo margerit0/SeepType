@@ -17,10 +17,12 @@ def snapshot():
         "packaging/product.json", "packaging/StudyIME.def", "tools/packaging/build.cmd",
         "tools/packaging/identity.py", "tools/packaging/prepare_product.py",
         "tools/packaging/native_inputs.py", "tools/packaging/record_build.py",
+        "tools/packaging/runtime_probe.cpp", "tools/packaging/render_probe.cpp",
         "experiments/phase4/build-service.py", "experiments/phase4/prepare-weasel.py",
         "experiments/phase4/prepare-tsf.py", "experiments/phase4/prepare-service-deps.py",
         "experiments/phase4/native-host.manifest", "experiments/phase3/vs-env.cmd",
         "experiments/phase3/dependencies.lock.json",
+        "experiments/phase3/engine_probe.cpp",
     ]:
         project[relative] = file_hash(ROOT / relative)
     generated = file_tree(CACHE / "weasel")
@@ -32,7 +34,7 @@ def snapshot():
     for relative in [
         ".cache/src/boost_1_84_0/boost", ".cache/src/boost_1_84_0/libs/serialization/src",
         ".cache/src/boost_1_84_0/libs/thread/src", ".cache/src/boost_1_84_0/libs/chrono/src",
-        ".cache/rime-1.13.1/dist/include",
+        ".cache/rime-build/dist/include",
     ]:
         files = file_tree(ROOT / relative)
         if not files:

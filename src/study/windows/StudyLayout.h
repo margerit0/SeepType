@@ -1,12 +1,21 @@
 #pragma once
 #include <atlbase.h>
 #include <atlwin.h>
+#ifdef WEASEL_STUDY_PRODUCT
+#include <atltypes.h>
+#else
 #include <wtl/atlapp.h>
 #include <wtl/atlgdi.h>
 #include <wtl/atlmisc.h>
+#endif
 #include <StandardLayout.h>
 
 namespace study {
+#ifdef WEASEL_STUDY_PRODUCT
+using LayoutDevice = HDC;
+#else
+using LayoutDevice = CDCHandle;
+#endif
 // Promoted from phase3/StudyLayout: the same DirectWrite measurements and
 // shared two-line hit rectangles, plus a fixed viewport and right-side tools.
 class StudyLayout : public weasel::StandardLayout {
@@ -16,7 +25,7 @@ class StudyLayout : public weasel::StandardLayout {
       double viewportDip = 0, double scrollDip = 0, bool largeText = false)
       : StandardLayout(style, context, status, resources), learning_(learning),
         viewportDip_(viewportDip), scrollDip_(scrollDip), large_(largeText) {}
-  void DoLayout(CDCHandle dc, weasel::PDWR resources) override;
+  void DoLayout(LayoutDevice dc, weasel::PDWR resources) override;
   int Hit(POINT point) const;
   bool ShouldDisplayStatusIcon() const override { return false; }
   bool IsInlinePreedit() const override { return true; }

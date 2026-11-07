@@ -6,13 +6,15 @@ data/lexicon/** text eol=lf
 # Preserve upstream license bytes, including its final blank line.
 data/lexicon/licenses/*.txt -text whitespace=-blank-at-eof
 tools/lexicon/** text eol=lf
+tools/dictionary/** text eol=lf
+data/chinese/** text eol=lf
 
 tools/packaging/** text eol=lf
 packaging/** text eol=lf
 packaging/patches/*.patch whitespace=-blank-at-eol
 licensing/** text eol=lf
 licensing/third-party/** -text whitespace=-blank-at-eof,-blank-at-eol
-LICENSE -text whitespace=-blank-at-eof
+LICENSE -text whitespace=-blank-at-eof,cr-at-eol
 src/study/windows/Product* text eol=lf
 src/study/windows/UiPreferences.cpp text eol=lf
 experiments/phase4/build-service.py text eol=lf

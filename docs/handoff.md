@@ -1,162 +1,78 @@
-# 新窗口接续上下文
+# StudyIME 接续说明
 
-更新：2026-11-07（Asia/Shanghai）。工作目录：`.`。分支：`codex/technical-spike`。
+项目：`.`，分支 `codex/technical-spike`。本轮继续推进用户已授权的开发、许可来源处理与验证；真实系统安装仍未执行。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。
 
-本文件用于新聊天快速接续。产品化开发基于 `135157a`；本次从中断聊天继承了未提交的实现，继续修正可重复构建与注册恢复。最新提交请以 `git log` 为准。仅运行受改动影响的阶段 6 检查，没有重跑历史测试、启动 Computer Use 或执行系统安装/注册。新窗口先核对当前 Git 状态，再按下述断点继续。
+## 当前版本
 
-## 当前任务与下一步
+**0.5.0-dev.2**，产品名拾词输入法（StudyIME），Windows 11 x64。新代码和原创图标 GPL-3.0-or-later 已获用户确认，不要重新询问。英文学习数据及中文基础词库的适用改编为 CC BY-SA 4.0；Unicode 原始数据保留自己的 Unicode License V3。
 
-项目已命名为 **拾词输入法（StudyIME）**，采用 Weasel + Rime + Lua，目标为 Windows 11 x64、简体中文全拼。v0.5 原生界面、x64 服务和高 DPI 修正保持不变。现已提供可脱离仓库运行的 **0.5.0-dev.1 开发预览包**、对应源码材料和默认只预演的安装/卸载脚本；实际安装/注册及公开发布条件仍未完成。现有 200 条词库人工审核状态保持 0/200。
+原先三个具体许可/来源阻止项已处理：
 
-用户要求继续许可、标识、打包与安装产物开发，并明确实际安装/注册前另行授权。下一断点是：
+- 产品不再编译 WTL：布局使用 ATL 几何类型与 HDC，服务改为 Win32 消息循环，TSF 继续使用原有 CandidateUi。旧 Weasel WTL 源文件只存在于独立的原始 Git bundle 中。
+- Rime 1.13.1 从固定源码构建，仅含 Lua 插件。glog、LevelDB、yaml-cpp、marisa、OpenCC 均有实际编译输入及静态库记录；不使用官方预编译 DLL。
+- 中文基础为固定 CC-CEDICT 简体词形/读音＋wordfreq 中文词频。多音单字按 Unihan kHanyuPinlu 分配读音权重，修正了 xing/省、dai/大、zhao/着等整字词频误用。保留 121,505 条词形/读音记录、120,786 个不同词形以及 124,551 条原始行引用。
 
-1. **先看 [产品打包](packaging.md) 和 [软件许可汇总](software-licenses.md)，复用现有产物继续。** 独立 GUID/管道/目录、图标与版本资源、四个 x64 程序、最小中文数据、固定 ZIP、源码材料和安装/卸载脚本已实现。仍须处理 WTL/MS-PL 与 GPL 相容性、原始 Rime CI 构建输入核验、中文词典底层混合来源三项许可/来源阻止项。官方 DLL 内的 octagram 是 GPLv3，不能统一标为 BSD。
-2. 复用现有 200 条审核稿，收到真实人工审核记录后再导入。不要重选一批词、自动批准词义，或将程序验证当成人工审核。当前正式词库导出被正确阻止。
-3. **Computer Use 按用户要求留后处理。** 后续修复正常审批通路后，再做真实键鼠、设置、动画、多显示器及记事本/浏览器/VS Code 验收。
-4. 实际安装、输入法注册、卸载验收和系统输入设置修改尚未授权。具体产物和默认预演计划已经可审阅；需要执行 `-Apply` 或这些系统变更时再取得明确授权。不要把脚本预演当成实际安装成功。
+实际源码材料见 `licensing/product-sources.lock.json`，共 10 份上游材料。librime 的旧 data/、Luna 混合词典、essay、octagram、predict 和官方 DLL 不在本版产品源码材料中。保留的 Luna 文件只有三个方案/拼写文件及原许可证。原始开发缓存不用删除，也不能作为产品构建的隐式输入。
 
-**用户已明确确认产品名「拾词输入法（StudyIME）」及新代码 GPL-3.0-or-later。不要再问同一选择。** 词库单独 CC BY-SA 4.0，见 [COPYING.md](../COPYING.md)。上游文件保留自己的许可，全部再分发核验仍未完成；源码材料齐备不等于许可问题已经解决。
+## 英文审核不能跳过
 
-## 本轮产品产物与证据
+**原有 200 条、人工通过 0 条、待审核 200 条。** 没有更换这批数据、没有添加测试审核者或合成人工决定。中文基础词库扩大不等于增加英文释义：英文仍只精确查询这 200 条，缺词留空。
 
-- 产物在 `.\.cache\packaging\dist`：`StudyIME-0.5.0-dev.1-windows-x64-preview.zip`、`StudyIME-0.5.0-dev.1-source-materials.zip`、`SHA256SUMS.txt` 和 `package-report.json`。摘要和大小以该目录清单为准，不复制易过期的值到交接文档。
-- 展开包在 `.cache/packaging/stage/StudyIME-0.5.0-dev.1`。`Install.cmd` / `Uninstall.cmd` 默认只输出计划；实际命令要求显式 `-Apply`，且开发预览另需 `-AllowDevelopment`。
-- 产品原生输出：`.cache/packaging/build/bin/StudyIME.TSF.x64.dll`、`StudyIME.Service.exe`、`StudyIME.Settings.exe`、`StudyIME.Registrar.exe`。正式源码在 `src/study/windows/Product*`，产品配置在 `packaging/product.json`，构建仍复用阶段 4 构建器的 `--product` 模式。
-- **12 项打包、12 项预演与校验、8 项独立目录检查通过，其中实际 Rime IPC 子检查为 22/22；新增注册恢复内存模拟 28/28。** 报告在 `experiments/phase6/results`。运行检查使用包含中文和空格的目录及独立用户数据，服务已正常停止；没有注册或改变系统输入配置。
-- 产品源码树从固定提交和正式生成器完整生成，忽略旧 `.cache/study-weasel` 的残留头文件及上游工作区修改；不要重新把这些缓存作为编译输入。MSVC 使用 `/experimental:deterministic` 与 `/pathmap`，项目/生成源码及 Boost/Rime 依赖内容均有摘要。
-- **同机不同目录空缓存复建已通过：** 源码 ZIP 在含中文和空格的目录恢复后，记录输入及四个原生程序全部一致，再生成的完整运行 ZIP 也逐字节相同；约 390 秒，未联网。见 `source-materials.json` 与 `source-package-rebuild.json`。不要把早期 `source-materials-initial.json`、`source-materials-relative-paths.json` 的不一致记录当作当前结果。跨机器和官方 Rime DLL 的原始 CI 环境仍未重现。
-- 后续仅脚本/说明改动时，通过 `runtime-evidence-binding.json` 核对既有原生和数据摘要，不重跑已通过的真实引擎检查。源码包只调整说明时，通过 `source-evidence-binding.json` 核对非文档成员及原生构建输入，避免再次完整编译。
-- 14 份固定源码归档和完整许可在 `licensing` 的锁中记录，缓存已准备；普通构建与打包默认离线，不重复下载。
-- 当前仅 x64 前端、未签名，不支持原地升级；真实注册、应用路由、失败恢复、占用卸载、32 位应用与多用户场景仍未验收。
+审核入口 `docs/lexicon-review.html`，流程为 `tools/lexicon/pipeline.py`。只有实际人工导出的审核 JSON 才导入；修改英文后恢复待审。正式导出与正式打包仍会拒绝待审数据。不要为了结束任务而自动批准、替换批次或把程序检查称为人工审核。
 
-## 接续阅读入口
+## 本轮验证及边界
 
-以下文档中，最新日期条目优先于历史记录；旧“尚未接入 TSF/UI”等描述不能当成当前状态。
+- 产品 Renderer：15 项布局、回调及动画检查；9 张静态预览与已保存的 v0.5 PNG 像素一致，包括 96/120/144/192 DPI。
+- 包与安装预演：15 项打包、12 项默认计划/完整性、8 项独立目录运行检查（含 22 项实际 Rime IPC 子检查）。
+- 当前引擎：200/200 释义、中英文提交；6 组多音单字检查；16 组各 200 次合成输入耗时。其作用范围是当前机器的程序接口，不代表物理键鼠、安装后路由或真实应用兼容性。
+- 中文来源：121,505 条全部有原始词形与拼音对应，共 124,551 条引用；重复导出字节一致。
+- 注册恢复：原有 28 项内存模拟仍有效，生产注册逻辑未因这轮数据与引擎改造而改变，没有无故重跑。
+- 最终离线源码复建已通过：同机独立中文路径中的四个产品文件、Rime DLL、构建记录及完整运行 ZIP 均逐字节一致，核对了 209 份项目文件和 16 份恢复材料。`source-materials.json` 记录复建过程；最终文档调整由 `source-evidence-binding.json` 关联到已验证源码包。运行、绘制、引擎与中文来源报告分别通过 `runtime-evidence-binding.json`、`artifact-evidence-binding.json` 关联到当前产物，不把 dev.1 报告或失败尝试当作 dev.2 成功证明。
 
-| 文件 | 用途 |
-| --- | --- |
-| [progress.md](progress.md) | 权威进度、用户决策与授权、历史检查及未完成项 |
-| [native-ui.md](native-ui.md) | 正式 v0.5、DPI、构建命令及验证边界 |
-| [lexicon.md](lexicon.md) | 200 条审核稿、审核导入与数据导出流程 |
-| [data-sources.md](data-sources.md) | 数据许可、软件许可现状与尚未完成的再分发工作 |
-| [packaging.md](packaging.md) / [software-licenses.md](software-licenses.md) | 当前产品、安装产物、源码材料和许可阻止项 |
-| [computer-use-issue.md](computer-use-issue.md) | 审批服务故障和用户指定的处理顺序 |
-| [阶段 4 README](../experiments/phase4/README.md) / [study-ipc.md](study-ipc.md) | 隔离服务、真实 TSF 及会话动作细节，修改相应路径时再读 |
-| [dependencies.lock.json](../experiments/phase3/dependencies.lock.json) | 固定依赖、下载来源及哈希 |
+原有 50/29 项 UI/TSF、25 项词库流程以及更早 IPC/菜单/桌面实验报告保留。修改相应路径或出现新问题后才跑必要检查，不从头重跑历史套件。
 
-更早的接续聊天：推进 Windows 英语学习输入法。主要结论与证据已落盘，无需从最初调查重新开始。
+原始等权重、字符频率、wordfreq 对比报告记录了选择过程，当前版本应以 `source-built-engine.json` 为准。`source-built-engine-reading-order-initial.json` 中“zhang 必须张排第一”是过严的初始检查：长/张都属常用读音，最终允许二者之一排首位并要求两者都在第一页，没有为这个样例改写频率数据。
 
-## 已确认的设计与实现约束
-
-- v0.5：紧凑横条、英文在上中文在下、圆角、无左侧深色条；工具区、独立完整释义浮层、设置与定宽翻页均须保留。
-- 空格、数字、普通点击中文或英文显示区域都提交中文；只有明确的英文菜单或配置快捷键提交英文。F2/悬停显示完整释义，不直接提交英文。
-- 翻页动画 180ms，学习开关动画 240ms；已有原生实现，不要以静态界面替代。
-- 只对精确中文候选查询本地词表，不猜上下文、不拆句翻译、不用在线翻译补洞。
-- 英文动作目前只允许完整组合候选，不能丢弃剩余拼音；必须使用现有会话/候选版本保护。
-- 当前 Lua 使用单一英文值，显示和提交文本必须相同；审核工具会拒绝不一致记录。
-- 正式源码在 `src/study/windows/`，通过 `experiments/phase4/prepare-tsf.py` 和 `prepare-weasel.py` 生成覆盖层。不要只修改 `.cache` 中的生成文件或上游源码副本。
-
-## 前期功能提交
-
-| 提交 | 内容 |
-| --- | --- |
-| `ebd4e9e` | 200 条有来源词库审核稿、审核工具、确定性数据导出及真实引擎验证 |
-| `48a1efb` | 各 DPI 原生预览、宿主 Per Monitor V2 清单及候选窗 DPI 修正 |
-| `1811663` | v0.5 正式 TSF UI、x64 学习服务与普通选词等修复 |
-
-已解决普通选词没有 commit 响应、学习开关重置页码/选中项、设置保存失败覆盖内存偏好、MSAA 对象/DLL 生命周期等问题。不要再次将这些列为未修复事项；真实物理鼠标复验仍须单独完成。
-
-## “像 720p”问题的结论
-
-用户截图上方是旧的 **600×55 PNG 在 150% 下被放大为约 900×82**，与双线性放大后的像素比对吻合。文字栅格化后再插值放大造成模糊。
-
-现已导出 96/120/144/192 DPI 预览，并给文本宿主、组件检查程序和设置程序嵌入 Per Monitor V2 清单。候选窗口初始化读取自身 DPI；实际 TSF 宿主测到 **144 DPI、900×83 物理像素**。对比页：[previews-v05/index.html](../experiments/phase4/results/previews-v05/index.html)；高清图：[dpi-192.png](../experiments/phase4/results/previews-v05/dpi-192.png)；诊断：[dpi-preview-diagnosis.json](../experiments/phase4/results/dpi-preview-diagnosis.json)。
-
-`CandidateUi.cpp` 的渲染目标 `SetDpi(96,96)` 用于物理像素 1:1 绘制，字体、布局和位图已经缩放，不能再乘一次 DPI。分层窗口继续灰度抗锯齿，不要未经验证强制 ClearType。DPI 不感知应用、多显示器移动和系统缩放切换仍未验收。
-
-## 词库状态与操作
-
-**200 条、10 类各 20 条、37 条重点复核；人工通过 0 条、待审核 200 条。** 保存 202 条来源原文，多出的两条用于“苹果”“妻子”的其他词义/读音。建议词义、原文、修改说明与审核状态分别保留。
-
-来源为固定 CC-CEDICT `2026-11-06T08:10:12Z` 快照，125369 个源词条，许可 CC BY-SA 4.0。完整许可、署名和适用改编说明已保存。
-
-- 审核数据：[data/lexicon/entries.json](../data/lexicon/entries.json)；来源锁：[source.lock.json](../data/lexicon/source.lock.json)；原文：[sources/entries.json](../data/lexicon/sources/entries.json)。
-- 审核入口：[docs/lexicon-review.html](lexicon-review.html)；生成模板：`tools/lexicon/review.html`；流程工具：`tools/lexicon/pipeline.py`。
-- 审核页支持搜索、类别/状态/重点筛选、修改英文与逐条决定；修改英文后重新待审。审核绑定整批和逐条摘要，导入先全量校验再原子替换。
-- 审核导出的 JSON 仅包含本次实际修改/决定，避免重新署名已有审核；测试中的假审核者只存在于临时测试目录，没有写入产品数据。
-- 默认正式导出在存在任何待审核项时失败；全部审核后只导出通过项，拒绝空词库。
-- **200 条现进入明确标识的产品开发预览；仍是待人工审核数据。默认阶段 4 交互宿主继续使用 21 条 test-only 词对。**
-
-以下是操作入口，不要求接续时全部重跑；只有相关修改或新审核记录才运行必要检查。
+## 构建与交付
 
 ```powershell
-# 在 . 下执行
-python tools/lexicon/pipeline.py validate
-python tools/lexicon/pipeline.py review --output docs/lexicon-review.html
-python tools/lexicon/pipeline.py import-review "<真实人工审核 JSON 路径>"
-python tools/lexicon/pipeline.py build --mode preview --output .cache/lexicon-preview
-# 当前会正确拒绝 200 条待审核数据：
-python tools/lexicon/pipeline.py build --output .cache/lexicon-release
-
-# 修改词库流程或运行时后，按影响范围选择：
-python tools/lexicon/verify.py
-.\experiments\phase5\build-probe.cmd
-python experiments/phase5/verify-lexicon-runtime.py
+.\tools\packaging\build.cmd
+python tools/packaging/package.py --mode preview --with-sources --stage .cache/packaging/stage/StudyIME-0.5.0-dev.2
+python tools/packaging/verify.py
+python tools/packaging/verify_engine.py
+python tools/packaging/verify_renderer.py
+python tools/dictionary/audit.py
+python tools/packaging/verify_sources.py --build
 ```
 
-审核数据导入成功后重新生成审核页。审核页的 200 条数据和 JavaScript 语法已检查，浏览器实际操作未验收。
+这些是维护入口，不要求接续时全部重跑。普通构建默认离线：VS2019 19.29、ATL、SDK 10.0.19041.0 已安装；Ninja 复用 VS，CMake 3.31.6 来自固定便携归档。不要重复安装工具链。
 
-开发数据包：`.\.cache\lexicon-preview\study-daily-200-preview.zip`，82,096 字节；SHA256：`ca9a8a5b998fdb18cfb79621e81d3f104b897c9bc53a955714639acd578e4d20`。相同输入与工具版本两次导出字节一致。它是词库预览包，不是输入法安装包。
+- 四个产品文件：`.cache/packaging/build/bin`。
+- 产品生成的 Weasel 源码：`.cache/packaging/weasel`。生成器从固定 Git 提交取原文件，忽略旧上游工作区修改与 `.cache/study-weasel/include/WeaselUI.h` 的残留字段。
+- Rime 源码构建：`.cache/rime-build`；记录 `rime-build.json`、`source-tree.json`、`include-trace.json`、`compile-commands.json`。
+- 发布材料：`.cache/packaging/dist/StudyIME-0.5.0-dev.2-windows-x64-preview.zip` 及 `StudyIME-0.5.0-dev.2-source-materials.zip`。摘要和大小以该目录中的清单为准。
+- `Install.cmd` / `Uninstall.cmd` 默认只输出计划。实际操作需要显式 `-Apply -AllowDevelopment`。
 
-完整源文本 SHA256：`ff107587bc1d593dd5d7a49c179d4aa749cb89b3a1423876e0cd2dca197b672b`；压缩包 SHA256：`7708295976336e3c077b05df0f3beb598caccf1dddf01c9b04c90828d8810cd9`。完整文件在 `.cache/dictionaries/cc-cedict/<压缩包哈希>.txt` 和 `.txt.gz`。`fetch-source` 优先复用缓存，“最新下载”若与固定哈希不同就拒绝替换，不自动更新锁。
+源码包会恢复固定的代码、Boost、CMake、CC-CEDICT、wordfreq 和 Unihan。`build.cmd` 先编译专用 Rime，再构建产品；不依赖旧官方 Rime 缓存。为 CL/Ninja 的中文诊断统一 UTF-8，复建验证通过独立隐藏控制台执行，避免改变用户终端。
 
-`.gitattributes` 已保留旧补丁规则并固定数据/工具 LF；官方完整许可证使用 `-text whitespace=-blank-at-eof` 保留原始字节与末尾空行。不要裁剪许可证来消除格式提示，否则会破坏来源摘要。
+首个 dev.2 复建目录 `fresh 中文 b82394308668` 在编译前因无控制台输出使用 GBK 而失败，不能作为成功证据。最终使用 `fresh 中文 a54add1526b2`：从空缓存离线构建后，五个二进制均一致；随后在同一独立目录修正 glog 测试路径宏和 RC 头文件记录，再构建并核对全部最终材料，未从原目录复制二进制。这是有记录的续建验证，同机工具链范围内通过，不声称最终源码包另做过一次全新空目录复建。不要用 cmd/PowerShell UI 自动化绕过 Computer Use 审批。
 
-## 已保存的验证证据
+## 保持的 v0.5 约束
 
-本次交接仅核对文件与现有记录，没有重跑以下测试。
+- 紧凑圆角双行候选，英文在上、中文在下；工具区、独立完整释义窗、设置、固定宽度翻页均保留。
+- 空格、数字、普通点击中文行或英文行都提交中文；只有明确的英文菜单/配置快捷键提交英文。F2/悬停只看完整释义。
+- 翻页 180ms，学习开关 240ms；不改为静态演示。学习开关保持候选与页码。
+- 精确中文候选查询本地词表，不拆句、不猜上下文、不用在线翻译。
+- 英文动作必须保留会话及候选版本保护；部分组合不能丢弃后续拼音。
+- CandidateUi 的 SetDpi(96,96) 是物理像素 1:1 绘制，不要再次乘 DPI；层叠窗继续灰度抗锯齿。
+- 产品探针必须使用独立的 STUDYIME_DEV_SESSION 和 STUDYIME_DEV_DATA_ROOT，不借用正常用户数据。
 
-| 报告 | 已完成的范围 |
-| --- | --- |
-| [native-v05.json](../experiments/phase4/results/native-v05.json) | 50/50 原生组件检查 |
-| [native-v05-dpi-tsf-x64.json](../experiments/phase4/results/native-v05-dpi-tsf-x64.json) | 高 DPI 修正后 29/29 真实 TSF/UI 集成检查，x64 服务 |
-| [lexicon-validation.json](../experiments/phase5/results/lexicon-validation.json) | 200 条来源、摘要、类别及审核状态核对 |
-| [lexicon-pipeline.json](../experiments/phase5/results/lexicon-pipeline.json) | 25/25 审核导入与导出流程检查 |
-| [lexicon-runtime-x64.json](../experiments/phase5/results/lexicon-runtime-x64.json) | 200/200 条真实 x64 Rime/Lua 候选释义、完整英文提交、普通中文提交；都在第一页，13 条非首候选 |
-| [lexicon-package.json](../experiments/phase5/results/lexicon-package.json) | 预览包、逐文件摘要、确定性重建与正式导出阻止记录 |
+## 尚未完成及授权
 
-之前的 x86/x64 服务各 27 项 TSF、各 7 项选词 IPC、x64 服务 16 项编辑会话，以及更早引擎/菜单/桌面/调度报告均保留。只有新改动影响对应路径或出现新问题时，才补充必要验证，不无故重跑。
+真实人工审核、安装/注册/卸载及恢复验收、记事本/浏览器/VS Code 兼容性、系统缩放切换和多显示器仍待完成。当前为未签名 x64 开发预览，不支持原地升级，32 位前端尚未提供。
 
-程序内部 Rime/TSF/MSAA 调用和 DirectWrite 绘制缓冲区预览不能替代真实键鼠、已安装 TIP 自动路由或外部应用兼容性验收。小词表性能也不能外推到大词库。
+本轮至今没有获得实际安装/注册的授权；之前的“继续”用于推进开发。后续如果用户对明确的安装问句同意，应直接在其已批准范围内推进，不重复询问。不要自行改默认输入法。
 
-## 构建环境与当前产物
+Computer Use 按用户 2026-11-06 的要求暂缓：此前 sky.list_apps 在执行前遭审批服务 404（所选 gpt-6-luna 模型不受该服务支持），见 `docs/computer-use-issue.md`。本轮没有重试或修改配置，也没有声称恢复。用户允许操作旧 ui_probe.exe 的授权不等于系统输入法安装授权。
 
-Windows / PowerShell。VS2019、ATL 和固定 Weasel/Rime/Boost 缓存已准备，不要重复安装或下载。固定 Weasel 0.17.4 源码提交：`9cc96e20dc71b80876b12f689bb5863c76c2a7ed`。当前 x64 Rime 为 1.13.1，使用已有官方缓存；版本及哈希见原生整合文档和依赖锁。
-
-```powershell
-# 仅在修改后需要重建或用户需要交互宿主时运行
-.\experiments\phase4\build-native-x64.cmd
-python experiments/phase4/start-text-host.py --service-x64
-python experiments/phase4/start-settings.py
-```
-
-已核对存在的产物路径：
-
-- `.\experiments\phase4\build\tsf-x64\study_weasel_x64.dll`
-- `.\experiments\phase4\build\study_service_x64.exe`
-- `.\experiments\phase4\build\tsf_text_host_x64.exe`
-- `.\experiments\phase4\build\study_settings_x64.exe`
-
-上面列出的是阶段 4 隔离宿主，仍依赖仓库与缓存，共用 `experiments/phase4/runtime/interactive-settings.ini`。新产品包使用独立完整目录，不依赖仓库；两者都尚未被安装/注册为系统输入法。新窗口不要假设旧交互进程仍在运行。
-
-## Computer Use 记录与协作约束
-
-此前 `node_repl` 中的 `@oai/sky` 初始化成功，但 `sky.list_apps()` 在执行前被自动审批服务阻断：`404：当前 API 不支持所选模型 gpt-6-luna`。当时请求走 `https://anyrouter.top/v1/responses`，属于审批服务模型配置问题，不是动作被判定不安全。
-
-用户后来明确要求“把那个 computer use 的问题记录，先完成后续开发，之后再修复”，此要求优先于更早“先修复再自动验收”的答复。之后没有重试或修改审批配置，不能声称已恢复。恢复时先读取届时适用的 Computer Use 技能与工具说明，通过正常审批通路，不使用 PowerShell 或其他 UI 自动化绕过审批。
-
-用户已允许必要时 commit，并已批准 v0.5 设计、开源路线和此前 ATL 补装。原聊天对 `ui_probe.exe` 的操作许可已给出，不必重复询问同一授权；它不等同于系统安装/输入法注册授权。用户希望直接推进已授权工作，不反复确认、不停在计划、不重复调查和已完成测试。
-
-本次环境未发现适用的 `AGENTS.md`。用户将自行开新窗口，不要主动创建新聊天。继续复用当前合适的工作区，不要仅为接续聊天而新建工作树。本轮未使用子 agent，当前指令也未授权主动委派；后续聊天的实际权限、工具和协作规则以该会话提供的指令为准。
-
-本次交接文件提交与功能基线分开记录；接续时使用 `git status --short --branch` 和 `git log -5 --oneline` 获取实时状态，不把本文件快照当作永久状态。
+用户已允许必要时 commit；继续复用当前工作区，不主动开新聊天/工作树。不主动委派子 agent；当前没有适用的 AGENTS.md。用户后续明确指令优先于此交接快照。

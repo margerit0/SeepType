@@ -1,0 +1,147 @@
+{
+  "checks": [
+    {
+      "name": "isolated product preferences saved",
+      "passed": true
+    },
+    {
+      "name": "DPI 96 geometry and both-line Chinese selection",
+      "passed": true
+    },
+    {
+      "name": "DPI 96 invalidated action rejected",
+      "passed": true
+    },
+    {
+      "name": "DPI 120 geometry and both-line Chinese selection",
+      "passed": true
+    },
+    {
+      "name": "DPI 120 invalidated action rejected",
+      "passed": true
+    },
+    {
+      "name": "DPI 144 geometry and both-line Chinese selection",
+      "passed": true
+    },
+    {
+      "name": "DPI 144 invalidated action rejected",
+      "passed": true
+    },
+    {
+      "name": "DPI 192 geometry and both-line Chinese selection",
+      "passed": true
+    },
+    {
+      "name": "DPI 192 invalidated action rejected",
+      "passed": true
+    },
+    {
+      "name": "last page retains candidate viewport and toolbar",
+      "passed": true
+    },
+    {
+      "name": "learning off retains width and Chinese row",
+      "passed": true
+    },
+    {
+      "name": "narrow viewport keeps full-sized candidate cells",
+      "passed": true
+    },
+    {
+      "name": "large font preserves toolbar size",
+      "passed": true
+    },
+    {
+      "name": "paging duration remains 180 milliseconds",
+      "passed": true
+    },
+    {
+      "name": "learning duration remains 240 milliseconds",
+      "passed": true
+    }
+  ],
+  "comparisons": [
+    {
+      "different_channels": 0,
+      "golden_sha256": "7142ac5667116ce79536920d4d2359c2ae373ea6a1f344d74f4236096cfa38eb",
+      "height": 55,
+      "identical_pixels": true,
+      "name": "light",
+      "width": 600
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "7142ac5667116ce79536920d4d2359c2ae373ea6a1f344d74f4236096cfa38eb",
+      "height": 55,
+      "identical_pixels": true,
+      "name": "dpi-96",
+      "width": 600
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "b415a541565d4abee4e868b9d465aa5665d3f67498c243972ea947c500d4c710",
+      "height": 69,
+      "identical_pixels": true,
+      "name": "dpi-120",
+      "width": 752
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "d0d4f19242d3301b3c145034bcaa4a9aa3037e94e7105b1af9ddb9be58436223",
+      "height": 83,
+      "identical_pixels": true,
+      "name": "dpi-144",
+      "width": 900
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "e9a3e8afe74b62126245093822418c67157dc545d81625f805574b48486423bc",
+      "height": 110,
+      "identical_pixels": true,
+      "name": "dpi-192",
+      "width": 1200
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "dc2a75c06b901593ca80673f74f7403e17e91788f22a5cb1f368e7ee374f71e2",
+      "height": 38,
+      "identical_pixels": true,
+      "name": "closed",
+      "width": 600
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "c3fb819159e2131d907be29ba5b090ee5bb937a3bacde05ef9eb7d7e00b5ecdf",
+      "height": 55,
+      "identical_pixels": true,
+      "name": "narrow",
+      "width": 308
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "82a624450fd2488a769f212d5cde06a1e56b8e7defa15969d5b9e609e853877b",
+      "height": 55,
+      "identical_pixels": true,
+      "name": "dark",
+      "width": 600
+    },
+    {
+      "different_channels": 0,
+      "golden_sha256": "d06448040859bcb4a8caa00bfc1ed1ffc5f7765385ea5b970c648f78f1d26f89",
+      "height": 59,
+      "identical_pixels": true,
+      "name": "large",
+      "width": 600
+    }
+  ],
+  "exit_code": 0,
+  "include_trace_sha256": "389f56297482a32c53b0f625fd7d69abb9f40b8ef6a80d40d36d3d3b9ab70ce9",
+  "native_build_sha256": "19dc0e35732e244590d5c5c3ed933499d4607eb6793d7c0945fb68332a27a448",
+  "passed": true,
+  "probe_sha256": "97e37a761939025da8fa8a64ebc6ce6eda1f7fe9ad9cc0fa37d30fc1b4898ff4",
+  "recorded_at": "2026-11-06T20:06:21.701249+00:00",
+  "scope": "Product objects, offscreen rendering and callback dispatch; no desktop UI or installation",
+  "work_directory": ".cache/packaging/verification/renderer-ca3a2926974b40e58d6cf90da8ffa136",
+  "wtl_compiled": false
+}

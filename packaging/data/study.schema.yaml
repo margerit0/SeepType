@@ -25,10 +25,10 @@ engine:
     - punct_translator
     - script_translator
   filters:
-    - simplifier
     - uniquifier
     - lua_filter@study_filter
 translator:
+  dictionary: cedict_study
   prism: study
   enable_user_dict: false
 recognizer:

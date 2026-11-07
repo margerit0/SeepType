@@ -1,5 +1,5 @@
 {
-  "current_source_archive_sha256": "d741f14cf5f2bd9ea53bbf95e369d5879a50a2368de073ded01dcfb913bdeb05",
+  "current_source_archive_sha256": "926e8ce52f14b50f4e94471806502f0fcb3fef7f547b7e24ef6e3230a221bb25",
   "documentation_changes": [
     "project/README.md",
     "project/docs/packaging.md"
@@ -7,6 +7,7 @@
   "scope": "Only documentation differs from the already restored and compiled source archive; every other member and native build input is unchanged.",
   "second_export_identical": true,
   "source_build_rerun": false,
-  "tested_source_archive_sha256": "5a6e4585966a92592152f148c891c9af7d2349c4016038b6ef955f5107fbf56b",
-  "unchanged_native_build_inputs": 51
+  "tested_source_archive_sha256": "34957f676bcb4865a731669951cda89345df22c58111ca7cbc8317a7d545d421",
+  "unchanged_native_build_inputs": 55,
+  "unchanged_rime_build_inputs": 9
 }

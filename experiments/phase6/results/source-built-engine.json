@@ -1,0 +1,2508 @@
+{
+  "benchmarks": [
+    {
+      "p50": 443.5,
+      "p95": 623.7,
+      "p99": 706.5,
+      "query": "shi",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 195.7,
+      "p95": 238.5,
+      "p99": 347.9,
+      "query": "de",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 341.6,
+      "p95": 461,
+      "p99": 542.1,
+      "query": "sh",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 466,
+      "p95": 620.4,
+      "p99": 787.2,
+      "query": "nihao",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 1276.8,
+      "p95": 1494.7,
+      "p99": 1651.6,
+      "query": "zhongguo",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 722,
+      "p95": 1072.3,
+      "p99": 1382.8,
+      "query": "gongzuo",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 835.4,
+      "p95": 1070.1,
+      "p99": 1158.4,
+      "query": "mingtian",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 454.1,
+      "p95": 670,
+      "p99": 915.7,
+      "query": "xuexi",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 710.5,
+      "p95": 942.7,
+      "p99": 1056.6,
+      "query": "diannao",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 684.5,
+      "p95": 934.6,
+      "p99": 1046.2,
+      "query": "pingguo",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 620.5,
+      "p95": 908,
+      "p99": 1054.5,
+      "query": "woaini",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 3555.9,
+      "p95": 4006,
+      "p99": 4211.6,
+      "query": "jintiantianqihenhao",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 635.5,
+      "p95": 843.1,
+      "p99": 1066.5,
+      "query": "zhong",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 918.3,
+      "p95": 1171.2,
+      "p99": 1329.3,
+      "query": "shurufa",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 447.7,
+      "p95": 633.3,
+      "p99": 716.5,
+      "query": "zhe",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    },
+    {
+      "p50": 473.3,
+      "p95": 691.6,
+      "p99": 936.5,
+      "query": "women",
+      "samples": 200,
+      "unit": "us per synthetic composition + first page"
+    }
+  ],
+  "checks": [
+    {
+      "candidate_index": 0,
+      "chinese": "你好",
+      "english_commit_matches": true,
+      "id": "daily-001",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "nihao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "谢谢",
+      "english_commit_matches": true,
+      "id": "daily-002",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiexie"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "再见",
+      "english_commit_matches": true,
+      "id": "daily-003",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zaijian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "对不起",
+      "english_commit_matches": true,
+      "id": "daily-004",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "duibuqi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "不客气",
+      "english_commit_matches": true,
+      "id": "daily-005",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "bukeqi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "没关系",
+      "english_commit_matches": true,
+      "id": "daily-006",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "meiguanxi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "请问",
+      "english_commit_matches": true,
+      "id": "daily-007",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qingwen"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "欢迎",
+      "english_commit_matches": true,
+      "id": "daily-008",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "huanying"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "早安",
+      "english_commit_matches": true,
+      "id": "daily-009",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zaoan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "晚安",
+      "english_commit_matches": true,
+      "id": "daily-010",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wanan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "祝贺",
+      "english_commit_matches": true,
+      "id": "daily-011",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhuhe"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "帮助",
+      "english_commit_matches": true,
+      "id": "daily-012",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "bangzhu"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "同意",
+      "english_commit_matches": true,
+      "id": "daily-013",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "tongyi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "拒绝",
+      "english_commit_matches": true,
+      "id": "daily-014",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jujue"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "邀请",
+      "english_commit_matches": true,
+      "id": "daily-015",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yaoqing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "回答",
+      "english_commit_matches": true,
+      "id": "daily-016",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "huida"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "问题",
+      "english_commit_matches": true,
+      "id": "daily-017",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wenti"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "建议",
+      "english_commit_matches": true,
+      "id": "daily-018",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jianyi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "介绍",
+      "english_commit_matches": true,
+      "id": "daily-019",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jieshao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "解释",
+      "english_commit_matches": true,
+      "id": "daily-020",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jieshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "今天",
+      "english_commit_matches": true,
+      "id": "daily-021",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jintian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "明天",
+      "english_commit_matches": true,
+      "id": "daily-022",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mingtian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "昨天",
+      "english_commit_matches": true,
+      "id": "daily-023",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zuotian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "现在",
+      "english_commit_matches": true,
+      "id": "daily-024",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xianzai"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "早晨",
+      "english_commit_matches": true,
+      "id": "daily-025",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zaochen"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "上午",
+      "english_commit_matches": true,
+      "id": "daily-026",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shangwu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "下午",
+      "english_commit_matches": true,
+      "id": "daily-027",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiawu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "晚上",
+      "english_commit_matches": true,
+      "id": "daily-028",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wanshang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "中午",
+      "english_commit_matches": true,
+      "id": "daily-029",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhongwu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "时间",
+      "english_commit_matches": true,
+      "id": "daily-030",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shijian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "小时",
+      "english_commit_matches": true,
+      "id": "daily-031",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiaoshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "分钟",
+      "english_commit_matches": true,
+      "id": "daily-032",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "fenzhong"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "星期",
+      "english_commit_matches": true,
+      "id": "daily-033",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xingqi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "周末",
+      "english_commit_matches": true,
+      "id": "daily-034",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhoumo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "月份",
+      "english_commit_matches": true,
+      "id": "daily-035",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yuefen"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "今年",
+      "english_commit_matches": true,
+      "id": "daily-036",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jinnian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "明年",
+      "english_commit_matches": true,
+      "id": "daily-037",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mingnian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "去年",
+      "english_commit_matches": true,
+      "id": "daily-038",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qunian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "生日",
+      "english_commit_matches": true,
+      "id": "daily-039",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shengri"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "假期",
+      "english_commit_matches": true,
+      "id": "daily-040",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiaqi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "爸爸",
+      "english_commit_matches": true,
+      "id": "daily-041",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "baba"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "妈妈",
+      "english_commit_matches": true,
+      "id": "daily-042",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mama"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "父亲",
+      "english_commit_matches": true,
+      "id": "daily-043",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "fuqin"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "母亲",
+      "english_commit_matches": true,
+      "id": "daily-044",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "muqin"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "哥哥",
+      "english_commit_matches": true,
+      "id": "daily-045",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "gege"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "姐姐",
+      "english_commit_matches": true,
+      "id": "daily-046",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiejie"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "弟弟",
+      "english_commit_matches": true,
+      "id": "daily-047",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "didi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "妹妹",
+      "english_commit_matches": true,
+      "id": "daily-048",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "meimei"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "儿子",
+      "english_commit_matches": true,
+      "id": "daily-049",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "erzi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "女儿",
+      "english_commit_matches": true,
+      "id": "daily-050",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "nver"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "丈夫",
+      "english_commit_matches": true,
+      "id": "daily-051",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhangfu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "妻子",
+      "english_commit_matches": true,
+      "id": "daily-052",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qizi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "家庭",
+      "english_commit_matches": true,
+      "id": "daily-053",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiating"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "家人",
+      "english_commit_matches": true,
+      "id": "daily-054",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiaren"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "朋友",
+      "english_commit_matches": true,
+      "id": "daily-055",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "pengyou"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "同事",
+      "english_commit_matches": true,
+      "id": "daily-056",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "tongshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "同学",
+      "english_commit_matches": true,
+      "id": "daily-057",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "tongxue"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "邻居",
+      "english_commit_matches": true,
+      "id": "daily-058",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "linju"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "孩子",
+      "english_commit_matches": true,
+      "id": "daily-059",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "haizi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "客人",
+      "english_commit_matches": true,
+      "id": "daily-060",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "keren"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "苹果",
+      "english_commit_matches": true,
+      "id": "daily-061",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "pingguo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "香蕉",
+      "english_commit_matches": true,
+      "id": "daily-062",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiangjiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "橙子",
+      "english_commit_matches": true,
+      "id": "daily-063",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chengzi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "葡萄",
+      "english_commit_matches": true,
+      "id": "daily-064",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "putao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "西瓜",
+      "english_commit_matches": true,
+      "id": "daily-065",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xigua"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "草莓",
+      "english_commit_matches": true,
+      "id": "daily-066",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "caomei"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "水果",
+      "english_commit_matches": true,
+      "id": "daily-067",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shuiguo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "蔬菜",
+      "english_commit_matches": true,
+      "id": "daily-068",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shucai"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "米饭",
+      "english_commit_matches": true,
+      "id": "daily-069",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mifan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "面条",
+      "english_commit_matches": true,
+      "id": "daily-070",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "miantiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "面包",
+      "english_commit_matches": true,
+      "id": "daily-071",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mianbao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "鸡蛋",
+      "english_commit_matches": true,
+      "id": "daily-072",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jidan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "牛奶",
+      "english_commit_matches": true,
+      "id": "daily-073",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "niunai"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "咖啡",
+      "english_commit_matches": true,
+      "id": "daily-074",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kafei"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "茶叶",
+      "english_commit_matches": true,
+      "id": "daily-075",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chaye"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "饮料",
+      "english_commit_matches": true,
+      "id": "daily-076",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yinliao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "早餐",
+      "english_commit_matches": true,
+      "id": "daily-077",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zaocan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "午餐",
+      "english_commit_matches": true,
+      "id": "daily-078",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wucan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "晚餐",
+      "english_commit_matches": true,
+      "id": "daily-079",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wancan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "餐厅",
+      "english_commit_matches": true,
+      "id": "daily-080",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "canting"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "房间",
+      "english_commit_matches": true,
+      "id": "daily-081",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "fangjian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "厨房",
+      "english_commit_matches": true,
+      "id": "daily-082",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chufang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "卧室",
+      "english_commit_matches": true,
+      "id": "daily-083",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "woshi"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "浴室",
+      "english_commit_matches": true,
+      "id": "daily-084",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yushi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "客厅",
+      "english_commit_matches": true,
+      "id": "daily-085",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "keting"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "桌子",
+      "english_commit_matches": true,
+      "id": "daily-086",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhuozi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "椅子",
+      "english_commit_matches": true,
+      "id": "daily-087",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yizi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "沙发",
+      "english_commit_matches": true,
+      "id": "daily-088",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shafa"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "窗户",
+      "english_commit_matches": true,
+      "id": "daily-089",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chuanghu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "电视",
+      "english_commit_matches": true,
+      "id": "daily-090",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "dianshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "冰箱",
+      "english_commit_matches": true,
+      "id": "daily-091",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "bingxiang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "空调",
+      "english_commit_matches": true,
+      "id": "daily-092",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kongtiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "洗衣机",
+      "english_commit_matches": true,
+      "id": "daily-093",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiyiji"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "衣服",
+      "english_commit_matches": true,
+      "id": "daily-094",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yifu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "鞋子",
+      "english_commit_matches": true,
+      "id": "daily-095",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiezi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "袜子",
+      "english_commit_matches": true,
+      "id": "daily-096",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wazi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "帽子",
+      "english_commit_matches": true,
+      "id": "daily-097",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "maozi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "雨伞",
+      "english_commit_matches": true,
+      "id": "daily-098",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yusan"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "钥匙",
+      "english_commit_matches": true,
+      "id": "daily-099",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yaoshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "钱包",
+      "english_commit_matches": true,
+      "id": "daily-100",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qianbao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "学校",
+      "english_commit_matches": true,
+      "id": "daily-101",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xuexiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "医院",
+      "english_commit_matches": true,
+      "id": "daily-102",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yiyuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "银行",
+      "english_commit_matches": true,
+      "id": "daily-103",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yinhang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "超市",
+      "english_commit_matches": true,
+      "id": "daily-104",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chaoshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "商店",
+      "english_commit_matches": true,
+      "id": "daily-105",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shangdian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "图书馆",
+      "english_commit_matches": true,
+      "id": "daily-106",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "tushuguan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "公园",
+      "english_commit_matches": true,
+      "id": "daily-107",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "gongyuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "机场",
+      "english_commit_matches": true,
+      "id": "daily-108",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jichang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "车站",
+      "english_commit_matches": true,
+      "id": "daily-109",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chezhan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "地铁",
+      "english_commit_matches": true,
+      "id": "daily-110",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "ditie"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "火车",
+      "english_commit_matches": true,
+      "id": "daily-111",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "huoche"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "飞机",
+      "english_commit_matches": true,
+      "id": "daily-112",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "feiji"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "出租车",
+      "english_commit_matches": true,
+      "id": "daily-113",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chuzuche"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "自行车",
+      "english_commit_matches": true,
+      "id": "daily-114",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zixingche"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "地图",
+      "english_commit_matches": true,
+      "id": "daily-115",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "ditu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "地址",
+      "english_commit_matches": true,
+      "id": "daily-116",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "dizhi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "城市",
+      "english_commit_matches": true,
+      "id": "daily-117",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chengshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "街道",
+      "english_commit_matches": true,
+      "id": "daily-118",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiedao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "路口",
+      "english_commit_matches": true,
+      "id": "daily-119",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "lukou"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "旅行",
+      "english_commit_matches": true,
+      "id": "daily-120",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "lvxing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "工作",
+      "english_commit_matches": true,
+      "id": "daily-121",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "gongzuo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "学习",
+      "english_commit_matches": true,
+      "id": "daily-122",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xuexi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "会议",
+      "english_commit_matches": true,
+      "id": "daily-123",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "huiyi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "公司",
+      "english_commit_matches": true,
+      "id": "daily-124",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "gongsi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "办公室",
+      "english_commit_matches": true,
+      "id": "daily-125",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "bangongshi"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "经理",
+      "english_commit_matches": true,
+      "id": "daily-126",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jingli"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "员工",
+      "english_commit_matches": true,
+      "id": "daily-127",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yuangong"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "项目",
+      "english_commit_matches": true,
+      "id": "daily-128",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiangmu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "计划",
+      "english_commit_matches": true,
+      "id": "daily-129",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jihua"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "任务",
+      "english_commit_matches": true,
+      "id": "daily-130",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "renwu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "文件",
+      "english_commit_matches": true,
+      "id": "daily-131",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wenjian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "合同",
+      "english_commit_matches": true,
+      "id": "daily-132",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "hetong"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "客户",
+      "english_commit_matches": true,
+      "id": "daily-133",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kehu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "报告",
+      "english_commit_matches": true,
+      "id": "daily-134",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "baogao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "课程",
+      "english_commit_matches": true,
+      "id": "daily-135",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kecheng"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "考试",
+      "english_commit_matches": true,
+      "id": "daily-136",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kaoshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "作业",
+      "english_commit_matches": true,
+      "id": "daily-137",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zuoye"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "老师",
+      "english_commit_matches": true,
+      "id": "daily-138",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "laoshi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "学生",
+      "english_commit_matches": true,
+      "id": "daily-139",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xuesheng"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "练习",
+      "english_commit_matches": true,
+      "id": "daily-140",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "lianxi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "电脑",
+      "english_commit_matches": true,
+      "id": "daily-141",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "diannao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "手机",
+      "english_commit_matches": true,
+      "id": "daily-142",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shouji"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "键盘",
+      "english_commit_matches": true,
+      "id": "daily-143",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jianpan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "鼠标",
+      "english_commit_matches": true,
+      "id": "daily-144",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shubiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "屏幕",
+      "english_commit_matches": true,
+      "id": "daily-145",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "pingmu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "网络",
+      "english_commit_matches": true,
+      "id": "daily-146",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wangluo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "密码",
+      "english_commit_matches": true,
+      "id": "daily-147",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "mima"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "邮件",
+      "english_commit_matches": true,
+      "id": "daily-148",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "youjian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "照片",
+      "english_commit_matches": true,
+      "id": "daily-149",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zhaopian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "视频",
+      "english_commit_matches": true,
+      "id": "daily-150",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shipin"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "网站",
+      "english_commit_matches": true,
+      "id": "daily-151",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "wangzhan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "软件",
+      "english_commit_matches": true,
+      "id": "daily-152",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "ruanjian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "下载",
+      "english_commit_matches": true,
+      "id": "daily-153",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiazai"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "上传",
+      "english_commit_matches": true,
+      "id": "daily-154",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shangchuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "保存",
+      "english_commit_matches": true,
+      "id": "daily-155",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "baocun"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "删除",
+      "english_commit_matches": true,
+      "id": "daily-156",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shanchu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "价格",
+      "english_commit_matches": true,
+      "id": "daily-157",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiage"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "付款",
+      "english_commit_matches": true,
+      "id": "daily-158",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "fukuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "订单",
+      "english_commit_matches": true,
+      "id": "daily-159",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "dingdan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "发票",
+      "english_commit_matches": true,
+      "id": "daily-160",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "fapiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "身体",
+      "english_commit_matches": true,
+      "id": "daily-161",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shenti"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "眼睛",
+      "english_commit_matches": true,
+      "id": "daily-162",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yanjing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "耳朵",
+      "english_commit_matches": true,
+      "id": "daily-163",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "erduo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "鼻子",
+      "english_commit_matches": true,
+      "id": "daily-164",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "bizi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "牙齿",
+      "english_commit_matches": true,
+      "id": "daily-165",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yachi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "头发",
+      "english_commit_matches": true,
+      "id": "daily-166",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "toufa"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "手指",
+      "english_commit_matches": true,
+      "id": "daily-167",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shouzhi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "健康",
+      "english_commit_matches": true,
+      "id": "daily-168",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jiankang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "感冒",
+      "english_commit_matches": true,
+      "id": "daily-169",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "ganmao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "医生",
+      "english_commit_matches": true,
+      "id": "daily-170",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yisheng"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "天气",
+      "english_commit_matches": true,
+      "id": "daily-171",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "tianqi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "太阳",
+      "english_commit_matches": true,
+      "id": "daily-172",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "taiyang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "月亮",
+      "english_commit_matches": true,
+      "id": "daily-173",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yueliang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "星星",
+      "english_commit_matches": true,
+      "id": "daily-174",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xingxing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "下雨",
+      "english_commit_matches": true,
+      "id": "daily-175",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiayu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "下雪",
+      "english_commit_matches": true,
+      "id": "daily-176",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiaxue"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "春天",
+      "english_commit_matches": true,
+      "id": "daily-177",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chuntian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "夏天",
+      "english_commit_matches": true,
+      "id": "daily-178",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiatian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "秋天",
+      "english_commit_matches": true,
+      "id": "daily-179",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qiutian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "冬天",
+      "english_commit_matches": true,
+      "id": "daily-180",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "dongtian"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "吃饭",
+      "english_commit_matches": true,
+      "id": "daily-181",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "chifan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "做饭",
+      "english_commit_matches": true,
+      "id": "daily-182",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zuofan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "睡觉",
+      "english_commit_matches": true,
+      "id": "daily-183",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shuijiao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "起床",
+      "english_commit_matches": true,
+      "id": "daily-184",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "qichuang"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "洗澡",
+      "english_commit_matches": true,
+      "id": "daily-185",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xizao"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "走路",
+      "english_commit_matches": true,
+      "id": "daily-186",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "zoulu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "跑步",
+      "english_commit_matches": true,
+      "id": "daily-187",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "paobu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "游泳",
+      "english_commit_matches": true,
+      "id": "daily-188",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "youyong"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "阅读",
+      "english_commit_matches": true,
+      "id": "daily-189",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "yuedu"
+    },
+    {
+      "candidate_index": 1,
+      "chinese": "写字",
+      "english_commit_matches": true,
+      "id": "daily-190",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xiezi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "开始",
+      "english_commit_matches": true,
+      "id": "daily-191",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "kaishi"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "结束",
+      "english_commit_matches": true,
+      "id": "daily-192",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "jieshu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "喜欢",
+      "english_commit_matches": true,
+      "id": "daily-193",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "xihuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "高兴",
+      "english_commit_matches": true,
+      "id": "daily-194",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "gaoxing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "难过",
+      "english_commit_matches": true,
+      "id": "daily-195",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "nanguo"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "害怕",
+      "english_commit_matches": true,
+      "id": "daily-196",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "haipa"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "疲倦",
+      "english_commit_matches": true,
+      "id": "daily-197",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "pijuan"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "忙碌",
+      "english_commit_matches": true,
+      "id": "daily-198",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "manglu"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "安静",
+      "english_commit_matches": true,
+      "id": "daily-199",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "anjing"
+    },
+    {
+      "candidate_index": 0,
+      "chinese": "舒服",
+      "english_commit_matches": true,
+      "id": "daily-200",
+      "ordinary_chinese_preserved": true,
+      "page": 0,
+      "page_annotations_match": true,
+      "passed": true,
+      "pinyin_input": "shufu"
+    }
+  ],
+  "compiled_data_bytes": {
+    "cedict_study.reverse.bin": 72008,
+    "cedict_study.table.bin": 3342772,
+    "default.yaml": 4702,
+    "study.prism.bin": 31464,
+    "study.schema.yaml": 41431
+  },
+  "dictionary_bytes": {
+    "data/shared/cedict_study.dict.yaml": 2775222,
+    "data/shared/default.yaml": 1365,
+    "data/shared/key_bindings.yaml": 2954,
+    "data/shared/luna_pinyin.schema.yaml": 2077,
+    "data/shared/luna_pinyin_simp.schema.yaml": 739,
+    "data/shared/pinyin.yaml": 4820,
+    "data/shared/punctuation.yaml": 2107,
+    "data/shared/study.schema.yaml": 756,
+    "data/shared/symbols.yaml": 28411,
+    "data/shared/weasel.yaml": 222
+  },
+  "error": null,
+  "lexicon_content_sha256": "5c1e242bbe677e33e6da90d79a2bf421446f03b03e6bdb2b904ab3f0905c68a6",
+  "limits": [
+    "No human approval is implied for the English meanings",
+    "Synthetic latency on this machine only; no desktop, installed TSF or multi-application acceptance"
+  ],
+  "native_build_sha256": "fa0e8b8da670b8b5a1348a526c41fc32c2d80fe99a9a2bc3d9ada1f505f97397",
+  "passed": true,
+  "probe_sha256": "bf13d76439330a9f734b22fa1a9775f4dfef044768cf7b0f0c63df139b0bed29",
+  "pronunciation_checks": [
+    {
+      "actual_first_page": [
+        "找",
+        "着",
+        "照",
+        "赵",
+        "招"
+      ],
+      "allowed_first": [
+        "找"
+      ],
+      "passed": true,
+      "pinyin": "zhao",
+      "required_on_first_page": [
+        "找"
+      ]
+    },
+    {
+      "actual_first_page": [
+        "行",
+        "性",
+        "型",
+        "星",
+        "形"
+      ],
+      "allowed_first": [
+        "行"
+      ],
+      "passed": true,
+      "pinyin": "xing",
+      "required_on_first_page": [
+        "行"
+      ]
+    },
+    {
+      "actual_first_page": [
+        "带",
+        "待",
+        "戴",
+        "代",
+        "呆"
+      ],
+      "allowed_first": [
+        "带"
+      ],
+      "passed": true,
+      "pinyin": "dai",
+      "required_on_first_page": [
+        "带"
+      ]
+    },
+    {
+      "actual_first_page": [
+        "长",
+        "张",
+        "章",
+        "涨",
+        "帐"
+      ],
+      "allowed_first": [
+        "长",
+        "张"
+      ],
+      "passed": true,
+      "pinyin": "zhang",
+      "required_on_first_page": [
+        "长",
+        "张"
+      ]
+    },
+    {
+      "actual_first_page": [
+        "换",
+        "还",
+        "环",
+        "患",
+        "缓"
+      ],
+      "allowed_first": [
+        "换"
+      ],
+      "passed": true,
+      "pinyin": "huan",
+      "required_on_first_page": [
+        "换"
+      ]
+    },
+    {
+      "actual_first_page": [
+        "冲",
+        "重",
+        "充",
+        "虫",
+        "宠"
+      ],
+      "allowed_first": [
+        "冲"
+      ],
+      "passed": true,
+      "pinyin": "chong",
+      "required_on_first_page": [
+        "冲"
+      ]
+    }
+  ],
+  "recorded_at": "2026-11-06T20:34:24.383728+00:00",
+  "review_counts": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  },
+  "rime_build_sha256": "70d6a5b82f4ca02c8f328696eed18b24da249a6149ec7d76be289de65b43770a",
+  "rime_dll_sha256": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+  "runtime_input_hashes": {
+    "bin/StudyIME.Registrar.exe": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
+    "bin/StudyIME.Service.exe": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
+    "bin/StudyIME.Settings.exe": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
+    "bin/StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+    "bin/rime.dll": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "data/shared/cedict_study.dict.yaml": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
+    "data/shared/default.yaml": "dd55653a991f9418eb425ee2112666f82e3e753c5ce3ed5702dd243041a45382",
+    "data/shared/key_bindings.yaml": "5c484257cccbab899bc874dfeb9257ce7190c99fee3abc33321767c8dac56af9",
+    "data/shared/luna_pinyin.schema.yaml": "df48caa2901ca04d79978af926c79b118b3e6e5b5cf97b9d8c9b9d67d748a744",
+    "data/shared/luna_pinyin_simp.schema.yaml": "82d9a2b44fa207d4d49416d16af5d2fcab6b1604f4083c384372360c824ea919",
+    "data/shared/pinyin.yaml": "22915339d6505d8911edd929b055145235eb4f66ee6d4dbdedb832e31be40c35",
+    "data/shared/punctuation.yaml": "d6f89592149098f0a2d0ed3e5c83f49adb6226cdf1d967b0bc0d293f4e5c496a",
+    "data/shared/study.schema.yaml": "f0e50c604a3eb96663292919f7b987b5757c0b7ca27cd5f26e487d664ab6fd87",
+    "data/shared/symbols.yaml": "f12ee3a61bb9739c29fe6ba12890c5c9c50ca38f63ce9c85e1a16e223ae0b04f",
+    "data/shared/weasel.yaml": "2a2a1853451a2264541404500d2cc8fceae519666b4d12c62036089b8ded0f79",
+    "data/user-template/default.custom.yaml": "02afd04b0983f53678949f3b6d00640af32ae833adf361fcd96b18ffe17b1463",
+    "data/user-template/lua/lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "data/user-template/lua/study_core.lua": "d12a8fd65d7c48ce12e0fc40d97ac5f0ed33855666bf7bd3ae0b121db60d66c5",
+    "data/user-template/rime.lua": "2aa694e0e6c7d3ea77f0ad6bf21463ac89525d9f3708671bfabf72d3eddf69c4"
+  },
+  "scope": "Source-built x64 Rime/Lua with actual packaged dictionaries and the unchanged English review preview; isolated programmatic C API input",
+  "seconds": 4.167,
+  "startup": {
+    "lua_module": true,
+    "maintenance_ms": 588.64,
+    "octagram_module": false,
+    "pointer_bits": 64,
+    "predict_module": false,
+    "version": "1.13.1"
+  },
+  "work_directory": ".cache/packaging/verification/engine-c143f78507264f6d9f4d7a7880cb20d9"
+}

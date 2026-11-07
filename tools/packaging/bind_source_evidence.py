@@ -21,6 +21,9 @@ def main():
     deterministic_zip(final_repeat, source_materials())
     if file_hash(final_repeat) != file_hash(current): raise ValueError("Final source ZIP differs on a second export")
     build = json.loads((project / ".cache/packaging/build/native-build.json").read_text(encoding="utf-8"))
+    engine = json.loads((project / ".cache/rime-build/rime-build.json").read_bytes())
+    if not report["rime_engine"]["record_identical"] or not report["runtime_archive"]["byte_identical"]:
+        raise ValueError("The Rime/runtime source rebuild did not match")
     with zipfile.ZipFile(old_archive) as previous, zipfile.ZipFile(current) as archive:
         expected = {info.filename: sha256(previous.read(info)) for info in previous.infolist()}
         actual = {info.filename: sha256(archive.read(info)) for info in archive.infolist()}
@@ -29,8 +32,11 @@ def main():
             raise ValueError("Non-document source material changed after verification: " + ", ".join(changed))
         for name, digest in build["inputs"].items():
             if actual["project/" + name] != digest: raise ValueError("A native build input differs: " + name)
+        for name, digest in engine["project_inputs"].items():
+            if actual["project/" + name] != digest: raise ValueError("A Rime build input differs: " + name)
     result = {"current_source_archive_sha256": file_hash(current), "tested_source_archive_sha256": report["source_archive_sha256"],
               "second_export_identical": True, "unchanged_native_build_inputs": len(build["inputs"]),
+              "unchanged_rime_build_inputs": len(engine["project_inputs"]),
               "documentation_changes": changed, "source_build_rerun": False,
               "scope": "Only documentation differs from the already restored and compiled source archive; every other member and native build input is unchanged."}
     write_changed(ROOT / "experiments/phase6/results/source-evidence-binding.json", json_bytes(result))

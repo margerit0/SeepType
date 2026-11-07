@@ -1,0 +1,17 @@
+{
+  "dictionary_entries": 121505,
+  "dictionary_sha256": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
+  "english_review_entries_sha256": "b65884e416b17d5a9ca8a7a77125d80cb19b12ac9a646ea95a68b2ed5c616f44",
+  "identical_second_export": true,
+  "passed": true,
+  "recorded_at": "2026-11-06T20:34:30.552988+00:00",
+  "review_counts": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  },
+  "scope": "Exact Chinese source correspondence and deterministic export, not human English review or typing-quality acceptance",
+  "source_mapping_sha256": "13e1f33f05fe0ede1116f19007438fff59e80e2f6496eef8f91e2190c5157fcc",
+  "source_text_sha256": "ff107587bc1d593dd5d7a49c179d4aa749cb89b3a1423876e0cd2dca197b672b",
+  "verified_source_references": 124551
+}
