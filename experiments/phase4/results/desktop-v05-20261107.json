@@ -1,0 +1,187 @@
+{
+  "baseline_commit": "f413e57",
+  "binaries": {
+    ".cache/rime-1.13.1/dist/lib/rime.dll": "2d8f1bc3737635a11d9fb1bfca4dc9e70533633930a8a0142a81ca879c39c45b",
+    "experiments/phase4/build/study_service_x64.exe": "9377d32f96a4743ef6844729ec0c16f083960448633cdf040d720ee9a83c2164",
+    "experiments/phase4/build/study_settings_x64.exe": "576d824775beaff16b8478a0c491dae7d425008396d707d547ade311207d7dbc",
+    "experiments/phase4/build/tsf-x64/study_weasel_x64.dll": "97a1f9995f5fd3deb07006ae73bb8e859bcace75c8b3d8d338e07b0f7b20e276",
+    "experiments/phase4/build/tsf_text_host_x64.exe": "80153a90211156d17611b297870d069d709d0f228ba22fa1442f1dd4341b73ac"
+  },
+  "checks": [
+    {
+      "name": "chinese_row_click",
+      "observation": "nihao; clicked lower Chinese row. A became 你好; composition ended; 2 writes.",
+      "passed": true
+    },
+    {
+      "name": "english_row_click_commits_chinese",
+      "observation": "nh; clicked upper hello on candidate 2. A became 你好你好; 4 writes.",
+      "passed": true
+    },
+    {
+      "name": "explicit_english_menu",
+      "observation": "nh; right-click candidate 2; clicked 输入英文. A became 你好你好hello; 6 writes.",
+      "passed": true
+    },
+    {
+      "name": "f2_definition_only",
+      "observation": "nh, Down, F2. Independent 你好 / hello definition appeared. Existing commits unchanged; composition remained active.",
+      "passed": true
+    },
+    {
+      "name": "default_english_shortcut",
+      "observation": "Ctrl+Shift+Return committed hello. A became 你好你好hellohello; 8 writes.",
+      "passed": true
+    },
+    {
+      "name": "duplicate_action_rejected",
+      "observation": "Repeated Ctrl+Shift+Return with no composition. Same text and 8 writes.",
+      "passed": true
+    },
+    {
+      "name": "paging",
+      "observation": "n; clicked Next: 您 内 拿 哪 弄. Later Previous restored 你 那 呢 能 年. Same visible horizontal width.",
+      "passed": true
+    },
+    {
+      "name": "learning_off_preserves_page",
+      "observation": "On n page 2, clicked learning off. Shorter bar; same five candidates and first selection.",
+      "passed": true
+    },
+    {
+      "name": "learning_on_preserves_page",
+      "observation": "Clicked learning on. Expanded bar; same page 2 candidates and first selection.",
+      "passed": true
+    },
+    {
+      "name": "document_focus",
+      "observation": "Clicked Document B while A had n composition. Old candidate hidden; both compositions zero; A commits unchanged.",
+      "passed": true
+    },
+    {
+      "name": "space_in_new_document",
+      "observation": "In B: n then space committed 你; A unchanged; B composition ended with 2 writes.",
+      "passed": true
+    },
+    {
+      "name": "settings_open_cancel",
+      "observation": "Ctrl+Shift+F12 opened native settings. Cancel closed it without changing the shortcut.",
+      "passed": true
+    },
+    {
+      "name": "settings_save_and_alt_shortcut",
+      "observation": "Standalone settings: dropdown, Down, Return selected Alt+Enter; Save persisted shortcut=alt_enter. In B: nh, Down, Alt+Return produced 你hello; 4 writes.",
+      "passed": true
+    },
+    {
+      "name": "menu_cancel_then_number",
+      "observation": "In B: n, Shift+F10 showed missing-meaning menu; Escape preserved composition without commit; 2 then committed 那. B became 你hello那; 6 writes.",
+      "passed": true
+    }
+  ],
+  "computer_use": "@oai/sky via node_repl; screenshots and accessibility observed after actions",
+  "final_observed_state": {
+    "candidateVisible": false,
+    "documents": [
+      {
+        "compositions": 0,
+        "lockViolations": 0,
+        "text": "你好你好hellohello",
+        "utf16": [
+          20320,
+          22909,
+          20320,
+          22909,
+          104,
+          101,
+          108,
+          108,
+          111,
+          104,
+          101,
+          108,
+          108,
+          111
+        ],
+        "writes": 10
+      },
+      {
+        "compositions": 0,
+        "lockViolations": 0,
+        "text": "你hello那",
+        "utf16": [
+          20320,
+          104,
+          101,
+          108,
+          108,
+          111,
+          37027
+        ],
+        "writes": 6
+      }
+    ],
+    "focused": 1
+  },
+  "fixture_sha256": "af8f2626f8505ffb49e93a95cc398174c06981d602ed0362f9cef41483ed4ec1",
+  "functional_passed": 14,
+  "limits": [
+    "No hover API used; hover details remain unverified",
+    "Single before/after screenshots do not establish animation timing or input during animation",
+    "No fresh physical disconnect, external app focus, display-scale transition or multimonitor acceptance",
+    "No installed automatic routing, Notepad, browser or VS Code acceptance",
+    "Native settings owner-window dropdown coordinate attempt did not change selection; standalone settings keyboard selection succeeded",
+    "Text injection nihao produced no composition; actual alphabet key presses were used thereafter"
+  ],
+  "original_close": {
+    "artifact": "desktop-v05-20261107/original-host.log",
+    "error": "Interactive DLL still referenced",
+    "exit_code": 1
+  },
+  "recorded_at": "2026-11-07T11:55:48.506464+00:00",
+  "scope": "Computer Use SendInput key/mouse interactions in phase4 v0.5 unregistered TSF host, x64 service, 21 test-only meanings. Not dev.2 product acceptance.",
+  "settings_left_in_isolated_fixture": {
+    "learning": true,
+    "reduce_motion": false,
+    "shortcut": "alt_enter"
+  },
+  "shutdown_fix": {
+    "actions": "Started new host, clicked A, pressed n, inspected candidate accessibility, Alt+F4. Did not rerun the 14 functional observations.",
+    "exit_code": 0,
+    "host_build": {
+      "executable_sha256": "8ffb12e258caaebe9ba8b8ea6f172d2f41ce3f5316aca91cd8d73970db8c0e09",
+      "inputs": {
+        ".cache/packaging/generated/ProductIdentity.h": "bc1564272efd8b582b61835d4194f05485f35f8d190e55274d3b6e6fc5bf5ece",
+        "experiments/phase4/build/tsf-x64/boost_study.lib": "64a9b6d1e1106a173e7096dc2b947e2d04150165bd0feab32b51cb57f068517c",
+        "experiments/phase4/build/tsf-x64/ipc/ActionLoader.obj": "cba051ed6e777c9715d66f341ccfd2d1baf7673a4ece55e9ccf601fdbd4f9d3b",
+        "experiments/phase4/build/tsf-x64/ipc/Committer.obj": "3179cb50fc9e20bdfedfd91ea25baed621bdcedc43dac88f29b1011d82eae77d",
+        "experiments/phase4/build/tsf-x64/ipc/Configurator.obj": "97c2547927c7431bcd49eb4d6f1e6bb6050ff7695b3ba39098437a51b37e7e07",
+        "experiments/phase4/build/tsf-x64/ipc/ContextUpdater.obj": "a171c6c321ff152e47015c4bf24addfb8ce756a9b88005ce63700670f0df8222",
+        "experiments/phase4/build/tsf-x64/ipc/Deserializer.obj": "d68a8baffbf6eb171f419863e545f4268ce12e75c5c008fa1db559b642b73868",
+        "experiments/phase4/build/tsf-x64/ipc/PipeChannel.obj": "00e4662090c55b2da52ae4073615fe7eb15159723285843686b31bb2a829b0b4",
+        "experiments/phase4/build/tsf-x64/ipc/ResponseParser.obj": "943521204d182ca6c1a0ac5be20aa7832a4310ecee62971cd814ea19a1ca314c",
+        "experiments/phase4/build/tsf-x64/ipc/Styler.obj": "4bc87346e577b231de8a5c845dec14aceebc7d2f31f338b5b6a01c1dbd15ad10",
+        "experiments/phase4/build/tsf-x64/ipc/WeaselClientImpl.obj": "ac1c7563f755818e0025e46f30f15150a8652abd756295ec34b881dfb3130540",
+        "experiments/phase4/build/tsf-x64/study/StudyProtocol.obj": "633db43a3cc29e84b06fc2b4e5387550db955846fe279e3f65c26e9bf08b71ab",
+        "experiments/phase4/build/tsf-x64/study/UiPreferences.obj": "d0a4ce21b31d1262abee9f8456515c8cf23cb09c3f58a161d7632d6509e1981a",
+        "experiments/phase4/native-host.manifest": "445c0ca467b3648a66862277abef47b4958c50a7cc15913bb84fa950b7227497",
+        "experiments/phase4/text_store.h": "65e7833f411bc0260ae23b80f38c74c8126c27db090e50152236004242b4fc85",
+        "experiments/phase4/tsf_text_host.cpp": "767be87a6d32737d0e6e9cce8acbd3208f9715d7e5202ee9d6bc534c6d06df03",
+        "experiments/phase6/build-desktop-host.cmd": "a7030a88f1aee5b9e028f4037c96e778e1d49e5dc75c3dbcf22c31aace2a15b7",
+        "experiments/phase6/build-desktop-host.py": "45e8dce007d02b351b91e7644d51e229bb1ffcfc6984d7792361a44b10d4abc8"
+      },
+      "legacy_experiment": true,
+      "product_rebuilt": false,
+      "sdk": "10.0.19041.0\\",
+      "toolset": "14.29.30133"
+    },
+    "result": {
+      "after_com_uninitialize": 0,
+      "before_com_uninitialize": 1
+    },
+    "scope": "Only the acceptance host teardown order changed; no product DLL/service rebuild.",
+    "window_and_processes_closed": true
+  },
+  "system_install_executed": false,
+  "tsf_registration_executed": false
+}

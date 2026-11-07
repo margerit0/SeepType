@@ -10,6 +10,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <functional>
+#ifdef STUDY_PRODUCT_DESKTOP_HOST
+#include <ProductIdentity.h>
+#endif
 
 static void Require(HRESULT hr, const char* what) {
   if (FAILED(hr)) { std::cerr << what << " HRESULT=" << std::hex << hr << std::dec << std::endl; throw std::runtime_error(what); }
@@ -180,7 +183,11 @@ class Host {
     Focus(0);
     dll=LoadLibraryW(path); if(!dll)throw std::runtime_error("Load TSF DLL");
     auto factory=reinterpret_cast<HRESULT(WINAPI*)(REFCLSID,REFIID,void**)>(GetProcAddress(dll,"DllGetClassObject"));
+#ifdef STUDY_PRODUCT_DESKTOP_HOST
+    const CLSID id=study::kTextServiceGuid;
+#else
     const CLSID id={0xa3f4cded,0xb1e9,0x41ee,{0x9c,0xa6,0x7b,0x4d,0x0d,0xe6,0xcb,0x0a}};
+#endif
     CComPtr<IClassFactory> cf;
     Require(factory(id,IID_IClassFactory,reinterpret_cast<void**>(&cf)),"Get in-process factory");
     Require(cf->CreateInstance(nullptr,IID_ITfTextInputProcessor,reinterpret_cast<void**>(&processor)),"Create unregistered TSF");
@@ -409,6 +416,13 @@ static void NativeUiChecks(Host& host,Report& report) {
 
 int wmain(int argc,wchar_t** argv) {
   if(argc<3)return 2;
+#ifdef STUDY_PRODUCT_DESKTOP_HOST
+  // This build is for observation of the shipped DLL, never the legacy
+  // fixture assertions or installation/registration entry points.
+  if(argc!=4 || wcscmp(argv[3],L"--interactive") ||
+      !GetEnvironmentVariableW(L"STUDYIME_DEV_SESSION",nullptr,0) ||
+      !GetEnvironmentVariableW(L"STUDYIME_DEV_DATA_ROOT",nullptr,0))return 2;
+#endif
   Require(CoInitializeEx(nullptr,COINIT_APARTMENTTHREADED),"COM apartment");
   Report report{argv[1]};
   try {
@@ -422,9 +436,22 @@ int wmain(int argc,wchar_t** argv) {
       while(IsWindow(host.window))Pump(20);
       host.SaveObservation(); host.Close();
       auto canUnload=reinterpret_cast<HRESULT(WINAPI*)()>(GetProcAddress(host.dll,"DllCanUnloadNow"));
-      if(!canUnload || canUnload()!=S_OK)throw std::runtime_error("Interactive DLL still referenced");
+      const auto before=canUnload?canUnload():E_NOINTERFACE;
+      // UI Automation can retain marshaled IAccessible references. Let COM
+      // disconnect this apartment before judging the final module lifetime.
+      // Keep the strict S_OK requirement and never unload a referenced DLL.
+      CoUninitialize();
+      const auto after=canUnload?canUnload():E_NOINTERFACE;
+      std::ofstream shutdown(host.observation.wstring()+L".shutdown.json");
+      shutdown<<"{\"before_com_uninitialize\":"<<before
+          <<",\"after_com_uninitialize\":"<<after<<"}\n";
+      shutdown.close();
+      if(after!=S_OK) {
+        std::cerr<<"Interactive DLL still referenced after COM disconnect"<<std::endl;
+        return 1;
+      }
       FreeLibrary(host.dll); host.dll=nullptr;
-      CoUninitialize(); return 0;
+      return 0;
     }
     if(argc>3 && wcscmp(argv[3],L"--v05")==0) {
       NativeUiChecks(host,report);

@@ -8,6 +8,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--service-x64', action='store_true')
+parser.add_argument('--host', type=Path, help='Use a separately built acceptance host')
 args = parser.parse_args()
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -22,7 +23,7 @@ with (RUNTIME / 'interactive-server.log').open('wb') as server_log, (RUNTIME / '
     service = subprocess.Popen([str(BUILD / ('study_service_x64.exe' if args.service_x64 else 'study_service.exe'))], cwd=ROOT, env=env,
         stdout=server_log, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
     try:
-        host = subprocess.Popen([str(BUILD / 'tsf_text_host_x64.exe'),
+        host = subprocess.Popen([str(args.host.resolve() if args.host else BUILD / 'tsf_text_host_x64.exe'),
             str(RUNTIME / 'interactive-state.json'), str(BUILD / 'tsf-x64/study_weasel_x64.dll'), '--interactive'],
             cwd=ROOT, env=env, stdout=host_log, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
         (RUNTIME / 'interactive-processes.json').write_text(json.dumps({'host':host.pid, 'service':service.pid,

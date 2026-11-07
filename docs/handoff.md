@@ -2,7 +2,19 @@
 
 项目：`.`，分支 `codex/technical-spike`。本轮继续推进用户已授权的开发、许可来源处理与验证；真实系统安装仍未执行。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。
 
-## 2026-11-07 新窗口先读
+## 2026-11-07 本窗口最新断点
+
+**Computer Use 已实际恢复，14 项 v0.5 实验宿主键鼠功能观察通过。** 详见 [本轮桌面记录](desktop-acceptance.md) 和 [结构化报告](../experiments/phase4/results/desktop-v05-20261107.json)。范围是阶段 4 x64 / 21 条测试释义，不是 dev.2 产品或安装后外部应用通过。
+
+本轮发现并修复交互验收宿主的退出检查顺序：外部可访问性 COM 引用在 `CoUninitialize` 后释放，定向实测 `DllCanUnloadNow` 从 `S_FALSE` 变为 `S_OK`，进程正常退出。产品 DLL/服务未改，历史测试未重跑。复用修复入口：`python experiments/phase4/start-text-host.py --service-x64 --host .cache/packaging/desktop-host-legacy/StudyIME.DesktopHost.exe`。必要时仅构建宿主：`experiments/phase6/build-desktop-host.cmd --legacy`。原默认宿主二进制未覆盖。
+
+当前 dev.2 直接加载到未注册宿主时 `Activate` 返回 `0x80004005`，隔离服务已停止；[失败报告](../experiments/phase6/results/desktop-activation-dev2.json) 保留真实二进制绑定。新增产品宿主入口仅用于诊断，不要假定可进行产品桌面验收。产品使用正式系统 key-sink 登记，实验 DLL 跳过此路径；本轮未插桩定位内部失败点，也未执行系统注册。
+
+下一步优先处理 dev.2 安装/注册、卸载恢复及外部应用验收的明确系统授权；准备好的计划目标为 `C:\Program Files\StudyIME\0.5.0-dev.2`，独立产品标识。悬停、动画中输入、断线、跨应用焦点与缩放/多显示器仍待实际观察。英文人工审核仍是 0/200。所有本轮测试窗口/进程已结束，隔离实验设置留下 `Alt+Enter`；正常用户数据和产品注册未改。
+
+本轮只更改验收宿主/入口、报告和文档，不需重建产品包；现有运行和源码 ZIP 均保留原内容。以下“新窗口先读”是本轮开始前的交接快照，发生冲突时以上述最新断点为准。
+
+## 2026-11-07 新窗口先读（本轮开始前快照）
 
 用户最新原话：**“我会开一个新的窗口继续任务，帮我准备上下文，可以用 computer use”**。此前暂缓 Computer Use 的安排已被这条新指令更新；新窗口可以直接使用 Computer Use 推进本项目的界面操作和验收，不重复询问工具使用许可。本轮只准备交接，没有进行新的桌面操作，也没有确认旧审批错误已恢复。
 

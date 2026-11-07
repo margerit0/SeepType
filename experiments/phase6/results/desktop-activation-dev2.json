@@ -1,0 +1,104 @@
+{
+  "activation_succeeded": false,
+  "current_registry_matches_before": true,
+  "data_root": ".\\.cache\\packaging\\desktop-runs\\9b162cbf25f449f3b0a28c0f23baaef7\\user",
+  "desktop_input_executed": false,
+  "finished_at": "2026-11-07T11:38:33.477516+00:00",
+  "host_build": {
+    "executable_sha256": "b1dc033209008eb0bbec7f90b1db8cc9284f177b8201f9fb8f7597956c409edb",
+    "inputs": {
+      ".cache/packaging/build/boost_study.lib": "344eef7843c0b82418681991bc447bc82bb99162fab4ed04e84b9b2148831a4f",
+      ".cache/packaging/build/tsf-x64/ipc/ActionLoader.obj": "06c0e9a92d1e17b60686763e55367b34533c02ab153f99b53d3015d86f0241ed",
+      ".cache/packaging/build/tsf-x64/ipc/Committer.obj": "e6262530650583f45e170f3e0d1ffd09acb2cb7e24041ce177a6d27a1f7a4fe2",
+      ".cache/packaging/build/tsf-x64/ipc/Configurator.obj": "f73026d23c1011fc6fa17a52f7b1e5497fa8ebcce32b309360b74f045168e951",
+      ".cache/packaging/build/tsf-x64/ipc/ContextUpdater.obj": "2583b71dd6b78d8477a1f57d7cdf2d0559188daec2998f2927200bc1d92979db",
+      ".cache/packaging/build/tsf-x64/ipc/Deserializer.obj": "02bea14ad3fb87d853946443d9be725c23c9a5c8cb9c12f0ed5707e1da8e7952",
+      ".cache/packaging/build/tsf-x64/ipc/PipeChannel.obj": "a7e39595436e4639f20693193f73d5f0bdc900be44de5ffbed89f1d95c0804d9",
+      ".cache/packaging/build/tsf-x64/ipc/ResponseParser.obj": "5c1b54ef35cb48336f1f821d91fb36a2de23910a23f6460d510a980cc2821c7f",
+      ".cache/packaging/build/tsf-x64/ipc/Styler.obj": "c6d86dcd82bc7bb7e4c28bb45e50184c147bef9f1eb0e8e1efaeb6ab80964bcb",
+      ".cache/packaging/build/tsf-x64/ipc/WeaselClientImpl.obj": "ea9e07e0647411ae94a7571e3da9e111577d7ffb9260daed2d0d07cf24e516c7",
+      ".cache/packaging/build/tsf-x64/study/ProductRuntime.obj": "1e859f7b67ff9d2874fb8f298063c0e4a8cfae5d01ef8a8a21c0c71cd53d0b7c",
+      ".cache/packaging/build/tsf-x64/study/StudyProtocol.obj": "f153a9b268ea1f6cf66d1e4e4c7286b9bb7451aeb0a84134fbe3a5e88103cf09",
+      ".cache/packaging/build/tsf-x64/study/UiPreferences.obj": "6cc6effbf8b29726468e6ca1c57d422a3cc356061f07f20d39f3f60b56b703ff",
+      ".cache/packaging/generated/ProductIdentity.h": "bc1564272efd8b582b61835d4194f05485f35f8d190e55274d3b6e6fc5bf5ece",
+      "experiments/phase4/native-host.manifest": "445c0ca467b3648a66862277abef47b4958c50a7cc15913bb84fa950b7227497",
+      "experiments/phase4/text_store.h": "65e7833f411bc0260ae23b80f38c74c8126c27db090e50152236004242b4fc85",
+      "experiments/phase4/tsf_text_host.cpp": "442f690ea39c2fb6ed655f1828516ba5d4ce468042f9ada8f59bcceda5492e73",
+      "experiments/phase6/build-desktop-host.cmd": "01da0e95ae67a9c80464eda8d70df7625b3f1446b1f75877a7bb86d58ffe44ba",
+      "experiments/phase6/build-desktop-host.py": "267b34cbe9f10da4af6af85880931c47ce4e4790dfef99ddc9dd4b5f6f471819"
+    },
+    "product_rebuilt": false,
+    "sdk": "10.0.19041.0\\",
+    "toolset": "14.29.30133"
+  },
+  "host_exit_code": 1,
+  "host_log": "Activate production TSF HRESULT=80004005\nActivate production TSF\n",
+  "host_pid": 37628,
+  "interpretation": "The shipped DLL requires the registered key sink path, unlike the isolated DLL. Activate returned E_FAIL before desktop input. The exact internal failure site has not been instrumented; this is not evidence of installed-product failure.",
+  "normal_data_existed_after": false,
+  "normal_data_existed_before": false,
+  "package": ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2",
+  "product_binaries_unchanged": true,
+  "registry_after": {
+    "app_entry": {
+      "exists": false
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "registry_before": {
+    "app_entry": {
+      "exists": false
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "runtime_input_hashes": {
+    "bin/StudyIME.Registrar.exe": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
+    "bin/StudyIME.Service.exe": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
+    "bin/StudyIME.Settings.exe": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
+    "bin/StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+    "bin/rime.dll": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "data/shared/cedict_study.dict.yaml": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
+    "data/shared/default.yaml": "dd55653a991f9418eb425ee2112666f82e3e753c5ce3ed5702dd243041a45382",
+    "data/shared/key_bindings.yaml": "5c484257cccbab899bc874dfeb9257ce7190c99fee3abc33321767c8dac56af9",
+    "data/shared/luna_pinyin.schema.yaml": "df48caa2901ca04d79978af926c79b118b3e6e5b5cf97b9d8c9b9d67d748a744",
+    "data/shared/luna_pinyin_simp.schema.yaml": "82d9a2b44fa207d4d49416d16af5d2fcab6b1604f4083c384372360c824ea919",
+    "data/shared/pinyin.yaml": "22915339d6505d8911edd929b055145235eb4f66ee6d4dbdedb832e31be40c35",
+    "data/shared/punctuation.yaml": "d6f89592149098f0a2d0ed3e5c83f49adb6226cdf1d967b0bc0d293f4e5c496a",
+    "data/shared/study.schema.yaml": "f0e50c604a3eb96663292919f7b987b5757c0b7ca27cd5f26e487d664ab6fd87",
+    "data/shared/symbols.yaml": "f12ee3a61bb9739c29fe6ba12890c5c9c50ca38f63ce9c85e1a16e223ae0b04f",
+    "data/shared/weasel.yaml": "2a2a1853451a2264541404500d2cc8fceae519666b4d12c62036089b8ded0f79",
+    "data/user-template/default.custom.yaml": "02afd04b0983f53678949f3b6d00640af32ae833adf361fcd96b18ffe17b1463",
+    "data/user-template/lua/lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "data/user-template/lua/study_core.lua": "d12a8fd65d7c48ce12e0fc40d97ac5f0ed33855666bf7bd3ae0b121db60d66c5",
+    "data/user-template/rime.lua": "2aa694e0e6c7d3ea77f0ad6bf21463ac89525d9f3708671bfabf72d3eddf69c4",
+    "product.json": "60a22233c07c5d4b39df9f4e576c553c35434608f6a93abb9516d1da4c007c56"
+  },
+  "scope": "Shipped DLL loaded in an unregistered two-document TSF host; host forwards physical key messages. No installed routing or external application acceptance.",
+  "service_stopped": true,
+  "session": "9b162cbf25f449f3b0a28c0f23baaef7",
+  "started_at": "2026-11-07T11:38:30.494148+00:00",
+  "system_install_executed": false,
+  "tsf_registration_executed": false
+}
