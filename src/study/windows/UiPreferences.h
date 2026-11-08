@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <filesystem>
 #include <string>
+#include "../InputScheme.h"
 
 namespace study {
 enum class Theme { System, Light, Dark };
@@ -14,6 +15,7 @@ struct UiPreferences {
   bool reduceMotion = false;
   Theme theme = Theme::System;
   EnglishShortcut shortcut = EnglishShortcut::ControlShiftEnter;
+  InputScheme inputScheme = InputScheme::FullPinyin;
   bool operator==(const UiPreferences& other) const;
   bool operator!=(const UiPreferences& other) const { return !(*this == other); }
 };

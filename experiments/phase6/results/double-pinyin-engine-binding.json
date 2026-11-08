@@ -1,0 +1,30 @@
+{
+  "all_compared_bytes_identical": true,
+  "check_count": 79,
+  "compared_runtime_files": [
+    "data/shared/luna_pinyin.schema.yaml",
+    "data/shared/luna_pinyin_simp.schema.yaml",
+    "data/shared/pinyin.yaml",
+    "data/shared/default.yaml",
+    "data/shared/key_bindings.yaml",
+    "data/shared/punctuation.yaml",
+    "data/shared/symbols.yaml",
+    "data/shared/cedict_study.dict.yaml",
+    "data/shared/study.schema.yaml",
+    "data/shared/study_double_pinyin.schema.yaml",
+    "data/shared/study_flypy.schema.yaml",
+    "data/shared/weasel.yaml",
+    "data/user-template/default.custom.yaml",
+    "data/user-template/rime.lua",
+    "data/user-template/lua/study_core.lua",
+    "data/user-template/lua/lexicon.lua",
+    "bin/rime.dll"
+  ],
+  "engine_probe_identical": true,
+  "engine_report_sha256": "a6d464bcaa4688342045d5faf94177ce6c6a3c8d92779fa00f5db3325aad0c00",
+  "native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
+  "passed": true,
+  "recorded_at": "2026-11-08T12:02:40.291785+00:00",
+  "scope": "Bind the completed engine checks to the final build after the service-only paging return-value fix; no repeated engine execution",
+  "word_regression_count": 600
+}

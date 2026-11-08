@@ -67,6 +67,10 @@
     {
       "name": "English toolbar toggle preserves externally changed word learning",
       "passed": true
+    },
+    {
+      "name": "English toolbar toggle preserves the externally selected input scheme",
+      "passed": true
     }
   ],
   "comparisons": [
@@ -144,12 +148,12 @@
     }
   ],
   "exit_code": 0,
-  "include_trace_sha256": "9044bfb695bf9eb2de1d82d571aaabd257a658e0026d568ec90efcf1e7148ad9",
-  "native_build_sha256": "bf65137b1a146d3fbf9a07bbcda97278155ba6358474cd6b74fe47210dfe383c",
+  "include_trace_sha256": "8058f8d0f19a29327ef7859cdb0e2d609b37f8a88868276cfdd2b89adb768651",
+  "native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
   "passed": true,
-  "probe_sha256": "e0b35ef2ddffca699f8773ab502d9bcbc46efefcaf26b67a39b71a8f911c998e",
-  "recorded_at": "2026-11-08T11:19:45.167659+00:00",
+  "probe_sha256": "07a29d296cb2d817824c99812c18c4ed59d6f5ced53f4f7f875cda0b1d5d5cf5",
+  "recorded_at": "2026-11-08T11:57:41.057088+00:00",
   "scope": "Product objects, offscreen rendering and callback dispatch; no desktop UI or installation",
-  "work_directory": ".cache/packaging/verification/renderer-53296a0c75d24c39b9911cbbcf7fffe7",
+  "work_directory": ".cache/packaging/verification/renderer-352023ad83974281930642907e7d7a2e",
   "wtl_compiled": false
 }

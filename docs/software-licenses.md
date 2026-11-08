@@ -6,6 +6,8 @@
 
 机器清单：[components.json](../licensing/components.json)。实际随产品源码包提供的材料：[product-sources.lock.json](../licensing/product-sources.lock.json)。早期原始收集记录：[sources.lock.json](../licensing/sources.lock.json)。完整软件许可保存在 `licensing/third-party`；选择后的源码文件保留原始字节与原归档摘要。
 
+2026-11-08 工作区新增自然码双拼与小鹤双拼：键位规则与预编辑格式来自 Rime `rime-double-pinyin` 固定提交 `01a13287cbd27819be1c34fa1ddc1b3643d5001b`，遵循其 GPLv3 条款。两份原始方案、README 与完整许可证按原字节纳入仓库及打包材料，摘要见 [double-pinyin.lock.json](../licensing/double-pinyin.lock.json)；产品派生方案标明修改时间与用途。下表中的 dev.2 历史组成仍可追溯，新双拼不增加词库或网络依赖。
+
 | 实际组成 | 许可与处理 |
 | --- | --- |
 | StudyIME 新代码、原创图标 | GPL-3.0-or-later；完整文本与 [版权声明](../COPYING.md) 随包提供 |
@@ -18,6 +20,7 @@
 | marisa-trie | BSD-2-Clause / LGPL-2.1 双许可，选用 BSD 条件；OpenCC 使用同一份单独构建的 marisa 库 |
 | OpenCC 1.1.7、Darts、RapidJSON | 分别 Apache-2.0、BSD-3-Clause、MIT 及随附声明；代码仍为 Rime 静态依赖。产品直接输出来源中的简体词形，不分发旧转换词典 |
 | Luna Pinyin 方案代码与 prelude 预设 | LGPLv3；Luna 只保留三个方案/拼写规则文件及许可证。**Luna 混合词典、essay 和 librime 的旧 data/ 预设不在交付源码材料中** |
+| 自然码／小鹤双拼方案 | Rime 上游 GPLv3；保留固定版本原始方案、署名与许可证。产品复用 StudyIME 处理器与同一个中文用户词典，分别使用独立拼写索引 |
 | CC-CEDICT 中文词形/读音 | 固定 2026-11-06 快照，CC BY-SA 4.0；简体字段、明确普通话读音、逐条原文行摘要、转换说明与署名齐备 |
 | wordfreq 3.1.1 中文词频 | 数据明确允许按 CC BY-SA 4.0 再分发；保留 Robyn Speer、源语料及 SUBTLEX 作者的完整署名，注明 SUBTLEX 为免费开放数据。原始再分发声明完整随包保存；运行包不包含其 Python 运行库或 jieba 词典 |
 | 英文 200 条审核稿 | 固定 CC-CEDICT 来源，CC BY-SA 4.0；仍为 **0 条人工通过、200 条待审**，没有扩大、替换或自动批准 |

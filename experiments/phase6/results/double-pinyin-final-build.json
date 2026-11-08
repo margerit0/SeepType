@@ -1,0 +1,49 @@
+{
+  "changed_project_inputs": [
+    "tools/packaging/ipc_probe.h"
+  ],
+  "checks": [
+    {
+      "name": "all reported functional and UI checks passed",
+      "passed": true
+    },
+    {
+      "name": "only one trailing blank line changed after functional verification",
+      "passed": true
+    },
+    {
+      "name": "all four final product binaries exactly match the tested binaries",
+      "passed": true
+    },
+    {
+      "name": "all four final verification probes exactly match their tested binaries",
+      "passed": true
+    },
+    {
+      "name": "runtime engine and all schema dictionary and Lua bytes remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "generated source and dependency inputs remain unchanged",
+      "passed": true
+    }
+  ],
+  "native_build_sha256": "e9b16ba2fc3bb07f9f89c6261b373b364c6e75620c3c8aeb1847c60066f664cb",
+  "passed": true,
+  "previous_native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
+  "probe_comparisons": {
+    "StudyIME.DoublePinyinProbe.exe": true,
+    "StudyIME.EngineProbe.exe": true,
+    "StudyIME.FrequencyProbe.exe": true,
+    "StudyIME.RenderProbe.exe": true
+  },
+  "recorded_at": "2026-11-08T12:09:00.887844+00:00",
+  "reports": {
+    "double-pinyin-engine.json": "a6d464bcaa4688342045d5faf94177ce6c6a3c8d92779fa00f5db3325aad0c00",
+    "double-pinyin-ipc.json": "f19fa5fdc340248d84aaf8b50f7ee0cc7e4dcb43a2c71bed9cdc3eee084fde10",
+    "double-pinyin-settings.json": "f3326418a4c24ccc465308dd15d2a7c3afb8484af0334e265799c9a56cf0c05e",
+    "product-renderer.json": "1e1c98e2334f53ca5a8ca765a6292dfa0ad94ca81c2f0c7faa8297b11e3e3d19",
+    "word-frequency.json": "d2f68af3eb499f8ff197531786018ebfcb046eac1df802cec83c5cc43722c193"
+  },
+  "scope": "Final build audit after trimming a blank line at EOF; unchanged functional checks are reused, not rerun"
+}

@@ -149,9 +149,12 @@ int wmain(int argc, wchar_t** argv) {
     checks.Check("learning duration remains 240 milliseconds", motion.At(1439).active && !motion.At(1440).active);
     CandidateUi preferenceOwner;
     preferences.userLearning = false;
+    preferences.inputScheme = InputScheme::Flypy;
     checks.Check("external word learning preference saved", SavePreferences(PreferencesPath(), preferences));
     checks.Check("English toolbar toggle preserves externally changed word learning", preferenceOwner.SaveLearning(false) &&
         !LoadPreferences(PreferencesPath()).userLearning && !LoadPreferences(PreferencesPath()).learning);
+    checks.Check("English toolbar toggle preserves the externally selected input scheme",
+        LoadPreferences(PreferencesPath()).inputScheme == InputScheme::Flypy);
   } catch (const std::exception& error) {
     std::cerr << error.what() << std::endl;
     result = 1;

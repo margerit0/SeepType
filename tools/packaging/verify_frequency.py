@@ -178,7 +178,7 @@ def main():
         check("upgrade preserves the settings file byte for byte", (upgrade_user / "settings.ini").read_bytes() == legacy_settings_bytes)
         check("upgrade preserves unrelated files in the user directory", marker.read_text(encoding="utf-8") == "keep this existing user file\n")
         compiled = (old_rime / "build/study.schema.yaml").read_text(encoding="utf-8")
-        check("upgrade redeploys the enabled schema", "enable_user_dict: true" in compiled and "0.5.1" in compiled)
+        check("upgrade redeploys the enabled schema", "enable_user_dict: true" in compiled and "0.5.2" in compiled)
     except Exception as error:
         failure = str(error)
     report["error"] = failure

@@ -1,0 +1,323 @@
+{
+  "check_count": 69,
+  "checks": [
+    {
+      "name": "the unmodified dev.2 engine seeds an old learned record",
+      "passed": true
+    },
+    {
+      "name": "upgrade starts with the actual old compiled schema",
+      "passed": true
+    },
+    {
+      "name": "deployment preserves the old settings bytes",
+      "passed": true
+    },
+    {
+      "name": "deployment preserves the old single-schema user customization",
+      "passed": true
+    },
+    {
+      "name": "the old full-pinyin schema deploys both new prisms through dependencies",
+      "passed": true
+    },
+    {
+      "name": "the input-scheme upgrade preserves unrelated user files",
+      "passed": true
+    }
+  ],
+  "engine_probe_sha256": "392cbf6b8bbc1c3d758a8e9fbcafb3b5df02bfa5ae50460341239020c224bf71",
+  "error": null,
+  "ipc": [
+    {
+      "checks": [
+        {
+          "name": "double pinyin probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "fresh product sessions keep full pinyin as default",
+          "passed": true
+        },
+        {
+          "name": "all preferences round-trip with study",
+          "passed": true
+        },
+        {
+          "name": "all preferences round-trip with study_double_pinyin",
+          "passed": true
+        },
+        {
+          "name": "all preferences round-trip with study_flypy",
+          "passed": true
+        },
+        {
+          "name": "unknown input schemes fall back to full pinyin without losing other settings",
+          "passed": true
+        },
+        {
+          "name": "existing full pinyin still commits Chinese",
+          "passed": true
+        },
+        {
+          "name": "an existing idle session picks up natural double pinyin on its next key",
+          "passed": true
+        },
+        {
+          "name": "natural double pinyin mouse selection submits Chinese",
+          "passed": true
+        },
+        {
+          "name": "saving a new scheme leaves the current candidates and preedit intact",
+          "passed": true
+        },
+        {
+          "name": "space completes an existing composition with its original scheme",
+          "passed": true
+        },
+        {
+          "name": "the next composition uses Flypy",
+          "passed": true
+        },
+        {
+          "name": "Flypy number selection submits Chinese",
+          "passed": true
+        },
+        {
+          "name": "a mouse click after saving a scheme still completes the original composition",
+          "passed": true
+        },
+        {
+          "name": "a schema switch does not consume a pending application commit",
+          "passed": true
+        },
+        {
+          "name": "cancelling input permits the next scheme without committing cancelled text",
+          "passed": true
+        },
+        {
+          "name": "a new concurrent session immediately uses the saved scheme",
+          "passed": true
+        },
+        {
+          "name": "a concurrent Flypy session submits Chinese",
+          "passed": true
+        },
+        {
+          "name": "an older concurrent composition retains natural double pinyin",
+          "passed": true
+        },
+        {
+          "name": "the older session adopts Flypy after finishing its composition",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin rejects English for a partial candidate without dropping the suffix",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin partial Chinese selection keeps the remaining input",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin segmented selection commits the entire phrase",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin pages through candidates",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin returns to the first candidate page",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin rejects paging before the first page",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin provides the existing complete English definition",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin explicitly submits English",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin rejects a repeated English action",
+          "passed": true
+        },
+        {
+          "name": "study_flypy rejects English for a partial candidate without dropping the suffix",
+          "passed": true
+        },
+        {
+          "name": "study_flypy partial Chinese selection keeps the remaining input",
+          "passed": true
+        },
+        {
+          "name": "study_flypy segmented selection commits the entire phrase",
+          "passed": true
+        },
+        {
+          "name": "study_flypy pages through candidates",
+          "passed": true
+        },
+        {
+          "name": "study_flypy returns to the first candidate page",
+          "passed": true
+        },
+        {
+          "name": "study_flypy rejects paging before the first page",
+          "passed": true
+        },
+        {
+          "name": "study_flypy provides the existing complete English definition",
+          "passed": true
+        },
+        {
+          "name": "study_flypy explicitly submits English",
+          "passed": true
+        },
+        {
+          "name": "study_flypy rejects a repeated English action",
+          "passed": true
+        },
+        {
+          "name": "changing schemes rejects an old English candidate ticket",
+          "passed": true
+        },
+        {
+          "name": "switching schemes preserves the independent English display state",
+          "passed": true
+        },
+        {
+          "name": "cross-layout learning fixture has a non-first built-in rank",
+          "passed": true
+        },
+        {
+          "name": "natural double pinyin learns an ordinary Chinese choice",
+          "passed": true
+        },
+        {
+          "name": "Flypy immediately shares natural double pinyin learning",
+          "passed": true
+        },
+        {
+          "name": "full pinyin immediately shares double pinyin learning",
+          "passed": true
+        },
+        {
+          "name": "full pinyin can forget a word learned in double pinyin",
+          "passed": true
+        },
+        {
+          "name": "forgetting also restores the Flypy base rank",
+          "passed": true
+        },
+        {
+          "name": "study_double_pinyin honors the paused Chinese learning preference",
+          "passed": true
+        },
+        {
+          "name": "study_flypy honors the paused Chinese learning preference",
+          "passed": true
+        },
+        {
+          "name": "Flypy resumes native Chinese learning",
+          "passed": true
+        },
+        {
+          "name": "Flypy forget preserves its composition without submitting text",
+          "passed": true
+        },
+        {
+          "name": "a repeated Flypy forget action is rejected",
+          "passed": true
+        },
+        {
+          "name": "final Flypy learning is ready for restart verification",
+          "passed": true
+        }
+      ],
+      "mode": "exercise",
+      "physical_input_executed": false,
+      "registration_executed": false
+    },
+    {
+      "checks": [
+        {
+          "name": "double pinyin probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "saved Flypy scheme is selected on service restart",
+          "passed": true
+        },
+        {
+          "name": "learned word survives a service restart in Flypy",
+          "passed": true
+        },
+        {
+          "name": "restarted full pinyin sees the same learned word",
+          "passed": true
+        },
+        {
+          "name": "restarted natural double pinyin sees the same learned word",
+          "passed": true
+        }
+      ],
+      "mode": "restart",
+      "physical_input_executed": false,
+      "registration_executed": false
+    },
+    {
+      "checks": [
+        {
+          "name": "double pinyin probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "legacy preferences default to full pinyin and retain other choices",
+          "passed": true
+        },
+        {
+          "name": "upgraded full pinyin retains an old learned word",
+          "passed": true
+        },
+        {
+          "name": "old single-schema user data can select natural double pinyin",
+          "passed": true
+        },
+        {
+          "name": "old single-schema user data can select Flypy with the same learning",
+          "passed": true
+        },
+        {
+          "name": "scheme changes preserve the disabled English preference",
+          "passed": true
+        }
+      ],
+      "mode": "upgrade",
+      "physical_input_executed": false,
+      "registration_executed": false
+    }
+  ],
+  "ipc_probe_sha256": "7a567f3cc4c287e5e785703ed65a8de670f861acd90a338b4db6dd8c1456dfab",
+  "native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
+  "passed": true,
+  "product_version": "0.5.0-dev.3",
+  "recorded_at": "2026-11-08T11:57:14.993038+00:00",
+  "rime_dll_sha256": "ef9e59d7e3bcbb89b33af5418ba99de9347f1b51ec00f37770801758e83ecc56",
+  "schema_sha256": {
+    "study": "bf667e3702b6f31c88b59098e560591385bddaa19a5c3765afd0e9f26eb58c86",
+    "study_double_pinyin": "8fbbb783439a15b86f20a2eb4918aec16cf0948fa14e4d30d1d3da30e8540aee",
+    "study_flypy": "112d4057e4910e5468e8ac8d1f877967c239e00fbee38c940da6cbabbda95d05"
+  },
+  "scope": "Isolated Rime C API and real product IPC with synthetic input; no installed TSF or physical input",
+  "section": "ipc",
+  "source_lock_sha256": "a96f57da640e561acbb7de48ce1b2a6d84b7b08ad97a49783e027babe5865309",
+  "word_regression_count": 0,
+  "word_regressions": {},
+  "work_directory": ".cache/packaging/verification/double-pinyin-7b640005c4e840739972ed06dcb8d686"
+}

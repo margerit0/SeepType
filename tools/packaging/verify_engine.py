@@ -21,11 +21,11 @@ def pinyin_for(entry, data):
     return value
 
 
-def validate_words(probe, data, *, progress=True):
+def validate_words(probe, data, *, progress=True, input_for=pinyin_for):
     checks = []
     translations = {entry["chinese"]: entry["commit_english"] for entry in data.entries}
     for entry in data.entries:
-        pinyin = pinyin_for(entry, data)
+        pinyin = input_for(entry, data)
         item = {"id": entry["id"], "chinese": entry["chinese"], "pinyin_input": pinyin, "passed": False}
         try:
             page, index = probe.find(pinyin, entry["chinese"])

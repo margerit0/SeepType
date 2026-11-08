@@ -1,0 +1,71 @@
+{
+  "check_count": 10,
+  "checks": [
+    {
+      "method": "desktop observation",
+      "name": "fresh settings window shows full pinyin by default",
+      "passed": true
+    },
+    {
+      "method": "desktop observation",
+      "name": "dropdown exposes full pinyin natural double pinyin and Flypy",
+      "passed": true
+    },
+    {
+      "method": "desktop observation plus settings.ini inspection",
+      "name": "natural double pinyin can be selected saved and reopened",
+      "passed": true
+    },
+    {
+      "method": "desktop observation plus settings.ini inspection",
+      "name": "Flypy can be selected saved and reopened",
+      "passed": true
+    },
+    {
+      "method": "End selected Flypy; Home selected full pinyin",
+      "name": "keyboard navigation selects schemes in the native combo box",
+      "passed": true
+    },
+    {
+      "method": "byte-equivalent UTF-8 contents after cancellation",
+      "name": "cancelling a different scheme leaves saved settings unchanged",
+      "passed": true
+    },
+    {
+      "method": "settings.ini inspection",
+      "name": "scheme selection preserves the other saved preferences",
+      "passed": true
+    },
+    {
+      "method": "desktop visual observation",
+      "name": "all settings controls and save buttons fit the observed window",
+      "passed": true
+    },
+    {
+      "method": "SHA256 equality",
+      "name": "observed settings executable matches the final native build",
+      "passed": true
+    },
+    {
+      "method": "process existence check after observed window closure",
+      "name": "all three test settings processes have exited",
+      "passed": true
+    }
+  ],
+  "native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
+  "passed": true,
+  "process_ids": [
+    31328,
+    51096,
+    15284
+  ],
+  "recorded_at": "2026-11-08T12:02:33.796474+00:00",
+  "scope": "Real native settings UI in a dedicated developer user directory; no installation or external-app TSF acceptance",
+  "screenshot": "experiments/phase6/results/double-pinyin-settings/flypy-selected.png",
+  "screenshot_dimensions": [
+    485,
+    653
+  ],
+  "settings_executable_sha256": "e9b58982a57a27044a3ac982303ff8e40b6e9ca1d3c808015df8a55259aaaf99",
+  "user_directory": ".cache/packaging/verification/double-pinyin-a7b61d8bf8934c049fb6ccbf39d9bf69/settings-user"
+}

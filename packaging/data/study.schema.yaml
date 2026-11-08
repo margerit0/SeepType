@@ -2,8 +2,9 @@ __include: luna_pinyin_simp.schema:/
 schema:
   schema_id: study
   name: 拾词全拼
-  version: '0.5.1'
-  dependencies: []
+  version: '0.5.2'
+  # Deploy both prisms even for an existing user's single-schema default.custom.
+  dependencies: [study_double_pinyin, study_flypy]
 switches:
   - {name: ascii_mode, reset: 0}
   - {name: full_shape, reset: 0}
@@ -29,6 +30,7 @@ engine:
     - lua_filter@study_filter
 translator:
   dictionary: cedict_study
+  user_dict: cedict_study
   prism: study
   enable_user_dict: true
 recognizer:

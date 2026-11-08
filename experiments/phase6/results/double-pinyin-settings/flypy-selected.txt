@@ -1,0 +1,33 @@
+Window: "拾词输入法 · 设置", App: StudyIME.Settings.exe.
+	0 窗口 拾词输入法 · 设置 Secondary Actions: Raise
+		1 文本 基本设置
+		2 文本 输入方案
+		3 组合框 (settable, string) 输入方案 Value: 小鹤双拼 ID: 108
+			4 文本 (settable, string) 输入方案 Value: 小鹤双拼
+			5 按钮 打开 ID: DropDown
+		6 文本 切换后从下一次输入生效，三种方案共享选词习惯。
+		7 复选框 英语学习：显示英文释义 ID: 101
+		8 复选框 记住中文选词习惯 ID: 107
+		9 文本 关闭后停止学习，已有记录仍参与排序。 右键候选可忘记该词当前读音的学习记录。
+		10 文本 中文字号
+		11 组合框 (settable, string) 中文字号 Value: 常规 · 18px ID: 102
+			12 文本 (settable, string) 中文字号 Value: 常规 · 18px
+			13 按钮 打开 ID: DropDown
+		14 文本 外观
+		15 组合框 (settable, string) 外观 Value: 跟随系统 ID: 103
+			16 文本 (settable, string) 外观 Value: 跟随系统
+			17 按钮 打开 ID: DropDown
+		18 文本 输入英文
+		19 组合框 (settable, string) 输入英文 Value: Ctrl+Shift+Enter ID: 104
+			20 文本 (settable, string) 输入英文 Value: Ctrl+Shift+Enter
+			21 按钮 打开 ID: DropDown
+		22 文本 仅明确操作输入英文；空格、数字和普通点击仍输入中文。 快捷键如与应用冲突，可更换预设。F2 查看完整释义。
+		23 复选框 减少动态效果 ID: 105
+		24 文本 词库：日常 200 条 · 审核预览，词义待人工审核。 软件与词库许可见随附的许可与来源说明。 中文选词、造词记录与偏好仅存本机，不上传。
+		25 文本 ID: 106
+		26 按钮 取消 ID: 2
+		27 按钮 保存 ID: 1
+		28 标题栏 (settable, string) Value: 拾词输入法 · 设置
+			29 按钮 关闭
+
+The focused UI element is 3 组合框 (settable, string) 输入方案 Value: 小鹤双拼 ID: 108.

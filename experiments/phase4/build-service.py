@@ -259,6 +259,8 @@ if TSF:
         link("StudyIME.EngineProbe", [ROOT / "experiments/phase3/engine_probe.cpp"], [])
         link("StudyIME.FrequencyProbe", [ROOT / "tools/packaging/frequency_probe.cpp"], [product_runtime] + ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse", "UiPreferences", "EnglishMenu"]])
+        link("StudyIME.DoublePinyinProbe", [ROOT / "tools/packaging/double_pinyin_probe.cpp"], [product_runtime] + ipc_objects +
+             [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse", "UiPreferences"]])
     if not PRODUCT and (HERE / "frontend_test.cpp").exists():
         link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "StudyIME 0.5.0-dev.2 x64 developer package",
+  "scope": "StudyIME 0.5.0-dev.3 x64 developer build",
   "release_blockers": [],
   "components": [
     {"id": "studyime", "role": "runtime", "license": "GPL-3.0-or-later", "status": "user-approved", "scope": "Original code and artwork; not an override of upstream terms"},
@@ -20,6 +20,7 @@
     {"id": "opencc-marisa", "role": "source-materials-only", "license": "BSD-2-Clause OR LGPL-2.1-or-later", "selected_license": "BSD-2-Clause", "version": "0.2.6", "status": "bundled-COPYING-preserved; product uses the separately built pinned marisa library"},
     {"id": "rime-luna-pinyin", "role": "schema-and-spelling-code", "license": "LGPLv3 (upstream notice)", "status": "only-three-schema-files-and-license-selected; mixed-dictionary-excluded"},
     {"id": "rime-prelude", "role": "input-presets", "license": "LGPLv3 (upstream notice)", "status": "source-and-notice-preserved"},
+    {"id": "rime-double-pinyin", "role": "natural-and-flypy-schema-code", "license": "GPLv3 (upstream notice)", "commit": "01a13287cbd27819be1c34fa1ddc1b3643d5001b", "status": "original-schemas-and-license-preserved; StudyIME adaptations-marked", "source_lock": "licensing/double-pinyin.lock.json"},
     {"id": "cc-cedict-chinese-base", "role": "chinese-headwords-and-readings", "license": "CC-BY-SA-4.0", "status": "fixed-full-snapshot-with-per-row-source-mapping", "source_lock": "data/lexicon/source.lock.json"},
     {"id": "wordfreq-chinese", "role": "chinese-candidate-frequency-data", "license": "CC-BY-SA-4.0", "version": "3.1.1", "status": "fixed-Chinese-data-with-full-redistribution-statement-and-source-author-credits", "source_lock": "data/chinese/sources.lock.json"},
     {"id": "unicode-unihan", "role": "single-character-pronunciation-frequency-data", "license": "Unicode-3.0", "version": "17.0.0", "status": "original-license-and-frequency-source-fixed; used to apportion polyphonic single-character weights"},

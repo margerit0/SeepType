@@ -35,6 +35,10 @@ def source_lock():
     for item in notices["notices"]:
         if file_hash(ROOT / item["path"]) != item["sha256"]:
             raise ValueError(f"Changed supplemental notice: {item['path']}")
+    double_pinyin = json.loads((ROOT / "licensing/double-pinyin.lock.json").read_bytes())
+    for item in double_pinyin["files"]:
+        if file_hash(ROOT / item["path"]) != item["sha256"]:
+            raise ValueError(f"Changed double-pinyin source: {item['path']}")
     if file_hash(ROOT / "LICENSE") != file_hash(ROOT / "licensing/third-party/weasel/LICENSE.txt"):
         raise ValueError("The complete GPL text no longer matches its recorded original")
     return value
@@ -51,6 +55,12 @@ def chinese_data(lock):
             original = archived[name]
             content = original
             changes = []
+            if source["id"] == "rime-prelude" and name == "default.yaml":
+                hotkeys = b"  hotkeys:\n    - Control+grave\n    - Control+Shift+grave\n    - F4\n"
+                if content.count(hotkeys) != 1:
+                    raise ValueError("The pinned Rime switcher defaults changed")
+                content = content.replace(hotkeys, b"  hotkeys: []\n")
+                changes = ["Select the input scheme through StudyIME settings; disable the competing Rime switcher hotkeys."]
             if source["id"] == "opencc":
                 relative = "opencc/" + Path(name).name
                 if relative.endswith(".json"):
@@ -128,7 +138,7 @@ def payload(mode="preview"):
     engine = rime_inputs.validate()
     runtime = ROOT / engine["binary"]["path"]
     files["bin/rime.dll"] = runtime.read_bytes()
-    for name in ["study.schema.yaml", "weasel.yaml"]:
+    for name in ["study.schema.yaml", "study_double_pinyin.schema.yaml", "study_flypy.schema.yaml", "weasel.yaml"]:
         files["data/shared/" + name] = (ROOT / "packaging/data" / name).read_bytes()
     for name in ["default.custom.yaml", "rime.lua"]:
         files["data/user-template/" + name] = (ROOT / "packaging/data" / name).read_bytes()
@@ -178,7 +188,7 @@ def source_materials():
         if name.startswith("experiments/phase3/") or name.startswith("experiments/phase4/"):
             include = "/results/" not in name and Path(name).suffix in [".py", ".cmd", ".cpp", ".h", ".json", ".yaml", ".lua", ".patch", ".manifest", ".md"]
         if name in ["docs/software-licenses.md", "docs/packaging.md", "docs/license-proposal.md",
-                    "docs/word-frequency.md", "docs/optimization-todo.md"]: include = True
+                    "docs/word-frequency.md", "docs/double-pinyin.md", "docs/optimization-todo.md"]: include = True
         if name.startswith("experiments/phase4/results/previews-v05/") and name.endswith(".png"): include = True
         if include and (ROOT / name).is_file(): files["project/" + name] = (ROOT / name).read_bytes()
     materials = []

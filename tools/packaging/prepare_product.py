@@ -113,24 +113,19 @@ extern "C" const char* WINAPI StudyProductIdentity() { return study::kProductIde
 '''
     replace(server, '\n  if (g_classFactory == NULL) {', '\n  if (!ppvObject) return E_INVALIDARG;\n  *ppvObject = nullptr;\n  if (!IsEqualCLSID(rclsid, study::kTextServiceGuid)) return CLASS_E_CLASSNOTAVAILABLE;\n  if (g_classFactory == NULL) {')
     rime = "RimeWithWeasel/RimeWithWeasel.cpp"
-    replace(rime, '#include <RimeWithWeasel.h>', '''#include <RimeWithWeasel.h>
-#include <study/windows/UiPreferences.h>
-
-// Read the saved setting at the native commit boundary, including mouse
-// selection and composition commits initiated by a different application.
-// A context property does not refresh the menu or disturb a partial selection.
-static void RefreshStudyUserLearning(RimeApi* api, RimeSessionId session) {
-  const bool enabled = study::LoadPreferences(study::PreferencesPath()).userLearning;
-  api->set_property(session, "study_user_learning", enabled ? "1" : "0");
-}''')
-    replace(rime, '  m_study.Attach(ipc_id, rime_api, session_id);',
-            '  RefreshStudyUserLearning(rime_api, session_id);\n  m_study.Attach(ipc_id, rime_api, session_id);')
+    replace(rime, '#include <RimeWithWeasel.h>',
+            '#include <RimeWithWeasel.h>\n#include <study/windows/ProductRime.h>')
+    replace(rime, '  RimeSessionId session_id = (RimeSessionId)rime_api->create_session();',
+            '  RimeSessionId session_id = (RimeSessionId)rime_api->create_session();\n'
+            '  study::RefreshProductPreferences(rime_api, session_id, true, true);')
     replace(rime, '  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,',
-            '  RefreshStudyUserLearning(rime_api, session_id);\n  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,')
+            '  study::RefreshProductPreferences(rime_api, session_id,\n'
+            '      !(keyEvent.mask & ibus::Modifier::RELEASE_MASK));\n'
+            '  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,')
     replace(rime, '  rime_api->commit_composition(to_session_id(ipc_id));',
-            '  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));\n  rime_api->commit_composition(to_session_id(ipc_id));')
+            '  study::RefreshProductPreferences(rime_api, to_session_id(ipc_id), false);\n  rime_api->commit_composition(to_session_id(ipc_id));')
     replace(rime, '  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);',
-            '  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));\n  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);')
+            '  study::RefreshProductPreferences(rime_api, to_session_id(ipc_id), false);\n  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);')
     replace(rime, '"rime.weasel"', '"rime.studyime"', count=2)
     replace(rime, '"rime.study-service-test"', '"rime.studyime"')
     # ZIP timestamps are fixed for reproducibility. Checking only file mtimes
@@ -181,6 +176,8 @@ SECURITY_ATTRIBUTES* SecurityAttribute::get_attr() { return &sa; }
             raise ValueError("Unexpected layout device usage: " + relative)
         replace(relative, "CDCHandle", "HDC", count=value.count("CDCHandle"))
     server = "WeaselIPCServer/WeaselServerImpl.cpp"
+    replace(server, '    m_pRequestHandler->ChangePage(wParam, lParam, eat);',
+            '    return m_pRequestHandler->ChangePage(wParam, lParam, eat) ? 1 : 0;')
     replace(server, "extern CAppModule _Module;\n", "")
     replace(server, """  CMessageLoop theLoop;
   _Module.AddMessageLoop(&theLoop);

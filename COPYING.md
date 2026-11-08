@@ -17,6 +17,13 @@ and GPL terms. This notice does not relicense third-party material. All changes
 to Weasel are identified by the pinned baseline, checked overlay generators and
 patches, and the accompanying source materials.
 
+The natural double-pinyin and Flypy schemas adapt Rime's double-pinyin project
+at commit `01a13287cbd27819be1c34fa1ddc1b3643d5001b`, under its upstream GPLv3
+terms. The original schemas, authorship and full license are retained in
+[licensing/third-party/rime-double-pinyin](licensing/third-party/rime-double-pinyin).
+The StudyIME-specific changes are marked in each derived schema and recorded in
+[the source lock](licensing/double-pinyin.lock.json).
+
 The CC-CEDICT-derived English learning data is separately licensed under
 `CC-BY-SA-4.0`. Its attribution, source records, change descriptions and full
 license are in [data/lexicon](data/lexicon/README.md). Human review is a release

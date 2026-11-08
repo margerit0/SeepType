@@ -1,22 +1,14 @@
 --- a/RimeWithWeasel/RimeWithWeasel.cpp
 +++ b/RimeWithWeasel/RimeWithWeasel.cpp
-@@ -1,6 +1,15 @@
+@@ -1,6 +1,7 @@
  #include "stdafx.h"
  #include <logging.h>
  #include <RimeWithWeasel.h>
-+#include <study/windows/UiPreferences.h>
-+
-+// Read the saved setting at the native commit boundary, including mouse
-+// selection and composition commits initiated by a different application.
-+// A context property does not refresh the menu or disturb a partial selection.
-+static void RefreshStudyUserLearning(RimeApi* api, RimeSessionId session) {
-+  const bool enabled = study::LoadPreferences(study::PreferencesPath()).userLearning;
-+  api->set_property(session, "study_user_learning", enabled ? "1" : "0");
-+}
++#include <study/windows/ProductRime.h>
  #include <StringAlgorithm.hpp>
  #include <WeaselConstants.h>
  #include <WeaselUtility.h>
-@@ -46,7 +55,7 @@
+@@ -46,7 +47,7 @@
    time_t now = time(NULL);
    strftime(ymd, sizeof(ymd), ".%Y%m%d", localtime(&now));
    std::string today(ymd);
@@ -25,7 +17,7 @@
    std::string dir = WeaselLogPath().string();
    if (!fs::exists(fs::path(dir)))
      return;
-@@ -137,9 +146,9 @@
+@@ -137,9 +138,9 @@
    weasel_traits.distribution_name = distribution_name.c_str();
    weasel_traits.distribution_code_name = WEASEL_CODE_NAME;
    weasel_traits.distribution_version = WEASEL_VERSION;
@@ -37,7 +29,7 @@
    weasel_traits.min_log_level = 2;
    const char* modules[] = {"default", "lua", nullptr};
    weasel_traits.modules = modules;
-@@ -158,6 +167,7 @@
+@@ -158,6 +159,7 @@
  
    LOG(INFO) << "Initializing la rime.";
    rime_api->initialize(NULL);
@@ -45,35 +37,36 @@
  #if 0
    if (rime_api->start_maintenance(/*full_check = */ False)) {
      m_disabled = true;
-@@ -253,6 +263,7 @@
-     session_status.__synced = false;
-     rime_api->free_status(&status);
+@@ -222,6 +224,7 @@
+       return 0;
    }
-+  RefreshStudyUserLearning(rime_api, session_id);
-   m_study.Attach(ipc_id, rime_api, session_id);
-   m_ui->style() = session_status.style;
-   // show session's welcome message :-) if any
-@@ -324,6 +335,7 @@
+   RimeSessionId session_id = (RimeSessionId)rime_api->create_session();
++  study::RefreshProductPreferences(rime_api, session_id, true, true);
+   if (m_global_ascii_mode) {
+     for (const auto& pair : m_session_status_map) {
+       if (pair.first) {
+@@ -324,6 +327,8 @@
    RimeSessionId session_id = to_session_id(ipc_id);
    m_study.Activate(ipc_id);
    m_study.Invalidate(ipc_id);
-+  RefreshStudyUserLearning(rime_api, session_id);
++  study::RefreshProductPreferences(rime_api, session_id,
++      !(keyEvent.mask & ibus::Modifier::RELEASE_MASK));
    Bool handled = rime_api->process_key(session_id, keyEvent.keycode,
                                         expand_ibus_modifier(keyEvent.mask));
    // vim_mode when keydown only
-@@ -351,6 +363,7 @@
+@@ -351,6 +356,7 @@
    if (m_disabled)
      return;
    m_study.Invalidate(ipc_id);
-+  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));
++  study::RefreshProductPreferences(rime_api, to_session_id(ipc_id), false);
    rime_api->commit_composition(to_session_id(ipc_id));
    _UpdateUI(ipc_id);
    m_active_session = ipc_id;
-@@ -370,6 +383,7 @@
+@@ -370,6 +376,7 @@
      size_t index, WeaselSessionId ipc_id, EatLine eat) {
    if (m_disabled || !eat || !m_session_status_map.count(ipc_id)) return false;
    m_study.Invalidate(ipc_id);
-+  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));
++  study::RefreshProductPreferences(rime_api, to_session_id(ipc_id), false);
    const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);
    // Deliver this ordinary Chinese commit in the selecting response itself.
    // Rejected selection must not drain a pending commit owned by the application.
@@ -239,6 +232,15 @@
    dispatcher.Close();
    channel->Stop();
    return nRet;
+@@ -360,7 +362,7 @@
+       *requestChannel << msg;
+       return true;
+     };
+-    m_pRequestHandler->ChangePage(wParam, lParam, eat);
++    return m_pRequestHandler->ChangePage(wParam, lParam, eat) ? 1 : 0;
+   }
+   return 0;
+ }
 --- a/WeaselIPCServer/stdafx.h
 +++ b/WeaselIPCServer/stdafx.h
 @@ -13,8 +13,7 @@

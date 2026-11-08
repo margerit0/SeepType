@@ -1,3 +1,5 @@
 patch:
   schema_list:
     - {schema: study}
+    - {schema: study_double_pinyin}
+    - {schema: study_flypy}

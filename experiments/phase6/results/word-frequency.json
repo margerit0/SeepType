@@ -59,14 +59,14 @@
   "engine_probe_sha256": "392cbf6b8bbc1c3d758a8e9fbcafb3b5df02bfa5ae50460341239020c224bf71",
   "engine_startup": {
     "lua_module": true,
-    "maintenance_ms": 749.808,
+    "maintenance_ms": 787.179,
     "octagram_module": false,
     "pointer_bits": 64,
     "predict_module": false,
     "version": "1.13.1"
   },
   "error": null,
-  "frequency_probe_sha256": "faac45652451331cd8b59a2350e24e05afcdad37d3f3c8addd3ee5c80875a69d",
+  "frequency_probe_sha256": "2d80e984fc924d6fd0e12b01b3424af9a2544535122a9ce98edbe57ecb8fb254",
   "ipc": [
     {
       "checks": [
@@ -278,11 +278,11 @@
       "registration_executed": false
     }
   ],
-  "native_build_sha256": "9434d15c91274fecc3e04441a659ecdb843648a798dcbbb8a9dcce4044b00644",
+  "native_build_sha256": "02dd6a85e113c6cdec2f6e4908305c212672a336b048b885606df6b84f992895",
   "passed": true,
   "product_version": "0.5.0-dev.3",
-  "recorded_at": "2026-11-08T11:26:40.627013+00:00",
+  "recorded_at": "2026-11-08T12:02:40.353117+00:00",
   "rime_dll_sha256": "ef9e59d7e3bcbb89b33af5418ba99de9347f1b51ec00f37770801758e83ecc56",
   "scope": "Isolated real product IPC and Rime C API; synthetic input; no installed TSF or physical input",
-  "work_directory": ".cache/packaging/verification/frequency-d7f038ac2836476fa4d6858938c652e5"
+  "work_directory": ".cache/packaging/verification/frequency-51b3cb6c6d28409c9e8b86f719021aa2"
 }

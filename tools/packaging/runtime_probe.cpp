@@ -36,7 +36,7 @@ int wmain(int argc, wchar_t** argv) {
       return response;
     };
     auto first = read();
-    check("only the packaged study schema is active", first->status.schema_id == L"study");
+    check("new product sessions default to full pinyin", first->status.schema_id == L"study");
     struct Sample { const char* pinyin; const wchar_t* chinese; const char* english; };
     const Sample samples[] = {{"nihao", L"你好", "hello"}, {"xiexie", L"谢谢", "thank you"},
         {"pingguo", L"苹果", "apple"}, {"mingtian", L"明天", "tomorrow"}, {"yiyuan", L"医院", "hospital"}};

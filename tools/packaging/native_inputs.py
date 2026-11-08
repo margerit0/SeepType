@@ -19,6 +19,7 @@ def snapshot():
         "tools/packaging/native_inputs.py", "tools/packaging/record_build.py",
         "tools/packaging/runtime_probe.cpp", "tools/packaging/render_probe.cpp",
         "tools/packaging/frequency_probe.cpp",
+        "tools/packaging/ipc_probe.h", "tools/packaging/double_pinyin_probe.cpp",
         "experiments/phase4/build-service.py", "experiments/phase4/prepare-weasel.py",
         "experiments/phase4/prepare-tsf.py", "experiments/phase4/prepare-service-deps.py",
         "experiments/phase4/native-host.manifest", "experiments/phase3/vs-env.cmd",

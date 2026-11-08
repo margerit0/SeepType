@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/rime/rime-double-pinyin",
+  "commit": "01a13287cbd27819be1c34fa1ddc1b3643d5001b",
+  "license": "GPL-3.0",
+  "retrieved_on": "2026-11-08",
+  "files": [
+    {
+      "path": "licensing/third-party/rime-double-pinyin/double_pinyin.schema.yaml",
+      "source_path": "double_pinyin.schema.yaml",
+      "sha256": "763430a99d0cd693805766b49d60b9092bc2af0ca26eb107f1d044566ce765d3"
+    },
+    {
+      "path": "licensing/third-party/rime-double-pinyin/double_pinyin_flypy.schema.yaml",
+      "source_path": "double_pinyin_flypy.schema.yaml",
+      "sha256": "6b522a7e9cb743474287a14678597460bd124369f32573dd63e8f04e7c41d4b9"
+    },
+    {
+      "path": "licensing/third-party/rime-double-pinyin/LICENSE",
+      "source_path": "LICENSE",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "licensing/third-party/rime-double-pinyin/README.md",
+      "source_path": "README.md",
+      "sha256": "7525aee9fcac14f81fbbe1453f75539fac4735ec1d20d66b41a99e8b1f857d8b"
+    }
+  ],
+  "changes": [
+    "Inherit StudyIME processors, simplified dictionary and English annotations.",
+    "Use separate prisms and one shared cedict_study user dictionary.",
+    "Retain upstream key algebra and preedit formatting; do not enable abbreviation."
+  ]
+}
