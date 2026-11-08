@@ -1,5 +1,9 @@
 # 项目进度与接续入口
 
+## 2026-11-08 · 安卓新窗口接续材料完成
+
+新增 [安卓开发上下文](android-handoff.md)，汇总独立 worktree、`codex/android-dev`、既定架构、已认可的视觉参考、当前工具链检查、源码入口和 P0–P4 实施顺序，并提供可复制的新窗口指令。目录隔离已完成，当前尚无 Android／Rust 工程或 APK；下一步进入 P0 实现。Windows 和词库任务继续使用各自原有记录与工作目录。
+
 ## 2026-11-08 · 安卓与 Rust 共享核心规划
 
 用户认可手机键盘交互示意，并要求新建分支编写计划。已从 `codex/technical-spike` 的 `7713de7` 建立 `codex/android-rust-plan`，保存 [安卓开发计划](android-plan.md)与[设计参考](../prototype/android/README.md)。拟采用 Kotlin／Compose 定制界面、Rust 业务核心及现有 Rime／Lua；美观、触摸和流畅度共同验收。

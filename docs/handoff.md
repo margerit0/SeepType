@@ -1,5 +1,7 @@
 # StudyIME 接续说明
 
+**安卓新窗口先读：[专用开发上下文](android-handoff.md)。** 用户准备在新窗口完成安卓开发，使用现有独立 worktree 的 `codex/android-dev`，从 P0 工具链与 Kotlin→Rust→Rime 最小工程开始。专用入口已汇总产品约定、视觉参考、源码位置与 P0–P4 交付条件。下方 Windows 安装／卸载和词库记录保留为历史，不自动加入安卓任务。
+
 Windows／词库工作目录：`.`，已恢复分支 `codex/technical-spike`。本聊天安卓开发使用独立工作树 `.`、分支 `codex/android-dev`；规划分支为 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准，目录分工见 [并行开发说明](parallel-development.md)。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
 
 ## 2026-11-08 最新目录断点：双工作树分离完成
