@@ -1,0 +1,18 @@
+{
+    "recorded_at":  "2026-11-08T07:16:01.8508809Z",
+    "powershell":  "5.1.26100.9711",
+    "common_sha256":  "06ce6087a2f07b3dea0ead74ca0a51c59696a99588a8e0dae7597ae1aaece56a",
+    "test_directory":  ".\\.cache\\packaging\\verification\\receipt-cc339ce428f242e19247e91927c6069a\\收据 path",
+    "checks":  [
+                   {
+                       "name":  "create first receipt in a Unicode path with spaces",
+                       "passed":  true
+                   }
+               ],
+    "system_install_executed":  false,
+    "tsf_registration_executed":  false,
+    "error":  "Exception calling \"Replace\" with \"3\" argument(s): \"The path is not of a legal form.\"",
+    "script_stack":  "at Write-StudyReceipt, .\\packaging\\windows\\Common.ps1: line 175\r\nat \u003cScriptBlock\u003e, .\\tools\\packaging\\verify-receipt.ps1: line 32",
+    "passed":  1,
+    "total":  4
+}

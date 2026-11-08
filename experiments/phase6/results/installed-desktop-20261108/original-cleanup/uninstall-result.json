@@ -1,0 +1,8 @@
+{
+    "action":  "uninstall",
+    "entry":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1",
+    "started_at":  "2026-11-08T07:16:58.8252093Z",
+    "succeeded":  true,
+    "archived_pending_receipt":  ".\\experiments\\phase6\\results\\installed-desktop-20261108\\original-cleanup\\recovered-receipt-pending.json",
+    "finished_at":  "2026-11-08T07:17:01.8563264Z"
+}

@@ -172,7 +172,9 @@ function Write-StudyReceipt([string] $Root, $Receipt) {
     $pending = Resolve-StudyChild $Root 'install-receipt.json.tmp'
     $utf8 = New-Object Text.UTF8Encoding($false)
     [IO.File]::WriteAllText($pending, ($Receipt | ConvertTo-Json -Depth 10), $utf8)
-    if (Test-Path -LiteralPath $path) { [IO.File]::Replace($pending, $path, $null) }
+    # Windows PowerShell 5.1 coerces $null to an empty System.String in this
+    # overload. NullString preserves the null backup path required by File.Replace.
+    if (Test-Path -LiteralPath $path) { [IO.File]::Replace($pending, $path, [NullString]::Value) }
     else { [IO.File]::Move($pending, $path) }
 }
 

@@ -1,0 +1,9 @@
+{
+    "schema_version":  1,
+    "product_id":  "StudyIME.InputMethod",
+    "install_root":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256":  "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
+    "status":  "copied",
+    "registered":  false,
+    "failed":  true
+}

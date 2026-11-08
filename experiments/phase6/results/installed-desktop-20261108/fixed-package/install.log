@@ -1,0 +1,36 @@
+﻿{
+    "action":  "install",
+    "apply_requested":  true,
+    "product":  "拾词输入法",
+    "version":  "0.5.0-dev.2",
+    "source":  ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2",
+    "target":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "package_sha256":  "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "files":  94,
+    "architecture":  "x64",
+    "registry_class":  "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+    "language_profile":  "C126F14A-E78D-57FF-910F-205A393AE9D9",
+    "language_id":  "0x0804",
+    "app_list_key":  "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{D89859C5-5A51-53E6-8199-DF3407D2908B}",
+    "data_directory":  "<local profile>\\AppData\\Local\\StudyIME",
+    "default_input_method_changed":  false,
+    "current_profile_activated":  false,
+    "automatic_start":  "On TSF activation, for this user and logon session",
+    "release_ready":  false,
+    "release_blockers":  [
+                             {
+                                 "detail":  "200 entries await human review; 0 approved.",
+                                 "id":  "human-lexicon-review"
+                             },
+                             {
+                                 "detail":  "Real install/uninstall, TSF automatic routing and deferred Computer Use acceptance are not complete.",
+                                 "id":  "installed-and-desktop-acceptance"
+                             },
+                             {
+                                 "detail":  "Product identity and settings are marked developer preview.",
+                                 "id":  "developer-channel"
+                             }
+                         ],
+    "apply_command":  ".\\Install.ps1 -Apply -AllowDevelopment"
+}
+StudyIME installed. Select it explicitly in Windows when ready; the default input method was not changed.

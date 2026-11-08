@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>StudyIME 安装后浏览器验收</title>
+<style>
+body{font:18px "Segoe UI",sans-serif;max-width:960px;margin:36px auto;padding:0 24px;color:#182326;background:#f4f7f7}
+h1{font-size:26px}label{display:block;margin-top:24px;font-weight:600}
+textarea{box-sizing:border-box;width:100%;height:130px;margin-top:10px;padding:18px;font:26px "Microsoft YaHei UI",sans-serif;border:1px solid #809592;border-radius:8px;background:white}
+button{margin-top:18px;padding:9px 18px;font:inherit}pre{font-size:13px;white-space:pre-wrap;background:white;padding:16px;max-height:200px;overflow:auto}
+</style>
+<h1>StudyIME 安装后浏览器验收</h1>
+<p>本地测试页。输入框接收浏览器的原生键盘与组合事件。</p>
+<label for="a">输入框 A</label><textarea id="a" spellcheck="false"></textarea>
+<label for="b">输入框 B</label><textarea id="b" spellcheck="false"></textarea>
+<button id="export">保存本次输入记录</button>
+<pre id="events" aria-label="最近的输入事件"></pre>
+<script>
+const records=[];
+for(const input of document.querySelectorAll('textarea')) {
+  for(const type of ['focus','blur','compositionstart','compositionupdate','compositionend','beforeinput','input','keydown','keyup']) {
+    input.addEventListener(type,event=>{
+      records.push({at:performance.now(),field:input.id,type,key:event.key,data:event.data,inputType:event.inputType,isComposing:event.isComposing,value:input.value});
+      document.querySelector('#events').textContent=records.slice(-10).map(item=>JSON.stringify(item)).join('\n');
+    });
+  }
+}
+document.querySelector('#export').addEventListener('click',()=>{
+  const content={recorded_at:new Date().toISOString(),user_agent:navigator.userAgent,values:{a:document.querySelector('#a').value,b:document.querySelector('#b').value},events:records};
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(new Blob([JSON.stringify(content,null,2)],{type:'application/json'}));
+  link.download='studyime-browser-observation.json';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+});
+</script>
+</html>

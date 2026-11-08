@@ -1,0 +1,105 @@
+{
+  "input_settings": {
+    "default_override": null,
+    "languages": [
+      {
+        "InputMethodTips": [
+          "0804:{81D4E9C9-1D3B-41BC-9E6C-4B40BF79E35E}{FA550B04-5AD7-411F-A5AC-CA038EC515D7}"
+        ],
+        "LanguageTag": "zh-Hans-CN"
+      }
+    ]
+  },
+  "installed_binaries": {
+    "StudyIME.Registrar.exe": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
+    "StudyIME.Service.exe": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
+    "StudyIME.Settings.exe": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
+    "StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+    "rime.dll": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77"
+  },
+  "normal_data_exists": false,
+  "normal_data_files": {},
+  "normal_data_root": "<local profile>\\AppData\\Local\\StudyIME",
+  "package": ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2",
+  "package_manifest_sha256": "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
+  "receipt": {
+    "failed": false,
+    "install_root": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256": "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
+    "product_id": "StudyIME.InputMethod",
+    "registered": false,
+    "schema_version": 1,
+    "status": "copying"
+  },
+  "recorded_at": "2026-11-08T07:14:31.617286+00:00",
+  "registry": {
+    "keyboard_preload": {
+      "exists": true,
+      "sha256": "013cb210624384c32f196f49f9d2c1e52903a807835263043d3ca027c3080661",
+      "tree": {
+        "children": {},
+        "values": [
+          [
+            "1",
+            "00000804",
+            1
+          ]
+        ]
+      }
+    },
+    "keyboard_substitutes": {
+      "exists": true,
+      "sha256": "0b0630cf4a164722c4be6e25ff84de74940d183aad7247f8a95660328cf1fbe0",
+      "tree": {
+        "children": {},
+        "values": []
+      }
+    },
+    "machine_tips_x64": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "machine_tips_x86": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "study_app": {
+      "exists": false
+    },
+    "study_class": {
+      "exists": false
+    },
+    "study_machine_tip": {
+      "exists": false
+    },
+    "study_user": {
+      "exists": false
+    },
+    "study_user_tip": {
+      "exists": false
+    },
+    "weasel_class": {
+      "exists": false
+    },
+    "weasel_machine": {
+      "exists": false
+    },
+    "weasel_machine_tip": {
+      "exists": false
+    },
+    "weasel_user": {
+      "exists": false
+    }
+  },
+  "snapshot_projection": {
+    "omitted_trees": [
+      "machine_tips_x64",
+      "machine_tips_x86"
+    ],
+    "raw_snapshot": ".cache/packaging/installed-evidence/raw-registry-20261108/after-install.json",
+    "raw_snapshot_sha256": "2167de658b37824fb81f39509cc7f358d26c4c37c7f2678749a1fc16ed5bae57",
+    "retained": "Existence and canonical full-tree SHA256; product-specific registration trees remain included."
+  },
+  "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+  "target_exists": true
+}

@@ -1,0 +1,83 @@
+{
+  "authorization": "User explicitly approved installation, application tests and uninstall/restore on 2026-11-08; default input-method configuration must remain unchanged.",
+  "computer_use_stop": "Computer Use has been stopped for this turn because it could not determine the current browser URL on Windows with enough confidence to enforce policy. Stop your work and send a final message noting why Computer Use ended.",
+  "computer_use_stop_stage": "Chrome test window was listed; selecting/activating/capturing that window stopped the turn before browser input.",
+  "copy_failure_cleanup_restored_registry": true,
+  "corrected_install_succeeded": true,
+  "cross_application_focus_observation_completed": false,
+  "current_installation": {
+    "failed": false,
+    "install_root": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "product_id": "StudyIME.InputMethod",
+    "registered": true,
+    "schema_version": 1,
+    "status": "installed"
+  },
+  "english_review": {
+    "entries": 200,
+    "human_approved": 0
+  },
+  "input_settings_before_and_after_install_match": true,
+  "installer_plan_checks_passed": 12,
+  "isolated_service_pipe_observed": true,
+  "isolated_session": "66bcec7716f24f8297a5a1a818699b33",
+  "last_notepad_action": "Typed n to begin a new composition before launching Chrome; the result after focus transfer was not observed.",
+  "notepad_evidence_source": "Computer Use screenshots and process-module/pipe output from this chat, plus the saved synthetic test document; these actions were not rerun while preparing this report.",
+  "notepad_observations": [
+    {
+      "detail": "Ctrl+Shift selected StudyIME; physical n/i/h/a/o produced the product candidate view. The Notepad process loaded C:/Program Files/StudyIME/0.5.0-dev.2/bin/StudyIME.TSF.x64.dll.",
+      "name": "installed TSF automatic routing",
+      "passed": true
+    },
+    {
+      "detail": "nihao + Space committed 你好.",
+      "name": "space commits Chinese",
+      "passed": true
+    },
+    {
+      "detail": "nih selected 你好; F2 displayed a separate hello definition while the composition remained.",
+      "name": "F2 displays definition without committing",
+      "passed": true
+    },
+    {
+      "detail": "Ctrl+Shift+Enter replaced the active composition with hello; final document was 你好hello.",
+      "name": "explicit shortcut commits English",
+      "passed": true
+    },
+    {
+      "detail": "A second Ctrl+Shift+Enter left the seven-character document unchanged; Ctrl+S saved it.",
+      "name": "repeated explicit action does not duplicate text",
+      "passed": true
+    }
+  ],
+  "notepad_saved_sha256": "45a39a8708537b029b2be1e3056fce8e6e740ca93061775c6660b33634d6c980",
+  "notepad_saved_text": "你好hello",
+  "original_install_failed_before_registration": true,
+  "package_revision": {
+    "changed_members": [
+      "package-manifest.json",
+      "scripts/Common.ps1"
+    ],
+    "current_manifest_sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "current_runtime_bytes": 23800624,
+    "current_runtime_sha256": "c1c429adee39465f0740bf7ac6111dad799d097a83e39019a5975d02acf3648e",
+    "native_payload_unchanged": true,
+    "original_runtime_sha256": "7db1bf59ea0d918c6c132c717a9c7e7385426dd1bba3890479d5517f2c8d23a1",
+    "source_archive_refreshed_for_receipt_fix": false
+  },
+  "pending": [
+    "Chrome keyboard/mouse acceptance",
+    "VS Code acceptance",
+    "cross-application focus",
+    "registered uninstall and restoration",
+    "hover and input during animation",
+    "disconnect and recovery",
+    "system scaling and multiple displays",
+    "refresh source archive and its evidence for the installer change"
+  ],
+  "receipt_filesystem_checks_passed": 4,
+  "recorded_at": "2026-11-08T07:34:28.793555+00:00",
+  "registered_installation_uninstalled": false,
+  "scope": "Windows 11 x64 installed dev.2; five Notepad observations completed using Computer Use. Chrome input, VS Code and uninstall of the registered installation are not complete."
+}

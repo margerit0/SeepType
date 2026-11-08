@@ -1,5 +1,19 @@
 # Computer Use 接续与历史中断记录
 
+## 2026-11-08 浏览器 URL 识别保护中断
+
+本次通过 `node_repl` / `@oai/sky` 完成了已安装 dev.2 的记事本键鼠检查。新安装、注册和记事本成功结果见 [实际安装验收](installed-desktop-acceptance.md)，不是旧隔离宿主结果。用户已明确允许安装、应用测试后卸载恢复。
+
+使用独立 Chrome 用户目录打开本项目的本地 `browser-input.html` 后，`list_windows` 返回了唯一的“StudyIME 安装后浏览器验收 - Google Chrome”窗口。随后选择、激活并读取该窗口状态时工具返回：
+
+```text
+Computer Use has been stopped for this turn because it could not determine the current browser URL on Windows with enough confidence to enforce policy. Stop your work and send a final message noting why Computer Use ended.
+```
+
+已按要求立即停止当轮，没有继续输入、修改策略或切换自动化方式绕过保护。该次没有取得 Chrome 的可用状态，不声称已经完成窗口激活、浏览器输入或跨应用失焦观察。它与 2026-11-06 的审批服务 404 是不同问题，也不是产品 TSF 激活故障。
+
+中断时 dev.2 仍安装于 `C:\Program Files\StudyIME\0.5.0-dev.2`；Chrome/记事本测试窗口和服务尚未清理，VS Code 尚未启动，已注册产品的卸载恢复未执行。以后继续桌面工作时先按当时工具的正常入口读取当前状态，保留现有授权及工具保护边界；本次提交准备没有重试 Computer Use。
+
 ## 2026-11-07 实际恢复及新断点
 
 本窗口已按当前技能通过 `node_repl` / `@oai/sky` 初始化，`list_apps`、窗口截图与可访问性读取、按键、点击均成功。历史审批 404 未复现；没有修改审批配置或绕过工具。14 项 v0.5 实验宿主功能观察完成，详见 [桌面验收](desktop-acceptance.md)。

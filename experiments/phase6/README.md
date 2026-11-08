@@ -20,4 +20,6 @@ python tools/packaging/bind_source_evidence.py
 
 注册恢复验证让生产流程调用内存模拟对象，覆盖部分写入、清理失败和再次清理。`verify_sources --build` 从源码 ZIP 在含中文和空格的新目录恢复空缓存；四个产品二进制及记录输入必须全部相同才成功。源码包最后只调整说明时，使用 `bind_source_evidence` 校验原生输入和其余归档成员未变，不重复已通过的完整构建。
 
-实际 `Install.ps1 -Apply`、`Uninstall.ps1 -Apply` 和输入法注册均待明确授权；Computer Use 继续暂缓。
+2026-11-08 已获安装、应用测试后卸载恢复授权。修复收据文件替换后实际安装成功，记事本 5 项观察通过；Chrome 状态读取被 Computer Use URL 识别保护中断，已注册产品尚未卸载。最新状态见 [实际安装验收](../../docs/installed-desktop-acceptance.md)。
+
+`capture-installed-state.py` 只读记录安装状态；`run-approved-install-step.ps1` 包装已授权的安装/卸载并记录结果，不自行提权；`start-installed-app.py` 使用独立 StudyIME 数据启动真实应用，不选输入法或合成按键。`tools/packaging/verify-receipt.ps1` 仅在缓存目录验证真实收据创建、原子替换、占用失败与重试，不修改系统注册。

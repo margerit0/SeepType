@@ -1,0 +1,147 @@
+{
+  "checks": [
+    {
+      "name": "install defaults to a reviewable plan with no apply",
+      "passed": true
+    },
+    {
+      "name": "uninstall defaults to a reviewable plan with no apply",
+      "passed": true
+    },
+    {
+      "name": "plan records the independent CLSID and keeps default input selection",
+      "passed": true
+    },
+    {
+      "name": "dry-run leaves the installation target absent",
+      "passed": true
+    },
+    {
+      "name": "uninstall plan preserves user data modified files and applications",
+      "passed": true
+    },
+    {
+      "name": "installer independently rejects unsafe manifest paths",
+      "passed": true
+    },
+    {
+      "name": "installer refuses a modified payload before any apply step",
+      "passed": true
+    },
+    {
+      "name": "installer refuses unlisted payload files",
+      "passed": true
+    },
+    {
+      "name": "installer rejects manifest case collisions",
+      "passed": true
+    },
+    {
+      "name": "uninstaller cannot apply to an extracted package without its install receipt",
+      "passed": true
+    },
+    {
+      "name": "all four PE resources carry StudyIME product version and contributor identity",
+      "passed": true
+    },
+    {
+      "name": "product registration and keyboard settings are unchanged",
+      "passed": true
+    }
+  ],
+  "computer_use_executed": false,
+  "package_sha256": "7db1bf59ea0d918c6c132c717a9c7e7385426dd1bba3890479d5517f2c8d23a1",
+  "passed": 12,
+  "plans": {
+    "install": {
+      "action": "install",
+      "app_list_key": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{D89859C5-5A51-53E6-8199-DF3407D2908B}",
+      "apply_command": ".\\Install.ps1 -Apply -AllowDevelopment",
+      "apply_requested": false,
+      "architecture": "x64",
+      "automatic_start": "On TSF activation, for this user and logon session",
+      "current_profile_activated": false,
+      "data_directory": "<local profile>\\AppData\\Local\\StudyIME",
+      "default_input_method_changed": false,
+      "files": 94,
+      "language_id": "0x0804",
+      "language_profile": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+      "package_sha256": "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
+      "product": "拾词输入法",
+      "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+      "release_blockers": [
+        {
+          "detail": "200 entries await human review; 0 approved.",
+          "id": "human-lexicon-review"
+        },
+        {
+          "detail": "Real install/uninstall, TSF automatic routing and deferred Computer Use acceptance are not complete.",
+          "id": "installed-and-desktop-acceptance"
+        },
+        {
+          "detail": "Product identity and settings are marked developer preview.",
+          "id": "developer-channel"
+        }
+      ],
+      "release_ready": false,
+      "source": ".\\.cache\\packaging\\verification\\final-dev2-5c0b4df2e47e\\relocated 中文 path",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+      "version": "0.5.0-dev.2"
+    },
+    "uninstall": {
+      "action": "uninstall",
+      "apply_command": ".\\Uninstall.ps1 -Apply -AllowDevelopment",
+      "apply_requested": false,
+      "default_input_method_changed": false,
+      "delete_policy": "Only recorded, unmodified package files inside the validated installation root",
+      "preserve_unlisted_or_modified_files": true,
+      "preserve_user_data": true,
+      "product": "拾词输入法",
+      "profile_guid": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+      "receipt_present": false,
+      "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+      "terminate_other_applications": false,
+      "version": "0.5.0-dev.2"
+    }
+  },
+  "recorded_at": "2026-11-07T11:02:25.397839+00:00",
+  "registry_after": {
+    "app_entry": {
+      "exists": false
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "registry_before": {
+    "app_entry": {
+      "exists": false
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "scope_limit": "Real PowerShell default plans, validation and PE metadata. Apply/rollback/locked-file cleanup and TSF registration are not executed.",
+  "system_install_executed": false,
+  "total": 12,
+  "tsf_registration_executed": false
+}

@@ -1,0 +1,9 @@
+{
+    "action":  "install",
+    "entry":  ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2\\Install.ps1",
+    "started_at":  "2026-11-08T07:14:05.7569920Z",
+    "succeeded":  false,
+    "error":  "使用“3”个参数调用“Replace”时发生异常:“路径的形式不合法。”",
+    "script_stack":  "在 Write-StudyReceipt、.\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2\\scripts\\Common.ps1 中: 第 175 行\r\n在 \u003cScriptBlock\u003e、.\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2\\Install.ps1 中: 第 43 行\r\n在 \u003cScriptBlock\u003e、.\\experiments\\phase6\\run-approved-install-step.ps1 中: 第 23 行",
+    "finished_at":  "2026-11-08T07:14:10.1840798Z"
+}

@@ -1,0 +1,73 @@
+{
+  "data_prepared": true,
+  "data_root": ".\\.cache\\packaging\\installed-apps\\66bcec7716f24f8297a5a1a818699b33\\user",
+  "installed_input_hashes": {
+    "bin/StudyIME.Registrar.exe": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
+    "bin/StudyIME.Service.exe": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
+    "bin/StudyIME.Settings.exe": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
+    "bin/StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+    "bin/rime.dll": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "data/chinese/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+    "data/chinese/README.md": "26766f7e157301fb72dba1cce0c4143b004dd329f50e1506624f9f8b8392bb88",
+    "data/chinese/UNICODE-LICENSE.txt": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "data/chinese/WORDFREQ-LICENSE.txt": "262b51ebd3e7e29d3e5b82cb1fceefcf0a0db5627f119d4ad85157adfb6e16fe",
+    "data/chinese/WORDFREQ-README.md": "f10dea4b82f84be023c3a4beeb872480513e1b28523331e9eec8f50dba460a99",
+    "data/chinese/cc-cedict-source.lock.json": "6801acf2118b069e78afda930df33909399a14ab7a19b0ae7ffe766a45981fff",
+    "data/chinese/provenance.json": "ea00a33daa2c24f3d6cfbc3f8c0ec65ea510f6fb8407f870b8cf93ace3f508ad",
+    "data/chinese/source-mapping.json": "13e1f33f05fe0ede1116f19007438fff59e80e2f6496eef8f91e2190c5157fcc",
+    "data/chinese/sources.lock.json": "55ce13b806e737dc9628855291c97adf8ddb1d3deac248c4ec8ca601adc770c2",
+    "data/lexicon/NOTICE.txt": "136cb11a14eb803b4c06fa31440fc0b80072ae6f83ca592cc8eeeae879ae6a69",
+    "data/lexicon/README.md": "c1a1b16338660bbfa1357569eb36af2830e5b889438fb1bb7bb26d07b42c620a",
+    "data/lexicon/lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "data/lexicon/licenses/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+    "data/lexicon/manifest.json": "aeceb95d18e60f6a56e482d30056aa198d141f0d86af6f3c6f82c070e96f2861",
+    "data/lexicon/records.json": "1414cd5722606608c99ff6abf3a42ac4b47ae40931e4fa48d7e340d778b39d93",
+    "data/lexicon/review.html": "c119107480502427729afe9c729ecdcc0115510ef485e5b9796c45409c9de779",
+    "data/lexicon/source.lock.json": "6801acf2118b069e78afda930df33909399a14ab7a19b0ae7ffe766a45981fff",
+    "data/lexicon/sources/entries.json": "44c2e97eba73b2dda69d65f62c8b75d9ce56004fb9ca8d8944f88846e5d81d35",
+    "data/shared/cedict_study.dict.yaml": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
+    "data/shared/default.yaml": "dd55653a991f9418eb425ee2112666f82e3e753c5ce3ed5702dd243041a45382",
+    "data/shared/key_bindings.yaml": "5c484257cccbab899bc874dfeb9257ce7190c99fee3abc33321767c8dac56af9",
+    "data/shared/luna_pinyin.schema.yaml": "df48caa2901ca04d79978af926c79b118b3e6e5b5cf97b9d8c9b9d67d748a744",
+    "data/shared/luna_pinyin_simp.schema.yaml": "82d9a2b44fa207d4d49416d16af5d2fcab6b1604f4083c384372360c824ea919",
+    "data/shared/pinyin.yaml": "22915339d6505d8911edd929b055145235eb4f66ee6d4dbdedb832e31be40c35",
+    "data/shared/punctuation.yaml": "d6f89592149098f0a2d0ed3e5c83f49adb6226cdf1d967b0bc0d293f4e5c496a",
+    "data/shared/study.schema.yaml": "f0e50c604a3eb96663292919f7b987b5757c0b7ca27cd5f26e487d664ab6fd87",
+    "data/shared/symbols.yaml": "f12ee3a61bb9739c29fe6ba12890c5c9c50ca38f63ce9c85e1a16e223ae0b04f",
+    "data/shared/weasel.yaml": "2a2a1853451a2264541404500d2cc8fceae519666b4d12c62036089b8ded0f79",
+    "data/user-template/default.custom.yaml": "02afd04b0983f53678949f3b6d00640af32ae833adf361fcd96b18ffe17b1463",
+    "data/user-template/lua/lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "data/user-template/lua/study_core.lua": "d12a8fd65d7c48ce12e0fc40d97ac5f0ed33855666bf7bd3ae0b121db60d66c5",
+    "data/user-template/rime.lua": "2aa694e0e6c7d3ea77f0ad6bf21463ac89525d9f3708671bfabf72d3eddf69c4",
+    "product.json": "60a22233c07c5d4b39df9f4e576c553c35434608f6a93abb9516d1da4c007c56"
+  },
+  "installed_root": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+  "launches": [
+    {
+      "app": "notepad",
+      "at": "2026-11-08T07:21:20.192754+00:00",
+      "command": [
+        "C:\\Windows\\System32\\notepad.exe",
+        ".\\.cache\\packaging\\installed-apps\\66bcec7716f24f8297a5a1a818699b33\\StudyIME-notepad-acceptance.txt"
+      ],
+      "pid": 25172
+    },
+    {
+      "app": "chrome",
+      "at": "2026-11-08T07:27:01.459133+00:00",
+      "command": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "--user-data-dir=.\\.cache\\packaging\\installed-apps\\66bcec7716f24f8297a5a1a818699b33\\chrome-profile",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-extensions",
+        "--new-window",
+        "file:///./.cache/packaging/installed-apps/66bcec7716f24f8297a5a1a818699b33/browser-input.html"
+      ],
+      "pid": 13856
+    }
+  ],
+  "session": "66bcec7716f24f8297a5a1a818699b33",
+  "started_at": "2026-11-08T07:21:19.490959+00:00",
+  "work": ".\\.cache\\packaging\\installed-apps\\66bcec7716f24f8297a5a1a818699b33"
+}

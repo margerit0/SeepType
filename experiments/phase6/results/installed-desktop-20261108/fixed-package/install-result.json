@@ -1,0 +1,7 @@
+{
+    "action":  "install",
+    "entry":  ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2\\Install.ps1",
+    "started_at":  "2026-11-08T07:20:47.8126831Z",
+    "succeeded":  true,
+    "finished_at":  "2026-11-08T07:20:55.4342123Z"
+}

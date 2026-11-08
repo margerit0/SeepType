@@ -1,0 +1,91 @@
+{
+  "input_settings": {
+    "default_override": null,
+    "languages": [
+      {
+        "InputMethodTips": [
+          "0804:{81D4E9C9-1D3B-41BC-9E6C-4B40BF79E35E}{FA550B04-5AD7-411F-A5AC-CA038EC515D7}"
+        ],
+        "LanguageTag": "zh-Hans-CN"
+      }
+    ]
+  },
+  "installed_binaries": {},
+  "normal_data_exists": false,
+  "normal_data_files": {},
+  "normal_data_root": "<local profile>\\AppData\\Local\\StudyIME",
+  "package": ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2",
+  "package_manifest_sha256": "1c73737c2cfe418e16ea6190c0f1e72735d1ffedaa13c6e0508a7ea245c6166d",
+  "receipt": null,
+  "recorded_at": "2026-11-08T07:17:30.444059+00:00",
+  "registry": {
+    "keyboard_preload": {
+      "exists": true,
+      "sha256": "013cb210624384c32f196f49f9d2c1e52903a807835263043d3ca027c3080661",
+      "tree": {
+        "children": {},
+        "values": [
+          [
+            "1",
+            "00000804",
+            1
+          ]
+        ]
+      }
+    },
+    "keyboard_substitutes": {
+      "exists": true,
+      "sha256": "0b0630cf4a164722c4be6e25ff84de74940d183aad7247f8a95660328cf1fbe0",
+      "tree": {
+        "children": {},
+        "values": []
+      }
+    },
+    "machine_tips_x64": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "machine_tips_x86": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "study_app": {
+      "exists": false
+    },
+    "study_class": {
+      "exists": false
+    },
+    "study_machine_tip": {
+      "exists": false
+    },
+    "study_user": {
+      "exists": false
+    },
+    "study_user_tip": {
+      "exists": false
+    },
+    "weasel_class": {
+      "exists": false
+    },
+    "weasel_machine": {
+      "exists": false
+    },
+    "weasel_machine_tip": {
+      "exists": false
+    },
+    "weasel_user": {
+      "exists": false
+    }
+  },
+  "snapshot_projection": {
+    "omitted_trees": [
+      "machine_tips_x64",
+      "machine_tips_x86"
+    ],
+    "raw_snapshot": ".cache/packaging/installed-evidence/raw-registry-20261108/after-original-cleanup.json",
+    "raw_snapshot_sha256": "a4ae0db1faef44fb36f446e0b6568fa0f1f65fc03af2e9ad90d29d8a7c3980c9",
+    "retained": "Existence and canonical full-tree SHA256; product-specific registration trees remain included."
+  },
+  "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+  "target_exists": false
+}
