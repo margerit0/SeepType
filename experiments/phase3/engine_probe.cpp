@@ -109,9 +109,11 @@ int wmain(int argc,wchar_t** argv) {
     else if(command=="type") {std::string value;in>>value;type(value);}
     else if(command=="key") {int key=0,mask=0;in>>key>>mask;api->process_key(session,key,mask);}
     else if(command=="option") {std::string name;int value=0;in>>name>>value;api->set_option(session,name.c_str(),value);}
+    else if(command=="user_learning") {int value=1;in>>value;api->set_property(session,"study_user_learning",value?"1":"0");}
     else if(command=="schema") {std::string name;in>>name;api->clear_composition(session);api->select_schema(session,name.c_str());}
     else if(command=="highlight") {size_t index=0;in>>index;if(RIME_API_AVAILABLE(api,highlight_candidate_on_current_page))api->highlight_candidate_on_current_page(session,index);}
     else if(command=="choose") {size_t index=0;in>>index;api->select_candidate_on_current_page(session,index);}
+    else if(command=="forget") {size_t index=0;in>>index;if(RIME_API_AVAILABLE(api,delete_candidate_on_current_page))api->delete_candidate_on_current_page(session,index);}
     else if(command=="bench") {int count=0;std::string input;in>>count>>input;bench(std::clamp(count,1,2000),input.empty()?"pingguo":input);continue;}
     snapshot();
   }

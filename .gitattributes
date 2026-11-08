@@ -8,6 +8,11 @@ data/lexicon/licenses/*.txt -text whitespace=-blank-at-eof
 tools/lexicon/** text eol=lf
 tools/dictionary/** text eol=lf
 data/chinese/** text eol=lf
+tools/lexicon_expand/** text eol=lf
+data/lexicon-expansion/** text eol=lf
+# These snapshots and notices retain the exact upstream bytes in sources.lock.json.
+data/lexicon-expansion/sources/*.csv -text whitespace=-blank-at-eol,cr-at-eol
+data/lexicon-expansion/notices/** -text whitespace=-blank-at-eof,-blank-at-eol,cr-at-eol
 
 tools/packaging/** text eol=lf
 packaging/** text eol=lf

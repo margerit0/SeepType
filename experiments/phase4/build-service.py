@@ -257,6 +257,8 @@ if TSF:
         link("StudyIME.RenderProbe", [ROOT / "tools/packaging/render_probe.cpp"], [product_runtime] + ui_objects +
              [o for o in tsf_objects if o.stem in ["UiPreferences", "StudyMotion", "StudyLayout", "CandidateUi", "CandidateAccessibility", "EnglishMenu"]])
         link("StudyIME.EngineProbe", [ROOT / "experiments/phase3/engine_probe.cpp"], [])
+        link("StudyIME.FrequencyProbe", [ROOT / "tools/packaging/frequency_probe.cpp"], [product_runtime] + ipc_objects +
+             [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse", "UiPreferences", "EnglishMenu"]])
     if not PRODUCT and (HERE / "frontend_test.cpp").exists():
         link("frontend_test_x64", ["frontend_test.cpp"], ipc_objects +
              [o for o in study_objects + tsf_objects if o.stem in ["StudyProtocol", "WeaselResponse"]])
@@ -274,7 +276,8 @@ if TSF:
         link("study_settings_x64", ["settings_main.cpp"], [o for o in tsf_objects if o.stem == "UiPreferences"])
 else:
     if PRODUCT:
-        link("StudyIME.Service", [ROOT / "src/study/windows/ProductServiceMain.cpp", ROOT / "src/study/windows/ProductRime.cpp", ROOT / "src/study/windows/ProductUiState.cpp"], [product_runtime] + server_objects + ipc_objects + ui_objects + study_objects)
+        product_preferences = compile_source(ROOT / "src/study/windows/UiPreferences.cpp", "study")
+        link("StudyIME.Service", [ROOT / "src/study/windows/ProductServiceMain.cpp", ROOT / "src/study/windows/ProductRime.cpp", ROOT / "src/study/windows/ProductUiState.cpp"], [product_runtime, product_preferences] + server_objects + ipc_objects + ui_objects + study_objects)
     else:
         link("study_service_x64" if SERVICE_X64 else "study_service", ["service_host.cpp", "service_rime.cpp"], server_objects + ipc_objects + ui_objects + study_objects)
     if not PRODUCT and (HERE / "service_client_test.cpp").exists():

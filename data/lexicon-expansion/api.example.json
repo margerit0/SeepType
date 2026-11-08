@@ -1,0 +1,10 @@
+{
+  "base_url": "https://your-provider.example/v1",
+  "model": "YOUR_MODEL_NAME",
+  "api_key_env": "STUDYIME_LEXICON_API_KEY",
+  "response_format": "json_object",
+  "token_parameter": "max_tokens",
+  "max_output_tokens": 4096,
+  "timeout_seconds": 90,
+  "temperature": 0.1
+}

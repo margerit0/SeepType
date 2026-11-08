@@ -177,7 +177,8 @@ def source_materials():
         include = name.startswith(allowed) or name in ["LICENSE", "COPYING.md", ".gitattributes", ".gitignore", "README.md"]
         if name.startswith("experiments/phase3/") or name.startswith("experiments/phase4/"):
             include = "/results/" not in name and Path(name).suffix in [".py", ".cmd", ".cpp", ".h", ".json", ".yaml", ".lua", ".patch", ".manifest", ".md"]
-        if name in ["docs/software-licenses.md", "docs/packaging.md", "docs/license-proposal.md"]: include = True
+        if name in ["docs/software-licenses.md", "docs/packaging.md", "docs/license-proposal.md",
+                    "docs/word-frequency.md", "docs/optimization-todo.md"]: include = True
         if name.startswith("experiments/phase4/results/previews-v05/") and name.endswith(".png"): include = True
         if include and (ROOT / name).is_file(): files["project/" + name] = (ROOT / name).read_bytes()
     materials = []

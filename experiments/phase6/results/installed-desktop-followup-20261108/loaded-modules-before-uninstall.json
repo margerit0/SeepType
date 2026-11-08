@@ -1,0 +1,38 @@
+[
+  {
+    "process_id": 22248,
+    "process_name": "ApplicationFrameHost",
+    "process_path": "C:\\Windows\\system32\\ApplicationFrameHost.exe",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  },
+  {
+    "process_id": 7148,
+    "process_name": "ChatGPT",
+    "process_path": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.1103.4239.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  },
+  {
+    "process_id": 20832,
+    "process_name": "chrome",
+    "process_path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  },
+  {
+    "process_id": 10688,
+    "process_name": "Code",
+    "process_path": "D:\\Microsoft VS Code\\Code.exe",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  },
+  {
+    "process_id": 17060,
+    "process_name": "explorer",
+    "process_path": "C:\\Windows\\Explorer.EXE",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  },
+  {
+    "process_id": 35008,
+    "process_name": "Notepad",
+    "process_path": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2607.14.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+    "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll"
+  }
+]

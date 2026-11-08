@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-11-08T08:36:20+00:00",
+  "scope": "Before user adjusted the service group",
+  "selected_model": "gemini-3.8-flash-high",
+  "current_endpoint": "https://ai.hybgzs.com/v1/chat/completions",
+  "generation_post_attempts": 4,
+  "successful_generation_responses": 0,
+  "new_translations": 0,
+  "reported_usage_available": false,
+  "currency_cost": null,
+  "output_token_reservation": 16384,
+  "last_error": "Provider returned HTTP 503: 当前分组 默认分组 下对于模型 gemini-3.8-flash-high 无可用渠道 (request id: 2026110816311717205343MlbLdJib)",
+  "user_choice": "Keep Gemini; user is adjusting its service group",
+  "diagnostic_inputs": {
+    ".cache/lexicon-expansion/endpoint-preflight.json": "77d93eb7af30babd01244190cd0d28335ff27837c7c838c5e198d0b47dba8a40",
+    ".cache/lexicon-expansion/native-endpoint-check.json": "7da493f5e65c15bc0b798ea6c10a474e5fd9f945162f8ec2da0beb67fe81b18b",
+    ".cache/lexicon-expansion/available-models.json": "60302544eb03c8e03d3fdc82ca1e5dd3d216c9dff8e0a0ca2fc32cd9184f1ff9",
+    ".cache/lexicon-expansion/pilot-results-v1/summary.json": "3d204a70a07b11313543568357f50d84bf06c3b17accc16fb56b7f686eac6b96"
+  }
+}

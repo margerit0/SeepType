@@ -162,10 +162,32 @@ def verify_archive(files, archive, work):
     report.finish()
 
 
+def installation_target_state(target):
+    """Read target contents so a dry-run can also be checked after installation."""
+    if not target.exists():
+        return {"exists": False}
+    entries = {}
+    pending = [target]
+    while pending:
+        directory = pending.pop()
+        for entry in directory.iterdir():
+            if entry.is_symlink() or entry.is_junction():
+                raise ValueError("Refuse to follow a reparse point in the installation snapshot")
+            relative = entry.relative_to(target).as_posix()
+            if entry.is_dir():
+                entries[relative] = {"type": "directory"}
+                pending.append(entry)
+            else:
+                entries[relative] = {"type": "file", "bytes": entry.stat().st_size, "sha256": file_hash(entry)}
+    return {"exists": True, "entries": entries}
+
+
 def verify_installer(files, root, work, archive):
     report = Checks("installer-plans", file_hash(archive))
     before = registry_state()
     common = quote(root / "scripts/Common.ps1")
+    target = Path(powershell(". " + common + "; Get-StudyTarget " + quote(product()["version"])).stdout.decode("utf-8-sig").strip())
+    target_before = installation_target_state(target)
     # Tests run the actual default entry points; no -Apply argument is present.
     plans = {}
     for name in ["Install", "Uninstall"]:
@@ -174,8 +196,8 @@ def verify_installer(files, root, work, archive):
         plans[name.lower()] = plan
         report.check(name.lower() + " defaults to a reviewable plan with no apply", plan["apply_requested"] is False)
     report.check("plan records the independent CLSID and keeps default input selection", plans["install"]["registry_class"].endswith("{FEB10355-3C08-5342-B75C-5873F1CA04DF}") and plans["install"]["default_input_method_changed"] is False)
-    target = Path(plans["install"]["target"])
-    report.check("dry-run leaves the installation target absent", not target.exists())
+    report.check("dry-run preserves the installation target and its contents",
+                 Path(plans["install"]["target"]) == target and installation_target_state(target) == target_before)
     report.check("uninstall plan preserves user data modified files and applications", plans["uninstall"]["preserve_user_data"] and plans["uninstall"]["preserve_unlisted_or_modified_files"] and not plans["uninstall"]["terminate_other_applications"])
     bad = ["../escape", "folder/../escape", "a\\b", "a//b", "C:/data", "NUL.txt", "x:stream", "space "]
     script = "$ErrorActionPreference='Stop'; . " + common + "; $rejected=0; foreach($value in @(" + ",".join(quote(n) for n in bad) + ")) { try { $null=Resolve-StudyChild " + quote(root) + " $value } catch { $rejected++ } }; Write-Output $rejected"
@@ -215,6 +237,8 @@ def verify_installer(files, root, work, archive):
     report.data["plans"] = plans
     report.data["registry_before"] = before
     report.data["registry_after"] = after
+    report.data["installation_target_before"] = target_before
+    report.data["installation_target_after"] = installation_target_state(target)
     report.data["scope_limit"] = "Real PowerShell default plans, validation and PE metadata. Apply/rollback/locked-file cleanup and TSF registration are not executed."
     report.finish()
 

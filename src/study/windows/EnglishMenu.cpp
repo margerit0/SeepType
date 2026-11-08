@@ -49,6 +49,11 @@ HMENU CreateEnglishMenu(const EnglishTarget& target, const EnglishMenuOptions& o
   AppendMenuW(menu, MF_STRING | (enabled && options.learning ? 0 : MF_GRAYED), kInputEnglish, command.c_str());
   if (options.details)
     AppendMenuW(menu, MF_STRING | (options.learning ? 0 : MF_GRAYED), kViewDefinition, L"查看完整释义\tF2");
+  if (options.forget) {
+    AppendMenuW(menu, MF_SEPARATOR, 0, nullptr);
+    AppendMenuW(menu, MF_STRING | (options.composing && !chinese.empty() ? 0 : MF_GRAYED),
+        kForgetWord, L"忘记此词的学习记录");
+  }
   if (options.settings) {
     AppendMenuW(menu, MF_SEPARATOR, 0, nullptr);
     AppendMenuW(menu, MF_STRING | (options.composing ? MF_GRAYED : 0), kOpenSettings,

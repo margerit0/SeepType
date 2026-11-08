@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-11-08",
+  "purpose": "Offline learning-target preparation; no new translations and no product import",
+  "ielts_scope": "Exactly the entries tagged ielts in the pinned ECDICT snapshot; not an official or exhaustive IELTS syllabus",
+  "normalization": "Split CEFR slash spelling variants; collapse whitespace; case-fold; retain all source forms, POS and source rows. Do not stem or infer word families.",
+  "sources": [
+    {
+      "id": "ecdict-ielts-39cfb967",
+      "format": "ecdict-ielts-facts-v1",
+      "url": "https://raw.githubusercontent.com/skywind3000/ECDICT/39cfb9672c0906b63569e0453c2e6abfb9ab182a/ecdict.csv",
+      "revision": "39cfb9672c0906b63569e0453c2e6abfb9ab182a",
+      "sha256": "d1ecbdf9ee2b920afb6f430ca6b6bb9f559588cf0dff86e04bd255f9390843cc",
+      "bytes": 66009548,
+      "cache_file": ".cache/lexicon-expansion/bootstrap/ecdict.csv",
+      "local_file": "data/lexicon-expansion/sources/ielts-ecdict.jsonl",
+      "local_sha256": "20e42c99df771c06db33cacc26e085eeefd7b68a1858384a5a813ab8a09e9179",
+      "selected_rows": 5040,
+      "license": "MIT (upstream repository declaration)",
+      "attribution": "ECDICT contributors; upstream repository license retained verbatim",
+      "usage": "English headwords, membership and ranks only; not a bilingual translation source"
+    },
+    {
+      "id": "cefrj-1.5-d4e45b75",
+      "format": "cefr-profile-csv",
+      "url": "https://raw.githubusercontent.com/openlanguageprofiles/olp-en-cefrj/d4e45b75b38f27b30dfc5c44d8c571aec7e7092f/cefrj-vocabulary-profile-1.5.csv",
+      "revision": "d4e45b75b38f27b30dfc5c44d8c571aec7e7092f",
+      "sha256": "b0dd3c635f1c9a4fdf1490c7e5b7c48e8bbe55b652ad0c9860a95f98e10ae498",
+      "bytes": 233214,
+      "cache_file": ".cache/lexicon-expansion/bootstrap/cefrj-vocabulary-profile-1.5.csv",
+      "local_file": "data/lexicon-expansion/sources/cefrj-vocabulary-profile-1.5.csv",
+      "local_sha256": "b0dd3c635f1c9a4fdf1490c7e5b7c48e8bbe55b652ad0c9860a95f98e10ae498",
+      "selected_rows": 7799,
+      "license": "CEFR-J attribution terms",
+      "attribution": "The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies.",
+      "usage": "English headwords, source parts of speech and CEFR labels"
+    },
+    {
+      "id": "octanove-1.0-d4e45b75",
+      "format": "cefr-profile-csv",
+      "url": "https://raw.githubusercontent.com/openlanguageprofiles/olp-en-cefrj/d4e45b75b38f27b30dfc5c44d8c571aec7e7092f/octanove-vocabulary-profile-c1c2-1.0.csv",
+      "revision": "d4e45b75b38f27b30dfc5c44d8c571aec7e7092f",
+      "sha256": "18c33a407f2f89f7b8de9671c6d45fe3ea0bce45e7d2d7dcaab48d73e0f7b380",
+      "bytes": 46462,
+      "cache_file": ".cache/lexicon-expansion/bootstrap/octanove-vocabulary-profile-c1c2-1.0.csv",
+      "local_file": "data/lexicon-expansion/sources/octanove-vocabulary-profile-c1c2-1.0.csv",
+      "local_sha256": "18c33a407f2f89f7b8de9671c6d45fe3ea0bce45e7d2d7dcaab48d73e0f7b380",
+      "selected_rows": 2136,
+      "license": "CC-BY-SA-4.0",
+      "attribution": "Octanove Vocabulary Profile C1/C2 Version 1.0, Octanove Labs; Open Language Profiles.",
+      "usage": "English headwords, source parts of speech and CEFR labels"
+    }
+  ],
+  "notices": [
+    {
+      "local_file": "data/lexicon-expansion/notices/ECDICT-LICENSE.txt",
+      "sha256": "f8552dd246f61a4e064569eae6194a01c6b3d63b03bf27c6ca863593c549ed0f",
+      "url": "https://raw.githubusercontent.com/skywind3000/ECDICT/39cfb9672c0906b63569e0453c2e6abfb9ab182a/LICENSE"
+    },
+    {
+      "local_file": "data/lexicon-expansion/notices/CEFRJ-README.md",
+      "sha256": "8b69f7366fa3c7be328cb9ba02ceb7b3725697f36125bb75b85131d664b5e359",
+      "url": "https://raw.githubusercontent.com/openlanguageprofiles/olp-en-cefrj/d4e45b75b38f27b30dfc5c44d8c571aec7e7092f/README.md"
+    },
+    {
+      "local_file": "data/lexicon/licenses/CC-BY-SA-4.0.txt",
+      "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt"
+    }
+  ]
+}

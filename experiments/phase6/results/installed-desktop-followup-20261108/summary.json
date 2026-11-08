@@ -1,0 +1,257 @@
+{
+  "animation_timing": "Sequential native input and page-return/input were observed; no frame-by-frame timing proof.",
+  "browser": {
+    "native_input_test_completed": false,
+    "reason": "Chrome native window URL identification stopped Computer Use, including after the user placed the correct test page in the foreground. Browser extension page reads succeeded; they are not TSF input acceptance.",
+    "recorded_at": "2026-11-08T10:11:59.521319+00:00",
+    "status": "skipped_by_user",
+    "test_url": "http://127.0.0.1:18765/browser-input.html",
+    "user_instruction": "那就先跳过浏览器测试，进行别的任务"
+  },
+  "default_and_language_settings_match_pre_install": true,
+  "display_scale_restored_percent": 150,
+  "dll_reference_processes": [
+    {
+      "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll",
+      "process_id": 22248,
+      "process_name": "ApplicationFrameHost",
+      "process_path": "C:\\Windows\\system32\\ApplicationFrameHost.exe"
+    },
+    {
+      "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll",
+      "process_id": 7148,
+      "process_name": "ChatGPT",
+      "process_path": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.1103.4239.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll",
+      "process_id": 20832,
+      "process_name": "chrome",
+      "process_path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    },
+    {
+      "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll",
+      "process_id": 17060,
+      "process_name": "explorer",
+      "process_path": "C:\\Windows\\Explorer.EXE"
+    },
+    {
+      "module": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.TSF.x64.dll",
+      "process_id": 35008,
+      "process_name": "Notepad",
+      "process_path": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2607.14.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe"
+    }
+  ],
+  "empty_tip_cleanup_and_retry": {
+    "common_sha256": "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+    "finished_at": "2026-11-08T10:23:59.5113093Z",
+    "initial_receipt_status": "cleanup-pending",
+    "install_root": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "started_at": "2026-11-08T10:23:58.2111063Z",
+    "succeeded": true,
+    "uninstall_retry_error": "Unregistered. Files are modified or still in use; close applications and retry. Preserved: bin/StudyIME.TSF.x64.dll",
+    "uninstall_retry_succeeded": false
+  },
+  "initial_uninstall": {
+    "action": "uninstall",
+    "entry": "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1",
+    "error": "Unregistered. Files are modified or still in use; close applications and retry. Preserved: bin/StudyIME.TSF.x64.dll",
+    "finished_at": "2026-11-08T10:12:23.2355369Z",
+    "script_stack": "在 <ScriptBlock>、C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1 中: 第 57 行\r\n在 <ScriptBlock>、.\\experiments\\phase6\\run-approved-install-step.ps1 中: 第 40 行",
+    "started_at": "2026-11-08T10:12:21.5203935Z",
+    "succeeded": false
+  },
+  "input_registry_trees_match_pre_install": true,
+  "multi_monitor": {
+    "attached_displays": 1,
+    "status": "not_tested"
+  },
+  "next_step": "Save work and restart Windows to release the mapped DLL, then run the validated installed Uninstall.ps1 with -Apply -AllowDevelopment in an elevated 64-bit PowerShell. Capture final state and require the app-list entry and installation directory to be absent.",
+  "normal_user_data_files_unchanged": true,
+  "observations": 31,
+  "package_update": {
+    "baseline_runtime_archive_sha256": "c1c429adee39465f0740bf7ac6111dad799d097a83e39019a5975d02acf3648e",
+    "baseline_source_archive_sha256": "8541dd9a6b9441796219578f04e1eb8b52192fe3e0a6b931e9a1e6de89478322",
+    "fresh_empty_cache_build": false,
+    "independent_workspace": ".\\.cache\\packaging\\source-check\\fresh 中文 a54add1526b2\\materials\\project",
+    "native_recompiled": false,
+    "network_used": false,
+    "patch_file_hashes": {
+      "docs/packaging.md": "ad3fd07e66e0c0222e9412849f5075bd6c8dc1988d909a33ddf0288c0443f75f",
+      "packaging/windows/Common.ps1": "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+      "packaging/windows/Uninstall.ps1": "8fadfd4bf3c9269a7301aaac3acdea170d5c1764362cee735a3c4cae1a51fdd6",
+      "tools/packaging/verify-uninstall-registry.ps1": "8d578b93a30cbd7afa534f0b813bb52740b02ab16243f36dddb01db95572f8c9",
+      "tools/packaging/verify.py": "5ff8c399ce1df93b5b45204a34464487f49e554c430c64124c1fa0639323ae8b"
+    },
+    "powershell": "5.1.26100.9711",
+    "receipt_checks_passed": 4,
+    "recorded_at": "2026-11-08T10:42:35.109886+00:00",
+    "registry_checks_passed": 8,
+    "reproduced_runtime_identical": true,
+    "runtime_archive_sha256": "c7a5a8e099b2b11e32c5ca2a67e6be8a4bd26b9d86519b0cd241df416918f669",
+    "runtime_changes": [
+      "Uninstall.ps1",
+      "package-manifest.json",
+      "scripts/Common.ps1"
+    ],
+    "runtime_export_reused": true,
+    "runtime_manifest_sha256": "7addb6ebcf995d3bcabb08354c6cfd3b940fd8e3f6d4cb65319afef80d0da226",
+    "scope": "Script-only source update over verified native artifacts; targeted source and package checks. Physical UI evidence is reused only for identical binaries/data. Final installed DLL deletion still awaits Windows restart.",
+    "source_archive_sha256": "14ffaf8756f2ab6f3f40a97d08d0cc94e8aa2d76a1b089a21585610eff6ecc63",
+    "source_changes": [
+      "SOURCE-UPDATE.txt",
+      "project/docs/packaging.md",
+      "project/packaging/windows/Common.ps1",
+      "project/packaging/windows/Uninstall.ps1",
+      "project/tools/packaging/verify-uninstall-registry.ps1",
+      "project/tools/packaging/verify.py"
+    ],
+    "source_export_repeated_identically": true,
+    "status": "passed",
+    "system_install_executed": false,
+    "tsf_registration_executed": false,
+    "unchanged_native_inputs": 55,
+    "unchanged_rime_inputs": 9,
+    "validation_resumed": true,
+    "verified_upstream_materials": 16
+  },
+  "receipt_status": "cleanup-pending",
+  "recorded_at": "2026-11-08T10:45:00.317482+00:00",
+  "registered": false,
+  "remaining_installation_files": {
+    "Install.ps1": {
+      "bytes": 3852,
+      "sha256": "c4dd2840a72c854b4db44e0542fd35c93f4715b91f34d92c5238e66c38410ab7"
+    },
+    "Uninstall.ps1": {
+      "bytes": 3661,
+      "sha256": "94122ad6fd74b20434f7d506a0a03c03b08469681ce2aaffa4914fb4176c4b78"
+    },
+    "bin/StudyIME.TSF.x64.dll": {
+      "bytes": 1025536,
+      "sha256": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5"
+    },
+    "install-receipt.json": {
+      "bytes": 318,
+      "sha256": "f7b1d49d20f42e23ceadbbe4972ae01a898508695667cf6c33208eb22792071f"
+    },
+    "package-manifest.json": {
+      "bytes": 17497,
+      "sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605"
+    },
+    "product.json": {
+      "bytes": 886,
+      "sha256": "60a22233c07c5d4b39df9f4e576c553c35434608f6a93abb9516d1da4c007c56"
+    },
+    "scripts/Common.ps1": {
+      "bytes": 13155,
+      "sha256": "94c66d595523d476f71c0bc97533dd66aad658f4b045f2b76cde48163c3dd65e"
+    }
+  },
+  "remaining_registry_difference": [
+    "study_app"
+  ],
+  "required_observation_ids": [
+    "bottom-edge-click",
+    "bottom-edge-definition",
+    "cross-app-stale-action",
+    "disconnect-cleared",
+    "disconnect-reconnected-commit",
+    "disconnect-stale-shortcut",
+    "display-125-click",
+    "display-restored",
+    "page-rapid-input",
+    "right-edge-candidates",
+    "vscode-english-shortcut",
+    "vscode-f2",
+    "vscode-focus-return",
+    "vscode-hover",
+    "vscode-ordinary-english-row",
+    "vscode-repeat-protection"
+  ],
+  "saved_documents": {
+    "notepad": {
+      "path": "notepad-final-saved.txt",
+      "sha256": "670d9743542cae3ea7ebe36af56bd53648b0a1126162e78d81a32934a711302e",
+      "text": "你好"
+    },
+    "vscode": {
+      "path": "vscode-final-saved.txt",
+      "sha256": "d78e816c59b3c0c152c8e671f2c8d3fe3926ddfb61559ffbf3396a61ebd67a40",
+      "text": "你好hello你好你好\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                                                                                              你好 "
+    }
+  },
+  "scope": "Installed dev.2 desktop observations and actual unregister/cleanup attempts; browser input skipped by user.",
+  "screenshots": {
+    "screenshots/bottom-edge-candidates-0.jpg": "ce95db1acd9b58eef29b8a57b63936e663536ec51a1207e63294b65ccd7a65ba",
+    "screenshots/bottom-edge-candidates-1.jpg": "41539076e70c6b0937aa9cbfb7d593f3f8e3fb1ae3e7f7c3102d64fa73be8196",
+    "screenshots/bottom-edge-click-0.jpg": "8e66394d4ef9c2eb01c4558a8b6712849f32903490fca3e2289c27deb2bf1473",
+    "screenshots/bottom-edge-definition-0.jpg": "53e2f41f8dae60845a993ed8b85c612ca1726a58a10c704ef27160d7330f3f8a",
+    "screenshots/bottom-edge-definition-1.jpg": "eb862fce8f5c5de90c2c6831b1e7c13e5b61307b471fd16800b012b3f8fb5458",
+    "screenshots/bottom-edge-definition-2.jpg": "a77f2f6fd55ed53fb5847c3049e51418abdfb6e99cc5959e4811a263941d5189",
+    "screenshots/continuation-focus-0.jpg": "2b3e78463c6b8425b4d7a223a3e30e92bac3541181e444482fbb8ba0f70bd851",
+    "screenshots/cross-app-before-switch-0.jpg": "88bc29a8bb13a8c94cdd1a177b7f6f53ff0a80cd95f71b957b96e641fb4a8aa7",
+    "screenshots/cross-app-before-switch-1.jpg": "830159f387de7c0d581fe23b79da5c82372e926058182b6a6c67559841f48f5c",
+    "screenshots/disconnect-before-0.jpg": "af190ea4dcdeaca19d45560d517bfa716abb01ddfe67f7f126d36c12554db42b",
+    "screenshots/disconnect-before-1.jpg": "830159f387de7c0d581fe23b79da5c82372e926058182b6a6c67559841f48f5c",
+    "screenshots/disconnect-before-2.jpg": "9afe10904ab67adf92ad4cf2094b2f1aab7007788e14b1c6635af7c954689bfe",
+    "screenshots/disconnect-cleared-0.jpg": "d394e30fbc80be69e7ebfce9bbbaef3ca022aa49254e5ec0e6900bfc28a8389d",
+    "screenshots/disconnect-reconnected-0.jpg": "e635f06d1ba8ed474aa12bb047b282e1fbebfabc1f88a222650329515730930f",
+    "screenshots/disconnect-reconnected-1.jpg": "6146f086df14ed88e92f9b3159c8226ab9c6defcd310e86998b8366f461efb19",
+    "screenshots/disconnect-reconnected-commit-0.jpg": "c7add41c4fbda3a27be7bd153cbba606d6d34df98173242e8610e06d2facf233",
+    "screenshots/disconnect-retry-before-0.jpg": "4d750cfcb2de12c7543751f13c196b0a8dc8a3be3e4c2032dd2b35b138ed6f12",
+    "screenshots/disconnect-retry-before-1.jpg": "6146f086df14ed88e92f9b3159c8226ab9c6defcd310e86998b8366f461efb19",
+    "screenshots/disconnect-retry-before-2.jpg": "d3e6170d987d1e3602f7628b64ce2afb2402bbfab3147fc538b5bc5db39067dc",
+    "screenshots/disconnect-stale-shortcut-0.jpg": "b6ee68e7328b6b00b87e93a64417dae8406529072e0b9b2584d3b846a7cec2a8",
+    "screenshots/display-125-candidates-0.jpg": "47df596b900bf2a3046fb344f0394bf9c9d9519e3dc7dc711637a85711234863",
+    "screenshots/display-125-candidates-1.jpg": "56cfa8621400e559796859cb2ea16de6d9defc29751e62c3d9fe84a8f4324d48",
+    "screenshots/display-125-click-0.jpg": "2a6cf972786f3acf13f4987fff5e19daf47dec1fd855983dd647c8e4f253cbd1",
+    "screenshots/display-125-definition-0.jpg": "eeff922a1d7da49ba12d71197d46241589e678ad09101b277611fd055e8bdf89",
+    "screenshots/display-125-definition-1.jpg": "cadf9416019836eec41e8c90cf4bc09059b9d02528106156440401b9a3492712",
+    "screenshots/display-125-definition-2.jpg": "e0f06fbea0678102d5a19e3cdbdeeb4e18a2c974c400d5b6e9d257f9172b7049",
+    "screenshots/page-before-rapid-input-0.jpg": "12156f55de66a5a91789c1d24d1b867f19e090e49104d62e959a4e86f2c2a415",
+    "screenshots/page-before-rapid-input-1.jpg": "4f8898005421479f34acc49f5e66678965b5053de7645cdf7d149d1ea1354b65",
+    "screenshots/page-rapid-input-0.jpg": "ad5387fbea7f26c0dc472c2a05ebc245031227ae46ec8eb96e682de0ecfc7ba6",
+    "screenshots/page-rapid-input-1.jpg": "af519277d65e1c03881e37c87f7c03f9ee68df2d363dfcc25f962ea7a589051b",
+    "screenshots/right-bottom-definition-0.jpg": "8b2d9bf3e0594ffaee308d22ef1bdd9f9cad2b6dc2631abebd0df73a27e6a39a",
+    "screenshots/right-bottom-definition-1.jpg": "e7080c079d60fcdfe0a7ee33c776850c0fc72fc562ad846da1a57e4c2bd96a57",
+    "screenshots/right-bottom-definition-2.jpg": "177185012505d582914a97e9cab41666aabf16cef5020b80f40c8c8fd22bb8c8",
+    "screenshots/right-edge-candidates-0.jpg": "dd4ca8e3cda339d1ea9e14267744028cd9521d2b5015efb8ccb7b89d2c397322",
+    "screenshots/right-edge-candidates-1.jpg": "cfe6230634f6f65ecbd6e0eb6eab37148072d433c7487d33c61da650a4a05ac3",
+    "screenshots/vscode-english-shortcut-0.jpg": "5057ee45bd4a490ac0dee2baca7d18137347e60634e3f2e9eeadc019a8bfbc1b",
+    "screenshots/vscode-f2-0.jpg": "b35233e96938480826857ef1285ff4ff61e602a648b186929763374ab37b08a4",
+    "screenshots/vscode-f2-1.jpg": "9e1c499efc042de4c15a676d0e2b01fe4a337f36d1c184a4cbbf318f2565a139",
+    "screenshots/vscode-f2-2.jpg": "b6fa12a704101b222da69d938a8006554517daaa4c3783c37d46b4273a4da4a3",
+    "screenshots/vscode-focus-return-0.jpg": "443065783c2c355f98881ff9b68200f4f8fbd5fafbe4afcabc9557a4afc911f6",
+    "screenshots/vscode-hover-0.jpg": "50a78f7849df68663cdf0333d4c3bbadb6fefa2ee3c412094f1229b714cf456c",
+    "screenshots/vscode-hover-1.jpg": "a561a2efa0640c44e8f3bca1a7dc8a7b7d7efc5cb98ddb0f3fc74388d24939e6",
+    "screenshots/vscode-hover-2.jpg": "85d70c4aeed500450a13288e3301969a4d604ef05238d4d60957896c9e9520cc",
+    "screenshots/vscode-ordinary-english-row-0.jpg": "c334649a74ddf3e6005f6cb6f0be6248215d1decb141402a915c9bb8e0c5e802",
+    "screenshots/vscode-rapid-input-0.jpg": "de76cac5543322dddcbe0ad4d211f4eeffd2e73ab4e8f6b7381a3bd6d8125d0d",
+    "screenshots/vscode-rapid-input-1.jpg": "9e1c499efc042de4c15a676d0e2b01fe4a337f36d1c184a4cbbf318f2565a139",
+    "screenshots/vscode-repeat-protection-0.jpg": "61b7cba1370372063e0a2fda5826ae4b3a8f970dd905d8435119f6eafe28f247"
+  },
+  "status": "recorded_with_deferred_cleanup",
+  "test_cleanup": {
+    "all_studyime_services_observed_stopped": true,
+    "evidence": "Native Computer Use window observations and process/HTTP-server checks in this chat.",
+    "isolated_services_stopped": [
+      {
+        "at": "2026-11-08T10:11:59.492757+00:00",
+        "exit_code": 0,
+        "session": "66bcec7716f24f8297a5a1a818699b33"
+      },
+      {
+        "at": "2026-11-08T10:11:59.520688+00:00",
+        "exit_code": 0,
+        "session": "b000d33a22ad4cacaa60f42122ec789c"
+      }
+    ],
+    "local_http_server_stopped": true,
+    "other_notepad_documents_preserved": true,
+    "test_notepad_tab_closed": true,
+    "test_vscode_window_closed": true
+  },
+  "uninstall_complete": false
+}

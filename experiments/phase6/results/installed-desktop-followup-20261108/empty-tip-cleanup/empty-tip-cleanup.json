@@ -1,0 +1,11 @@
+{
+    "started_at":  "2026-11-08T10:23:58.2111063Z",
+    "succeeded":  true,
+    "install_root":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256":  "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "common_sha256":  "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+    "initial_receipt_status":  "cleanup-pending",
+    "uninstall_retry_succeeded":  false,
+    "uninstall_retry_error":  "Unregistered. Files are modified or still in use; close applications and retry. Preserved: bin/StudyIME.TSF.x64.dll",
+    "finished_at":  "2026-11-08T10:23:59.5113093Z"
+}

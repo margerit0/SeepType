@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "name": "package archive is byte-identical with reversed input order and another output directory",
+      "passed": true
+    },
+    {
+      "name": "archive paths timestamps permissions and compression are canonical",
+      "passed": true
+    },
+    {
+      "name": "all archive entries match their declared payload bytes",
+      "passed": true
+    },
+    {
+      "name": "Windows path traversal aliases devices and alternate streams are rejected",
+      "passed": true
+    },
+    {
+      "name": "case-insensitive archive collisions are rejected",
+      "passed": true
+    },
+    {
+      "name": "release packaging refuses pending human review and unresolved licenses",
+      "passed": true
+    },
+    {
+      "name": "review preview is explicit and retains zero human approvals",
+      "passed": true
+    },
+    {
+      "name": "runtime payload excludes historical fixtures and unrelated installer tools",
+      "passed": true
+    },
+    {
+      "name": "Chinese input uses the traced CC-CEDICT wordfreq base without mixed preset dictionaries",
+      "passed": true
+    },
+    {
+      "name": "product compiler trace contains no WTL headers",
+      "passed": true
+    },
+    {
+      "name": "Rime runtime is built from the recorded sources with only Lua",
+      "passed": true
+    },
+    {
+      "name": "all four product binaries are recorded x64 images",
+      "passed": true
+    },
+    {
+      "name": "product PE images contain no checkout-specific absolute path",
+      "passed": true
+    },
+    {
+      "name": "changed generated headers are rejected even when mtime is preserved",
+      "passed": true
+    },
+    {
+      "detail": [
+        "advapi32.dll",
+        "bcrypt.dll",
+        "d2d1.dll",
+        "dbghelp.dll",
+        "dwrite.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "oleacc.dll",
+        "oleaut32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "name": "all static and delayed DLL imports are Windows system libraries",
+      "passed": true
+    }
+  ],
+  "computer_use_executed": false,
+  "package_sha256": "c7a5a8e099b2b11e32c5ca2a67e6be8a4bd26b9d86519b0cd241df416918f669",
+  "passed": 15,
+  "recorded_at": "2026-11-08T10:37:27.662812+00:00",
+  "system_install_executed": false,
+  "total": 15,
+  "tsf_registration_executed": false
+}

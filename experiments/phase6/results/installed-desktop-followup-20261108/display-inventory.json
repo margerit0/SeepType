@@ -1,0 +1,48 @@
+[
+  {
+    "DeviceName": "\\\\.\\DISPLAY1",
+    "Primary": true,
+    "Bounds": {
+      "Location": {
+        "IsEmpty": true,
+        "X": 0,
+        "Y": 0
+      },
+      "Size": {
+        "IsEmpty": false,
+        "Width": 1707,
+        "Height": 1067
+      },
+      "X": 0,
+      "Y": 0,
+      "Width": 1707,
+      "Height": 1067,
+      "Left": 0,
+      "Top": 0,
+      "Right": 1707,
+      "Bottom": 1067,
+      "IsEmpty": false
+    },
+    "WorkingArea": {
+      "Location": {
+        "IsEmpty": true,
+        "X": 0,
+        "Y": 0
+      },
+      "Size": {
+        "IsEmpty": false,
+        "Width": 1707,
+        "Height": 1067
+      },
+      "X": 0,
+      "Y": 0,
+      "Width": 1707,
+      "Height": 1067,
+      "Left": 0,
+      "Top": 0,
+      "Right": 1707,
+      "Bottom": 1067,
+      "IsEmpty": false
+    }
+  }
+]

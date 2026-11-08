@@ -9,7 +9,8 @@
 
 namespace study {
 bool UiPreferences::operator==(const UiPreferences& p) const {
-  return learning == p.learning && largeText == p.largeText && reduceMotion == p.reduceMotion &&
+  return learning == p.learning && userLearning == p.userLearning &&
+      largeText == p.largeText && reduceMotion == p.reduceMotion &&
       theme == p.theme && shortcut == p.shortcut;
 }
 std::filesystem::path PreferencesPath() {
@@ -55,6 +56,7 @@ UiPreferences LoadPreferences(const std::filesystem::path& path) {
   }
   if (values["version"] != "1") return result;
   if (values["learning"] == "0") result.learning = false;
+  if (values["user_learning"] == "0") result.userLearning = false;
   result.largeText = values["large_text"] == "1";
   result.reduceMotion = values["reduce_motion"] == "1";
   if (values["theme"] == "light") result.theme = Theme::Light;
@@ -71,7 +73,8 @@ bool SavePreferences(const std::filesystem::path& path, const UiPreferences& p) 
   pending += L"." + std::to_wstring(GetCurrentProcessId()) + L"." +
       std::to_wstring(GetCurrentThreadId()) + L".tmp";
   std::ofstream file(pending, std::ios::binary | std::ios::trunc);
-  file << "version=1\nlearning=" << p.learning << "\nlarge_text=" << p.largeText
+  file << "version=1\nlearning=" << p.learning << "\nuser_learning=" << p.userLearning
+       << "\nlarge_text=" << p.largeText
        << "\nreduce_motion=" << p.reduceMotion << "\ntheme="
        << (p.theme == Theme::Light ? "light" : p.theme == Theme::Dark ? "dark" : "system")
        << "\nshortcut=" << (p.shortcut == EnglishShortcut::AltEnter ? "alt_enter" : "ctrl_shift_enter") << '\n';
@@ -117,38 +120,42 @@ struct SettingsDialog {
     font = CreateFontW(-Px(14), 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
         0, 0, CLEARTYPE_QUALITY, 0, L"Microsoft YaHei UI");
     Control(L"STATIC", L"基本设置", 0, 24, 20, 450, 26);
-    auto learning = Control(L"BUTTON", L"学习模式：显示英文释义", 101, 24, 60, 420, 28, BS_AUTOCHECKBOX | WS_TABSTOP);
+    auto learning = Control(L"BUTTON", L"英语学习：显示英文释义", 101, 24, 54, 430, 28, BS_AUTOCHECKBOX | WS_TABSTOP);
     SendMessageW(learning, BM_SETCHECK, value.learning ? BST_CHECKED : BST_UNCHECKED, 0);
-    Control(L"STATIC", L"中文字号", 0, 24, 104, 140, 25);
-    auto size = Control(L"COMBOBOX", L"", 102, 186, 100, 268, 120, CBS_DROPDOWNLIST | WS_TABSTOP);
+    auto userLearning = Control(L"BUTTON", L"记住中文选词习惯", 107, 24, 88, 430, 28, BS_AUTOCHECKBOX | WS_TABSTOP);
+    SendMessageW(userLearning, BM_SETCHECK, value.userLearning ? BST_CHECKED : BST_UNCHECKED, 0);
+    Control(L"STATIC", L"关闭后停止学习，已有记录仍参与排序。\r\n右键候选可忘记该词当前读音的学习记录。", 0, 24, 122, 440, 42);
+    Control(L"STATIC", L"中文字号", 0, 24, 184, 140, 25);
+    auto size = Control(L"COMBOBOX", L"", 102, 186, 180, 268, 120, CBS_DROPDOWNLIST | WS_TABSTOP);
     SendMessageW(size, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(L"常规 · 18px"));
     SendMessageW(size, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(L"较大 · 20px"));
     SendMessageW(size, CB_SETCURSEL, value.largeText ? 1 : 0, 0);
-    Control(L"STATIC", L"外观", 0, 24, 150, 140, 25);
-    auto theme = Control(L"COMBOBOX", L"", 103, 186, 146, 268, 160, CBS_DROPDOWNLIST | WS_TABSTOP);
+    Control(L"STATIC", L"外观", 0, 24, 226, 140, 25);
+    auto theme = Control(L"COMBOBOX", L"", 103, 186, 222, 268, 160, CBS_DROPDOWNLIST | WS_TABSTOP);
     for (const auto* item : {L"跟随系统", L"浅色", L"深色"}) SendMessageW(theme, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(item));
     SendMessageW(theme, CB_SETCURSEL, static_cast<int>(value.theme), 0);
-    Control(L"STATIC", L"输入英文", 0, 24, 196, 140, 25);
-    auto shortcut = Control(L"COMBOBOX", L"", 104, 186, 192, 268, 130, CBS_DROPDOWNLIST | WS_TABSTOP);
+    Control(L"STATIC", L"输入英文", 0, 24, 268, 140, 25);
+    auto shortcut = Control(L"COMBOBOX", L"", 104, 186, 264, 268, 130, CBS_DROPDOWNLIST | WS_TABSTOP);
     for (const auto* item : {L"Ctrl+Shift+Enter", L"Alt+Enter"}) SendMessageW(shortcut, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(item));
     SendMessageW(shortcut, CB_SETCURSEL, static_cast<int>(value.shortcut), 0);
-    Control(L"STATIC", L"仅明确操作输入英文；空格、数字和普通点击仍输入中文。\r\n快捷键如与应用冲突，可更换预设。F2 查看完整释义。", 0, 24, 238, 440, 48);
-    auto motion = Control(L"BUTTON", L"减少动态效果", 105, 24, 298, 420, 26, BS_AUTOCHECKBOX | WS_TABSTOP);
+    Control(L"STATIC", L"仅明确操作输入英文；空格、数字和普通点击仍输入中文。\r\n快捷键如与应用冲突，可更换预设。F2 查看完整释义。", 0, 24, 310, 440, 48);
+    auto motion = Control(L"BUTTON", L"减少动态效果", 105, 24, 370, 430, 26, BS_AUTOCHECKBOX | WS_TABSTOP);
     SendMessageW(motion, BM_SETCHECK, value.reduceMotion ? BST_CHECKED : BST_UNCHECKED, 0);
 #ifdef WEASEL_STUDY_PRODUCT
-    Control(L"STATIC", L"词库：日常 200 条 · 审核预览\r\n词义待人工审核，仅供开发验证。\r\n软件与词库许可见随附的许可与来源说明。\r\n仅在本机保存以上偏好，不保存输入内容。", 0, 24, 342, 450, 94);
+    Control(L"STATIC", L"词库：日常 200 条 · 审核预览，词义待人工审核。\r\n软件与词库许可见随附的许可与来源说明。\r\n中文选词、造词记录与偏好仅存本机，不上传。", 0, 24, 414, 450, 72);
 #else
-    Control(L"STATIC", L"词库：study-fixtures v0.1 · 21 条测试词对\r\n测试数据尚未人工验收，不作为正式词库分发。\r\nWeasel：GPL-3.0；librime / librime-lua：BSD-3-Clause。\r\n仅在本机保存以上偏好，不保存输入内容。", 0, 24, 342, 450, 94);
+    Control(L"STATIC", L"词库：study-fixtures v0.1 · 21 条测试词对\r\n测试数据尚未人工验收，不作为正式词库分发。\r\n选词学习仅在启用用户词典的产品方案中生效。", 0, 24, 414, 450, 72);
 #endif
-    Control(L"STATIC", L"", 106, 24, 440, 280, 34);
-    Control(L"BUTTON", L"取消", IDCANCEL, 278, 442, 80, 32, WS_TABSTOP);
-    Control(L"BUTTON", L"保存", IDOK, 374, 442, 80, 32, BS_DEFPUSHBUTTON | WS_TABSTOP);
-    RECT bounds{0, 0, Px(482), Px(500)};
+    Control(L"STATIC", L"", 106, 24, 500, 238, 44);
+    Control(L"BUTTON", L"取消", IDCANCEL, 278, 500, 80, 32, WS_TABSTOP);
+    Control(L"BUTTON", L"保存", IDOK, 374, 500, 80, 32, BS_DEFPUSHBUTTON | WS_TABSTOP);
+    RECT bounds{0, 0, Px(482), Px(550)};
     AdjustWindowRectExForDpi(&bounds, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, FALSE, WS_EX_DLGMODALFRAME, scale);
     SetWindowPos(window, nullptr, 0, 0, bounds.right - bounds.left, bounds.bottom - bounds.top, SWP_NOMOVE | SWP_NOZORDER);
   }
   void Save() {
     value.learning = SendDlgItemMessageW(window, 101, BM_GETCHECK, 0, 0) == BST_CHECKED;
+    value.userLearning = SendDlgItemMessageW(window, 107, BM_GETCHECK, 0, 0) == BST_CHECKED;
     value.largeText = SendDlgItemMessageW(window, 102, CB_GETCURSEL, 0, 0) == 1;
     value.theme = static_cast<Theme>(SendDlgItemMessageW(window, 103, CB_GETCURSEL, 0, 0));
     value.shortcut = static_cast<EnglishShortcut>(SendDlgItemMessageW(window, 104, CB_GETCURSEL, 0, 0));

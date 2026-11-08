@@ -1,0 +1,16 @@
+﻿{
+    "action":  "uninstall",
+    "apply_requested":  true,
+    "product":  "拾词输入法",
+    "version":  "0.5.0-dev.2",
+    "target":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "receipt_present":  true,
+    "registry_class":  "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+    "profile_guid":  "C126F14A-E78D-57FF-910F-205A393AE9D9",
+    "delete_policy":  "Only recorded, unmodified package files inside the validated installation root",
+    "preserve_user_data":  true,
+    "preserve_unlisted_or_modified_files":  true,
+    "terminate_other_applications":  false,
+    "default_input_method_changed":  false,
+    "apply_command":  ".\\Uninstall.ps1 -Apply -AllowDevelopment"
+}

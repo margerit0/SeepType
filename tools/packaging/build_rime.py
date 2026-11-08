@@ -89,6 +89,15 @@ def prepare_sources():
             '${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /OPT:REF /OPT:ICF')
     replace("librime/CMakeLists.txt", '  add_subdirectory(tools)\n',
             '  # StudyIME uses the C API; standalone tools and their historical preset data are omitted.\n')
+    # Keep Rime's scoring, dictionary storage and deletion behavior. This
+    # session property only pauses new learning; existing entries still rank.
+    # Checking at the native commit hook covers keys, clicks and segmented input.
+    replace("librime/src/rime/gear/memory.cc",
+            'void Memory::OnCommit(Context* ctx) {\n',
+            'void Memory::OnCommit(Context* ctx) {\n'
+            '  // StudyIME: do not learn new words while the user pauses learning.\n'
+            '  if (ctx->get_property("study_user_learning") == "0")\n'
+            '    return;\n')
     rc = files["librime/cmake/AddRCInfo.cmake"].decode("utf-8").replace("\r\n", "\n")
     replace("librime/cmake/AddRCInfo.cmake", rc[:rc.index('set(original_filename')],
             '# StudyIME: sources come from the fixed archive, never a parent Git checkout.\nset(build_release ON)\n')

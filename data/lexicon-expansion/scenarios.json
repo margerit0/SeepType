@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "topic-configuration-only; vocabulary awaits external API",
+  "scenarios": [
+    {"id": "everyday-communication", "name": "日常交流", "scope": "日常交谈、礼貌表达和沟通需求"},
+    {"id": "family-home", "name": "家庭与居家", "scope": "家庭生活、居住设施与家务"},
+    {"id": "food-cooking", "name": "食物与烹饪", "scope": "食材、饮食习惯与烹饪活动"},
+    {"id": "restaurants", "name": "餐厅用餐", "scope": "餐厅服务、点餐与饮食需求"},
+    {"id": "shopping", "name": "购物与售后", "scope": "商品选择、交易和售后服务"},
+    {"id": "banking", "name": "银行与支付", "scope": "个人银行业务、支付和费用"},
+    {"id": "airport", "name": "机场与出入境", "scope": "航空旅行、行李与出入境手续"},
+    {"id": "hotels", "name": "酒店住宿", "scope": "酒店住宿安排、设施和服务"},
+    {"id": "housing", "name": "租房与住房", "scope": "寻找住房、租住安排和居住问题"},
+    {"id": "transport", "name": "交通与问路", "scope": "公共交通、道路出行和位置方向"},
+    {"id": "education", "name": "留学与校园", "scope": "教育申请、学习活动和校园生活"},
+    {"id": "employment", "name": "求职与职场", "scope": "求职、工作安排和职业交流"},
+    {"id": "health", "name": "就医与健康", "scope": "就医流程、身体状况和日常保健"},
+    {"id": "digital", "name": "数码与通信", "scope": "数字设备、网络服务和通信需求"},
+    {"id": "environment", "name": "环境与能源", "scope": "环境议题、能源使用和生态保护"},
+    {"id": "science", "name": "科技与研究", "scope": "科学研究、技术发展和相关讨论"},
+    {"id": "society", "name": "社会与公共服务", "scope": "社区生活、社会议题和公共服务"},
+    {"id": "culture", "name": "文化与休闲", "scope": "文化活动、兴趣爱好和休闲安排"},
+    {"id": "sports", "name": "运动与健身", "scope": "体育活动、锻炼和健身场景"},
+    {"id": "relationships", "name": "人际与情绪", "scope": "人际关系、个人感受和情绪表达"}
+  ]
+}

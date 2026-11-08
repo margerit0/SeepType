@@ -39,6 +39,10 @@ if (@('copying', 'copied', 'unregistered', 'cleanup-pending') -notcontains $rece
     Write-StudyReceipt $package.Root $receipt
 }
 
+if (@('unregistered', 'cleanup-pending') -contains $receipt.status) {
+    Remove-StudyEmptyTipKeys $package
+}
+
 $support = @('Install.ps1', 'Uninstall.ps1', 'scripts/Common.ps1', 'product.json')
 $retained = New-Object 'System.Collections.Generic.List[string]'
 foreach ($file in $package.Manifest.files) {

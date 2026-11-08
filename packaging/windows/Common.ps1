@@ -190,6 +190,76 @@ function Get-StudyReceipt($Package) {
     return $receipt
 }
 
+function Remove-StudyEmptyTipBranch([Microsoft.Win32.RegistryKey] $Parent) {
+    # TSF removes registrations but can leave these empty containers in both
+    # registry views. Inspect the complete product branch before deleting any
+    # key; a value or an unfamiliar child means that the branch is preserved.
+    $allowed = @(
+        '', 'Category', 'Category\Category', 'Category\Item',
+        ('Category\Item\' + $script:StudyClassGuid),
+        'Category\Category\{046B8C80-1647-40F7-9B21-B93B81AABC1B}',
+        'Category\Category\{34745C63-B2F0-4784-8B67-5E12C8701A31}',
+        'Category\Category\{49D2F9CF-1F5E-11D7-A6D3-00065B84435C}',
+        'Category\Category\{CCF05DD7-4A87-11D7-A6E2-00065B84435C}',
+        'LanguageProfile', 'LanguageProfile\0x00000804'
+    )
+    $paths = New-Object 'System.Collections.Generic.List[string]'
+    $visit = {
+        param([Microsoft.Win32.RegistryKey] $Key, [string] $Relative)
+        if ($allowed -notcontains $Relative -or $Key.ValueCount -ne 0) {
+            throw "Preserved nonempty or unfamiliar StudyIME TIP registry branch: $Relative"
+        }
+        foreach ($name in $Key.GetSubKeyNames()) {
+            $child = $Key.OpenSubKey($name)
+            if ($null -eq $child) { throw 'StudyIME TIP registry changed during inspection.' }
+            try {
+                $relativeChild = if ($Relative) { $Relative + '\' + $name } else { $name }
+                & $visit $child $relativeChild
+            } finally { $child.Dispose() }
+        }
+        $paths.Add($Relative)
+    }
+    $tip = $Parent.OpenSubKey($script:StudyClassGuid)
+    if ($null -eq $tip) { return $false }
+    try { & $visit $tip '' } finally { $tip.Dispose() }
+    # Children precede parents. DeleteSubKey is deliberately nonrecursive and
+    # every key is checked again immediately before removal.
+    foreach ($relative in $paths) {
+        $path = $script:StudyClassGuid
+        if ($relative) { $path += '\' + $relative }
+        $key = $Parent.OpenSubKey($path)
+        if ($null -eq $key) { continue }
+        try {
+            if ($key.ValueCount -ne 0 -or $key.SubKeyCount -ne 0) {
+                throw "StudyIME TIP registry changed during cleanup; preserved: $path"
+            }
+        } finally { $key.Dispose() }
+        $Parent.DeleteSubKey($path, $false)
+    }
+    return $true
+}
+
+function Remove-StudyEmptyTipKeys($Package) {
+    $receipt = Get-StudyReceipt $Package
+    if ($receipt.registered -or @('unregistered', 'cleanup-pending') -notcontains $receipt.status) {
+        throw 'Empty TIP cleanup requires a verified, unregistered installation receipt.'
+    }
+    foreach ($view in @([Microsoft.Win32.RegistryView]::Registry64, [Microsoft.Win32.RegistryView]::Registry32)) {
+        $machine = [Microsoft.Win32.RegistryKey]::OpenBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $view)
+        try {
+            $class = $machine.OpenSubKey('Software\Classes\CLSID\' + $script:StudyClassGuid)
+            if ($null -ne $class) {
+                $class.Dispose()
+                throw 'StudyIME COM class still exists; complete native unregistration first.'
+            }
+            $parent = $machine.OpenSubKey('Software\Microsoft\CTF\TIP', $true)
+            if ($null -eq $parent) { continue }
+            try { [void](Remove-StudyEmptyTipBranch $parent) }
+            finally { $parent.Dispose() }
+        } finally { $machine.Dispose() }
+    }
+}
+
 function Get-StudyAppListEntry {
     $machine = [Microsoft.Win32.RegistryKey]::OpenBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, [Microsoft.Win32.RegistryView]::Registry64)
     try {

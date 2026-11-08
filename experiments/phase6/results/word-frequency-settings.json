@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-11-08T11:19:23.734751+00:00",
+  "scope": "Computer Use observations of the real product settings dialog with isolated data, plus saved-file checks",
+  "product_version": "0.5.0-dev.3",
+  "binary_sha256": "4c733eacbf2e134ffd5d23dc8e6aa770e65203e5a333328f20d63ddcf5144013",
+  "binary_matches_current_build": true,
+  "settings_path": ".\\.cache\\packaging\\verification\\frequency-settings-413c8325eca848b3a7abdc6ce1bdb86f\\user\\settings.ini",
+  "checks": [
+    {
+      "name": "both independent controls and explanatory text are visible without clipping",
+      "passed": true
+    },
+    {
+      "name": "both learning controls default to enabled",
+      "passed": true
+    },
+    {
+      "name": "clicking word learning off preserves the English checkbox",
+      "passed": true
+    },
+    {
+      "name": "save writes user_learning=0 and learning=1",
+      "passed": true
+    },
+    {
+      "name": "reopening restores word learning off and English learning on",
+      "passed": true
+    },
+    {
+      "name": "changing word learning then cancelling leaves the stored settings unchanged",
+      "passed": true
+    },
+    {
+      "name": "test dialog was closed after verification",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "One current desktop scale; not a multi-monitor settings test",
+    "No installed TSF activation or system input settings changes"
+  ]
+}

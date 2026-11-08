@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-11-08T10:11:59.521319+00:00",
+  "status": "skipped_by_user",
+  "user_instruction": "那就先跳过浏览器测试，进行别的任务",
+  "native_input_test_completed": false,
+  "reason": "Chrome native window URL identification stopped Computer Use, including after the user placed the correct test page in the foreground. Browser extension page reads succeeded; they are not TSF input acceptance.",
+  "test_url": "http://127.0.0.1:18765/browser-input.html"
+}

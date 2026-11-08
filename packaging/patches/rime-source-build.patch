@@ -71,6 +71,18 @@
  set(original_filename "rime.dll")
  if(MSVC)
    set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} -DLOCALIZE_VERSION_INFO")
+--- a/librime/src/rime/gear/memory.cc
++++ b/librime/src/rime/gear/memory.cc
+@@ -99,6 +99,9 @@
+ }
+ 
+ void Memory::OnCommit(Context* ctx) {
++  // StudyIME: do not learn new words while the user pauses learning.
++  if (ctx->get_property("study_user_learning") == "0")
++    return;
+   if (!user_dict_ || user_dict_->readonly())
+     return;
+   StartSession();
 --- a/opencc/CMakeLists.txt
 +++ b/opencc/CMakeLists.txt
 @@ -146,8 +146,7 @@

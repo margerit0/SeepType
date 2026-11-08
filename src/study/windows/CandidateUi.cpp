@@ -137,6 +137,9 @@ bool CandidateUi::ReloadPreferences() {
   return true;
 }
 bool CandidateUi::SaveLearning(bool enabled) {
+  // A settings window in another process may have changed word learning.
+  // Merge the English-only toggle into the latest saved preferences.
+  ReloadPreferences();
   preferences_.learning = enabled;
   const bool saved = SavePreferences(PreferencesPath(), preferences_);
   if (saved) loadedPreferences_ = preferences_;
@@ -144,6 +147,7 @@ bool CandidateUi::SaveLearning(bool enabled) {
 }
 bool CandidateUi::ShowSettings(HWND owner) {
   if (status_.composing || active_) return false;
+  ReloadPreferences();
   HideDefinition();
   if (!EditPreferences(owner, PreferencesPath(), preferences_)) return false;
   loadedPreferences_ = preferences_;

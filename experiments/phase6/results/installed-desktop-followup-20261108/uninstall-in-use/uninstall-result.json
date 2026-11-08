@@ -1,0 +1,9 @@
+{
+    "action":  "uninstall",
+    "entry":  "C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1",
+    "started_at":  "2026-11-08T10:12:21.5203935Z",
+    "succeeded":  false,
+    "error":  "Unregistered. Files are modified or still in use; close applications and retry. Preserved: bin/StudyIME.TSF.x64.dll",
+    "script_stack":  "在 \u003cScriptBlock\u003e、C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1 中: 第 57 行\r\n在 \u003cScriptBlock\u003e、.\\experiments\\phase6\\run-approved-install-step.ps1 中: 第 40 行",
+    "finished_at":  "2026-11-08T10:12:23.2355369Z"
+}

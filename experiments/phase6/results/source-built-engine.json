@@ -1,129 +1,129 @@
 {
   "benchmarks": [
     {
-      "p50": 443.5,
-      "p95": 623.7,
-      "p99": 706.5,
+      "p50": 519.1,
+      "p95": 740.2,
+      "p99": 860.8,
       "query": "shi",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 195.7,
-      "p95": 238.5,
-      "p99": 347.9,
+      "p50": 218.8,
+      "p95": 334.4,
+      "p99": 430.6,
       "query": "de",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 341.6,
-      "p95": 461,
-      "p99": 542.1,
+      "p50": 402.4,
+      "p95": 509.4,
+      "p99": 612.1,
       "query": "sh",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 466,
-      "p95": 620.4,
-      "p99": 787.2,
+      "p50": 539.8,
+      "p95": 792.1,
+      "p99": 1044.9,
       "query": "nihao",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 1276.8,
-      "p95": 1494.7,
-      "p99": 1651.6,
+      "p50": 1596.7,
+      "p95": 1913.7,
+      "p99": 2058.5,
       "query": "zhongguo",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 722,
-      "p95": 1072.3,
-      "p99": 1382.8,
+      "p50": 906.8,
+      "p95": 1183.7,
+      "p99": 1358.1,
       "query": "gongzuo",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 835.4,
-      "p95": 1070.1,
-      "p99": 1158.4,
+      "p50": 871.4,
+      "p95": 1181.3,
+      "p99": 1432,
       "query": "mingtian",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 454.1,
-      "p95": 670,
-      "p99": 915.7,
+      "p50": 490.8,
+      "p95": 672.5,
+      "p99": 779.3,
       "query": "xuexi",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 710.5,
-      "p95": 942.7,
-      "p99": 1056.6,
+      "p50": 840,
+      "p95": 1170.7,
+      "p99": 1414.4,
       "query": "diannao",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 684.5,
-      "p95": 934.6,
-      "p99": 1046.2,
+      "p50": 712,
+      "p95": 902.9,
+      "p99": 1030.5,
       "query": "pingguo",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 620.5,
-      "p95": 908,
-      "p99": 1054.5,
+      "p50": 742.8,
+      "p95": 1055.3,
+      "p99": 1239.9,
       "query": "woaini",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 3555.9,
-      "p95": 4006,
-      "p99": 4211.6,
+      "p50": 4713.1,
+      "p95": 5509.4,
+      "p99": 6354.8,
       "query": "jintiantianqihenhao",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 635.5,
-      "p95": 843.1,
-      "p99": 1066.5,
+      "p50": 725.8,
+      "p95": 956.3,
+      "p99": 1079.9,
       "query": "zhong",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 918.3,
-      "p95": 1171.2,
-      "p99": 1329.3,
+      "p50": 1051.9,
+      "p95": 1306.9,
+      "p99": 1489.7,
       "query": "shurufa",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 447.7,
-      "p95": 633.3,
-      "p99": 716.5,
+      "p50": 541.1,
+      "p95": 687.7,
+      "p99": 810.9,
       "query": "zhe",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
     },
     {
-      "p50": 473.3,
-      "p95": 691.6,
-      "p99": 936.5,
+      "p50": 510.8,
+      "p95": 740,
+      "p99": 806.5,
       "query": "women",
       "samples": 200,
       "unit": "us per synthetic composition + first page"
@@ -2336,7 +2336,7 @@
     "cedict_study.table.bin": 3342772,
     "default.yaml": 4702,
     "study.prism.bin": 31464,
-    "study.schema.yaml": 41431
+    "study.schema.yaml": 41432
   },
   "dictionary_bytes": {
     "data/shared/cedict_study.dict.yaml": 2775222,
@@ -2346,7 +2346,7 @@
     "data/shared/luna_pinyin_simp.schema.yaml": 739,
     "data/shared/pinyin.yaml": 4820,
     "data/shared/punctuation.yaml": 2107,
-    "data/shared/study.schema.yaml": 756,
+    "data/shared/study.schema.yaml": 757,
     "data/shared/symbols.yaml": 28411,
     "data/shared/weasel.yaml": 222
   },
@@ -2356,9 +2356,9 @@
     "No human approval is implied for the English meanings",
     "Synthetic latency on this machine only; no desktop, installed TSF or multi-application acceptance"
   ],
-  "native_build_sha256": "fa0e8b8da670b8b5a1348a526c41fc32c2d80fe99a9a2bc3d9ada1f505f97397",
+  "native_build_sha256": "9434d15c91274fecc3e04441a659ecdb843648a798dcbbb8a9dcce4044b00644",
   "passed": true,
-  "probe_sha256": "bf13d76439330a9f734b22fa1a9775f4dfef044768cf7b0f0c63df139b0bed29",
+  "probe_sha256": "392cbf6b8bbc1c3d758a8e9fbcafb3b5df02bfa5ae50460341239020c224bf71",
   "pronunciation_checks": [
     {
       "actual_first_page": [
@@ -2465,20 +2465,20 @@
       ]
     }
   ],
-  "recorded_at": "2026-11-06T20:34:24.383728+00:00",
+  "recorded_at": "2026-11-08T11:26:45.798320+00:00",
   "review_counts": {
     "approved-for-distribution": 0,
     "pending": 200,
     "rejected": 0
   },
-  "rime_build_sha256": "70d6a5b82f4ca02c8f328696eed18b24da249a6149ec7d76be289de65b43770a",
-  "rime_dll_sha256": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+  "rime_build_sha256": "9a48ee0fe6a62a6540486a63537842c3fef86efb8d7ddf7b1e48e8c0de1a7067",
+  "rime_dll_sha256": "ef9e59d7e3bcbb89b33af5418ba99de9347f1b51ec00f37770801758e83ecc56",
   "runtime_input_hashes": {
-    "bin/StudyIME.Registrar.exe": "094d7181f3e752b4ebabd9d1d7f7a03a2717a4acc46b4d2a9e3dab698d7d545d",
-    "bin/StudyIME.Service.exe": "53dba87069dfc7a5233ae3ba632d7efeddb1a55706c1a4b95e48d789b0d879f4",
-    "bin/StudyIME.Settings.exe": "3f6572f7057c6a26a87b79a18dfe2d1b433d16241bdea5b84abf05de721cf01a",
-    "bin/StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
-    "bin/rime.dll": "81c93dd78e2d5ec723542e77b00b135017bab01f5d28728c94a59b8c1ee61f77",
+    "bin/StudyIME.Registrar.exe": "76d02987c0e0e6927426f39a6ae6c65d85256575302b9d8bf124dcf43d40584c",
+    "bin/StudyIME.Service.exe": "21154168c04dd796196504fdbc32c7eb70d805e7f74ac52b9ad967ff5c135642",
+    "bin/StudyIME.Settings.exe": "4c733eacbf2e134ffd5d23dc8e6aa770e65203e5a333328f20d63ddcf5144013",
+    "bin/StudyIME.TSF.x64.dll": "7af699e264646d60716a68321347c17a5b5b7d60e942cb433369229b074491d2",
+    "bin/rime.dll": "ef9e59d7e3bcbb89b33af5418ba99de9347f1b51ec00f37770801758e83ecc56",
     "data/shared/cedict_study.dict.yaml": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
     "data/shared/default.yaml": "dd55653a991f9418eb425ee2112666f82e3e753c5ce3ed5702dd243041a45382",
     "data/shared/key_bindings.yaml": "5c484257cccbab899bc874dfeb9257ce7190c99fee3abc33321767c8dac56af9",
@@ -2486,7 +2486,7 @@
     "data/shared/luna_pinyin_simp.schema.yaml": "82d9a2b44fa207d4d49416d16af5d2fcab6b1604f4083c384372360c824ea919",
     "data/shared/pinyin.yaml": "22915339d6505d8911edd929b055145235eb4f66ee6d4dbdedb832e31be40c35",
     "data/shared/punctuation.yaml": "d6f89592149098f0a2d0ed3e5c83f49adb6226cdf1d967b0bc0d293f4e5c496a",
-    "data/shared/study.schema.yaml": "f0e50c604a3eb96663292919f7b987b5757c0b7ca27cd5f26e487d664ab6fd87",
+    "data/shared/study.schema.yaml": "82f9d58c5ec4b983f725f100475f3f4a7e796c94f69152e66d082f4941e5d0f0",
     "data/shared/symbols.yaml": "f12ee3a61bb9739c29fe6ba12890c5c9c50ca38f63ce9c85e1a16e223ae0b04f",
     "data/shared/weasel.yaml": "2a2a1853451a2264541404500d2cc8fceae519666b4d12c62036089b8ded0f79",
     "data/user-template/default.custom.yaml": "02afd04b0983f53678949f3b6d00640af32ae833adf361fcd96b18ffe17b1463",
@@ -2495,14 +2495,14 @@
     "data/user-template/rime.lua": "2aa694e0e6c7d3ea77f0ad6bf21463ac89525d9f3708671bfabf72d3eddf69c4"
   },
   "scope": "Source-built x64 Rime/Lua with actual packaged dictionaries and the unchanged English review preview; isolated programmatic C API input",
-  "seconds": 4.167,
+  "seconds": 5.169,
   "startup": {
     "lua_module": true,
-    "maintenance_ms": 588.64,
+    "maintenance_ms": 759.417,
     "octagram_module": false,
     "pointer_bits": 64,
     "predict_module": false,
     "version": "1.13.1"
   },
-  "work_directory": ".cache/packaging/verification/engine-c143f78507264f6d9f4d7a7880cb20d9"
+  "work_directory": ".cache/packaging/verification/engine-0701509f28814833b471de0f2a719cc8"
 }

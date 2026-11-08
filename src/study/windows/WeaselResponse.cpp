@@ -39,6 +39,8 @@ bool CandidateState::Request(Action action, unsigned index, bool enabled,
     return false;
   if (action == Action::CommitEnglish &&
       (!state.Available() || index != state.index)) return false;
+  if (action == Action::ForgetWord &&
+      (state.chinese.empty() || index != state.index)) return false;
   out = {action, state.stamp, action == Action::SetLearning ? 0 : index, enabled};
   return true;
 }

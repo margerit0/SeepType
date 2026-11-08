@@ -59,6 +59,14 @@
     {
       "name": "learning duration remains 240 milliseconds",
       "passed": true
+    },
+    {
+      "name": "external word learning preference saved",
+      "passed": true
+    },
+    {
+      "name": "English toolbar toggle preserves externally changed word learning",
+      "passed": true
     }
   ],
   "comparisons": [
@@ -136,12 +144,12 @@
     }
   ],
   "exit_code": 0,
-  "include_trace_sha256": "389f56297482a32c53b0f625fd7d69abb9f40b8ef6a80d40d36d3d3b9ab70ce9",
-  "native_build_sha256": "19dc0e35732e244590d5c5c3ed933499d4607eb6793d7c0945fb68332a27a448",
+  "include_trace_sha256": "9044bfb695bf9eb2de1d82d571aaabd257a658e0026d568ec90efcf1e7148ad9",
+  "native_build_sha256": "bf65137b1a146d3fbf9a07bbcda97278155ba6358474cd6b74fe47210dfe383c",
   "passed": true,
-  "probe_sha256": "97e37a761939025da8fa8a64ebc6ce6eda1f7fe9ad9cc0fa37d30fc1b4898ff4",
-  "recorded_at": "2026-11-06T20:06:21.701249+00:00",
+  "probe_sha256": "e0b35ef2ddffca699f8773ab502d9bcbc46efefcaf26b67a39b71a8f911c998e",
+  "recorded_at": "2026-11-08T11:19:45.167659+00:00",
   "scope": "Product objects, offscreen rendering and callback dispatch; no desktop UI or installation",
-  "work_directory": ".cache/packaging/verification/renderer-ca3a2926974b40e58d6cf90da8ffa136",
+  "work_directory": ".cache/packaging/verification/renderer-53296a0c75d24c39b9911cbbcf7fffe7",
   "wtl_compiled": false
 }

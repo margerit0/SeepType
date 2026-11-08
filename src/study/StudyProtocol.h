@@ -5,7 +5,7 @@
 
 namespace study {
 
-enum class Action { Inspect, CommitEnglish, SetLearning };
+enum class Action { Inspect, CommitEnglish, SetLearning, ForgetWord };
 
 struct ActionStamp {
   std::uint64_t service = 0;

@@ -1,0 +1,154 @@
+{
+  "input_settings": {
+    "default_override": null,
+    "languages": [
+      {
+        "InputMethodTips": [
+          "0804:{81D4E9C9-1D3B-41BC-9E6C-4B40BF79E35E}{FA550B04-5AD7-411F-A5AC-CA038EC515D7}"
+        ],
+        "LanguageTag": "zh-Hans-CN"
+      }
+    ]
+  },
+  "installed_binaries": {
+    "StudyIME.TSF.x64.dll": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5"
+  },
+  "normal_data_exists": true,
+  "normal_data_files": {
+    "rime/build/cedict_study.reverse.bin": "b5c68527d8e7218d647ff6cef94c6d75a11b5f79ca7e30421bb30a926530d9c7",
+    "rime/build/cedict_study.table.bin": "91b5b15f75f9af22fdcdfe4cd784ad6d741c53e6234a247715d031122949d218",
+    "rime/build/default.yaml": "5a5a3b887ac44a1e3b43906cd51f25b1ee905ba76f8f779fdca0578bac62a074",
+    "rime/build/study.prism.bin": "a90a32ce560230e368e01d9fe73e87898b121136f9cdc2994a90b1d95ae04780",
+    "rime/build/study.schema.yaml": "ce82b303926784553f49e8e0b61fbfb1ea1c677b4d39912bc042ca35a16b1c71",
+    "rime/default.custom.yaml": "02afd04b0983f53678949f3b6d00640af32ae833adf361fcd96b18ffe17b1463",
+    "rime/installation.yaml": "50d869d81047b9958c27c8a793add59928f480a35f808f98f12b90e8b2c9e649",
+    "rime/lua/lexicon.lua": "78e73964f34c3cfa2af98e6240b995b6453adf449b2382d00c49033f1bd282d0",
+    "rime/lua/study_core.lua": "d12a8fd65d7c48ce12e0fc40d97ac5f0ed33855666bf7bd3ae0b121db60d66c5",
+    "rime/rime.lua": "2aa694e0e6c7d3ea77f0ad6bf21463ac89525d9f3708671bfabf72d3eddf69c4",
+    "rime/user.yaml": "3a17a1a1c003998cad43575392397eec0d50cb87dbb3bde4b5aa765d752c5d4d"
+  },
+  "normal_data_root": "<local profile>\\AppData\\Local\\StudyIME",
+  "package": ".\\.cache\\packaging\\stage\\StudyIME-0.5.0-dev.2",
+  "package_manifest_sha256": "7addb6ebcf995d3bcabb08354c6cfd3b940fd8e3f6d4cb65319afef80d0da226",
+  "raw_snapshot": {
+    "path": ".cache/packaging/installed-evidence/raw-registry-20261108/after-final-checks-before-restart.json",
+    "sha256": "6c5bbec498683fe5db54817df6d260a393b1f84d93c22f7b33d57763d4b4de24"
+  },
+  "receipt": {
+    "failed": false,
+    "install_root": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+    "manifest_sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+    "product_id": "StudyIME.InputMethod",
+    "registered": false,
+    "schema_version": 1,
+    "status": "cleanup-pending"
+  },
+  "recorded_at": "2026-11-08T10:44:59.619182+00:00",
+  "registry": {
+    "keyboard_preload": {
+      "exists": true,
+      "sha256": "013cb210624384c32f196f49f9d2c1e52903a807835263043d3ca027c3080661",
+      "tree": {
+        "children": {},
+        "values": [
+          [
+            "1",
+            "00000804",
+            1
+          ]
+        ]
+      }
+    },
+    "keyboard_substitutes": {
+      "exists": true,
+      "sha256": "0b0630cf4a164722c4be6e25ff84de74940d183aad7247f8a95660328cf1fbe0",
+      "tree": {
+        "children": {},
+        "values": []
+      }
+    },
+    "machine_tips_x64": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "machine_tips_x86": {
+      "exists": true,
+      "sha256": "2d814798800495ef360890f405ed16ad45a6a88a19a96cc5b43500d00be3a7df"
+    },
+    "study_app": {
+      "exists": true,
+      "sha256": "c2bc84dd26faacff460d82a4b5920fdba11897be1151989b7eba26d476c96040",
+      "tree": {
+        "children": {},
+        "values": [
+          [
+            "DisplayIcon",
+            "\"C:\\Program Files\\StudyIME\\0.5.0-dev.2\\bin\\StudyIME.Settings.exe\",0",
+            1
+          ],
+          [
+            "DisplayName",
+            "拾词输入法 (StudyIME developer preview)",
+            1
+          ],
+          [
+            "DisplayVersion",
+            "0.5.0-dev.2",
+            1
+          ],
+          [
+            "InstallLocation",
+            "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+            1
+          ],
+          [
+            "NoModify",
+            1,
+            4
+          ],
+          [
+            "NoRepair",
+            1,
+            4
+          ],
+          [
+            "Publisher",
+            "StudyIME contributors",
+            1
+          ],
+          [
+            "UninstallString",
+            "\"C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -File \"C:\\Program Files\\StudyIME\\0.5.0-dev.2\\Uninstall.ps1\" -Apply -AllowDevelopment",
+            1
+          ]
+        ]
+      }
+    },
+    "study_class": {
+      "exists": false
+    },
+    "study_machine_tip": {
+      "exists": false
+    },
+    "study_user": {
+      "exists": false
+    },
+    "study_user_tip": {
+      "exists": false
+    },
+    "weasel_class": {
+      "exists": false
+    },
+    "weasel_machine": {
+      "exists": false
+    },
+    "weasel_machine_tip": {
+      "exists": false
+    },
+    "weasel_user": {
+      "exists": false
+    }
+  },
+  "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+  "target_exists": true
+}

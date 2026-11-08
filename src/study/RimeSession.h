@@ -20,6 +20,7 @@ class RimeSession {
   bool SetLearning(bool enabled);
   EnglishTarget Inspect(std::size_t index);
   bool Commit(const EnglishTarget& target);
+  bool Forget(const EnglishTarget& target);
 
  private:
   struct Impl;

@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-08T08:44:37+00:00",
+  "passed": true,
+  "checks_run": 6,
+  "check_names": [
+    "test_http_failure_body_is_not_exposed",
+    "test_json_provider_error_retains_reason_and_redacts_credentials",
+    "test_non_json_provider_error_content_is_withheld",
+    "test_completed_run_resumes_without_duplicate_call_or_key_access",
+    "test_invalid_response_is_atomic_and_requires_explicit_retry",
+    "test_partial_run_retries_only_the_failed_request"
+  ],
+  "scope": "Targeted mocked checks for redacted HTTP errors, incomplete status and resume; no real API calls made by these tests",
+  "inputs": {
+    "tools/lexicon_expand/provider.py": "1a7c15625ffe618803d1041085697f0adad72a7b0d1f8136239d28626a053274",
+    "tools/lexicon_expand/generation.py": "e0ebee7fc820e811dfa65a5cdfde6c68c57c7503eb732dd448b4e1ae7391a182",
+    "tools/lexicon_expand/test_expansion.py": "4121de9948aaf268c7a72e32fbe11d10aef5fec162fd69fa4ac7fb9d7dba5dfa"
+  }
+}

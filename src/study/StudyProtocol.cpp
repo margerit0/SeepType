@@ -63,7 +63,7 @@ bool Reason(std::wstring_view value, std::string& result) {
     L"ready", L"disabled", L"no-candidate", L"no-definition",
     L"partial-composition", L"unavailable", L"stale-candidate",
     L"inactive-session", L"invalid-request", L"english-committed",
-    L"learning-changed", L"snapshot"
+    L"learning-changed", L"word-forgotten", L"snapshot"
   };
   for (const auto reason : allowed) {
     if (value == reason) { result.assign(value.begin(), value.end()); return true; }
@@ -82,7 +82,8 @@ bool Stamp(const std::vector<std::wstring_view>& fields, std::size_t start,
 
 std::wstring EncodeRequest(const ActionRequest& request) {
   const auto action = request.action == Action::Inspect ? L"inspect" :
-      request.action == Action::CommitEnglish ? L"commit" : L"learning";
+      request.action == Action::CommitEnglish ? L"commit" :
+      request.action == Action::ForgetWord ? L"forget" : L"learning";
   return std::wstring(L"study.v1=") + action + L"," +
       std::to_wstring(request.stamp.service) + L"," +
       std::to_wstring(request.stamp.version.session) + L"," +
@@ -102,6 +103,7 @@ bool DecodeRequest(std::wstring_view text, ActionRequest& request) {
   if (fields[0] == L"inspect") parsed.action = Action::Inspect;
   else if (fields[0] == L"commit") parsed.action = Action::CommitEnglish;
   else if (fields[0] == L"learning") parsed.action = Action::SetLearning;
+  else if (fields[0] == L"forget") parsed.action = Action::ForgetWord;
   else return false;
   std::uint64_t index, enabled;
   if (!Stamp(fields, 1, parsed.stamp) || !Number(fields[4], index) ||

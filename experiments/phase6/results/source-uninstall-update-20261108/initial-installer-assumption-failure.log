@@ -1,0 +1,151 @@
+{
+  "product": {
+    "schema_version": 1,
+    "name": "ÊãæËØçËæìÂÖ•Ê≥ï",
+    "name_en": "StudyIME",
+    "id": "StudyIME.InputMethod",
+    "version": "0.5.0-dev.2",
+    "file_version": [
+      0,
+      5,
+      0,
+      2
+    ],
+    "channel": "developer-preview",
+    "architecture": "x64",
+    "minimum_windows_build": 22000,
+    "install_folder": "StudyIME",
+    "user_data_folder": "StudyIME",
+    "registry_key": "Software\\StudyIME",
+    "pipe_prefix": "StudyIME-v1",
+    "language_id": 2052,
+    "guids": {
+      "product": "D89859C5-5A51-53E6-8199-DF3407D2908B",
+      "text_service": "FEB10355-3C08-5342-B75C-5873F1CA04DF",
+      "language_profile": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+      "language_bar": "1EEDB1BD-094F-5D7E-A16C-AC24EE0D3D10",
+      "display_attribute": "333E6CF1-261B-53A3-8DB1-7555E0C90E8A",
+      "input_mode": "137E3B66-EB3A-5493-83D7-B3155CEDB738",
+      "preserved_key": "673B0BA5-79C9-5480-8516-4BB76510BB0F"
+    }
+  },
+  "archives": {
+    "StudyIME-0.5.0-dev.2-windows-x64-preview.zip": {
+      "sha256": "c7a5a8e099b2b11e32c5ca2a67e6be8a4bd26b9d86519b0cd241df416918f669",
+      "bytes": 23804145
+    }
+  },
+  "payload_files": 95,
+  "release_ready": false,
+  "lexicon_review": {
+    "approved-for-distribution": 0,
+    "pending": 200,
+    "rejected": 0
+  }
+}
+{
+    "recorded_at":  "2026-11-08T10:37:19.1314634Z",
+    "powershell":  "5.1.26100.9711",
+    "common_sha256":  "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+    "registry_fixture":  "HKCU\\Software\\StudyIME.UninstallTests\\5569ea38dbd54502ba3b06f121280fed",
+    "system_install_executed":  false,
+    "tsf_registration_executed":  false,
+    "checks":  [
+                   {
+                       "name":  "remove the observed empty TSF containers",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve a neighboring product branch",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "repeating cleanup is harmless",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve registry values",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "active profile prevents all cleanup, including earlier empty siblings",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve unfamiliar empty branches",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "a write failure preserves the branch for retry",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "retry after a write failure completes cleanup",
+                       "passed":  true
+                   }
+               ],
+    "passed":  8,
+    "total":  8
+}
+{
+    "recorded_at":  "2026-11-08T10:37:19.7352453Z",
+    "powershell":  "5.1.26100.9711",
+    "common_sha256":  "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+    "test_directory":  "D:\\inputting\\.cache\\packaging\\source-check\\fresh ÷–Œƒ a54add1526b2\\materials\\project\\.cache\\packaging\\verification\\receipt-1b604e3dc8ff4a49a1b620a9c9266bb2\\ ’æ› path",
+    "checks":  [
+                   {
+                       "name":  "create first receipt in a Unicode path with spaces",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "atomically replace an existing receipt without a backup path",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "failed replacement preserves the last durable receipt",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "retry after a sharing violation persists failure state and consumes the pending file",
+                       "passed":  true
+                   }
+               ],
+    "system_install_executed":  false,
+    "tsf_registration_executed":  false,
+    "passed":  4,
+    "total":  4
+}
+PASS package archive is byte-identical with reversed input order and another output directory
+PASS archive paths timestamps permissions and compression are canonical
+PASS all archive entries match their declared payload bytes
+PASS Windows path traversal aliases devices and alternate streams are rejected
+PASS case-insensitive archive collisions are rejected
+PASS release packaging refuses pending human review and unresolved licenses
+PASS review preview is explicit and retains zero human approvals
+PASS runtime payload excludes historical fixtures and unrelated installer tools
+PASS Chinese input uses the traced CC-CEDICT wordfreq base without mixed preset dictionaries
+PASS product compiler trace contains no WTL headers
+PASS Rime runtime is built from the recorded sources with only Lua
+PASS all four product binaries are recorded x64 images
+PASS product PE images contain no checkout-specific absolute path
+PASS changed generated headers are rejected even when mtime is preserved
+PASS all static and delayed DLL imports are Windows system libraries
+Targeted packaging verification complete; no system installation or TSF registration.
+PASS install defaults to a reviewable plan with no apply
+PASS uninstall defaults to a reviewable plan with no apply
+PASS plan records the independent CLSID and keeps default input selection
+FAIL dry-run leaves the installation target absent
+Traceback (most recent call last):
+  File "D:\inputting\.cache\packaging\source-check\fresh ÷–Œƒ a54add1526b2\materials\project\tools\packaging\verify.py", line 277, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "D:\inputting\.cache\packaging\source-check\fresh ÷–Œƒ a54add1526b2\materials\project\tools\packaging\verify.py", line 272, in main
+    if args.section in ["installer", "all"]: verify_installer(files, root, work, archive)
+                                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\inputting\.cache\packaging\source-check\fresh ÷–Œƒ a54add1526b2\materials\project\tools\packaging\verify.py", line 178, in verify_installer
+    report.check("dry-run leaves the installation target absent", not target.exists())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\inputting\.cache\packaging\source-check\fresh ÷–Œƒ a54add1526b2\materials\project\tools\packaging\verify.py", line 76, in check
+    if not condition: raise AssertionError(name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: dry-run leaves the installation target absent

@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-08",
+  "status": "blocked-by-provider-capacity",
+  "summary": {
+    "status": "generation-incomplete",
+    "planned_items": 300,
+    "planned_requests": 40,
+    "completed_requests": 3,
+    "returned_items": 30,
+    "resolved_draft_items": 30,
+    "unresolved_items": 0,
+    "attempts_including_legacy": 14,
+    "reserved_output_tokens": 57344,
+    "failed_attempts_including_legacy": 11,
+    "uncertain_attempts": 0,
+    "provider_reported_usage": {
+      "prompt_tokens": 22808,
+      "completion_tokens": 6258,
+      "total_tokens": 29707
+    },
+    "attempts_with_reported_usage": 3,
+    "items_by_model": {
+      "gemini-3.8-flash-high": 30
+    },
+    "human_approved_items": 0,
+    "release_ready": false,
+    "currency_cost": null
+  },
+  "audit": {
+    "draft_items": 30,
+    "senses": 59,
+    "base_reading_present_senses": 48,
+    "flagged_senses": 14,
+    "flags": {
+      "missing-chinese-trigger": 11,
+      "source-capitalization-differs": 4
+    },
+    "items_with_any_base_reading": 27,
+    "dictionary_sha256": "ff107587bc1d593dd5d7a49c179d4aa749cb89b3a1423876e0cd2dca197b672b",
+    "drafts_sha256": "2dc9249e31c6e65426d7951f062df267d3eef568b0c2bcefae9b1bb92cf6a275",
+    "human_approved_items": 0,
+    "release_ready": false,
+    "limitations": [
+      "Static dictionary comparison only; no native candidate/commit acceptance",
+      "Flags identify review priorities, not translation correctness",
+      "Shared triggers and repeated English may be valid across senses or packs"
+    ]
+  },
+  "this_continuation": {
+    "generation_attempts": 5,
+    "successful_requests": 1,
+    "new_items": 10,
+    "gemini_errors": [
+      "HTTP 504",
+      "HTTP 429 upstream saturated"
+    ],
+    "grok_errors": [
+      "HTTP 504",
+      "HTTP 504"
+    ]
+  },
+  "next_step": "Resume the same pilot after provider capacity recovers; retain both original models and Grok high reasoning effort.",
+  "output_directory": ".cache/lexicon-expansion/pilot-results-combined",
+  "notes": [
+    "Both temporary configuration pause fields were removed; original provider identities are preserved.",
+    "Local configuration guards prevented subsequent network requests while in-flight requests drained.",
+    "Reported total_tokens is retained independently from prompt_tokens and completion_tokens; no price or full accounting is inferred."
+  ]
+}

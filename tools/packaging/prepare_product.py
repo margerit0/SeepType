@@ -113,9 +113,30 @@ extern "C" const char* WINAPI StudyProductIdentity() { return study::kProductIde
 '''
     replace(server, '\n  if (g_classFactory == NULL) {', '\n  if (!ppvObject) return E_INVALIDARG;\n  *ppvObject = nullptr;\n  if (!IsEqualCLSID(rclsid, study::kTextServiceGuid)) return CLASS_E_CLASSNOTAVAILABLE;\n  if (g_classFactory == NULL) {')
     rime = "RimeWithWeasel/RimeWithWeasel.cpp"
+    replace(rime, '#include <RimeWithWeasel.h>', '''#include <RimeWithWeasel.h>
+#include <study/windows/UiPreferences.h>
+
+// Read the saved setting at the native commit boundary, including mouse
+// selection and composition commits initiated by a different application.
+// A context property does not refresh the menu or disturb a partial selection.
+static void RefreshStudyUserLearning(RimeApi* api, RimeSessionId session) {
+  const bool enabled = study::LoadPreferences(study::PreferencesPath()).userLearning;
+  api->set_property(session, "study_user_learning", enabled ? "1" : "0");
+}''')
+    replace(rime, '  m_study.Attach(ipc_id, rime_api, session_id);',
+            '  RefreshStudyUserLearning(rime_api, session_id);\n  m_study.Attach(ipc_id, rime_api, session_id);')
+    replace(rime, '  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,',
+            '  RefreshStudyUserLearning(rime_api, session_id);\n  Bool handled = rime_api->process_key(session_id, keyEvent.keycode,')
+    replace(rime, '  rime_api->commit_composition(to_session_id(ipc_id));',
+            '  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));\n  rime_api->commit_composition(to_session_id(ipc_id));')
+    replace(rime, '  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);',
+            '  RefreshStudyUserLearning(rime_api, to_session_id(ipc_id));\n  const bool selected = rime_api->select_candidate_on_current_page(to_session_id(ipc_id), index);')
     replace(rime, '"rime.weasel"', '"rime.studyime"', count=2)
     replace(rime, '"rime.study-service-test"', '"rime.studyime"')
-    replace(rime, '  rime_api->initialize(NULL);', '  rime_api->initialize(NULL);\n  if (rime_api->start_maintenance(False)) rime_api->join_maintenance_thread();')
+    # ZIP timestamps are fixed for reproducibility. Checking only file mtimes
+    # can miss an upgraded shared schema when the user already has a build.
+    # Always check the workspace on startup; Rime reuses unchanged dictionaries.
+    replace(rime, '  rime_api->initialize(NULL);', '  rime_api->initialize(NULL);\n  if (rime_api->start_maintenance(True)) rime_api->join_maintenance_thread();')
     security = "WeaselIPCServer/SecurityAttribute.cpp"
     source(security)
     files[security] = '''#include "stdafx.h"

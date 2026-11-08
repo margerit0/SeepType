@@ -1,10 +1,22 @@
 # 拾词输入法产品打包与安装产物
 
-## 2026-11-08 安装脚本修订与当前包边界
+## 2026-11-08 词频工作区状态：暂不生成 dev.3
 
-实际安装已获用户授权。Windows PowerShell 5.1 把 `File.Replace` 的 `$null` 备份路径转换为空字符串，原包在更新安装记录时失败。现使用 `[NullString]::Value`；4 项真实文件操作检查及 12 项安装预演通过，修订包已经成功安装。记事本部分验收通过；浏览器工具保护中断后的注册产品卸载仍未完成，见 [实际安装记录](installed-desktop-acceptance.md)。
+中文词频、独立开关、逐词遗忘与升级检查已实现并通过定向验证，见 [词频记录](word-frequency.md)。当前 `packaging/product.json` 的 dev.3 编号只用于内部测试构建；用户要求后续加入小鹤双拼，再统一生成 dev.3。本轮没有导出新版运行或源码 ZIP，也没有安装新版本。`dist` 内既有 dev.2 归档保持原状，下面的 dev.2 打包和卸载记录继续有效。
 
-当前运行 ZIP 的 SHA256 是 `c1c429adee39465f0740bf7ac6111dad799d097a83e39019a5975d02acf3648e`，只修改 `scripts/Common.ps1` 及包清单；原生程序、Rime、词库数据均与原包逐字节相同。修复前运行与源码归档保存在 `dist/before-receipt-fix-20261108/`。当前源码 ZIP **尚未加入这次安装脚本修复**；原源码复建及旧证据绑定只能用于原归档。下面 2026-11-07 的构建/源码结果是历史基线，不表示已经重做修订包的完整复建。
+下一项与更高级排序见 [优化待办](optimization-todo.md)。新版构建会包含 Rime 本地学习的暂停判定，以及服务启动时完整的方案内容检查，避免固定归档时间戳导致旧方案未更新。
+
+## 2026-11-08 卸载修订与当前包边界
+
+实际安装、记事本与 VS Code 输入、跨应用焦点、断线恢复、125%/150% 缩放及单屏右下角检查已完成。用户明确要求跳过浏览器测试；多显示器尚无设备验证。详见 [实际安装记录](installed-desktop-acceptance.md)。
+
+已完成本机 profile/CLSID 注销，默认输入法、用户输入法列表及 32/64 位 TIP 注册树恢复至安装前。卸载的占用分支和再次执行均已观察：当前 Codex、资源管理器等仍映射 `StudyIME.TSF.x64.dll`，因此保留该 DLL、卸载支持文件、收据及应用列表项，收据为 `cleanup-pending / registered=false`。**重启 Windows 后还需执行最后清理，不能称全部卸载完成。** 正常用户数据逐文件未变。
+
+本次发现 TSF 的注销 API 会遗留本产品的空目录。卸载脚本现只清理已注销、收据归属匹配、结构已知且完全无值的自有 TIP 目录；含值、仍存在 profile、未知子项或其他 COM 注册时均保留。8 项 Windows PowerShell 5.1 注册表夹具检查通过，同一修复函数已用于本机实际残留清理；没有修改其他输入法的键。
+
+运行 ZIP 与源码 ZIP 通过 [本次增量源码核对](../experiments/phase6/results/source-uninstall-update-20261108/summary.json) 关联。相对于收据修订包，仅改变 `Uninstall.ps1`、`scripts/Common.ps1` 和包清单；产品原生文件、Rime、词库及已验证输入不变。源码归档包含修复与定向验证脚本，原生复建证据沿用已成功的独立目录结果；本次在该目录验证脚本并重新导出运行包，没有重新编译或声称跨机器/全新空缓存构建。以 `dist/SHA256SUMS.txt` 和本次报告为当前摘要。
+
+Windows PowerShell 5.1 的收据修复 `[NullString]::Value` 仍保留。其先前同步结果见 [收据源码核对](../experiments/phase6/results/source-receipt-update-20261108/summary.json)，当时运行 ZIP 为 `c1c429adee39465f0740bf7ac6111dad799d097a83e39019a5975d02acf3648e`。收据修复前与本次卸载修复前的归档分别保存在 `dist/before-receipt-fix-20261108/`、`dist/before-uninstall-fix-20261108/`。以下 2026-11-07 记录保留为原生构建基线。
 
 ## 2026-11-07 构建基线
 
@@ -15,7 +27,7 @@
 输出目录为 `.\.cache\packaging\dist`，包含：
 
 - `StudyIME-0.5.0-dev.2-windows-x64-preview.zip`：完整运行目录，含四个产品二进制、从源码构建的 Rime/Lua、121,505 条中文词形/读音记录、原有 200 条审核预览、许可与逐文件摘要，以及安装/卸载脚本。
-- `StudyIME-0.5.0-dev.2-source-materials.zip`：2026-11-07 项目源码、10 份选择后的固定上游材料、Weasel Git bundle、Boost、固定 CMake、词库原始数据及离线恢复脚本；尚未包含 2026-11-08 的安装脚本修复。
+- `StudyIME-0.5.0-dev.2-source-materials.zip`：已验证的项目源码、10 份选择后的固定上游材料、Weasel Git bundle、Boost、固定 CMake、词库原始数据及离线恢复脚本，增量包含 2026-11-08 的收据与卸载脚本修复。并行词库扩充草稿不在此归档中。
 - `SHA256SUMS.txt`、`package-report.json`：实际产物摘要与大小。SHA256 用于完整性核对，不是代码签名；当前产物未签名。
 
 供审阅的展开目录：`.\.cache\packaging\stage\StudyIME-0.5.0-dev.2`。开发预览不代表正式发布条件已满足；人工审核仍为 **0/200**，原三项许可/来源阻止项已处理，剩余产品验收边界见 [许可与来源说明](software-licenses.md)。
@@ -96,7 +108,7 @@ python tools/packaging/package.py --mode preview
 
 卸载要求产品、路径、版本、manifest 摘要匹配的安装记录，停止当前用户/会话的拾词服务，注销自身 profile/CLSID，逐文件删除未修改的已登记内容。用户数据、新增或修改过的文件均保留；被应用锁定的文件会报告并保留可重试的清理记录。不强制结束其他应用，不递归删除用户目录或共享 Rime 目录。当前预览不实现原地升级；只包含 x64 前端，32 位应用支持未提供。
 
-**2026-11-07 构建阶段没有执行 `-Apply`。** 2026-11-08 已获授权并执行实际安装、复制阶段失败清理和独立注册；已注册产品的最终卸载、占用恢复和完整应用兼容性仍未验收，见页首最新记录。
+**2026-11-07 构建阶段没有执行 `-Apply`。** 2026-11-08 已执行实际安装、注册、注销、空 TIP 残留清理与占用重试。最后 DLL 删除需要重启 Windows 后继续；浏览器按用户要求跳过，见页首最新记录。
 
 ## 本轮针对性验证
 

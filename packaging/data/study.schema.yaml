@@ -2,7 +2,7 @@ __include: luna_pinyin_simp.schema:/
 schema:
   schema_id: study
   name: 拾词全拼
-  version: '0.5'
+  version: '0.5.1'
   dependencies: []
 switches:
   - {name: ascii_mode, reset: 0}
@@ -30,7 +30,7 @@ engine:
 translator:
   dictionary: cedict_study
   prism: study
-  enable_user_dict: false
+  enable_user_dict: true
 recognizer:
   patterns:
     reverse_lookup: ''

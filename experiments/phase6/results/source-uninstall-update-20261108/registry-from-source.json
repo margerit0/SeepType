@@ -1,0 +1,44 @@
+{
+    "recorded_at":  "2026-11-08T10:37:19.1314634Z",
+    "powershell":  "5.1.26100.9711",
+    "common_sha256":  "a4899b682ac879af2035e4b806ed22e8348010a738f14bb0b43db517477b00a8",
+    "registry_fixture":  "HKCU\\Software\\StudyIME.UninstallTests\\5569ea38dbd54502ba3b06f121280fed",
+    "system_install_executed":  false,
+    "tsf_registration_executed":  false,
+    "checks":  [
+                   {
+                       "name":  "remove the observed empty TSF containers",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve a neighboring product branch",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "repeating cleanup is harmless",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve registry values",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "active profile prevents all cleanup, including earlier empty siblings",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "preserve unfamiliar empty branches",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "a write failure preserves the branch for retry",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "retry after a write failure completes cleanup",
+                       "passed":  true
+                   }
+               ],
+    "passed":  8,
+    "total":  8
+}

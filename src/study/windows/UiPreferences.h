@@ -9,6 +9,7 @@ enum class EnglishShortcut { ControlShiftEnter, AltEnter };
 
 struct UiPreferences {
   bool learning = true;
+  bool userLearning = true;
   bool largeText = false;
   bool reduceMotion = false;
   Theme theme = Theme::System;

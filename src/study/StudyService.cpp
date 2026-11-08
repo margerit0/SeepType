@@ -101,6 +101,17 @@ bool StudyService::Apply(std::uint32_t ipc, const ActionRequest& request) {
       session.reason = changed ? "learning-changed" : "unavailable";
       return changed;
     }
+    case Action::ForgetWord: {
+      if (!session.target || session.target->index != request.index) {
+        session.reason = "stale-candidate";
+        return false;
+      }
+      const auto target = *session.target;
+      session.target.reset();
+      const bool forgotten = session.rime->Forget(target);
+      session.reason = forgotten ? "word-forgotten" : "stale-candidate";
+      return forgotten;
+    }
   }
   return false;
 }

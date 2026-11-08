@@ -1,5 +1,7 @@
 # 数据来源与许可记录
 
+**2026-11-08 词汇扩充：** 新增独立的 [目标词表来源锁](../data/lexicon-expansion/sources.lock.json) 与 [字段/许可说明](../data/lexicon-expansion/README.md)。ECDICT 仅提取 5,040 个 `ielts` 标签项的词形、标签和词频，不导入其释义；CEFR-J 与 Octanove 保留原始分级 CSV 和各自条款。中英参考继续来自固定 CC-CEDICT。新释义待外部 API 生成，本轮未把新来源或草稿并入旧有 200 条及运行包。
+
 **dev.2 更新（2026-11-07）：** 中文基础改为固定 CC-CEDICT 简体词形/读音与明确允许再分发的 wordfreq 中文词频；121,505 条词形/读音记录保留原文行摘要及完整署名。英文审核批次仍为原有 200 条、人工通过 0 条。产品 Rime 已改为源码构建、仅含 Lua，旧 Luna/essay 混合词典与官方预编译 DLL 不再进入运行包或产品源码材料。现状以 [软件许可说明](software-licenses.md) 和 [中文基础词库](../data/chinese/README.md) 为准，以下早期调查记录保留历史语境。
 
 更新：2026-11-07。已固定 CC-CEDICT 源快照及 200 条英文词库审核稿；人工通过 0 条。阶段 3/4 保留 21 条测试词对；200 条除阶段 5 验证外，现以明确的审核预览进入 [StudyIME 开发包](packaging.md)。新代码 GPL-3.0-or-later 已获用户确认；[软件许可汇总](software-licenses.md)已保存固定来源和完整许可，并列明仍未解决的再分发问题。

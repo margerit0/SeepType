@@ -1,6 +1,48 @@
 # StudyIME 接续说明
 
-项目：`.`，分支 `codex/technical-spike`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。**当前已经实际安装，尚未完成卸载恢复；以下最新断点优先于历史快照。**
+项目：`.`，分支 `codex/technical-spike`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+
+## 2026-11-08 最新功能断点：词频完成，先不生成 dev.3
+
+用户先确认完成原生词频与产品控制，随后明确：“先别生成 dev.3，我后续还要加入双拼功能，小鹤双拼，然后再 dev.3。”已完成并验证词频，后续先加入小鹤双拼，再统一生成 dev.3。不要因 `packaging/product.json` 已用于内部测试而直接导出新版归档；本轮没有运行新版打包、安装或源码归档导出。
+
+实现入口：[word-frequency.md](word-frequency.md)，下一项与高级排序：[optimization-todo.md](optimization-todo.md)。默认开启用户词典，独立 `user_learning` 偏好在中文提交前同步；原生 `Memory::OnCommit` 只加暂停判定，排序和保存仍由 Rime 负责。右键“忘记此词”经过版本绑定的服务 IPC，保留组合与待取提交。固定 ZIP 时间戳会误导旧的部署检查，现已在服务启动时完整检查方案，保留旧词频与设置。
+
+60 项词频/迁移检查和 200 条英文回归通过；17 项组件与 9 组像素比对通过；7 项设置窗口观察通过。结构化结果为 `experiments/phase6/results/word-frequency.json`、`word-frequency-settings.json`、`source-built-engine.json`、`product-renderer.json`。内部构建为临时 `0.5.0-dev.3`，新功能未做安装后的 TSF 外部应用验收。所有新测试服务和设置窗口均已关闭，正常用户数据与旧版安装目录未改。
+
+## 2026-11-08 最新桌面断点：浏览器跳过，等待重启后最后清理
+
+用户最新要求：**“那就先跳过浏览器测试，进行别的任务”**。不再尝试 Chrome 原生接口，不把 DOM/页面读取写成输入法验收。记事本与 VS Code 中文/英文提交、悬停/F2、重复保护、跨应用焦点、服务断线恢复、125%/150% 实际缩放、单屏右下角布局和点击已观察；翻页后连续输入有时序记录，但没有逐帧动画证明。只有一台显示器，多显示器仍未验证。
+
+本机卸载实际执行后 profile/CLSID 已注销。发现 TSF 留下本产品空目录，修复 `packaging/windows/Common.ps1` 与 `Uninstall.ps1`：仅清理已注销、收据匹配、结构已知且完全无值的自有 TIP 空键。8 项隔离注册表检查通过，同一函数已清理本机残留。32/64 位完整 TIP 树、默认覆盖、语言列表、键盘和小狼毫配置均与安装前一致；正常用户数据文件逐字节未变。
+
+收据现为 `cleanup-pending / registered=false`。当前 Codex、资源管理器、Chrome、记事本与 ApplicationFrameHost 仍映射 DLL，重试仍保留一个 DLL、六个支持/记录文件和应用列表项。已关闭项目 VS Code 窗口及记事本测试标签，其他记事本文档保留；所有拾词服务和本地 HTTP 测试服务均已停止。**不要声称完整卸载通过，也不要强制结束当前 Codex 或用户文档。**
+
+下一步由用户保存工作并重启 Windows，之后沿用已有卸载授权，通过管理员 PowerShell 再执行安装目录的 `Uninstall.ps1 -Apply -AllowDevelopment`，或使用 `experiments/phase6/run-approved-install-step.ps1 -Action uninstall` 保存结果到 `installed-desktop-followup-20261108/uninstall-after-restart`。重新捕获注册/文件快照，确认安装目录与应用列表项消失且输入设置仍一致，再更新汇总。现有支持脚本与收据保持原始安装包摘要，未私自替换。
+
+后续证据：[完整桌面/卸载记录](installed-desktop-acceptance.md)、[结构化汇总](../experiments/phase6/results/installed-desktop-followup-20261108/summary.json)。收据修复源码已同步；本次卸载修复的源码/运行包由 [增量验证报告](../experiments/phase6/results/source-uninstall-update-20261108/summary.json) 绑定，保留原生构建与历史归档，不包含并行词库草稿。旧有 200 条仍全部待人工审核，保持开发预览。
+
+## 2026-11-08 最新词库断点：30/300 项，等待服务恢复
+
+已接续原会话，按用户授权并行使用 Gemini 与 Grok（high）。本轮新增 10 项，累计 30 项、59 个义项，全部待审核。Gemini 随后返回 429 上游饱和，Grok 连续两次 504；当前没有在途请求。剩余 270 项尚未生成。累计尝试 14 次，输出预留 57,344 token，保留原有 60 次/245,760 token 总上限。
+
+双模型分工、原始响应、合并草稿及审核清单均已保存。42 项离线测试通过；静态检查发现 11 个义项缺少中文触发词，4 个义项与源词表大小写不同，尚未人工审核或导入运行时。详见 [最新扩充记录与续跑命令](lexicon-expansion.md) 和 `experiments/lexicon-expansion/results/pilot-progress-20261108.json`。
+
+用户已提供两个模型凭据，当前会话可按原授权继续；不要要求重复发送。凭据未写入项目配置。服务恢复后复用同一分工和收据，以 `tools.lexicon_expand.parallel_run --execute --retry-failed` 续跑，不能重新全量发送或更换模型。当前词库任务未操作已安装输入法；下方历史安装/卸载事项保持原状态。
+
+## 2026-11-08 当前词库任务：离线准备完成，等待后续 API 配置
+
+用户最新要求：**「那么先按照你的计划开始执行，需要调用模型的话我可以提供 api key 和 base url，你不要负责生成词库」**。对配置询问选择了 **「先完成离线准备，稍后配置 API（推荐）」**。按这个范围完成离线工具和源词表；不要由对话模型手写新英文释义或填充场景词条。
+
+入口为 [英语扩充流程](lexicon-expansion.md)、`tools/lexicon_expand/cli.py`、`data/lexicon-expansion/`。ECDICT 固定提交中的 `ielts` 标签为 5,040 个目标，CEFR-J / Octanove 合并为 8,845 个不同词形，两者并集 10,625 个。IELTS 精确英文义项参考命中 4,130 个、未命中 910 个；这是 CC-CEDICT 参考匹配，不是翻译完成率。所有来源与摘录都有固定摘要。
+
+`.cache/lexicon-expansion/prepared/` 中有目标目录与覆盖报告，`pilot/` 中有默认 300 项计划（200 个 IELTS 目标＋20 个场景的 100 个名额，共 40 个请求）。场景仅有主题配置；新译词 0 条、真实模型调用 0 次。外部传输测试使用隔离模拟响应，不能当作 API 连通性或生成质量证明。
+
+后续用户提供 base URL、模型名并配置 `STUDYIME_LEXICON_API_KEY` 后，把非敏感接口配置放到 `.cache/lexicon-expansion/api.local.json`。先 `config --check-key` 与不带 `--execute` 的 `generate` 预演；按届时用户的执行安排启动首批。工具支持单独 JSON 模式/输出 token 参数、逐请求留痕和断点续跑，不把 key 写进请求清单。默认 300 项、累计 60 次尝试、预留输出 245,760 token 上限；初始 40 次的输出预留上界为 163,840。未知实际价格，不声称金额。
+
+v2 API 草稿全部待审核，多个词义各自保存，主词义不自动选定。当前没有 v2 正式发布或自动运行时导入路径；收到实际生成结果后再推进审核、中文触发词和预览集成。旧有 200 条、现有运行包及已安装产品没有被此轮扩充修改。不要绕过原有人工审核要求。离线验证入口 `tools/lexicon_expand/verify.py`，报告 `experiments/lexicon-expansion/results/offline-checks.json`。
+
+此前已安装产品的卸载恢复和外部应用检查仍未完成，事实与授权保留在下节。当前英语词库任务不要求重跑桌面、打包、安装或既有原生套件。
 
 ## 2026-11-08 最新断点：已安装，记事本部分验收通过
 

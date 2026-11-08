@@ -153,4 +153,21 @@ bool RimeSession::Commit(const EnglishTarget& target) {
       s.Property("study_action") == "english-committed";
 }
 
+bool RimeSession::Forget(const EnglishTarget& target) {
+  auto& s = *impl_;
+  if (!s.Ready() || !s.version.Matches(target.version) || target.chinese.empty() ||
+      !RIME_API_AVAILABLE(s.api, delete_candidate_on_current_page)) return false;
+  const auto before = s.Read();
+  if (target.index >= before.candidates.size() || target.page != before.page ||
+      target.input != before.input || target.caret != before.caret ||
+      static_cast<int>(target.index) != before.highlighted ||
+      target.chinese != before.candidates[target.index]) return false;
+  // Delete the genuine Rime entry behind our annotation. No text is submitted;
+  // Rime removes its learned reading, keeping the built-in dictionary intact.
+  Invalidate();
+  const bool forgotten = s.api->delete_candidate_on_current_page(s.session, target.index) != 0;
+  const auto after = s.Read();
+  return forgotten && after.input == before.input && after.caret == before.caret;
+}
+
 }  // namespace study

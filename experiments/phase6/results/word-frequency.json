@@ -1,0 +1,288 @@
+{
+  "check_count": 60,
+  "checks": [
+    {
+      "name": "synthetic new phrase is not initially preferred",
+      "passed": true
+    },
+    {
+      "actual": "拟好",
+      "name": "segmented selection commits the complete new phrase",
+      "passed": true
+    },
+    {
+      "name": "native user dictionary learns a segmented phrase",
+      "passed": true
+    },
+    {
+      "name": "forgetting removes a learned phrase from first place",
+      "passed": true
+    },
+    {
+      "name": "paused segmented input still commits without relearning",
+      "passed": true
+    },
+    {
+      "name": "cancelled partial selection does not teach a phrase",
+      "passed": true
+    },
+    {
+      "name": "English shortcut does not train the supplying Chinese word",
+      "passed": true
+    },
+    {
+      "name": "selection beyond the first page also learns",
+      "passed": true,
+      "target": "时事"
+    },
+    {
+      "name": "legacy engine seeded the upgrade fixture",
+      "passed": true
+    },
+    {
+      "name": "legacy compiled schema really has learning disabled",
+      "passed": true
+    },
+    {
+      "name": "upgrade preserves the settings file byte for byte",
+      "passed": true
+    },
+    {
+      "name": "upgrade preserves unrelated files in the user directory",
+      "passed": true
+    },
+    {
+      "name": "upgrade redeploys the enabled schema",
+      "passed": true
+    }
+  ],
+  "engine_probe_sha256": "392cbf6b8bbc1c3d758a8e9fbcafb3b5df02bfa5ae50460341239020c224bf71",
+  "engine_startup": {
+    "lua_module": true,
+    "maintenance_ms": 749.808,
+    "octagram_module": false,
+    "pointer_bits": 64,
+    "predict_module": false,
+    "version": "1.13.1"
+  },
+  "error": null,
+  "frequency_probe_sha256": "faac45652451331cd8b59a2350e24e05afcdad37d3f3c8addd3ee5c80875a69d",
+  "ipc": [
+    {
+      "checks": [
+        {
+          "name": "frequency probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "default word learning is independent of English display",
+          "passed": true
+        },
+        {
+          "name": "word learning preference is saved",
+          "passed": true
+        },
+        {
+          "name": "fixture starts with a nonleading homophone",
+          "passed": true
+        },
+        {
+          "name": "mouse selection commits the intended Chinese word",
+          "passed": true
+        },
+        {
+          "name": "mouse selection learns through annotation shadows",
+          "passed": true
+        },
+        {
+          "name": "forgetting preserves composition and does not commit text",
+          "passed": true
+        },
+        {
+          "name": "a repeated forget ticket is rejected without a commit",
+          "passed": true
+        },
+        {
+          "name": "forgetting restores the built-in dictionary rank",
+          "passed": true
+        },
+        {
+          "name": "number key selects and learns the word",
+          "passed": true
+        },
+        {
+          "name": "forgetting preserves composition and does not commit text",
+          "passed": true
+        },
+        {
+          "name": "a repeated forget ticket is rejected without a commit",
+          "passed": true
+        },
+        {
+          "name": "forgetting restores the built-in dictionary rank",
+          "passed": true
+        },
+        {
+          "name": "space selects and learns the highlighted word",
+          "passed": true
+        },
+        {
+          "name": "pausing learning round-trips without changing English",
+          "passed": true
+        },
+        {
+          "name": "pause saved during composition applies to the next mouse click",
+          "passed": true
+        },
+        {
+          "name": "pausing keeps previously learned ranking",
+          "passed": true
+        },
+        {
+          "name": "forgetting preserves composition and does not commit text",
+          "passed": true
+        },
+        {
+          "name": "a repeated forget ticket is rejected without a commit",
+          "passed": true
+        },
+        {
+          "name": "forgetting restores the built-in dictionary rank",
+          "passed": true
+        },
+        {
+          "name": "paused mouse selection commits without relearning",
+          "passed": true
+        },
+        {
+          "name": "paused number selection does not relearn",
+          "passed": true
+        },
+        {
+          "name": "paused space selection does not relearn",
+          "passed": true
+        },
+        {
+          "name": "paused explicit composition commit does not relearn",
+          "passed": true
+        },
+        {
+          "name": "English-only fixture is not already first",
+          "passed": true
+        },
+        {
+          "name": "English inspection has a complete dictionary value",
+          "passed": true
+        },
+        {
+          "name": "English action submits a translation without learning Chinese",
+          "passed": true
+        },
+        {
+          "name": "Chinese learning works with English mode disabled",
+          "passed": true
+        },
+        {
+          "name": "English-off learned candidates have no annotation",
+          "passed": true
+        },
+        {
+          "name": "changed composition rejects a stale forget target",
+          "passed": true
+        },
+        {
+          "name": "stale forget leaves the learned word intact",
+          "passed": true
+        },
+        {
+          "name": "concurrent sessions share learned ranking",
+          "passed": true
+        },
+        {
+          "name": "forget without inspection is rejected without consuming a pending commit",
+          "passed": true
+        },
+        {
+          "name": "the application still receives its pending Chinese commit",
+          "passed": true
+        },
+        {
+          "name": "forget menu remains available without English",
+          "passed": true
+        },
+        {
+          "name": "forget menu is disabled without a candidate",
+          "passed": true
+        },
+        {
+          "name": "final pause is persisted for restart verification",
+          "passed": true
+        }
+      ],
+      "mode": "exercise",
+      "physical_input_executed": false,
+      "registration_executed": false
+    },
+    {
+      "checks": [
+        {
+          "name": "frequency probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "paused learning survives service restart",
+          "passed": true
+        },
+        {
+          "name": "learned candidate survives service restart",
+          "passed": true
+        },
+        {
+          "name": "forgotten candidate stays at its base rank after restart",
+          "passed": true
+        },
+        {
+          "name": "restarted service applies paused learning to new sessions",
+          "passed": true
+        }
+      ],
+      "mode": "restart",
+      "physical_input_executed": false,
+      "registration_executed": false
+    },
+    {
+      "checks": [
+        {
+          "name": "frequency probe requires isolated product data",
+          "passed": true
+        },
+        {
+          "name": "upgrade keeps an existing learned rank",
+          "passed": true
+        },
+        {
+          "name": "upgrade retains legacy display preferences",
+          "passed": true
+        },
+        {
+          "name": "legacy preferences default to enabled word learning",
+          "passed": true
+        },
+        {
+          "name": "upgraded schema enables learning without a custom override",
+          "passed": true
+        }
+      ],
+      "mode": "upgrade",
+      "physical_input_executed": false,
+      "registration_executed": false
+    }
+  ],
+  "native_build_sha256": "9434d15c91274fecc3e04441a659ecdb843648a798dcbbb8a9dcce4044b00644",
+  "passed": true,
+  "product_version": "0.5.0-dev.3",
+  "recorded_at": "2026-11-08T11:26:40.627013+00:00",
+  "rime_dll_sha256": "ef9e59d7e3bcbb89b33af5418ba99de9347f1b51ec00f37770801758e83ecc56",
+  "scope": "Isolated real product IPC and Rime C API; synthetic input; no installed TSF or physical input",
+  "work_directory": ".cache/packaging/verification/frequency-d7f038ac2836476fa4d6858938c652e5"
+}

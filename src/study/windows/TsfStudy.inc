@@ -162,6 +162,7 @@ void WeaselTSF::_StudyMenu(unsigned index, HWND, POINT position) {
   _studyMenuOpen = true;
   study::EnglishMenuOptions options;
   options.details = options.settings = true;
+  options.forget = true;
   options.learning = response->action.learning;
   options.shortcut = study::ShortcutLabel(_cand->StudyUi().Preferences());
   const UINT command = study::ShowEnglishMenu(_GetFocusedContextWindow(), position, target, options);
@@ -172,6 +173,8 @@ void WeaselTSF::_StudyMenu(unsigned index, HWND, POINT position) {
     _StudyAction(study::Action::CommitEnglish, index);
   else if (command == study::kViewDefinition)
     _StudyDetail(index, true);
+  else if (command == study::kForgetWord)
+    _StudyAction(study::Action::ForgetWord, index);
   else
     _QueueResponse(_pEditSessionContext, response);
 }

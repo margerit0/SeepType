@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-08",
+  "status": "offline-preparation-complete",
+  "model_requests": 0,
+  "new_english_translations": 0,
+  "coverage": {
+    "ielts": {
+      "targets": 5040,
+      "with_existing_draft": 86,
+      "with_approved_existing_entry": 0,
+      "with_dictionary_reference": 4130,
+      "without_dictionary_reference": 910,
+      "with_reachable_dictionary_reference": 4130,
+      "api_eligible": 5040
+    },
+    "cefr": {
+      "targets": 8845,
+      "with_existing_draft": 173,
+      "with_approved_existing_entry": 0,
+      "with_dictionary_reference": 6634,
+      "without_dictionary_reference": 2211,
+      "with_reachable_dictionary_reference": 6634,
+      "api_eligible": 8840
+    },
+    "all": {
+      "targets": 10625,
+      "with_existing_draft": 174,
+      "with_approved_existing_entry": 0,
+      "with_dictionary_reference": 7816,
+      "without_dictionary_reference": 2809,
+      "with_reachable_dictionary_reference": 7816,
+      "api_eligible": 10620
+    }
+  },
+  "scenario_topics": 20,
+  "pilot": {
+    "maximum_items": 300,
+    "word_targets": 200,
+    "scene_slots": 100,
+    "request_count": 40
+  },
+  "validation": {
+    "tests_passed": 36,
+    "report_sha256": "e4240966b65c0eb91971ed3015a23d343531444b434b08e38d3f315fdf1e8354",
+    "cli_dry_run": {
+      "execute": false,
+      "endpoint": "https://provider.invalid/v1/chat/completions",
+      "model": "offline-check-only",
+      "planned_items": 300,
+      "planned_requests": 40,
+      "initial_output_token_ceiling": 163840,
+      "request_cap": 60,
+      "output_token_cap": 245760,
+      "api_key_read": false,
+      "model_requests": 0
+    }
+  },
+  "existing_200_entry_batch_unchanged": true,
+  "existing_entries_sha256": "b65884e416b17d5a9ca8a7a77125d80cb19b12ac9a646ea95a68b2ed5c616f44",
+  "artifacts": {
+    ".cache/lexicon-expansion/prepared/coverage.json": "2284746e89b0046546ad26d670647921976936aee56e7cac6a0141e51774f8cf",
+    ".cache/lexicon-expansion/prepared/coverage.md": "fc6b57c6e7eba687aef9b3b92be76380fba1968b92c2f82080c11067a27208c5",
+    ".cache/lexicon-expansion/prepared/manifest.json": "42ed6faf87dabec56ae939a471804f27713f6701f1465fd1455866eace8c951b",
+    ".cache/lexicon-expansion/pilot/requests.jsonl": "db7d7306e11647bf8fa6b6f8cf9cc2232f0228ff2f38b34cb342d8a0ec4b6ef7",
+    ".cache/lexicon-expansion/pilot/plan.json": "fcf4106ef3ceaae2125b73084cd55bc7b8642f7849634e1e663339243f363741"
+  },
+  "next_step": "Configure the user-supplied external API, run the prepared pilot, then review actual generated senses before runtime integration."
+}

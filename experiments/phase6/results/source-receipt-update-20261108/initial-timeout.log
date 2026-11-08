@@ -1,0 +1,28 @@
+{
+    "recorded_at":  "2026-11-08T09:01:09.1443961Z",
+    "powershell":  "5.1.26100.9711",
+    "common_sha256":  "94c66d595523d476f71c0bc97533dd66aad658f4b045f2b76cde48163c3dd65e",
+    "test_directory":  "D:\\inputting\\.cache\\packaging\\source-check\\fresh 中文 a54add1526b2\\materials\\project\\.cache\\packaging\\verification\\receipt-3472a0c8c4604308b45f3afea4cf41be\\收据 path",
+    "checks":  [
+                   {
+                       "name":  "create first receipt in a Unicode path with spaces",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "atomically replace an existing receipt without a backup path",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "failed replacement preserves the last durable receipt",
+                       "passed":  true
+                   },
+                   {
+                       "name":  "retry after a sharing violation persists failure state and consumes the pending file",
+                       "passed":  true
+                   }
+               ],
+    "system_install_executed":  false,
+    "tsf_registration_executed":  false,
+    "passed":  4,
+    "total":  4
+}

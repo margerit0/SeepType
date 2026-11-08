@@ -147,6 +147,11 @@ int wmain(int argc, wchar_t** argv) {
     checks.Check("paging duration remains 180 milliseconds", motion.At(1179).active && !motion.At(1180).active);
     motion.SetLearning(false, 1200, false);
     checks.Check("learning duration remains 240 milliseconds", motion.At(1439).active && !motion.At(1440).active);
+    CandidateUi preferenceOwner;
+    preferences.userLearning = false;
+    checks.Check("external word learning preference saved", SavePreferences(PreferencesPath(), preferences));
+    checks.Check("English toolbar toggle preserves externally changed word learning", preferenceOwner.SaveLearning(false) &&
+        !LoadPreferences(PreferencesPath()).userLearning && !LoadPreferences(PreferencesPath()).learning);
   } catch (const std::exception& error) {
     std::cerr << error.what() << std::endl;
     result = 1;

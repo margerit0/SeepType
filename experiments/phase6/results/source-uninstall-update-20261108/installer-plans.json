@@ -1,0 +1,509 @@
+{
+  "checks": [
+    {
+      "name": "install defaults to a reviewable plan with no apply",
+      "passed": true
+    },
+    {
+      "name": "uninstall defaults to a reviewable plan with no apply",
+      "passed": true
+    },
+    {
+      "name": "plan records the independent CLSID and keeps default input selection",
+      "passed": true
+    },
+    {
+      "name": "dry-run preserves the installation target and its contents",
+      "passed": true
+    },
+    {
+      "name": "uninstall plan preserves user data modified files and applications",
+      "passed": true
+    },
+    {
+      "name": "installer independently rejects unsafe manifest paths",
+      "passed": true
+    },
+    {
+      "name": "installer refuses a modified payload before any apply step",
+      "passed": true
+    },
+    {
+      "name": "installer refuses unlisted payload files",
+      "passed": true
+    },
+    {
+      "name": "installer rejects manifest case collisions",
+      "passed": true
+    },
+    {
+      "name": "uninstaller cannot apply to an extracted package without its install receipt",
+      "passed": true
+    },
+    {
+      "name": "all four PE resources carry StudyIME product version and contributor identity",
+      "passed": true
+    },
+    {
+      "name": "product registration and keyboard settings are unchanged",
+      "passed": true
+    }
+  ],
+  "computer_use_executed": false,
+  "installation_target_after": {
+    "entries": {
+      "Install.ps1": {
+        "bytes": 3852,
+        "sha256": "c4dd2840a72c854b4db44e0542fd35c93f4715b91f34d92c5238e66c38410ab7",
+        "type": "file"
+      },
+      "Uninstall.ps1": {
+        "bytes": 3661,
+        "sha256": "94122ad6fd74b20434f7d506a0a03c03b08469681ce2aaffa4914fb4176c4b78",
+        "type": "file"
+      },
+      "assets": {
+        "type": "directory"
+      },
+      "bin": {
+        "type": "directory"
+      },
+      "bin/StudyIME.TSF.x64.dll": {
+        "bytes": 1025536,
+        "sha256": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+        "type": "file"
+      },
+      "data": {
+        "type": "directory"
+      },
+      "data/chinese": {
+        "type": "directory"
+      },
+      "data/lexicon": {
+        "type": "directory"
+      },
+      "data/lexicon/licenses": {
+        "type": "directory"
+      },
+      "data/lexicon/sources": {
+        "type": "directory"
+      },
+      "data/shared": {
+        "type": "directory"
+      },
+      "data/user-template": {
+        "type": "directory"
+      },
+      "data/user-template/lua": {
+        "type": "directory"
+      },
+      "docs": {
+        "type": "directory"
+      },
+      "install-receipt.json": {
+        "bytes": 318,
+        "sha256": "f7b1d49d20f42e23ceadbbe4972ae01a898508695667cf6c33208eb22792071f",
+        "type": "file"
+      },
+      "licensing": {
+        "type": "directory"
+      },
+      "licensing/third-party": {
+        "type": "directory"
+      },
+      "licensing/third-party/boost": {
+        "type": "directory"
+      },
+      "licensing/third-party/glog": {
+        "type": "directory"
+      },
+      "licensing/third-party/googletest": {
+        "type": "directory"
+      },
+      "licensing/third-party/leveldb": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-lua": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-octagram": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-predict": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime/include": {
+        "type": "directory"
+      },
+      "licensing/third-party/lua": {
+        "type": "directory"
+      },
+      "licensing/third-party/marisa-trie": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/google-benchmark": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/gtest-1.12.1": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/marisa-0.2.6": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/pybind11-2.10.0": {
+        "type": "directory"
+      },
+      "licensing/third-party/rapidjson": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-essay": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-luna-pinyin": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-prelude": {
+        "type": "directory"
+      },
+      "licensing/third-party/unicode-data": {
+        "type": "directory"
+      },
+      "licensing/third-party/weasel": {
+        "type": "directory"
+      },
+      "licensing/third-party/wordfreq": {
+        "type": "directory"
+      },
+      "licensing/third-party/wtl": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock/scripts": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock/scripts/generator": {
+        "type": "directory"
+      },
+      "package-manifest.json": {
+        "bytes": 17497,
+        "sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+        "type": "file"
+      },
+      "product.json": {
+        "bytes": 886,
+        "sha256": "60a22233c07c5d4b39df9f4e576c553c35434608f6a93abb9516d1da4c007c56",
+        "type": "file"
+      },
+      "scripts": {
+        "type": "directory"
+      },
+      "scripts/Common.ps1": {
+        "bytes": 13155,
+        "sha256": "94c66d595523d476f71c0bc97533dd66aad658f4b045f2b76cde48163c3dd65e",
+        "type": "file"
+      },
+      "source-provenance": {
+        "type": "directory"
+      }
+    },
+    "exists": true
+  },
+  "installation_target_before": {
+    "entries": {
+      "Install.ps1": {
+        "bytes": 3852,
+        "sha256": "c4dd2840a72c854b4db44e0542fd35c93f4715b91f34d92c5238e66c38410ab7",
+        "type": "file"
+      },
+      "Uninstall.ps1": {
+        "bytes": 3661,
+        "sha256": "94122ad6fd74b20434f7d506a0a03c03b08469681ce2aaffa4914fb4176c4b78",
+        "type": "file"
+      },
+      "assets": {
+        "type": "directory"
+      },
+      "bin": {
+        "type": "directory"
+      },
+      "bin/StudyIME.TSF.x64.dll": {
+        "bytes": 1025536,
+        "sha256": "35b8ca6abfbfcac8bbd9164648a2cca8dc739d08fef24bad2a4093f5e45192f5",
+        "type": "file"
+      },
+      "data": {
+        "type": "directory"
+      },
+      "data/chinese": {
+        "type": "directory"
+      },
+      "data/lexicon": {
+        "type": "directory"
+      },
+      "data/lexicon/licenses": {
+        "type": "directory"
+      },
+      "data/lexicon/sources": {
+        "type": "directory"
+      },
+      "data/shared": {
+        "type": "directory"
+      },
+      "data/user-template": {
+        "type": "directory"
+      },
+      "data/user-template/lua": {
+        "type": "directory"
+      },
+      "docs": {
+        "type": "directory"
+      },
+      "install-receipt.json": {
+        "bytes": 318,
+        "sha256": "f7b1d49d20f42e23ceadbbe4972ae01a898508695667cf6c33208eb22792071f",
+        "type": "file"
+      },
+      "licensing": {
+        "type": "directory"
+      },
+      "licensing/third-party": {
+        "type": "directory"
+      },
+      "licensing/third-party/boost": {
+        "type": "directory"
+      },
+      "licensing/third-party/glog": {
+        "type": "directory"
+      },
+      "licensing/third-party/googletest": {
+        "type": "directory"
+      },
+      "licensing/third-party/leveldb": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-lua": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-octagram": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime-predict": {
+        "type": "directory"
+      },
+      "licensing/third-party/librime/include": {
+        "type": "directory"
+      },
+      "licensing/third-party/lua": {
+        "type": "directory"
+      },
+      "licensing/third-party/marisa-trie": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/google-benchmark": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/gtest-1.12.1": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/marisa-0.2.6": {
+        "type": "directory"
+      },
+      "licensing/third-party/opencc/deps/pybind11-2.10.0": {
+        "type": "directory"
+      },
+      "licensing/third-party/rapidjson": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-essay": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-luna-pinyin": {
+        "type": "directory"
+      },
+      "licensing/third-party/rime-prelude": {
+        "type": "directory"
+      },
+      "licensing/third-party/unicode-data": {
+        "type": "directory"
+      },
+      "licensing/third-party/weasel": {
+        "type": "directory"
+      },
+      "licensing/third-party/wordfreq": {
+        "type": "directory"
+      },
+      "licensing/third-party/wtl": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock/scripts": {
+        "type": "directory"
+      },
+      "licensing/third-party/yaml-cpp/test/gtest-1.11.0/googlemock/scripts/generator": {
+        "type": "directory"
+      },
+      "package-manifest.json": {
+        "bytes": 17497,
+        "sha256": "be847600406f9ad3ba53657a20ca33b60f4cb632e47da15e69fd34c405ab4605",
+        "type": "file"
+      },
+      "product.json": {
+        "bytes": 886,
+        "sha256": "60a22233c07c5d4b39df9f4e576c553c35434608f6a93abb9516d1da4c007c56",
+        "type": "file"
+      },
+      "scripts": {
+        "type": "directory"
+      },
+      "scripts/Common.ps1": {
+        "bytes": 13155,
+        "sha256": "94c66d595523d476f71c0bc97533dd66aad658f4b045f2b76cde48163c3dd65e",
+        "type": "file"
+      },
+      "source-provenance": {
+        "type": "directory"
+      }
+    },
+    "exists": true
+  },
+  "package_sha256": "c7a5a8e099b2b11e32c5ca2a67e6be8a4bd26b9d86519b0cd241df416918f669",
+  "passed": 12,
+  "plans": {
+    "install": {
+      "action": "install",
+      "app_list_key": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{D89859C5-5A51-53E6-8199-DF3407D2908B}",
+      "apply_command": ".\\Install.ps1 -Apply -AllowDevelopment",
+      "apply_requested": false,
+      "architecture": "x64",
+      "automatic_start": "On TSF activation, for this user and logon session",
+      "current_profile_activated": false,
+      "data_directory": "<local profile>\\AppData\\Local\\StudyIME",
+      "default_input_method_changed": false,
+      "files": 94,
+      "language_id": "0x0804",
+      "language_profile": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+      "package_sha256": "7addb6ebcf995d3bcabb08354c6cfd3b940fd8e3f6d4cb65319afef80d0da226",
+      "product": "拾词输入法",
+      "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+      "release_blockers": [
+        {
+          "detail": "200 entries await human review; 0 approved.",
+          "id": "human-lexicon-review"
+        },
+        {
+          "detail": "Real install/uninstall, TSF automatic routing and deferred Computer Use acceptance are not complete.",
+          "id": "installed-and-desktop-acceptance"
+        },
+        {
+          "detail": "Product identity and settings are marked developer preview.",
+          "id": "developer-channel"
+        }
+      ],
+      "release_ready": false,
+      "source": ".\\.cache\\packaging\\source-check\\fresh 中文 a54add1526b2\\materials\\project\\.cache\\packaging\\verification\\22e60452bd20\\relocated 中文 path",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+      "version": "0.5.0-dev.2"
+    },
+    "uninstall": {
+      "action": "uninstall",
+      "apply_command": ".\\Uninstall.ps1 -Apply -AllowDevelopment",
+      "apply_requested": false,
+      "default_input_method_changed": false,
+      "delete_policy": "Only recorded, unmodified package files inside the validated installation root",
+      "preserve_unlisted_or_modified_files": true,
+      "preserve_user_data": true,
+      "product": "拾词输入法",
+      "profile_guid": "C126F14A-E78D-57FF-910F-205A393AE9D9",
+      "receipt_present": false,
+      "registry_class": "HKLM\\Software\\Classes\\CLSID\\{FEB10355-3C08-5342-B75C-5873F1CA04DF}",
+      "target": "C:\\Program Files\\StudyIME\\0.5.0-dev.2",
+      "terminate_other_applications": false,
+      "version": "0.5.0-dev.2"
+    }
+  },
+  "recorded_at": "2026-11-08T10:42:20.437289+00:00",
+  "registry_after": {
+    "app_entry": {
+      "exists": true,
+      "last_write": 134385960554095957,
+      "subkeys": 0,
+      "values_sha256": "9aa277fcf0bc63783a8f9d7ee0e9a61f28ca4ebf118c208c3cd46e0a98d6910e"
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "registry_before": {
+    "app_entry": {
+      "exists": true,
+      "last_write": 134385960554095957,
+      "subkeys": 0,
+      "values_sha256": "9aa277fcf0bc63783a8f9d7ee0e9a61f28ca4ebf118c208c3cd46e0a98d6910e"
+    },
+    "keyboard_preload": {
+      "exists": true,
+      "last_write": 133936675591107448,
+      "subkeys": 0,
+      "values_sha256": "1796255da0a28db6e5fbdd611beed4f68d0587981f7f2476c7fe98ab529166e1"
+    },
+    "tip_class": {
+      "exists": false
+    },
+    "user_product": {
+      "exists": false
+    }
+  },
+  "scope_limit": "Real PowerShell default plans, validation and PE metadata. Apply/rollback/locked-file cleanup and TSF registration are not executed.",
+  "system_install_executed": false,
+  "total": 12,
+  "tsf_registration_executed": false
+}
