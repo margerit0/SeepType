@@ -1,12 +1,14 @@
 # StudyIME 接续说明
 
-Windows 原工作目录：`.`。本聊天安卓开发使用独立工作树 `.`、分支 `codex/android-dev`；规划分支为 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准，目录分工见 [并行开发说明](parallel-development.md)。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+Windows／词库工作目录：`.`，已恢复分支 `codex/technical-spike`。本聊天安卓开发使用独立工作树 `.`、分支 `codex/android-dev`；规划分支为 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准，目录分工见 [并行开发说明](parallel-development.md)。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
 
-## 2026-11-08 最新目录断点：安卓独立工作树
+## 2026-11-08 最新目录断点：双工作树分离完成
 
 用户确认原任务仍在运行，要求“先只隔离安卓”。本聊天已从计划提交 `a4d859b` 创建并绑定独立工作树，检出 `codex/android-dev`；后续安卓工作只在此目录进行。没有复制原目录的未提交词库改动。
 
-隔离时 `.` 实际仍在 `codex/android-rust-plan`，并非 `codex/technical-spike`。按用户要求保留原目录全部状态；等原任务停止写入后再区分、备份并整理分支。原任务提交前需核对实际分支。不要把此处“安卓已隔离”误读为“原目录已恢复”。
+隔离时 `.` 仍在 `codex/android-rust-plan`，当时按用户要求未改原目录。用户随后询问整理时，实测后台 PID `45044` 已结束、没有匹配的词库工作进程；状态为 `stopped-incomplete`、已返回 80/300 项、两路均因 `non-retryable-error` 停止、不确定请求为 0。已备份并把原目录恢复到 `codex/technical-spike`，13 项工作区改动与词库断点已核对保留，仍未提交。详细过程及本机备份位置见 [并行开发记录](parallel-development.md)。
+
+安卓可以从 P0 开始，不依赖词库扩充完成。当前只有计划和网页参考；Rust／JDK／Android SDK／NDK 的安装位置、配置和版本仍需核定。本次未重启词库 API 请求。下方词库数量和后台状态为历史快照，继续词库任务时读取原目录实时记录。
 
 ## 2026-11-08 最新规划断点：安卓与 Rust 共享核心
 

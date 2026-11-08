@@ -224,7 +224,7 @@ Windows 引擎会话是“借用现有会话”，Android 可以“拥有本平�
 - [x] 从 `7713de7` 建立 `codex/android-rust-plan`。
 - [x] 保存用户认可的网页交互示意与浅深色参考。
 - [x] 写明安卓技术边界、视觉验收、分阶段交付和 Windows 后续迁移方式。
-- [x] 从计划提交 `a4d859b` 创建独立安卓工作树及 `codex/android-dev`；按用户要求保留仍在运行的原目录，后续再整理其分支。
+- [x] 从计划提交 `a4d859b` 创建独立安卓工作树及 `codex/android-dev`；待词库后台停止后，备份并将原目录恢复到 `codex/technical-spike`，保留其未提交改动。见 [并行开发记录](parallel-development.md)。
 - [ ] P0：固定设备与工具链，建立 Kotlin→Rust→Rime 最小工程。
 - [ ] P1–P4：按本计划完成原生输入、界面还原、日常功能与真机验收。
 - [ ] W0–W3：在共享核心稳定后逐步接入 Windows。
