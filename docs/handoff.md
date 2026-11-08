@@ -1,6 +1,12 @@
 # StudyIME 接续说明
 
-项目：`.`，Windows 开发分支 `codex/technical-spike`，安卓规划分支 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+Windows 原工作目录：`.`。本聊天安卓开发使用独立工作树 `.`、分支 `codex/android-dev`；规划分支为 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准，目录分工见 [并行开发说明](parallel-development.md)。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+
+## 2026-11-08 最新目录断点：安卓独立工作树
+
+用户确认原任务仍在运行，要求“先只隔离安卓”。本聊天已从计划提交 `a4d859b` 创建并绑定独立工作树，检出 `codex/android-dev`；后续安卓工作只在此目录进行。没有复制原目录的未提交词库改动。
+
+隔离时 `.` 实际仍在 `codex/android-rust-plan`，并非 `codex/technical-spike`。按用户要求保留原目录全部状态；等原任务停止写入后再区分、备份并整理分支。原任务提交前需核对实际分支。不要把此处“安卓已隔离”误读为“原目录已恢复”。
 
 ## 2026-11-08 最新规划断点：安卓与 Rust 共享核心
 

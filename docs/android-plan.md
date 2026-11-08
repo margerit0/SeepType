@@ -1,6 +1,6 @@
 # 拾词输入法：安卓开发与 Rust 共享核心计划
 
-日期：2026-11-08。规划分支：`codex/android-rust-plan`。起点为 Windows 开发分支 `codex/technical-spike` 的 `7713de71778d08db06fceac9d79055bb1abc707f`。
+日期：2026-11-08。规划分支：`codex/android-rust-plan`；后续开发分支：`codex/android-dev`，使用本聊天绑定的独立工作树，见 [并行开发目录](parallel-development.md)。计划起点为 Windows 开发分支 `codex/technical-spike` 的 `7713de71778d08db06fceac9d79055bb1abc707f`。
 
 目标是在安卓上提供美观、流畅、可以日常使用的拾词键盘，延续“正常中文输入，顺便看到英文”的产品行为。采用 **Kotlin 原生界面＋Rust 业务核心＋librime／现有 Lua**；后续让 Windows 接入同一份 Rust 核心，保留已验证的桌面系统接口与界面。
 
@@ -224,6 +224,7 @@ Windows 引擎会话是“借用现有会话”，Android 可以“拥有本平�
 - [x] 从 `7713de7` 建立 `codex/android-rust-plan`。
 - [x] 保存用户认可的网页交互示意与浅深色参考。
 - [x] 写明安卓技术边界、视觉验收、分阶段交付和 Windows 后续迁移方式。
+- [x] 从计划提交 `a4d859b` 创建独立安卓工作树及 `codex/android-dev`；按用户要求保留仍在运行的原目录，后续再整理其分支。
 - [ ] P0：固定设备与工具链，建立 Kotlin→Rust→Rime 最小工程。
 - [ ] P1–P4：按本计划完成原生输入、界面还原、日常功能与真机验收。
 - [ ] W0–W3：在共享核心稳定后逐步接入 Windows。
