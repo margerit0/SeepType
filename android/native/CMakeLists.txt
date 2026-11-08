@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.20)
+project(study_android_engine LANGUAGES C CXX)
+
+if(NOT ANDROID)
+  message(FATAL_ERROR "Use the pinned Android NDK toolchain")
+endif()
+if(NOT DEFINED STUDY_SOURCES)
+  message(FATAL_ERROR "Run tools/android/prepare_sources.py first")
+endif()
+
+add_subdirectory("${STUDY_SOURCES}/librime" rime)
+target_sources(rime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/bridge.cpp")
+target_include_directories(rime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+set_target_properties(rime PROPERTIES OUTPUT_NAME study_rime VERSION "" SOVERSION "")
+target_link_libraries(rime log dl)
+target_link_options(rime PRIVATE "-Wl,-z,max-page-size=16384" "-Wl,-z,common-page-size=16384")

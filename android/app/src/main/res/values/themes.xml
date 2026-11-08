@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.StudyIME" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#2D6B53</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FBFCFA</item>
+        <item name="android:navigationBarColor">#E8EEEA</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#FBFCFA</item>
+    </style>
+</resources>

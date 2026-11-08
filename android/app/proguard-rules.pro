@@ -1,0 +1,2 @@
+-keep class org.studyime.android.engine.NativeCore { *; }
+-keepclasseswithmembernames,includedescriptorclasses class * { native <methods>; }

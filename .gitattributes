@@ -24,3 +24,15 @@ src/study/windows/Product* text eol=lf
 src/study/windows/UiPreferences.cpp text eol=lf
 experiments/phase4/build-service.py text eol=lf
 experiments/phase4/prepare-weasel.py text eol=lf
+
+# Android/Rust tooling has stable line endings across host checkouts.
+/Cargo.toml text eol=lf
+/Cargo.lock text eol=lf
+/rust-toolchain.toml text eol=lf
+/crates/** text eol=lf
+/tools/android/** text eol=lf
+/android/** text=auto eol=lf
+/android/gradlew.bat text eol=crlf
+/android/gradle/wrapper/*.jar binary
+# Unified diffs intentionally contain space-only context lines.
+/android/native/patches/*.patch whitespace=-blank-at-eol

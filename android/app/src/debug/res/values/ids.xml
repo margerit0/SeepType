@@ -1,0 +1,5 @@
+<resources>
+    <item name="probe_text" type="id" />
+    <item name="probe_other" type="id" />
+    <item name="probe_action" type="id" />
+</resources>

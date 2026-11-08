@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "jdk": "Temurin 21.0.7+6 (complete JDK; cached with Android tools)",
+  "gradle": "8.11.1",
+  "androidGradlePlugin": "8.9.2",
+  "kotlin": "2.1.20",
+  "composeBom": "2025.04.01",
+  "compileSdk": 35,
+  "targetSdk": 35,
+  "minSdk": 29,
+  "buildTools": "35.0.0",
+  "ndk": "27.2.12479018",
+  "rust": "1.88.0",
+  "rustDate": "2025-06-26",
+  "abis": ["arm64-v8a", "x86_64"],
+  "cmake": "3.20.21032501-MSVC_2 (existing Visual Studio installation)",
+  "nativeSources": "../licensing/product-sources.lock.json",
+  "englishData": "../data/lexicon/entries.json",
+  "dataStatus": "developer-preview; 200 entries awaiting human review"
+}

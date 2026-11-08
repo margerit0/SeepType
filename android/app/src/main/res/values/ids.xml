@@ -1,0 +1,4 @@
+<resources>
+    <item name="practice_editor" type="id" />
+    <item name="secondary_editor" type="id" />
+</resources>

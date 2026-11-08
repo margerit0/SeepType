@@ -1,0 +1,201 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// These tests exercise delivery/action invariants, not Chinese decoding.
+use std::{cell::RefCell, rc::Rc};
+use study_core::*;
+
+#[derive(Default)]
+struct Model { context: Context, config: Config, commits: Vec<String>, calls: usize, english: String, partial: bool, schema: String }
+struct Fake(Rc<RefCell<Model>>);
+impl Engine for Fake {
+    fn read(&mut self) -> Result<Context> { Ok(self.0.borrow().context.clone()) }
+    fn key(&mut self, code: u32, _: u32) -> Result<bool> {
+        if code == 32 { return self.select(0); }
+        let mut m = self.0.borrow_mut();
+        m.calls += 1;
+        if code == BACKSPACE { m.context.input.pop(); }
+        else { m.context.input.push(char::from_u32(code).unwrap()); }
+        m.context.preedit = m.context.input.clone();
+        m.context.caret = m.context.input.len();
+        m.context.candidates = vec![Candidate { chinese: "你好".into(), english: "hello…".into() }];
+        Ok(true)
+    }
+    fn clear(&mut self) -> Result<()> { self.0.borrow_mut().context = Context::default(); Ok(()) }
+    fn select(&mut self, _: usize) -> Result<bool> {
+        self.0.borrow_mut().commits.push("你好".into()); self.clear()?; Ok(true)
+    }
+    fn page(&mut self, _: bool) -> Result<bool> { self.0.borrow_mut().context.page += 1; Ok(true) }
+    fn caret(&mut self, position: usize) -> Result<()> { self.0.borrow_mut().context.caret = position; Ok(()) }
+    fn schema(&mut self, name: &str) -> Result<()> { self.0.borrow_mut().schema = name.into(); Ok(()) }
+    fn configure(&mut self, config: &Config) -> Result<()> { self.0.borrow_mut().config = config.clone(); Ok(()) }
+    fn inspect(&mut self, index: usize) -> Result<Inspection> {
+        let mut m = self.0.borrow_mut();
+        m.context.highlighted = index;
+        let reason = if !m.config.english() { "disabled" } else if m.partial || m.context.caret != m.context.input.len() { "partial-composition" } else { "ready" };
+        Ok(Inspection { chinese: "你好".into(), english: m.english.clone(), reason: reason.into() })
+    }
+    fn commit_english(&mut self) -> Result<bool> {
+        let english = self.0.borrow().english.clone();
+        self.0.borrow_mut().commits.push(english); self.clear()?; Ok(true)
+    }
+    fn forget(&mut self, _: usize) -> Result<bool> { Ok(true) }
+    fn take_commit(&mut self) -> Result<Option<String>> { Ok(self.0.borrow_mut().commits.pop()) }
+}
+
+fn event(action: Action) -> Event { Event { generation: 1, action } }
+fn fixture() -> (Session<Fake>, Rc<RefCell<Model>>) {
+    let state = Rc::new(RefCell::new(Model { english: "hello; a complete definition".into(), ..Default::default() }));
+    let mut session = Session::new(Fake(state.clone()));
+    session.process(event(Action::Start { config: Config::default() })).unwrap();
+    (session, state)
+}
+fn type_word(session: &mut Session<Fake>) -> Snapshot {
+    let mut last = session.process(event(Action::Read)).unwrap();
+    for code in "nihao".chars() { last = session.process(event(Action::Key { code: code as u32, modifiers: 0 })).unwrap(); }
+    last
+}
+fn target(session: &mut Session<Fake>) -> Target {
+    let snapshot = type_word(session);
+    session.process(event(Action::Inspect { index: 0, revision: snapshot.revision })).unwrap().target.unwrap()
+}
+
+#[test]
+fn stale_editor_event_never_reaches_engine() {
+    let (mut session, state) = fixture();
+    session.process(Event { generation: 2, action: Action::Start { config: Config::default() } }).unwrap();
+    let result = session.process(event(Action::Key { code: 97, modifiers: 0 })).unwrap();
+    assert!(result.commands.is_empty());
+    assert_eq!(state.borrow().calls, 0);
+    assert_eq!(result.notice, "stale-editor");
+}
+#[test]
+fn duplicate_english_action_commits_once_and_uses_complete_dictionary_value() {
+    let (mut session, _) = fixture();
+    let target = target(&mut session);
+    let command = Action::English { token: target.token };
+    let first = session.process(event(command.clone())).unwrap();
+    let duplicate = session.process(event(command)).unwrap();
+    assert_eq!(first.commands[0].text, "hello; a complete definition");
+    assert!(duplicate.commands.is_empty());
+}
+#[test]
+fn dictionary_revalidation_rejects_changed_definition_without_losing_input() {
+    let (mut session, state) = fixture();
+    let target = target(&mut session);
+    state.borrow_mut().english = "changed while panel was open".into();
+    let result = session.process(event(Action::English { token: target.token })).unwrap();
+    assert!(result.commands.is_empty());
+    assert_eq!(result.context.input, "nihao");
+    assert_eq!(result.notice, "target-changed");
+}
+#[test]
+fn chinese_click_and_space_ignore_english_annotation() {
+    let (mut session, _) = fixture();
+    let before = type_word(&mut session);
+    let clicked = session.process(event(Action::Select { index: 0, revision: before.revision })).unwrap();
+    type_word(&mut session);
+    let spaced = session.process(event(Action::Key { code: 32, modifiers: 0 })).unwrap();
+    assert_eq!(clicked.commands[0].text, "你好");
+    assert_eq!(spaced.commands[0].text, "你好");
+    assert_ne!(clicked.commands[0].id, spaced.commands[0].id);
+}
+#[test]
+fn english_toggle_invalidates_panel_and_preserves_learning_and_composition() {
+    let (mut session, state) = fixture();
+    let target = target(&mut session);
+    let config = Config { show_english: false, ..Default::default() };
+    let result = session.process(event(Action::Configure { config })).unwrap();
+    assert!(!result.show_english);
+    assert!(result.user_learning);
+    assert_eq!(result.context.input, "nihao");
+    assert!(result.context.candidates[0].english.is_empty());
+    let stale = session.process(event(Action::English { token: target.token })).unwrap();
+    assert!(stale.commands.is_empty());
+    assert!(state.borrow().config.learning());
+}
+#[test]
+fn partial_composition_cannot_submit_english() {
+    let (mut session, state) = fixture();
+    state.borrow_mut().partial = true;
+    let target = target(&mut session);
+    let result = session.process(event(Action::English { token: target.token })).unwrap();
+    assert_eq!(result.context.input, "nihao");
+    assert!(result.commands.is_empty());
+}
+#[test]
+fn caret_motion_invalidates_inspected_action() {
+    let (mut session, _) = fixture();
+    let target = target(&mut session);
+    session.process(event(Action::Caret { position: 2 })).unwrap();
+    let result = session.process(event(Action::English { token: target.token })).unwrap();
+    assert_eq!(result.context.caret, 2);
+    assert!(result.commands.is_empty());
+}
+#[test]
+fn stale_candidate_click_does_not_select_new_candidate() {
+    let (mut session, _) = fixture();
+    let old = type_word(&mut session);
+    session.process(event(Action::Key { code: 109, modifiers: 0 })).unwrap();
+    let result = session.process(event(Action::Select { index: 0, revision: old.revision })).unwrap();
+    assert_eq!(result.context.input, "nihaom");
+    assert!(result.commands.is_empty());
+}
+#[test]
+fn schema_change_waits_for_composition_to_finish() {
+    let (mut session, state) = fixture();
+    type_word(&mut session);
+    let config = Config { schema: "study_flypy".into(), ..Default::default() };
+    let pending = session.process(event(Action::Configure { config })).unwrap();
+    assert_eq!(pending.pending_schema.as_deref(), Some("study_flypy"));
+    assert_eq!(state.borrow().schema, "study");
+    let committed = session.process(event(Action::Key { code: 32, modifiers: 0 })).unwrap();
+    assert_eq!(committed.commands[0].text, "你好");
+    assert_eq!(committed.schema, "study_flypy");
+}
+#[test]
+fn password_bypasses_rime_and_disables_both_learning_features() {
+    let (mut session, state) = fixture();
+    let config = Config { sensitive: true, ..Default::default() };
+    session.process(Event { generation: 2, action: Action::Start { config } }).unwrap();
+    let result = session.process(Event { generation: 2, action: Action::Key { code: 97, modifiers: 0 } }).unwrap();
+    assert!(!result.show_english && !result.user_learning && result.ascii_mode);
+    assert_eq!(result.commands[0].text, "a");
+    assert_eq!(state.borrow().calls, 0);
+}
+#[test]
+fn no_personalized_learning_preserves_definitions() {
+    let config = Config { no_personalization: true, ..Default::default() };
+    assert!(!config.learning());
+    assert!(config.english());
+}
+#[test]
+fn old_pending_commit_is_discarded_on_editor_change() {
+    let (mut session, state) = fixture();
+    state.borrow_mut().commits.push("old editor text".into());
+    let result = session.process(Event { generation: 2, action: Action::Start { config: Config::default() } }).unwrap();
+    assert!(result.commands.is_empty());
+    assert!(state.borrow().commits.is_empty());
+}
+#[test]
+fn forgotten_word_does_not_edit_application_text() {
+    let (mut session, _) = fixture();
+    let target = target(&mut session);
+    let result = session.process(event(Action::Forget { token: target.token })).unwrap();
+    assert_eq!(result.context.input, "nihao");
+    assert!(result.commands.is_empty());
+    assert_eq!(result.notice, "forgotten");
+}
+
+#[test]
+fn queued_preferences_preserve_newer_mode_and_bound_editor_privacy() {
+    let (mut session, state) = fixture();
+    session.process(event(Action::Mode { ascii: true })).unwrap();
+    let stale_preferences = Config { show_english: false, ..Default::default() };
+    let result = session.process(event(Action::Configure { config: stale_preferences })).unwrap();
+    assert!(result.ascii_mode);
+    assert!(!result.show_english);
+    let config = Config { sensitive: true, no_personalization: true, ..Default::default() };
+    session.process(Event { generation: 2, action: Action::Start { config } }).unwrap();
+    let result = session.process(Event { generation: 2, action: Action::Configure { config: Config::default() } }).unwrap();
+    assert!(result.ascii_mode && !result.show_english && !result.user_learning);
+    assert!(state.borrow().config.sensitive && state.borrow().config.no_personalization);
+}

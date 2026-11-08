@@ -1,0 +1,65 @@
+--- a/librime/src/rime/gear/memory.cc
++++ b/librime/src/rime/gear/memory.cc
+@@ -99,6 +99,9 @@
+ }
+ 
+ void Memory::OnCommit(Context* ctx) {
++  // StudyIME: pause new learning without dropping existing scores.
++  if (ctx->get_property("study_user_learning") == "0")
++    return;
+   if (!user_dict_ || user_dict_->readonly())
+     return;
+   StartSession();
+--- a/librime/CMakeLists.txt
++++ b/librime/CMakeLists.txt
+@@ -273,7 +273,7 @@
+ add_subdirectory(src)
+ 
+ if(BUILD_SHARED_LIBS)
+-  add_subdirectory(tools)
++  # StudyIME Android uses the C API, not standalone tools.
+ 
+   if(BUILD_TEST)
+     add_subdirectory(test)
+--- a/opencc/CMakeLists.txt
++++ b/opencc/CMakeLists.txt
+@@ -210,7 +210,8 @@
+   message(STATUS "Use bundled marisa library.")
+   add_subdirectory(deps/marisa-0.2.6)
+ else()
+-  find_library(LIBMARISA NAMES marisa)
++  find_package(marisa CONFIG REQUIRED)
++  set(LIBMARISA marisa)
+   if (LIBMARISA)
+     message(STATUS "libmarisa found: ${LIBMARISA}")
+   else()
+--- a/opencc/CMakeLists.txt
++++ b/opencc/CMakeLists.txt
+@@ -146,7 +146,7 @@
+ ######## Compiler flags
+ 
+ add_definitions(
+-  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
++  # StudyIME: no build-machine fallback data path.
+   -DLOCALEDIR="${DIR_SHARE_LOCALE}"
+   -DVERSION="${OPENCC_VERSION}"
+   -DPACKAGE_NAME="${PACKAGE_NAME}"
+--- a/opencc/CMakeLists.txt
++++ b/opencc/CMakeLists.txt
+@@ -223,7 +223,7 @@
+ 
+ add_subdirectory(src)
+ add_subdirectory(doc)
+-add_subdirectory(data)
++# StudyIME: no conversion data used by the simplified source dictionary.
+ add_subdirectory(test)
+ 
+ ######## Testing
+--- a/opencc/src/CMakeLists.txt
++++ b/opencc/src/CMakeLists.txt
+@@ -205,4 +205,4 @@
+ 
+ # Subdir
+ 
+-add_subdirectory(tools)
++# StudyIME: OpenCC library only.

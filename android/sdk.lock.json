@@ -1,0 +1,56 @@
+[
+  {
+    "path": "platforms;android-35",
+    "url": "https://dl.google.com/android/repository/platform-35_r02.zip",
+    "size": 64273788,
+    "sha1": "0bb560a90a7a2cbd0dd8348224d518b638fe7949",
+    "host": "windows",
+    "revision": "2.0.0",
+    "sha256": "0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0"
+  },
+  {
+    "path": "ndk;27.2.12479018",
+    "url": "https://dl.google.com/android/repository/android-ndk-r27c-windows.zip",
+    "size": 781511249,
+    "sha1": "ac5f7762764b1f15341094e148ad4f847d050c38",
+    "host": "windows",
+    "revision": "27.2.12479018",
+    "sha256": "27e49f11e0cee5800983d8af8f4acd5bf09987aa6f790d4439dda9f3643d2494"
+  },
+  {
+    "path": "build-tools;35.0.0",
+    "url": "https://dl.google.com/android/repository/build-tools_r35_windows.zip",
+    "size": 59878107,
+    "sha1": "af059bb67cf7786f45ee0db85e2d24985df1b4b6",
+    "host": "windows",
+    "revision": "35.0.0",
+    "sha256": "5753c679a1b90bcf6fbc9945a2ce39dfb9e74f1df0831a1e1866ae5b594326f0"
+  },
+  {
+    "path": "platform-tools",
+    "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+    "size": 8044989,
+    "sha1": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+    "host": "windows",
+    "revision": "37.0.1",
+    "sha256": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99"
+  },
+  {
+    "path": "emulator",
+    "url": "https://dl.google.com/android/repository/emulator-linux_x64-16740729.zip",
+    "size": 349658551,
+    "sha1": "f41f9e31eb5ca64926603c03265c50bbc0ff4172",
+    "host": "linux",
+    "revision": "37.2.13",
+    "sha256": "cbc7c3cfb83220b8a0f9c513fdab557712e74d339ec19ddffa43f23350ae9bdd"
+  },
+  {
+    "path": "system-images;android-30;default;x86_64",
+    "url": "https://dl.google.com/android/repository/sys-img/android/x86_64-30_r11.zip",
+    "size": 676379777,
+    "sha1": "5e4de3946d46f88856c35efcc4d797b381456347",
+    "host": "linux",
+    "revision": "11.0.0",
+    "sha256": "8d591034a4244a920d7a3ec274bb1734dd6474a3d8c11d0fce902010db3a13aa"
+  }
+]

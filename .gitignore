@@ -10,3 +10,16 @@ __pycache__/
 experiments/phase6/build/
 experiments/phase6/runtime/
 
+# Android/Rust outputs are isolated in this worktree.
+/target/
+/android/.gradle/
+/android/.kotlin/
+/android/local.properties
+/android/**/build/
+/android/app/src/main/jniLibs/
+/android/app/src/main/assets/generated/
+/android/app/src/androidTest/assets/generated/
+/android/captures/
+/android/hs_err_pid*.log
+/android/replay_pid*.log
+
