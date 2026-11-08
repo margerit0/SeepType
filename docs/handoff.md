@@ -1,6 +1,14 @@
 # StudyIME 接续说明
 
-项目：`.`，分支 `codex/technical-spike`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+项目：`.`，Windows 开发分支 `codex/technical-spike`，安卓规划分支 `codex/android-rust-plan`。提交与工作区实时状态请以 `git status --short --branch`、`git log -5 --oneline` 为准。**当前 dev.2 已注销，输入法配置与注册树已恢复；DLL 最后清理等待 Windows 重启。以下最新断点优先于历史快照。**
+
+## 2026-11-08 最新规划断点：安卓与 Rust 共享核心
+
+用户强调手机端“美观很重要”，认可本聊天的键盘示意，并要求开新分支写计划。已从 `7713de7` 建立 `codex/android-rust-plan`，入口为 [安卓开发与 Rust 共享核心计划](android-plan.md)。[网页示意及浅深色参考](../prototype/android/README.md)已保存在仓库，使用固定演示词，不能作为正式词库或 Android 验收证据。
+
+计划采用 Kotlin／Compose 定制界面＋Rust 业务核心＋现有 Rime／Lua，首版为 26 键、全拼／两套双拼、双行候选、明确英文提交及本地学习。用户随后追问 Windows 是否也应改用 Rust；计划提出在安卓核心稳定后，让现有 C++ TSF／服务／界面通过窄 C ABI 接入，逐步统一业务逻辑，继续使用已有引擎和规则。
+
+本轮仅完成分支、计划和设计参考，未创建 Android／Rust 工程、编译 APK、安装手机输入法或改动 Windows 产品。继续此方向时先读计划并从 P0 固定设备、工具链和 Kotlin→Rust→Rime 最小构建开始。下方 Windows 打包／卸载及词库审核断点仍然有效，不因新增平台规划而自动继续执行。
 
 ## 2026-11-08 最新功能断点：自然码与小鹤双拼完成
 
