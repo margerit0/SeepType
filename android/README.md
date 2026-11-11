@@ -36,6 +36,8 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 ## 模拟器和验证
 
+**Windows 手动交互验收：** 在仓库根目录双击 `启动安卓验收.cmd`，打开本地验收面板和真实 APK 的可操作手机窗口。支持输入场景、设置、窄屏／横屏、截图和录像，详见 [一键验收说明](../docs/android-acceptance.md)。
+
 本机使用已有 WSL2 / KVM 运行无窗口 AOSP Android 11 x86_64 模拟器，AVD 和系统镜像也在专用 D 盘缓存。以 `devices -l` 的实际序列号为准；本次 Windows ADB 使用 `127.0.0.1:5555`，脚本缺省值仍为 `emulator-5554`：
 
 ```powershell

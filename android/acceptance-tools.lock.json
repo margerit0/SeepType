@@ -1,0 +1,11 @@
+{
+  "scrcpy": {
+    "version": "5.0.1",
+    "url": "https://github.com/Genymobile/scrcpy/releases/download/v5.0.1/scrcpy-win64-v5.0.1.zip",
+    "apiUrl": "https://api.github.com/repos/Genymobile/scrcpy/releases/assets/620992965",
+    "sha256": "b12a2c4ee8be317422451fc7dcf8ee20a71b5ea7ef9ad73ddd825a25316227a5",
+    "bytes": 11264634,
+    "source": "https://github.com/Genymobile/scrcpy/tree/v5.0.1",
+    "scope": "Windows development tool only; keep the complete upstream archive and its notices outside the APK"
+  }
+}

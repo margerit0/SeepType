@@ -4,6 +4,8 @@
 
 当前已实现 Kotlin／Compose 界面＋Rust 会话核心＋固定 Rime／Lua，并完成本次 P0–P3 的模拟器范围及开发预览材料。P0／P1 检查点为 `b5fa54f`；后续源码提交与交付目录由 `.cache/android/delivery-latest.json` 标识。P4 的性能目标尚未全部达到，真机等项目也仍待补验；不要重新从空工程开始。用户已允许在合适时提交，所有提交保持在现有 Android 分支。
 
+**新增 Windows 手动验收入口：** 根目录双击 `启动安卓验收.cmd`，会自动准备可操作的真实 APK 手机窗口，并提供输入场景、原生设置、显示预设、截图和录像。入口源码为 `tools/android/acceptance.py` 与 `acceptance_ui.py`，使用现有 Release 输入法和 Debug 原生输入页；使用方法、本轮 14／28／16 项检查及冷启动验证见 [一键交互验收](android-acceptance.md)。产物在专用缓存的 `acceptance` 目录。本轮未重新导出开发预览 ZIP，原交付材料和真机待办仍保留各自范围。
+
 ## 工作目录与授权
 
 | 用途 | 目录 | 分支 |

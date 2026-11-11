@@ -4,6 +4,8 @@
 
 **安卓开发：[开发预览与接续入口](docs/android-handoff.md)**。独立 worktree 使用 `codex/android-dev`；已实现 Kotlin／Compose 键盘、Rust 会话核心和 Rime／Lua，支持全拼、自然码和小鹤双拼。构建与安装见 [Android README](android/README.md)，真实版本、原生视觉及模拟器结果见 [验证记录](docs/android-validation.md)。用户选择先用模拟器，真机与高刷新率等项目另行补验；200 条英文释义仍是待人工审核的开发数据。
 
+**Windows 交互验收：** 双击根目录的 `启动安卓验收.cmd`，通过验收面板和手机窗口操作真实 Android APK。支持输入场景、原生设置、显示预设、截图与录像，见 [使用说明](docs/android-acceptance.md)。
+
 **工作区新增：[自然码双拼与小鹤双拼](docs/double-pinyin.md)**。设置可选择全拼、自然码双拼或小鹤双拼，三者共享[中文选词学习](docs/word-frequency.md)、逐词遗忘和英文释义。600 条中英文回归、148 项双拼／会话检查、词频与候选窗回归、原生设置窗口检查通过。当前为内部 dev.3 构建，尚未导出新版运行／源码 ZIP 或安装；[后续待办](docs/optimization-todo.md)已更新。
 
 **设计试用：[轻量候选条原型 v0.5](prototype/index.html)**（浏览器直接打开）。紧凑双行、圆角、学习开关和翻页动画的完整交互仍以此为基线。旧两套方案保留在 prototype/archive/v0.2。
