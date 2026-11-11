@@ -38,13 +38,13 @@ class LifecycleTest {
             device.waitForIdle()
         }
         fun currentText() = driver.editor().text.orEmpty()
-        fun firstCandidate(): Pair<UiObject2, String> {
-            val card = device.wait(Until.findObject(By.res("candidate_0")), 5000) ?: error("First candidate missing")
+        fun candidateAt(index: Int): Pair<UiObject2, String> {
+            val card = device.wait(Until.findObject(By.res("candidate_$index")), 5000) ?: error("Candidate $index missing")
             // Compose may expose the merged name through a virtual child of
             // the clickable, selected container. Read either representation.
             val label = card.contentDescription?.takeIf { it.isNotEmpty() }
                 ?: card.findObject(By.desc(java.util.regex.Pattern.compile(".+")))?.contentDescription
-                ?: error("First candidate has no accessible name")
+                ?: error("Candidate $index has no accessible name")
             return card to label
         }
         try {
@@ -147,7 +147,7 @@ class LifecycleTest {
 
             driver.launch()
             driver.type("shi")
-            val originalCandidate = firstCandidate().second
+            val originalCandidate = candidateAt(0).second
             device.findObject(By.desc("展开候选")).click()
             // Icon descriptions live below the clickable button; the icon's
             // own enabled flag does not represent the disabled parent.
@@ -155,12 +155,24 @@ class LifecycleTest {
             device.wait(Until.findObject(By.clickable(true).enabled(true).hasDescendant(By.desc("上一页候选"))), 5000)!!.click()
             assertTrue("Paging returns to the first page", device.wait(Until.hasObject(
                 By.clickable(true).enabled(false).hasDescendant(By.desc("上一页候选"))), 5000))
-            val returned = firstCandidate()
+            val returned = candidateAt(0)
             assertTrue("The original first candidate is restored", returned.second == originalCandidate)
             returned.first.click()
             val selectedChinese = originalCandidate.substringBefore("，英文释义：")
             driver.expectText(selectedChinese)
             check("Paging forward and back commits the current candidate once", currentText() == selectedChinese)
+
+            driver.launch()
+            driver.type("shi")
+            val strip = device.wait(Until.findObject(By.res("candidate_scroll")), 5000)!!.visibleBounds
+            device.swipe(strip.right - 12, strip.centerY(), strip.left + 12, strip.centerY(), 24)
+            device.waitForIdle()
+            val last = candidateAt(4)
+            assertTrue("The final candidate is reachable inside the horizontal viewport", strip.contains(last.first.visibleCenter.x, last.first.visibleCenter.y))
+            val lastChinese = last.second.substringBefore("，英文释义：")
+            last.first.click()
+            driver.expectText(lastChinese)
+            check("Horizontal scrolling exposes and commits the final candidate once", currentText() == lastChinese)
 
             driver.launch("email")
             val alphabet = "qwertyuiopasdfghjklzxcvbnm"

@@ -24,6 +24,7 @@ object InputMetrics {
     private var coalesced = 0
     private var discarded = 0
     private var invalidPairs = 0
+    private var showRequests = 0
     private fun ArrayDeque<Long>.sample(value: Long) {
         addLast(value)
         if (size > 1024) removeFirst()
@@ -43,6 +44,7 @@ object InputMetrics {
         }
     }
     @Synchronized fun showRequested() {
+        showRequests++
         requested = SystemClock.elapsedRealtimeNanos()
         waitingReady = requested
     }
@@ -72,7 +74,7 @@ object InputMetrics {
     }
     @Synchronized fun reset() {
         pending.clear(); main.clear(); drawn.clear(); show.clear(); ready.clear(); paired.clear()
-        requested = 0; waitingReady = 0; coalesced = 0; discarded = 0; invalidPairs = 0
+        requested = 0; waitingReady = 0; coalesced = 0; discarded = 0; invalidPairs = 0; showRequests = 0
     }
     private fun summary(values: Collection<Long>): JSONObject {
         val sorted = values.sorted()
@@ -87,6 +89,7 @@ object InputMetrics {
         .put("boundary", "Key callback enqueue -> InputConnection delivery / Compose draw recording. Excludes touch recognition, GPU presentation and physical display latency.")
         .put("keyToDeliveryMs", summary(main)).put("keyToComposeDrawMs", summary(drawn))
         .put("showInputViewToDrawMs", summary(show)).put("showInputViewToReadyDrawMs", summary(ready))
+        .put("showRequests", showRequests).put("pendingShowDraw", requested != 0L).put("pendingReadyDraw", waitingReady != 0L)
         .put("coalescedKeysBeforeDraw", coalesced).put("discardedBeforeDraw", discarded)
         .put("pendingDraws", pending.size).put("invalidPhasePairs", invalidPairs)
         .put("phaseOrder", JSONArray(phaseNames))

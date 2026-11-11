@@ -4,6 +4,7 @@ package org.studyime.android.ui
 import android.provider.Settings
 import android.os.SystemClock
 import android.view.HapticFeedbackConstants
+import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.EditorInfo
@@ -44,7 +45,10 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -63,6 +67,8 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -123,19 +129,7 @@ fun StudyKeyboard(
     }
     val onLongKey = remember(send) { { text: String -> send(event("literal", "text" to text)) } }
     LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, upper, prefs.theme) {
-        // A non-focused IME window must announce its completed virtual subtree,
-        // including local layout changes. Post after the traversal, rather than
-        // exposing the preceding frame's node IDs to accessibility clients.
-        withFrameNanos { }
-        view.post {
-            // The service may disconnect between composition and this posted
-            // callback. Android throws if an unchecked event is sent while off.
-            if (view.isAttachedToWindow && accessibility.isEnabled) {
-                view.sendAccessibilityEventUnchecked(AccessibilityEvent.obtain(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED).apply {
-                    contentChangeTypes = AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE
-                })
-            }
-        }
+        announceImeSubtree(view, accessibility)
     }
     val keyHeight = maxOf(if (landscape) 40f else 48f, (if (landscape) 42f else 52f) * prefs.keyHeight,
         23f * density.fontScale * prefs.textScale + 10f).dp
@@ -169,9 +163,9 @@ fun StudyKeyboard(
                 }, verticalAlignment = Alignment.CenterVertically) {
                 Text("英语", fontSize = 12.sp, color = colors.accent)
                 Spacer(Modifier.width(6.dp))
-                Box(Modifier.size(30.dp, 18.dp).clip(RoundedCornerShape(10.dp)).background(if (state.showEnglish) colors.accent else colors.subtle)) {
+                Box(Modifier.size(30.dp, 18.dp).background(if (state.showEnglish) colors.accent else colors.subtle, RoundedCornerShape(10.dp))) {
                     Box(Modifier.align(if (state.showEnglish) Alignment.CenterEnd else Alignment.CenterStart).padding(3.dp)
-                        .size(12.dp).clip(RoundedCornerShape(8.dp)).background(if (state.showEnglish) colors.onAccent else colors.paper))
+                        .size(12.dp).background(if (state.showEnglish) colors.onAccent else colors.paper, RoundedCornerShape(8.dp)))
                 }
             }
         }
@@ -235,6 +229,20 @@ fun StudyKeyboard(
     }
 }
 
+private suspend fun announceImeSubtree(view: View, accessibility: AccessibilityManager) {
+    // The non-focused IME window needs a subtree invalidation after layout,
+    // including scroll-only movement, to expose current virtual-node bounds.
+    withFrameNanos { }
+    view.post {
+        // An accessibility client can disconnect before this callback runs.
+        if (view.isAttachedToWindow && accessibility.isEnabled) {
+            view.sendAccessibilityEventUnchecked(AccessibilityEvent.obtain(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED).apply {
+                contentChangeTypes = AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE
+            })
+        }
+    }
+}
+
 @Composable
 private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean = true, onClick: () -> Unit) {
     val colors = LocalStudyColors.current
@@ -293,23 +301,41 @@ private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, ed
     // Relayout of a bottom-anchored IME during a rapid touch can cancel that
     // gesture even when the final key bounds are unchanged.
     val contentHeight = (maxOf(40f, (if (state.showEnglish) 44f else 28f) * fontScale * prefs.textScale) + 16f).dp
-    BoxWithConstraints(Modifier.fillMaxWidth().padding(start = 7.dp, end = 3.dp, bottom = 5.dp)
+    Box(Modifier.fillMaxWidth().padding(start = 7.dp, end = 3.dp, bottom = 5.dp)
         .animateContentSize(tween(if (prefs.reduceMotion) 0 else 190)).heightIn(min = contentHeight)) {
         if (state.candidates.isEmpty()) {
             ReadyHint(state, editor, onRetry, Modifier.fillMaxWidth().heightIn(min = contentHeight))
         } else {
-            val visible = ((maxWidth.value - 48f) / (88f * fontScale * prefs.textScale)).toInt().coerceIn(1, 3)
-            val width = (maxWidth - 48.dp) / visible
+            val scroll = rememberScrollState()
+            val view = LocalView.current
+            val accessibility = remember(view) { view.context.getSystemService(AccessibilityManager::class.java) }
+            LaunchedEffect(scroll) {
+                snapshotFlow { scroll.value }.drop(1).collectLatest { announceImeSubtree(view, accessibility) }
+            }
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // Rime pages contain five items. An ordinary scrolling row
-                // avoids a second lazy subcomposition during every key draw.
-                Row(Modifier.weight(1f).horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(3.dp)) {
-                    // Reuse each visible slot when its word changes. Gestures
-                    // below remain keyed by generation AND revision.
+                // Measure the five slots directly. Reading BoxWithConstraints
+                // from the changing candidate composition otherwise requires
+                // a subcomposition inside the input window's measure pass.
+                Layout(modifier = Modifier.weight(1f).testTag("candidate_scroll").horizontalScroll(scroll), content = {
                     state.candidates.forEachIndexed { index, candidate ->
                         key(state.page, index) {
-                            CandidateCard(candidate, index, state, prefs, send, Modifier.width(width - 3.dp))
+                            CandidateCard(candidate, index, state, prefs, send)
                         }
+                    }
+                }) { measurables, constraints ->
+                    // Row.weight fixes the viewport width; horizontalScroll
+                    // keeps that minimum while relaxing the maximum width.
+                    val viewport = constraints.minWidth
+                    val visible = (viewport / (88.dp.toPx() * fontScale * prefs.textScale)).toInt().coerceIn(1, 3)
+                    val slot = (viewport / visible).coerceAtLeast(1)
+                    val gap = 3.dp.roundToPx()
+                    val cardWidth = (slot - gap).coerceAtLeast(0)
+                    val cards = measurables.map {
+                        it.measure(constraints.copy(minWidth = cardWidth, maxWidth = cardWidth, minHeight = 0))
+                    }
+                    val height = (cards.maxOfOrNull { it.height } ?: 0).coerceIn(constraints.minHeight, constraints.maxHeight)
+                    layout((slot * cards.size - gap).coerceAtLeast(viewport), height) {
+                        cards.forEachIndexed { index, card -> card.placeRelative(index * slot, (height - card.height) / 2) }
                     }
                 }
                 ToolButton(if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
@@ -483,8 +509,16 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             onLongPress = if (longAction == null) null else { _ -> if (enabled) { feedback(); longAction?.invoke() } },
         )
     }.padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp), contentAlignment = Alignment.Center) {
-        Box(Modifier.fillMaxSize().shadow(if (pressed) 0.dp else 1.dp, RoundedCornerShape(9.dp), clip = false)
-            .drawBehind { drawRoundRect(fill.value, cornerRadius = CornerRadius(9.dp.toPx())) }, contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxSize().drawBehind {
+            val corner = CornerRadius(9.dp.toPx())
+            // A shallow contact shadow does not need a RenderNode/elevation
+            // layer for every key, or its first-frame shadow shader program.
+            if (!pressed) {
+                drawRoundRect(Color.Black.copy(alpha = .06f), topLeft = Offset(0f, 1.dp.toPx()), size = size, cornerRadius = corner)
+                drawRoundRect(Color.Black.copy(alpha = .08f), topLeft = Offset(0f, .5.dp.toPx()), size = size, cornerRadius = corner)
+            }
+            drawRoundRect(fill.value, cornerRadius = corner)
+        }, contentAlignment = Alignment.Center) {
             val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
             if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = ink)
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,

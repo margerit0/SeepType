@@ -122,32 +122,42 @@ def test(section, serial, ime_package=None):
     write(CACHE / "logs" / ("instrumentation-" + section + ".log"), result.stdout + result.stderr)
     passed = "OK (1 test)" in result.stdout and result.returncode == 0
     pulled = adb("exec-out", "run-as", PACKAGE, "cat", "files/" + report, serial=serial, check=False)
+    value = None
     if pulled.returncode == 0:
-        value = json.loads(pulled.stdout)
-        value["passed"] = passed and value.get("passed", False)
-        value["run"] = {"startedAt": started, "finishedAt": datetime.now(timezone.utc).isoformat(),
-                        "serial": serial, "class": test_class, "instrumentationPassed": passed}
-        value["observedInstalledApks"] = observed
-        value["installedBuild"] = {"serial": serial, "apkSha256": observed[0]["sha256"],
-            "testApkSha256": observed[1]["sha256"],
-            "fingerprint": adb("shell", "getprop", "ro.build.fingerprint", serial=serial).stdout.strip()}
-        if ime_package and ime_package != PACKAGE:
-            release = ROOT / "android/app/build/outputs/apk/release/app-release.apk"
-            value["imeApkSha256"] = digest(release)
-            report = "release-" + report
-        if section == "recording" and value["passed"]:
-            video = CACHE / "evidence/recording/preview-interactions.mp4"
-            video.parent.mkdir(parents=True, exist_ok=True)
-            adb("pull", "/data/local/tmp/studyime-preview-interactions.mp4", video, serial=serial)
-            if video.stat().st_size < 1024 or video.read_bytes()[4:8] != b"ftyp":
-                raise ValueError("Screen recording is missing or incomplete")
-            value["video"] = {"file": "recording/preview-interactions.mp4", "bytes": video.stat().st_size, "sha256": digest(video)}
-        json_write(CACHE / "evidence" / report, value)
-        print(json.dumps({"passed": value.get("passed", False), "checks": len(value.get("checks", [])),
-                          "wordCases": len(value.get("wordRegressions", []))}), flush=True)
-        passed = value["passed"]
-    else:
-        passed = False
+        try:
+            parsed = json.loads(pulled.stdout)
+            if isinstance(parsed, dict):
+                value = parsed
+        except json.JSONDecodeError:
+            pass
+    if value is None:
+        # A runner can die while its report file is still empty or partial.
+        # Write a fresh, APK-bound failure instead of leaving the previous
+        # local report in place for an evidence collector to mistake as current.
+        write(CACHE / "logs" / ("instrumentation-" + section + "-invalid-report.txt"), pulled.stdout + pulled.stderr)
+        value = {"passed": False, "failure": "Instrumentation did not produce a valid JSON object report"}
+    value["passed"] = passed and value.get("passed", False)
+    value["run"] = {"startedAt": started, "finishedAt": datetime.now(timezone.utc).isoformat(),
+                    "serial": serial, "class": test_class, "instrumentationPassed": passed}
+    value["observedInstalledApks"] = observed
+    value["installedBuild"] = {"serial": serial, "apkSha256": observed[0]["sha256"],
+        "testApkSha256": observed[1]["sha256"],
+        "fingerprint": adb("shell", "getprop", "ro.build.fingerprint", serial=serial).stdout.strip()}
+    if ime_package and ime_package != PACKAGE:
+        release = ROOT / "android/app/build/outputs/apk/release/app-release.apk"
+        value["imeApkSha256"] = digest(release)
+        report = "release-" + report
+    if section == "recording" and value["passed"]:
+        video = CACHE / "evidence/recording/preview-interactions.mp4"
+        video.parent.mkdir(parents=True, exist_ok=True)
+        adb("pull", "/data/local/tmp/studyime-preview-interactions.mp4", video, serial=serial)
+        if video.stat().st_size < 1024 or video.read_bytes()[4:8] != b"ftyp":
+            raise ValueError("Screen recording is missing or incomplete")
+        value["video"] = {"file": "recording/preview-interactions.mp4", "bytes": video.stat().st_size, "sha256": digest(video)}
+    json_write(CACHE / "evidence" / report, value)
+    print(json.dumps({"passed": value.get("passed", False), "checks": len(value.get("checks", [])),
+                      "wordCases": len(value.get("wordRegressions", []))}), flush=True)
+    passed = value["passed"]
     print(result.stdout[-6000:], flush=True)
     if not passed:
         raise SystemExit("Android instrumentation did not pass; see preserved log")
