@@ -1,35 +1,628 @@
 {
+  "checkedOn": "2026-11-12",
+  "scope": "Browser prototype only; not Android device validation",
   "passed": true,
-  "pinyinInCandidateUi": false,
-  "englishAboveChinese": true,
-  "defaultCandidates": 7,
-  "narrowWidths": [
+  "baselineCommit": "0322ef8",
+  "defaultSkin": "default",
+  "stableBarHeight": 60,
+  "stableKeyboardHeight": 216,
+  "layoutMatchesBaseline": true,
+  "skins": [
     {
-      "viewport": 392,
-      "keyboard": 358,
-      "candidates": 6
+      "skin": "default",
+      "checks": [
+        "All 33 key positions and phone/status/keyboard bounds match the baseline in four states",
+        "Candidate tap, space and expanded nine-word grid commit Chinese",
+        "580 ms pointer hold and Alt+Enter show complete definitions; explicit English action and recent definition entry work",
+        "English visibility toggle preserves Chinese selection and fixed bar height",
+        "Physical typing, letter case, numbers and deletion retain their existing behavior",
+        "Changing skins preserves text, theme and English visibility",
+        "Skin and composing state restore after standalone reload",
+        "Light/dark toggle and automatic appearance both work",
+        "392/352/320 px viewports, 21 px candidates and narrow settings fit without overflow",
+        "Default skin retains its original system font stack"
+      ],
+      "narrowWidths": [
+        {
+          "viewport": 392,
+          "keyboard": 358,
+          "candidates": 6,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        },
+        {
+          "viewport": 352,
+          "keyboard": 318,
+          "candidates": 6,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        },
+        {
+          "viewport": 320,
+          "keyboard": 286,
+          "candidates": 5,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        }
+      ],
+      "candidateUi": {
+        "count": 7,
+        "englishAboveChinese": true,
+        "noPinyinRow": true,
+        "longEnglishEllipsized": true
+      },
+      "largeTypeAt320": {
+        "candidateSize": 21,
+        "keyboard": 286,
+        "candidates": 5,
+        "bar": 60,
+        "horizontalOverflow": false,
+        "chineseClipped": false,
+        "panelClipped": false
+      },
+      "loadedFonts": [
+        "Nunito",
+        "Quicksand",
+        "Patrick Hand"
+      ]
     },
     {
-      "viewport": 352,
-      "keyboard": 318,
-      "candidates": 6
-    },
-    {
-      "viewport": 320,
-      "keyboard": 286,
-      "candidates": 5
+      "skin": "soft-pop",
+      "checks": [
+        "All 33 key positions and phone/status/keyboard bounds match the baseline in four states",
+        "Candidate tap, space and expanded nine-word grid commit Chinese",
+        "580 ms pointer hold and Alt+Enter show complete definitions; explicit English action and recent definition entry work",
+        "English visibility toggle preserves Chinese selection and fixed bar height",
+        "Physical typing, letter case, numbers and deletion retain their existing behavior",
+        "All 26 secondary legends are present; long hold and Alt+Enter enter symbols; moving the pointer cancels the hold",
+        "Changing skins preserves text, theme and English visibility",
+        "Skin and composing state restore after standalone reload",
+        "Light/dark toggle and automatic appearance both work",
+        "392/352/320 px viewports, 21 px candidates and narrow settings fit without overflow",
+        "Embedded feature fonts load without font network requests"
+      ],
+      "narrowWidths": [
+        {
+          "viewport": 392,
+          "keyboard": 358,
+          "candidates": 6,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        },
+        {
+          "viewport": 352,
+          "keyboard": 318,
+          "candidates": 6,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        },
+        {
+          "viewport": 320,
+          "keyboard": 286,
+          "candidates": 5,
+          "bar": 60,
+          "horizontalOverflow": false,
+          "chineseClipped": false,
+          "panelClipped": false
+        }
+      ],
+      "candidateUi": {
+        "count": 7,
+        "englishAboveChinese": true,
+        "noPinyinRow": true,
+        "longEnglishEllipsized": true
+      },
+      "largeTypeAt320": {
+        "candidateSize": 21,
+        "keyboard": 286,
+        "candidates": 5,
+        "bar": 60,
+        "horizontalOverflow": false,
+        "chineseClipped": false,
+        "panelClipped": false
+      },
+      "loadedFonts": [
+        "Nunito",
+        "Quicksand",
+        "Patrick Hand",
+        "Noto Sans SC",
+        "Fredoka"
+      ]
     }
   ],
-  "stableBarHeight": 60,
-  "checks": [
-    "single and double word layouts",
-    "complete definition from long press",
-    "English insertion",
-    "nine expanded candidates fit",
-    "Chinese insertion",
-    "English visibility toggle",
-    "light and dark appearance",
-    "narrow widths without horizontal overflow"
+  "errors": [],
+  "browser": "157.0.8103.38",
+  "typography": {
+    "options": [
+      "Nunito",
+      "Quicksand",
+      "Patrick Hand"
+    ],
+    "measurements": [
+      {
+        "font": "nunito",
+        "viewport": 736,
+        "width": 418,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "nunito",
+        "viewport": 352,
+        "width": 318,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "nunito",
+        "viewport": 320,
+        "width": 318,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "quicksand",
+        "viewport": 736,
+        "width": 418,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "quicksand",
+        "viewport": 352,
+        "width": 318,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "quicksand",
+        "viewport": 320,
+        "width": 286,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "patrick",
+        "viewport": 736,
+        "width": 418,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "patrick",
+        "viewport": 352,
+        "width": 318,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      },
+      {
+        "font": "patrick",
+        "viewport": 320,
+        "width": 286,
+        "keys": 33,
+        "symbols": 32,
+        "issues": [],
+        "documentFits": true
+      }
+    ],
+    "stateRestored": true,
+    "referenceBitmapUsed": false,
+    "vectorSymbols": 33,
+    "errors": []
+  },
+  "symbolLayer": {
+    "passed": true,
+    "geometry": [
+      {
+        "font": "nunito",
+        "viewport": 736,
+        "keyboard": 418,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "22px",
+        "symbolHeight": 16,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "nunito",
+        "viewport": 392,
+        "keyboard": 358,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "nunito",
+        "viewport": 352,
+        "keyboard": 318,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "nunito",
+        "viewport": 320,
+        "keyboard": 286,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "quicksand",
+        "viewport": 736,
+        "keyboard": 418,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "22px",
+        "symbolHeight": 16,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "quicksand",
+        "viewport": 392,
+        "keyboard": 358,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "quicksand",
+        "viewport": 352,
+        "keyboard": 318,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "quicksand",
+        "viewport": 320,
+        "keyboard": 286,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "patrick",
+        "viewport": 736,
+        "keyboard": 418,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "22px",
+        "symbolHeight": 16,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "patrick",
+        "viewport": 392,
+        "keyboard": 358,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "patrick",
+        "viewport": 352,
+        "keyboard": 318,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      },
+      {
+        "font": "patrick",
+        "viewport": 320,
+        "keyboard": 286,
+        "pairedKeys": 26,
+        "totalKeys": 33,
+        "statusHeight": 59,
+        "letterSize": "20px",
+        "symbolHeight": 15,
+        "pageFits": true,
+        "errors": []
+      }
+    ],
+    "checks": [
+      "Both layers share all 33 key bounds and the 60 px status / 216 px keyboard at four viewport widths for three fonts",
+      "All 26 upper-right symbols are smaller than lower-left letters and fit without overlap",
+      "All 26 taps insert their symbols and all 26 Alt+Enter actions insert paired letters",
+      "580 ms hold inserts a letter without an extra symbol, ABC returns to letters, and Chinese/English modes retain insertion behavior",
+      "The default numeric layout is unchanged; feature symbol mode survives skin changes and standalone reload"
+    ],
+    "errors": []
+  },
+  "numberToggle": {
+    "passed": true,
+    "family": "Fredoka",
+    "weight": 500,
+    "glyphs": "123ABC",
+    "measurements": [
+      {
+        "viewport": 736,
+        "label": "123",
+        "keyWidth": 52.8125,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "19px",
+        "letterSpacing": "0.5px",
+        "labelFits": true,
+        "horizontalCenterError": 0.0078125,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 736,
+        "label": "ABC",
+        "keyWidth": 52.8125,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "19px",
+        "letterSpacing": "0.5px",
+        "labelFits": true,
+        "horizontalCenterError": 0,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 392,
+        "label": "123",
+        "keyWidth": 45.1875,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0.0078125,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 392,
+        "label": "ABC",
+        "keyWidth": 45.1875,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 352,
+        "label": "123",
+        "keyWidth": 39.734375,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 352,
+        "label": "ABC",
+        "keyWidth": 39.734375,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0.0078125,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 320,
+        "label": "123",
+        "keyWidth": 35.390625,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0,
+        "fontLoaded": true
+      },
+      {
+        "viewport": 320,
+        "label": "ABC",
+        "keyWidth": 35.390625,
+        "keyHeight": 46,
+        "fontFamily": "Fredoka, sans-serif",
+        "fontWeight": "500",
+        "fontSize": "17px",
+        "letterSpacing": "0.4px",
+        "labelFits": true,
+        "horizontalCenterError": 0.0078125,
+        "fontLoaded": true
+      }
+    ],
+    "matchingStylesAcrossPages": true,
+    "independentOfLetterChoice": true,
+    "referenceBitmapUsed": false
+  },
+  "shiftKey": {
+    "passed": true,
+    "measurements": [
+      {
+        "viewport": 736,
+        "upper": false,
+        "keyWidth": 53.890625,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 736,
+        "upper": true,
+        "keyWidth": 53.890625,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 392,
+        "upper": false,
+        "keyWidth": 46.28125,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 392,
+        "upper": true,
+        "keyWidth": 46.28125,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 352,
+        "upper": false,
+        "keyWidth": 40.4375,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 352,
+        "upper": true,
+        "keyWidth": 40.4375,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 320,
+        "upper": false,
+        "keyWidth": 35.734375,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      },
+      {
+        "viewport": 320,
+        "upper": true,
+        "keyWidth": 35.734375,
+        "keyHeight": 46,
+        "fontFamily": "Quicksand, sans-serif",
+        "fontSize": "16px",
+        "labelFits": true,
+        "artFits": true,
+        "artDrawn": true,
+        "artIgnoresPointer": true
+      }
+    ],
+    "caseInputVerified": true,
+    "uppercaseResetsAfterCharacter": true,
+    "decorationClickVerified": true,
+    "svgSymbol": "ime-v-shift-art",
+    "referenceBitmapUsed": false
+  },
+  "screenshotsVisuallyReviewed": [
+    "soft-pop-abc-toggle.png",
+    "soft-pop-symbols-dark.png",
+    "soft-pop-symbols-narrow.png"
   ],
-  "errors": []
+  "sourceIntegrity": {
+    "standaloneMatchesSource": true,
+    "vectorAssetMatchesEmbedded": true,
+    "numberFontMatchesEmbedded": true,
+    "referenceBitmapUsed": false
+  }
 }

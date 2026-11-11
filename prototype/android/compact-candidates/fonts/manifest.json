@@ -1,0 +1,59 @@
+[
+  {
+    "family": "Nunito",
+    "weights": "400..500",
+    "format": "WOFF2",
+    "subsetCharacters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ ¥ · ’ …",
+    "bytes": 25984,
+    "sha256": "2fc6da2460a028e46a73790d46f5d78394646609cb210a333e51b96f0beb2f63",
+    "source": "https://fonts.gstatic.com/l/font?kit=XRXV3I6Li01BKof4N_TtRurvUh4iKlRKTBk8pqvxeljBSf_MPGoc6ki-6R_1MNwaCanRN52iADweBMrX86RIGGQGombzdM3MRahhTAyz7WMDF6ksVnrD4SVmCSFxvOgdy_rqDAJAogRgDKpE0z_QV1x2J0DX7wtt&skey=27bb6aa8eea8a5e7&v=v32",
+    "license": "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/nunito/OFL.txt",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/nunito"
+  },
+  {
+    "family": "Quicksand",
+    "weights": "400..500",
+    "format": "WOFF2",
+    "subsetCharacters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ ¥ · ’ …",
+    "bytes": 18884,
+    "sha256": "c973962ab70f7dcdba4a50ab2f57f85f454554c34fe77616821b83bae3366f8d",
+    "source": "https://fonts.gstatic.com/l/font?kit=6xKtdSZaM9iE8KbpRA_RKUZhaMPYHKrFthBD3uu16zsbdw2nJN1pQ7wYlioQBac42slsE8HwJ0-oB33-VlM-L124A0CYhpXGA0CuSc1ibosUWoT0z3BGzxEwpRG-WObDoaHiHeQIXMYMKHrglB37WEgBpOaJ-b8F36yQ&skey=c01f11fa5439d932&v=v37",
+    "license": "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/quicksand/OFL.txt",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/quicksand"
+  },
+  {
+    "family": "Patrick Hand",
+    "weights": "400",
+    "format": "WOFF2",
+    "subsetCharacters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ ¥ · ’ …",
+    "bytes": 15032,
+    "sha256": "751765eb1fc772597cba62a0b35baf43e5c01bd33e8a983d2339b8b7c638a4ff",
+    "source": "https://fonts.gstatic.com/l/font?kit=LDI1apSQOAYtSuYWp8ZhfYeMXNCns5sT0A2vp9TzZsoUTSDDZQ_hKpqUc-OS0GN5lFrMDeuWsdu2H8Eifi5T3Ac0S1X85I1edKR4GLh4aAKegmTKUVOkkUMXAa36cWad7MI0zAyTmethOCFCWj81NO_fLeIv2xq365SLNLsT&skey=7fb0ea6515a61339&v=v25",
+    "license": "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/patrickhand/OFL.txt",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/patrickhand"
+  },
+  {
+    "family": "Noto Sans SC",
+    "weights": "400..500",
+    "format": "WOFF2",
+    "subsetCharacters": "、。一上下与世个中么义习事互交什们位体余你使候入共关具再写凑切删动匿十单双句可号吗启和哎喜回图圆在外多大天好妈妮姐字学对局层展工已市布师帽并度开彩待态我或手拟择按换排接推握收数文方无时是显暂最期机查栏格模母每比毫气泥洁浅浩润深点爱特状甜用田电界的皮盈盘直看石确示空窝符第简紧继续绿置耗肤脑腻自色节英荐行街西见观视览角计认记设词译试诗诫语谢豪起距轻输近返逆选郝释键长闭阶除雪预马高默（），；",
+    "bytes": 55528,
+    "sha256": "04f063ecc32ee2ab6fa5fa098e737fd861c401f04e166b5d11625f885840b2e5",
+    "source": "https://fonts.gstatic.com/l/font?kit=k3kXo84MPvpLmixcA63oeALhLJBL9ex-c08amfM-PWjf4hBrd5TxftPUua5S_iDpjYusMriJXourr0Mz0nz6SZDrJvakWnmSG7hhY8E7usq_fhLCPRIkYVCWxjTEwflADW_IiO8BUjXdt7pLne9xXLyxnxD4hEkInfgGXLJGfVfMWhm_7EYRAvW2rkxsjUaqLXoLlXO5UgG8Aaif9knfGFDsgZkq9MBTmvhM7hvNsKCptNxoIDHfZFscydVsjbLtWfujuAMuSuH9XavK4mCgzja_nVfQtf6ExNtRJq717kAFlOX2L-qAoxpbN0WVcHEAdZUSndLAWUhto8gRy-Fj8jqm1RrnUcwc6Qg-yVayPJih8UkRLNzfypldWrbc5KyPTRrGslDsIWfoUEE00yJhK9EF8rbwQVnOuF-QYD4b3XbVIIgO8znqDJDBTb-ok1UTJlXD35BcX0NpWg-mwOhlDvH0uJnCGsqEhf2ko4hy0q64TKxSXXqWUj8nFix-n7FQUR5FtOpN-THYx9RR5uvAPbPKjcQr-ie6f_coOzaDAio-o-F_EA7mJHyJqn92oD15vt3S_Vy0ZtSh8HYE9HppzteegboECCxzZKpizCt9n48Krcqaks33CGcOIv7YR-KCpEQXNYHzACeg2IbNB4RHgZXMkDXK3yI4Fs3F0pkHBtPQ3YgjWlAVBPT40luwd1EVZk6W_4jXfYbE2uB0BaELQpgK2NbBvMImvNkY7p3iCEgUYtmXkdEwy1d7Su8q6xhL_VgmBvF9tG2fx5R_S9N54BBasQm2iWHeWB0zMw&skey=cf0bb10b5602fdc3&v=v41",
+    "license": "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/notosanssc/OFL.txt",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/notosanssc"
+  },
+  {
+    "family": "Fredoka",
+    "weights": "500",
+    "format": "WOFF2",
+    "subsetCharacters": "123ABC",
+    "file": "fredoka-number-toggle.woff2",
+    "usage": "Feature skin 123 / ABC keyboard toggle",
+    "bytes": 1488,
+    "sha256": "4838370565ac1f0719461ef09f4ccc2779cf6f0c875a5b195c8850687d26c02d",
+    "source": "https://fonts.gstatic.com/l/font?kit=X7nP4b87HvSqjb_WIi2yDCRwoQ_k7367_B-i2yQag0-mac3OwyLME_uJrep2L3tv&skey=365f4a64c66add9d&v=v17",
+    "license": "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/fredoka/OFL.txt",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/fredoka"
+  }
+]
