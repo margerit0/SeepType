@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "bridge.h"
 #include <rime_api.h>
+#include <rime/config.h>
+#include <rime/dict/prism.h>
+#include <rime/dict/reverse_lookup_dictionary.h>
+#include <rime/dict/table.h>
 #include <cstring>
 #include <exception>
+#include <filesystem>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -12,6 +17,38 @@ namespace {
 RimeApi* api = nullptr;
 bool initialized = false;
 thread_local std::string error;
+
+// Packaged sources are SHA-256 verified by DataDeployer before this call.
+// Reuse deployed indexes only if every supported schema and binary can still
+// be opened by Rime itself. Missing/corrupt builds take the full repair path;
+// Rime's normal modification check still handles changed user configuration.
+bool reusable_build(const char* directory) {
+  try {
+    const std::filesystem::path build(directory);
+    rime::Config defaults;
+    if (!defaults.LoadFromFile(build / "default.yaml") || !defaults.GetList("schema_list")) return false;
+    const auto table_path = build / "cedict_study.table.bin";
+    const auto reverse_path = build / "cedict_study.reverse.bin";
+    if (!std::filesystem::is_regular_file(table_path) || std::filesystem::file_size(table_path) < 128 ||
+        !std::filesystem::is_regular_file(reverse_path) || std::filesystem::file_size(reverse_path) < 128) return false;
+    rime::Table table(table_path);
+    rime::ReverseDb reverse(reverse_path);
+    if (!table.Load() || !reverse.Load()) return false;
+    for (const char* schema : {"study", "study_double_pinyin", "study_flypy"}) {
+      rime::Config config;
+      std::string id;
+      if (!config.LoadFromFile(build / (std::string(schema) + ".schema.yaml")) ||
+          !config.GetString("schema/schema_id", &id) || id != schema) return false;
+      const auto prism_path = build / (std::string(schema) + ".prism.bin");
+      if (!std::filesystem::is_regular_file(prism_path) || std::filesystem::file_size(prism_path) < 128) return false;
+      rime::Prism prism(prism_path);
+      if (!prism.Load() || prism.dict_file_checksum() != table.dict_file_checksum()) return false;
+    }
+    return true;
+  } catch (...) {
+    return false;
+  }
+}
 
 bool valid(uintptr_t session) {
   if (!initialized || !session || !api->find_session(session)) {
@@ -78,7 +115,7 @@ int study_rime_initialize(const char* shared, const char* user, const char* buil
     api->setup(&traits);
     api->initialize(&traits);
     initialized = true;
-    if (api->start_maintenance(True)) api->join_maintenance_thread();
+    if (api->start_maintenance(reusable_build(build) ? False : True)) api->join_maintenance_thread();
     return 1;
   });
 }

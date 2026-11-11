@@ -2,6 +2,7 @@
 package org.studyime.android.ui
 
 import android.provider.Settings
+import android.os.SystemClock
 import android.view.HapticFeedbackConstants
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
@@ -12,13 +13,13 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed as gridItemsIndexed
@@ -38,9 +39,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -64,6 +67,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import org.studyime.android.engine.*
+import org.studyime.android.diagnostics.StartupTimings
+import org.studyime.android.diagnostics.StartupTimings.Phase
 import org.studyime.android.ime.EditorSpec
 import org.studyime.android.ime.InputMetrics
 import org.studyime.android.settings.KeyboardPreferences
@@ -78,6 +83,7 @@ fun StudyKeyboard(
     send: (JSONObject) -> Unit, onSettings: () -> Unit,
     onSwitchIme: () -> Unit, onRetry: () -> Unit,
 ) {
+    val compositionStarted = SystemClock.elapsedRealtimeNanos()
     val colors = LocalStudyColors.current
     val configuration = LocalConfiguration.current
     val density = LocalDensity.current
@@ -92,6 +98,30 @@ fun StudyKeyboard(
     var upper by remember(state.generation) { mutableStateOf(false) }
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
+    val currentState by rememberUpdatedState(state)
+    // Keep letter keys independent of candidate revisions. The callback reads
+    // the current snapshot at activation; a new editor still cancels gestures.
+    val onKey = remember(state.generation, send) {
+        { id: String, text: String ->
+            val latest = currentState
+            when (id) {
+                "shift" -> { upper = !upper; if (!latest.asciiMode) send(event("mode", "ascii" to true)) }
+                "mode" -> { upper = false; send(event("mode", "ascii" to !latest.asciiMode)) }
+                "page" -> { page = if (page == "letters") "numbers" else "letters" }
+                "symbols" -> { page = if (page == "symbols") "numbers" else "symbols" }
+                "delete" -> send(event("key", "code" to 0xff08))
+                "enter" -> send(event("key", "code" to 0xff0d))
+                "space" -> send(event("key", "code" to 32))
+                else -> {
+                    if ((page == "letters" && text.length == 1) || (text == "'" && latest.input.isNotEmpty() && !latest.asciiMode))
+                        send(event("key", "code" to text[0].code))
+                    else send(event("literal", "text" to text))
+                    if (upper) upper = false
+                }
+            }
+        }
+    }
+    val onLongKey = remember(send) { { text: String -> send(event("literal", "text" to text)) } }
     LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, upper, prefs.theme) {
         // A non-focused IME window must announce its completed virtual subtree,
         // including local layout changes. Post after the traversal, rather than
@@ -150,24 +180,8 @@ fun StudyKeyboard(
             if (expanded && state.candidates.isNotEmpty()) {
                 ExpandedCandidates(state, prefs, send, modifier.height(keyRowsHeight)) { expanded = false }
             } else {
-                KeyboardRows(page, upper, state, effectivePrefs, editor, keyHeight, modifier,
-                    onKey = { id, text ->
-                        when (id) {
-                            "shift" -> { upper = !upper; if (!state.asciiMode) send(event("mode", "ascii" to true)) }
-                            "mode" -> { upper = false; send(event("mode", "ascii" to !state.asciiMode)) }
-                            "page" -> { page = if (page == "letters") "numbers" else "letters" }
-                            "symbols" -> { page = if (page == "symbols") "numbers" else "symbols" }
-                            "delete" -> send(event("key", "code" to 0xff08))
-                            "enter" -> send(event("key", "code" to 0xff0d))
-                            "space" -> send(event("key", "code" to 32))
-                            else -> {
-                                if ((page == "letters" && text.length == 1) || (text == "'" && state.input.isNotEmpty() && !state.asciiMode))
-                                    send(event("key", "code" to text[0].code))
-                                else send(event("literal", "text" to text))
-                                if (upper) upper = false
-                            }
-                        }
-                    }, onLongKey = { text -> send(event("literal", "text" to text)) }, onSwitchIme = onSwitchIme,
+                KeyboardRows(page, upper, state.generation, active, state.asciiMode, state.input.isNotEmpty(),
+                    effectivePrefs, editor, keyHeight, modifier, onKey, onLongKey, onSwitchIme,
                 )
             }
         }
@@ -213,6 +227,11 @@ fun StudyKeyboard(
                 onSettings()
             })
         }
+    }
+    val compositionFinished = SystemClock.elapsedRealtimeNanos()
+    SideEffect {
+        InputMetrics.composed(state.generation, state.revision, compositionStarted, compositionFinished)
+        StartupTimings.record(Phase.COMPOSITION, compositionStarted, compositionFinished)
     }
 }
 
@@ -282,9 +301,15 @@ private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, ed
             val visible = ((maxWidth.value - 48f) / (88f * fontScale * prefs.textScale)).toInt().coerceIn(1, 3)
             val width = (maxWidth - 48.dp) / visible
             Row(verticalAlignment = Alignment.CenterVertically) {
-                LazyRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(3.dp)) {
-                    itemsIndexed(state.candidates, key = { index, item -> "${state.page}:$index:${item.chinese}" }) { index, candidate ->
-                        CandidateCard(candidate, index, state, prefs, send, Modifier.width(width - 3.dp))
+                // Rime pages contain five items. An ordinary scrolling row
+                // avoids a second lazy subcomposition during every key draw.
+                Row(Modifier.weight(1f).horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+                    // Reuse each visible slot when its word changes. Gestures
+                    // below remain keyed by generation AND revision.
+                    state.candidates.forEachIndexed { index, candidate ->
+                        key(state.page, index) {
+                            CandidateCard(candidate, index, state, prefs, send, Modifier.width(width - 3.dp))
+                        }
                     }
                 }
                 ToolButton(if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
@@ -302,7 +327,7 @@ private fun CandidateCard(candidate: Candidate, index: Int, state: EngineSnapsho
     val view = LocalView.current
     fun select() = send(event("select", "index" to index, "revision" to state.revision))
     fun inspect() = send(event("inspect", "index" to index, "revision" to state.revision))
-    Column(modifier.clip(RoundedCornerShape(11.dp)).background(if (index == state.highlighted) colors.tint else androidx.compose.ui.graphics.Color.Transparent)
+    Column(modifier.background(if (index == state.highlighted) colors.tint else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(11.dp))
         .pointerInput(state.generation, state.revision, index) {
             detectTapGestures(onTap = { select() }, onLongPress = {
                 if (prefs.haptics) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
@@ -369,26 +394,26 @@ private data class KeySpec(val id: String, val text: String, val weight: Float =
                            val icon: ImageVector? = null, val secondary: String? = null, val spoken: String = text)
 
 @Composable
-private fun KeyboardRows(page: String, upper: Boolean, state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
+private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled: Boolean, asciiMode: Boolean,
+                         composing: Boolean, prefs: KeyboardPreferences, editor: EditorSpec,
                          height: Dp, modifier: Modifier, onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, onSwitchIme: () -> Unit) {
     val letters = page == "letters"
     // Compact labels before the 320 dp mode key clips at 1.3x font scale.
     val largeLabels = LocalDensity.current.fontScale * prefs.textScale >= 1.25f
     val actionIcon = when {
-        state.input.isNotEmpty() -> Icons.Outlined.Check
+        composing -> Icons.Outlined.Check
         editor.action == EditorInfo.IME_ACTION_SEARCH -> Icons.Outlined.Search
         editor.action == EditorInfo.IME_ACTION_SEND -> Icons.AutoMirrored.Outlined.Send
         editor.action in listOf(EditorInfo.IME_ACTION_NEXT, EditorInfo.IME_ACTION_GO, EditorInfo.IME_ACTION_PREVIOUS) -> Icons.AutoMirrored.Outlined.ArrowForward
         editor.action == EditorInfo.IME_ACTION_DONE -> Icons.Outlined.Check
         else -> Icons.AutoMirrored.Outlined.KeyboardReturn
     }
-    val first = when (page) { "numbers" -> "1234567890"; "symbols" -> if (state.asciiMode) "!?.,:;\"'`~" else "！？。，、；：“”‘"; else -> "qwertyuiop" }
-    val second = when (page) { "numbers" -> if (state.asciiMode) "@#$%&*()-+" else "@#¥%&*()-+"; "symbols" -> if (state.asciiMode) "()[]{}<>\\|" else "’（）【】《》〈〉"; else -> "asdfghjkl" }
-    val third = when (page) { "numbers" -> ".,'\":/?"; "symbols" -> if (state.asciiMode) "_-+=&*%" else "…—·～「」•"; else -> "zxcvbnm" }
+    val first = when (page) { "numbers" -> "1234567890"; "symbols" -> if (asciiMode) "!?.,:;\"'`~" else "！？。，、；：“”‘"; else -> "qwertyuiop" }
+    val second = when (page) { "numbers" -> if (asciiMode) "@#$%&*()-+" else "@#¥%&*()-+"; "symbols" -> if (asciiMode) "()[]{}<>\\|" else "’（）【】《》〈〉"; else -> "asdfghjkl" }
+    val third = when (page) { "numbers" -> ".,'\":/?"; "symbols" -> if (asciiMode) "_-+=&*%" else "…—·～「」•"; else -> "zxcvbnm" }
     fun letter(char: Char, index: Int = -1) = KeySpec(char.toString(), if (letters && upper) char.uppercase() else char.toString(),
         secondary = if (letters && index >= 0) "1234567890"[index].toString() else null)
-    val enabled = state.ready && !state.error
-    CompositionLocalProvider(LocalGestureGeneration provides state.generation) {
+    CompositionLocalProvider(LocalGestureGeneration provides generation) {
     Column(modifier) {
         Row { first.forEachIndexed { index, char -> KeyCell(letter(char, index), height, prefs, enabled, onKey, onLongKey) } }
         Row {
@@ -407,14 +432,14 @@ private fun KeyboardRows(page: String, upper: Boolean, state: EngineSnapshot, pr
             KeyCell(KeySpec("page", if (letters) "?123" else "ABC", 1.4f, true,
                 if (largeLabels) { if (letters) Icons.Outlined.Dialpad else Icons.Outlined.Keyboard } else null,
                 spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey)
-            KeyCell(KeySpec("mode", if (largeLabels) { if (state.asciiMode) "英" else "中" } else if (state.asciiMode) "英/中" else "中/英", 1.35f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
+            KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.35f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
                 enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec("space", if (state.asciiMode) "space" else "拾词", 4.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec(".", if (state.asciiMode) "." else "。", 1.1f, spoken = "句号"), height, prefs, enabled,
-                { id, _ -> onKey(id, if (letters) "." else if (state.asciiMode) "." else "。") }, onLongKey)
-            KeyCell(KeySpec("enter", if (state.input.isNotEmpty()) "选词" else editor.actionLabel, 1.65f, true,
-                if (largeLabels) actionIcon else if (state.input.isEmpty() && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
-                spoken = if (state.input.isNotEmpty()) "确认中文选词" else editor.actionLabel), height, prefs, enabled, onKey, onLongKey)
+            KeyCell(KeySpec("space", if (asciiMode) "space" else "拾词", 4.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
+            KeyCell(KeySpec(".", if (asciiMode) "." else "。", 1.1f, spoken = "句号"), height, prefs, enabled,
+                { id, _ -> onKey(id, if (letters) "." else if (asciiMode) "." else "。") }, onLongKey)
+            KeyCell(KeySpec("enter", if (composing) "选词" else editor.actionLabel, 1.65f, true,
+                if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
+                spoken = if (composing) "确认中文选词" else editor.actionLabel), height, prefs, enabled, onKey, onLongKey)
         }
     }
     }
@@ -432,7 +457,7 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
     val longAction by rememberUpdatedState(newValue = specialLong ?: key.secondary?.let { { onLongKey(it) } })
     fun feedback() { if (prefs.haptics) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP) }
     val base = when { key.id == "enter" -> colors.accent; key.function -> colors.function; else -> colors.key }
-    val fill by animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
+    val fill = animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
     Box(Modifier.weight(key.weight).height(height).testTag("key_${key.id}").semantics {
         contentDescription = key.spoken
         role = Role.Button
@@ -458,8 +483,8 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             onLongPress = if (longAction == null) null else { _ -> if (enabled) { feedback(); longAction?.invoke() } },
         )
     }.padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp), contentAlignment = Alignment.Center) {
-        Box(Modifier.fillMaxSize().shadow(if (pressed) 0.dp else 1.dp, RoundedCornerShape(9.dp))
-            .clip(RoundedCornerShape(9.dp)).background(fill), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxSize().shadow(if (pressed) 0.dp else 1.dp, RoundedCornerShape(9.dp), clip = false)
+            .drawBehind { drawRoundRect(fill.value, cornerRadius = CornerRadius(9.dp.toPx())) }, contentAlignment = Alignment.Center) {
             val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
             if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = ink)
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,

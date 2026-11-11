@@ -5,6 +5,7 @@ import android.os.SystemClock
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import java.io.File
+import java.io.RandomAccessFile
 import java.security.MessageDigest
 import org.json.JSONArray
 import org.json.JSONObject
@@ -73,6 +74,19 @@ class ResourceRecoveryTest {
                 it.version
             }, close = {})
             check("Native deployment failure rebuilds only resource indexes", recreated == b && nativeAttempts == 2 && File(first.user, "sentinel").isFile)
+
+            val largeText = "0123456789".repeat(14_000)
+            version(largeText)
+            val large = deployer.prepare()
+            val largeFile = File(large.shared, "schema.yaml")
+            check("Streaming verification covers a resource larger than two buffers", deployer.prepare().version == large.version && largeFile.readText() == largeText)
+            val modified = largeFile.lastModified()
+            RandomAccessFile(largeFile, "rw").use { file -> file.seek(65_536); file.write('X'.code) }
+            largeFile.setLastModified(modified)
+            check("Same-size corruption with unchanged mtime is still repaired", File(deployer.prepare().shared, "schema.yaml").readText() == largeText)
+            largeFile.delete()
+            check("Missing previously verified resource is restored", File(deployer.prepare().shared, "schema.yaml").readText() == largeText)
+            version("synthetic version B")
 
             File(root, "active-version").delete()
             File(root, "active-version").mkdirs()

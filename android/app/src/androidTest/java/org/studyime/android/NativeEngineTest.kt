@@ -220,6 +220,24 @@ class NativeEngineTest {
             clear()
             NativeCore.destroy(handle)
             handle = 0
+            check("Synthetic missing double-pinyin index is removed", File(resources.build, "study_flypy.prism.bin").delete())
+            handle = NativeCore.create(resources.shared.path, resources.user.path, resources.build.path)
+            generation++
+            start()
+            scheme("study_flypy")
+            check("Missing compiled index is rebuilt with unchanged packaged sources", type("gsyr").candidates.any { it.chinese == "公园" })
+            clear()
+            NativeCore.destroy(handle)
+            handle = 0
+            File(resources.build, "study.prism.bin").writeText("synthetic damaged compiled index")
+            handle = NativeCore.create(resources.shared.path, resources.user.path, resources.build.path)
+            generation++
+            start()
+            scheme("study")
+            check("Damaged compiled prism is rebuilt before native input", type("gongyuan").candidates.any { it.chinese == "公园" })
+            clear()
+            NativeCore.destroy(handle)
+            handle = 0
             File(resources.shared, "lua/study_core.lua").writeText("error('synthetic damaged resource')")
             handle = deployer.open(initialize = { fixed ->
                 NativeCore.create(fixed.shared.path, fixed.user.path, fixed.build.path)

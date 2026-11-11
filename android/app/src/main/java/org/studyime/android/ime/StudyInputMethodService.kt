@@ -27,6 +27,8 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import org.studyime.android.MainActivity
+import org.studyime.android.diagnostics.StartupTimings
+import org.studyime.android.diagnostics.StartupTimings.Phase
 import org.studyime.android.engine.EngineHost
 import org.studyime.android.engine.EngineSnapshot
 import org.studyime.android.engine.event
@@ -58,17 +60,19 @@ class StudyInputMethodService : InputMethodService() {
     private val expectedSelections = ArrayDeque<ExpectedSelection>()
 
     override fun onCreate() {
+        val started = StartupTimings.start()
         super.onCreate()
         preferences = Preferences.get(this)
         prefs = preferences.state.value
         engine = EngineHost(this)
-        engine.onSnapshot = { snapshot, started, type ->
+        engine.onSnapshot = { snapshot, timing, type ->
             if (delivery.accept(snapshot.generation, snapshot.revision)) {
                 if (deliver(snapshot)) {
                     ascii = snapshot.asciiMode
                     state = snapshot.copy(commands = emptyList())
                     // Aggregate durations only. No text, package or candidate is retained.
-                    if (type == "key") InputMetrics.result(snapshot.generation, snapshot.revision, started)
+                    if (type == "key") InputMetrics.result(snapshot.generation, snapshot.revision, timing)
+                    if (type == "start" || type == "restart") StartupTimings.record(Phase.FIRST_DELIVERY, timing.main)
                 } else connectionFailed()
             }
         }
@@ -83,11 +87,13 @@ class StudyInputMethodService : InputMethodService() {
                 if (generation != 0L && engineChanged) send(event("configure", "config" to config()))
             }
         }
+        StartupTimings.record(Phase.SERVICE_CREATE, started)
     }
 
     override fun onEvaluateFullscreenMode() = false
 
     override fun onCreateInputView(): View {
+        val started = SystemClock.elapsedRealtimeNanos()
         keyboardView?.disposeComposition()
         viewOwner?.destroy()
         val owner = ImeViewOwner().also { viewOwner = it }
@@ -119,10 +125,11 @@ class StudyInputMethodService : InputMethodService() {
             }
             keyboardView = this
             owner.resume()
-        }
+        }.also { StartupTimings.record(Phase.INPUT_VIEW_CREATE, started) }
     }
 
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
+        StartupTimings.mark(Phase.START_INPUT)
         super.onStartInput(attribute, restarting)
         val identity = EditorIdentity(attribute.packageName, attribute.fieldId, attribute.inputType, attribute.imeOptions)
         val oldConnection = boundConnection
@@ -182,6 +189,7 @@ class StudyInputMethodService : InputMethodService() {
     private fun config() = prefs.engineConfig(ascii, editor.sensitive, editor.noPersonalization)
 
     override fun onStartInputView(info: EditorInfo, restarting: Boolean) {
+        StartupTimings.mark(Phase.START_INPUT_VIEW)
         InputMetrics.showRequested()
         super.onStartInputView(info, restarting)
         viewOwner?.resume()

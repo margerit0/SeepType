@@ -6,6 +6,8 @@ import android.util.AtomicFile
 import java.io.File
 import java.security.MessageDigest
 import org.json.JSONObject
+import org.studyime.android.diagnostics.StartupTimings
+import org.studyime.android.diagnostics.StartupTimings.Phase
 
 /** New resources stage independently of the persistent private user dictionary. */
 class DataDeployer(
@@ -19,7 +21,27 @@ class DataDeployer(
     }
     private val active get() = AtomicFile(File(root, "active-version"))
 
-    private fun hash(bytes: ByteArray) = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
+    private fun ByteArray.hex(): String {
+        val digits = "0123456789abcdef"
+        return CharArray(size * 2) { index ->
+            val value = this[index / 2].toInt() and 0xff
+            digits[if (index % 2 == 0) value ushr 4 else value and 0xf]
+        }.concatToString()
+    }
+
+    private fun hash(bytes: ByteArray) = MessageDigest.getInstance("SHA-256").digest(bytes).hex()
+
+    private fun hash(file: File, buffer: ByteArray): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        file.inputStream().use { input ->
+            while (true) {
+                val count = input.read(buffer)
+                if (count < 0) break
+                digest.update(buffer, 0, count)
+            }
+        }
+        return digest.digest().hex()
+    }
 
     private fun child(directory: File, name: String): File = File(directory, name).canonicalFile.also {
         require(it.path.startsWith(directory.canonicalPath + File.separator))
@@ -30,14 +52,17 @@ class DataDeployer(
         val manifest = JSONObject(File(directory, "manifest.json").readText())
         if (manifest.getString("version") != version || manifest.getInt("format") != 1) return false
         val hashes = manifest.getJSONObject("files")
+        // Still hash every byte on each open, without whole-dictionary arrays
+        // or a locale-aware Formatter for each of the 32 digest bytes.
+        val buffer = ByteArray(64 * 1024)
         hashes.length() > 0 && hashes.keys().asSequence().all { name ->
             val file = child(directory, name)
-            file.isFile && hash(file.readBytes()) == hashes.getString(name)
+            file.isFile && hash(file, buffer) == hashes.getString(name)
         }
     }.getOrDefault(false)
 
     fun prepare(force: Boolean = false): Resources = synchronized(lock) {
-        val manifestBytes = asset("generated/manifest.json")
+        val manifestBytes = StartupTimings.measure(Phase.MANIFEST_READ) { asset("generated/manifest.json") }
         val manifest = JSONObject(String(manifestBytes, Charsets.UTF_8))
         require(manifest.getInt("format") == 1)
         val version = manifest.getString("version")
@@ -45,19 +70,21 @@ class DataDeployer(
         val versions = File(root, "resources").apply { mkdirs() }
         val destination = File(versions, version)
         val user = File(root, "user").apply { mkdirs() }
-        if (!force && verified(destination, version)) {
+        if (!force && StartupTimings.measure(Phase.RESOURCE_VERIFY) { verified(destination, version) }) {
             return@synchronized Resources(version, destination, user)
         }
         val pending = File(versions, "$version.pending")
         if (pending.exists()) check(pending.deleteRecursively()) { "staging-cleanup-failed" }
         check(pending.mkdirs())
         val hashes = manifest.getJSONObject("files")
-        hashes.keys().forEach { name ->
-            val output = child(pending, name)
-            val content = asset("generated/$name")
-            check(hash(content) == hashes.getString(name)) { "asset-integrity-failed" }
-            output.parentFile!!.mkdirs()
-            output.outputStream().use { it.write(content) }
+        StartupTimings.measure(Phase.RESOURCE_COPY) {
+            hashes.keys().forEach { name ->
+                val output = child(pending, name)
+                val content = asset("generated/$name")
+                check(hash(content) == hashes.getString(name)) { "asset-integrity-failed" }
+                output.parentFile!!.mkdirs()
+                output.outputStream().use { it.write(content) }
+            }
         }
         File(pending, "manifest.json").writeBytes(manifestBytes)
         File(pending, ".verified").writeText(version)
@@ -77,7 +104,7 @@ class DataDeployer(
     fun <T> open(initialize: (Resources) -> T, close: (T) -> Unit): T {
         fun activate(resources: Resources): T {
             val value = initialize(resources)
-            try { markReady(resources) }
+            try { StartupTimings.measure(Phase.RESOURCE_ACTIVATE) { markReady(resources) } }
             catch (error: Exception) { close(value); throw error }
             File(resources.directory.parentFile, "${resources.version}.replaced").deleteRecursively()
             return value
@@ -93,6 +120,7 @@ class DataDeployer(
     }
 
     fun markReady(resources: Resources) {
+        if (runCatching { String(active.readFully(), Charsets.UTF_8) }.getOrNull() == resources.version) return
         root.mkdirs()
         val stream = active.startWrite()
         try {

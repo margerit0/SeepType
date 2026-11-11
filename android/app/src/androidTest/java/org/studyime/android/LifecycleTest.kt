@@ -12,6 +12,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
 import androidx.test.runner.lifecycle.Stage
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until
 import java.io.File
 import org.json.JSONArray
@@ -37,6 +38,15 @@ class LifecycleTest {
             device.waitForIdle()
         }
         fun currentText() = driver.editor().text.orEmpty()
+        fun firstCandidate(): Pair<UiObject2, String> {
+            val card = device.wait(Until.findObject(By.res("candidate_0")), 5000) ?: error("First candidate missing")
+            // Compose may expose the merged name through a virtual child of
+            // the clickable, selected container. Read either representation.
+            val label = card.contentDescription?.takeIf { it.isNotEmpty() }
+                ?: card.findObject(By.desc(java.util.regex.Pattern.compile(".+")))?.contentDescription
+                ?: error("First candidate has no accessible name")
+            return card to label
+        }
         try {
             device.setOrientationNatural()
             driver.launch()
@@ -120,6 +130,37 @@ class LifecycleTest {
             check("Fresh input works after refocusing the recreated landscape editor", currentText() == "你好")
             device.setOrientationNatural()
             driver.key("g")
+
+            driver.launch()
+            repeat(10) {
+                driver.type("nihao", delayMs = 0)
+                driver.tapKey("space")
+            }
+            driver.expectText("你好".repeat(10))
+            check("Rapid Chinese candidate updates commit every word exactly once", currentText() == "你好".repeat(10))
+            driver.launch()
+            driver.type("nihaom", delayMs = 0)
+            driver.tapKey("delete")
+            driver.tapKey("space")
+            driver.expectText("你好")
+            check("Deleting after a rapid Chinese sequence selects the updated candidate", currentText() == "你好")
+
+            driver.launch()
+            driver.type("shi")
+            val originalCandidate = firstCandidate().second
+            device.findObject(By.desc("展开候选")).click()
+            // Icon descriptions live below the clickable button; the icon's
+            // own enabled flag does not represent the disabled parent.
+            device.wait(Until.findObject(By.clickable(true).enabled(true).hasDescendant(By.desc("下一页候选"))), 5000)!!.click()
+            device.wait(Until.findObject(By.clickable(true).enabled(true).hasDescendant(By.desc("上一页候选"))), 5000)!!.click()
+            assertTrue("Paging returns to the first page", device.wait(Until.hasObject(
+                By.clickable(true).enabled(false).hasDescendant(By.desc("上一页候选"))), 5000))
+            val returned = firstCandidate()
+            assertTrue("The original first candidate is restored", returned.second == originalCandidate)
+            returned.first.click()
+            val selectedChinese = originalCandidate.substringBefore("，英文释义：")
+            driver.expectText(selectedChinese)
+            check("Paging forward and back commits the current candidate once", currentText() == selectedChinese)
 
             driver.launch("email")
             val alphabet = "qwertyuiopasdfghjklzxcvbnm"
