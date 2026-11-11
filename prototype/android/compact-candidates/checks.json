@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "pinyinInCandidateUi": false,
+  "englishAboveChinese": true,
+  "defaultCandidates": 7,
+  "narrowWidths": [
+    {
+      "viewport": 392,
+      "keyboard": 358,
+      "candidates": 6
+    },
+    {
+      "viewport": 352,
+      "keyboard": 318,
+      "candidates": 6
+    },
+    {
+      "viewport": 320,
+      "keyboard": 286,
+      "candidates": 5
+    }
+  ],
+  "stableBarHeight": 60,
+  "checks": [
+    "single and double word layouts",
+    "complete definition from long press",
+    "English insertion",
+    "nine expanded candidates fit",
+    "Chinese insertion",
+    "English visibility toggle",
+    "light and dark appearance",
+    "narrow widths without horizontal overflow"
+  ],
+  "errors": []
+}

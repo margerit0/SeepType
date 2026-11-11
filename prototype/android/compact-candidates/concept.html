@@ -1,0 +1,651 @@
+<style>
+  #ime-status-review {
+    --ime-paper: light-dark(#fbfcfa, #18211d);
+    --ime-board: light-dark(#eaf0eb, #222e27);
+    --ime-key: light-dark(#ffffff, #37463c);
+    --ime-function: light-dark(#dbe5dd, #2d3e32);
+    --ime-ink: light-dark(#27382f, #e5eee7);
+    --ime-muted: light-dark(#617368, #adbcaf);
+    --ime-accent: light-dark(#2d6b53, #b1d9bd);
+    --ime-on-accent: light-dark(#ffffff, #183222);
+    --ime-tint: light-dark(#d7e7da, #3a5140);
+    --ime-line: light-dark(#d8e1d9, #415146);
+    --ime-shadow: light-dark(#243b2c14, #00000028);
+    --ime-shadow-key: light-dark(#2e473223, #00000040);
+    font-family: "Segoe UI", "Microsoft YaHei UI", "PingFang SC", sans-serif;
+    color: var(--ime-ink);
+  }
+  #ime-status-review * { box-sizing: border-box; }
+  #ime-status-review [hidden] { display: none !important; }
+  #ime-status-review .im-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0 12px;
+    min-height: 474px;
+  }
+  #ime-status-review .im-phone {
+    width: min(100%, 420px);
+    color: var(--ime-ink);
+    background: var(--ime-paper);
+    border: 1px solid var(--ime-line);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px var(--ime-shadow);
+    overflow: hidden;
+    --ime-bar-height: 60px;
+    --ime-key-radius: 9px;
+    --ime-candidate-size: 18px;
+    --ime-visible-count: 7;
+  }
+  #ime-status-review button,
+  #ime-status-review textarea {
+    font-family: inherit;
+    font-weight: 400;
+  }
+  #ime-status-review button {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  #ime-status-review button:disabled { opacity: .38; cursor: default; }
+  #ime-status-review .im-note { padding: 17px 18px 11px; }
+  #ime-status-review .im-note-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--ime-muted);
+    margin-bottom: 6px;
+  }
+  #ime-status-review .im-note-label svg { width: 14px; height: 14px; }
+  #ime-status-review textarea {
+    width: 100%;
+    height: 49px;
+    min-height: 49px;
+    display: block;
+    padding: 0;
+    resize: none;
+    border: 0;
+    border-radius: 0;
+    background: var(--ime-paper);
+    color: var(--ime-ink);
+    font-size: 18px;
+    line-height: 26px;
+    caret-color: var(--ime-accent);
+  }
+  #ime-status-review textarea::placeholder { color: var(--ime-muted); opacity: .7; }
+  #ime-status-review .im-board { background: var(--ime-board); }
+  #ime-status-review .im-status {
+    height: var(--ime-bar-height);
+    min-height: var(--ime-bar-height);
+    padding: 0 4px;
+    position: relative;
+    border-top: 1px solid var(--ime-line);
+  }
+  #ime-status-review .im-idle {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 100%;
+    padding: 0 3px;
+  }
+  #ime-status-review .im-tools-spacer { flex: 1; }
+  #ime-status-review .im-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--ime-muted);
+  }
+  #ime-status-review .im-icon svg { width: 20px; height: 20px; stroke-width: 1.7; }
+  #ime-status-review .im-icon:active,
+  #ime-status-review .im-icon[aria-pressed="true"] { background: var(--ime-function); color: var(--ime-accent); }
+  #ime-status-review .im-translation {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 44px;
+    padding: 0 9px 0 10px;
+    color: var(--ime-accent);
+    background: transparent;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  #ime-status-review .im-switch-track {
+    display: inline-flex;
+    align-items: center;
+    width: 26px;
+    height: 16px;
+    padding: 3px;
+    border-radius: 10px;
+    background: var(--ime-accent);
+  }
+  #ime-status-review .im-switch-track::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translateX(10px);
+    background: var(--ime-on-accent);
+    transition: transform 140ms ease;
+  }
+  #ime-status-review .im-translation[aria-checked="false"] { color: var(--ime-muted); }
+  #ime-status-review .im-translation[aria-checked="false"] .im-switch-track { background: var(--ime-function); }
+  #ime-status-review .im-translation[aria-checked="false"] .im-switch-track::after { transform: translateX(0); background: var(--ime-muted); }
+  #ime-status-review .im-composing {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  #ime-status-review .im-strip { flex: 1; min-width: 0; }
+  #ime-status-review .im-candidates { display: grid; grid-template-columns: repeat(var(--ime-visible-count), minmax(0, 1fr)); gap: 2px; }
+  #ime-status-review .im-candidate {
+    height: 48px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--ime-ink);
+    user-select: none;
+  }
+  #ime-status-review .im-candidate:first-child { color: var(--ime-accent); background: var(--ime-tint); }
+  #ime-status-review .im-candidate .im-cn { font-size: var(--ime-candidate-size); font-weight: 500; line-height: 24px; }
+  #ime-status-review .im-candidate .im-en { font-size: 11px; line-height: 15px; color: var(--ime-muted); }
+  #ime-status-review .im-candidate:first-child .im-en { color: var(--ime-accent); }
+  #ime-status-review .im-candidate span { width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+  #ime-status-review .im-composing > .im-icon { flex-basis: 28px; width: 28px; height: 52px; border-radius: 8px; }
+  #ime-status-review .im-key-area { height: 216px; position: relative; }
+  #ime-status-review .im-keys { display: flex; flex-direction: column; gap: 6px; padding: 5px 5px 9px; height: 100%; }
+  #ime-status-review .im-key-row { display: flex; flex: 1; gap: 5px; min-height: 0; }
+  #ime-status-review .im-key-row[data-row="1"] { padding-inline: 4.8%; }
+  #ime-status-review .im-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border-radius: var(--ime-key-radius);
+    background: var(--ime-key);
+    color: var(--ime-ink);
+    box-shadow: 0 1px 1px var(--ime-shadow-key);
+    font-size: 21px;
+    line-height: 24px;
+    user-select: none;
+    transition: background 80ms ease, transform 80ms ease;
+  }
+  #ime-status-review .im-key:active,
+  #ime-status-review .im-key.im-key-down { background: var(--ime-tint); transform: translateY(1px); box-shadow: none; }
+  #ime-status-review .im-key.im-fn { background: var(--ime-function); font-size: 12px; line-height: 18px; }
+  #ime-status-review .im-key svg { width: 22px; height: 22px; stroke-width: 1.8; }
+  #ime-status-review .im-key.im-enter { background: var(--ime-accent); color: var(--ime-on-accent); }
+  #ime-status-review .im-key.im-space { font-size: 12px; color: var(--ime-muted); letter-spacing: 1px; }
+  #ime-status-review .im-mode-current { font-weight: 500; color: var(--ime-accent); }
+  #ime-status-review .im-mode-other { color: var(--ime-muted); }
+  #ime-status-review .im-mode-slash { padding: 0 3px; color: var(--ime-muted); opacity: .55; }
+  #ime-status-review .im-home { height: 16px; display: flex; align-items: center; justify-content: center; }
+  #ime-status-review .im-home::before { content: ""; display: block; width: 106px; height: 4px; border-radius: 4px; background: var(--ime-ink); opacity: .2; }
+  #ime-status-review .im-panel {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 3px 12px 9px;
+    background: var(--ime-board);
+    display: flex;
+    flex-direction: column;
+  }
+  #ime-status-review .im-panel-top { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+  #ime-status-review .im-panel-heading { font-size: 14px; font-weight: 500; line-height: 20px; }
+  #ime-status-review .im-option-row { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: 10px; }
+  #ime-status-review .im-option-label { font-size: 13px; line-height: 20px; }
+  #ime-status-review .im-theme-options { display: flex; gap: 4px; }
+  #ime-status-review .im-choice {
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ime-muted);
+    font-size: 12px;
+  }
+  #ime-status-review .im-choice[aria-pressed="true"] { background: var(--ime-tint); color: var(--ime-accent); }
+  #ime-status-review .im-definition-word { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+  #ime-status-review .im-definition-cn { font-size: 21px; font-weight: 500; line-height: 28px; }
+  #ime-status-review .im-definition-en { font-size: 23px; line-height: 30px; color: var(--ime-accent); padding: 16px 0; overflow-wrap: anywhere; }
+  #ime-status-review .im-definition-actions { display: flex; gap: 8px; margin-top: auto; }
+  #ime-status-review .im-action {
+    flex: 1;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    background: var(--ime-function);
+    color: var(--ime-ink);
+    font-size: 13px;
+  }
+  #ime-status-review .im-action.im-primary { background: var(--ime-accent); color: var(--ime-on-accent); }
+  #ime-status-review .im-word-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  #ime-status-review .im-grid-word { height: 48px; padding: 3px 8px; border-radius: 8px; background: var(--ime-key); color: var(--ime-ink); text-align: center; min-width: 0; }
+  #ime-status-review .im-grid-word span { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  #ime-status-review .im-grid-word .im-cn { font-size: 18px; line-height: 23px; font-weight: 500; }
+  #ime-status-review .im-grid-word .im-en { font-size: 11px; line-height: 15px; color: var(--ime-accent); }
+  #ime-status-review .im-scenarios { display: flex; justify-content: center; align-items: center; gap: 2px; width: min(100%, 420px); }
+  #ime-status-review .im-scenario {
+    min-height: 44px;
+    padding: 0 12px;
+    color: var(--ime-muted);
+    background: transparent;
+    border-radius: 11px;
+    font-size: 12px;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+  #ime-status-review .im-scenario[aria-pressed="true"] { color: var(--ime-accent); background: var(--ime-tint); }
+  #ime-status-review .im-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 380px) {
+    #ime-status-review .im-phone { border-radius: 17px; }
+    #ime-status-review .im-key-row { gap: 4px; }
+    #ime-status-review .im-scenario { padding-inline: 9px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #ime-status-review .im-key,
+    #ime-status-review .im-switch-track::after { transition: none; }
+  }
+</style>
+
+<div id="ime-status-review" class="viz-dotted-background" aria-label="英文在上、中文在下的紧凑候选栏">
+  <section data-variant="英文在上，多词并排" aria-label="紧凑候选栏设计">
+    <div class="im-stage"></div>
+  </section>
+</div>
+
+<template id="ime-status-template">
+  <div class="im-phone" aria-label="键盘交互预览">
+    <div class="im-note">
+      <label class="im-note-label"><i data-lucide="pencil-line" aria-hidden="true"></i><span>输入预览</span></label>
+      <textarea aria-label="输入预览，可用电脑键盘或下方按键输入" placeholder="记点什么…" inputmode="none" spellcheck="false" autocomplete="off"></textarea>
+    </div>
+    <div class="im-board">
+      <div class="im-status" aria-label="状态与候选栏">
+        <div class="im-idle">
+          <button class="im-icon cursor-interaction" type="button" data-action="settings" aria-label="键盘设置" aria-pressed="false" data-tooltip="键盘设置"><i data-lucide="sliders-horizontal" aria-hidden="true"></i></button>
+          <div class="im-tools-spacer"></div>
+          <button class="im-icon cursor-interaction" type="button" data-action="theme" aria-label="切换深色" data-tooltip="切换浅深色"><i data-lucide="moon" aria-hidden="true"></i></button>
+          <button class="im-icon cursor-interaction" type="button" data-action="dictionary" aria-label="查看最近词语释义" data-tooltip="查看最近词语释义" disabled><i data-lucide="book-open" aria-hidden="true"></i></button>
+          <button class="im-translation cursor-interaction" type="button" data-action="english" role="switch" aria-label="显示英文释义" aria-checked="true"><span>英译</span><span class="im-switch-track" aria-hidden="true"></span></button>
+        </div>
+        <div class="im-composing" hidden>
+          <div class="im-strip">
+            <div class="im-candidates" aria-label="中文候选，轻点输入，长按查看释义"></div>
+          </div>
+          <button class="im-icon cursor-interaction" type="button" data-action="expand" aria-label="展开候选" aria-expanded="false" data-tooltip="展开候选"><i data-lucide="chevron-down" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="im-key-area">
+        <div class="im-keys" role="group" aria-label="模拟键盘"></div>
+        <div class="im-panel" data-panel="settings" hidden>
+          <div class="im-panel-top"><span class="im-panel-heading">键盘设置</span><button class="im-icon cursor-interaction" type="button" data-action="close" aria-label="返回键盘"><i data-lucide="x" aria-hidden="true"></i></button></div>
+          <div class="im-option-row"><span class="im-option-label">外观</span><div class="im-theme-options" aria-label="键盘外观"><button class="im-choice cursor-interaction" data-theme="system" type="button" aria-pressed="true">自动</button><button class="im-choice cursor-interaction" data-theme="light" type="button" aria-pressed="false">浅色</button><button class="im-choice cursor-interaction" data-theme="dark" type="button" aria-pressed="false">深色</button></div></div>
+          <div class="im-option-row"><span class="im-option-label">显示英文释义</span><button class="im-translation cursor-interaction" type="button" data-action="english" role="switch" aria-label="显示英文释义" aria-checked="true"><span class="im-switch-track" aria-hidden="true"></span></button></div>
+        </div>
+        <div class="im-panel" data-panel="definition" hidden>
+          <div class="im-panel-top"><div class="im-definition-word"><span class="im-definition-cn"></span></div><button class="im-icon cursor-interaction" type="button" data-action="close" aria-label="关闭释义"><i data-lucide="x" aria-hidden="true"></i></button></div>
+          <div class="im-definition-en"></div>
+          <div class="im-definition-actions"><button class="im-action cursor-interaction" type="button" data-action="commit-chinese">输入中文</button><button class="im-action im-primary cursor-interaction" type="button" data-action="commit-english">输入英文</button></div>
+        </div>
+        <div class="im-panel" data-panel="expanded" hidden>
+          <div class="im-panel-top"><span class="im-panel-heading">候选词</span><button class="im-icon cursor-interaction" type="button" data-action="close" aria-label="返回键盘"><i data-lucide="keyboard" aria-hidden="true"></i></button></div>
+          <div class="im-word-grid"></div>
+        </div>
+      </div>
+      <div class="im-home" aria-hidden="true"></div>
+    </div>
+    <div class="im-sr" aria-live="polite" data-live></div>
+  </div>
+  <div class="im-scenarios" role="group" aria-label="试用输入状态">
+    <button type="button" class="im-scenario cursor-interaction" data-scenario="idle" aria-pressed="false">待机</button>
+    <button type="button" class="im-scenario cursor-interaction" data-scenario="shi" aria-pressed="true">单字候选</button>
+    <button type="button" class="im-scenario cursor-interaction" data-scenario="shijie" aria-pressed="false">双字候选</button>
+    <button type="button" class="im-scenario cursor-interaction" data-scenario="english" aria-pressed="false">英文输入</button>
+  </div>
+</template>
+
+<script>
+(() => {
+  const root = document.getElementById('ime-status-review');
+  const template = document.getElementById('ime-status-template');
+  const variants = [...root.querySelectorAll('[data-variant]')];
+  const controllers = [];
+  const sessionToken = Math.random().toString(36).slice(2);
+  let savedRevision = 0;
+  const geometry = { barHeight: 60, keyRadius: 9, candidateSize: 18, candidateDensity: 'auto' };
+  const entries = {
+    nihao: [ ['你好', 'nǐ hǎo', 'hello'], ['你', 'nǐ', 'you', 2], ['拟', 'nǐ', 'draft', 2] ],
+    ni: [ ['你', 'nǐ', 'you'], ['拟', 'nǐ', 'draft'], ['泥', 'ní', 'mud'], ['逆', 'nì', 'against'], ['妮', 'nī', 'girl'], ['匿', 'nì', 'hide'], ['腻', 'nì', 'greasy'] ],
+    hao: [ ['好', 'hǎo', 'good'], ['号', 'hào', 'number'], ['浩', 'hào', 'vast'], ['豪', 'háo', 'bold'], ['毫', 'háo', 'hair'], ['耗', 'hào', 'consume'], ['郝', 'hǎo', 'Hao'] ],
+    shijie: [ ['世界', 'shì jiè', 'world'], ['时节', 'shí jié', 'season'], ['视界', 'shì jiè', 'field of view'], ['师姐', 'shī jiě', 'senior schoolmate'], ['使节', 'shǐ jié', 'envoy'], ['石阶', 'shí jiē', 'stone steps'], ['十诫', 'shí jiè', 'Ten Commandments'] ],
+    shi: [ ['是', 'shì', 'be'], ['时', 'shí', 'time'], ['事', 'shì', 'matter'], ['市', 'shì', 'city'], ['使', 'shǐ', 'use'], ['诗', 'shī', 'poem'], ['十', 'shí', 'ten'], ['试', 'shì', 'try'], ['石', 'shí', 'stone'] ],
+    jie: [ ['界', 'jiè', 'boundary'], ['节', 'jié', 'festival'], ['街', 'jiē', 'street'] ],
+    tianqi: [ ['天气', 'tiān qì', 'weather'], ['天启', 'tiān qǐ', 'revelation'], ['天', 'tiān', 'sky', 4] ],
+    tian: [ ['天', 'tiān', 'sky'], ['田', 'tián', 'field'], ['甜', 'tián', 'sweet'] ],
+    qi: [ ['起', 'qǐ', 'rise'], ['期', 'qī', 'period'], ['气', 'qì', 'air'] ],
+    xuexi: [ ['学习', 'xué xí', 'study'], ['学', 'xué', 'learn', 3], ['雪', 'xuě', 'snow', 3] ],
+    xue: [ ['学', 'xué', 'learn'], ['雪', 'xuě', 'snow'] ],
+    xi: [ ['习', 'xí', 'practice'], ['西', 'xī', 'west'], ['喜', 'xǐ', 'joy'] ],
+    zhongwen: [ ['中文', 'zhōng wén', 'Chinese'], ['中', 'zhōng', 'middle', 5] ],
+    yingyu: [ ['英语', 'yīng yǔ', 'English'], ['盈余', 'yíng yú', 'surplus'] ],
+    wo: [ ['我', 'wǒ', 'I'], ['握', 'wò', 'hold'], ['窝', 'wō', 'nest'] ],
+    women: [ ['我们', 'wǒ men', 'we'], ['我', 'wǒ', 'I', 2] ],
+    ai: [ ['爱', 'ài', 'love'], ['哎', 'āi', 'hey'] ],
+    ma: [ ['吗', 'ma', 'question particle'], ['马', 'mǎ', 'horse'], ['妈', 'mā', 'mother'] ],
+    xiexie: [ ['谢谢', 'xiè xie', 'thank you'] ],
+    zaijian: [ ['再见', 'zài jiàn', 'goodbye'] ]
+  };
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const icons = name => '<i data-lucide="' + name + '" aria-hidden="true"></i>';
+  function refreshIcons() { if (globalThis.lucide) globalThis.lucide.createIcons({ attrs: { width: 20, height: 20 } }); }
+  function getCandidates(raw) {
+    if (!raw) return [];
+    const compact = raw.replace(/'/g, '');
+    let key = Object.prototype.hasOwnProperty.call(entries, compact) ? compact : Object.keys(entries).filter(k => k.startsWith(compact)).sort((a, b) => a.length - b.length)[0];
+    if (!key) return [{ cn: raw, py: raw, en: '', consume: raw.length, literal: true }];
+    return entries[key].map(([cn, py, en, consume]) => ({ cn, py, en, consume: Math.min(consume || compact.length, compact.length), literal: false }));
+  }
+  function isDark(section, theme) {
+    if (theme !== 'system') return theme === 'dark';
+    const scheme = getComputedStyle(section).colorScheme.trim();
+    return scheme === 'dark' || (scheme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function clamp(n, low, high, fallback) { return Number.isFinite(n) ? Math.max(low, Math.min(high, n)) : fallback; }
+  function save(source) {
+    const host = window.openai;
+    if (!host || !host.setWidgetState) return;
+    const privateContent = { version: 2, sessionToken, revision: ++savedRevision, geometry: { ...geometry }, variants: controllers.map(c => c.snapshot()) };
+    const modelContent = { design: source.section.dataset.variant, statusBarDp: geometry.barHeight, keyRadius: geometry.keyRadius, showPinyin: false, englishAboveChinese: true, visibleCandidates: Number(source.section.querySelector('.im-phone').dataset.visibleCandidates), showEnglish: source.state.english, inputMode: source.state.mode, previewState: source.state.raw ? 'typing' : 'idle' };
+    try { Promise.resolve(host.setWidgetState({ modelContent, privateContent })).catch(() => {}); } catch {}
+  }
+  variants.forEach((section, index) => {
+    section.querySelector('.im-stage').append(template.content.cloneNode(true));
+    const phone = section.querySelector('.im-phone');
+    const field = section.querySelector('textarea');
+    field.id = 'ime-preview-input-' + index;
+    section.querySelector('.im-note-label').htmlFor = field.id;
+    const state = { text: '', raw: 'shi', mode: 'cn', english: true, theme: 'system', shift: false, numeric: false, panel: '', scenario: 'shi', last: null, target: null };
+    let pressTimer = null;
+    let held = false;
+    let candidateItems = [];
+    const ctrl = { section, state, render, snapshot, restore };
+    controllers.push(ctrl);
+
+    function keyButton(key, label, kind, weight, accessible) {
+      return '<button type="button" class="im-key cursor-interaction ' + (kind || '') + '" data-key="' + escapeHtml(key) + '" style="flex-grow:' + (weight || 1) + '" aria-label="' + escapeHtml(accessible || key) + '">' + label + '</button>';
+    }
+    function buildKeys() {
+      const rows = state.numeric ? ['1234567890', '@#$%&*()-+', '.,?!:;/'] : ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+      const markup = rows.map((row, rowIndex) => {
+        let keys = [...row].map(char => keyButton(char, escapeHtml(state.shift && !state.numeric ? char.toUpperCase() : char))).join('');
+        if (rowIndex === 2) keys = keyButton('shift', state.numeric ? 'ABC' : icons('arrow-up'), 'im-fn', 1.45, state.numeric ? '字母键盘' : '切换大写') + keys + keyButton('backspace', icons('delete'), 'im-fn', 1.45, '删除');
+        return '<div class="im-key-row" data-row="' + rowIndex + '">' + keys + '</div>';
+      }).join('');
+      const mode = state.mode === 'cn' ? '<span class="im-mode-current">中</span><span class="im-mode-slash">/</span><span class="im-mode-other">英</span>' : '<span class="im-mode-current">英</span><span class="im-mode-slash">/</span><span class="im-mode-other">中</span>';
+      section.querySelector('.im-keys').innerHTML = markup + '<div class="im-key-row" data-row="3">' + keyButton('numbers', state.numeric ? 'ABC' : '?123', 'im-fn', 1.35, '数字与符号') + keyButton('mode', mode, 'im-fn', 1.32, '切换中英文输入') + keyButton('space', state.mode === 'cn' ? '空格' : 'space', 'im-space', 4.6, '空格，选择第一个候选') + keyButton('period', state.mode === 'cn' ? '。' : '.', '', 1.05, '句号') + keyButton('enter', icons(state.raw ? 'check' : 'corner-down-left'), 'im-enter', 1.6, state.raw ? '确认选词' : '换行') + '</div>';
+    }
+    let keySignature = '';
+    let iconTheme = '';
+    let expandSignature = '';
+    function render() {
+      phone.style.setProperty('--ime-bar-height', geometry.barHeight + 'px');
+      phone.style.setProperty('--ime-key-radius', geometry.keyRadius + 'px');
+      phone.style.setProperty('--ime-candidate-size', geometry.candidateSize + 'px');
+      const available = Math.max(0, phone.clientWidth - 38);
+      const targetCount = geometry.candidateDensity === 'six' ? 6 : geometry.candidateDensity === 'seven' ? 7 : available >= 342 ? 7 : 6;
+      const minCell = Math.max(44, geometry.candidateSize * 2 + 6);
+      const visibleCount = Math.max(1, Math.min(targetCount, Math.floor((available + 2) / (minCell + 2))));
+      phone.style.setProperty('--ime-visible-count', visibleCount);
+      phone.dataset.visibleCandidates = String(visibleCount);
+      if (state.theme === 'system') section.style.removeProperty('color-scheme');
+      else section.style.colorScheme = state.theme;
+      const composing = state.mode === 'cn' && state.raw.length > 0;
+      const value = state.text + (composing ? state.raw : '');
+      if (field.value !== value) field.value = value;
+      section.querySelector('.im-idle').hidden = composing;
+      section.querySelector('.im-composing').hidden = !composing;
+      section.querySelector('.im-keys').hidden = Boolean(state.panel);
+      section.querySelectorAll('[data-panel]').forEach(el => { el.hidden = el.dataset.panel !== state.panel; });
+      section.querySelectorAll('[data-action="english"]').forEach(el => el.setAttribute('aria-checked', String(state.english)));
+      section.querySelectorAll('[data-theme]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.theme === state.theme)));
+      section.querySelectorAll('[data-scenario]').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.scenario === state.scenario)));
+      section.querySelector('[data-action="settings"]').setAttribute('aria-pressed', String(state.panel === 'settings'));
+      section.querySelector('[data-action="dictionary"]').disabled = !state.last;
+      candidateItems = getCandidates(state.raw);
+      section.querySelector('.im-candidates').innerHTML = candidateItems.slice(0, visibleCount).map((item, i) => '<button type="button" class="im-candidate cursor-interaction" data-candidate="' + i + '" aria-label="输入' + escapeHtml(item.cn) + (state.english && item.en ? '，' + escapeHtml(item.en) : '') + '，长按查看释义" aria-keyshortcuts="Alt+Enter" data-tooltip="' + escapeHtml(item.cn + (state.english && item.en ? ' · ' + item.en : '')) + '">' + (state.english && item.en ? '<span class="im-en">' + escapeHtml(item.en) + '</span>' : '') + '<span class="im-cn">' + escapeHtml(item.cn) + '</span></button>').join('');
+      if (state.panel === 'expanded') {
+        section.querySelector('.im-word-grid').innerHTML = candidateItems.slice(0, 9).map((item, i) => '<button type="button" class="im-grid-word cursor-interaction" data-candidate="' + i + '" aria-label="输入' + escapeHtml(item.cn) + '" aria-keyshortcuts="Alt+Enter" data-tooltip="' + escapeHtml(item.cn + (state.english && item.en ? ' · ' + item.en : '')) + '">' + (state.english && item.en ? '<span class="im-en">' + escapeHtml(item.en) + '</span>' : '') + '<span class="im-cn">' + escapeHtml(item.cn) + '</span></button>').join('');
+      }
+      if (state.target) {
+        section.querySelector('.im-definition-cn').textContent = state.target.cn;
+        section.querySelector('.im-definition-en').textContent = state.target.en || '暂无英文释义';
+        section.querySelector('[data-action="commit-english"]').disabled = !state.target.en || (state.raw && state.target.consume < state.raw.replace(/'/g, '').length);
+      }
+      const nextKeys = [state.mode, state.numeric, state.shift, Boolean(state.raw)].join('|');
+      if (keySignature !== nextKeys) { keySignature = nextKeys; buildKeys(); }
+      const dark = isDark(section, state.theme);
+      if (iconTheme !== String(dark)) {
+        iconTheme = String(dark);
+        const themeButton = section.querySelector('[data-action="theme"]');
+        themeButton.innerHTML = icons(dark ? 'sun' : 'moon');
+        themeButton.setAttribute('aria-label', dark ? '切换浅色' : '切换深色');
+      }
+      const expanded = state.panel === 'expanded';
+      if (expandSignature !== String(expanded)) {
+        expandSignature = String(expanded);
+        const expandButton = section.querySelector('[data-action="expand"]');
+        expandButton.innerHTML = icons(expanded ? 'chevron-up' : 'chevron-down');
+        expandButton.setAttribute('aria-expanded', String(expanded));
+        expandButton.setAttribute('aria-label', expanded ? '收起候选' : '展开候选');
+        expandButton.dataset.tooltip = expanded ? '收起候选' : '展开候选';
+      }
+      refreshIcons();
+    }
+    function announce(message) { section.querySelector('[data-live]').textContent = message; }
+    function finish() { state.text = state.text.slice(-1000); render(); save(ctrl); }
+    function focusEditor() { field.focus({ preventScroll: true }); field.setSelectionRange(field.value.length, field.value.length); }
+    function commit(item, english = false) {
+      if (!item) return;
+      const remaining = english ? '' : state.raw.replace(/'/g, '').slice(item.consume);
+      state.text += english ? item.en : item.cn;
+      state.raw = remaining;
+      state.last = { ...item };
+      state.panel = '';
+      state.target = null;
+      state.scenario = '';
+      announce('已输入' + (english ? item.en : item.cn));
+      finish();
+      focusEditor();
+    }
+    function inspect(item) {
+      if (!item) return;
+      state.target = { ...item };
+      state.panel = 'definition';
+      finish();
+      section.querySelector('[data-panel="definition"] [data-action="close"]').focus({ preventScroll: true });
+    }
+    function appendLiteral(value) {
+      if (state.raw) { state.text += candidateItems[0]?.cn || state.raw; state.raw = ''; }
+      state.text += value;
+    }
+    function onKey(key) {
+      state.scenario = '';
+      state.panel = '';
+      if (key === 'backspace') {
+        if (state.raw) state.raw = state.raw.slice(0, -1);
+        else state.text = [...state.text].slice(0, -1).join('');
+      } else if (key === 'space' || key === 'enter') {
+        if (state.raw) { commit(candidateItems[0]); return; }
+        state.text += key === 'space' ? ' ' : '\n';
+      } else if (key === 'mode') {
+        if (state.raw) { state.text += state.raw; state.raw = ''; }
+        state.mode = state.mode === 'cn' ? 'en' : 'cn';
+        state.shift = false;
+        announce(state.mode === 'cn' ? '中文输入' : '英文输入');
+      } else if (key === 'numbers') state.numeric = !state.numeric;
+      else if (key === 'shift') {
+        if (state.numeric) state.numeric = false;
+        else {
+          if (state.raw) { state.text += state.raw; state.raw = ''; }
+          state.mode = 'en';
+          state.shift = !state.shift;
+        }
+      } else if (key === 'period') appendLiteral(state.mode === 'cn' ? '。' : '.');
+      else if (/^[a-z]$/i.test(key) && state.mode === 'cn' && !state.numeric) {
+        if (state.raw.length < 24) state.raw += key.toLowerCase();
+      } else {
+        appendLiteral(state.shift ? key.toUpperCase() : key);
+        state.shift = false;
+      }
+      finish();
+    }
+    section.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button || button.disabled) return;
+      if (held) { held = false; return; }
+      if (button.dataset.key) { onKey(button.dataset.key); return; }
+      if (button.dataset.candidate !== undefined) { commit(candidateItems[Number(button.dataset.candidate)]); return; }
+      if (button.dataset.scenario) {
+        state.text = '';
+        state.raw = ['shi', 'shijie'].includes(button.dataset.scenario) ? button.dataset.scenario : '';
+        state.mode = button.dataset.scenario === 'english' ? 'en' : 'cn';
+        if (state.mode === 'en') state.text = 'Hello';
+        state.panel = '';
+        state.numeric = false;
+        state.shift = false;
+        state.scenario = button.dataset.scenario;
+        state.target = null;
+        announce(state.raw ? '已显示中文候选' : state.mode === 'en' ? '英文直接输入' : '待机工具栏');
+        finish();
+        return;
+      }
+      if (button.dataset.theme) state.theme = button.dataset.theme;
+      else if (button.dataset.action === 'english') { state.english = !state.english; announce(state.english ? '英文释义已开启' : '英文释义已关闭'); }
+      else if (button.dataset.action === 'theme') {
+        const dark = isDark(section, state.theme);
+        state.theme = dark ? 'light' : 'dark';
+      } else if (button.dataset.action === 'settings') state.panel = state.panel === 'settings' ? '' : 'settings';
+      else if (button.dataset.action === 'close') { state.panel = ''; state.target = null; }
+      else if (button.dataset.action === 'expand') state.panel = state.panel === 'expanded' ? '' : 'expanded';
+      else if (button.dataset.action === 'dictionary') { inspect(state.last); return; }
+      else if (button.dataset.action === 'commit-chinese') { commit(state.target); return; }
+      else if (button.dataset.action === 'commit-english') { commit(state.target, true); return; }
+      finish();
+    });
+    section.addEventListener('pointerdown', event => {
+      const candidate = event.target.closest('[data-candidate]');
+      held = false;
+      if (!candidate || event.button !== 0) return;
+      const item = candidateItems[Number(candidate.dataset.candidate)];
+      pressTimer = setTimeout(() => { held = true; inspect(item); }, 480);
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(name => section.addEventListener(name, () => { clearTimeout(pressTimer); pressTimer = null; }));
+    section.addEventListener('contextmenu', event => {
+      const button = event.target.closest('[data-candidate]');
+      if (button) { event.preventDefault(); inspect(candidateItems[Number(button.dataset.candidate)]); }
+    });
+    section.addEventListener('keydown', event => {
+      const candidate = event.target.closest('[data-candidate]');
+      if (candidate && event.altKey && event.key === 'Enter') { event.preventDefault(); inspect(candidateItems[Number(candidate.dataset.candidate)]); }
+      if (event.key === 'Escape') {
+        if (state.panel) state.panel = '';
+        else state.raw = '';
+        finish();
+      }
+    });
+    field.addEventListener('keydown', event => {
+      if (event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (state.mode === 'en') return;
+      if (event.key === 'Backspace' && !state.raw && field.selectionStart !== field.selectionEnd) return;
+      const named = { Backspace: 'backspace', ' ': 'space', Enter: 'enter' };
+      if (event.key.length === 1 && field.selectionStart === 0 && field.selectionEnd === field.value.length) {
+        state.text = '';
+        state.raw = '';
+      }
+      if (named[event.key]) { event.preventDefault(); onKey(named[event.key]); }
+      else if (event.key.length === 1) { event.preventDefault(); onKey(event.key); }
+    });
+    field.addEventListener('input', event => {
+      if (event.isComposing) return;
+      state.text = field.value.slice(-1000);
+      state.raw = '';
+      state.scenario = '';
+      finish();
+    });
+    field.addEventListener('compositionend', () => {
+      state.text = field.value.slice(-1000);
+      state.raw = '';
+      state.scenario = '';
+      finish();
+    });
+    function snapshot() { return { text: state.text, raw: state.raw, mode: state.mode, english: state.english, theme: state.theme, scenario: state.scenario }; }
+    function restore(saved) {
+      if (!saved || typeof saved !== 'object') return;
+      state.text = typeof saved.text === 'string' ? saved.text.slice(-1000) : '';
+      state.raw = typeof saved.raw === 'string' && /^[a-z']{0,24}$/.test(saved.raw) ? saved.raw : '';
+      state.mode = saved.mode === 'en' ? 'en' : 'cn';
+      if (state.mode === 'en') state.raw = '';
+      state.english = saved.english !== false;
+      state.theme = ['system', 'light', 'dark'].includes(saved.theme) ? saved.theme : 'system';
+      state.scenario = typeof saved.scenario === 'string' ? saved.scenario : '';
+      state.panel = '';
+      render();
+    }
+    render();
+    if (globalThis.ResizeObserver) {
+      let previousWidth = phone.clientWidth;
+      const observer = new ResizeObserver(() => {
+        const width = phone.clientWidth;
+        if (width !== previousWidth) { previousWidth = width; render(); }
+      });
+      observer.observe(phone);
+    }
+  });
+  function applySaved(saved) {
+    const content = saved?.privateContent;
+    if (!content || content.version !== 2) return;
+    if (content.sessionToken === sessionToken && content.revision <= savedRevision) return;
+    if (content.geometry) {
+      geometry.barHeight = clamp(content.geometry.barHeight, 60, 72, 60);
+      geometry.keyRadius = clamp(content.geometry.keyRadius, 5, 14, 9);
+      geometry.candidateSize = clamp(content.geometry.candidateSize, 17, 21, 18);
+      geometry.candidateDensity = ['auto', 'six', 'seven'].includes(content.geometry.candidateDensity) ? content.geometry.candidateDensity : 'auto';
+    }
+    controllers.forEach((c, i) => { c.restore(content.variants?.[i]); c.render(); });
+  }
+  applySaved(window.openai?.widgetState);
+  window.addEventListener('openai:set_globals', event => {
+    if (event.detail?.globals && Object.prototype.hasOwnProperty.call(event.detail.globals, 'widgetState')) applySaved(event.detail.globals.widgetState);
+  });
+  if (globalThis.Tweak) {
+    controllers.forEach(ctrl => {
+      const tweak = new globalThis.Tweak({ container: ctrl.section.querySelector('.im-phone'), onChange: () => { controllers.forEach(c => c.render()); save(ctrl); } });
+      tweak.addSlider(geometry, 'barHeight', { label: '状态栏高度', min: 60, max: 72, step: 2, unit: 'dp' });
+      tweak.addSlider(geometry, 'keyRadius', { label: '按键圆角', min: 5, max: 14, step: 1, unit: 'px' });
+      tweak.addSlider(geometry, 'candidateSize', { label: '候选字号', min: 17, max: 21, step: 1, unit: 'sp' });
+      tweak.addSelect(geometry, 'candidateDensity', { label: '每行候选', options: [{ label: '自动 6–7 个', value: 'auto' }, { label: '6 个', value: 'six' }, { label: '7 个', value: 'seven' }] });
+    });
+  }
+})();
+</script>
