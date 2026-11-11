@@ -4,6 +4,8 @@ package org.studyime.android.ui
 import android.provider.Settings
 import android.view.HapticFeedbackConstants
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
+import android.view.inputmethod.EditorInfo
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
@@ -27,6 +29,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Backspace
 import androidx.compose.material.icons.automirrored.outlined.KeyboardReturn
+import androidx.compose.material.icons.automirrored.outlined.ArrowForward
+import androidx.compose.material.icons.automirrored.outlined.Send
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -34,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
@@ -60,7 +65,10 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import org.studyime.android.engine.*
 import org.studyime.android.ime.EditorSpec
+import org.studyime.android.ime.InputMetrics
 import org.studyime.android.settings.KeyboardPreferences
+
+private val LocalGestureGeneration = staticCompositionLocalOf { 0L }
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
 @Composable
@@ -76,16 +84,7 @@ fun StudyKeyboard(
     val landscape = configuration.screenWidthDp > configuration.screenHeightDp
     val context = LocalContext.current
     val view = LocalView.current
-    LaunchedEffect(state.generation, state.revision, state.ready) {
-        // IME windows are not focused application windows. Explicitly notify
-        // their subtree after composition so accessibility clients discard
-        // virtual candidate nodes from the preceding Rime revision.
-        withFrameNanos {
-            view.sendAccessibilityEventUnchecked(AccessibilityEvent.obtain(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED).apply {
-                contentChangeTypes = AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE
-            })
-        }
-    }
+    val accessibility = remember(context) { context.getSystemService(AccessibilityManager::class.java) }
     val systemReduced = remember { Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f }
     val reduced = prefs.reduceMotion || systemReduced
     val effectivePrefs = prefs.copy(reduceMotion = reduced)
@@ -93,12 +92,30 @@ fun StudyKeyboard(
     var upper by remember(state.generation) { mutableStateOf(false) }
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
+    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, upper, prefs.theme) {
+        // A non-focused IME window must announce its completed virtual subtree,
+        // including local layout changes. Post after the traversal, rather than
+        // exposing the preceding frame's node IDs to accessibility clients.
+        withFrameNanos { }
+        view.post {
+            // The service may disconnect between composition and this posted
+            // callback. Android throws if an unchecked event is sent while off.
+            if (view.isAttachedToWindow && accessibility.isEnabled) {
+                view.sendAccessibilityEventUnchecked(AccessibilityEvent.obtain(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED).apply {
+                    contentChangeTypes = AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE
+                })
+            }
+        }
+    }
     val keyHeight = maxOf(if (landscape) 40f else 48f, (if (landscape) 42f else 52f) * prefs.keyHeight,
-        18f * density.fontScale * prefs.textScale + 12f).dp
+        23f * density.fontScale * prefs.textScale + 10f).dp
     val keyRowsHeight = keyHeight * 4
     val active = state.ready && !state.error
 
-    Column(Modifier.fillMaxWidth().background(colors.board).navigationBarsPadding()
+    Column(Modifier.fillMaxWidth().background(colors.board).navigationBarsPadding().drawWithContent {
+        drawContent()
+        InputMetrics.frame(state.generation, state.revision, state.ready && !state.error)
+    }
         .semantics { testTagsAsResourceId = true }.testTag("study_keyboard")) {
         Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = { quickSettings = !quickSettings }, contentPadding = PaddingValues(horizontal = 8.dp), modifier = Modifier.heightIn(min = 48.dp).weight(1f).wrapContentWidth(Alignment.Start)) {
@@ -144,7 +161,8 @@ fun StudyKeyboard(
                             "enter" -> send(event("key", "code" to 0xff0d))
                             "space" -> send(event("key", "code" to 32))
                             else -> {
-                                if (page == "letters" && text.length == 1) send(event("key", "code" to text[0].code))
+                                if ((page == "letters" && text.length == 1) || (text == "'" && state.input.isNotEmpty() && !state.asciiMode))
+                                    send(event("key", "code" to text[0].code))
                                 else send(event("literal", "text" to text))
                                 if (upper) upper = false
                             }
@@ -171,7 +189,7 @@ fun StudyKeyboard(
             }
         } else {
             Preedit(state, prefs)
-            CandidateStrip(state, prefs, editor, send, onRetry, expanded) { expanded = !expanded }
+            CandidateStrip(state, effectivePrefs, editor, send, onRetry, expanded) { expanded = !expanded }
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
         Spacer(Modifier.height(if (landscape) 3.dp else 7.dp))
@@ -183,7 +201,7 @@ fun StudyKeyboard(
             onDismissRequest = { send(event("dismiss")) },
             properties = PopupProperties(focusable = false, clippingEnabled = true, dismissOnBackPress = true, dismissOnClickOutside = true)) {
             DefinitionPanel(target, state.showEnglish, prefs, send,
-                Modifier.widthIn(max = 480.dp).fillMaxWidth(.92f).heightIn(max = if (landscape) 210.dp else 340.dp))
+                Modifier.widthIn(max = 480.dp).fillMaxWidth(.92f).heightIn(max = if (landscape) (configuration.screenHeightDp - 48).dp else 430.dp))
         }
     }
     if (quickSettings) {
@@ -252,10 +270,14 @@ private fun QuickSettings(prefs: KeyboardPreferences, update: ((KeyboardPreferen
 private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec, send: (JSONObject) -> Unit,
                            onRetry: () -> Unit, expanded: Boolean, onExpand: () -> Unit) {
     val fontScale = LocalDensity.current.fontScale
+    // Keep the input window height stable as the first candidate arrives.
+    // Relayout of a bottom-anchored IME during a rapid touch can cancel that
+    // gesture even when the final key bounds are unchanged.
+    val contentHeight = (maxOf(40f, (if (state.showEnglish) 44f else 28f) * fontScale * prefs.textScale) + 16f).dp
     BoxWithConstraints(Modifier.fillMaxWidth().padding(start = 7.dp, end = 3.dp, bottom = 5.dp)
-        .animateContentSize(tween(if (prefs.reduceMotion) 0 else 190))) {
+        .animateContentSize(tween(if (prefs.reduceMotion) 0 else 190)).heightIn(min = contentHeight)) {
         if (state.candidates.isEmpty()) {
-            ReadyHint(state, editor, onRetry, Modifier.fillMaxWidth().heightIn(min = 53.dp))
+            ReadyHint(state, editor, onRetry, Modifier.fillMaxWidth().heightIn(min = contentHeight))
         } else {
             val visible = ((maxWidth.value - 48f) / (88f * fontScale * prefs.textScale)).toInt().coerceIn(1, 3)
             val width = (maxWidth - 48.dp) / visible
@@ -277,13 +299,22 @@ private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, ed
 private fun CandidateCard(candidate: Candidate, index: Int, state: EngineSnapshot, prefs: KeyboardPreferences,
                           send: (JSONObject) -> Unit, modifier: Modifier = Modifier) {
     val colors = LocalStudyColors.current
+    val view = LocalView.current
+    fun select() = send(event("select", "index" to index, "revision" to state.revision))
+    fun inspect() = send(event("inspect", "index" to index, "revision" to state.revision))
     Column(modifier.clip(RoundedCornerShape(11.dp)).background(if (index == state.highlighted) colors.tint else androidx.compose.ui.graphics.Color.Transparent)
-        .combinedClickable(onClickLabel = "输入中文", onLongClickLabel = if (state.showEnglish) "查看释义与选词学习" else "查看选词学习",
-            onClick = { send(event("select", "index" to index, "revision" to state.revision)) },
-            onLongClick = { send(event("inspect", "index" to index, "revision" to state.revision)) })
+        .pointerInput(state.generation, state.revision, index) {
+            detectTapGestures(onTap = { select() }, onLongPress = {
+                if (prefs.haptics) view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                inspect()
+            })
+        }
         .semantics(mergeDescendants = true) {
             contentDescription = candidate.chinese + if (state.showEnglish && candidate.english.isNotEmpty()) "，英文释义：${candidate.english}" else ""
             role = Role.Button
+            selected = index == state.highlighted
+            onClick(label = "输入中文") { select(); true }
+            onLongClick(label = if (state.showEnglish) "查看释义与选词学习" else "查看选词学习") { inspect(); true }
         }.testTag("candidate_$index").padding(horizontal = 5.dp, vertical = 7.dp).heightIn(min = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         if (state.showEnglish) Text(candidate.english.ifEmpty { " " }, color = colors.accent, fontSize = (12 * prefs.textScale).sp,
@@ -341,12 +372,23 @@ private data class KeySpec(val id: String, val text: String, val weight: Float =
 private fun KeyboardRows(page: String, upper: Boolean, state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
                          height: Dp, modifier: Modifier, onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, onSwitchIme: () -> Unit) {
     val letters = page == "letters"
-    val first = when (page) { "numbers" -> "1234567890"; "symbols" -> "！？。，、；：“”‘"; else -> "qwertyuiop" }
-    val second = when (page) { "numbers" -> "@#¥%&*()-+"; "symbols" -> "’（）【】《》〈〉"; else -> "asdfghjkl" }
-    val third = when (page) { "numbers" -> "'\"=:;/?"; "symbols" -> "…—·～「」•"; else -> "zxcvbnm" }
+    // Compact labels before the 320 dp mode key clips at 1.3x font scale.
+    val largeLabels = LocalDensity.current.fontScale * prefs.textScale >= 1.25f
+    val actionIcon = when {
+        state.input.isNotEmpty() -> Icons.Outlined.Check
+        editor.action == EditorInfo.IME_ACTION_SEARCH -> Icons.Outlined.Search
+        editor.action == EditorInfo.IME_ACTION_SEND -> Icons.AutoMirrored.Outlined.Send
+        editor.action in listOf(EditorInfo.IME_ACTION_NEXT, EditorInfo.IME_ACTION_GO, EditorInfo.IME_ACTION_PREVIOUS) -> Icons.AutoMirrored.Outlined.ArrowForward
+        editor.action == EditorInfo.IME_ACTION_DONE -> Icons.Outlined.Check
+        else -> Icons.AutoMirrored.Outlined.KeyboardReturn
+    }
+    val first = when (page) { "numbers" -> "1234567890"; "symbols" -> if (state.asciiMode) "!?.,:;\"'`~" else "！？。，、；：“”‘"; else -> "qwertyuiop" }
+    val second = when (page) { "numbers" -> if (state.asciiMode) "@#$%&*()-+" else "@#¥%&*()-+"; "symbols" -> if (state.asciiMode) "()[]{}<>\\|" else "’（）【】《》〈〉"; else -> "asdfghjkl" }
+    val third = when (page) { "numbers" -> ".,'\":/?"; "symbols" -> if (state.asciiMode) "_-+=&*%" else "…—·～「」•"; else -> "zxcvbnm" }
     fun letter(char: Char, index: Int = -1) = KeySpec(char.toString(), if (letters && upper) char.uppercase() else char.toString(),
         secondary = if (letters && index >= 0) "1234567890"[index].toString() else null)
     val enabled = state.ready && !state.error
+    CompositionLocalProvider(LocalGestureGeneration provides state.generation) {
     Column(modifier) {
         Row { first.forEachIndexed { index, char -> KeyCell(letter(char, index), height, prefs, enabled, onKey, onLongKey) } }
         Row {
@@ -356,21 +398,25 @@ private fun KeyboardRows(page: String, upper: Boolean, state: EngineSnapshot, pr
         }
         Row {
             KeyCell(if (letters) KeySpec("shift", "", 1.45f, true, if (upper) Icons.Outlined.KeyboardCapslock else Icons.Outlined.ArrowUpward, spoken = "切换大写")
-                else KeySpec("symbols", if (page == "symbols") "123" else "符号", 1.45f, true), height, prefs, enabled, onKey, onLongKey)
+                else KeySpec("symbols", if (page == "symbols") "123" else "符号", 1.45f, true,
+                    if (largeLabels) Icons.Outlined.MoreHoriz else null), height, prefs, enabled, onKey, onLongKey)
             third.forEach { char -> KeyCell(letter(char), height, prefs, enabled, onKey, onLongKey) }
             KeyCell(KeySpec("delete", "", 1.45f, true, Icons.AutoMirrored.Outlined.Backspace, spoken = "删除"), height, prefs, enabled, onKey, onLongKey)
         }
         Row {
-            KeyCell(KeySpec("page", if (letters) "?123" else "ABC", 1.4f, true, spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey)
-            KeyCell(KeySpec("mode", if (state.asciiMode) "英/中" else "中/英", 1.35f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
+            KeyCell(KeySpec("page", if (letters) "?123" else "ABC", 1.4f, true,
+                if (largeLabels) { if (letters) Icons.Outlined.Dialpad else Icons.Outlined.Keyboard } else null,
+                spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey)
+            KeyCell(KeySpec("mode", if (largeLabels) { if (state.asciiMode) "英" else "中" } else if (state.asciiMode) "英/中" else "中/英", 1.35f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
                 enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
             KeyCell(KeySpec("space", if (state.asciiMode) "space" else "拾词", 4.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
             KeyCell(KeySpec(".", if (state.asciiMode) "." else "。", 1.1f, spoken = "句号"), height, prefs, enabled,
                 { id, _ -> onKey(id, if (letters) "." else if (state.asciiMode) "." else "。") }, onLongKey)
             KeyCell(KeySpec("enter", if (state.input.isNotEmpty()) "选词" else editor.actionLabel, 1.65f, true,
-                if (state.input.isEmpty() && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
+                if (largeLabels) actionIcon else if (state.input.isEmpty() && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
                 spoken = if (state.input.isNotEmpty()) "确认中文选词" else editor.actionLabel), height, prefs, enabled, onKey, onLongKey)
         }
+    }
     }
 }
 
@@ -379,6 +425,8 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
                             onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, specialLong: (() -> Unit)? = null) {
     val colors = LocalStudyColors.current
     val view = LocalView.current
+    val gestureGeneration = LocalGestureGeneration.current
+    val tightLetters = LocalDensity.current.fontScale * prefs.textScale > 2.1f && !key.function && key.id != "space"
     var pressed by remember { mutableStateOf(false) }
     val action by rememberUpdatedState(newValue = { onKey(key.id, key.text) })
     val longAction by rememberUpdatedState(newValue = specialLong ?: key.secondary?.let { { onLongKey(it) } })
@@ -393,7 +441,7 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
         if (longAction != null) onLongClick(label = if (specialLong != null) "切换输入法" else "输入${key.secondary}") {
             if (enabled) { longAction?.invoke(); true } else false
         }
-    }.pointerInput(key.id, enabled, prefs.haptics) {
+    }.pointerInput(key.id, enabled, prefs.haptics, gestureGeneration) {
         if (key.id == "delete") coroutineScope {
             awaitEachGesture {
                 awaitFirstDown()
@@ -409,7 +457,7 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             onTap = { if (enabled) { feedback(); action() } },
             onLongPress = if (longAction == null) null else { _ -> if (enabled) { feedback(); longAction?.invoke() } },
         )
-    }.padding(horizontal = 2.5.dp, vertical = 3.dp), contentAlignment = Alignment.Center) {
+    }.padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp), contentAlignment = Alignment.Center) {
         Box(Modifier.fillMaxSize().shadow(if (pressed) 0.dp else 1.dp, RoundedCornerShape(9.dp))
             .clip(RoundedCornerShape(9.dp)).background(fill), contentAlignment = Alignment.Center) {
             val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
@@ -417,28 +465,31 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,
                 lineHeight = (23 * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
                 textAlign = TextAlign.Center, maxLines = if (key.id == "enter") 2 else 1, overflow = TextOverflow.Clip,
-                modifier = Modifier.padding(horizontal = 1.dp).clearAndSetSemantics { })
+                modifier = Modifier.padding(horizontal = if (tightLetters) 0.dp else 1.dp).clearAndSetSemantics { })
         }
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun DefinitionPanel(target: CandidateTarget, showEnglish: Boolean, prefs: KeyboardPreferences,
                             send: (JSONObject) -> Unit, modifier: Modifier) {
     val colors = LocalStudyColors.current
-    Surface(modifier.shadow(12.dp, RoundedCornerShape(19.dp)).testTag("definition_panel"),
+    Surface(modifier.shadow(12.dp, RoundedCornerShape(19.dp)).semantics { testTagsAsResourceId = true }.testTag("definition_panel"),
         color = colors.paper, shape = RoundedCornerShape(19.dp), border = androidx.compose.foundation.BorderStroke(1.dp, colors.line)) {
-        Column(Modifier.verticalScroll(rememberScrollState()).padding(start = 18.dp, end = 18.dp, bottom = 16.dp)) {
+        Column(Modifier.padding(start = 18.dp, end = 18.dp, bottom = 12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(target.chinese, Modifier.weight(1f), color = colors.ink, fontSize = (16 * prefs.textScale).sp, fontWeight = FontWeight.SemiBold)
                 ToolButton(Icons.Outlined.Close, "关闭释义") { send(event("dismiss")) }
             }
             if (showEnglish) {
-                Text(target.english.ifEmpty { "暂未收录释义" }, color = colors.accent, fontSize = (25 * prefs.textScale).sp,
-                    lineHeight = (33 * prefs.textScale).sp, fontWeight = FontWeight.Medium)
-                Spacer(Modifier.height(7.dp))
-                Text(if (target.reason == "partial-composition") "选完整个词后可输入英文" else "本机开发词库 · 释义待审核",
-                    fontSize = 11.sp, color = colors.subtle)
+                Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())) {
+                    Text(target.english.ifEmpty { "暂未收录释义" }, color = colors.accent, fontSize = (25 * prefs.textScale).sp,
+                        lineHeight = (33 * prefs.textScale).sp, fontWeight = FontWeight.Medium)
+                    Spacer(Modifier.height(7.dp))
+                    Text(if (target.reason == "partial-composition") "选完整个词后可输入英文" else "本机开发词库 · 释义待审核",
+                        fontSize = 11.sp, color = colors.subtle)
+                }
                 Spacer(Modifier.height(12.dp))
                 Button(onClick = { send(event("english", "token" to target.token)) }, enabled = target.canCommitEnglish,
                     shape = RoundedCornerShape(11.dp), modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("commit_english")) {

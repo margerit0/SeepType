@@ -1,6 +1,8 @@
 """Reproducible Android entry point. Outputs follow the configured cache path."""
 import argparse
+import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -8,6 +10,44 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.android.common import CACHE, ROOT, digest, json_write, run
 from tools.android.build_env import tool_env
+
+
+def input_hashes():
+    """Bind APK assembly to source and prepared bytes, including dirty inputs."""
+    source_roots = ["android", "crates", "tools/android", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"]
+    if (ROOT / ".git").exists():
+        names = subprocess.check_output(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", *source_roots],
+                                        cwd=ROOT).decode("utf-8").split("\0")
+    else:
+        # Source archives intentionally have no .git directory. Prune outputs
+        # before walking so an extracted archive remains a buildable input.
+        names = []
+        for name in source_roots:
+            path = ROOT / name
+            if path.is_file():
+                names.append(name)
+            elif path.is_dir():
+                for directory, dirs, files in os.walk(path):
+                    dirs[:] = [part for part in dirs if part not in ("build", ".gradle", ".kotlin", ".cxx", "jniLibs", "generated", "__pycache__")]
+                    names.extend((Path(directory) / file).relative_to(ROOT).as_posix() for file in files if file != "local.properties")
+    result = {}
+    for name in sorted(set(names)):
+        path = ROOT / name
+        if not name or not path.is_file() or path.suffix == ".md":
+            continue
+        data = path.read_bytes()
+        try:
+            data.decode("utf-8")
+            data = data.replace(b"\r\n", b"\n")
+        except UnicodeDecodeError:
+            pass
+        result[name] = hashlib.sha256(data).hexdigest()
+    prepared = list((ROOT / "android/app/src/main/jniLibs").glob("*/*.so"))
+    prepared.append(ROOT / "android/app/src/main/assets/generated/manifest.json")
+    for path in prepared:
+        if path.is_file():
+            result[path.relative_to(ROOT).as_posix()] = digest(path)
+    return result
 
 
 def signing_key():
@@ -23,10 +63,23 @@ def signing_key():
 
 def gradle(tasks, *, log="gradle-build", wrapper=True, locks=False):
     signing_key()
+    before = input_hashes()
     executable = ROOT / "android/gradlew.bat" if wrapper else CACHE / "gradle-8.11.1/bin/gradle.bat"
     command = [executable, *tasks, "--no-daemon", "--console=plain"]
     if locks: command.append("--write-locks")
     run(command, log, env=tool_env(), cwd=ROOT / "android")
+    after = input_hashes()
+    for variant in ("Debug", "Release"):
+        if not any(task.split(":")[-1] == "assemble" + variant for task in tasks):
+            continue
+        apk = ROOT / f"android/app/build/outputs/apk/{variant.lower()}/app-{variant.lower()}.apk"
+        json_write(CACHE / ("assembly-" + variant.lower() + ".json"), {
+            "variant": variant, "apkSha256": digest(apk), "bytes": apk.stat().st_size,
+            "inputHashing": "SHA-256; UTF-8 source CRLF normalized to LF; prepared binaries hashed verbatim",
+            "inputHashes": after, "inputsUnchangedDuringBuild": before == after,
+            "tasks": tasks, "log": log + ".log", "logSha256": digest(CACHE / "logs" / (log + ".log")),
+            "scope": "Successful Gradle assembly of these sources and prepared native libraries/assets; not a fresh native source rebuild",
+        })
 
 
 def main():
@@ -45,15 +98,23 @@ def main():
         for abi in ("x86_64", "arm64-v8a"):
             build_native.build(abi)
             build_rust.build(abi)
+        # Resolve managed dependencies before collecting their original
+        # notices, then regenerate the versioned, complete asset payload.
+        gradle([":app:compileDebugKotlin"], log="gradle-prepare-dependencies", locks=True)
+        prepare_data.prepare(args.source_cache)
     elif args.step == "compile":
         gradle([":app:compileDebugKotlin"], log="gradle-compile", wrapper=False, locks=True)
     elif args.step == "apk":
         variant = "Debug" if args.debug else "Release"
+        if not (ROOT / "android/app/src/main/assets/generated/notices/THIRD-PARTY.txt").is_file():
+            from tools.android.prepare_data import prepare
+            gradle([":app:compile" + variant + "Kotlin"], log="gradle-prepare-notices", locks=True)
+            prepare()
         gradle([":app:assemble" + variant], log="gradle-apk-" + variant.lower(), locks=True)
         output = ROOT / "android/app/build/outputs/apk" / variant.lower() / ("app-" + variant.lower() + ".apk")
         print(f"APK: {output.resolve()}\nSHA256: {digest(output)}")
         json_write(CACHE / ("apk-" + variant.lower() + ".json"), {"variant": variant, "path": str(output.resolve()),
-                    "sha256": digest(output), "bytes": output.stat().st_size, "gitHead": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+                    "sha256": digest(output), "bytes": output.stat().st_size, "gitHead": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip() if (ROOT / ".git").exists() else None,
                     "sourceState": "worktree build; see delivery manifest for final source hashes"})
     elif args.step == "tests":
         gradle([":app:testDebugUnitTest", ":app:assembleDebugAndroidTest"], log="gradle-tests", locks=True)

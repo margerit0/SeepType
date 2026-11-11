@@ -2,7 +2,7 @@
 
 在正常中文拼音输入过程中显示简短英文释义。沿用已确认的 v0.5 双行候选、工具区、独立释义、设置和两种动画，现提供 x64 开发预览运行包、源码材料及安装/卸载脚本。实际安装、注册和部分桌面验收已完成；当前已注销，最后的占用文件清理等待 Windows 重启，正式发布条件仍未满足。
 
-**安卓开发：[新窗口上下文与开工入口](docs/android-handoff.md)**。独立 worktree 使用 `codex/android-dev`；规划分支 `codex/android-rust-plan` 保留原始计划。采用 Kotlin 定制界面＋Rust 核心＋Rime，完整范围见 [开发计划](docs/android-plan.md)，视觉基线见 [手机交互设计参考](prototype/android/index.html)。当前已完成计划和目录隔离，尚无 Android 工程或 APK；下一步从 P0 实际搭建，美观与真机流畅度列为首版验收条件。
+**安卓开发：[开发预览与接续入口](docs/android-handoff.md)**。独立 worktree 使用 `codex/android-dev`；已实现 Kotlin／Compose 键盘、Rust 会话核心和 Rime／Lua，支持全拼、自然码和小鹤双拼。构建与安装见 [Android README](android/README.md)，真实版本、原生视觉及模拟器结果见 [验证记录](docs/android-validation.md)。用户选择先用模拟器，真机与高刷新率等项目另行补验；200 条英文释义仍是待人工审核的开发数据。
 
 **工作区新增：[自然码双拼与小鹤双拼](docs/double-pinyin.md)**。设置可选择全拼、自然码双拼或小鹤双拼，三者共享[中文选词学习](docs/word-frequency.md)、逐词遗忘和英文释义。600 条中英文回归、148 项双拼／会话检查、词频与候选窗回归、原生设置窗口检查通过。当前为内部 dev.3 构建，尚未导出新版运行／源码 ZIP 或安装；[后续待办](docs/optimization-todo.md)已更新。
 

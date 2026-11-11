@@ -89,6 +89,7 @@ pub struct Event {
 #[serde(tag = "type", rename_all = "camelCase")]
 pub enum Action {
     Start { config: Config },
+    Restart { config: Config, #[serde(rename = "previousGeneration")] previous_generation: u64, revision: u64 },
     Key { code: u32, #[serde(default)] modifiers: u32 },
     Literal { text: String },
     Select { index: usize, revision: u64 },
@@ -229,17 +230,28 @@ impl<E: Engine> Session<E> {
     pub fn process(&mut self, event: Event) -> Result<Snapshot> {
         let mut commands = vec![];
         let mut notice = String::new();
-        if let Action::Start { config } = &event.action {
+        let starting = match &event.action {
+            Action::Start { config } => Some((config, false)),
+            Action::Restart { config, previous_generation, revision } =>
+                Some((config, *previous_generation == self.generation && *revision == self.revision && self.generation != 0)),
+            _ => None,
+        };
+        if let Some((config, resume)) = starting {
             config.validate()?;
             if event.generation <= self.generation { return self.snapshot(commands, "stale-editor".into()); }
-            self.engine.clear()?;
+            if !resume { self.engine.clear()?; }
             // Old, unconsumed engine output can never be delivered to a new editor.
             let _ = self.engine.take_commit()?;
+            let previous_ascii = self.config.ascii_mode;
             self.generation = event.generation;
             self.config = config.clone();
+            if resume { self.config.ascii_mode = previous_ascii; }
             self.invalidate()?;
-            self.engine.schema(&self.config.schema)?;
-            self.active_schema = self.config.schema.clone();
+            if !resume {
+                self.engine.schema(&self.config.schema)?;
+                self.active_schema = self.config.schema.clone();
+                if matches!(event.action, Action::Restart { .. }) { notice = "restart-discarded".into(); }
+            }
             self.engine.configure(&self.config)?;
             return self.snapshot(commands, notice);
         }
@@ -248,7 +260,7 @@ impl<E: Engine> Session<E> {
         }
 
         match event.action {
-            Action::Start { .. } => unreachable!(),
+            Action::Start { .. } | Action::Restart { .. } => unreachable!(),
             Action::Read => {},
             Action::Dismiss => { self.invalidate()?; },
             Action::Clear => { self.invalidate()?; self.engine.clear()?; },

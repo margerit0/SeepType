@@ -84,6 +84,18 @@ class NativeEngineTest {
         try {
             start()
             check("Kotlin loads Rust and fixed Rime/Lua", NativeCore.version(handle).contains("Rime 1.13.1"))
+            check("Invalid opaque handles are rejected at JNI boundary", runCatching {
+                NativeCore.dispatch(-1, event("read", "generation" to generation).toString())
+            }.isFailure)
+            check("A second native owner cannot initialize the process twice", runCatching {
+                NativeCore.create(resources.shared.path, resources.user.path, resources.build.path)
+            }.isFailure)
+            val foreign = Executors.newSingleThreadExecutor()
+            try {
+                check("JNI rejects use from a foreign worker thread", foreign.submit<Boolean> {
+                    runCatching { NativeCore.dispatch(handle, event("read", "generation" to generation).toString()) }.isFailure
+                }.get(5, TimeUnit.SECONDS))
+            } finally { foreign.shutdownNow() }
             val smoke = type("gongyuan")
             check("P0 returns real park candidate and Lua annotation", smoke.candidates.any { it.chinese == "公园" && it.english == "park" })
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })
@@ -122,6 +134,14 @@ class NativeEngineTest {
             check("600 dictionary annotations and Chinese/English commits", failures == 0)
 
             scheme("study")
+            for ((input, chinese) in listOf("nv" to "女", "lvse" to "绿色", "ertong" to "儿童", "xi'an" to "西安", "nh" to "你好")) {
+                val located = find(type(input), chinese)
+                check("Full pinyin special spelling $input resolves $chinese", located.first.candidates[located.second].chinese == chinese)
+            }
+            var deleting = type("gongyuan")
+            repeat(8) { deleting = send(event("key", "code" to 0xff08)) }
+            check("Repeated deletion removes composition before touching editor text", deleting.input.isEmpty() && deleting.commands.isEmpty())
+            check("Deletion on empty composition requests one editor deletion", send(event("key", "code" to 0xff08)).commands.single().kind == "delete")
             var (word, index) = find(type("gongyuan"), "公园")
             var inspected = inspect(word, index)
             val oldToken = inspected.target!!.token
@@ -196,6 +216,19 @@ class NativeEngineTest {
             val pausedHao = find(pausedSegment, "好")
             send(event("select", "index" to pausedHao.second, "revision" to pausedHao.first.revision))
             check("Paused learning does not add the new phrase again", type("nihc").candidates.first().chinese != "拟好")
+
+            clear()
+            NativeCore.destroy(handle)
+            handle = 0
+            File(resources.shared, "lua/study_core.lua").writeText("error('synthetic damaged resource')")
+            handle = deployer.open(initialize = { fixed ->
+                NativeCore.create(fixed.shared.path, fixed.user.path, fixed.build.path)
+            }, close = NativeCore::destroy)
+            generation++
+            start()
+            scheme("study")
+            check("Damaged real Lua resources are repaired before native initialization", type("gongyuan").candidates.any { it.chinese == "公园" && it.english == "park" })
+            check("Resource repair preserves the forgotten-word user dictionary state", type("nihao").candidates.first().chinese != "拟好")
 
             report.put("passed", true)
         } finally {

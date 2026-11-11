@@ -19,26 +19,22 @@ class EngineHost(context: Context) : AutoCloseable {
     private val active = AtomicLong(0)
     private var handle = 0L
     @Volatile private var closed = false
-    var onSnapshot: (EngineSnapshot, Long) -> Unit = { _, _ -> }
+    var onSnapshot: (EngineSnapshot, Long, String) -> Unit = { _, _, _ -> }
     var onFailure: () -> Unit = {}
 
     private fun initialize() {
         if (handle != 0L) return
         val deployer = DataDeployer(app)
-        val resources = deployer.prepare()
-        fun create(value: DataDeployer.Resources) = NativeCore.create(value.shared.path, value.user.path, value.build.path)
-        handle = try {
-            create(resources).also { check(it != 0L); deployer.markReady(resources) }
-        } catch (error: Exception) {
-            val previous = deployer.previous()?.takeIf { it.version != resources.version } ?: throw error
-            create(previous).also { check(it != 0L) }
-        }
+        handle = deployer.open(initialize = { value ->
+            NativeCore.create(value.shared.path, value.user.path, value.build.path).also { check(it != 0L) }
+        }, close = NativeCore::destroy)
     }
 
-    fun begin(config: JSONObject): Long {
+    fun begin(config: JSONObject, previous: EngineSnapshot? = null): Long {
         val generation = nextGeneration.incrementAndGet()
         active.set(generation) // Invalidates queued results before any worker task can complete.
-        submit(generation, event("start", "config" to config))
+        submit(generation, if (previous == null) event("start", "config" to config) else
+            event("restart", "config" to config, "previousGeneration" to previous.generation, "revision" to previous.revision))
         return generation
     }
 
@@ -48,6 +44,7 @@ class EngineHost(context: Context) : AutoCloseable {
         if (closed || active.get() != generation) return
         command.put("generation", generation)
         val encoded = command.toString() // Immutable message; caller may reuse its JSON object.
+        val type = command.optString("type")
         val started = SystemClock.elapsedRealtimeNanos()
         worker.post {
             if (closed || active.get() != generation) return@post
@@ -57,7 +54,7 @@ class EngineHost(context: Context) : AutoCloseable {
                 val snapshot = EngineSnapshot.parse(NativeCore.dispatch(handle, encoded))
                 main.post {
                     if (!closed && active.get() == generation && snapshot.generation == generation) {
-                        onSnapshot(snapshot, started)
+                        onSnapshot(snapshot, started, type)
                     }
                 }
             } catch (_: Exception) {

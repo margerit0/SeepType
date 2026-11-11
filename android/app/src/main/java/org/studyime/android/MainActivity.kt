@@ -38,8 +38,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.view.WindowCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import org.studyime.android.engine.schemaName
 import org.studyime.android.settings.KeyboardPreferences
 import org.studyime.android.settings.Preferences
@@ -59,6 +61,12 @@ class MainActivity : ComponentActivity() {
             var license by rememberSaveable { mutableStateOf("") }
             StudyTheme(prefs.theme) {
                 val colors = LocalStudyColors.current
+                SideEffect {
+                    WindowCompat.getInsetsController(window, window.decorView).apply {
+                        isAppearanceLightStatusBars = !colors.dark
+                        isAppearanceLightNavigationBars = !colors.dark
+                    }
+                }
                 BackHandler(screen != "home") { if (license.isNotEmpty()) license = "" else screen = "home" }
                 Surface(Modifier.fillMaxSize(), color = colors.paper) {
                     Column(Modifier.safeDrawingPadding().imePadding()) {
@@ -248,6 +256,12 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
     val c = LocalStudyColors.current
     val context = LocalContext.current
     var body by remember(license) { mutableStateOf("") }
+    var dictionary by remember { mutableStateOf<JSONObject?>(null) }
+    LaunchedEffect(Unit) {
+        dictionary = withContext(Dispatchers.IO) {
+            runCatching { context.assets.open("generated/manifest.json").bufferedReader().use { JSONObject(it.readText()) } }.getOrNull()
+        }
+    }
     LaunchedEffect(license) {
         if (license.isNotEmpty()) body = withContext(Dispatchers.IO) {
             runCatching { context.assets.open("generated/$license").bufferedReader().use { it.readText() } }.getOrDefault("许可文件暂时无法读取。")
@@ -259,7 +273,11 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
             SettingLabel("开发预览")
             Text("拾词 ${BuildConfig.VERSION_NAME}", fontSize = 22.sp, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(12.dp))
-            Text("121,505 条中文词条\n200 条英文释义 · 人工审核尚未完成", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
+            val entries = dictionary
+            Text(if (entries == null) "正在读取本机词库信息…" else "${"%,d".format(entries.getInt("chineseEntries"))} 条中文词条\n${entries.getInt("englishEntries")} 条英文释义 · 人工审核 ${entries.getInt("humanApproved")} 条", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
+            entries?.let {
+                Text("词库版本 ${it.getString("version")}\n中文快照 ${it.getString("chineseSnapshot")}", fontSize = 11.sp, lineHeight = 18.sp, color = c.subtle)
+            }
             Spacer(Modifier.height(12.dp))
             Text("中文候选来自固定的 CC-CEDICT 快照，结合 wordfreq 和 Unihan 读音频次。英文释义只用于开发预览，部分词义仍需人工核对。", fontSize = 13.sp, lineHeight = 22.sp, color = c.subtle)
             SettingLabel("只在本机")
@@ -274,6 +292,7 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
                 "librime-lua" to "notices/third-party/librime-lua/LICENSE",
                 "自然码与小鹤双拼" to "notices/third-party/rime-double-pinyin/LICENSE",
                 "组件与数据说明" to "notices/README.txt",
+                "第三方组件完整许可" to "notices/THIRD-PARTY.txt",
             ).forEach { (title, path) -> TextButton(onClick = { select(path) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                 Text(title, Modifier.weight(1f), fontSize = 14.sp)
                 Icon(Icons.Outlined.ChevronRight, null, Modifier.size(18.dp))

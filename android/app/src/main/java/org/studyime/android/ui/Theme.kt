@@ -29,10 +29,14 @@ fun StudyTheme(mode: String = "system", content: @Composable () -> Unit) {
     val colors = if (dark) DarkColors else LightColors
     val scheme = if (dark) darkColorScheme(
         primary = colors.accent, onPrimary = colors.onAccent, primaryContainer = colors.tint,
+        secondary = colors.accent, onSecondary = colors.onAccent, secondaryContainer = colors.tint,
+        onSecondaryContainer = colors.ink, surfaceVariant = colors.function, outlineVariant = colors.line,
         onPrimaryContainer = colors.ink, background = colors.paper, surface = colors.paper,
         onBackground = colors.ink, onSurface = colors.ink, onSurfaceVariant = colors.subtle, outline = colors.line,
     ) else lightColorScheme(
         primary = colors.accent, onPrimary = colors.onAccent, primaryContainer = colors.tint,
+        secondary = colors.accent, onSecondary = colors.onAccent, secondaryContainer = colors.tint,
+        onSecondaryContainer = colors.ink, surfaceVariant = colors.function, outlineVariant = colors.line,
         onPrimaryContainer = colors.ink, background = colors.paper, surface = colors.paper,
         onBackground = colors.ink, onSurface = colors.ink, onSurfaceVariant = colors.subtle, outline = colors.line,
     )

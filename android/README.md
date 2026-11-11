@@ -1,6 +1,6 @@
 # 拾词 Android 开发预览
 
-Kotlin / Jetpack Compose 输入法，Rust 管理会话与候选动作，NDK 构建固定的 librime / Lua。最低 API 29，目标 API 35；同时打包 `arm64-v8a` 和 `x86_64`。功能范围及验收见 [完整计划](../docs/android-plan.md)，接续状态见 [交接文档](../docs/android-handoff.md)。
+Kotlin / Jetpack Compose 输入法，Rust 管理会话与候选动作，NDK 构建固定的 librime / Lua。最低 API 29，目标 API 35；同时打包 `arm64-v8a` 和 `x86_64`。功能范围及验收见 [完整计划](../docs/android-plan.md)，接续状态见 [交接文档](../docs/android-handoff.md)，实际版本、设备与限制见 [验证记录](../docs/android-validation.md)。
 
 ## 构建环境
 
@@ -36,7 +36,7 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 ## 模拟器和验证
 
-本机使用已有 WSL2 / KVM 运行无窗口 AOSP Android 11 x86_64 模拟器，AVD 和系统镜像也在专用 D 盘缓存。Windows ADB 连接 `emulator-5554`：
+本机使用已有 WSL2 / KVM 运行无窗口 AOSP Android 11 x86_64 模拟器，AVD 和系统镜像也在专用 D 盘缓存。以 `devices -l` 的实际序列号为准；本次 Windows ADB 使用 `127.0.0.1:5555`，脚本缺省值仍为 `emulator-5554`：
 
 ```powershell
 python -X utf8 tools/android/emulator.py install
@@ -44,15 +44,47 @@ python -X utf8 tools/android/emulator.py start
 python -X utf8 tools/android/device.py devices -l
 python -X utf8 tools/android/build.py tests
 python -X utf8 tools/android/build.py apk --debug
-python -X utf8 tools/android/run_device_checks.py install
-python -X utf8 tools/android/run_device_checks.py native
-python -X utf8 tools/android/run_device_checks.py ime
+python -X utf8 tools/android/run_device_checks.py install --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py native --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py ime --serial 127.0.0.1:5555
 python -X utf8 tools/android/build.py lint
 ```
 
 `native` 在隔离的合成用户词典中执行真实 JNI / Rust / Rime / Lua 验证，包含三种方案各 200 条中英文样本、候选动作保护、隐私、学习和遗忘。`ime` 使用真实 Android 编辑器和系统输入法窗口操作；调试用编辑器不会打进发布优化包。测试结果及安装 APK 摘要位于 `.cache/android/evidence`，命令日志位于 `.cache/android/logs`。
 
+优化 APK 的输入检查使用独立 Debug 编辑器与测试运行器，实际键盘是 Release 进程。先安装 Release，再运行相关检查；每次开始前都会读取设备中的 APK 并验证摘要：
+
+```powershell
+python -X utf8 tools/android/device.py --serial 127.0.0.1:5555 install -r android/app/build/outputs/apk/release/app-release.apk
+python -X utf8 tools/android/run_device_checks.py ime --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/run_device_checks.py lifecycle --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/run_device_checks.py apps --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/run_device_checks.py performance --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/run_device_checks.py recording --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/collect_device_evidence.py recording --serial 127.0.0.1:5555
+python -X utf8 tools/android/check_unassisted_input.py --serial 127.0.0.1:5555
+python -X utf8 tools/android/measure_startup.py --serial 127.0.0.1:5555 --samples 10
+```
+
+`apps` 只操作模拟器中的离线浏览器页面与虚构号码短信草稿，不发送消息。`recording` 保存未剪辑的原生屏幕录像；后续的 `check_unassisted_input.py` 在无障碍已关闭时验证普通输入，不启用 UiAutomation。
+
+`measure_startup.py` 只在专用模拟器上更换新输入法进程，保留已部署词库与用户数据，记录每个新进程首次显示回调到可用绘制的耗时、可读取的 RSS 高水位与就绪后 PSS。它不清理操作系统文件缓存，也不把回调前的进程创建时间或就绪后 PSS 当成完整冷启动／PSS 峰值。
+
+Debug 侧的 `recovery`、`scenarios`、`visual` 分别覆盖资源故障、特殊输入／导航／设置，以及四种宽度 × 四档字号 × 浅深色。运行后用 `collect_device_evidence.py visual`、`scenarios`、`performance` 收集相应截图和诊断文件，均需传相同的 `--serial`。`verify_design.py` 测量真实主题颜色及 320 dp 截图中的工具触区；逐图审阅另记 `visual-review.json`。
+
 原生 ELF / APK 的 16 KB 对齐检查与实际在 16 KB 页面设备运行是两项不同验证。模拟器测试也不能替代真机触感、60 Hz / 高刷新率表现及常用第三方应用验收；交付记录会分别列出结果和待补验项。
+
+## 交付开发包
+
+`build.py` 在成功组装后记录源文件、准备好的原生库／资源、构建日志和 APK 的摘要。只修改文档不改变 APK 构建输入；修改代码后需要重新组装并更新受影响的设备报告。原生校验还会用固定 NDK 重做符号剥离，核对 APK 中由本工程准备的 6 个原生输入及 2 个 AndroidX 原生库的 ABI、依赖与 16 KB 布局。
+
+完成验证和图像审阅后，在 `codex/android-dev` 提交源码与文档，再运行：
+
+```powershell
+python -X utf8 tools/android/package_preview.py
+```
+
+脚本要求工作区干净，拒绝功能验证未通过或与当前 APK／测试运行器不匹配的报告，以及已变化的截图或录像。性能初始目标按实测值核对，未达标状态写入交付清单和说明，不冒充生产验收通过。输出 APK、该提交的源码 ZIP、实际第三方原生源码 ZIP、验证 ZIP、公开签名、依赖清单和 SHA-256 清单。最新位置记录在 `.cache/android/delivery-latest.json`，本机实际输出位于 `.cache/android/delivery`；开发私钥不进入这些材料。
 
 ## 源码边界
 

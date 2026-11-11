@@ -199,3 +199,28 @@ fn queued_preferences_preserve_newer_mode_and_bound_editor_privacy() {
     assert!(result.ascii_mode && !result.show_english && !result.user_learning);
     assert!(state.borrow().config.sensitive && state.borrow().config.no_personalization);
 }
+
+#[test]
+fn verified_editor_restart_preserves_composition_but_expires_candidate_actions() {
+    let (mut session, _) = fixture();
+    let target = target(&mut session);
+    let result = session.process(Event { generation: 2, action: Action::Restart {
+        config: Config::default(), previous_generation: 1, revision: target.revision,
+    } }).unwrap();
+    assert_eq!(result.context.input, "nihao");
+    assert!(result.commands.is_empty() && result.target.is_none());
+    let stale = session.process(Event { generation: 2, action: Action::English { token: target.token } }).unwrap();
+    assert!(stale.commands.is_empty());
+}
+
+#[test]
+fn restart_with_an_unseen_engine_revision_cannot_restore_old_composition() {
+    let (mut session, _) = fixture();
+    let visible = type_word(&mut session);
+    session.process(event(Action::Key { code: 109, modifiers: 0 })).unwrap();
+    let result = session.process(Event { generation: 2, action: Action::Restart {
+        config: Config::default(), previous_generation: 1, revision: visible.revision,
+    } }).unwrap();
+    assert!(result.context.input.is_empty() && result.commands.is_empty());
+    assert_eq!(result.notice, "restart-discarded");
+}

@@ -70,6 +70,9 @@ def prepare(source_cache=None):
             payload["notices/" + notice["path"].removeprefix("licensing/")] = (ROOT / notice["path"]).read_bytes()
     for name in ("rime-double-pinyin/LICENSE", "boost/LICENSE_1_0.txt"):
         payload["notices/third-party/" + name] = (ROOT / "licensing/third-party" / name).read_bytes()
+    from tools.android.prepare_notices import payload as dependency_notices
+    if (ROOT / "Cargo.lock").is_file() and (CACHE / "cargo/registry/src").is_dir():
+        payload.update(dependency_notices())
     payload["notices/README.txt"] = (
         "拾词 Android 开发预览 0.1.0-preview.1\n"
         "新 Kotlin、Rust 和桥接代码：GPL-3.0-or-later。\n"

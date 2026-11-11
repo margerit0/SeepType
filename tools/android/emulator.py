@@ -52,7 +52,7 @@ def configure():
     values = {"AvdId": "StudyIME_API30", "avd.ini.displayname": "StudyIME Android 11 (API 30)",
               "abi.type": "x86_64", "hw.cpu.arch": "x86_64", "hw.cpu.ncore": "2", "hw.ramSize": "1024",
               "hw.lcd.width": "1080", "hw.lcd.height": "2340", "hw.lcd.density": "440",
-              "hw.keyboard": "yes", "hw.gpu.enabled": "yes", "hw.gpu.mode": "swiftshader_indirect",
+              "hw.keyboard": "yes", "hw.mainKeys": "no", "hw.gpu.enabled": "yes", "hw.gpu.mode": "swiftshader_indirect",
               "hw.audioInput": "no", "hw.camera.back": "none", "hw.camera.front": "none",
               "image.sysdir.1": linux_path(CACHE / "sdk/system-images/android-30/default/x86_64") + "/",
               "tag.id": "default", "tag.display": "Default", "PlayStore.enabled": "false",

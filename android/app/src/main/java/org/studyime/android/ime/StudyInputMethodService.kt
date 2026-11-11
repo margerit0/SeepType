@@ -9,6 +9,8 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.ExtractedTextRequest
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
+import java.io.FileDescriptor
+import java.io.PrintWriter
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -43,6 +45,8 @@ class StudyInputMethodService : InputMethodService() {
     private var viewOwner: ImeViewOwner? = null
     private var keyboardView: ComposeView? = null
     private var boundConnection: InputConnection? = null
+    private data class EditorIdentity(val app: String?, val field: Int, val inputType: Int, val options: Int)
+    private var editorIdentity: EditorIdentity? = null
     private var generation = 0L
     private var ascii = false
     private val delivery = DeliveryGate()
@@ -58,13 +62,13 @@ class StudyInputMethodService : InputMethodService() {
         preferences = Preferences.get(this)
         prefs = preferences.state.value
         engine = EngineHost(this)
-        engine.onSnapshot = { snapshot, started ->
+        engine.onSnapshot = { snapshot, started, type ->
             if (delivery.accept(snapshot.generation, snapshot.revision)) {
                 if (deliver(snapshot)) {
                     ascii = snapshot.asciiMode
                     state = snapshot.copy(commands = emptyList())
                     // Aggregate durations only. No text, package or candidate is retained.
-                    InputMetrics.engineResult(SystemClock.elapsedRealtimeNanos() - started)
+                    if (type == "key") InputMetrics.result(snapshot.generation, snapshot.revision, started)
                 } else connectionFailed()
             }
         }
@@ -120,11 +124,14 @@ class StudyInputMethodService : InputMethodService() {
 
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
+        val identity = EditorIdentity(attribute.packageName, attribute.fieldId, attribute.inputType, attribute.imeOptions)
+        val oldConnection = boundConnection
+        val previous = state.takeIf { restarting && identity == editorIdentity && oldConnection != null && it.ready && !it.error }
         delivery.invalidate()
         engine.invalidate()
         boundConnection = currentInputConnection
+        editorIdentity = identity
         editor = EditorSpec.from(attribute)
-        ascii = editor.asciiPreferred
         // restartInput can deliver EditorInfo with the selection from before
         // an application's setText. Ask the new connection for current offsets
         // once; never retain the extracted text or query it on the key path.
@@ -132,19 +139,38 @@ class StudyInputMethodService : InputMethodService() {
             hintMaxChars = 1
             hintMaxLines = 1
         }, 0) }.getOrNull()
-        selectionStart = (extracted?.let { it.startOffset + it.selectionStart } ?: attribute.initialSelStart).coerceAtLeast(0)
-        selectionEnd = (extracted?.let { it.startOffset + it.selectionEnd } ?: attribute.initialSelEnd).coerceAtLeast(0)
-        composingStart = -1
-        composingLength = 0
+        val currentStart = (extracted?.let { it.startOffset + it.selectionStart } ?: attribute.initialSelStart).coerceAtLeast(0)
+        val currentEnd = (extracted?.let { it.startOffset + it.selectionEnd } ?: attribute.initialSelEnd).coerceAtLeast(0)
+        val restore = previous?.takeIf {
+            if (currentStart != selectionStart || currentEnd != selectionEnd) false
+            else if (it.input.isEmpty()) true
+            else extracted?.text?.let { text ->
+                val begin = composingStart - extracted.startOffset
+                begin >= 0 && begin + composingLength <= text.length &&
+                    text.subSequence(begin, begin + composingLength).toString() == it.preedit.ifEmpty { it.input }
+            } == true
+        }
+        if (restore == null) {
+            composingStart = -1
+            composingLength = 0
+            runCatching { oldConnection?.finishComposingText() }
+        } else if (composingStart >= 0 && composingLength > 0) {
+            // restartInput removes the old composing span even though the
+            // verified text remains. Reattach it before replacing preedit.
+            boundConnection?.setComposingRegion(composingStart, composingStart + composingLength)
+        }
+        ascii = restore?.asciiMode ?: editor.asciiPreferred
+        selectionStart = currentStart
+        selectionEnd = currentEnd
         expectedSelections.clear()
         expected(selectionStart, selectionEnd)
-        beginEditor()
+        beginEditor(restore)
     }
 
-    private fun beginEditor() {
-        generation = engine.begin(config())
+    private fun beginEditor(previous: EngineSnapshot? = null) {
+        generation = engine.begin(config(), previous)
         delivery.bind(generation)
-        state = EngineSnapshot(generation = generation, schema = prefs.schema, asciiMode = ascii,
+        state = previous?.copy(generation = generation, target = null, commands = emptyList()) ?: EngineSnapshot(generation = generation, schema = prefs.schema, asciiMode = ascii,
             showEnglish = prefs.showEnglish && !editor.sensitive, userLearning = prefs.userLearning && !editor.sensitive && !editor.noPersonalization)
     }
 
@@ -156,13 +182,18 @@ class StudyInputMethodService : InputMethodService() {
     private fun config() = prefs.engineConfig(ascii, editor.sensitive, editor.noPersonalization)
 
     override fun onStartInputView(info: EditorInfo, restarting: Boolean) {
+        InputMetrics.showRequested()
         super.onStartInputView(info, restarting)
         viewOwner?.resume()
+        keyboardView?.invalidate()
     }
 
     override fun onFinishInputView(finishingInput: Boolean) {
         viewOwner?.stop()
-        super.onFinishInputView(finishingInput)
+        // The platform default finishes composing text on a hide even when
+        // this editor remains active. Keep its span until onFinishInput (or an
+        // actual external cursor edit) so reopening can continue the word.
+        if (finishingInput) super.onFinishInputView(true)
     }
 
     override fun onFinishInput() {
@@ -170,11 +201,13 @@ class StudyInputMethodService : InputMethodService() {
         engine.invalidate()
         // Finish only the captured old connection, never whichever editor may
         // become current by the time an asynchronous result is delivered.
-        runCatching { boundConnection?.finishComposingText() }
+        val previousConnection = boundConnection
         boundConnection = null
+        editorIdentity = null
         generation = 0
         composingStart = -1
         composingLength = 0
+        runCatching { previousConnection?.finishComposingText() }
         state = EngineSnapshot()
         super.onFinishInput()
     }
@@ -186,6 +219,12 @@ class StudyInputMethodService : InputMethodService() {
         viewOwner?.destroy()
         engine.close()
         super.onDestroy()
+    }
+
+    override fun dump(fd: FileDescriptor, writer: PrintWriter, args: Array<out String>?) {
+        if (args?.contains("study-metrics-reset") == true) InputMetrics.reset()
+        if (args?.any { it.startsWith("study-metrics") } == true) writer.println(InputMetrics.report())
+        else super.dump(fd, writer, args)
     }
 
     private fun send(command: JSONObject) {
@@ -204,6 +243,11 @@ class StudyInputMethodService : InputMethodService() {
         val connection = boundConnection ?: return false
         connection.beginBatchEdit()
         try {
+            if (snapshot.notice == "restart-discarded") {
+                connection.finishComposingText()
+                composingStart = -1
+                composingLength = 0
+            }
             for (command in snapshot.commands) {
                 if (!delivery.consume(command.id) {
                     when (command.kind) {
@@ -283,7 +327,24 @@ class StudyInputMethodService : InputMethodService() {
             repeat(expectedIndex + 1) { expectedSelections.removeFirst() }
             return
         }
-        if (selection == (selectionStart to selectionEnd)) return
+        if (selection == (selectionStart to selectionEnd)) {
+            if (composingStart < 0 || (candidatesStart == composingStart && candidatesEnd == composingStart + composingLength)) return
+            // Closing the old InputConnection removes its composing span just
+            // before onStartInput(restarting=true). Quiesce delivery immediately,
+            // but allow that verified restart to reclaim the visible word.
+            val closingGeneration = generation
+            delivery.invalidate()
+            engine.invalidate()
+            keyboardView?.postDelayed({
+                if (generation == closingGeneration && generation != 0L) {
+                    composingStart = -1
+                    composingLength = 0
+                    expectedSelections.clear()
+                    beginEditor()
+                }
+            }, 50)
+            return
+        }
         selectionStart = newSelStart.coerceAtLeast(0)
         selectionEnd = newSelEnd.coerceAtLeast(0)
         expectedSelections.clear()
@@ -291,19 +352,10 @@ class StudyInputMethodService : InputMethodService() {
             // External cursor/selection movement ends the old composing region.
             // Raise the generation immediately so queued keystrokes cannot apply
             // at the new caret. Already visible text remains in the editor.
-            boundConnection?.finishComposingText()
             composingStart = -1
             composingLength = 0
+            boundConnection?.finishComposingText()
             beginEditor()
         }
     }
-}
-
-object InputMetrics {
-    private val samples = ArrayDeque<Long>()
-    @Synchronized fun engineResult(nanos: Long) {
-        samples.addLast(nanos)
-        if (samples.size > 1024) samples.removeFirst()
-    }
-    @Synchronized fun samplesMs(): List<Double> = samples.map { it / 1_000_000.0 }
 }

@@ -2,15 +2,34 @@
 package org.studyime.android
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.inputmethod.EditorInfo
+import android.view.accessibility.AccessibilityManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import java.io.File
+import org.json.JSONObject
 
 /** Synthetic real Android editors; excluded entirely from the release APK. */
 class ProbeActivity : Activity() {
+    private lateinit var primaryEditor: EditText
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (intent.hasExtra("snapshotToken")) {
+            // Explicit host-test snapshot, so the crash regression can inspect
+            // text without connecting an accessibility/UiAutomation service.
+            File(filesDir, "unassisted-editor.json").writeText(JSONObject()
+                .put("token", intent.getStringExtra("snapshotToken"))
+                .put("text", primaryEditor.text.toString())
+                .put("accessibilityEnabled", getSystemService(AccessibilityManager::class.java).isEnabled)
+                .toString())
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val kind = intent.getStringExtra("field") ?: "text"
@@ -27,7 +46,12 @@ class ProbeActivity : Activity() {
             setBackgroundColor(0xfffbfcfa.toInt())
         }
         root.addView(TextView(this).apply { text = "拾词 · 原生输入验证"; textSize = 22f; setTextColor(0xff24352e.toInt()) })
-        root.addView(TextView(this).apply { text = "Synthetic field: $kind"; textSize = 12f; setPadding(0, 16, 0, 24) })
+        root.addView(TextView(this).apply {
+            text = "Synthetic field: $kind"
+            contentDescription = "probe_launch_${intent.getLongExtra("launchToken", 0)}"
+            textSize = 12f
+            setPadding(0, 16, 0, 24)
+        })
         val actionLabel = TextView(this).apply { id = R.id.probe_action; text = "action:none"; textSize = 12f }
         val primary = EditText(this).apply {
             id = R.id.probe_text
@@ -61,6 +85,7 @@ class ProbeActivity : Activity() {
             inputType = InputType.TYPE_CLASS_TEXT
             imeOptions = EditorInfo.IME_ACTION_DONE
         }
+        primaryEditor = primary
         root.addView(primary, LinearLayout.LayoutParams(-1, -2))
         root.addView(secondary, LinearLayout.LayoutParams(-1, -2))
         root.addView(actionLabel)
