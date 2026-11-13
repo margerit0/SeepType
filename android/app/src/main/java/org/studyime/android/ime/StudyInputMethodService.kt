@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import java.io.FileDescriptor
 import java.io.PrintWriter
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
@@ -27,6 +28,8 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import org.studyime.android.MainActivity
+import org.studyime.android.clipboard.ClipboardHistoryRepository
+import org.studyime.android.clipboard.ClipboardMonitor
 import org.studyime.android.diagnostics.StartupTimings
 import org.studyime.android.diagnostics.StartupTimings.Phase
 import org.studyime.android.engine.EngineHost
@@ -41,6 +44,8 @@ class StudyInputMethodService : InputMethodService() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private lateinit var engine: EngineHost
     private lateinit var preferences: Preferences
+    private lateinit var clipboard: ClipboardHistoryRepository
+    private lateinit var clipboardMonitor: ClipboardMonitor
     private var state by mutableStateOf(EngineSnapshot())
     private var prefs by mutableStateOf(KeyboardPreferences())
     private var editor by mutableStateOf(EditorSpec())
@@ -64,6 +69,8 @@ class StudyInputMethodService : InputMethodService() {
         super.onCreate()
         preferences = Preferences.get(this)
         prefs = preferences.state.value
+        clipboard = ClipboardHistoryRepository.get(this)
+        clipboardMonitor = ClipboardMonitor(this, clipboard)
         engine = EngineHost(this)
         engine.onSnapshot = { snapshot, timing, type ->
             if (delivery.accept(snapshot.generation, snapshot.revision)) {
@@ -111,6 +118,7 @@ class StudyInputMethodService : InputMethodService() {
             setViewTreeSavedStateRegistryOwner(owner)
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
+                val clipboardState by clipboard.state.collectAsState()
                 StudyTheme(prefs.theme, prefs.skin) {
                     StudyKeyboard(state, prefs, editor, preferences::update, ::send,
                         onSettings = {
@@ -120,6 +128,9 @@ class StudyInputMethodService : InputMethodService() {
                         },
                         onSwitchIme = { (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showInputMethodPicker() },
                         onRetry = { restartEditor() },
+                        clipboard = clipboardState, onClipboardEnabled = clipboard::setEnabled,
+                        onPasteClipboard = ::pasteClipboard, onPinClipboard = clipboard::togglePin,
+                        onDeleteClipboard = clipboard::remove, onClearClipboard = clipboard::clear,
                     )
                 }
             }
@@ -139,6 +150,7 @@ class StudyInputMethodService : InputMethodService() {
         boundConnection = currentInputConnection
         editorIdentity = identity
         editor = EditorSpec.from(attribute)
+        clipboardMonitor.setProtectedEditor(editor.sensitive || editor.noPersonalization)
         // restartInput can deliver EditorInfo with the selection from before
         // an application's setText. Ask the new connection for current offsets
         // once; never retain the extracted text or query it on the key path.
@@ -193,6 +205,7 @@ class StudyInputMethodService : InputMethodService() {
         InputMetrics.showRequested()
         super.onStartInputView(info, restarting)
         viewOwner?.resume()
+        clipboardMonitor.refresh()
         keyboardView?.invalidate()
     }
 
@@ -212,6 +225,7 @@ class StudyInputMethodService : InputMethodService() {
         val previousConnection = boundConnection
         boundConnection = null
         editorIdentity = null
+        clipboardMonitor.finishEditor()
         generation = 0
         composingStart = -1
         composingLength = 0
@@ -222,6 +236,7 @@ class StudyInputMethodService : InputMethodService() {
 
     override fun onDestroy() {
         delivery.invalidate()
+        clipboardMonitor.close()
         scope.cancel()
         keyboardView?.disposeComposition()
         viewOwner?.destroy()
@@ -237,6 +252,16 @@ class StudyInputMethodService : InputMethodService() {
 
     private fun send(command: JSONObject) {
         if (generation != 0L) engine.submit(generation, command)
+    }
+
+    private fun pasteClipboard(id: String, requestedGeneration: Long) {
+        if (requestedGeneration != generation || generation == 0L || boundConnection == null ||
+            !isInputViewShown || editor.sensitive || editor.noPersonalization || !state.ready || state.error) return
+        val history = clipboard.state.value.history
+        if (!history.enabled) return
+        val entry = history.entries.firstOrNull { it.id == id } ?: return
+        // The same generation/commit-id gates as keys protect asynchronous paste delivery.
+        send(event("literal", "text" to entry.text))
     }
 
     private fun expected(start: Int, end: Int = start) {
