@@ -52,7 +52,12 @@ def prepare(source_cache=None):
         payload["rime/" + source.name] = source.read_bytes()
     for source in (CACHE / "src/rime-luna-pinyin").glob("*.yaml"):
         payload["rime/" + source.name] = source.read_bytes()
-    payload["rime/default.custom.yaml"] = b"patch:\n  schema_list:\n    - schema: study\n    - schema: study_double_pinyin\n    - schema: study_flypy\n  menu/page_size: 5\n"
+    payload["rime/default.custom.yaml"] = b"patch:\n  schema_list:\n    - schema: study\n    - schema: study_double_pinyin\n    - schema: study_flypy\n  menu/page_size: 9\n"
+    # Android's compact strip shows 6–7 entries and the expanded panel shows
+    # nine. Override each schema locally; the Windows five-entry menu is shared
+    # source and must retain its original configuration.
+    for schema in ("study", "study_double_pinyin", "study_flypy"):
+        payload[f"rime/{schema}.custom.yaml"] = b"patch:\n  menu/page_size: 9\n"
     for name, content in english.items():
         if name not in ("lexicon.lua", "review.html"):
             payload["notices/english/" + name] = content
@@ -81,6 +86,7 @@ def prepare(source_cache=None):
         "Rime、librime-lua、LevelDB、marisa、OpenCC、yaml-cpp、Boost 与双拼方案的许可见 third-party。\n"
         "AndroidX、Kotlin 与 kotlinx.coroutines：Apache-2.0；Rust 标准库及 JNI/serde 依赖：MIT / Apache-2.0。\n"
         "NDK libc++：Apache-2.0 WITH LLVM-exception。源码、锁文件、构建脚本随开发预览材料提供。\n"
+        "Quicksand 和 Fredoka 字体：SIL OFL 1.1；原始 TTF、固定来源和许可随 APK 提供。\n"
         "输入、释义和学习均在本机执行；不申请网络权限，用户词典不进入 Android 备份。\n"
     ).encode("utf-8")
     hashes = {name: hashlib.sha256(content).hexdigest() for name, content in sorted(payload.items())}

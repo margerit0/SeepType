@@ -111,7 +111,7 @@ class StudyInputMethodService : InputMethodService() {
             setViewTreeSavedStateRegistryOwner(owner)
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                StudyTheme(prefs.theme) {
+                StudyTheme(prefs.theme, prefs.skin) {
                     StudyKeyboard(state, prefs, editor, preferences::update, ::send,
                         onSettings = {
                             startActivity(Intent(this@StudyInputMethodService, MainActivity::class.java)

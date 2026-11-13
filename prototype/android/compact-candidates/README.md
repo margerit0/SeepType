@@ -4,6 +4,8 @@
 
 追溯基线：`0322ef8`（`docs(android): preserve compact candidate bar prototype`）。后续迭代以当前文件为准。
 
+2026-11-13：用户已授权实现皮肤切换，并选定 Quicksand。原生实现与验证见[Android 皮肤说明](../../../docs/android-skins.md)；此目录继续保留完整的设计与字体比较稿，网页检查记录仍只代表网页样稿。
+
 ## 皮肤
 
 - **默认**：保留现有浅绿配色、系统字体、小写字母键标、9 CSS px 按键圆角和轻微键帽阴影。首次打开使用默认皮肤。

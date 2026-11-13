@@ -68,7 +68,7 @@ class VisualMatrixTest {
             driver.candidate("公园").longClick()
             capture("390dp-definition")
             device.findObject(By.desc("关闭释义")).click()
-            device.findObject(By.desc("显示英文释义")).click()
+            driver.toggleEnglish()
             SystemClock.sleep(350)
             capture("390dp-english-hidden")
             check("English toggle preserves Chinese candidate and visible composition", driver.candidate("公园").contentDescription == "公园" && driver.editor().text == "gong yuan")

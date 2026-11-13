@@ -11,7 +11,7 @@ from tools.android.device import adb
 
 
 def collect(directory, serial="emulator-5554"):
-    if directory not in ("visual", "lifecycle", "scenarios", "performance", "recording"):
+    if directory not in ("visual", "skins", "lifecycle", "scenarios", "performance", "recording"):
         raise ValueError("Not a generated evidence directory")
     archive = adb("exec-out", "run-as", "org.studyime.android.debug", "tar", "-C", "files", "-cf", "-", directory,
                   serial=serial, binary=True).stdout
@@ -31,7 +31,7 @@ def collect(directory, serial="emulator-5554"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("directory", choices=["visual", "lifecycle", "scenarios", "performance", "recording"])
+    parser.add_argument("directory", choices=["visual", "skins", "lifecycle", "scenarios", "performance", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     args = parser.parse_args()
     collect(args.directory, args.serial)

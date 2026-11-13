@@ -34,5 +34,8 @@ experiments/phase4/prepare-weasel.py text eol=lf
 /android/** text=auto eol=lf
 /android/gradlew.bat text eol=crlf
 /android/gradle/wrapper/*.jar binary
+# Bundled fonts and original OFL notices retain the pinned upstream bytes.
+/android/app/src/main/res/font/*.ttf binary
+/android/app/src/main/assets/fonts/*-OFL.txt -text whitespace=-blank-at-eof,-blank-at-eol
 # Unified diffs intentionally contain space-only context lines.
 /android/native/patches/*.patch whitespace=-blank-at-eol

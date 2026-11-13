@@ -30,6 +30,10 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 发布优化的开发包位于 `app/build/outputs/apk/release/app-release.apk`，包名为 `org.studyime.android`。`build.py apk --debug` 生成包名带 `.debug` 的测试版本，两者独立保存本机词频。开发包使用缓存内生成的本地开发签名，不是商店发布签名。保留该签名才能覆盖安装而不清除应用数据；密钥不进入 Git。
 
+## 皮肤
+
+键盘设置可独立选择“默认 / 轻彩”与“自动 / 浅色 / 深色”。轻彩使用离线打包的 Quicksand 字体、原生矢量双层键标和原布局；换肤保留当前输入。待机点设置图标，输入时长按候选展开按钮即可进入。使用方法、字体来源和原生验证见[皮肤说明](../docs/android-skins.md)。
+
 ## 数据和恢复
 
 首轮使用固定 CC-CEDICT / wordfreq / Unihan 数据生成 121,505 条中文词条，携带 200 条**待人工审核**的英文释义。`prepare_data.py` 复用现有词库流程，不加入网页原型中的示例，不启动词库扩充请求。原始来源、摘要、署名和审核记录随生成资源保存。
