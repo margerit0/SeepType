@@ -72,7 +72,7 @@ def install(serial):
         "fingerprint": adb("shell", "getprop", "ro.build.fingerprint", serial=serial).stdout.strip()})
 
 
-def test(section, serial, ime_package=None, *, apks=None):
+def test(section, serial, ime_package=None, *, apks=None, timeout=1200):
     if ime_package not in (None, PACKAGE, "org.studyime.android"):
         raise ValueError("Only the StudyIME development builds are supported")
     test_class, report = {
@@ -106,47 +106,83 @@ def test(section, serial, ime_package=None, *, apks=None):
         shutil.copy2(old_report, archive / old_report.name)
         if old_log.is_file():
             shutil.copy2(old_log, archive / old_log.name)
-    # A crashed runner must never reuse a report left by an earlier successful run.
-    adb("shell", "run-as", PACKAGE, "rm", "-f", "files/" + report, serial=serial)
     started = datetime.now(timezone.utc).isoformat()
-    if section == "apps":
-        # Use a fresh process for the dedicated AOSP test browser as well as
-        # a fresh page; long matrix runs can leave an obsolete renderer alive.
-        # This preserves its data and does not touch a user's normal browser.
-        adb("shell", "am", "force-stop", "org.chromium.webview_shell", serial=serial)
-    if section == "recording":
-        helper = CACHE / "temp/studyime-recording.sh"
-        write(helper, RECORDING_SCRIPT)
-        adb("push", helper, "/data/local/tmp/studyime-recording.sh", serial=serial)
-    if section == "native":
-        methods = adb("shell", "ime", "list", "-s", serial=serial).stdout.splitlines()
-        other = next((method.strip() for method in methods if "inputmethod.latin" in method), None)
-        if other: adb("shell", "ime", "set", other, serial=serial)
-    elif section not in ("recovery", "draw"):
-        package = ime_package or PACKAGE
-        component = next(method.strip() for method in adb("shell", "ime", "list", "-a", "-s", serial=serial).stdout.splitlines()
-                         if method.strip().startswith(package + "/"))
-        adb("shell", "ime", "enable", component, serial=serial)
-        adb("shell", "ime", "set", component, serial=serial)
     print("Running Android " + test_class, flush=True)
     extra = ["-e", "imePackage", ime_package] if ime_package else []
     attempt = CACHE / "evidence/runs" / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ") + "-" + section)
     runtime = RuntimeCapture(serial, attempt, ime_package or PACKAGE,
                              require_ime_continuity=section in ("performance", "reopen") and ime_package == "org.studyime.android")
     instrumentation_started = False
+    timed_out = False
     try:
         with runtime:
+            # Capture IME startup and every setup command before instrumentation
+            # so an early service failure cannot fall in an unlogged gap.
+            setup_commands = []
+            def setup(*args):
+                setup_commands.append([str(arg) for arg in args])
+                json_write(attempt / "setup.json", {"serial": serial, "commands": setup_commands})
+                return adb(*args, serial=serial)
+            # Never reuse a report left by a previous crashed/successful runner.
+            setup("shell", "run-as", PACKAGE, "rm", "-f", "files/" + report)
+            if section == "apps":
+                setup("shell", "am", "force-stop", "org.chromium.webview_shell")
+            if section == "recording":
+                helper = CACHE / "temp/studyime-recording.sh"
+                write(helper, RECORDING_SCRIPT)
+                setup("push", helper, "/data/local/tmp/studyime-recording.sh")
+            # Standalone Compose tests must not share InputMetrics with a live
+            # debug IME in the same process.
+            if section in ("native", "draw"):
+                methods = setup("shell", "ime", "list", "-s").stdout.splitlines()
+                other = next((method.strip() for method in methods if "inputmethod.latin" in method), None)
+                if other: setup("shell", "ime", "set", other)
+            elif section != "recovery":
+                package = ime_package or PACKAGE
+                component = next(method.strip() for method in setup("shell", "ime", "list", "-a", "-s").stdout.splitlines()
+                                 if method.strip().startswith(package + "/"))
+                setup("shell", "ime", "enable", component)
+                setup("shell", "ime", "set", component)
+            command = ["shell", "am", "instrument", "-w", "-r", "-e", "class", "org.studyime.android." + test_class,
+                       "-e", "evidenceRunId", runtime.token, *extra,
+                       PACKAGE + ".test/androidx.test.runner.AndroidJUnitRunner"]
+            json_write(attempt / "invocation.json", {"command": command, "serial": serial, "timeoutSeconds": timeout, "installedApks": observed,
+                       "apkInputs": {package: {"path": str(path.resolve()), "sha256": digest(path)} for package, path in apks.items()}})
             instrumentation_started = True
             try:
-                result = adb("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.studyime.android." + test_class,
-                    "-e", "evidenceRunId", runtime.token, *extra,
-                    PACKAGE + ".test/androidx.test.runner.AndroidJUnitRunner", serial=serial, timeout=1200, check=False)
+                result = adb(*command, serial=serial, timeout=timeout, check=False)
             except subprocess.TimeoutExpired as error:
+                timed_out = True
                 def decoded(value):
                     return value.decode("utf-8", errors="replace") if isinstance(value, bytes) else value or ""
                 result = subprocess.CompletedProcess(error.cmd, 124, decoded(error.stdout), decoded(error.stderr) + "\nInstrumentation timed out")
+            write(attempt / "instrumentation.log", result.stdout + result.stderr)
+            if "OK (1 test)" not in result.stdout or result.returncode != 0:
+                runtime.note_failure(result.stdout + result.stderr)
+                for item in observed:
+                    def freeze_apk(item=item):
+                        path = apks[item["package"]]
+                        if digest(path) != item["sha256"]:
+                            raise ValueError("APK changed before failure freeze: " + item["package"])
+                        destination = attempt / (item["package"] + ".apk")
+                        shutil.copy2(path, destination)
+                        if digest(destination) != item["sha256"]:
+                            raise ValueError("APK changed during failure freeze: " + item["package"])
+                    runtime.capture_step("freeze-apk", freeze_apk)
     except Exception as error:
         result = subprocess.CompletedProcess([], 1, "", str(error))
+    if timed_out:
+        # Losing the adb client does not reliably end remote instrumentation.
+        # Its logs, APKs, metrics and screenshot have already been frozen above.
+        def stop_timed_out_runner():
+            stopped = adb("shell", "am", "force-stop", PACKAGE, serial=serial, timeout=15)
+            json_write(attempt / "timeout-cleanup.json", {"recordedAt": datetime.now(timezone.utc).isoformat(),
+                       "command": ["am", "force-stop", PACKAGE], "afterFailureFreeze": True,
+                       "output": stopped.stdout + stopped.stderr})
+        runtime.capture_step("stop-timed-out-runner", stop_timed_out_runner)
+        if runtime.summary["captureErrors"]:
+            runtime.summary["complete"] = runtime.summary["passed"] = False
+        json_write(attempt / "runtime.json", runtime.summary)
     write(CACHE / "logs" / ("instrumentation-" + section + ".log"), result.stdout + result.stderr)
     passed = "OK (1 test)" in result.stdout and result.returncode == 0
     try:
@@ -170,7 +206,11 @@ def test(section, serial, ime_package=None, *, apks=None):
     value["passed"] = passed and value.get("passed", False)
     value["run"] = {"startedAt": started, "finishedAt": datetime.now(timezone.utc).isoformat(),
                     "serial": serial, "class": test_class, "instrumentationStarted": instrumentation_started,
-                    "instrumentationPassed": passed}
+                    "instrumentationPassed": passed, "instrumentationTimedOut": timed_out,
+                    "timeoutSeconds": timeout, "returnCode": result.returncode}
+    if timed_out:
+        value["reportFailure"] = value.get("failure")
+        value["failure"] = f"Instrumentation exceeded its {timeout:.3f} second time limit"
     value["observedInstalledApks"] = observed
     value["runtimeEvidence"] = {"directory": str(attempt.resolve()), **runtime.summary}
     value["passed"] = value["passed"] and runtime.summary["passed"]
@@ -179,10 +219,10 @@ def test(section, serial, ime_package=None, *, apks=None):
     except Exception as error:
         value["artifactIdentityError"] = str(error)
         value["passed"] = False
+    if section == "performance" and value.get("runId") != runtime.token:
+        value["passed"] = False
+        value["reportIdentityError"] = "Report does not belong to this attempt"
     if section == "performance":
-        if value.get("runId") != runtime.token:
-            value["passed"] = False
-            value["reportIdentityError"] = "Performance report does not belong to this attempt"
         value["performanceAssessment"] = assess_performance(value)
         value["passed"] = value["passed"] and value["performanceAssessment"]["coverageComplete"]
     value["installedBuild"] = {"serial": serial, "apkSha256": observed[0]["sha256"],
@@ -207,6 +247,7 @@ def test(section, serial, ime_package=None, *, apks=None):
     print(result.stdout[-6000:], flush=True)
     if not passed:
         raise SystemExit("Android instrumentation did not pass; see preserved log")
+    return value
 
 
 if __name__ == "__main__":

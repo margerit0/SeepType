@@ -1,8 +1,76 @@
 # 拾词 Android 开发预览验证
 
-更新于 2026-11-13（北京时间）。本页记录原生 Android 实现和实际验证，网页原型只用于视觉参考。
+更新于 2026-11-14（北京时间）。本页记录原生 Android 实现和实际验证，网页原型只用于视觉参考。
 
-## 2026-11-13：独立工作树的 Release 稳定性回归
+## 2026-11-14：故障采集、有限复现、启动定位与最终 Release 回归
+
+本轮从交接提交 `0fc9993c79b3c4ed0ae29af55cec1de2982d4431` 接续任务 1、2、3、5，仍使用 `.`／`codex/android-dev` 和专用缓存 `.cache/android/release-stability-worktree`。设备为 `StudyIME_Stability_API35_20261113`，API 35 x86_64，ADB `127.0.0.1:5581`、server `5041`。任务 4（API 30 及磁盘准备）、其他工作树和 preview.2 交付不在本轮范围。
+
+**最终只保留诊断与采集增强；历史崩溃根因和启动 500 ms 目标仍未解决。** `Keyboard.kt`、`EngineHost.kt`、`StudyInputMethodService.kt` 已恢复交接版；`StartupTimings.kt` 新增实际线程 CPU 时长、单调时钟锚点及启用系统追踪时的 Perfetto 分段。资源逐文件核验、R8、资源压缩和原始计时终点保留。
+
+### 最终构建与功能
+
+| 包 | 最终 SHA-256 |
+| --- | --- |
+| org.studyime.android | `31ab41223ce5a0a438f6e07ef0b1d869ebb07e904b48eca25674e159aedc2e60` |
+| org.studyime.android.debug | `05694011be29147c7adcb699b809f45b7e8df76e1a81722b05dfa8c1a4c55d64` |
+| org.studyime.android.debug.test | `59c8013ef1b817f5cdde003e2f231cc0f6a72eb62cf03d5ec9216a78651a8987` |
+
+最终 `assembleRelease`、`assembleDebug`、`testDebugUnitTest`（3 项）、`assembleDebugAndroidTest`、`lintDebug`、`lintRelease` 成功；40 项 Python 主机检查通过。最终 APK 正常覆盖安装、保留数据，编译状态为 `verify / reason=install`，未强制 AOT。Release **16 项输入、18 项生命周期、40 次重开**和 Debug 缓存绘制最小回归通过，APK 前后身份一致，无本次 runtime fatal。171 条原生／生成资源与交接版逐字节相同；6 个准备原生输入、8 个 APK 库及 ELF／ZIP 16 KB 静态对齐重新通过。原生功能、38 项布局及 42 张截图按未改动范围复用，未重跑或冒称真机验收。
+
+### 故障采集及有限复现
+
+现场采集现在包括准备／触发命令、Windows／WSL 负载和模拟器进程、设备 boot／PID／启动时间、设备时区与 uptime、退出原因和新增 text／proto tombstone。使用运行标记及前后差异归属事件；旧记录、时钟变化和身份不明记录分开。采集错误不能覆盖原始异常，任一必要采集失败均不能保持 `complete=true`。
+
+两次受控 `/system/bin/sleep` SIGSEGV 仅用于采集工具自测。首次发现 `SI_USER from pid` 是信号发送者，修正后使用实际崩溃 PID，重新注入验证本次 tombstone 冻结及旧 tombstone 排除。真实 1 秒 instrumentation 超时检查验证原超时保留、现场冻结完成后再停止专用 Debug runner。以上均不是历史产品崩溃的正向复现。
+
+固定交接 APK、同一编辑器／运行器和正常安装，设 **8 组／25 分钟**预算检查连续运行时间。完成 **7 组、1,260 次按键、140 次重开**，IME PID 始终为 `1314`；整段运行标记内无 runtime fatal、无本次归属 tombstone，系统和 boot 稳定。第 8 组触及预算，主机 adb 超时；含采集的总耗时为 **1517.63 秒**。边界外远端 runner 后来产生的 23 词及 `Missing enabled key: space` 报告另存，不计通过覆盖，也不归类为历史崩溃。
+
+这次超时促使工具补上远端清理，以及剩余时间不足已观测完整组时不再启动下一组。有限复现不是暖态全通过：部分组出现候选或重开尾延迟超标，原始数据保留。历史去重的 **21 个事件（15 IME、1 测试／编辑器、5 系统）**仍无正向最小复现，根因未确认；未复现不能排除应用、ART、测试或虚拟化层。
+
+### 启动定位与撤回的试验
+
+原版三次 Perfetto 追踪显示首次 traversal 约 **514–580 ms**；主线程其中约 **392–417 ms 处于 S 等待**，实际 Running 约 **50–82 ms**。RenderThread 的 EGL 初始化、shader 编译与 swap 工作明显；`FIRST_MAIN_QUEUE` 为 **167–294 ms**，与首次未就绪帧的同步渲染重叠。新增线程 CPU 数据的一组对照中，资源核验 CPU 中位约 **31 ms**、Rime 创建约 **60 ms**，对应墙钟中位约 83／180 ms；这些阶段可能重叠，不能相加推导因果。
+
+固定交接 Debug 编辑器／测试 APK，仅正常覆盖安装不同 Release，各取 20 次无追踪启动：
+
+| 对照 | 启动 p95（ms） | 证据目录 |
+| --- | ---: | --- |
+| 原版 0fc9993 | 601.66 | `baseline-startup-control` |
+| 首次准备时延后禁用按键 | 544.09 | `deferred-keys-startup-control` |
+| 再延后工具栏 | 545.59 | `minimal-preparation-startup-control` |
+| 首次预绘制最多等待 250 ms | 787.97 | `initial-draw-gate-startup-control` |
+| 服务创建时提前准备引擎 | 1016.56 | `engine-preparation-startup-control` |
+| 后期回装同一原版 | 700.59 | `baseline-return-control` |
+| 只重启本任务 AVD 后的原版 | 661.83 | `baseline-after-restart-control` |
+| 同条件复测延后按键版本 | 713.81 | `retained-after-restart-control` |
+
+延后按键的早期收益在重启后的同条件对照中未复验，提前准备引擎和首次预绘制等待反而更慢，所有行为调整均已撤回。延后工具栏的 3 次追踪内 Compose 计时较快，但 ready frame 对应的 RenderThread 结束仍约 513–553 ms，且无追踪 20 次没有稳定收益，不能拿来替代正式验收。该 RenderThread 关联不是物理显示延迟，原版绝对锚点还有推算误差。
+
+原版与按键延后追踪经核对无 ftrace overrun／drop／parse error；36 个 setup notice 是模拟器不存在的物理 GPU 驱动事件。最初 Perfetto 配置路径被 SELinux 拒绝的尝试原样保留，后续使用官方 stdin 配置方式，没有更改 SELinux。试验性门控／提前准备专项测试只编译过、未运行设备验证，不声称通过；最终源码中已撤回。
+
+### 最终常规 Release 性能
+
+两组各 20 次新进程启动及连续三组暖态均使用上表最终 APK，无追踪、未清数据、未强制编译；正式测量期间本窗口没有并行 Gradle 或其他 instrumentation。
+
+| 连续组 | 按键／重开 | 候选绘制 p95／p99（ms） | 暖态重开 p95（ms） | 结果 |
+| --- | --- | ---: | ---: | --- |
+| 1 | 180／20 | 44.95／49.58 | 63.20 | 覆盖、正文、运行时及暖态目标通过 |
+| 2 | 180／20 | 45.22／53.40 | 70.87 | 覆盖、正文、运行时及暖态目标通过 |
+| 3 | 180／20 | 43.64／55.52 | 71.93 | 覆盖、正文、运行时及暖态目标通过 |
+
+三组均精确取得 180 个交付／绘制／有序阶段配对及 20 个重开样本，逐词和最终正文正确，无合并、丢弃、pending 或缺失样本。三组 IME PID 始终为 `13544`，系统关键进程和 boot 未变，整段日志及退出／tombstone 归属无本次运行时崩溃。
+
+两组新进程启动 p95 为 **799.69／980.15 ms**，最大值为 **841.52／1053.10 ms**，均超过 500 ms。每个新进程恰好一个完整显示／就绪绘制对。整体比较保留 `completed=true、coverageComplete=true、threeWarmGroupsPassed=true、timingTargetsMet=false、passed=false`；三组暖态均达标，启动仍未达标。启动边界仍为首次 `onStartInputView` 至真实就绪 Compose 绘制，排除回调前进程创建和物理显示延迟。旧环境的较快结果、少量带追踪样本和撤回版结果均不能覆盖本次未达标。
+
+最初最终回归的主机包装脚本在功能检查结束后因安装参数覆盖 argparse 变量而失败，性能阶段尚未开始；失败脚本及原 `final-diagnostics/validation.json` 未修改。修复变量名后，单独继续正式性能序列，同一源码和三份 APK 身份再次核对。该主机编排错误不属于产品崩溃，后续完整结果记录在 `final-diagnostics/performance-continuation.json`。
+
+本轮报告、机器摘要、源码输入和失败现场在专用缓存的 `evidence/continuation-1235-20261113T152157390451Z`；正式性能在 `evidence/performance-investigation/20261113T182953264318Z-final-diagnostics-perf`。`evidence-index.json` 与 `artifact-manifest.json` 同时绑定调查目录、正式比较和引用的独立运行目录，`report-verification.json` 记录封存核验；最终提交和当前入口见 `.cache/android/release-stability-latest.json`。ARM64 真机、实际 16 KB 页面、高刷新率、TalkBack 等仍待验，不能宣称 P4 完整结束。
+
+
+## 2026-11-13：上轮独立工作树 Release 历史记录
+
+以下数字对应交接提交 `0fc9993` 的当轮 APK，不是 2026-11-14 最终诊断版的结果。
 
 本轮基线是 `d8a859c`，工作树为 `.`，分支 `codex/android-dev`。缓存和证据独占 `.cache/android/release-stability-worktree`，设备为 API 35 x86_64 的 `StudyIME_Stability_API35_20261113`／`127.0.0.1:5581`，ADB server 为 `5041`；另一窗口的源码、构建输出及模拟器安装保留。
 

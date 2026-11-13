@@ -85,9 +85,19 @@ python -X utf8 tools/android/run_device_checks.py reopen --serial 127.0.0.1:5581
 python -X utf8 tools/android/profile_performance.py --label release-check --serial 127.0.0.1:5581 --expected-avd StudyIME_Stability_API35_20261113 --compilation installed --warm-runs 3 --startup-runs 2 --startup-samples 20
 ```
 
-`draw` 是缓存 Compose 子内容的最小绘制回归，`reopen` 在不继续打字的情况下重开 40 次。完整性能检查要求每组精确 180 次交付／绘制／阶段配对、20 次重开和逐词正文一致；不再容许 170 个绘制样本代替 180 次按键。主机持续保存带运行标记的日志、进程／boot 身份和 APK 前后摘要，原始 crash buffer 不直接算成本次故障。覆盖完整与延迟达标分别报告，未达标的完整测试仍会以失败退出并保留所有数据。
+`draw` 是缓存 Compose 子内容的最小绘制回归，`reopen` 在不继续打字的情况下重开 40 次。完整性能检查要求每组精确 180 次交付／绘制／阶段配对、20 次重开和逐词正文一致；不再容许 170 个绘制样本代替 180 次按键。启动的每个新进程必须恰好有一个完整显示／就绪绘制对，不能遗留 pending。`profile_performance.py` 将同一组冻结 APK 传给暖态与启动测量，并核对前后安装摘要。覆盖完整与延迟达标分别报告，未达标的完整测试仍会以失败退出并保留所有数据。
 
-最新结果见 [验证记录](../docs/android-validation.md)。本轮已完成三组暖态目标，但新进程启动仍超标，历史运行时崩溃根因未确认；不要将诊断构建、Debug 或显式 AOT 结果作为正式 Release 验收。正式测量时避免同时构建或运行其他设备测试，并保留实际宿主负载记录。
+`runtime_evidence.py` 从 IME 选择等准备动作开始记录唯一边界、boot、PID／启动时间和实际命令；`host_evidence.py` 保存前后 Windows／WSL 负载和模拟器身份；`runtime_artifacts.py` 按设备时间、时区、boot 及前后差异归属退出原因与 text／proto tombstone。旧 crash buffer、旧退出记录和旧 tombstone 不直接算成本次故障。异常后先冻结日志、APK、编译状态、进程、IME 状态和截图，再重试；`triggerFailure` 与 `captureErrors` 分开。Instrumentation 超时会保留原始超时，完成现场采集后才停止专用 Debug runner，避免远端测试继续写入后续运行。
+
+有新假设需要检查连续运行时间时，使用已冻结、与设备安装一致的三份 APK 及构建收据，另选一个不存在的输出目录。例如：
+
+```powershell
+python -X utf8 tools/android/bounded_repro.py --serial 127.0.0.1:5581 --expected-avd StudyIME_Stability_API35_20261113 --apk-directory .cache/android/evidence/continuation-1235-20261113T152157390451Z/final-diagnostics --output .cache/android/evidence/bounded-uptime-next --rounds 8 --minutes 25
+```
+
+工具只改变重复次数和累计运行时间，拒绝显式编译模式的安装；剩余预算不足已观测的一组耗时时不再起新组。Instrumentation 有剩余预算超时，现场冻结及收尾可超出活动预算。原始失败、不完整的最后一组及边界外数据单列，不补进通过计数。
+
+最新结果见 [验证记录](../docs/android-validation.md) 和 `.cache/android/release-stability-latest.json`。2026-11-14 本轮最终 Release 仅新增 `StartupTimings` 的线程 CPU 时长、单调时钟锚点及按需 Perfetto 分段；所有试验性启动行为调整已撤回。正式两组启动 p95 为 799.69／980.15 ms，仍超标；历史运行时崩溃根因未确认。带追踪样本、Debug 或显式 AOT 结果不能代替常规 Release 回归。正式测量时避免同时构建或运行其他设备测试，并保留实际宿主负载记录。任务 4（API 30 与磁盘准备）在另一范围内，本轮不处理。
 
 Debug 侧的 `recovery`、`scenarios`、`visual` 分别覆盖资源故障、特殊输入／导航／设置，以及四种宽度 × 四档字号 × 浅深色。运行后用 `collect_device_evidence.py visual`、`scenarios`、`performance` 收集相应截图和诊断文件，均需传相同的 `--serial`。`verify_design.py` 测量真实主题颜色及 320 dp 截图中的工具触区；逐图审阅另记 `visual-review.json`。
 

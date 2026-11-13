@@ -14,7 +14,7 @@ from tools.android.device import adb
 from tools.android.run_device_checks import installed_apk
 
 
-def measure(serial, samples=10):
+def measure(serial, samples=10, *, apks=None):
     if not 3 <= samples <= 20:
         raise ValueError("Use 3 to 20 fresh processes for this development baseline")
 
@@ -25,9 +25,14 @@ def measure(serial, samples=10):
         raise ValueError("Only the dedicated development emulator is supported")
     package = "org.studyime.android"
     debug = package + ".debug"
-    release_apk = ROOT / "android/app/build/outputs/apk/release/app-release.apk"
-    observed = [installed_apk(serial, debug, ROOT / "android/app/build/outputs/apk/debug/app-debug.apk"),
-                installed_apk(serial, debug + ".test", ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"),
+    apks = apks or {
+        package: ROOT / "android/app/build/outputs/apk/release/app-release.apk",
+        debug: ROOT / "android/app/build/outputs/apk/debug/app-debug.apk",
+        debug + ".test": ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+    }
+    release_apk = apks[package]
+    observed = [installed_apk(serial, debug, apks[debug]),
+                installed_apk(serial, debug + ".test", apks[debug + ".test"]),
                 installed_apk(serial, package, release_apk)]
     methods = command("shell", "ime", "list", "-a", "-s").stdout.splitlines()
     component = next(item.strip() for item in methods if item.strip().startswith(package + "/"))
@@ -75,6 +80,10 @@ def measure(serial, samples=10):
             item = {"pid": pid, "timings": metrics,
                     "readyDrawMs": metrics["showInputViewToReadyDrawMs"]["max"],
                     "readyDrawSamples": metrics["showInputViewToReadyDrawMs"]["samples"]}
+            if (item["readyDrawSamples"] != 1 or metrics.get("showRequests") != 1
+                    or metrics.get("pendingShowDraw") is not False or metrics.get("pendingReadyDraw") is not False):
+                report["failedProcess"] = item
+                raise RuntimeError("A fresh process must contain exactly one complete first-show/ready-draw pair")
             total = re.search(r"TOTAL PSS:\s*(\d+)|^\s*TOTAL\s+(\d+)", memory, re.MULTILINE)
             if total:
                 item["readyPssKb"] = int(next(group for group in total.groups() if group is not None))
@@ -93,12 +102,17 @@ def measure(serial, samples=10):
         disk = command("shell", "du", "-k", apk_path, check=False)
         report["apkDiskUsage"] = {"scope": "Allocated base.apk blocks only; excludes compiled code and private resources/user dictionary",
                                   "output": disk.stdout.strip(), "error": disk.stderr.strip()}
+        report["observedInstalledApksAfter"] = [installed_apk(serial, item["package"], sha256=item["sha256"]) for item in observed]
         report["passed"] = True
+    except BaseException as error:
+        report["failure"] = str(error)
+        raise
     finally:
         report["finishedAt"] = datetime.now(timezone.utc).isoformat()
         json_write(CACHE / "evidence/release-startup-report.json", report)
     print(json.dumps({"passed": report["passed"], "readyDrawMs": report["readyDrawMs"],
                       "callbackColdP95Target500Ms": report["callbackColdP95Target500Ms"]}))
+    return report
 
 
 if __name__ == "__main__":

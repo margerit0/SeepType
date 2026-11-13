@@ -160,7 +160,7 @@ def profile(label, serial, warm_runs=3, startup_runs=2, startup_samples=20, comp
             archive_current(output / f"before-startup-{index + 1:02d}", "release-startup-report.json", "startup")
             destination = output / f"startup-{index + 1:02d}"
             try:
-                measure(serial, startup_samples)
+                measure(serial, startup_samples, apks=frozen_apks)
             finally:
                 archive_current(destination, "release-startup-report.json", "startup")
             value = json.loads((destination / "release-startup-report.json").read_text(encoding="utf-8"))
