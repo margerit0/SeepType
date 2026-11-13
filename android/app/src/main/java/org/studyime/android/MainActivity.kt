@@ -27,6 +27,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -34,6 +35,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,10 +47,12 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.studyime.android.engine.schemaName
 import org.studyime.android.settings.KeyboardPreferences
+import org.studyime.android.settings.KeyboardSkin
 import org.studyime.android.settings.Preferences
 import org.studyime.android.ui.LocalStudyColors
 import org.studyime.android.ui.StudyTheme
 
+@OptIn(ExperimentalComposeUiApi::class)
 class MainActivity : ComponentActivity() {
     private var enabled by mutableStateOf(false)
     private var selected by mutableStateOf(false)
@@ -59,7 +64,7 @@ class MainActivity : ComponentActivity() {
             val prefs by settings.state.collectAsState()
             var screen by rememberSaveable { mutableStateOf(intent.getStringExtra("screen")?.takeIf { it in listOf("practice", "settings", "about") } ?: "home") }
             var license by rememberSaveable { mutableStateOf("") }
-            StudyTheme(prefs.theme) {
+            StudyTheme(prefs.theme, prefs.skin) {
                 val colors = LocalStudyColors.current
                 SideEffect {
                     WindowCompat.getInsetsController(window, window.decorView).apply {
@@ -68,7 +73,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
                 BackHandler(screen != "home") { if (license.isNotEmpty()) license = "" else screen = "home" }
-                Surface(Modifier.fillMaxSize(), color = colors.paper) {
+                Surface(Modifier.fillMaxSize().semantics { testTagsAsResourceId = true }, color = colors.paper) {
                     Column(Modifier.safeDrawingPadding().imePadding()) {
                         Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp).heightIn(min = 60.dp), verticalAlignment = Alignment.CenterVertically) {
                             if (screen != "home") IconButton(onClick = { if (license.isNotEmpty()) license = "" else screen = "home" }) {
@@ -170,6 +175,14 @@ private fun SettingsScreen(prefs: KeyboardPreferences, update: ((KeyboardPrefere
         Spacer(Modifier.height(16.dp))
         SwitchSetting("显示英文释义", "候选上方显示英文。普通点按和空格仍输入中文。", prefs.showEnglish) { value -> update { it.copy(showEnglish = value) } }
         SwitchSetting("记住中文选词习惯", "只保存在本机；暂停后保留已有词频。长按候选可逐词遗忘。", prefs.userLearning) { value -> update { it.copy(userLearning = value) } }
+        SettingLabel("皮肤")
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            KeyboardSkin.entries.forEach { skin ->
+                FilterChip(selected = prefs.skin == skin, onClick = { update { it.copy(skin = skin) } },
+                    label = { Text(skin.title) }, modifier = Modifier.heightIn(min = 48.dp).testTag("settings_skin_${skin.id}"))
+            }
+        }
+        Text("轻彩 · Quicksand 字体与彩色双层键标", fontSize = 12.sp, color = c.subtle)
         SettingLabel("外观")
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             listOf("system" to "跟随系统", "light" to "浅色", "dark" to "深色").forEach { (key, name) ->
@@ -264,7 +277,8 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
     }
     LaunchedEffect(license) {
         if (license.isNotEmpty()) body = withContext(Dispatchers.IO) {
-            runCatching { context.assets.open("generated/$license").bufferedReader().use { it.readText() } }.getOrDefault("许可文件暂时无法读取。")
+            val asset = if (license.startsWith("fonts/")) license else "generated/$license"
+            runCatching { context.assets.open(asset).bufferedReader().use { it.readText() } }.getOrDefault("许可文件暂时无法读取。")
         }
     }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp)) {
@@ -293,6 +307,8 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
                 "自然码与小鹤双拼" to "notices/third-party/rime-double-pinyin/LICENSE",
                 "组件与数据说明" to "notices/README.txt",
                 "第三方组件完整许可" to "notices/THIRD-PARTY.txt",
+                "Quicksand 字体 · SIL OFL 1.1" to "fonts/quicksand-OFL.txt",
+                "Fredoka 切换键字体 · SIL OFL 1.1" to "fonts/fredoka-OFL.txt",
             ).forEach { (title, path) -> TextButton(onClick = { select(path) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                 Text(title, Modifier.weight(1f), fontSize = 14.sp)
                 Icon(Icons.Outlined.ChevronRight, null, Modifier.size(18.dp))

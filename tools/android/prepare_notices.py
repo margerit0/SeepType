@@ -13,6 +13,10 @@ from tools.android.build_env import tool_env, ndk
 def payload():
     result = {}
     components = []
+    fonts = ROOT / "android/app/src/main/assets/fonts"
+    for font in json.loads((fonts / "manifest.json").read_text(encoding="utf-8")):
+        components.append({"ecosystem": "Font", **font})
+        result["notices/fonts/" + font["licenseFile"]] = (fonts / font["licenseFile"]).read_bytes()
     registry = CACHE / "cargo/registry/src"
     packages = tomllib.loads((ROOT / "Cargo.lock").read_text(encoding="utf-8"))["package"]
     apache = next(registry.glob("*/jni-0.21.1/LICENSE-APACHE")).read_bytes()

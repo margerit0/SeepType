@@ -74,6 +74,7 @@ def test(section, serial, ime_package=None):
         "ime": ("ImeInteractionTest", "ime-interaction-report.json"),
         "recovery": ("ResourceRecoveryTest", "resource-recovery-report.json"),
         "visual": ("VisualMatrixTest", "visual-matrix-report.json"),
+        "skins": ("SkinSwitchTest", "skin-switch-report.json"),
         "lifecycle": ("LifecycleTest", "lifecycle-report.json"),
         "scenarios": ("ScenarioTest", "scenario-report.json"),
         "performance": ("PerformanceTest", "performance-report.json"),
@@ -165,7 +166,7 @@ def test(section, serial, ime_package=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "ime", "recovery", "visual", "lifecycle", "scenarios", "performance", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "ime", "recovery", "visual", "skins", "lifecycle", "scenarios", "performance", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
     args = parser.parse_args()

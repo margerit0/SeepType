@@ -12,6 +12,7 @@ data class KeyboardPreferences(
     val showEnglish: Boolean = true,
     val userLearning: Boolean = true,
     val theme: String = "system",
+    val skin: KeyboardSkin = KeyboardSkin.DEFAULT,
     val keyHeight: Float = 1f,
     val textScale: Float = 1f,
     val haptics: Boolean = true,
@@ -35,6 +36,7 @@ class Preferences private constructor(context: Context) {
         showEnglish = storage.getBoolean("showEnglish", true),
         userLearning = storage.getBoolean("userLearning", true),
         theme = storage.getString("theme", "system")!!.takeIf { it in listOf("system", "light", "dark") } ?: "system",
+        skin = KeyboardSkin.fromId(storage.getString("skin", null)),
         keyHeight = storage.getFloat("keyHeight", 1f).coerceIn(.9f, 1.2f),
         textScale = storage.getFloat("textScale", 1f).coerceIn(1f, 1.3f),
         haptics = storage.getBoolean("haptics", true),
@@ -50,6 +52,7 @@ class Preferences private constructor(context: Context) {
         // apply() changes memory immediately and schedules disk I/O away from the key path.
         storage.edit().putString("schema", value.schema).putBoolean("showEnglish", value.showEnglish)
             .putBoolean("userLearning", value.userLearning).putString("theme", value.theme)
+            .putString("skin", value.skin.id)
             .putFloat("keyHeight", value.keyHeight).putFloat("textScale", value.textScale)
             .putBoolean("haptics", value.haptics).putBoolean("reduceMotion", value.reduceMotion).apply()
         mutable.value = value

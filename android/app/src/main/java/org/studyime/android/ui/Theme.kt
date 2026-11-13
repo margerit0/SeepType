@@ -9,6 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontVariation
+import androidx.compose.ui.text.ExperimentalTextApi
+import org.studyime.android.R
+import org.studyime.android.settings.KeyboardSkin
 
 data class StudyColors(
     val dark: Boolean, val paper: Color, val ink: Color, val subtle: Color,
@@ -22,11 +29,30 @@ val DarkColors = StudyColors(true, Color(0xFF18221E), Color(0xFFE4EEE8), Color(0
     Color(0xFF425448), Color(0xFF202D25), Color(0xFF35433A), Color(0xFF2B3D31),
     Color(0xFFACD5BB), Color(0xFF3B5141), Color(0xFF192D20))
 val LocalStudyColors = staticCompositionLocalOf { LightColors }
+val SoftPopLightColors = StudyColors(false, Color(0xFFFAFAFC), Color(0xFF616563), Color(0xFF737580),
+    Color(0xFFE7E8EE), Color(0xFFEFEFF4), Color.White, Color.White,
+    Color(0xFF237963), Color(0xFFD9EEE7), Color.White)
+val SoftPopDarkColors = StudyColors(true, Color(0xFF23252E), Color(0xFFEEF0F4), Color(0xFFBEC0CB),
+    Color(0xFF454754), Color(0xFF292B36), Color(0xFF3C3F4E), Color(0xFF454858),
+    Color(0xFF8DE0C6), Color(0xFF364F47), Color(0xFF203D33))
+
+@OptIn(ExperimentalTextApi::class)
+val Quicksand = FontFamily(
+    Font(R.font.quicksand_variable, FontWeight.Normal, variationSettings = FontVariation.Settings(FontVariation.weight(400))),
+    Font(R.font.quicksand_variable, FontWeight.Medium, variationSettings = FontVariation.Settings(FontVariation.weight(500))),
+)
+@OptIn(ExperimentalTextApi::class)
+val NumberToggleFont = FontFamily(Font(R.font.fredoka_variable, FontWeight.Medium,
+    variationSettings = FontVariation.Settings(FontVariation.weight(500), FontVariation.width(100f))))
+val LocalLatinFont = staticCompositionLocalOf<FontFamily> { FontFamily.SansSerif }
 
 @Composable
-fun StudyTheme(mode: String = "system", content: @Composable () -> Unit) {
+fun StudyTheme(mode: String = "system", skin: KeyboardSkin = KeyboardSkin.DEFAULT, content: @Composable () -> Unit) {
     val dark = when (mode) { "dark" -> true; "light" -> false; else -> isSystemInDarkTheme() }
-    val colors = if (dark) DarkColors else LightColors
+    val colors = when (skin) {
+        KeyboardSkin.DEFAULT -> if (dark) DarkColors else LightColors
+        KeyboardSkin.SOFT_POP -> if (dark) SoftPopDarkColors else SoftPopLightColors
+    }
     val scheme = if (dark) darkColorScheme(
         primary = colors.accent, onPrimary = colors.onAccent, primaryContainer = colors.tint,
         secondary = colors.accent, onSecondary = colors.onAccent, secondaryContainer = colors.tint,
@@ -40,5 +66,8 @@ fun StudyTheme(mode: String = "system", content: @Composable () -> Unit) {
         onPrimaryContainer = colors.ink, background = colors.paper, surface = colors.paper,
         onBackground = colors.ink, onSurface = colors.ink, onSurfaceVariant = colors.subtle, outline = colors.line,
     )
-    CompositionLocalProvider(LocalStudyColors provides colors) { MaterialTheme(colorScheme = scheme, content = content) }
+    CompositionLocalProvider(LocalStudyColors provides colors,
+        LocalLatinFont provides if (skin == KeyboardSkin.SOFT_POP) Quicksand else FontFamily.SansSerif) {
+        MaterialTheme(colorScheme = scheme, content = content)
+    }
 }

@@ -11,6 +11,7 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.StaleObjectException
 import androidx.test.uiautomator.Until
+import androidx.test.uiautomator.Direction
 import java.io.File
 import org.junit.Assert.assertTrue
 
@@ -62,12 +63,33 @@ class ImeDriver {
         if (imePackage != context.packageName && kind !in listOf("password", "numberPassword")) {
             // Preferences belong to the separate optimized app process. Set
             // its scheme through the same visible UI a user operates.
-            device.findObject(By.text("拾词")).click()
-            val heading = device.wait(Until.findObject(By.text("输入方式")), 5000) ?: error("Quick settings missing")
-            heading.parent.parent.findObject(By.text("全拼")).click()
-            device.findObject(By.desc("关闭快捷设置")).click()
+            openQuickSettings()
+            chooseScheme("全拼")
+            closeQuickSettings()
             device.waitForIdle()
         }
+    }
+    fun openQuickSettings() {
+        if (device.hasObject(By.res("quick_settings"))) return
+        val settings = device.findObject(By.desc("键盘设置"))
+        if (settings != null) settings.click()
+        else (device.findObject(By.desc("展开候选")) ?: device.findObject(By.desc("收起候选"))
+            ?: error("Keyboard settings entry missing")).longClick()
+        assertTrue("Inline settings opened", device.wait(Until.hasObject(By.res("quick_settings")), 5000))
+    }
+    fun closeQuickSettings() {
+        device.findObject(By.desc("关闭快捷设置")).click()
+        assertTrue("Inline settings closed", device.wait(Until.gone(By.res("quick_settings")), 5000))
+    }
+    fun chooseScheme(name: String) {
+        val scroll = device.wait(Until.findObject(By.res("quick_settings_scroll")), 5000) ?: error("Settings scroll missing")
+        repeat(3) { if ((device.findObject(By.text(name))?.visibleBounds?.height() ?: 0) < 40) scroll.scroll(Direction.DOWN, .75f) }
+        (device.findObject(By.text(name)) ?: error("Scheme missing: $name")).click()
+    }
+    fun toggleEnglish() {
+        openQuickSettings()
+        device.findObject(By.res("quick_settings")).findObject(By.desc("显示英文释义")).click()
+        closeQuickSettings()
     }
     fun type(text: String, delayMs: Long = 45) {
         if (delayMs > 0) {

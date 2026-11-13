@@ -94,9 +94,9 @@ class LifecycleTest {
             driver.launch()
             driver.type("gongyuan")
             driver.candidate("公园")
-            device.findObject(By.text("拾词")).click()
-            device.wait(Until.findObject(By.text("自然码")), 5000)!!.click()
-            device.findObject(By.desc("关闭快捷设置")).click()
+            driver.openQuickSettings()
+            driver.chooseScheme("自然码")
+            driver.closeQuickSettings()
             check("Changing scheme preserves pending composition", driver.candidate("公园").isEnabled && currentText() == "gong yuan")
             driver.tapKey("space")
             driver.expectText("公园")
@@ -167,7 +167,8 @@ class LifecycleTest {
             val strip = device.wait(Until.findObject(By.res("candidate_scroll")), 5000)!!.visibleBounds
             device.swipe(strip.right - 12, strip.centerY(), strip.left + 12, strip.centerY(), 24)
             device.waitForIdle()
-            val last = candidateAt(4)
+            // Android's compact candidate strip now contains nine entries.
+            val last = candidateAt(8)
             assertTrue("The final candidate is reachable inside the horizontal viewport", strip.contains(last.first.visibleCenter.x, last.first.visibleCenter.y))
             val lastChinese = last.second.substringBefore("，英文释义：")
             last.first.click()
