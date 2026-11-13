@@ -76,6 +76,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import org.studyime.android.clipboard.ClipboardHistoryState
 import org.studyime.android.engine.*
 import org.studyime.android.diagnostics.StartupTimings
 import org.studyime.android.diagnostics.StartupTimings.Phase
@@ -93,6 +94,9 @@ fun StudyKeyboard(
     update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
     send: (JSONObject) -> Unit, onSettings: () -> Unit,
     onSwitchIme: () -> Unit, onRetry: () -> Unit,
+    clipboard: ClipboardHistoryState, onClipboardEnabled: (Boolean) -> Unit,
+    onPasteClipboard: (String, Long) -> Unit, onPinClipboard: (String) -> Unit,
+    onDeleteClipboard: (String) -> Unit, onClearClipboard: () -> Unit,
 ) {
     val compositionStarted = SystemClock.elapsedRealtimeNanos()
     val colors = LocalStudyColors.current
@@ -109,6 +113,8 @@ fun StudyKeyboard(
     var upper by remember(state.generation) { mutableStateOf(false) }
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
+    var clipboardOpen by remember(state.generation) { mutableStateOf(false) }
+    val clipboardAllowed = !editor.sensitive && !editor.noPersonalization
     val currentState by rememberUpdatedState(state)
     // Keep letter keys independent of candidate revisions. The callback reads
     // the current snapshot at activation; a new editor still cancels gestures.
@@ -139,7 +145,7 @@ fun StudyKeyboard(
             if (upper) upper = false
         } else send(event("literal", "text" to text))
     } }
-    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, upper, prefs.theme, prefs.skin) {
+    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, clipboardOpen, upper, prefs.theme, prefs.skin) {
         announceImeSubtree(view, accessibility)
     }
     val keyHeight = maxOf(if (landscape) 40f else 48f, (if (landscape) 42f else 52f) * prefs.keyHeight,
@@ -149,7 +155,8 @@ fun StudyKeyboard(
     // English. First-candidate delivery must never move a finger's target.
     val statusHeight = maxOf(60f, 39f * density.fontScale * prefs.textScale + 12f).dp
     val active = state.ready && !state.error
-    val openSettings = { quickSettings = true; expanded = false }
+    val openSettings = { quickSettings = true; expanded = false; clipboardOpen = false }
+    val openClipboard = { clipboardOpen = true; quickSettings = false; expanded = false }
 
     Column(Modifier.fillMaxWidth().background(colors.board).navigationBarsPadding().drawWithContent {
         drawContent()
@@ -158,8 +165,13 @@ fun StudyKeyboard(
         .semantics { testTagsAsResourceId = true }.testTag("study_keyboard")) {
         val keys: @Composable (Modifier) -> Unit = { modifier ->
             when {
+                clipboardOpen && clipboardAllowed -> key(state.generation) {
+                    ClipboardPanel(clipboard, modifier.height(keyRowsHeight), active, onClipboardEnabled,
+                        onPaste = { id -> onPasteClipboard(id, state.generation); clipboardOpen = false },
+                        onPinClipboard, onDeleteClipboard, onClearClipboard, close = { clipboardOpen = false })
+                }
                 quickSettings -> QuickSettings(prefs, update, state.input.isNotEmpty(), editor.sensitive,
-                    modifier.height(keyRowsHeight), close = { quickSettings = false }, allSettings = {
+                    modifier.height(keyRowsHeight), clipboardAllowed, openClipboard, close = { quickSettings = false }, allSettings = {
                         quickSettings = false
                         onSettings()
                     })
@@ -172,8 +184,9 @@ fun StudyKeyboard(
         }
 
         if (landscape) {
-            IdleToolbar(state, prefs, editor, update, send, openSettings, onRetry, Modifier.fillMaxWidth().height(60.dp))
-            Row(Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp), verticalAlignment = Alignment.Bottom) {
+            IdleToolbar(state, prefs, editor, update, send, openSettings, openClipboard, onRetry, Modifier.fillMaxWidth().height(60.dp))
+            if (clipboardOpen && clipboardAllowed) keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
+            else Row(Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp), verticalAlignment = Alignment.Bottom) {
                 Column(Modifier.widthIn(max = 270.dp).weight(.34f).height(keyRowsHeight).padding(end = 7.dp)) {
                     if (active && state.candidates.isNotEmpty()) {
                         LazyColumn(Modifier.weight(1f)) {
@@ -188,9 +201,9 @@ fun StudyKeyboard(
             }
         } else {
             Box(Modifier.fillMaxWidth().height(statusHeight).testTag("keyboard_status")) {
-                if (state.candidates.isNotEmpty() && !quickSettings) {
+                if (state.candidates.isNotEmpty() && !quickSettings && !clipboardOpen) {
                     CandidateStrip(state, effectivePrefs, send, expanded, openSettings) { expanded = !expanded }
-                } else IdleToolbar(state, prefs, editor, update, send, openSettings, onRetry, Modifier.fillMaxSize())
+                } else IdleToolbar(state, prefs, editor, update, send, openSettings, openClipboard, onRetry, Modifier.fillMaxSize())
             }
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
@@ -213,7 +226,7 @@ fun StudyKeyboard(
     }
 }
 
-private suspend fun announceImeSubtree(view: View, accessibility: AccessibilityManager) {
+internal suspend fun announceImeSubtree(view: View, accessibility: AccessibilityManager) {
     // The non-focused IME window needs a subtree invalidation after layout,
     // including scroll-only movement, to expose current virtual-node bounds.
     withFrameNanos { }
@@ -240,11 +253,12 @@ private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean 
 @Composable
 private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
                         update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit, send: (JSONObject) -> Unit,
-                        settings: () -> Unit, retry: () -> Unit, modifier: Modifier) {
+                        settings: () -> Unit, clipboard: () -> Unit, retry: () -> Unit, modifier: Modifier) {
     val colors = LocalStudyColors.current
     val soft = prefs.skin == KeyboardSkin.SOFT_POP
     Row(modifier.padding(horizontal = 7.dp), verticalAlignment = Alignment.CenterVertically) {
         ToolButton(Icons.Outlined.Settings, "键盘设置", mark = if (soft) "settings" else null, onClick = settings)
+        ToolButton(Icons.Outlined.ContentPaste, "剪贴板历史", !editor.sensitive && !editor.noPersonalization, onClick = clipboard)
         if (!state.ready || state.error || editor.sensitive) {
             ReadyHint(state, editor, retry, Modifier.weight(1f))
         } else {
@@ -284,7 +298,8 @@ private fun EnglishToggle(checked: Boolean, enabled: Boolean = true, soft: Boole
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun QuickSettings(prefs: KeyboardPreferences, update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
-                          composing: Boolean, sensitive: Boolean, modifier: Modifier, close: () -> Unit, allSettings: () -> Unit) {
+                          composing: Boolean, sensitive: Boolean, modifier: Modifier, clipboardAllowed: Boolean,
+                          clipboard: () -> Unit, close: () -> Unit, allSettings: () -> Unit) {
     val colors = LocalStudyColors.current
     val scroll = rememberScrollState()
     val view = LocalView.current
@@ -295,7 +310,9 @@ private fun QuickSettings(prefs: KeyboardPreferences, update: ((KeyboardPreferen
     }
     Column(modifier.background(colors.board).padding(horizontal = 12.dp).testTag("quick_settings")) {
         Row(Modifier.fillMaxWidth().height(48.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(if (large) "设置" else "键盘设置", Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.Medium, color = colors.ink)
+            Text(if (large) "设置" else "键盘设置", Modifier.weight(1f), fontSize = 14.sp, fontWeight = FontWeight.Medium,
+                color = colors.ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            ToolButton(Icons.Outlined.ContentPaste, "剪贴板历史", clipboardAllowed, onClick = clipboard)
             TextButton(onClick = allSettings, modifier = Modifier.height(48.dp)) { Text(if (large) "全部" else "全部设置", fontSize = 12.sp) }
             ToolButton(Icons.Outlined.Close, "关闭快捷设置", onClick = close)
         }

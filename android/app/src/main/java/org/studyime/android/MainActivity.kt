@@ -45,6 +45,7 @@ import androidx.core.view.WindowCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import org.studyime.android.clipboard.ClipboardHistoryRepository
 import org.studyime.android.engine.schemaName
 import org.studyime.android.settings.KeyboardPreferences
 import org.studyime.android.settings.KeyboardSkin
@@ -175,6 +176,7 @@ private fun SettingsScreen(prefs: KeyboardPreferences, update: ((KeyboardPrefere
         Spacer(Modifier.height(16.dp))
         SwitchSetting("显示英文释义", "候选上方显示英文。普通点按和空格仍输入中文。", prefs.showEnglish) { value -> update { it.copy(showEnglish = value) } }
         SwitchSetting("记住中文选词习惯", "只保存在本机；暂停后保留已有词频。长按候选可逐词遗忘。", prefs.userLearning) { value -> update { it.copy(userLearning = value) } }
+        ClipboardSettings()
         SettingLabel("皮肤")
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             KeyboardSkin.entries.forEach { skin ->
@@ -206,14 +208,35 @@ private fun SettingsScreen(prefs: KeyboardPreferences, update: ((KeyboardPrefere
 }
 
 @Composable
+private fun ClipboardSettings() {
+    val context = LocalContext.current
+    val repository = remember(context) { ClipboardHistoryRepository.get(context) }
+    val state by repository.state.collectAsState()
+    var confirmDisable by remember { mutableStateOf(false) }
+    SettingLabel("剪贴板")
+    SwitchSetting("保存剪贴板历史", "开启后记录复制的文本，最多 50 条，可置顶 10 条。仅存本机，不参与备份；关闭会清空全部历史。",
+        state.history.enabled, modifier = Modifier.testTag("settings_clipboard_toggle")) { enabled ->
+        if (enabled) repository.setEnabled(true) else confirmDisable = true
+    }
+    Text("在键盘工具栏打开剪贴板，点按条目即可粘贴。密码和禁止个性化的输入框暂停记录；敏感内容、图片和过长文本不记录。",
+        fontSize = 12.sp, lineHeight = 20.sp, color = LocalStudyColors.current.subtle)
+    if (state.storageError) Text("暂时无法读写历史，请重试。", color = MaterialTheme.colorScheme.error, fontSize = 12.sp)
+    if (confirmDisable) AlertDialog(onDismissRequest = { confirmDisable = false },
+        title = { Text("关闭并清空历史？") }, text = { Text("将删除全部剪贴板历史，包括置顶条目。系统剪贴板不受影响。") },
+        confirmButton = { TextButton(onClick = { repository.setEnabled(false); confirmDisable = false },
+            modifier = Modifier.testTag("settings_clipboard_confirm")) { Text("关闭并清空") } },
+        dismissButton = { TextButton(onClick = { confirmDisable = false }) { Text("取消") } })
+}
+
+@Composable
 private fun SettingLabel(text: String) {
     Text(text, Modifier.padding(top = 18.dp, bottom = 8.dp), fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = LocalStudyColors.current.accent)
 }
 
 @Composable
-private fun SwitchSetting(title: String, description: String, checked: Boolean, onChanged: (Boolean) -> Unit) {
+private fun SwitchSetting(title: String, description: String, checked: Boolean, modifier: Modifier = Modifier, onChanged: (Boolean) -> Unit) {
     val c = LocalStudyColors.current
-    Row(Modifier.fillMaxWidth().heightIn(min = 80.dp).toggleable(checked, role = Role.Switch, onValueChange = onChanged)
+    Row(modifier.fillMaxWidth().heightIn(min = 80.dp).toggleable(checked, role = Role.Switch, onValueChange = onChanged)
         .padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text(title, fontSize = 15.sp, color = c.ink)
