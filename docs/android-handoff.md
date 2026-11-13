@@ -4,9 +4,13 @@
 
 当前已实现 Kotlin／Compose 界面＋Rust 会话核心＋固定 Rime／Lua，并完成本次 P0–P3 的模拟器范围及开发预览材料。P0／P1 检查点为 `b5fa54f`；历史交付目录由原缓存中的 `delivery-latest.json` 标识，本轮源码与证据见独立缓存的 `release-stability-latest.json`。P4 的性能目标尚未全部达到，真机等项目也仍待补验；不要重新从空工程开始。用户已允许在合适时提交，所有提交保持在现有 Android 分支。
 
-**最新断点：** 从交接提交 `0fc9993` 接续任务 1、2、3、5。已补齐故障现场与宿主关联采集；有限运行完成 7 组、1,260 次按键和 140 次重开，历史崩溃未复现，根因仍未确认。启动追踪定位到首次绘制中的大量主线程等待与 RenderThread 工作，但四种准备／绘制调整未获得可复验的收益，均已撤回；最终产品只新增启动诊断数据。最终 Release 的输入、生命周期与重开回归通过，三组暖态共 540 次按键、60 次重开均达标；两组各 20 次启动 p95 为 799.69／980.15 ms，500 ms 目标仍未达到。原始结果见验证记录。P4 和 preview.2 仍未收尾。
+**最新断点（新一轮任务 1、2）：** 已完成固定 B 编辑器／测试 APK 的 A→B→B→A 启动对照，共 80 个新进程，覆盖完整、无本次运行时崩溃，四批 p95 均未达到 500 ms。两次 B−A 的 p50 为 +23.38／+22.33 ms，p95 为 +501.43／−12.97 ms；宿主及同版本时段变化明显，未建立诊断开销的因果结论，也没有证明零开销。复用旧 trace 并补 3 次 B 启动后，主要等待关联到 RenderThread 的 `setSurface` 和首次 `DrawFrames`；图形 CPU 栈显示 QemuPipe／goldfish 通信。前后两次 `setStopped → runSync` 是源码支持的阻塞调用候选，因阻塞 perf 事件源被 `EINVAL` 拒绝，具体主线程函数栈仍未确认。详见 [启动对照与等待定位报告](android-startup-baseline-wait.md)。本次没有产品优化、最终全套 Release 回归、API 30 补测或磁盘准备。
 
-本轮证据目录为 `.cache/android/release-stability-worktree/evidence/continuation-1235-20261113T152157390451Z`，报告为其中的 `故障采集与启动定位及Release回归报告.md`；正式性能组在同缓存的 `evidence/performance-investigation/20261113T182953264318Z-final-diagnostics-perf`。摘要入口为 `.cache/android/release-stability-latest.json`，以其中的提交、源码和 APK 绑定为准。上轮缓存绘制修复及 736.66／640.43 ms 启动结果属于 `0fc9993` 的历史记录，保留在 `investigation-20261113T122422Z`。
+新入口为 `.cache/android/startup-baseline-wait-latest.json`，证据目录是 `.cache/android/release-stability-worktree/evidence/startup-baseline-wait-20261113T1923433697860Z`。开工实时 HEAD 为 `6c24652`，皮肤与剪贴板合入提交完整保留；被测 A／B 分别冻结于 `0fc9993`／`9be4dea`，本次结果不是当前合入产品的 Release 验收。已恢复冻结 B、核对三份 APK，并关闭专用 AVD、保留数据，其他 AVD 与 WSL boot 不变。
+
+**前轮断点：** 从交接提交 `0fc9993` 接续任务 1、2、3、5。已补齐故障现场与宿主关联采集；有限运行完成 7 组、1,260 次按键和 140 次重开，历史崩溃未复现，根因仍未确认。启动追踪定位到首次绘制中的大量主线程等待与 RenderThread 工作，但四种准备／绘制调整未获得可复验的收益，均已撤回；最终产品只新增启动诊断数据。最终 Release 的输入、生命周期与重开回归通过，三组暖态共 540 次按键、60 次重开均达标；两组各 20 次启动 p95 为 799.69／980.15 ms，500 ms 目标仍未达到。原始结果见验证记录。P4 和 preview.2 仍未收尾。
+
+前轮证据目录为 `.cache/android/release-stability-worktree/evidence/continuation-1235-20261113T152157390451Z`，报告为其中的 `故障采集与启动定位及Release回归报告.md`；正式性能组在同缓存的 `evidence/performance-investigation/20261113T182953264318Z-final-diagnostics-perf`。其摘要入口 `.cache/android/release-stability-latest.json` 保留原提交、源码和 APK 含义，没有被本次对照覆盖。更早的缓存绘制修复及 736.66／640.43 ms 启动结果属于 `0fc9993` 的历史记录，保留在 `investigation-20261113T122422Z`。
 
 **新增 Windows 手动验收入口：** 根目录双击 `启动安卓验收.cmd`，会自动准备可操作的真实 APK 手机窗口，并提供输入场景、原生设置、显示预设、截图和录像。入口源码为 `tools/android/acceptance.py` 与 `acceptance_ui.py`，使用现有 Release 输入法和 Debug 原生输入页；使用方法、本轮 14／28／16 项检查及冷启动验证见 [一键交互验收](android-acceptance.md)。产物在专用缓存的 `acceptance` 目录。本轮未重新导出开发预览 ZIP，原交付材料和真机待办仍保留各自范围。
 
@@ -33,6 +37,8 @@ git log -5 --oneline
 ```
 
 ## 当前能力与验证断点
+
+以下完整功能及暖态回归数字属于前轮冻结 B（`9be4dea`）。本次只完成该冻结输入上的启动对照和定位，没有把这些结果升级为皮肤／剪贴板合入版的当前验收。
 
 - 已实现 26 键、全拼／自然码／小鹤双拼、中英文／数字／符号、删除、空格和编辑器动作；设置与启用引导齐全。
 - 原生双行候选、展开／翻页、完整释义、浅深色、字号与高度、按压反馈、大字号与横屏已实现。候选第一次出现保持窗口高度，避免快速触摸因重布局丢失。
@@ -78,8 +84,8 @@ Rime 固定为 `1c23358157934bd6e6d6981f0c0164f05393b497`，librime-lua 为 `e39
 
 ## 交付与下一步
 
-1. 先读取验证记录、`.cache/android/isolation.json` 和 `.cache/android/release-stability-latest.json`，核对实时 Git、实际 APK 与源码摘要。旧开发预览交付位于原共享缓存，不能当作本轮新包。
-2. 继续工作前读本轮 Perfetto、8 组启动对照和有限复现结论。下一步应针对首次 traversal 与 RenderThread 同步等待提出可检验的改动，再固定同一编辑器与运行器验证；不要无假设重复已撤回的提前准备方案。历史崩溃仍缺少正向最小用例，只有有限范围的未复现证据。保留故障现场与慢样本，不关闭 R8、不改变资源校验或计时终点。
+1. 先读取验证记录、`.cache/android/isolation.json` 和 `.cache/android/startup-baseline-wait-latest.json`，核对实时 Git、实际 APK 与源码摘要。`release-stability-latest.json` 仍指前轮封存结果；旧开发预览交付也不能当作当前合入版的新包。
+2. 继续产品优化前读 [启动对照与等待定位报告](android-startup-baseline-wait.md) 的两项假设和未确认之处。新一轮任务 1、2 已在 80 次无追踪／3 次诊断启动上限内结束；不要追加批次挑较快结果。后续应在保留已合入改动的实际源码上建立基线，再检验首次引擎调度优先级或图形通信工作量的改动，不重复已撤回的门控／提前准备方案。历史崩溃仍缺少正向最小用例。保留故障现场与慢样本，不关闭 R8、不改变资源校验或计时终点。
 3. 用户已选择先模拟器。真机 arm64、实际 16 KB 页面、物理触感／60 Hz／高刷新率、真实 TalkBack、锁屏和常用应用仍需补验；不要宣称 P4 全部完成。
 4. 旋转后的正文与继续输入已验证，跨 Activity／进程重建的原生分段组合不保证恢复。详细限制保持在验证记录。
 5. 词库扩充由另一聊天负责；本轮不启动模型请求，不将未审核扩充草稿自动导入，不把旧文档数字当成其当前进度。Windows W0–W3 也不是本轮前置任务。

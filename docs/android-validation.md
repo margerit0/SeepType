@@ -2,7 +2,17 @@
 
 更新于 2026-11-14（北京时间）。本页记录原生 Android 实现和实际验证，网页原型只用于视觉参考。
 
-## 2026-11-14：故障采集、有限复现、启动定位与最终 Release 回归
+## 2026-11-14：新一轮启动对照与等待点定位
+
+已完成新一轮任务 1、2，详见 [启动基线对照与首次绘制等待定位](android-startup-baseline-wait.md)。实时接管 HEAD 为 `6c24652`，皮肤／剪贴板合入提交保留；比较使用冻结 A `0fc9993` 与 B `9be4dea`，固定 B 编辑器和测试 APK。该对照不能当作当前合入版产品的 Release 验收。
+
+A→B→B→A 四批各 20 个新进程，全部 show／真实 draw／ready 配对完整，编译状态均为正常安装的 `verify`。p95 依次为 **1454.68／1956.10／748.03／760.99 ms**，均未达到 500 ms。两个方向的 B−A 中位数约 +22–23 ms，但尾延迟差异反向，同版本和宿主状态变化较大，未建立诊断开销的因果结论，也没有证明零开销。
+
+复用旧 trace 后只补 3 次 B 启动：主线程两段主要等待由 RenderThread 在 `setSurface` 和首次 `DrawFrames` 结束附近唤醒；新的 CPU 栈落在图形命令到 QemuPipe／goldfish 驱动的通信路径。首次 `setStopped → runSync` 前后同步调用是源码支持的候选，阻塞栈采样源 `EINVAL` 失败与 18 个 CPU 栈展开错误均原样保留，具体主线程函数尚未直接确认。时钟域、实际就绪帧、调度覆盖与唤醒关系已用独立 SQL 核验；渲染结束不等于物理显示。
+
+本次 83 次启动无运行边界内崩溃；恢复冻结 B 后已关闭本任务 AVD 并保留数据，其他 AVD 与 WSL boot 未变。未实施产品优化、未重跑最终全套 Release 回归，也未做 API 30 或磁盘准备。新证据位于 `evidence/startup-baseline-wait-20261113T1923433697860Z`，独立入口为 `.cache/android/startup-baseline-wait-latest.json`。前轮封存档案和 `release-stability-latest.json` 保留原含义。
+
+## 2026-11-14：前轮故障采集、有限复现、启动定位与最终 Release 回归
 
 本轮从交接提交 `0fc9993c79b3c4ed0ae29af55cec1de2982d4431` 接续任务 1、2、3、5，仍使用 `.`／`codex/android-dev` 和专用缓存 `.cache/android/release-stability-worktree`。设备为 `StudyIME_Stability_API35_20261113`，API 35 x86_64，ADB `127.0.0.1:5581`、server `5041`。任务 4（API 30 及磁盘准备）、其他工作树和 preview.2 交付不在本轮范围。
 
