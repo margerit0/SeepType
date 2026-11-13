@@ -12,6 +12,8 @@ Android SDK、模拟器和构建缓存默认放在 `.cache/android`。如需使�
 
 另一台电脑可使用默认的 worktree 内缓存；若需在全新空目录迁移，可使用 `tools/android/migrate-cache.ps1 -Destination <专用目录>`。脚本逐文件校验后才移除原缓存。构建时可通过 `STUDY_RUST_BIN`、`STUDY_JAVA_HOME`、`STUDY_CMAKE` 和 `STUDY_NINJA` 指定已经安装的相应工具。
 
+2026-11-13 起，崩溃任务使用 `studyime-release-stability/inputting` 工作树及 `.cache/android/release-stability-worktree` 独立缓存。原工作树由皮肤任务继续使用。两者的源码、Gradle 输出、准备资源和设备数据分别维护；共享 SDK／JDK 安装只读复用，不在并行任务中更新它们。当前资源归属见 `.cache/android/isolation.json`。
+
 ```powershell
 python -X utf8 tools/android/build.py prepare
 python -X utf8 tools/android/build.py apk
@@ -71,6 +73,21 @@ python -X utf8 tools/android/measure_startup.py --serial 127.0.0.1:5555 --sample
 `apps` 只操作模拟器中的离线浏览器页面与虚构号码短信草稿，不发送消息。`recording` 保存未剪辑的原生屏幕录像；后续的 `check_unassisted_input.py` 在无障碍已关闭时验证普通输入，不启用 UiAutomation。
 
 `measure_startup.py` 只在专用模拟器上更换新输入法进程，保留已部署词库与用户数据，记录每个新进程首次显示回调到可用绘制的耗时、可读取的 RSS 高水位与就绪后 PSS。它不清理操作系统文件缓存，也不把回调前的进程创建时间或就绪后 PSS 当成完整冷启动／PSS 峰值。
+
+独立崩溃环境的 AVD 为 `StudyIME_Stability_API35_20261113`，serial 为 `127.0.0.1:5581`，ADB server 端口为 `5041`。启动这个 AVD 后，在本工作树执行：
+
+```powershell
+$env:ADB_SERVER_SOCKET='tcp:localhost:5041'
+$env:ANDROID_ADB_SERVER_PORT='5041'
+python -X utf8 tools/android/device.py connect 127.0.0.1:5581
+python -X utf8 tools/android/run_device_checks.py draw --serial 127.0.0.1:5581
+python -X utf8 tools/android/run_device_checks.py reopen --serial 127.0.0.1:5581 --ime-package org.studyime.android
+python -X utf8 tools/android/profile_performance.py --label release-check --serial 127.0.0.1:5581 --expected-avd StudyIME_Stability_API35_20261113 --compilation installed --warm-runs 3 --startup-runs 2 --startup-samples 20
+```
+
+`draw` 是缓存 Compose 子内容的最小绘制回归，`reopen` 在不继续打字的情况下重开 40 次。完整性能检查要求每组精确 180 次交付／绘制／阶段配对、20 次重开和逐词正文一致；不再容许 170 个绘制样本代替 180 次按键。主机持续保存带运行标记的日志、进程／boot 身份和 APK 前后摘要，原始 crash buffer 不直接算成本次故障。覆盖完整与延迟达标分别报告，未达标的完整测试仍会以失败退出并保留所有数据。
+
+最新结果见 [验证记录](../docs/android-validation.md)。本轮已完成三组暖态目标，但新进程启动仍超标，历史运行时崩溃根因未确认；不要将诊断构建、Debug 或显式 AOT 结果作为正式 Release 验收。正式测量时避免同时构建或运行其他设备测试，并保留实际宿主负载记录。
 
 Debug 侧的 `recovery`、`scenarios`、`visual` 分别覆盖资源故障、特殊输入／导航／设置，以及四种宽度 × 四档字号 × 浅深色。运行后用 `collect_device_evidence.py visual`、`scenarios`、`performance` 收集相应截图和诊断文件，均需传相同的 `--serial`。`verify_design.py` 测量真实主题颜色及 320 dp 截图中的工具触区；逐图审阅另记 `visual-review.json`。
 
