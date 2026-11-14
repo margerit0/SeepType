@@ -46,6 +46,8 @@ def main():
     parser.add_argument("--sections", nargs="+", choices=SUITES, default=list(SUITES))
     parser.add_argument("--performance-runs", type=int, choices=range(1, 4), default=3)
     parser.add_argument("--install-helpers", action="store_true")
+    parser.add_argument("--exclude-system-routed-password", action="store_true",
+                        help="Verify a different system keyboard owns our password field; record two blocked UI checks and continue other fields")
     args = parser.parse_args()
     output = safe(args.output)
     output.mkdir(parents=True, exist_ok=False)
@@ -119,6 +121,7 @@ def main():
     save()
     ui_sections = set(args.sections) & {"ime", "input", "lifecycle", "performance", "reopen"}
     prepared = False
+    password_route = None
 
     def instrument(name, test_class, filename, timeout, extra=()):
         destination = output / name
@@ -150,6 +153,10 @@ def main():
                     (destination / artifact).write_text(content, encoding="utf-8")
         if name == "lexicon":
             row["passed"] = ok and value.get("checks") == len(full_cases) and value.get("failures") == 0 and value.get("resourceVersion") == manifest["version"]
+        if name == "ime":
+            row["coverageComplete"] = value.get("coverageComplete", True)
+            row["blockedChecks"] = value.get("blockedChecks", [])
+            row["blockedReason"] = value.get("blockedReason")
         report["runs"].append(row)
         save()
         print(json.dumps(row), flush=True)
@@ -166,6 +173,13 @@ def main():
                 shell("run-as", DEBUG, "rm", "-f", "files/phone-preferences-original.json")
                 prepared = True  # Also try restoration after a partial preparation failure.
                 instrument("settings-prepare", "PhoneSettingsTest", "phone-settings-report.json", 90)
+            if section == "ime" and args.exclude_system_routed_password:
+                routing = instrument("password-routing", "PhonePasswordRoutingTest#inspectSyntheticPasswordRouting", "phone-password-routing.json", 90)
+                routes = [line.removeprefix("mCurId=") for line in routing.get("routing", []) if line.startswith("mCurId=")]
+                assert routing.get("studyKeyboardAvailable") is False and routing.get("defaultIme") == COMPONENT
+                assert len(routes) == 1 and re.fullmatch(r"[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+", routes[0])
+                assert not routes[0].startswith(PACKAGE), "Do not exclude password coverage when StudyIME owns the field"
+                password_route = routes[0]
             test_class, filename, timeout = SUITES[section]
             if section in ("performance", "reopen") and "stabilityStartedAt" not in report:
                 report["stabilityStartedAt"] = datetime.now(timezone.utc).isoformat()
@@ -176,8 +190,11 @@ def main():
                     timeout = min(timeout, int(stability_deadline - time.monotonic()))
                     if timeout <= 0: raise TimeoutError("30-minute bounded stability window ended")
                 extra = ("-e", "lexiconMatrix", "full") if section == "lexicon" else ()
+                if section == "ime" and password_route:
+                    extra += ("-e", "systemPasswordIme", password_route)
                 instrument(f"performance-{index+1:02d}" if count > 1 else section, test_class, filename, timeout, extra)
         report["passed"] = True
+        report["coverageComplete"] = all(row.get("coverageComplete", True) for row in report["runs"])
     except BaseException as error:
         report["error"] = str(error)
         raise

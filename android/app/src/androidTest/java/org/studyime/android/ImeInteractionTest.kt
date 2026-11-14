@@ -32,6 +32,9 @@ class ImeInteractionTest {
         // Starting instrumentation force-stops the target package. Rebind the
         // IME after the runner has started, rather than before that force-stop.
         val privateDevice = InstrumentationRegistry.getArguments().getString("privateDevice") == "true"
+        val systemPasswordIme = InstrumentationRegistry.getArguments().getString("systemPasswordIme")
+        require(systemPasswordIme == null || (privateDevice &&
+            systemPasswordIme.matches(Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")) && !systemPasswordIme.startsWith(imePackage)))
         val otherIme = InstrumentationRegistry.getArguments().getString("fallbackIme")
             ?: device.executeShellCommand("ime list -s").lineSequence().first { it.contains("inputmethod.latin") }.trim()
         require(otherIme.matches(Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")))
@@ -41,6 +44,10 @@ class ImeInteractionTest {
         device.executeShellCommand("ime set $component")
         val checks = JSONArray()
         val report = JSONObject().put("fingerprint", Build.FINGERPRINT).put("scope", "Real Android EditText/InputConnection with native Compose IME; synthetic text only").put("imePackage", imePackage).put("checks", checks)
+            .put("coverageComplete", systemPasswordIme == null)
+        if (systemPasswordIme != null) report.put("blockedChecks", JSONArray(listOf(
+            "Password keyboard exposes no Chinese candidates", "Password shows protected input state")))
+            .put("blockedReason", "Synthetic password field is routed to the system keyboard: $systemPasswordIme")
         fun check(name: String, value: Boolean) { checks.put(JSONObject().put("name", name).put("passed", value)); assertTrue(name, value) }
         fun objectById(name: String): UiObject2 = device.wait(Until.findObject(By.res(context.packageName, name)), 15_000) ?: error("Missing editor $name")
         fun key(name: String) {
@@ -106,10 +113,12 @@ class ImeInteractionTest {
             key("enter")
             check("Multiline Enter inserts newline", waitText("你好\n"))
 
-            launch("password")
-            type("abc")
-            check("Password keyboard exposes no Chinese candidates", !device.hasObject(By.res("candidate_0")))
-            check("Password shows protected input state", device.hasObject(By.text("密码输入 · 不记录选词")))
+            if (systemPasswordIme == null) {
+                launch("password")
+                type("abc")
+                check("Password keyboard exposes no Chinese candidates", !device.hasObject(By.res("candidate_0")))
+                check("Password shows protected input state", device.hasObject(By.text("密码输入 · 不记录选词")))
+            }
             launch("email")
             type("abc")
             check("Email defaults to literal English", waitText("abc"))
