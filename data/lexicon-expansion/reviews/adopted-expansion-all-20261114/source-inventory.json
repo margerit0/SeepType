@@ -1,0 +1,133 @@
+{
+  "items": [
+    {
+      "path": "data/lexicon-expansion/reviews/repair-11-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 10,
+      "name": "repair-11-v4-20261110",
+      "sha256": "0fae5d844c2c8fa488aaff47491825cc7aef8e2fa27c05afb7ae8f85a21f3359",
+      "unique_source_candidates": 10,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/generation-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 52,
+      "name": "generation-v4-20261110",
+      "sha256": "f24318014ccc8d695449af7ba92a39eef77c38096c8944f66a0b8047cfa9d7b4",
+      "unique_source_candidates": 52,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-100-20261110-c/accepted-candidates.jsonl",
+      "expected_records": 129,
+      "name": "expansion-100-20261110-c",
+      "sha256": "804b63ecbc604ffbe854f8e1c6919e9a96f92271c4ede1484d3a36d8d16b2089",
+      "unique_source_candidates": 129,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-23-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 23,
+      "name": "repair-23-v4-20261110",
+      "sha256": "fc81005016ab5819021f16e3f6782def1488bbbdf67e8ab905295adc700aea7f",
+      "unique_source_candidates": 23,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-100-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 129,
+      "name": "expansion-100-v4-20261110",
+      "sha256": "c8f5c6f3e693afbc6f0793541dafe92976b8f38ce80ce39a1d265a6d8d43c0bb",
+      "unique_source_candidates": 129,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-18-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 18,
+      "name": "repair-18-v4-20261110",
+      "sha256": "404da933276acb32e6d416f83b0c456a87fbbd9b2e2f2d964e1f7ea2702aee6b",
+      "unique_source_candidates": 18,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-200-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 262,
+      "name": "expansion-200-v4-20261110",
+      "sha256": "95f58c3f1a122f2a6b2c416d57caa1a4432e534543f7648177c8daf142ddc24c",
+      "unique_source_candidates": 262,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-31-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 31,
+      "name": "repair-31-v4-20261111",
+      "sha256": "71d2cd6aa9c179e6a73fe3455d2d2df2e72946b383196937c58b8f5c244c6bec",
+      "unique_source_candidates": 31,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-300-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 430,
+      "name": "expansion-300-v4-20261111",
+      "sha256": "daa2252497c83da013bf498161a1bf7d090b25addaf8098111fc1ac9aea1ad46",
+      "unique_source_candidates": 430,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/behalf-phrases-2-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 2,
+      "name": "behalf-phrases-2-v4-20261111",
+      "sha256": "d4bd985c667e623ecec6a2a983bfef60a56c313c09078a9bb3b29fbc371c2dff",
+      "unique_source_candidates": 2,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-23-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 23,
+      "name": "repair-23-v4-20261111",
+      "sha256": "50f8074b65f725cf70bf1dd821fd64b0b6854946b51124277fc53b38d92bbf5b",
+      "unique_source_candidates": 23,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/mills-masses-followup-2-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 1,
+      "name": "mills-masses-followup-2-v4-20261111",
+      "sha256": "f854705aea60665fd46a0a2e17a6d9d7f63f925931338809708013e12becd8b8",
+      "unique_source_candidates": 1,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-mills-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 1,
+      "name": "repair-mills-v4-20261111",
+      "sha256": "446cee7bcdd7978a7ace5e6e9dd8933dc8370bd606360645be83cf0287a0a5d3",
+      "unique_source_candidates": 1,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-400-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 514,
+      "name": "expansion-400-v4-20261111",
+      "sha256": "0b32bf0243d8c00adeb06e32bb32d926cadce93aed305d4457a2fc597232af41",
+      "unique_source_candidates": 514,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair55-followups-completed-20261112/accepted-candidates.jsonl",
+      "expected_records": 55,
+      "name": "repair55-followups-completed-20261112",
+      "sha256": "c49f12ab171995198009185ae36e1f8c81b24cab03bad693e953ad07f3923d42",
+      "unique_source_candidates": 55,
+      "index_references_only": 0
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/accepted-current-candidates.jsonl",
+      "expected_records": 801,
+      "name": "expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02",
+      "sha256": "307d5cda142c6beb87637c705f7c668c1b2e3ca5e78273133a3a5b45ad8b5ed3",
+      "unique_source_candidates": 801,
+      "index_references_only": 0
+    }
+  ],
+  "unique_candidates": 2481
+}

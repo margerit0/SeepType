@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "test_command": "python -X utf8 -m unittest tools.lexicon_expand.test_runtime tools.lexicon_expand.test_adoption tools.lexicon_expand.test_integration",
+  "tests_passed": 25,
+  "integration_tests": 9,
+  "rebuilds": 2,
+  "summary_and_all_artifacts_identical_between_rebuilds": true,
+  "changes_from_pause": [
+    "data/lexicon-expansion/reviews/adopted-expansion-all-20261114/summary.json"
+  ],
+  "accepted_data_sha256": "03ba9f99fdce9f65b9d06652c270054a2f933aed058f906bad9790aa75f0414c",
+  "summary_sha256": "31a9e9122a89f5ddd76e5898e30d426094636d86ac9d9b516fc04a63aaf47f4e",
+  "build_tools": {
+    "tools/lexicon_expand/integration.py": "f3ff249589326ada1b68e992468289dcf76adf28e3a0026869a09167de8bea3c",
+    "tools/lexicon_expand/runtime.py": "963e69210ca669522c5444edb374ac3214605e548a54d5e79836f5a0c0cf2e4c",
+    "tools/lexicon_expand/catalog.py": "bbfbbce4a43e48d835fc8dfc074fb9bf56400d04171b23571c416dead0668fce",
+    "tools/lexicon_expand/common.py": "6e16db81d8981aa805337e691cae94a6b491783781ec0eaba38f8f0c4109bebc"
+  }
+}

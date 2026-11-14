@@ -4,7 +4,9 @@
 
 当前已实现 Kotlin／Compose 界面＋Rust 会话核心＋固定 Rime／Lua，并完成本次 P0–P3 的模拟器范围及开发预览材料。P0／P1 检查点为 `b5fa54f`；历史交付目录由原缓存中的 `delivery-latest.json` 标识，本轮源码与证据见独立缓存的 `release-stability-latest.json`。P4 的性能目标尚未全部达到，真机等项目也仍待补验；不要重新从空工程开始。用户已允许在合适时提交，所有提交保持在现有 Android 分支。
 
-**最新断点（新一轮任务 1、2）：** 已完成固定 B 编辑器／测试 APK 的 A→B→B→A 启动对照，共 80 个新进程，覆盖完整、无本次运行时崩溃，四批 p95 均未达到 500 ms。两次 B−A 的 p50 为 +23.38／+22.33 ms，p95 为 +501.43／−12.97 ms；宿主及同版本时段变化明显，未建立诊断开销的因果结论，也没有证明零开销。复用旧 trace 并补 3 次 B 启动后，主要等待关联到 RenderThread 的 `setSurface` 和首次 `DrawFrames`；图形 CPU 栈显示 QemuPipe／goldfish 通信。前后两次 `setStopped → runSync` 是源码支持的阻塞调用候选，因阻塞 perf 事件源被 `EINVAL` 拒绝，具体主线程函数栈仍未确认。详见 [启动对照与等待定位报告](android-startup-baseline-wait.md)。本次没有产品优化、最终全套 Release 回归、API 30 补测或磁盘准备。
+**最新断点（2026-11-14，一加 12 真机）：** 已接入 3,401 条开发词库并安装 preview.2。补齐资源的新包首次部署就绪 690.670 ms；20 次新进程启动 p95 120.830 ms、20 次同进程重开 p95 29.727 ms，达到本次 500 / 100 ms 目标。修正词库测试复用 generation 导致 Start 被拒绝的问题，42 项三方案合成 JNI/Rime/Lua 用例全部通过；主程序未为此次续测修改。原默认输入法及原启用状态恢复，测试辅助包保留。详见 真机续测报告（内部记录），新证据在 `.cache/android/physical-device-20261114/continuation-20261114`。历史崩溃、全套 Release 回归及其他设备验收不因本次通过而关闭。
+
+**前轮断点（任务 1、2，模拟器）：** 已完成固定 B 编辑器／测试 APK 的 A→B→B→A 启动对照，共 80 个新进程，覆盖完整、无本次运行时崩溃，四批 p95 均未达到 500 ms。两次 B−A 的 p50 为 +23.38／+22.33 ms，p95 为 +501.43／−12.97 ms；宿主及同版本时段变化明显，未建立诊断开销的因果结论，也没有证明零开销。复用旧 trace 并补 3 次 B 启动后，主要等待关联到 RenderThread 的 `setSurface` 和首次 `DrawFrames`；图形 CPU 栈显示 QemuPipe／goldfish 通信。前后两次 `setStopped → runSync` 是源码支持的阻塞调用候选，因阻塞 perf 事件源被 `EINVAL` 拒绝，具体主线程函数栈仍未确认。详见 [启动对照与等待定位报告](android-startup-baseline-wait.md)。本次没有产品优化、最终全套 Release 回归、API 30 补测或磁盘准备。
 
 新入口为 `.cache/android/startup-baseline-wait-latest.json`，证据目录是 `.cache/android/release-stability-worktree/evidence/startup-baseline-wait-20261113T1923433697860Z`。开工实时 HEAD 为 `6c24652`，皮肤与剪贴板合入提交完整保留；被测 A／B 分别冻结于 `0fc9993`／`9be4dea`，本次结果不是当前合入产品的 Release 验收。已恢复冻结 B、核对三份 APK，并关闭专用 AVD、保留数据，其他 AVD 与 WSL boot 不变。
 

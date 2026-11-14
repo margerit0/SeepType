@@ -20,6 +20,7 @@ import org.studyime.android.settings.KeyboardPreferences
 @RunWith(AndroidJUnit4::class)
 class NativeEngineTest {
     @Test fun realEngineRegressionAndSessionGuards() {
+        PhoneForeground.start()
         val executor = Executors.newSingleThreadExecutor()
         try { executor.submit { runCases() }.get(15, TimeUnit.MINUTES) }
         finally { executor.shutdownNow() }

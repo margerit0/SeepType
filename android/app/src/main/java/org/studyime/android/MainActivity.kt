@@ -311,7 +311,9 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
             Text("拾词 ${BuildConfig.VERSION_NAME}", fontSize = 22.sp, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(12.dp))
             val entries = dictionary
-            Text(if (entries == null) "正在读取本机词库信息…" else "${"%,d".format(entries.getInt("chineseEntries"))} 条中文词条\n${entries.getInt("englishEntries")} 条英文释义 · 人工审核 ${entries.getInt("humanApproved")} 条", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
+            Text(if (entries == null) "正在读取本机词库信息…" else if (entries.has("englishSnapshot"))
+                "${"%,d".format(entries.getInt("chineseEntries"))} 条中文词条\n${"%,d".format(entries.getInt("englishEntries"))} 条扩充记录（含检索别名）\n${"%,d".format(entries.getInt("englishRuntimeChineseEntries"))} 个中文释义入口 · 开发预览"
+                else "${"%,d".format(entries.getInt("chineseEntries"))} 条中文词条\n${entries.getInt("englishEntries")} 条英文释义 · 人工审核 ${entries.getInt("humanApproved")} 条", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
             entries?.let {
                 Text("词库版本 ${it.getString("version")}\n中文快照 ${it.getString("chineseSnapshot")}", fontSize = 11.sp, lineHeight = 18.sp, color = c.subtle)
             }

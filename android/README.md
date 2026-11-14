@@ -132,3 +132,7 @@ python -X utf8 tools/android/package_preview.py
 - `native`、`../tools/android`：固定来源恢复、暂停新学习补丁、NDK / Rust / Gradle 构建与验证。
 
 新增源码采用 GPL-3.0-or-later，第三方组件保留原许可；词库来源和审核状态与软件实现分别记录。
+
+## 个人手机的限定回归
+
+真机使用 [个人手机回归入口](../docs/android-phone-validation.md)。该入口核对固定 APK、使用合成编辑器、保留失败记录并恢复原输入法，不使用模拟器的全局日志与截图采集流程。

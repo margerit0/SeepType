@@ -44,6 +44,7 @@ def input_hashes():
         result[name] = hashlib.sha256(data).hexdigest()
     prepared = list((ROOT / "android/app/src/main/jniLibs").glob("*/*.so"))
     prepared.append(ROOT / "android/app/src/main/assets/generated/manifest.json")
+    prepared.extend((ROOT / "android/app/src/androidTest/assets/generated").glob("*.json"))
     for path in prepared:
         if path.is_file():
             result[path.relative_to(ROOT).as_posix()] = digest(path)
@@ -69,10 +70,11 @@ def gradle(tasks, *, log="gradle-build", wrapper=True, locks=False):
     if locks: command.append("--write-locks")
     run(command, log, env=tool_env(), cwd=ROOT / "android")
     after = input_hashes()
-    for variant in ("Debug", "Release"):
+    for variant in ("Debug", "Release", "DebugAndroidTest"):
         if not any(task.split(":")[-1] == "assemble" + variant for task in tasks):
             continue
-        apk = ROOT / f"android/app/build/outputs/apk/{variant.lower()}/app-{variant.lower()}.apk"
+        apk = (ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk" if variant == "DebugAndroidTest"
+               else ROOT / f"android/app/build/outputs/apk/{variant.lower()}/app-{variant.lower()}.apk")
         json_write(CACHE / ("assembly-" + variant.lower() + ".json"), {
             "variant": variant, "apkSha256": digest(apk), "bytes": apk.stat().st_size,
             "inputHashing": "SHA-256; UTF-8 source CRLF normalized to LF; prepared binaries hashed verbatim",

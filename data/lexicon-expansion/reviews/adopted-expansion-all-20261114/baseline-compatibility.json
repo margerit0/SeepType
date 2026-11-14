@@ -1,0 +1,7504 @@
+{
+  "all_defaults_preserved": true,
+  "all_old_runtime_options_preserved": true,
+  "retained_legacy_preview_entries": 182,
+  "checks": [
+    {
+      "chinese": "一",
+      "code": "yi",
+      "before": "one",
+      "after": "one",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "一刻钟",
+      "code": "yi ke zhong",
+      "before": "quarter",
+      "after": "quarter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "一套",
+      "code": "yi tao",
+      "before": "set",
+      "after": "set",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "一方",
+      "code": "yi fang",
+      "before": "side",
+      "after": "side",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "一旦",
+      "code": "yi dan",
+      "before": "once",
+      "after": "once",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "一次",
+      "code": "yi ci",
+      "before": "once",
+      "after": "once",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "七月",
+      "code": "qi yue",
+      "before": "July",
+      "after": "July",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "丈夫",
+      "code": "zhang fu",
+      "before": "husband",
+      "after": "husband",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "三月",
+      "code": "san yue",
+      "before": "March",
+      "after": "March",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "上传",
+      "code": "shang chuan",
+      "before": "upload",
+      "after": "upload",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "上午",
+      "code": "shang wu",
+      "before": "morning",
+      "after": "morning",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "下午",
+      "code": "xia wu",
+      "before": "afternoon",
+      "after": "afternoon",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "下载",
+      "code": "xia zai",
+      "before": "download",
+      "after": "download",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "下雨",
+      "code": "xia yu",
+      "before": "rain",
+      "after": "rain",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "下雪",
+      "code": "xia xue",
+      "before": "snow",
+      "after": "snow",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不一样",
+      "code": "bu yi yang",
+      "before": "different",
+      "after": "different",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不列颠",
+      "code": "bu lie dian",
+      "before": "Britain",
+      "after": "Britain",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不同",
+      "code": "bu tong",
+      "before": "different",
+      "after": "different",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不好意思",
+      "code": "bu hao yi si",
+      "before": "excuse me",
+      "after": "excuse me",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不客气",
+      "code": "bu ke qi",
+      "before": "you're welcome",
+      "after": "you're welcome",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不知所措",
+      "code": "bu zhi suo cuo",
+      "before": "overwhelmed",
+      "after": "overwhelmed",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "不管怎样",
+      "code": "bu guan zen yang",
+      "before": "regardless",
+      "after": "regardless",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "专业",
+      "code": "zhuan ye",
+      "before": "major",
+      "after": "major",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "世界",
+      "code": "shi jie",
+      "before": "world",
+      "after": "world",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "世纪",
+      "code": "shi ji",
+      "before": "century",
+      "after": "century",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "世间",
+      "code": "shi jian",
+      "before": "world",
+      "after": "world",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "业务",
+      "code": "ye wu",
+      "before": "business",
+      "after": "business",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "业界",
+      "code": "ye jie",
+      "before": "industry",
+      "after": "industry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "东方的",
+      "code": "dong fang de",
+      "before": "eastern",
+      "after": "eastern",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "东部的",
+      "code": "dong bu de",
+      "before": "eastern",
+      "after": "eastern",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "个人",
+      "code": "ge ren",
+      "before": "individual",
+      "after": "individual",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "个人的",
+      "code": "ge ren de",
+      "before": "individual",
+      "after": "individual",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "中午",
+      "code": "zhong wu",
+      "before": "noon",
+      "after": "noon",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "中央",
+      "code": "zhong yang",
+      "before": "central",
+      "after": "central",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "中心",
+      "code": "zhong xin",
+      "before": "centre",
+      "after": "centre",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主任",
+      "code": "zhu ren",
+      "before": "director",
+      "after": "director",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主张",
+      "code": "zhu zhang",
+      "before": "stand",
+      "after": "stand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主意",
+      "code": "zhu yi",
+      "before": "idea",
+      "after": "idea",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主要",
+      "code": "zhu yao",
+      "before": "main",
+      "after": "main",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主语",
+      "code": "zhu yu",
+      "before": "subject",
+      "after": "subject",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "主题",
+      "code": "zhu ti",
+      "before": "subject",
+      "after": "subject",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "举办",
+      "code": "ju ban",
+      "before": "hold",
+      "after": "hold",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "举动",
+      "code": "ju dong",
+      "before": "action",
+      "after": "action",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "乡村",
+      "code": "xiang cun",
+      "before": "country",
+      "after": "country",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "书",
+      "code": "shu",
+      "before": "book",
+      "after": "book",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "买主",
+      "code": "mai zhu",
+      "before": "customer",
+      "after": "customer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "买单",
+      "code": "mai dan",
+      "before": "checkout",
+      "after": "checkout",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "予以",
+      "code": "yu yi",
+      "before": "give",
+      "after": "give",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "争论",
+      "code": "zheng lun",
+      "before": "argue",
+      "after": "argue",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "事业",
+      "code": "shi ye",
+      "before": "career",
+      "after": "career",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "事件",
+      "code": "shi jian",
+      "before": "event",
+      "after": "event",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "五月",
+      "code": "wu yue",
+      "before": "May",
+      "after": "May",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "交易",
+      "code": "jiao yi",
+      "before": "transaction",
+      "after": "transaction",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "交给",
+      "code": "jiao gei",
+      "before": "hand",
+      "after": "hand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "产业",
+      "code": "chan ye",
+      "before": "industry",
+      "after": "industry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "产品",
+      "code": "chan pin",
+      "before": "product",
+      "after": "product",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "亮光",
+      "code": "liang guang",
+      "before": "light",
+      "after": "light",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人",
+      "code": "ren",
+      "before": "person",
+      "after": "person",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人口",
+      "code": "ren kou",
+      "before": "population",
+      "after": "population",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人员",
+      "code": "ren yuan",
+      "before": "staff",
+      "after": "staff",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人士",
+      "code": "ren shi",
+      "before": "person",
+      "after": "person",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人工智能",
+      "code": "ren gong zhi neng",
+      "before": "artificial intelligence",
+      "after": "artificial intelligence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人手",
+      "code": "ren shou",
+      "before": "staff",
+      "after": "staff",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人物",
+      "code": "ren wu",
+      "before": "figure",
+      "after": "figure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人的",
+      "code": "ren de",
+      "before": "human",
+      "after": "human",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人类",
+      "code": "ren lei",
+      "before": "human",
+      "after": "human",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "人脉拓展",
+      "code": "ren mai tuo zhan",
+      "before": "professional networking",
+      "after": "professional networking",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "今天",
+      "code": "jin tian",
+      "before": "today",
+      "after": "today",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "今年",
+      "code": "jin nian",
+      "before": "this year",
+      "after": "this year",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "介意",
+      "code": "jie yi",
+      "before": "mind",
+      "after": "mind",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "介绍",
+      "code": "jie shao",
+      "before": "introduce",
+      "after": "introduce",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "从前的",
+      "code": "cong qian de",
+      "before": "former",
+      "after": "former",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "付款",
+      "code": "fu kuan",
+      "before": "pay",
+      "after": "pay",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "代价",
+      "code": "dai jia",
+      "before": "cost",
+      "after": "cost",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "代表",
+      "code": "dai biao",
+      "before": "represent",
+      "after": "represent",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "代表大会",
+      "code": "dai biao da hui",
+      "before": "congress",
+      "after": "congress",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "价值",
+      "code": "jia zhi",
+      "before": "value",
+      "after": "value",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "价格",
+      "code": "jia ge",
+      "before": "price",
+      "after": "price",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "任务",
+      "code": "ren wu",
+      "before": "task",
+      "after": "task",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "企业的",
+      "code": "qi ye de",
+      "before": "corporate",
+      "after": "corporate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "休息",
+      "code": "xiu xi",
+      "before": "break",
+      "after": "break",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "优势",
+      "code": "you shi",
+      "before": "plus",
+      "after": "plus",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "会员资格",
+      "code": "hui yuan zi ge",
+      "before": "membership",
+      "after": "membership",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "会议",
+      "code": "hui yi",
+      "before": "conference",
+      "after": "conference",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "会议室",
+      "code": "hui yi shi",
+      "before": "chamber",
+      "after": "chamber",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "传统的",
+      "code": "chuan tong de",
+      "before": "traditional",
+      "after": "traditional",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "伤口",
+      "code": "shang kou",
+      "before": "cut",
+      "after": "cut",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "伦敦",
+      "code": "lun dun",
+      "before": "London",
+      "after": "London",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "位置",
+      "code": "wei zhi",
+      "before": "position",
+      "after": "position",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "体制",
+      "code": "ti zhi",
+      "before": "system",
+      "after": "system",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "体检",
+      "code": "ti jian",
+      "before": "medical checkup",
+      "after": "medical checkup",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "体系",
+      "code": "ti xi",
+      "before": "system",
+      "after": "system",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "体育运动",
+      "code": "ti yu yun dong",
+      "before": "sport",
+      "after": "sport",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "作业",
+      "code": "zuo ye",
+      "before": "homework",
+      "after": "homework",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "作家",
+      "code": "zuo jia",
+      "before": "author",
+      "after": "author",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "你好",
+      "code": "ni hao",
+      "before": "hello",
+      "after": "hello",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "使有资格",
+      "code": "shi you zi ge",
+      "before": "entitle",
+      "after": "entitle",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "例子",
+      "code": "li zi",
+      "before": "example",
+      "after": "example",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "依靠",
+      "code": "yi kao",
+      "before": "rely on",
+      "after": "rely on",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "侧面",
+      "code": "ce mian",
+      "before": "side",
+      "after": "side",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保存",
+      "code": "bao cun",
+      "before": "save",
+      "after": "save",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保护",
+      "code": "bao hu",
+      "before": "conservation",
+      "after": "conservation",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保持",
+      "code": "bao chi",
+      "before": "keep",
+      "after": "keep",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保持联系",
+      "code": "bao chi lian xi",
+      "before": "keep in touch",
+      "after": "keep in touch",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保留",
+      "code": "bao liu",
+      "before": "keep",
+      "after": "keep",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保证",
+      "code": "bao zheng",
+      "before": "assure",
+      "after": "assure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "保重",
+      "code": "bao zhong",
+      "before": "take care",
+      "after": "take care",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "信",
+      "code": "xin",
+      "before": "letter",
+      "after": "letter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "信息",
+      "code": "xin xi",
+      "before": "information",
+      "after": "information",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "俱乐部",
+      "code": "ju le bu",
+      "before": "club",
+      "after": "club",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "假期",
+      "code": "jia qi",
+      "before": "leave",
+      "after": "leave",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "假设",
+      "code": "jia she",
+      "before": "assume",
+      "after": "assume",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "假说",
+      "code": "jia shuo",
+      "before": "hypothesis",
+      "after": "hypothesis",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "做到",
+      "code": "zuo dao",
+      "before": "achieve",
+      "after": "achieve",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "做志愿服务",
+      "code": "zuo zhi yuan fu wu",
+      "before": "volunteer",
+      "after": "volunteer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "做饭",
+      "code": "zuo fan",
+      "before": "cook",
+      "after": "cook",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "停车",
+      "code": "ting che",
+      "before": "parking",
+      "after": "parking",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "健全",
+      "code": "jian quan",
+      "before": "sound",
+      "after": "sound",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "健康",
+      "code": "jian kang",
+      "before": "health",
+      "after": "health",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "储存",
+      "code": "chu cun",
+      "before": "store",
+      "after": "store",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "儿子",
+      "code": "er zi",
+      "before": "son",
+      "after": "son",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "充电器",
+      "code": "chong dian qi",
+      "before": "charger",
+      "after": "charger",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "兆头",
+      "code": "zhao tou",
+      "before": "sign",
+      "after": "sign",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "先前的",
+      "code": "xian qian de",
+      "before": "previous",
+      "after": "previous",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "全",
+      "code": "quan",
+      "before": "all",
+      "after": "all",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "全国性",
+      "code": "quan guo xing",
+      "before": "national",
+      "after": "national",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公交站",
+      "code": "gong jiao zhan",
+      "before": "bus stop",
+      "after": "bus stop",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公众",
+      "code": "gong zhong",
+      "before": "public",
+      "after": "public",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公使",
+      "code": "gong shi",
+      "before": "minister",
+      "after": "minister",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公共",
+      "code": "gong gong",
+      "before": "public",
+      "after": "public",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公共服务",
+      "code": "gong gong fu wu",
+      "before": "public service",
+      "after": "public service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公司",
+      "code": "gong si",
+      "before": "firm",
+      "after": "firm",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公司的",
+      "code": "gong si de",
+      "before": "corporate",
+      "after": "corporate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公园",
+      "code": "gong yuan",
+      "before": "park",
+      "after": "park",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "公路",
+      "code": "gong lu",
+      "before": "road",
+      "after": "road",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "六月",
+      "code": "liu yue",
+      "before": "June",
+      "after": "June",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "共同",
+      "code": "gong tong",
+      "before": "common",
+      "after": "common",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "共同体",
+      "code": "gong tong ti",
+      "before": "community",
+      "after": "community",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "关于",
+      "code": "guan yu",
+      "before": "regarding",
+      "after": "regarding",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "关怀",
+      "code": "guan huai",
+      "before": "care",
+      "after": "care",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "关系",
+      "code": "guan xi",
+      "before": "relationship",
+      "after": "relationship",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "兴趣",
+      "code": "xing qu",
+      "before": "interest",
+      "after": "interest",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "具体",
+      "code": "ju ti",
+      "before": "specific",
+      "after": "specific",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "具名",
+      "code": "ju ming",
+      "before": "sign",
+      "after": "sign",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "再见",
+      "code": "zai jian",
+      "before": "goodbye",
+      "after": "goodbye",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "冒犯",
+      "code": "mao fan",
+      "before": "offence",
+      "after": "offence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "冒险事业",
+      "code": "mao xian shi ye",
+      "before": "venture",
+      "after": "venture",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "写字",
+      "code": "xie zi",
+      "before": "write",
+      "after": "write",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "军官",
+      "code": "jun guan",
+      "before": "officer",
+      "after": "officer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "冬天",
+      "code": "dong tian",
+      "before": "winter",
+      "after": "winter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "冰箱",
+      "code": "bing xiang",
+      "before": "refrigerator",
+      "after": "refrigerator",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "决定",
+      "code": "jue ding",
+      "before": "decision",
+      "after": "decision",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "决赛",
+      "code": "jue sai",
+      "before": "final",
+      "after": "final",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "准则",
+      "code": "zhun ze",
+      "before": "standard",
+      "after": "standard",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "准备",
+      "code": "zhun bei",
+      "before": "prepare",
+      "after": "prepare",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "准许进入",
+      "code": "zhun xu jin ru",
+      "before": "admission",
+      "after": "admission",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "几个",
+      "code": "ji ge",
+      "before": "several",
+      "after": "several",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "出席",
+      "code": "chu xi",
+      "before": "present",
+      "after": "present",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "出租",
+      "code": "chu zu",
+      "before": "lease",
+      "after": "lease",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "出租车",
+      "code": "chu zu che",
+      "before": "taxi",
+      "after": "taxi",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "击打",
+      "code": "ji da",
+      "before": "hit",
+      "after": "hit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "分开",
+      "code": "fen kai",
+      "before": "part",
+      "after": "part",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "分析",
+      "code": "fen xi",
+      "before": "analysis",
+      "after": "analysis",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "分组",
+      "code": "fen zu",
+      "before": "group",
+      "after": "group",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "分钟",
+      "code": "fen zhong",
+      "before": "minute",
+      "after": "minute",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "列出",
+      "code": "lie chu",
+      "before": "list",
+      "after": "list",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "创造",
+      "code": "chuang zao",
+      "before": "create",
+      "after": "create",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "删除",
+      "code": "shan chu",
+      "before": "delete",
+      "after": "delete",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "利息",
+      "code": "li xi",
+      "before": "interest",
+      "after": "interest",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "利润",
+      "code": "li run",
+      "before": "profit",
+      "after": "profit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "利益",
+      "code": "li yi",
+      "before": "benefit",
+      "after": "benefit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "到期的",
+      "code": "dao qi de",
+      "before": "due",
+      "after": "due",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "到达",
+      "code": "dao da",
+      "before": "arrival",
+      "after": "arrival",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "制",
+      "code": "zhi",
+      "before": "make",
+      "after": "make",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "制度",
+      "code": "zhi du",
+      "before": "institution",
+      "after": "institution",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "制约",
+      "code": "zhi yue",
+      "before": "condition",
+      "after": "condition",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "刻画",
+      "code": "ke hua",
+      "before": "characterize",
+      "after": "characterize",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "刻薄",
+      "code": "ke bo",
+      "before": "mean",
+      "after": "mean",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "削减",
+      "code": "xue jian",
+      "before": "cut",
+      "after": "cut",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "剧院",
+      "code": "ju yuan",
+      "before": "theatre",
+      "after": "theatre",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "剪切",
+      "code": "jian qie",
+      "before": "cut",
+      "after": "cut",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "力量",
+      "code": "li liang",
+      "before": "power",
+      "after": "power",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "办公室",
+      "code": "ban gong shi",
+      "before": "office",
+      "after": "office",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "办理入住",
+      "code": "ban li ru zhu",
+      "before": "check in",
+      "after": "check in",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "功能",
+      "code": "gong neng",
+      "before": "function",
+      "after": "function",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "加",
+      "code": "jia",
+      "before": "plus",
+      "after": "plus",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "加工",
+      "code": "jia gong",
+      "before": "process",
+      "after": "process",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "加拿大的",
+      "code": "jia na da de",
+      "before": "Canadian",
+      "after": "Canadian",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "动物",
+      "code": "dong wu",
+      "before": "animal",
+      "after": "animal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "动身",
+      "code": "dong shen",
+      "before": "leave",
+      "after": "leave",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "努力",
+      "code": "nu li",
+      "before": "hard",
+      "after": "hard",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "匀",
+      "code": "yun",
+      "before": "even",
+      "after": "even",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "包括",
+      "code": "bao kuo",
+      "before": "involve",
+      "after": "involve",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "区别",
+      "code": "qu bie",
+      "before": "difference",
+      "after": "difference",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "区域",
+      "code": "qu yu",
+      "before": "area",
+      "after": "area",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "医生",
+      "code": "yi sheng",
+      "before": "doctor",
+      "after": "doctor",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "医疗",
+      "code": "yi liao",
+      "before": "medical",
+      "after": "medical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "医院",
+      "code": "yi yuan",
+      "before": "hospital",
+      "after": "hospital",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "十字路口",
+      "code": "shi zi lu kou",
+      "before": "intersection",
+      "after": "intersection",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "十年",
+      "code": "shi nian",
+      "before": "decade",
+      "after": "decade",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "千",
+      "code": "qian",
+      "before": "thousand",
+      "after": "thousand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "午餐",
+      "code": "wu can",
+      "before": "lunch",
+      "after": "lunch",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "协议",
+      "code": "xie yi",
+      "before": "agreement",
+      "after": "agreement",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "卑鄙",
+      "code": "bei bi",
+      "before": "mean",
+      "after": "mean",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "单一",
+      "code": "dan yi",
+      "before": "single",
+      "after": "single",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "单身",
+      "code": "dan shen",
+      "before": "single",
+      "after": "single",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "博物馆",
+      "code": "bo wu guan",
+      "before": "museum",
+      "after": "museum",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "卧室",
+      "code": "wo shi",
+      "before": "bedroom",
+      "after": "bedroom",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "印度人",
+      "code": "yin du ren",
+      "before": "Indian",
+      "after": "Indian",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "印度的",
+      "code": "yin du de",
+      "before": "Indian",
+      "after": "Indian",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "印第安人",
+      "code": "yin di an ren",
+      "before": "Indian",
+      "after": "Indian",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "历史",
+      "code": "li shi",
+      "before": "history",
+      "after": "history",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "历练",
+      "code": "li lian",
+      "before": "experience",
+      "after": "experience",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "压力",
+      "code": "ya li",
+      "before": "pressure",
+      "after": "pressure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "原因",
+      "code": "yuan yin",
+      "before": "reason",
+      "after": "reason",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "厨房",
+      "code": "chu fang",
+      "before": "kitchen",
+      "after": "kitchen",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "去",
+      "code": "qu",
+      "before": "go",
+      "after": "go",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "去年",
+      "code": "qu nian",
+      "before": "last year",
+      "after": "last year",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "参赛作品",
+      "code": "can sai zuo pin",
+      "before": "entry",
+      "after": "entry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发动机",
+      "code": "fa dong ji",
+      "before": "engine",
+      "after": "engine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发展",
+      "code": "fa zhan",
+      "before": "development",
+      "after": "development",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发布",
+      "code": "fa bu",
+      "before": "issue",
+      "after": "issue",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发现",
+      "code": "fa xian",
+      "before": "finding",
+      "after": "finding",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发生",
+      "code": "fa sheng",
+      "before": "occur",
+      "after": "occur",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发票",
+      "code": "fa piao",
+      "before": "invoice",
+      "after": "invoice",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "发育",
+      "code": "fa yu",
+      "before": "development",
+      "after": "development",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "取",
+      "code": "qu",
+      "before": "take",
+      "after": "take",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "变得",
+      "code": "bian de",
+      "before": "become",
+      "after": "become",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "变成",
+      "code": "bian cheng",
+      "before": "become",
+      "after": "become",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "句号",
+      "code": "ju hao",
+      "before": "period",
+      "after": "period",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "只要",
+      "code": "zhi yao",
+      "before": "provided",
+      "after": "provided",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "叫",
+      "code": "jiao",
+      "before": "call",
+      "after": "call",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "叫醒服务",
+      "code": "jiao xing fu wu",
+      "before": "wake-up call",
+      "after": "wake-up call",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "召唤",
+      "code": "zhao huan",
+      "before": "call",
+      "after": "call",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "可再生能源",
+      "code": "ke zai sheng neng yuan",
+      "before": "renewable energy",
+      "after": "renewable energy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "可塑的",
+      "code": "ke su de",
+      "before": "plastic",
+      "after": "plastic",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "可持续性",
+      "code": "ke chi xu xing",
+      "before": "sustainability",
+      "after": "sustainability",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "可用",
+      "code": "ke yong",
+      "before": "available",
+      "after": "available",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "可能",
+      "code": "ke neng",
+      "before": "may",
+      "after": "may",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "吃饭",
+      "code": "chi fan",
+      "before": "eat",
+      "after": "eat",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "各国",
+      "code": "ge guo",
+      "before": "states",
+      "after": "states",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "各州",
+      "code": "ge zhou",
+      "before": "states",
+      "after": "states",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "各式各样",
+      "code": "ge shi ge yang",
+      "before": "various",
+      "after": "various",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "合同",
+      "code": "he tong",
+      "before": "contract",
+      "after": "contract",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "合法",
+      "code": "he fa",
+      "before": "legal",
+      "after": "legal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "合适",
+      "code": "he shi",
+      "before": "appropriate",
+      "after": "appropriate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "吉他",
+      "code": "ji ta",
+      "before": "guitar",
+      "after": "guitar",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同事",
+      "code": "tong shi",
+      "before": "colleague",
+      "after": "colleague",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同学",
+      "code": "tong xue",
+      "before": "classmate",
+      "after": "classmate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同意",
+      "code": "tong yi",
+      "before": "agree",
+      "after": "agree",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同时",
+      "code": "tong shi",
+      "before": "whilst",
+      "after": "whilst",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同理心",
+      "code": "tong li xin",
+      "before": "empathy",
+      "after": "empathy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "同行评审",
+      "code": "tong hang ping shen",
+      "before": "peer review",
+      "after": "peer review",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "后",
+      "code": "hou",
+      "before": "back",
+      "after": "back",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "向左转",
+      "code": "xiang zuo zhuan",
+      "before": "turn left",
+      "after": "turn left",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "向西",
+      "code": "xiang xi",
+      "before": "west",
+      "after": "west",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "呈现",
+      "code": "cheng xian",
+      "before": "present",
+      "after": "present",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "员工",
+      "code": "yuan gong",
+      "before": "employee",
+      "after": "employee",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "周末",
+      "code": "zhou mo",
+      "before": "weekend",
+      "after": "weekend",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "和睦相处",
+      "code": "he mu xiang chu",
+      "before": "get along with",
+      "after": "get along with",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "咖啡",
+      "code": "ka fei",
+      "before": "coffee",
+      "after": "coffee",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "哥哥",
+      "code": "ge ge",
+      "before": "older brother",
+      "after": "older brother",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "商业",
+      "code": "shang ye",
+      "before": "business",
+      "after": "business",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "商场",
+      "code": "shang chang",
+      "before": "mall",
+      "after": "mall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "商店",
+      "code": "shang dian",
+      "before": "shop",
+      "after": "shop",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "喜欢",
+      "code": "xi huan",
+      "before": "like",
+      "after": "like",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "四分之一",
+      "code": "si fen zhi yi",
+      "before": "quarter",
+      "after": "quarter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "四月",
+      "code": "si yue",
+      "before": "April",
+      "after": "April",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "回头见",
+      "code": "hui tou jian",
+      "before": "see you later",
+      "after": "see you later",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "回应",
+      "code": "hui ying",
+      "before": "response",
+      "after": "response",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "回答",
+      "code": "hui da",
+      "before": "answer",
+      "after": "answer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "因素",
+      "code": "yin su",
+      "before": "factor",
+      "after": "factor",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "团结",
+      "code": "tuan jie",
+      "before": "united",
+      "after": "united",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "团队",
+      "code": "tuan dui",
+      "before": "team",
+      "after": "team",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "困难",
+      "code": "kun nan",
+      "before": "difficult",
+      "after": "difficult",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国会",
+      "code": "guo hui",
+      "before": "Congress",
+      "after": "Congress",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国家",
+      "code": "guo jia",
+      "before": "country",
+      "after": "country",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国家的",
+      "code": "guo jia de",
+      "before": "national",
+      "after": "national",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国王",
+      "code": "guo wang",
+      "before": "king",
+      "after": "king",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国立",
+      "code": "guo li",
+      "before": "national",
+      "after": "national",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国际",
+      "code": "guo ji",
+      "before": "international",
+      "after": "international",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "国际性",
+      "code": "guo ji xing",
+      "before": "international",
+      "after": "international",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "图书馆",
+      "code": "tu shu guan",
+      "before": "library",
+      "after": "library",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "图案",
+      "code": "tu an",
+      "before": "pattern",
+      "after": "pattern",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "图片",
+      "code": "tu pian",
+      "before": "picture",
+      "after": "picture",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "土地",
+      "code": "tu di",
+      "before": "land",
+      "after": "land",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "圣经",
+      "code": "sheng jing",
+      "before": "Bible",
+      "after": "Bible",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "在上面",
+      "code": "zai shang mian",
+      "before": "on",
+      "after": "on",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "在于",
+      "code": "zai yu",
+      "before": "consist in",
+      "after": "consist in",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "在意",
+      "code": "zai yi",
+      "before": "mind",
+      "after": "mind",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地区",
+      "code": "di qu",
+      "before": "region",
+      "after": "region",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地图",
+      "code": "di tu",
+      "before": "map",
+      "after": "map",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地址",
+      "code": "di zhi",
+      "before": "address",
+      "after": "address",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地域",
+      "code": "di yu",
+      "before": "area",
+      "after": "area",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地方",
+      "code": "di fang",
+      "before": "place",
+      "after": "place",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地点",
+      "code": "di dian",
+      "before": "site",
+      "after": "site",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地铁",
+      "code": "di tie",
+      "before": "subway",
+      "after": "subway",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地铁站",
+      "code": "di tie zhan",
+      "before": "subway station",
+      "after": "subway station",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "地面",
+      "code": "di mian",
+      "before": "ground",
+      "after": "ground",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "场所",
+      "code": "chang suo",
+      "before": "facility",
+      "after": "facility",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "坚固",
+      "code": "jian gu",
+      "before": "firm",
+      "after": "firm",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "城",
+      "code": "cheng",
+      "before": "town",
+      "after": "town",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "城市",
+      "code": "cheng shi",
+      "before": "city",
+      "after": "city",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "城镇",
+      "code": "cheng zhen",
+      "before": "town",
+      "after": "town",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "培养",
+      "code": "pei yang",
+      "before": "education",
+      "after": "education",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "基因",
+      "code": "ji yin",
+      "before": "gene",
+      "after": "gene",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "基础设施",
+      "code": "ji chu she shi",
+      "before": "infrastructure",
+      "after": "infrastructure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "塑料",
+      "code": "su liao",
+      "before": "plastic",
+      "after": "plastic",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "塑料的",
+      "code": "su liao de",
+      "before": "plastic",
+      "after": "plastic",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "墙壁",
+      "code": "qiang bi",
+      "before": "wall",
+      "after": "wall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "声明",
+      "code": "sheng ming",
+      "before": "statement",
+      "after": "statement",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "声称",
+      "code": "sheng cheng",
+      "before": "claim",
+      "after": "claim",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "声音",
+      "code": "sheng yin",
+      "before": "sound",
+      "after": "sound",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "处方",
+      "code": "chu fang",
+      "before": "prescription",
+      "after": "prescription",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "处理",
+      "code": "chu li",
+      "before": "process",
+      "after": "process",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "夏天",
+      "code": "xia tian",
+      "before": "summer",
+      "after": "summer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "外国的",
+      "code": "wai guo de",
+      "before": "foreign",
+      "after": "foreign",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "外壳",
+      "code": "wai ke",
+      "before": "case",
+      "after": "case",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "多数",
+      "code": "duo shu",
+      "before": "majority",
+      "after": "majority",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "夜晚",
+      "code": "ye wan",
+      "before": "night",
+      "after": "night",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大体的",
+      "code": "da ti de",
+      "before": "general",
+      "after": "general",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大半",
+      "code": "da ban",
+      "before": "most",
+      "after": "most",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大厅",
+      "code": "da ting",
+      "before": "hall",
+      "after": "hall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大多",
+      "code": "da duo",
+      "before": "most",
+      "after": "most",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大多数",
+      "code": "da duo shu",
+      "before": "majority",
+      "after": "majority",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大小",
+      "code": "da xiao",
+      "before": "size",
+      "after": "size",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "大自然",
+      "code": "da zi ran",
+      "before": "nature",
+      "after": "nature",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "天",
+      "code": "tian",
+      "before": "day",
+      "after": "day",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "天性",
+      "code": "tian xing",
+      "before": "nature",
+      "after": "nature",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "天气",
+      "code": "tian qi",
+      "before": "weather",
+      "after": "weather",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "天然",
+      "code": "tian ran",
+      "before": "natural",
+      "after": "natural",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "太平洋的",
+      "code": "tai ping yang de",
+      "before": "Pacific",
+      "after": "Pacific",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "太空",
+      "code": "tai kong",
+      "before": "space",
+      "after": "space",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "太阳",
+      "code": "tai yang",
+      "before": "sun",
+      "after": "sun",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "太阳的",
+      "code": "tai yang de",
+      "before": "solar",
+      "after": "solar",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "头发",
+      "code": "tou fa",
+      "before": "hair",
+      "after": "hair",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "奖品",
+      "code": "jiang pin",
+      "before": "award",
+      "after": "award",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "女儿",
+      "code": "nv er",
+      "before": "daughter",
+      "after": "daughter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "好",
+      "code": "hao",
+      "before": "good",
+      "after": "good",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "好几",
+      "code": "hao ji",
+      "before": "several",
+      "after": "several",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "好的",
+      "code": "hao de",
+      "before": "fine",
+      "after": "fine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "如",
+      "code": "ru",
+      "before": "as",
+      "after": "as",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "如同",
+      "code": "ru tong",
+      "before": "as",
+      "after": "as",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "妈妈",
+      "code": "ma ma",
+      "before": "mom",
+      "after": "mom",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "妥当",
+      "code": "tuo dang",
+      "before": "appropriate",
+      "after": "appropriate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "妹妹",
+      "code": "mei mei",
+      "before": "younger sister",
+      "after": "younger sister",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "妻子",
+      "code": "qi zi",
+      "before": "wife",
+      "after": "wife",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "姐姐",
+      "code": "jie jie",
+      "before": "older sister",
+      "after": "older sister",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "委员会",
+      "code": "wei yuan hui",
+      "before": "committee",
+      "after": "committee",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "威力",
+      "code": "wei li",
+      "before": "might",
+      "after": "might",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "媒介",
+      "code": "mei jie",
+      "before": "media",
+      "after": "media",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "字母",
+      "code": "zi mu",
+      "before": "letter",
+      "after": "letter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "季度",
+      "code": "ji du",
+      "before": "quarter",
+      "after": "quarter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "季节",
+      "code": "ji jie",
+      "before": "season",
+      "after": "season",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学习",
+      "code": "xue xi",
+      "before": "learn",
+      "after": "learn",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学位",
+      "code": "xue wei",
+      "before": "degree",
+      "after": "degree",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学期",
+      "code": "xue qi",
+      "before": "term",
+      "after": "term",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学校",
+      "code": "xue xiao",
+      "before": "school",
+      "after": "school",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学生",
+      "code": "xue sheng",
+      "before": "student",
+      "after": "student",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学科",
+      "code": "xue ke",
+      "before": "subject",
+      "after": "subject",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学费",
+      "code": "xue fei",
+      "before": "tuition",
+      "after": "tuition",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "学院",
+      "code": "xue yuan",
+      "before": "college",
+      "after": "college",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "孩子",
+      "code": "hai zi",
+      "before": "child",
+      "after": "child",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "安放",
+      "code": "an fang",
+      "before": "lay",
+      "after": "lay",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "安检",
+      "code": "an jian",
+      "before": "security check",
+      "after": "security check",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "安静",
+      "code": "an jing",
+      "before": "quiet",
+      "after": "quiet",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "官方",
+      "code": "guan fang",
+      "before": "government",
+      "after": "government",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "实现",
+      "code": "shi xian",
+      "before": "achieve",
+      "after": "achieve",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "实证数据",
+      "code": "shi zheng shu ju",
+      "before": "empirical data",
+      "after": "empirical data",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "实验室",
+      "code": "shi yan shi",
+      "before": "lab",
+      "after": "lab",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客人",
+      "code": "ke ren",
+      "before": "customer",
+      "after": "customer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客厅",
+      "code": "ke ting",
+      "before": "living room",
+      "after": "living room",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客户",
+      "code": "ke hu",
+      "before": "client",
+      "after": "client",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客户服务",
+      "code": "ke hu fu wu",
+      "before": "customer service",
+      "after": "customer service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客房服务",
+      "code": "ke fang fu wu",
+      "before": "room service",
+      "after": "room service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "客服",
+      "code": "ke fu",
+      "before": "customer service",
+      "after": "customer service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "害怕",
+      "code": "hai pa",
+      "before": "be afraid",
+      "after": "be afraid",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "家人",
+      "code": "jia ren",
+      "before": "family member",
+      "after": "family member",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "家伙",
+      "code": "jia huo",
+      "before": "guy",
+      "after": "guy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "家庭",
+      "code": "jia ting",
+      "before": "family",
+      "after": "family",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "家长",
+      "code": "jia zhang",
+      "before": "parent",
+      "after": "parent",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "容纳",
+      "code": "rong na",
+      "before": "hold",
+      "after": "hold",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "宽慰",
+      "code": "kuan wei",
+      "before": "relief",
+      "after": "relief",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "宽的",
+      "code": "kuan de",
+      "before": "wide",
+      "after": "wide",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "宿舍",
+      "code": "su she",
+      "before": "dormitory",
+      "after": "dormitory",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "密码",
+      "code": "mi ma",
+      "before": "password",
+      "after": "password",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "察觉",
+      "code": "cha jue",
+      "before": "sense",
+      "after": "sense",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "对不起",
+      "code": "dui bu qi",
+      "before": "sorry",
+      "after": "sorry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "对话",
+      "code": "dui hua",
+      "before": "dialogue",
+      "after": "dialogue",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "导弹",
+      "code": "dao dan",
+      "before": "missile",
+      "after": "missile",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "导演",
+      "code": "dao yan",
+      "before": "director",
+      "after": "director",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "导致",
+      "code": "dao zhi",
+      "before": "cause",
+      "after": "cause",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "封面",
+      "code": "feng mian",
+      "before": "cover",
+      "after": "cover",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "将军",
+      "code": "jiang jun",
+      "before": "general",
+      "after": "general",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "将来的",
+      "code": "jiang lai de",
+      "before": "future",
+      "after": "future",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "小子",
+      "code": "xiao zi",
+      "before": "guy",
+      "after": "guy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "小时",
+      "code": "xiao shi",
+      "before": "hour",
+      "after": "hour",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "少校",
+      "code": "shao xiao",
+      "before": "major",
+      "after": "major",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "尝试",
+      "code": "chang shi",
+      "before": "attempt",
+      "after": "attempt",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "局部",
+      "code": "ju bu",
+      "before": "part",
+      "after": "part",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "层次",
+      "code": "ceng ci",
+      "before": "level",
+      "after": "level",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "居住",
+      "code": "ju zhu",
+      "before": "live",
+      "after": "live",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "屏幕",
+      "code": "ping mu",
+      "before": "screen",
+      "after": "screen",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "展览",
+      "code": "zhan lan",
+      "before": "exhibition",
+      "after": "exhibition",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "属性",
+      "code": "shu xing",
+      "before": "property",
+      "after": "property",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "履行",
+      "code": "lv xing",
+      "before": "fulfil",
+      "after": "fulfil",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "岩石",
+      "code": "yan shi",
+      "before": "rock",
+      "after": "rock",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "工业",
+      "code": "gong ye",
+      "before": "industry",
+      "after": "industry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "工业的",
+      "code": "gong ye de",
+      "before": "industrial",
+      "after": "industrial",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "工人",
+      "code": "gong ren",
+      "before": "worker",
+      "after": "worker",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "工作",
+      "code": "gong zuo",
+      "before": "job",
+      "after": "job",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "工作的",
+      "code": "gong zuo de",
+      "before": "working",
+      "after": "working",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "巧克力",
+      "code": "qiao ke li",
+      "before": "chocolate",
+      "after": "chocolate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "巨大的",
+      "code": "ju da de",
+      "before": "tremendous",
+      "after": "tremendous",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "市场",
+      "code": "shi chang",
+      "before": "market",
+      "after": "market",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "带",
+      "code": "dai",
+      "before": "carry",
+      "after": "carry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "带来",
+      "code": "dai lai",
+      "before": "bring",
+      "after": "bring",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "帮助",
+      "code": "bang zhu",
+      "before": "help",
+      "after": "help",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "常见",
+      "code": "chang jian",
+      "before": "common",
+      "after": "common",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "帽子",
+      "code": "mao zi",
+      "before": "hat",
+      "after": "hat",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "平坦",
+      "code": "ping tan",
+      "before": "level",
+      "after": "level",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "年龄",
+      "code": "nian ling",
+      "before": "age",
+      "after": "age",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "广告",
+      "code": "guang gao",
+      "before": "advertising",
+      "after": "advertising",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "库存",
+      "code": "ku cun",
+      "before": "stock",
+      "after": "stock",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "应得的",
+      "code": "ying de de",
+      "before": "due",
+      "after": "due",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "应用",
+      "code": "ying yong",
+      "before": "apply",
+      "after": "apply",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "应用程序",
+      "code": "ying yong cheng xu",
+      "before": "application",
+      "after": "application",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "度",
+      "code": "du",
+      "before": "degree",
+      "after": "degree",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "建立",
+      "code": "jian li",
+      "before": "establish",
+      "after": "establish",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "建筑",
+      "code": "jian zhu",
+      "before": "building",
+      "after": "building",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "建议",
+      "code": "jian yi",
+      "before": "suggestion",
+      "after": "suggestion",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "开发",
+      "code": "kai fa",
+      "before": "development",
+      "after": "development",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "开始",
+      "code": "kai shi",
+      "before": "begin",
+      "after": "begin",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "开支",
+      "code": "kai zhi",
+      "before": "spending",
+      "after": "spending",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "开着",
+      "code": "kai zhe",
+      "before": "on",
+      "after": "on",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "式样",
+      "code": "shi yang",
+      "before": "style",
+      "after": "style",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "引擎",
+      "code": "yin qing",
+      "before": "engine",
+      "after": "engine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "引起兴趣",
+      "code": "yin qi xing qu",
+      "before": "interest",
+      "after": "interest",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "弟弟",
+      "code": "di di",
+      "before": "younger brother",
+      "after": "younger brother",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "当事人",
+      "code": "dang shi ren",
+      "before": "party",
+      "after": "party",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "当地",
+      "code": "dang di",
+      "before": "local",
+      "after": "local",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "当局",
+      "code": "dang ju",
+      "before": "authority",
+      "after": "authority",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "录制",
+      "code": "lu zhi",
+      "before": "record",
+      "after": "record",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "录音",
+      "code": "lu yin",
+      "before": "recording",
+      "after": "recording",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "形式",
+      "code": "xing shi",
+      "before": "form",
+      "after": "form",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "形成",
+      "code": "xing cheng",
+      "before": "form",
+      "after": "form",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "形象",
+      "code": "xing xiang",
+      "before": "image",
+      "after": "image",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "影像",
+      "code": "ying xiang",
+      "before": "image",
+      "after": "image",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "影响",
+      "code": "ying xiang",
+      "before": "effect",
+      "after": "effect",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "律师",
+      "code": "lv shi",
+      "before": "attorney",
+      "after": "attorney",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "得益",
+      "code": "de yi",
+      "before": "benefit",
+      "after": "benefit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "得知",
+      "code": "de zhi",
+      "before": "learn",
+      "after": "learn",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "心",
+      "code": "xin",
+      "before": "mind",
+      "after": "mind",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "心碎",
+      "code": "xin sui",
+      "before": "heartbroken",
+      "after": "heartbroken",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "心脏",
+      "code": "xin zang",
+      "before": "heart",
+      "after": "heart",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "志愿者",
+      "code": "zhi yuan zhe",
+      "before": "volunteer",
+      "after": "volunteer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "忙碌",
+      "code": "mang lu",
+      "before": "busy",
+      "after": "busy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "思想",
+      "code": "si xiang",
+      "before": "thought",
+      "after": "thought",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "性别",
+      "code": "xing bie",
+      "before": "sex",
+      "after": "sex",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "性爱",
+      "code": "xing ai",
+      "before": "sex",
+      "after": "sex",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "总数",
+      "code": "zong shu",
+      "before": "total",
+      "after": "total",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "总理",
+      "code": "zong li",
+      "before": "chancellor",
+      "after": "chancellor",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "总的",
+      "code": "zong de",
+      "before": "total",
+      "after": "total",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "恩惠",
+      "code": "en hui",
+      "before": "favour",
+      "after": "favour",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "悬挂",
+      "code": "xuan gua",
+      "before": "hang",
+      "after": "hang",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "想法",
+      "code": "xiang fa",
+      "before": "idea",
+      "after": "idea",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "意义",
+      "code": "yi yi",
+      "before": "sense",
+      "after": "sense",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "感冒",
+      "code": "gan mao",
+      "before": "common cold",
+      "after": "common cold",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "感受",
+      "code": "gan shou",
+      "before": "experience",
+      "after": "experience",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "感染",
+      "code": "gan ran",
+      "before": "infection",
+      "after": "infection",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "感觉",
+      "code": "gan jue",
+      "before": "sense",
+      "after": "sense",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "感觉到",
+      "code": "gan jue dao",
+      "before": "feel",
+      "after": "feel",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "慢炖",
+      "code": "man dun",
+      "before": "simmer",
+      "after": "simmer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "戏剧",
+      "code": "xi ju",
+      "before": "theatre",
+      "after": "theatre",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "成效",
+      "code": "cheng xiao",
+      "before": "result",
+      "after": "result",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "成果",
+      "code": "cheng guo",
+      "before": "result",
+      "after": "result",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "成绩单",
+      "code": "cheng ji dan",
+      "before": "transcript",
+      "after": "transcript",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "成长",
+      "code": "cheng zhang",
+      "before": "growth",
+      "after": "growth",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "战役",
+      "code": "zhan yi",
+      "before": "campaign",
+      "after": "campaign",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "战略",
+      "code": "zhan lve",
+      "before": "strategy",
+      "after": "strategy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "房东",
+      "code": "fang dong",
+      "before": "landlord",
+      "after": "landlord",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "房子",
+      "code": "fang zi",
+      "before": "house",
+      "after": "house",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "房客",
+      "code": "fang ke",
+      "before": "tenant",
+      "after": "tenant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "房屋",
+      "code": "fang wu",
+      "before": "house",
+      "after": "house",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "房间",
+      "code": "fang jian",
+      "before": "room",
+      "after": "room",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "扇形",
+      "code": "shan xing",
+      "before": "sector",
+      "after": "sector",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "手",
+      "code": "shou",
+      "before": "hand",
+      "after": "hand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "手指",
+      "code": "shou zhi",
+      "before": "finger",
+      "after": "finger",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "手机",
+      "code": "shou ji",
+      "before": "mobile phone",
+      "after": "mobile phone",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "手续费",
+      "code": "shou xu fei",
+      "before": "transaction fee",
+      "after": "transaction fee",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "打字",
+      "code": "da zi",
+      "before": "type",
+      "after": "type",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "打扰一下",
+      "code": "da rao yi xia",
+      "before": "excuse me",
+      "after": "excuse me",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "打折",
+      "code": "da zhe",
+      "before": "discount",
+      "after": "discount",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "打电话",
+      "code": "da dian hua",
+      "before": "phone",
+      "after": "phone",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "打破",
+      "code": "da po",
+      "before": "break",
+      "after": "break",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "执照",
+      "code": "zhi zhao",
+      "before": "licence",
+      "after": "licence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "承认",
+      "code": "cheng ren",
+      "before": "admission",
+      "after": "admission",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "承诺",
+      "code": "cheng nuo",
+      "before": "commit",
+      "after": "commit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "技术",
+      "code": "ji shu",
+      "before": "technology",
+      "after": "technology",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "技能",
+      "code": "ji neng",
+      "before": "skill",
+      "after": "skill",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "投入",
+      "code": "tou ru",
+      "before": "commit",
+      "after": "commit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "投资",
+      "code": "tou zi",
+      "before": "investment",
+      "after": "investment",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "折扣",
+      "code": "zhe kou",
+      "before": "discount",
+      "after": "discount",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "护照查验",
+      "code": "hu zhao cha yan",
+      "before": "passport control",
+      "after": "passport control",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "报告",
+      "code": "bao gao",
+      "before": "report",
+      "after": "report",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "报盘",
+      "code": "bao pan",
+      "before": "offer",
+      "after": "offer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "押金",
+      "code": "ya jin",
+      "before": "security deposit",
+      "after": "security deposit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "抽样",
+      "code": "chou yang",
+      "before": "sample",
+      "after": "sample",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "担",
+      "code": "dan",
+      "before": "carry",
+      "after": "carry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "拉",
+      "code": "la",
+      "before": "pull",
+      "after": "pull",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "拉伸",
+      "code": "la shen",
+      "before": "stretching",
+      "after": "stretching",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "拒绝",
+      "code": "ju jue",
+      "before": "refuse",
+      "after": "refuse",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "拿",
+      "code": "na",
+      "before": "take",
+      "after": "take",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "拿来",
+      "code": "na lai",
+      "before": "bring",
+      "after": "bring",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "指",
+      "code": "zhi",
+      "before": "point",
+      "after": "point",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "挑",
+      "code": "tiao",
+      "before": "pick",
+      "after": "pick",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "捉住",
+      "code": "zhuo zhu",
+      "before": "catch",
+      "after": "catch",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "损失",
+      "code": "sun shi",
+      "before": "loss",
+      "after": "loss",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "换乘",
+      "code": "huan cheng",
+      "before": "transfer",
+      "after": "transfer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "换货",
+      "code": "huan huo",
+      "before": "exchange",
+      "after": "exchange",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "授予",
+      "code": "shou yu",
+      "before": "award",
+      "after": "award",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "掉",
+      "code": "diao",
+      "before": "drop",
+      "after": "drop",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "掉落",
+      "code": "diao luo",
+      "before": "fall",
+      "after": "fall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "接",
+      "code": "jie",
+      "before": "catch",
+      "after": "catch",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "接住",
+      "code": "jie zhu",
+      "before": "catch",
+      "after": "catch",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "接待处",
+      "code": "jie dai chu",
+      "before": "reception",
+      "after": "reception",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "接近",
+      "code": "jie jin",
+      "before": "approach",
+      "after": "approach",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "控制",
+      "code": "kong zhi",
+      "before": "control",
+      "after": "control",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "措施",
+      "code": "cuo shi",
+      "before": "measure",
+      "after": "measure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "提供",
+      "code": "ti gong",
+      "before": "offer",
+      "after": "offer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "提议",
+      "code": "ti yi",
+      "before": "offer",
+      "after": "offer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "操纵",
+      "code": "cao zong",
+      "before": "control",
+      "after": "control",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "支持",
+      "code": "zhi chi",
+      "before": "support",
+      "after": "support",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "收费",
+      "code": "shou fei",
+      "before": "charge",
+      "after": "charge",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "攻击",
+      "code": "gong ji",
+      "before": "attack",
+      "after": "attack",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "放",
+      "code": "fang",
+      "before": "put",
+      "after": "put",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "放置",
+      "code": "fang zhi",
+      "before": "place",
+      "after": "place",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "政党",
+      "code": "zheng dang",
+      "before": "party",
+      "after": "party",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "政府",
+      "code": "zheng fu",
+      "before": "government",
+      "after": "government",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "政治",
+      "code": "zheng zhi",
+      "before": "political",
+      "after": "political",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "政治性",
+      "code": "zheng zhi xing",
+      "before": "political",
+      "after": "political",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "政策",
+      "code": "zheng ce",
+      "before": "policy",
+      "after": "policy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "故事",
+      "code": "gu shi",
+      "before": "story",
+      "after": "story",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "效果",
+      "code": "xiao guo",
+      "before": "effect",
+      "after": "effect",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "救济",
+      "code": "jiu ji",
+      "before": "relief",
+      "after": "relief",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "教堂",
+      "code": "jiao tang",
+      "before": "church",
+      "after": "church",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "教授",
+      "code": "jiao shou",
+      "before": "professor",
+      "after": "professor",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "教育",
+      "code": "jiao yu",
+      "before": "education",
+      "after": "education",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "数字",
+      "code": "shu zi",
+      "before": "figure",
+      "after": "figure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "数据",
+      "code": "shu ju",
+      "before": "data",
+      "after": "data",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "数据库",
+      "code": "shu ju ku",
+      "before": "database",
+      "after": "database",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "数量",
+      "code": "shu liang",
+      "before": "amount",
+      "after": "amount",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "数额",
+      "code": "shu e",
+      "before": "amount",
+      "after": "amount",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "文件",
+      "code": "wen jian",
+      "before": "document",
+      "after": "document",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "文化",
+      "code": "wen hua",
+      "before": "culture",
+      "after": "culture",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "文章",
+      "code": "wen zhang",
+      "before": "article",
+      "after": "article",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "方案",
+      "code": "fang an",
+      "before": "scheme",
+      "after": "scheme",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "方法",
+      "code": "fang fa",
+      "before": "method",
+      "after": "method",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "方程",
+      "code": "fang cheng",
+      "before": "equation",
+      "after": "equation",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "方针",
+      "code": "fang zhen",
+      "before": "policy",
+      "after": "policy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "旅行",
+      "code": "lv xing",
+      "before": "travel",
+      "after": "travel",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "旅馆",
+      "code": "lv guan",
+      "before": "hotel",
+      "after": "hotel",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "无物",
+      "code": "wu wu",
+      "before": "nothing",
+      "after": "nothing",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "无论什么",
+      "code": "wu lun shen me",
+      "before": "whatever",
+      "after": "whatever",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "日子",
+      "code": "ri zi",
+      "before": "day",
+      "after": "day",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "日期",
+      "code": "ri qi",
+      "before": "date",
+      "after": "date",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "日本的",
+      "code": "ri ben de",
+      "before": "Japanese",
+      "after": "Japanese",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "日语",
+      "code": "ri yu",
+      "before": "Japanese",
+      "after": "Japanese",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "早安",
+      "code": "zao an",
+      "before": "good morning",
+      "after": "good morning",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "早晨",
+      "code": "zao chen",
+      "before": "early morning",
+      "after": "early morning",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "早餐",
+      "code": "zao can",
+      "before": "breakfast",
+      "after": "breakfast",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "时代",
+      "code": "shi dai",
+      "before": "age",
+      "after": "age",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "时期",
+      "code": "shi qi",
+      "before": "period",
+      "after": "period",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "时间",
+      "code": "shi jian",
+      "before": "time",
+      "after": "time",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "明天",
+      "code": "ming tian",
+      "before": "tomorrow",
+      "after": "tomorrow",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "明年",
+      "code": "ming nian",
+      "before": "next year",
+      "after": "next year",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "星星",
+      "code": "xing xing",
+      "before": "star",
+      "after": "star",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "星期",
+      "code": "xing qi",
+      "before": "week",
+      "after": "week",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "春天",
+      "code": "chun tian",
+      "before": "spring",
+      "after": "spring",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "昨天",
+      "code": "zuo tian",
+      "before": "yesterday",
+      "after": "yesterday",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "晚上",
+      "code": "wan shang",
+      "before": "night",
+      "after": "night",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "晚安",
+      "code": "wan an",
+      "before": "good night",
+      "after": "good night",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "晚餐",
+      "code": "wan can",
+      "before": "dinner",
+      "after": "dinner",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "普遍的",
+      "code": "pu bian de",
+      "before": "general",
+      "after": "general",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "晴",
+      "code": "qing",
+      "before": "clear",
+      "after": "clear",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "智能手机",
+      "code": "zhi neng shou ji",
+      "before": "smartphone",
+      "after": "smartphone",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "暂定的",
+      "code": "zan ding de",
+      "before": "working",
+      "after": "working",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "暗",
+      "code": "an",
+      "before": "dark",
+      "after": "dark",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "曲子",
+      "code": "qu zi",
+      "before": "music",
+      "after": "music",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "更",
+      "code": "geng",
+      "before": "further",
+      "after": "further",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "曾经",
+      "code": "ceng jing",
+      "before": "once",
+      "after": "once",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最",
+      "code": "zui",
+      "before": "most",
+      "after": "most",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最好",
+      "code": "zui hao",
+      "before": "best",
+      "after": "best",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最小的",
+      "code": "zui xiao de",
+      "before": "least",
+      "after": "least",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最少",
+      "code": "zui shao",
+      "before": "least",
+      "after": "least",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最终的",
+      "code": "zui zhong de",
+      "before": "final",
+      "after": "final",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "最高的",
+      "code": "zui gao de",
+      "before": "top",
+      "after": "top",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "月亮",
+      "code": "yue liang",
+      "before": "moon",
+      "after": "moon",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "月份",
+      "code": "yue fen",
+      "before": "month",
+      "after": "month",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "有关",
+      "code": "you guan",
+      "before": "concern",
+      "after": "concern",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "有效地",
+      "code": "you xiao de",
+      "before": "effectively",
+      "after": "effectively",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "有氧运动",
+      "code": "you yang yun dong",
+      "before": "cardio",
+      "after": "cardio",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "有空",
+      "code": "you kong",
+      "before": "available",
+      "after": "available",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "朋友",
+      "code": "peng you",
+      "before": "friend",
+      "after": "friend",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "服务",
+      "code": "fu wu",
+      "before": "service",
+      "after": "service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "服务员",
+      "code": "fu wu yuan",
+      "before": "waiter",
+      "after": "waiter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "期限",
+      "code": "qi xian",
+      "before": "term",
+      "after": "term",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "木板",
+      "code": "mu ban",
+      "before": "board",
+      "after": "board",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "未来",
+      "code": "wei lai",
+      "before": "future",
+      "after": "future",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "本地",
+      "code": "ben di",
+      "before": "local",
+      "after": "local",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "本金",
+      "code": "ben jin",
+      "before": "capital",
+      "after": "capital",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "术语",
+      "code": "shu yu",
+      "before": "term",
+      "after": "term",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "机会",
+      "code": "ji hui",
+      "before": "opportunity",
+      "after": "opportunity",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "机器",
+      "code": "ji qi",
+      "before": "machine",
+      "after": "machine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "机场",
+      "code": "ji chang",
+      "before": "airport",
+      "after": "airport",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "机构",
+      "code": "ji gou",
+      "before": "institution",
+      "after": "institution",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "权力",
+      "code": "quan li",
+      "before": "power",
+      "after": "power",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "权威",
+      "code": "quan wei",
+      "before": "authority",
+      "after": "authority",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "材料",
+      "code": "cai liao",
+      "before": "material",
+      "after": "material",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "村庄",
+      "code": "cun zhuang",
+      "before": "village",
+      "after": "village",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "条件",
+      "code": "tiao jian",
+      "before": "condition",
+      "after": "condition",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "条款",
+      "code": "tiao kuan",
+      "before": "terms",
+      "after": "terms",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "来",
+      "code": "lai",
+      "before": "come",
+      "after": "come",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "来历",
+      "code": "lai li",
+      "before": "history",
+      "after": "history",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "来源",
+      "code": "lai yuan",
+      "before": "source",
+      "after": "source",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "杯子",
+      "code": "bei zi",
+      "before": "cup",
+      "after": "cup",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "构件",
+      "code": "gou jian",
+      "before": "part",
+      "after": "part",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "柏林",
+      "code": "bo lin",
+      "before": "Berlin",
+      "after": "Berlin",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "查",
+      "code": "cha",
+      "before": "check",
+      "after": "check",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "标本",
+      "code": "biao ben",
+      "before": "specimen",
+      "after": "specimen",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "标题",
+      "code": "biao ti",
+      "before": "title",
+      "after": "title",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "树",
+      "code": "shu",
+      "before": "tree",
+      "after": "tree",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "样本",
+      "code": "yang ben",
+      "before": "sample",
+      "after": "sample",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "根据",
+      "code": "gen ju",
+      "before": "basis",
+      "after": "basis",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "栽种",
+      "code": "zai zhong",
+      "before": "plant",
+      "after": "plant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "桌子",
+      "code": "zhuo zi",
+      "before": "table",
+      "after": "table",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "档次",
+      "code": "dang ci",
+      "before": "class",
+      "after": "class",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "检修",
+      "code": "jian xiu",
+      "before": "service",
+      "after": "service",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "椅子",
+      "code": "yi zi",
+      "before": "chair",
+      "after": "chair",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "植物",
+      "code": "zhi wu",
+      "before": "plant",
+      "after": "plant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "楼层",
+      "code": "lou ceng",
+      "before": "story",
+      "after": "story",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "概念",
+      "code": "gai nian",
+      "before": "idea",
+      "after": "idea",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "模型",
+      "code": "mo xing",
+      "before": "model",
+      "after": "model",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "模式",
+      "code": "mo shi",
+      "before": "mode",
+      "after": "mode",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "橙子",
+      "code": "cheng zi",
+      "before": "orange",
+      "after": "orange",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "欢迎",
+      "code": "huan ying",
+      "before": "welcome",
+      "after": "welcome",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "欧洲",
+      "code": "ou zhou",
+      "before": "Europe",
+      "after": "Europe",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "欧洲人",
+      "code": "ou zhou ren",
+      "before": "European",
+      "after": "European",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "欧洲的",
+      "code": "ou zhou de",
+      "before": "European",
+      "after": "European",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "正常",
+      "code": "zheng chang",
+      "before": "normal",
+      "after": "normal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "母亲",
+      "code": "mu qin",
+      "before": "mother",
+      "after": "mother",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "每",
+      "code": "mei",
+      "before": "per",
+      "after": "per",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "比率",
+      "code": "bi lv",
+      "before": "rate",
+      "after": "rate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "比较",
+      "code": "bi jiao",
+      "before": "compare",
+      "after": "compare",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "民族的",
+      "code": "min zu de",
+      "before": "ethnic",
+      "after": "ethnic",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "气候变化",
+      "code": "qi hou bian hua",
+      "before": "climate change",
+      "after": "climate change",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "水",
+      "code": "shui",
+      "before": "water",
+      "after": "water",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "水平",
+      "code": "shui ping",
+      "before": "level",
+      "after": "level",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "水果",
+      "code": "shui guo",
+      "before": "fruit",
+      "after": "fruit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "求职信",
+      "code": "qiu zhi xin",
+      "before": "cover letter",
+      "after": "cover letter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "沙发",
+      "code": "sha fa",
+      "before": "sofa",
+      "after": "sofa",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "沙拉",
+      "code": "sha la",
+      "before": "salad",
+      "after": "salad",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "没关系",
+      "code": "mei guan xi",
+      "before": "it doesn't matter",
+      "after": "it doesn't matter",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "没有什么",
+      "code": "mei you shen me",
+      "before": "nothing",
+      "after": "nothing",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "没问题",
+      "code": "mei wen ti",
+      "before": "no problem",
+      "after": "no problem",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "油",
+      "code": "you",
+      "before": "oil",
+      "after": "oil",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "治疗",
+      "code": "zhi liao",
+      "before": "treatment",
+      "after": "treatment",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "法则",
+      "code": "fa ze",
+      "before": "law",
+      "after": "law",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "法国",
+      "code": "fa guo",
+      "before": "France",
+      "after": "France",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "法学",
+      "code": "fa xue",
+      "before": "law",
+      "after": "law",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "法律",
+      "code": "fa lv",
+      "before": "law",
+      "after": "law",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "波及",
+      "code": "bo ji",
+      "before": "affect",
+      "after": "affect",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "注意力",
+      "code": "zhu yi li",
+      "before": "attention",
+      "after": "attention",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "洗澡",
+      "code": "xi zao",
+      "before": "bathe",
+      "after": "bathe",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "洗衣机",
+      "code": "xi yi ji",
+      "before": "washing machine",
+      "after": "washing machine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "活动",
+      "code": "huo dong",
+      "before": "activity",
+      "after": "activity",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "浇",
+      "code": "jiao",
+      "before": "water",
+      "after": "water",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "测试",
+      "code": "ce shi",
+      "before": "test",
+      "after": "test",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "测量",
+      "code": "ce liang",
+      "before": "measure",
+      "after": "measure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "测验",
+      "code": "ce yan",
+      "before": "test",
+      "after": "test",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "浴室",
+      "code": "yu shi",
+      "before": "bathroom",
+      "after": "bathroom",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "海关",
+      "code": "hai guan",
+      "before": "customs",
+      "after": "customs",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "清单",
+      "code": "qing dan",
+      "before": "list",
+      "after": "list",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "清楚",
+      "code": "qing chu",
+      "before": "clear",
+      "after": "clear",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "清除",
+      "code": "qing chu",
+      "before": "clear",
+      "after": "clear",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "游泳",
+      "code": "you yong",
+      "before": "swim",
+      "after": "swim",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "满意",
+      "code": "man yi",
+      "before": "satisfaction",
+      "after": "satisfaction",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "火",
+      "code": "huo",
+      "before": "fire",
+      "after": "fire",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "火车",
+      "code": "huo che",
+      "before": "train",
+      "after": "train",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "灯",
+      "code": "deng",
+      "before": "light",
+      "after": "light",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "热点",
+      "code": "re dian",
+      "before": "hotspot",
+      "after": "hotspot",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "热身",
+      "code": "re shen",
+      "before": "warm up",
+      "after": "warm up",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "照片",
+      "code": "zhao pian",
+      "before": "photo",
+      "after": "photo",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "爱好",
+      "code": "ai hao",
+      "before": "hobby",
+      "after": "hobby",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "父亲",
+      "code": "fu qin",
+      "before": "father",
+      "after": "father",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "爸爸",
+      "code": "ba ba",
+      "before": "dad",
+      "after": "dad",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "牙齿",
+      "code": "ya chi",
+      "before": "tooth",
+      "after": "tooth",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "牛奶",
+      "code": "niu nai",
+      "before": "milk",
+      "after": "milk",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "牛津",
+      "code": "niu jin",
+      "before": "Oxford",
+      "after": "Oxford",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "牛津鞋",
+      "code": "niu jin xie",
+      "before": "oxford",
+      "after": "oxford",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "牧师",
+      "code": "mu shi",
+      "before": "minister",
+      "after": "minister",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "物理的",
+      "code": "wu li de",
+      "before": "physical",
+      "after": "physical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "特定",
+      "code": "te ding",
+      "before": "specific",
+      "after": "specific",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "特征",
+      "code": "te zheng",
+      "before": "feature",
+      "after": "feature",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "特殊",
+      "code": "te shu",
+      "before": "special",
+      "after": "special",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "犯",
+      "code": "fan",
+      "before": "commit",
+      "after": "commit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "犯罪",
+      "code": "fan zui",
+      "before": "crime",
+      "after": "crime",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "状况",
+      "code": "zhuang kuang",
+      "before": "condition",
+      "after": "condition",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "玩家",
+      "code": "wan jia",
+      "before": "player",
+      "after": "player",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "环境",
+      "code": "huan jing",
+      "before": "environment",
+      "after": "environment",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "环境的",
+      "code": "huan jing de",
+      "before": "environmental",
+      "after": "environmental",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "现代的",
+      "code": "xian dai de",
+      "before": "modern",
+      "after": "modern",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "现在",
+      "code": "xian zai",
+      "before": "now",
+      "after": "now",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "现场直播的",
+      "code": "xian chang zhi bo de",
+      "before": "live",
+      "after": "live",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "现行",
+      "code": "xian xing",
+      "before": "current",
+      "after": "current",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "玻璃",
+      "code": "bo li",
+      "before": "glass",
+      "after": "glass",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "珍惜",
+      "code": "zhen xi",
+      "before": "value",
+      "after": "value",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "班级",
+      "code": "ban ji",
+      "before": "class",
+      "after": "class",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "球门",
+      "code": "qiu men",
+      "before": "goal",
+      "after": "goal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "理事会",
+      "code": "li shi hui",
+      "before": "council",
+      "after": "council",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "理智",
+      "code": "li zhi",
+      "before": "reason",
+      "after": "reason",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "理由",
+      "code": "li you",
+      "before": "reason",
+      "after": "reason",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "理论",
+      "code": "li lun",
+      "before": "theory",
+      "after": "theory",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "理论上的",
+      "code": "li lun shang de",
+      "before": "theoretical",
+      "after": "theoretical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生产",
+      "code": "sheng chan",
+      "before": "production",
+      "after": "production",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生意",
+      "code": "sheng yi",
+      "before": "business",
+      "after": "business",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生日",
+      "code": "sheng ri",
+      "before": "birthday",
+      "after": "birthday",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生活",
+      "code": "sheng huo",
+      "before": "live",
+      "after": "live",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生涯",
+      "code": "sheng ya",
+      "before": "career",
+      "after": "career",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "生物多样性",
+      "code": "sheng wu duo yang xing",
+      "before": "biodiversity",
+      "after": "biodiversity",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "田地",
+      "code": "tian di",
+      "before": "field",
+      "after": "field",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "申请",
+      "code": "shen qing",
+      "before": "apply",
+      "after": "apply",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "电力",
+      "code": "dian li",
+      "before": "power",
+      "after": "power",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "电影",
+      "code": "dian ying",
+      "before": "movie",
+      "after": "movie",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "电脑",
+      "code": "dian nao",
+      "before": "computer",
+      "after": "computer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "电视",
+      "code": "dian shi",
+      "before": "TV",
+      "after": "TV",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "电话",
+      "code": "dian hua",
+      "before": "phone",
+      "after": "phone",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "留下",
+      "code": "liu xia",
+      "before": "keep",
+      "after": "keep",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "疲倦",
+      "code": "pi juan",
+      "before": "tired",
+      "after": "tired",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "疾病",
+      "code": "ji bing",
+      "before": "disease",
+      "after": "disease",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "症状",
+      "code": "zheng zhuang",
+      "before": "symptom",
+      "after": "symptom",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "登机",
+      "code": "deng ji",
+      "before": "board",
+      "after": "board",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "登机牌",
+      "code": "deng ji pai",
+      "before": "boarding pass",
+      "after": "boarding pass",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "白天",
+      "code": "bai tian",
+      "before": "day",
+      "after": "day",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "百万",
+      "code": "bai wan",
+      "before": "million",
+      "after": "million",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "皇家",
+      "code": "huang jia",
+      "before": "royal",
+      "after": "royal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "盒",
+      "code": "he",
+      "before": "case",
+      "after": "case",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "目标",
+      "code": "mu biao",
+      "before": "goal",
+      "after": "goal",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "目的",
+      "code": "mu di",
+      "before": "purpose",
+      "after": "purpose",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "相似",
+      "code": "xiang si",
+      "before": "similar",
+      "after": "similar",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "看",
+      "code": "kan",
+      "before": "view",
+      "after": "view",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "看法",
+      "code": "kan fa",
+      "before": "view",
+      "after": "view",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "眼睛",
+      "code": "yan jing",
+      "before": "eye",
+      "after": "eye",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "着陆",
+      "code": "zhuo lu",
+      "before": "land",
+      "after": "land",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "睡觉",
+      "code": "shui jiao",
+      "before": "sleep",
+      "after": "sleep",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "知识",
+      "code": "zhi shi",
+      "before": "knowledge",
+      "after": "knowledge",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "短",
+      "code": "duan",
+      "before": "short",
+      "after": "short",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "研究",
+      "code": "yan jiu",
+      "before": "research",
+      "after": "research",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "硬",
+      "code": "ying",
+      "before": "hard",
+      "after": "hard",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "碳",
+      "code": "tan",
+      "before": "carbon",
+      "after": "carbon",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "碳足迹",
+      "code": "tan zu ji",
+      "before": "carbon footprint",
+      "after": "carbon footprint",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "礼堂",
+      "code": "li tang",
+      "before": "hall",
+      "after": "hall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "礼物",
+      "code": "li wu",
+      "before": "present",
+      "after": "present",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社交的",
+      "code": "she jiao de",
+      "before": "social",
+      "after": "social",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社会的",
+      "code": "she hui de",
+      "before": "social",
+      "after": "social",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社会福利",
+      "code": "she hui fu li",
+      "before": "social welfare",
+      "after": "social welfare",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社区",
+      "code": "she qu",
+      "before": "community",
+      "after": "community",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社区中心",
+      "code": "she qu zhong xin",
+      "before": "community center",
+      "after": "community center",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社团",
+      "code": "she tuan",
+      "before": "association",
+      "after": "association",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "社群",
+      "code": "she qun",
+      "before": "community",
+      "after": "community",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "祝贺",
+      "code": "zhu he",
+      "before": "congratulate",
+      "after": "congratulate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "离开",
+      "code": "li kai",
+      "before": "leave",
+      "after": "leave",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "私人",
+      "code": "si ren",
+      "before": "private",
+      "after": "private",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "秋天",
+      "code": "qiu tian",
+      "before": "autumn",
+      "after": "autumn",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "秋季",
+      "code": "qiu ji",
+      "before": "fall",
+      "after": "fall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "种类",
+      "code": "zhong lei",
+      "before": "type",
+      "after": "type",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "科学",
+      "code": "ke xue",
+      "before": "science",
+      "after": "science",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "科技",
+      "code": "ke ji",
+      "before": "technology",
+      "after": "technology",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "秒",
+      "code": "miao",
+      "before": "second",
+      "after": "second",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "秘书",
+      "code": "mi shu",
+      "before": "secretary",
+      "after": "secretary",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "租客",
+      "code": "zu ke",
+      "before": "tenant",
+      "after": "tenant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "租房",
+      "code": "zu fang",
+      "before": "rent",
+      "after": "rent",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "租约",
+      "code": "zu yue",
+      "before": "lease",
+      "after": "lease",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "租金",
+      "code": "zu jin",
+      "before": "rent",
+      "after": "rent",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "程序",
+      "code": "cheng xu",
+      "before": "program",
+      "after": "program",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "空气",
+      "code": "kong qi",
+      "before": "air",
+      "after": "air",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "空调",
+      "code": "kong tiao",
+      "before": "air conditioner",
+      "after": "air conditioner",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "空间",
+      "code": "kong jian",
+      "before": "space",
+      "after": "space",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "穿",
+      "code": "chuan",
+      "before": "wear",
+      "after": "wear",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "窗户",
+      "code": "chuang hu",
+      "before": "window",
+      "after": "window",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "立场",
+      "code": "li chang",
+      "before": "position",
+      "after": "position",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "站",
+      "code": "zhan",
+      "before": "stand",
+      "after": "stand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "章节",
+      "code": "zhang jie",
+      "before": "section",
+      "after": "section",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "第三",
+      "code": "di san",
+      "before": "third",
+      "after": "third",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "第二",
+      "code": "di er",
+      "before": "second",
+      "after": "second",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "答疑时间",
+      "code": "da yi shi jian",
+      "before": "office hours",
+      "after": "office hours",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "简单",
+      "code": "jian dan",
+      "before": "simple",
+      "after": "simple",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "简历",
+      "code": "jian li",
+      "before": "resume",
+      "after": "resume",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "管理",
+      "code": "guan li",
+      "before": "management",
+      "after": "management",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "米饭",
+      "code": "mi fan",
+      "before": "cooked rice",
+      "after": "cooked rice",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "精力",
+      "code": "jing li",
+      "before": "energy",
+      "after": "energy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "精选品",
+      "code": "jing xuan pin",
+      "before": "selection",
+      "after": "selection",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "系列",
+      "code": "xi lie",
+      "before": "set",
+      "after": "set",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "系统",
+      "code": "xi tong",
+      "before": "system",
+      "after": "system",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "索赔",
+      "code": "suo pei",
+      "before": "claim",
+      "after": "claim",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "约会",
+      "code": "yue hui",
+      "before": "date",
+      "after": "date",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "纸巾",
+      "code": "zhi jin",
+      "before": "tissue",
+      "after": "tissue",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "纸张",
+      "code": "zhi zhang",
+      "before": "paper",
+      "after": "paper",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "线",
+      "code": "xian",
+      "before": "line",
+      "after": "line",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "练习",
+      "code": "lian xi",
+      "before": "practice",
+      "after": "practice",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "组",
+      "code": "zu",
+      "before": "group",
+      "after": "group",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "组织",
+      "code": "zu zhi",
+      "before": "organization",
+      "after": "organization",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "细节",
+      "code": "xi jie",
+      "before": "detail",
+      "after": "detail",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "织物",
+      "code": "zhi wu",
+      "before": "fabric",
+      "after": "fabric",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经济",
+      "code": "jing ji",
+      "before": "economy",
+      "after": "economy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经济学",
+      "code": "jing ji xue",
+      "before": "economics",
+      "after": "economics",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经济的",
+      "code": "jing ji de",
+      "before": "economic",
+      "after": "economic",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经理",
+      "code": "jing li",
+      "before": "manager",
+      "after": "manager",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经营者",
+      "code": "jing ying zhe",
+      "before": "executive",
+      "after": "executive",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "经过",
+      "code": "jing guo",
+      "before": "pass",
+      "after": "pass",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "结束",
+      "code": "jie shu",
+      "before": "end",
+      "after": "end",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "结账",
+      "code": "jie zhang",
+      "before": "checkout",
+      "after": "checkout",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "给",
+      "code": "gei",
+      "before": "give",
+      "after": "give",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "缔造",
+      "code": "di zao",
+      "before": "create",
+      "after": "create",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "网站",
+      "code": "wang zhan",
+      "before": "site",
+      "after": "site",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "网络",
+      "code": "wang luo",
+      "before": "network",
+      "after": "network",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "罚款",
+      "code": "fa kuan",
+      "before": "fine",
+      "after": "fine",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "美国人",
+      "code": "mei guo ren",
+      "before": "American",
+      "after": "American",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "美国的",
+      "code": "mei guo de",
+      "before": "American",
+      "after": "American",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "美术",
+      "code": "mei shu",
+      "before": "art",
+      "after": "art",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "群",
+      "code": "qun",
+      "before": "group",
+      "after": "group",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "翻炒",
+      "code": "fan chao",
+      "before": "stir-fry",
+      "after": "stir-fry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "老师",
+      "code": "lao shi",
+      "before": "teacher",
+      "after": "teacher",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "考试",
+      "code": "kao shi",
+      "before": "exam",
+      "after": "exam",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "而且",
+      "code": "er qie",
+      "before": "plus",
+      "after": "plus",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "耳朵",
+      "code": "er duo",
+      "before": "ear",
+      "after": "ear",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "职位",
+      "code": "zhi wei",
+      "before": "position",
+      "after": "position",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "职务",
+      "code": "zhi wu",
+      "before": "job",
+      "after": "job",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "职责",
+      "code": "zhi ze",
+      "before": "duty",
+      "after": "duty",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "联盟",
+      "code": "lian meng",
+      "before": "union",
+      "after": "union",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "聚会",
+      "code": "ju hui",
+      "before": "party",
+      "after": "party",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "股票",
+      "code": "gu piao",
+      "before": "stock",
+      "after": "stock",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "背景",
+      "code": "bei jing",
+      "before": "setting",
+      "after": "setting",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "能力",
+      "code": "neng li",
+      "before": "ability",
+      "after": "ability",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "能量",
+      "code": "neng liang",
+      "before": "energy",
+      "after": "energy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "脆弱的",
+      "code": "cui ruo de",
+      "before": "vulnerable",
+      "after": "vulnerable",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "脚",
+      "code": "jiao",
+      "before": "foot",
+      "after": "foot",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "脸",
+      "code": "lian",
+      "before": "face",
+      "after": "face",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "自动扣款",
+      "code": "zi dong kou kuan",
+      "before": "direct debit",
+      "after": "direct debit",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "自杀",
+      "code": "zi sha",
+      "before": "suicide",
+      "after": "suicide",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "自然",
+      "code": "zi ran",
+      "before": "natural",
+      "after": "natural",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "自由",
+      "code": "zi you",
+      "before": "freedom",
+      "after": "freedom",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "自行车",
+      "code": "zi xing che",
+      "before": "bicycle",
+      "after": "bicycle",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "舒服",
+      "code": "shu fu",
+      "before": "comfortable",
+      "after": "comfortable",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "舞台",
+      "code": "wu tai",
+      "before": "stage",
+      "after": "stage",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "良",
+      "code": "liang",
+      "before": "good",
+      "after": "good",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "艺术",
+      "code": "yi shu",
+      "before": "art",
+      "after": "art",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "艾滋病",
+      "code": "ai zi bing",
+      "before": "AIDS",
+      "after": "AIDS",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "节庆",
+      "code": "jie qing",
+      "before": "festival",
+      "after": "festival",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "节目",
+      "code": "jie mu",
+      "before": "program",
+      "after": "program",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "花园",
+      "code": "hua yuan",
+      "before": "garden",
+      "after": "garden",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "花费",
+      "code": "hua fei",
+      "before": "cost",
+      "after": "cost",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "苏格兰",
+      "code": "su ge lan",
+      "before": "Scotland",
+      "after": "Scotland",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "英国",
+      "code": "ying guo",
+      "before": "Britain",
+      "after": "Britain",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "英尺",
+      "code": "ying chi",
+      "before": "foot",
+      "after": "foot",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "英格兰",
+      "code": "ying ge lan",
+      "before": "England",
+      "after": "England",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "苹果",
+      "code": "ping guo",
+      "before": "apple",
+      "after": "apple",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "范围",
+      "code": "fan wei",
+      "before": "range",
+      "after": "range",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "茶叶",
+      "code": "cha ye",
+      "before": "tea leaves",
+      "after": "tea leaves",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "草莓",
+      "code": "cao mei",
+      "before": "strawberry",
+      "after": "strawberry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "菜单",
+      "code": "cai dan",
+      "before": "menu",
+      "after": "menu",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "葡萄",
+      "code": "pu tao",
+      "before": "grape",
+      "after": "grape",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "董事会",
+      "code": "dong shi hui",
+      "before": "board",
+      "after": "board",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "蓝牙",
+      "code": "lan ya",
+      "before": "Bluetooth",
+      "after": "Bluetooth",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "蔬菜",
+      "code": "shu cai",
+      "before": "vegetable",
+      "after": "vegetable",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "薄膜",
+      "code": "bo mo",
+      "before": "film",
+      "after": "film",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "薪资谈判",
+      "code": "xin zi tan pan",
+      "before": "salary negotiation",
+      "after": "salary negotiation",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "血压",
+      "code": "xue ya",
+      "before": "blood pressure",
+      "after": "blood pressure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "血液",
+      "code": "xue ye",
+      "before": "blood",
+      "after": "blood",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "行为",
+      "code": "xing wei",
+      "before": "behavior",
+      "after": "behavior",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "行军",
+      "code": "xing jun",
+      "before": "march",
+      "after": "march",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "行动",
+      "code": "xing dong",
+      "before": "action",
+      "after": "action",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "行政",
+      "code": "xing zheng",
+      "before": "administration",
+      "after": "administration",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "行李提取",
+      "code": "xing li ti qu",
+      "before": "baggage claim",
+      "after": "baggage claim",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "街道",
+      "code": "jie dao",
+      "before": "street",
+      "after": "street",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "衣服",
+      "code": "yi fu",
+      "before": "clothes",
+      "after": "clothes",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "表格",
+      "code": "biao ge",
+      "before": "form",
+      "after": "form",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "表演",
+      "code": "biao yan",
+      "before": "performance",
+      "after": "performance",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "表现",
+      "code": "biao xian",
+      "before": "performance",
+      "after": "performance",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "衬",
+      "code": "chen",
+      "before": "line",
+      "after": "line",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "衰退",
+      "code": "shuai tui",
+      "before": "recession",
+      "after": "recession",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "袜子",
+      "code": "wa zi",
+      "before": "socks",
+      "after": "socks",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "被告",
+      "code": "bei gao",
+      "before": "defendant",
+      "after": "defendant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "袭击",
+      "code": "xi ji",
+      "before": "attack",
+      "after": "attack",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "西方",
+      "code": "xi fang",
+      "before": "west",
+      "after": "west",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "西方的",
+      "code": "xi fang de",
+      "before": "Western",
+      "after": "Western",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "西瓜",
+      "code": "xi gua",
+      "before": "watermelon",
+      "after": "watermelon",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "西部的",
+      "code": "xi bu de",
+      "before": "western",
+      "after": "western",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "要紧",
+      "code": "yao jin",
+      "before": "important",
+      "after": "important",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "覆盖",
+      "code": "fu gai",
+      "before": "cover",
+      "after": "cover",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "观察",
+      "code": "guan cha",
+      "before": "observation",
+      "after": "observation",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "观点",
+      "code": "guan dian",
+      "before": "point",
+      "after": "point",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "规则",
+      "code": "gui ze",
+      "before": "rule",
+      "after": "rule",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "视频",
+      "code": "shi pin",
+      "before": "video",
+      "after": "video",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "觉得",
+      "code": "jue de",
+      "before": "feel",
+      "after": "feel",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "角色",
+      "code": "jue se",
+      "before": "role",
+      "after": "role",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "解释",
+      "code": "jie shi",
+      "before": "explain",
+      "after": "explain",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "触感",
+      "code": "chu gan",
+      "before": "feel",
+      "after": "feel",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "警察",
+      "code": "jing cha",
+      "before": "police",
+      "after": "police",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "警方",
+      "code": "jing fang",
+      "before": "police",
+      "after": "police",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "计划",
+      "code": "ji hua",
+      "before": "program",
+      "after": "program",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "计谋",
+      "code": "ji mou",
+      "before": "scheme",
+      "after": "scheme",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "订单",
+      "code": "ding dan",
+      "before": "order",
+      "after": "order",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "认同",
+      "code": "ren tong",
+      "before": "identity",
+      "after": "identity",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "认真",
+      "code": "ren zhen",
+      "before": "serious",
+      "after": "serious",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "讨论",
+      "code": "tao lun",
+      "before": "discussion",
+      "after": "discussion",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "让",
+      "code": "rang",
+      "before": "let",
+      "after": "let",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "训练",
+      "code": "xun lian",
+      "before": "training",
+      "after": "training",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "记录",
+      "code": "ji lu",
+      "before": "record",
+      "after": "record",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "论文",
+      "code": "lun wen",
+      "before": "paper",
+      "after": "paper",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "论点",
+      "code": "lun dian",
+      "before": "argument",
+      "after": "argument",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "设施",
+      "code": "she shi",
+      "before": "facility",
+      "after": "facility",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "设置",
+      "code": "she zhi",
+      "before": "set",
+      "after": "set",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "设计",
+      "code": "she ji",
+      "before": "design",
+      "after": "design",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "设计方案",
+      "code": "she ji fang an",
+      "before": "design",
+      "after": "design",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "证据",
+      "code": "zheng ju",
+      "before": "evidence",
+      "after": "evidence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "评价",
+      "code": "ping jia",
+      "before": "rate",
+      "after": "rate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "评议会",
+      "code": "ping yi hui",
+      "before": "council",
+      "after": "council",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "诉讼程序",
+      "code": "su song cheng xu",
+      "before": "proceeding",
+      "after": "proceeding",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "词条",
+      "code": "ci tiao",
+      "before": "entry",
+      "after": "entry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "询问",
+      "code": "xun wen",
+      "before": "enquiry",
+      "after": "enquiry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "语言",
+      "code": "yu yan",
+      "before": "language",
+      "after": "language",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "说",
+      "code": "shuo",
+      "before": "say",
+      "after": "say",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "请问",
+      "code": "qing wen",
+      "before": "excuse me",
+      "after": "excuse me",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "课",
+      "code": "ke",
+      "before": "class",
+      "after": "class",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "课时",
+      "code": "ke shi",
+      "before": "period",
+      "after": "period",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "课程",
+      "code": "ke cheng",
+      "before": "curriculum",
+      "after": "curriculum",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "课程大纲",
+      "code": "ke cheng da gang",
+      "before": "syllabus",
+      "after": "syllabus",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "调料",
+      "code": "tiao liao",
+      "before": "seasoning",
+      "after": "seasoning",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "调查结果",
+      "code": "diao cha jie guo",
+      "before": "finding",
+      "after": "finding",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "谢谢",
+      "code": "xie xie",
+      "before": "thank you",
+      "after": "thank you",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "负担得起",
+      "code": "fu dan de qi",
+      "before": "afford",
+      "after": "afford",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "财产",
+      "code": "cai chan",
+      "before": "property",
+      "after": "property",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "账单",
+      "code": "zhang dan",
+      "before": "bill",
+      "after": "bill",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "账户",
+      "code": "zhang hu",
+      "before": "account",
+      "after": "account",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "账户余额",
+      "code": "zhang hu yu e",
+      "before": "balance",
+      "after": "balance",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "质量",
+      "code": "zhi liang",
+      "before": "quality",
+      "after": "quality",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "贸易",
+      "code": "mao yi",
+      "before": "trade",
+      "after": "trade",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "费率",
+      "code": "fei lv",
+      "before": "rate",
+      "after": "rate",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "费用",
+      "code": "fei yong",
+      "before": "cost",
+      "after": "cost",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "资产",
+      "code": "zi chan",
+      "before": "asset",
+      "after": "asset",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "资料",
+      "code": "zi liao",
+      "before": "information",
+      "after": "information",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "资格",
+      "code": "zi ge",
+      "before": "qualification",
+      "after": "qualification",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "资源",
+      "code": "zi yuan",
+      "before": "resource",
+      "after": "resource",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "资讯",
+      "code": "zi xun",
+      "before": "information",
+      "after": "information",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "走",
+      "code": "zou",
+      "before": "go",
+      "after": "go",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "走路",
+      "code": "zou lu",
+      "before": "walk",
+      "after": "walk",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "起床",
+      "code": "qi chuang",
+      "before": "get up",
+      "after": "get up",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "超市",
+      "code": "chao shi",
+      "before": "supermarket",
+      "after": "supermarket",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "跌倒",
+      "code": "die dao",
+      "before": "fall",
+      "after": "fall",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "跑步",
+      "code": "pao bu",
+      "before": "run",
+      "after": "run",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "跑步机",
+      "code": "pao bu ji",
+      "before": "treadmill",
+      "after": "treadmill",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "路口",
+      "code": "lu kou",
+      "before": "intersection",
+      "after": "intersection",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "路由器",
+      "code": "lu you qi",
+      "before": "router",
+      "after": "router",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "身份",
+      "code": "shen fen",
+      "before": "identity",
+      "after": "identity",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "身体",
+      "code": "shen ti",
+      "before": "body",
+      "after": "body",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "身体的",
+      "code": "shen ti de",
+      "before": "physical",
+      "after": "physical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "身材",
+      "code": "shen cai",
+      "before": "figure",
+      "after": "figure",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "车站",
+      "code": "che zhan",
+      "before": "station",
+      "after": "station",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "转账",
+      "code": "zhuan zhang",
+      "before": "transfer",
+      "after": "transfer",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "软件",
+      "code": "ruan jian",
+      "before": "software",
+      "after": "software",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "轻",
+      "code": "qing",
+      "before": "light",
+      "after": "light",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "载",
+      "code": "zai",
+      "before": "carry",
+      "after": "carry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "较好",
+      "code": "jiao hao",
+      "before": "better",
+      "after": "better",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "辨认",
+      "code": "bian ren",
+      "before": "identify",
+      "after": "identify",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "辩护",
+      "code": "bian hu",
+      "before": "defence",
+      "after": "defence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "边",
+      "code": "bian",
+      "before": "side",
+      "after": "side",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "过程",
+      "code": "guo cheng",
+      "before": "process",
+      "after": "process",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "运作的",
+      "code": "yun zuo de",
+      "before": "working",
+      "after": "working",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "运动",
+      "code": "yun dong",
+      "before": "campaign",
+      "after": "campaign",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "运动员",
+      "code": "yun dong yuan",
+      "before": "player",
+      "after": "player",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "运转",
+      "code": "yun zhuan",
+      "before": "function",
+      "after": "function",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "还",
+      "code": "hai",
+      "before": "even",
+      "after": "even",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "还",
+      "code": "huan",
+      "before": "return",
+      "after": "return",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "进入",
+      "code": "jin ru",
+      "before": "entry",
+      "after": "entry",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "进行中的",
+      "code": "jin xing zhong de",
+      "before": "ongoing",
+      "after": "ongoing",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "进餐",
+      "code": "jin can",
+      "before": "dining",
+      "after": "dining",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "违法行为",
+      "code": "wei fa xing wei",
+      "before": "offence",
+      "after": "offence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "退休",
+      "code": "tui xiu",
+      "before": "retirement",
+      "after": "retirement",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "退款",
+      "code": "tui kuan",
+      "before": "refund",
+      "after": "refund",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "选择",
+      "code": "xuan ze",
+      "before": "choice",
+      "after": "choice",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "选项",
+      "code": "xuan xiang",
+      "before": "option",
+      "after": "option",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "递",
+      "code": "di",
+      "before": "hand",
+      "after": "hand",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "通过",
+      "code": "tong guo",
+      "before": "pass",
+      "after": "pass",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "造",
+      "code": "zao",
+      "before": "make",
+      "after": "make",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "遍及",
+      "code": "bian ji",
+      "before": "throughout",
+      "after": "throughout",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "道路",
+      "code": "dao lu",
+      "before": "road",
+      "after": "road",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "邀请",
+      "code": "yao qing",
+      "before": "invite",
+      "after": "invite",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "邮件",
+      "code": "you jian",
+      "before": "email",
+      "after": "email",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "邻居",
+      "code": "lin ju",
+      "before": "neighbor",
+      "after": "neighbor",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "部分",
+      "code": "bu fen",
+      "before": "section",
+      "after": "section",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "部长",
+      "code": "bu zhang",
+      "before": "minister",
+      "after": "minister",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "部门",
+      "code": "bu men",
+      "before": "department",
+      "after": "department",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "酒店前台",
+      "code": "jiu dian qian tai",
+      "before": "front desk",
+      "after": "front desk",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "重大",
+      "code": "zhong da",
+      "before": "major",
+      "after": "major",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "重要",
+      "code": "zhong yao",
+      "before": "important",
+      "after": "important",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "重视",
+      "code": "zhong shi",
+      "before": "value",
+      "after": "value",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "量子计算",
+      "code": "liang zi ji suan",
+      "before": "quantum computing",
+      "after": "quantum computing",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "金融的",
+      "code": "jin rong de",
+      "before": "financial",
+      "after": "financial",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "金钱",
+      "code": "jin qian",
+      "before": "money",
+      "after": "money",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "钓鱼",
+      "code": "diao yu",
+      "before": "fishing",
+      "after": "fishing",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "钥匙",
+      "code": "yao shi",
+      "before": "key",
+      "after": "key",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "钱",
+      "code": "qian",
+      "before": "money",
+      "after": "money",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "钱包",
+      "code": "qian bao",
+      "before": "wallet",
+      "after": "wallet",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "银行",
+      "code": "yin hang",
+      "before": "bank",
+      "after": "bank",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "银行账户",
+      "code": "yin hang zhang hu",
+      "before": "bank account",
+      "after": "bank account",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "铺",
+      "code": "pu",
+      "before": "store",
+      "after": "store",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "销售",
+      "code": "xiao shou",
+      "before": "market",
+      "after": "market",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "键盘",
+      "code": "jian pan",
+      "before": "keyboard",
+      "after": "keyboard",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "锻炼",
+      "code": "duan lian",
+      "before": "workout",
+      "after": "workout",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "问题",
+      "code": "wen ti",
+      "before": "issue",
+      "after": "issue",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "阅读",
+      "code": "yue du",
+      "before": "read",
+      "after": "read",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "队",
+      "code": "dui",
+      "before": "team",
+      "after": "team",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "防御",
+      "code": "fang yu",
+      "before": "defence",
+      "after": "defence",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "阴谋",
+      "code": "yin mou",
+      "before": "scheme",
+      "after": "scheme",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "阶段",
+      "code": "jie duan",
+      "before": "stage",
+      "after": "stage",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "陆军",
+      "code": "lu jun",
+      "before": "army",
+      "after": "army",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "陈述",
+      "code": "chen shu",
+      "before": "states",
+      "after": "states",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "降临",
+      "code": "jiang lin",
+      "before": "come",
+      "after": "come",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "院校",
+      "code": "yuan xiao",
+      "before": "college",
+      "after": "college",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "难过",
+      "code": "nan guo",
+      "before": "feel sad",
+      "after": "feel sad",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "集中",
+      "code": "ji zhong",
+      "before": "focus",
+      "after": "focus",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "雨伞",
+      "code": "yu san",
+      "before": "umbrella",
+      "after": "umbrella",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "非洲人",
+      "code": "fei zhou ren",
+      "before": "African",
+      "after": "African",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "非洲的",
+      "code": "fei zhou de",
+      "before": "African",
+      "after": "African",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "面包",
+      "code": "mian bao",
+      "before": "bread",
+      "after": "bread",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "面条",
+      "code": "mian tiao",
+      "before": "noodles",
+      "after": "noodles",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "面积",
+      "code": "mian ji",
+      "before": "area",
+      "after": "area",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "面试",
+      "code": "mian shi",
+      "before": "job interview",
+      "after": "job interview",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "鞋子",
+      "code": "xie zi",
+      "before": "shoe",
+      "after": "shoe",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "音乐",
+      "code": "yin yue",
+      "before": "music",
+      "after": "music",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "音乐会",
+      "code": "yin yue hui",
+      "before": "concert",
+      "after": "concert",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "音乐剧",
+      "code": "yin yue ju",
+      "before": "musical",
+      "after": "musical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "音乐的",
+      "code": "yin yue de",
+      "before": "musical",
+      "after": "musical",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "顶部",
+      "code": "ding bu",
+      "before": "top",
+      "after": "top",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "项目",
+      "code": "xiang mu",
+      "before": "project",
+      "after": "project",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "预约",
+      "code": "yu yue",
+      "before": "appointment",
+      "after": "appointment",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "预订",
+      "code": "yu ding",
+      "before": "book",
+      "after": "book",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "领域",
+      "code": "ling yu",
+      "before": "field",
+      "after": "field",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "颜色",
+      "code": "yan se",
+      "before": "color",
+      "after": "color",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "风景",
+      "code": "feng jing",
+      "before": "view",
+      "after": "view",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "风格",
+      "code": "feng ge",
+      "before": "style",
+      "after": "style",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "风范",
+      "code": "feng fan",
+      "before": "air",
+      "after": "air",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "飞机",
+      "code": "fei ji",
+      "before": "airplane",
+      "after": "airplane",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "食品",
+      "code": "shi pin",
+      "before": "food",
+      "after": "food",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "食材",
+      "code": "shi cai",
+      "before": "ingredient",
+      "after": "ingredient",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "食物",
+      "code": "shi wu",
+      "before": "food",
+      "after": "food",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "食谱",
+      "code": "shi pu",
+      "before": "recipe",
+      "after": "recipe",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "餐厅",
+      "code": "can ting",
+      "before": "restaurant",
+      "after": "restaurant",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "饮料",
+      "code": "yin liao",
+      "before": "beverage",
+      "after": "beverage",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "饮食",
+      "code": "yin shi",
+      "before": "diet",
+      "after": "diet",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "首要的",
+      "code": "shou yao de",
+      "before": "prime",
+      "after": "prime",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "香蕉",
+      "code": "xiang jiao",
+      "before": "banana",
+      "after": "banana",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "马",
+      "code": "ma",
+      "before": "horse",
+      "after": "horse",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "马路",
+      "code": "ma lu",
+      "before": "road",
+      "after": "road",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "高兴",
+      "code": "gao xing",
+      "before": "happy",
+      "after": "happy",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "鸡蛋",
+      "code": "ji dan",
+      "before": "egg",
+      "after": "egg",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "黑暗",
+      "code": "hei an",
+      "before": "black",
+      "after": "black",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "黑色",
+      "code": "hei se",
+      "before": "black",
+      "after": "black",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "鼠标",
+      "code": "shu biao",
+      "before": "computer mouse",
+      "after": "computer mouse",
+      "old_values_preserved": true
+    },
+    {
+      "chinese": "鼻子",
+      "code": "bi zi",
+      "before": "nose",
+      "after": "nose",
+      "old_values_preserved": true
+    }
+  ]
+}

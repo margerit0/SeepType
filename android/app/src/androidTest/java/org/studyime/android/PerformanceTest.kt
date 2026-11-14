@@ -24,7 +24,7 @@ class PerformanceTest {
         artifactNames.forEach { File(output, it).delete() }
         val report = JSONObject().put("fingerprint", Build.FINGERPRINT).put("imePackage", d.imePackage)
             .put("runId", InstrumentationRegistry.getArguments().getString("evidenceRunId"))
-            .put("scope", "Sequential real touch events, optimized IME when imePackage is release; emulator SwiftShader, not physical display timings")
+            .put("scope", "Sequential real touch events, optimized IME when imePackage is release; callback to Compose draw, excludes physical display timings")
         val observations = JSONArray()
         val reopenings = JSONArray()
         report.put("reopeningObservations", reopenings)

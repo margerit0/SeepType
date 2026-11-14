@@ -10,9 +10,37 @@ import shutil
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from tools.android.common import CACHE, ROOT, digest, fetch, json_write, safe, write
+from tools.android.common import CACHE, ROOT, digest, extract, fetch, json_write, safe, write
 from tools.dictionary.cedict import files as chinese_files
 from tools.lexicon import pipeline
+
+
+def prepare_rime_sources(source_cache=None):
+    """Restore small runtime inputs from verified archives, even in lean worktrees."""
+    lock = json.loads((ROOT / "licensing/product-sources.lock.json").read_bytes())
+    for item in lock["sources"]:
+        if item["id"] not in ("rime-prelude", "rime-luna-pinyin", "lua-thirdparty"):
+            continue
+        expected = item.get("upstream_archive_sha256", item["archive_sha256"])
+        archive = CACHE / "downloads" / (item["id"] + "-data-" + item["commit"] + ".tar.gz")
+        if not archive.exists() and source_cache:
+            source = source_cache / item.get("upstream_archive", item["archive"])
+            if source.is_file() and digest(source) == expected:
+                write(archive, source.read_bytes())
+        fetch(item["url"], archive, expected)
+        destination = CACHE / "src" / item["id"]
+        if item["id"] == "lua-thirdparty":
+            destination = CACHE / "src/librime/plugins/lua/thirdparty"
+            select = lambda name: name == "lua5.4/lua.h"
+        elif item["id"] == "rime-luna-pinyin":
+            selected = set(item["files"])
+            select = lambda name: name in selected
+        else:
+            select = lambda name: "/" not in name and (name.endswith(".yaml") or name == "LICENSE")
+        extract(archive, destination, select)
+        for name, expected_file in item.get("files", {}).items():
+            if digest(destination / name) != expected_file:
+                raise ValueError("Pinned Rime runtime source differs: " + name)
 
 
 def prepare(source_cache=None):
@@ -38,6 +66,7 @@ def prepare(source_cache=None):
         raise ValueError("CC-CEDICT text hash mismatch")
     snapshot = (ROOT / inputs[-1]["archive"]).with_suffix("")
     write(snapshot, raw)
+    prepare_rime_sources(source_cache)
     lexicon = pipeline.validate(ROOT / "data/lexicon", snapshot)
     english = pipeline.build_files(lexicon, "preview")
     chinese = chinese_files()
@@ -76,8 +105,7 @@ def prepare(source_cache=None):
     for name in ("rime-double-pinyin/LICENSE", "boost/LICENSE_1_0.txt"):
         payload["notices/third-party/" + name] = (ROOT / "licensing/third-party" / name).read_bytes()
     from tools.android.prepare_notices import payload as dependency_notices
-    if (ROOT / "Cargo.lock").is_file() and (CACHE / "cargo/registry/src").is_dir():
-        payload.update(dependency_notices())
+    payload.update(dependency_notices())
     payload["notices/README.txt"] = (
         "拾词 Android 开发预览 0.1.0-preview.1\n"
         "新 Kotlin、Rust 和桥接代码：GPL-3.0-or-later。\n"
@@ -89,6 +117,16 @@ def prepare(source_cache=None):
         "Quicksand 和 Fredoka 字体：SIL OFL 1.1；原始 TTF、固定来源和许可随 APK 提供。\n"
         "输入、释义和学习均在本机执行；不申请网络权限，用户词典不进入 Android 备份。\n"
     ).encode("utf-8")
+    from tools.android.expanded_lexicon import apply as apply_expansion
+    expansion = apply_expansion(ROOT, payload, chinese["cedict_study.dict.yaml"])
+    payload["notices/README.txt"] = payload["notices/README.txt"].replace(
+        "200 条开发审核稿".encode(), "3,401 条已采用开发记录（含检索别名），另保留基础预览入口".encode())
+    required = {"rime/default.yaml", "rime/key_bindings.yaml", "rime/punctuation.yaml",
+                "rime/symbols.yaml", "rime/pinyin.yaml", "rime/luna_pinyin.schema.yaml",
+                "rime/luna_pinyin_simp.schema.yaml", "notices/THIRD-PARTY.txt",
+                "notices/dependencies.json", "notices/android/NDK-NOTICE.txt"}
+    if missing := required - payload.keys():
+        raise ValueError("Incomplete Android runtime payload: " + ", ".join(sorted(missing)))
     hashes = {name: hashlib.sha256(content).hexdigest() for name, content in sorted(payload.items())}
     version = hashlib.sha256(json.dumps(hashes, sort_keys=True).encode()).hexdigest()[:20]
     for old in generated.rglob("*") if generated.exists() else []:
@@ -100,6 +138,8 @@ def prepare(source_cache=None):
                 "chineseEntries": json.loads(chinese["provenance.json"])["dictionary_entries"],
                 "englishEntries": len(lexicon.entries), "humanApproved": lexicon.counts["approved-for-distribution"],
                 "status": "developer-preview", "files": hashes}
+    manifest.update(expansion)
+    manifest["chineseEntries"] += expansion["chineseEntriesAdded"]
     json_write(generated / "manifest.json", manifest)
     json_write(CACHE / "data-receipt.json", {**manifest, "inputs": receipts})
     # Reuse the independent, already reviewed syllable-to-key oracle. Importing
@@ -108,6 +148,8 @@ def prepare(source_cache=None):
     cases = [{"schema": schema, "input": input_for(entry, lexicon, schema), "chinese": entry["chinese"],
               "english": entry["commit_english"]} for schema in SCHEMAS for entry in lexicon.entries]
     json_write(ROOT / "android/app/src/androidTest/assets/generated/engine-cases.json", cases)
+    from tools.android.expanded_lexicon import prepare_cases
+    prepare_cases(ROOT)
     print(json.dumps({key: value for key, value in manifest.items() if key != "files"}, ensure_ascii=False))
 
 

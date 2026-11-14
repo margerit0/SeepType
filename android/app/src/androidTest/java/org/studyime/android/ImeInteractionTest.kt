@@ -31,7 +31,10 @@ class ImeInteractionTest {
         }
         // Starting instrumentation force-stops the target package. Rebind the
         // IME after the runner has started, rather than before that force-stop.
-        val otherIme = device.executeShellCommand("ime list -s").lineSequence().first { it.contains("inputmethod.latin") }.trim()
+        val privateDevice = InstrumentationRegistry.getArguments().getString("privateDevice") == "true"
+        val otherIme = InstrumentationRegistry.getArguments().getString("fallbackIme")
+            ?: device.executeShellCommand("ime list -s").lineSequence().first { it.contains("inputmethod.latin") }.trim()
+        require(otherIme.matches(Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")))
         val component = device.executeShellCommand("ime list -a -s").lineSequence().map(String::trim).first { it.startsWith("$imePackage/") }
         device.executeShellCommand("ime set $otherIme")
         device.executeShellCommand("ime enable $component")
@@ -52,7 +55,7 @@ class ImeInteractionTest {
         }
         fun launch(kind: String) {
             val token = android.os.SystemClock.elapsedRealtimeNanos()
-            context.startActivity(Intent(context, ProbeActivity::class.java).putExtra("field", kind).putExtra("launchToken", token)
+            context.startActivity(Intent(context, ProbeActivity::class.java).putExtra("field", kind).putExtra("noPersonalization", privateDevice).putExtra("launchToken", token)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             assertTrue(device.wait(Until.hasObject(By.desc("probe_launch_$token")), 8000))
             objectById("probe_text").click()
@@ -118,7 +121,7 @@ class ImeInteractionTest {
             check("Phone editor accepts digits", waitText("123"))
             report.put("passed", true)
         } finally {
-            if (!report.optBoolean("passed")) {
+            if (!privateDevice && !report.optBoolean("passed")) {
                 device.takeScreenshot(File(context.filesDir, "ime-failure.png"))
                 device.dumpWindowHierarchy(File(context.filesDir, "ime-failure.xml"))
                 report.put("windows", instrumentation.uiAutomation.windows.toString())

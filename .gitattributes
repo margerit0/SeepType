@@ -39,3 +39,7 @@ experiments/phase4/prepare-weasel.py text eol=lf
 /android/app/src/main/assets/fonts/*-OFL.txt -text whitespace=-blank-at-eof,-blank-at-eol
 # Unified diffs intentionally contain space-only context lines.
 /android/native/patches/*.patch whitespace=-blank-at-eol
+
+# This reviewed Android snapshot and reader are bound by exact SHA-256 pins.
+data/lexicon-expansion/reviews/adopted-expansion-all-20261114/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+src/study/lua/study_core.lua text eol=lf

@@ -17,6 +17,7 @@ import org.studyime.android.engine.DataDeployer
 @RunWith(AndroidJUnit4::class)
 class ResourceRecoveryTest {
     @Test fun interruptedUpdatesCorruptionAndFallbackPreserveUserData() {
+        PhoneForeground.start()
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val root = File(context.noBackupFilesDir, "resource-check-${SystemClock.elapsedRealtime()}")
         val checks = JSONArray()

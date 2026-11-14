@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "client_date": "2026-11-14",
+  "baseline_directory": "data/lexicon-expansion/reviews/adopted-expansion-b-20261110",
+  "baseline_records": 943,
+  "baseline_sha256": "659e905aed06a9066f7f389c053812ef53259164aaf6c44999d159812d0d354a",
+  "older_baseline_path": "data/lexicon-expansion/reviews/adopted-expansion-20261110/accepted-senses.jsonl",
+  "expected_unique_source_candidates": 2481,
+  "sources": [
+    {
+      "path": "data/lexicon-expansion/reviews/repair-11-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 10,
+      "name": "repair-11-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/generation-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 52,
+      "name": "generation-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-100-20261110-c/accepted-candidates.jsonl",
+      "expected_records": 129,
+      "name": "expansion-100-20261110-c"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-23-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 23,
+      "name": "repair-23-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-100-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 129,
+      "name": "expansion-100-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-18-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 18,
+      "name": "repair-18-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-200-v4-20261110/accepted-candidates.jsonl",
+      "expected_records": 262,
+      "name": "expansion-200-v4-20261110"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-31-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 31,
+      "name": "repair-31-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-300-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 430,
+      "name": "expansion-300-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/behalf-phrases-2-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 2,
+      "name": "behalf-phrases-2-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-23-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 23,
+      "name": "repair-23-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/mills-masses-followup-2-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 1,
+      "name": "mills-masses-followup-2-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair-mills-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 1,
+      "name": "repair-mills-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-400-v4-20261111/accepted-candidates.jsonl",
+      "expected_records": 514,
+      "name": "expansion-400-v4-20261111"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/repair55-followups-completed-20261112/accepted-candidates.jsonl",
+      "expected_records": 55,
+      "name": "repair55-followups-completed-20261112"
+    },
+    {
+      "path": "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/accepted-current-candidates.jsonl",
+      "expected_records": 801,
+      "name": "expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02"
+    }
+  ],
+  "context_files": [
+    "data/lexicon-expansion/reviews/adopted-expansion-b-20261110/adoption-decisions.json",
+    "data/lexicon-expansion/reviews/semantic-review-203-20261110/summary.json",
+    "data/lexicon-expansion/reviews/semantic-review-171-20261110/summary.json",
+    "data/lexicon-expansion/reviews/semantic-review-312-20261111/adoption-notes.json",
+    "data/lexicon-expansion/reviews/semantic-review-486-20261111/adoption-notes.json",
+    "data/lexicon-expansion/reviews/semantic-review-571-20261112/adoption-notes.json",
+    "data/lexicon-expansion/reviews/behalf-phrases-2-v4-20261111/empty-result-followup.json",
+    "data/lexicon-expansion/reviews/repair23-followup2-completed-20261111/README.md",
+    "data/lexicon-expansion/reviews/repair55-followups-completed-20261112/source-resolutions.json",
+    "data/lexicon-expansion/reviews/repair55-followups-completed-20261112/adoption-notes.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/devote-adjudication.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/review-summary.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/integration-audit.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/current-source-selection.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/issue-routing.json",
+    "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02/revision-identity.json"
+  ],
+  "current_500_view": "data/lexicon-expansion/reviews/expansion-500-v4-20261112/semantic-review-current-20261113/after-storage-response-02",
+  "selected_scope": "All pending-current accepted sources enumerated by the 2026-11-13 handoff; historical indices, replaced manual/API versions and model-comparison alternatives are evidence only.",
+  "historical_deferred": [
+    "practically/实际上",
+    "literally/字面上",
+    "pose/姿势",
+    "pose/摆姿势"
+  ],
+  "generation_calls": 0,
+  "packaging_deferred": true,
+  "human_approved": false,
+  "release_ready": false
+}
