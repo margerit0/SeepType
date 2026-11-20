@@ -31,7 +31,9 @@ class SkinSwitchTest {
             .put("scope", "Native skin switching, paired key input, persistence and screenshots on a development emulator")
         val alphabet = "qwertyuiopasdfghjklzxcvbnm"
         val symbols = "1234567890!@#¥%&*()~/-_:;?"
-        val allKeys = alphabet.map(Char::toString) + listOf("shift", "delete", "page", "mode", "space", ".", "enter")
+        val bottomRow = listOf("details", "page", "comma", "space", ".", "mode", "enter")
+        val allKeys = alphabet.map(Char::toString) + listOf("shift", "delete") + bottomRow
+        fun boundsOf(id: String) = ui.findObject(By.res("key_$id")).visibleBounds
         val originalFont = ui.executeShellCommand("settings get system font_scale").trim()
         val originalNight = ui.executeShellCommand("cmd uimode night").substringAfter(":").trim()
         var originalSkin = "default"
@@ -81,9 +83,10 @@ class SkinSwitchTest {
             d.closeQuickSettings()
 
             choose("default", "light")
-            val defaultBounds = allKeys.associateWith { d.key(it).visibleBounds }
+            val defaultBounds = allKeys.associateWith(::boundsOf)
             choose("soft-pop")
-            check("All 33 key bounds are identical across skins", allKeys.all { defaultBounds[it] == d.key(it).visibleBounds })
+            check("Seven bottom keys follow the reference order", bottomRow.map(::boundsOf).zipWithNext().all { (l, r) -> l.right <= r.left && l.top == r.top })
+            check("All ${allKeys.size} key bounds are identical across skins", allKeys.all { defaultBounds[it] == boundsOf(it) })
             val idleBounds = d.key("q").visibleBounds
             shot("soft-pop-idle")
             d.type("gongyuan")
@@ -115,7 +118,9 @@ class SkinSwitchTest {
             d.tapKey("page")
             clear()
             d.type("gongyuan")
-            d.candidate("公园").longClick()
+            d.candidate("公园")
+            d.tapKey("details")
+            check("Details key opens the current word without committing it", ui.wait(Until.hasObject(By.res("definition_panel")), 8000) && d.editor().text == "gong yuan")
             shot("soft-pop-definition")
             ui.findObject(By.res("commit_english")).click()
             d.expectText("park")
@@ -211,7 +216,7 @@ class SkinSwitchTest {
                 shot("soft-pop-320dp-font$font")
                 d.tapKey("page")
                 shot("soft-pop-320dp-font$font-symbols")
-                check("Font $font retains 33 distinct keys and visible bottom actions", ui.findObjects(By.res(java.util.regex.Pattern.compile("key_.+"))).size == 33 && d.key("enter").visibleBounds.bottom <= ui.displayHeight)
+                check("Font $font retains ${allKeys.size} distinct keys and visible bottom actions", ui.findObjects(By.res(java.util.regex.Pattern.compile("key_.+"))).size == allKeys.size && d.key("enter").visibleBounds.bottom <= ui.displayHeight)
                 d.tapKey("space")
                 d.expectText("公园")
             }
@@ -231,20 +236,30 @@ class SkinSwitchTest {
             d.launch("email")
             choose("soft-pop", "dark")
             ui.setOrientationLeft()
-            // At 2x type the synthetic editor is above the visible viewport.
-            // Restore its real focus and inspect its actual EditText, rather
-            // than asking accessibility to find an off-screen text node.
+            // Rotation recreates the probe. Do not focus its outgoing portrait
+            // EditText or send keys to the temporary non-editor connection.
             fun landscapeEditor(action: (EditText) -> Unit) {
                 d.instrumentation.runOnMainSync {
                     val activity = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)
-                        .filterIsInstance<ProbeActivity>().single()
+                        .filterIsInstance<ProbeActivity>().singleOrNull() ?: return@runOnMainSync
+                    if (!activity.hasWindowFocus() || activity.resources.configuration.orientation !=
+                        android.content.res.Configuration.ORIENTATION_LANDSCAPE) return@runOnMainSync
                     action(activity.findViewById(R.id.probe_text))
                 }
             }
-            landscapeEditor { editor ->
-                editor.requestFocus()
-                (editor.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(editor, 0)
+            val emailAction = By.res("key_enter").desc("完成").enabled(true)
+            val focusDeadline = SystemClock.uptimeMillis() + 8000
+            var focused = false
+            while (!(focused && ui.hasObject(emailAction)) && SystemClock.uptimeMillis() < focusDeadline) {
+                landscapeEditor { editor ->
+                    editor.requestFocus()
+                    val imm = editor.context.getSystemService(InputMethodManager::class.java)
+                    imm.showSoftInput(editor, 0)
+                    focused = editor.hasFocus() && imm.isActive(editor)
+                }
+                SystemClock.sleep(100)
             }
+            check("Rotated email editor has a real input connection", focused && ui.hasObject(emailAction))
             d.key("q")
             d.tapKey("page")
             shot("soft-pop-landscape-font2-symbols")

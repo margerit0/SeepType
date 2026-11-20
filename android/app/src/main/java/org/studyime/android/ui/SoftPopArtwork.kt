@@ -96,7 +96,7 @@ private val Marks by lazy {
         "settings" to "M9 5H17M4 12H20M6 19H14",
         "moon" to "M17 17A8 8 0 0 1 7 7A8 8 0 1 0 17 17Z",
         "sun" to "M16 12A4 4 0 1 1 8 12A4 4 0 1 1 16 12M12 2V4M12 20V22M2 12H4M20 12H22M5 5L6 6M18 18L19 19M5 19L6 18M18 6L19 5",
-        "book" to "M12 6C8 3 4 4 3 5V18Q8 16 12 20Q16 16 21 18V5C17 4 15 4 12 6V20",
+        "details" to "M12 3L5 10Q4 11 5 12L9 16M12 21L19 14Q20 13 19 12L15 8",
     ).mapValues { path(it.value) }
 }
 
@@ -104,7 +104,7 @@ private val Marks by lazy {
 internal fun SoftPopMark(name: String, color: Color, modifier: Modifier = Modifier) {
     val geometry = Marks.getValue(name)
     val width = when (name) { "delete", "enter" -> 32f; else -> 24f }
-    val height = if (name in listOf("settings", "moon", "sun", "book")) 24f else 32f
+    val height = if (name in listOf("settings", "moon", "sun", "details")) 24f else 32f
     Canvas(modifier.clearAndSetSemantics { }) {
         val factor = minOf(size.width / width, size.height / height)
         translate((size.width - width * factor) / 2, (size.height - height * factor) / 2) {
@@ -120,7 +120,7 @@ private val ShiftLine by lazy { path("M27 105C56 82 91 40 101 3") }
 private val ShiftStars by lazy { path("M53 9Q56 14 58 17L73 20L58 23Q56 26 53 30Q50 25 48 23L33 20L48 17Q51 13 53 9ZM77 72C78 79 79 80 86 82C79 84 78 85 77 92C76 85 75 84 68 82C75 80 76 79 77 72Z") }
 
 @Composable
-internal fun SoftPopKeyContent(key: KeySpec, prefs: KeyboardPreferences, faceHeight: Float) {
+internal fun SoftPopKeyContent(key: KeySpec, prefs: KeyboardPreferences, faceHeight: Float, enabled: Boolean) {
     val colors = LocalStudyColors.current
     val art = softPopPalette(colors.dark)
     val density = LocalDensity.current
@@ -169,6 +169,10 @@ internal fun SoftPopKeyContent(key: KeySpec, prefs: KeyboardPreferences, faceHei
                     Icon(key.icon, null, Modifier.align(Alignment.BottomStart).padding(start = 6.dp, bottom = 4.dp).size(22.dp), tint = art.violetMark)
                 } else SoftPopMark(key.id, if (key.id == "delete") art.lemonMark else art.violetMark,
                     Modifier.align(Alignment.BottomStart).padding(start = 5.dp, bottom = 1.dp).size(27.dp))
+            }
+            key.id == "details" -> Box(Modifier.size(32.dp).background(colors.board, RoundedCornerShape(50)),
+                contentAlignment = Alignment.Center) {
+                SoftPopMark("details", colors.accent.copy(alpha = if (enabled) 1f else .4f), Modifier.size(20.dp))
             }
             key.id == "space" -> {
                 Text(key.text, color = colors.subtle, fontFamily = LocalLatinFont.current, fontSize = (12 * scale).sp,

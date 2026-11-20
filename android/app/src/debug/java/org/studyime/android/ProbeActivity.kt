@@ -122,7 +122,10 @@ class ProbeActivity : Activity() {
         root.addView(primary, LinearLayout.LayoutParams(-1, -2))
         root.addView(secondary, LinearLayout.LayoutParams(-1, -2))
         root.addView(actionLabel)
-        if (manual) setContentView(ScrollView(this).apply { isFillViewport = true; addView(root) })
+        // With a large font and the IME open in landscape, the labels alone
+        // can fill the viewport. Keep the editor measurable and focusable.
+        if (manual || resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE)
+            setContentView(ScrollView(this).apply { isFillViewport = true; addView(root) })
         else setContentView(root)
         primary.requestFocus()
     }

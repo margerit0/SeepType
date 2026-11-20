@@ -114,6 +114,8 @@ fun StudyKeyboard(
             when (id) {
                 "shift" -> { upper = !upper; if (!latest.asciiMode) send(event("mode", "ascii" to true)) }
                 "mode" -> { upper = false; send(event("mode", "ascii" to !latest.asciiMode)) }
+                "details" -> send(event("inspect", "index" to latest.highlighted, "revision" to latest.revision))
+                "comma" -> send(event("literal", "text" to text))
                 "page" -> { page = if (page == "letters") "numbers" else "letters" }
                 "symbols" -> { page = if (page == "symbols") "numbers" else "symbols" }
                 "delete" -> send(event("key", "code" to 0xff08))
@@ -161,14 +163,18 @@ fun StudyKeyboard(
                     })
                 expanded && state.candidates.isNotEmpty() -> ExpandedCandidates(state, prefs, send,
                     modifier.height(keyRowsHeight), openSettings) { expanded = false }
-                else -> KeyboardRows(page, upper, state.generation, active, state.asciiMode, state.input.isNotEmpty(),
-                    effectivePrefs, editor, keyHeight, modifier, onKey, onLongKey, onSwitchIme,
-                )
+                // Never reuse the preceding editor's key faces or pressed state
+                // when the IME window survives an input connection change.
+                else -> key(state.generation) {
+                    KeyboardRows(page, upper, state.generation, active, state.asciiMode, state.input.isNotEmpty(),
+                        canInspect = !editor.sensitive && state.highlighted in state.candidates.indices,
+                        effectivePrefs, editor, keyHeight, modifier, onKey, onLongKey, onSwitchIme)
+                }
             }
         }
 
         if (landscape) {
-            IdleToolbar(state, prefs, editor, update, send, openSettings, onRetry, Modifier.fillMaxWidth().height(60.dp))
+            IdleToolbar(state, prefs, editor, update, openSettings, onRetry, Modifier.fillMaxWidth().height(60.dp))
             Row(Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp), verticalAlignment = Alignment.Bottom) {
                 Column(Modifier.widthIn(max = 270.dp).weight(.34f).height(keyRowsHeight).padding(end = 7.dp)) {
                     if (active && state.candidates.isNotEmpty()) {
@@ -186,7 +192,7 @@ fun StudyKeyboard(
             Box(Modifier.fillMaxWidth().height(statusHeight).testTag("keyboard_status")) {
                 if (state.candidates.isNotEmpty() && !quickSettings) {
                     CandidateStrip(state, effectivePrefs, send, expanded, openSettings) { expanded = !expanded }
-                } else IdleToolbar(state, prefs, editor, update, send, openSettings, onRetry, Modifier.fillMaxSize())
+                } else IdleToolbar(state, prefs, editor, update, openSettings, onRetry, Modifier.fillMaxSize())
             }
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
@@ -235,7 +241,7 @@ private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean 
 
 @Composable
 private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
-                        update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit, send: (JSONObject) -> Unit,
+                        update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
                         settings: () -> Unit, retry: () -> Unit, modifier: Modifier) {
     val colors = LocalStudyColors.current
     val soft = prefs.skin == KeyboardSkin.SOFT_POP
@@ -247,10 +253,6 @@ private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, edito
             ToolButton(if (colors.dark) Icons.Outlined.LightMode else Icons.Outlined.DarkMode, "切换浅深色",
                 mark = if (soft) { if (colors.dark) "sun" else "moon" } else null) {
                 update { it.copy(theme = if (colors.dark) "light" else "dark") }
-            }
-            ToolButton(Icons.Outlined.MenuBook, "查看完整释义", state.showEnglish && state.candidates.isNotEmpty(),
-                mark = if (soft) "book" else null) {
-                send(event("inspect", "index" to state.highlighted, "revision" to state.revision))
             }
             Spacer(Modifier.weight(1f))
         }
@@ -463,7 +465,7 @@ internal data class KeySpec(val id: String, val text: String, val weight: Float 
 
 @Composable
 private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled: Boolean, asciiMode: Boolean,
-                         composing: Boolean, prefs: KeyboardPreferences, editor: EditorSpec,
+                         composing: Boolean, canInspect: Boolean, prefs: KeyboardPreferences, editor: EditorSpec,
                          height: Dp, modifier: Modifier, onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, onSwitchIme: () -> Unit) {
     val letters = page == "letters"
     val soft = prefs.skin == KeyboardSkin.SOFT_POP
@@ -518,16 +520,19 @@ private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled
             KeyCell(KeySpec("delete", "", 1.45f, true, Icons.AutoMirrored.Outlined.Backspace, spoken = "删除", caption = "Del"), height, prefs, enabled, onKey, onLongKey)
         }
         Row {
-            KeyCell(KeySpec("page", if (letters) "123" else "ABC", 1.4f, true,
+            KeyCell(KeySpec("details", "", 1.55f, true, Icons.Outlined.MenuBook, spoken = "查看当前候选词详情"),
+                height, prefs, enabled && canInspect, onKey, onLongKey)
+            KeyCell(KeySpec("page", if (letters) "123" else "ABC", 1.15f, true,
                 if (largeLabels && !soft) { if (letters) Icons.Outlined.Dialpad else Icons.Outlined.Keyboard } else null,
                 spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey,
                 specialLong = if (soft) { { onKey("symbols", "") } } else null, specialLongLabel = "更多符号")
-            KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.35f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
-                enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 4.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec(".", if (asciiMode) "." else "。", 1.1f, spoken = "句号"), height, prefs, enabled,
+            KeyCell(KeySpec("comma", if (asciiMode) "," else "，", spoken = "逗号"), height, prefs, enabled, onKey, onLongKey)
+            KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 2.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
+            KeyCell(KeySpec(".", if (asciiMode) "." else "。", spoken = "句号"), height, prefs, enabled,
                 { id, _ -> onKey(id, if (letters) "." else if (asciiMode) "." else "。") }, onLongKey)
-            KeyCell(KeySpec("enter", if (composing) "选词" else editor.actionLabel, 1.65f, true,
+            KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.2f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
+                enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
+            KeyCell(KeySpec("enter", if (composing) "选词" else editor.actionLabel, 1.5f, true,
                 if (soft) { if (caption in listOf("Search", "Send", "Next", "Prev", "Go")) actionIcon else null }
                 else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
                 spoken = if (composing) "确认中文选词" else editor.actionLabel, caption = caption), height, prefs, enabled, onKey, onLongKey)
@@ -610,8 +615,8 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             }
         }, contentAlignment = Alignment.Center) {
             val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
-            if (soft) SoftPopKeyContent(key, prefs, height.value - 6f)
-            else if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = ink)
+            if (soft) SoftPopKeyContent(key, prefs, height.value - 6f, enabled)
+            else if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = if (enabled) ink else ink.copy(alpha = .4f))
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,
                 lineHeight = (23 * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
                 textAlign = TextAlign.Center, maxLines = if (key.id == "enter") 2 else 1, overflow = TextOverflow.Clip,

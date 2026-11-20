@@ -70,8 +70,10 @@ def validate_evidence(apk):
     if video["file"] != "recording/preview-interactions.mp4" or digest(CACHE / "evidence" / video["file"]) != video["sha256"]:
         raise ValueError("Screen recording differs from the verified interaction run")
     measurements = json.loads((CACHE / "evidence/design-measurements.json").read_text(encoding="utf-8"))
+    hierarchy_hashes = {name: digest(CACHE / "evidence/visual" / name) for name in
+                        ("320dp-font1.0-light-idle.xml", "320dp-font1.0-light.xml")}
     if measurements["sourceSha256"] != digest(ROOT / "android/app/src/main/java/org/studyime/android/ui/Theme.kt") or \
-       measurements["hierarchySha256"] != digest(CACHE / "evidence/visual/320dp-font1.0-light.xml"):
+       measurements.get("hierarchyHashes") != hierarchy_hashes:
         raise ValueError("Design measurements do not match the current theme and visual capture")
     review = json.loads((CACHE / "evidence/visual-review.json").read_text(encoding="utf-8"))
     if review.get("debugApkSha256") != debug_hash or review.get("imeApkSha256") != apk_hash:

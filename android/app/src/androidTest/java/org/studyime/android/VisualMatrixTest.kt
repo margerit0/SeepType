@@ -40,6 +40,7 @@ class VisualMatrixTest {
                         val name = "${width}dp-font${font}-$theme"
                         prefs.update { it.copy(keyHeight = 1f, textScale = 1f, reduceMotion = false) }
                         driver.launch(theme = theme)
+                        if (name == "320dp-font1.0-light") capture("$name-idle")
                         driver.type("gongyuan")
                         driver.candidate("公园")
                         val bounds = "qwertyuiopasdfghjklzxcvbnm".map { driver.key(it.toString()).visibleBounds }

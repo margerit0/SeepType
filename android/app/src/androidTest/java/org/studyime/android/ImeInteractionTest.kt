@@ -63,6 +63,14 @@ class ImeInteractionTest {
         fun waitText(text: String): Boolean = device.wait(Until.hasObject(By.res(context.packageName, "probe_text").text(text)), 8000)
         try {
             launch("text")
+            check("Details is disabled without a candidate", device.wait(Until.hasObject(By.res("key_details").enabled(false)), 8000))
+            type("gongyuan")
+            key("details")
+            check("Current word details do not commit the composition", device.wait(Until.hasObject(By.res("definition_panel")), 8000) && waitText("gong yuan"))
+            device.findObject(By.desc("关闭释义")).click()
+            key("comma")
+            check("Chinese comma finishes the current word then inserts punctuation", waitText("公园，"))
+            objectById("probe_text").text = ""
             type("gongyuan")
             val park = device.wait(Until.findObject(By.descContains("公园")), 10_000) ?: error("Real park candidate missing")
             val bounds = park.visibleBounds
@@ -110,6 +118,12 @@ class ImeInteractionTest {
             launch("email")
             type("abc")
             check("Email defaults to literal English", waitText("abc"))
+            key("page")
+            key("1")
+            key("comma")
+            key("page")
+            key("a")
+            check("123 and ABC preserve the editor and the comma uses ASCII in English mode", waitText("abc1,a"))
             launch("number")
             type("123")
             check("Number editor opens numeric keyboard", waitText("123"))
