@@ -41,15 +41,28 @@ class ImeDriver {
         ?: error("Missing synthetic editor: $name")
     fun key(name: String): UiObject2 = device.wait(Until.findObject(By.res("key_$name").enabled(true)), 15_000)
         ?: error("Missing enabled key: $name")
-    fun tapKey(name: String) {
-        var point: android.graphics.Point? = null
+    // Composition changes may replace the accessibility node. Retry only the
+    // coordinate lookup; never send an input gesture twice.
+    fun keyBounds(name: String, enabledOnly: Boolean = true): android.graphics.Rect {
+        val selector = By.res("key_$name").let { if (enabledOnly) it.enabled(true) else it }
         repeat(4) {
-            if (point == null) try { point = key(name).visibleCenter }
+            try {
+                val node = device.wait(Until.findObject(selector), 15_000) ?: error("Missing key: $name")
+                return node.visibleBounds
+            }
             catch (_: StaleObjectException) { device.waitForIdle(); SystemClock.sleep(30) }
         }
-        val hit = point ?: error("Key changed before its hit region could be read: $name")
-        // Only node acquisition is retried; the actual input event is sent once.
+        error("Key changed before its hit region could be read: $name")
+    }
+    fun keyCenter(name: String) = keyBounds(name).let { android.graphics.Point(it.centerX(), it.centerY()) }
+    fun tapKey(name: String) {
+        val hit = keyCenter(name)
         device.click(hit.x, hit.y)
+    }
+    fun holdKey(name: String) {
+        val hit = keyCenter(name)
+        // A stationary 650 ms gesture exercises the real 480 ms IME handler.
+        device.executeShellCommand("input swipe ${hit.x} ${hit.y} ${hit.x} ${hit.y} 650")
     }
     fun launch(kind: String = "text", theme: String = "light") {
         val token = SystemClock.elapsedRealtimeNanos()
@@ -102,7 +115,7 @@ class ImeDriver {
         // For the separate rapid sequence, resolve hit regions after the
         // window layout settles and avoid per-letter automation waits.
         device.waitForIdle(500)
-        val points = text.toSet().associateWith { key(it.toString()).visibleCenter }
+        val points = text.toSet().associateWith { keyCenter(it.toString()) }
         text.forEach {
             val point = points.getValue(it)
             device.click(point.x, point.y)

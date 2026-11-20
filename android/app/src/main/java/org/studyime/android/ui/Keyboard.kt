@@ -44,7 +44,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.AwaitPointerEventScope
 import androidx.compose.ui.input.pointer.PointerId
@@ -533,8 +532,7 @@ private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled
             KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.2f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
                 enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
             KeyCell(KeySpec("enter", if (composing) "选词" else editor.actionLabel, 1.5f, true,
-                if (soft) { if (caption in listOf("Search", "Send", "Next", "Prev", "Go")) actionIcon else null }
-                else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
+                if (soft) null else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
                 spoken = if (composing) "确认中文选词" else editor.actionLabel, caption = caption), height, prefs, enabled, onKey, onLongKey)
         }
     }
@@ -549,14 +547,11 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
     val view = LocalView.current
     val gestureGeneration = LocalGestureGeneration.current
     val soft = prefs.skin == KeyboardSkin.SOFT_POP
-    val art = softPopPalette(colors.dark)
     val tightLetters = LocalDensity.current.fontScale * prefs.textScale > 2.1f && !key.function && key.id != "space"
     var pressed by remember { mutableStateOf(false) }
     val action by rememberUpdatedState(newValue = { onKey(key.id, key.text) })
     val longAction by rememberUpdatedState(newValue = specialLong ?: key.secondary?.let { { onLongKey(it) } })
     fun feedback() { if (prefs.haptics) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP) }
-    val base = when { soft && key.id == "shift" -> art.mint; key.id == "enter" -> colors.accent; key.function -> colors.function; else -> colors.key }
-    val fill = animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
     Box(Modifier.weight(key.weight).height(height).testTag("key_${key.id}").semantics {
         contentDescription = key.spoken
         role = Role.Button
@@ -597,26 +592,26 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
                 }
             } finally { pressed = false }
         }
-    }.padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp), contentAlignment = Alignment.Center) {
-        val shape = RoundedCornerShape(if (soft) 12.dp else 9.dp)
-        Box(Modifier.fillMaxSize().then(if (soft) Modifier.clip(shape) else Modifier).drawWithCache {
-            val corner = CornerRadius((if (soft) 12.dp else 9.dp).toPx())
-            val gradient = if (soft && key.id in listOf("delete", "enter"))
-                Brush.linearGradient(if (key.id == "delete") art.lemon else art.violet, Offset.Zero, Offset(size.width, size.height)) else null
+    }, contentAlignment = Alignment.Center) {
+        if (soft) {
+            SoftPopKeyFace(key, prefs, height, enabled, pressed)
+            return@Box
+        }
+        val base = when { key.id == "enter" -> colors.accent; key.function -> colors.function; else -> colors.key }
+        val fill = animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
+        Box(Modifier.fillMaxSize().padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp).drawWithCache {
+            val corner = CornerRadius(9.dp.toPx())
             onDrawBehind {
-            // A shallow contact shadow does not need a RenderNode/elevation
-            // layer for every key, or its first-frame shadow shader program.
-            if (!pressed && !soft) {
-                drawRoundRect(Color.Black.copy(alpha = .06f), topLeft = Offset(0f, 1.dp.toPx()), size = size, cornerRadius = corner)
-                drawRoundRect(Color.Black.copy(alpha = .08f), topLeft = Offset(0f, .5.dp.toPx()), size = size, cornerRadius = corner)
-            }
-            if (gradient != null && !pressed) drawRoundRect(gradient, cornerRadius = corner)
-            else drawRoundRect(fill.value, cornerRadius = corner)
+                // A shallow contact shadow without an elevation layer for every key.
+                if (!pressed) {
+                    drawRoundRect(Color.Black.copy(alpha = .06f), topLeft = Offset(0f, 1.dp.toPx()), size = size, cornerRadius = corner)
+                    drawRoundRect(Color.Black.copy(alpha = .08f), topLeft = Offset(0f, .5.dp.toPx()), size = size, cornerRadius = corner)
+                }
+                drawRoundRect(fill.value, cornerRadius = corner)
             }
         }, contentAlignment = Alignment.Center) {
             val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
-            if (soft) SoftPopKeyContent(key, prefs, height.value - 6f, enabled)
-            else if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = if (enabled) ink else ink.copy(alpha = .4f))
+            if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = if (enabled) ink else ink.copy(alpha = .4f))
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,
                 lineHeight = (23 * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
                 textAlign = TextAlign.Center, maxLines = if (key.id == "enter") 2 else 1, overflow = TextOverflow.Clip,

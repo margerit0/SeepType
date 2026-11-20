@@ -29,8 +29,8 @@ val DarkColors = StudyColors(true, Color(0xFF18221E), Color(0xFFE4EEE8), Color(0
     Color(0xFF425448), Color(0xFF202D25), Color(0xFF35433A), Color(0xFF2B3D31),
     Color(0xFFACD5BB), Color(0xFF3B5141), Color(0xFF192D20))
 val LocalStudyColors = staticCompositionLocalOf { LightColors }
-val SoftPopLightColors = StudyColors(false, Color(0xFFFAFAFC), Color(0xFF616563), Color(0xFF737580),
-    Color(0xFFE7E8EE), Color(0xFFEFEFF4), Color.White, Color.White,
+val SoftPopLightColors = StudyColors(false, Color(0xFFFAFAFC), Color(0xFF636363), Color(0xFF737580),
+    Color(0xFFE7E8EE), Color(0xFFF0EFF4), Color.White, Color.White,
     Color(0xFF237963), Color(0xFFD9EEE7), Color.White)
 val SoftPopDarkColors = StudyColors(true, Color(0xFF23252E), Color(0xFFEEF0F4), Color(0xFFBEC0CB),
     Color(0xFF454754), Color(0xFF292B36), Color(0xFF3C3F4E), Color(0xFF454858),
@@ -40,10 +40,11 @@ val SoftPopDarkColors = StudyColors(true, Color(0xFF23252E), Color(0xFFEEF0F4), 
 val Quicksand = FontFamily(
     Font(R.font.quicksand_variable, FontWeight.Normal, variationSettings = FontVariation.Settings(FontVariation.weight(400))),
     Font(R.font.quicksand_variable, FontWeight.Medium, variationSettings = FontVariation.Settings(FontVariation.weight(500))),
+    Font(R.font.quicksand_variable, FontWeight.SemiBold, variationSettings = FontVariation.Settings(FontVariation.weight(600))),
 )
 @OptIn(ExperimentalTextApi::class)
 val NumberToggleFont = FontFamily(Font(R.font.fredoka_variable, FontWeight.Medium,
-    variationSettings = FontVariation.Settings(FontVariation.weight(500), FontVariation.width(100f))))
+    variationSettings = FontVariation.Settings(FontVariation.weight(500), FontVariation.width(106f))))
 val LocalLatinFont = staticCompositionLocalOf<FontFamily> { FontFamily.SansSerif }
 
 @Composable
