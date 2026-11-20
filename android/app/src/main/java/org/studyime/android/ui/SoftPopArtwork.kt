@@ -67,12 +67,6 @@ private val LightArt = SoftPopPalette(false)
 private val DarkArt = SoftPopPalette(true)
 
 private object Trim {
-    val toolbar = mapOf(
-        "settings" to "M9 5H17M4 12H20M6 19H14",
-        "moon" to "M17 17A8 8 0 0 1 7 7A8 8 0 1 0 17 17Z",
-        "sun" to "M16 12A4 4 0 1 1 8 12A4 4 0 1 1 16 12M12 2V4M12 20V22M2 12H4M20 12H22M5 5L6 6M18 18L19 19M5 19L6 18M18 6L19 5",
-    ).mapValues { softPath(it.value) }
-    val toolPen = roundStroke(2.35f)
     val sweep = softPath("M6 154C58 139 125 72 151 -7")
     val rim = softPath("M44 154C88 128 150 67 165 7Q166 -1 154 1")
     val stars = softPath("M88 13L97 24L122 28L97 32L88 44L79 32L53 28L79 24ZM129 107Q131 120 144 122Q131 125 129 138Q126 125 113 122Q126 120 129 107Z")
@@ -94,16 +88,6 @@ private object Trim {
     val linkTop = softPath("M29 5Q24 1 20 5L7 18Q3 22 6.5 26L14 34")
     val linkBottom = softPath("M19 48Q24 52 28 48L41 35Q45 31 41.5 27L34 19")
     val linkPen = roundStroke(4.7f)
-}
-
-@Composable
-internal fun SoftPopMark(name: String, color: Color, modifier: Modifier = Modifier) {
-    Canvas(modifier.clearAndSetSemantics { }) {
-        val unit = size.minDimension / 24f
-        translate(center.x - 12f * unit, center.y - 12f * unit) {
-            scale(unit, unit, pivot = Offset.Zero) { drawPath(Trim.toolbar.getValue(name), color, style = Trim.toolPen) }
-        }
-    }
 }
 
 // Reference coordinates describe the visible faces, not the touch boxes:

@@ -71,6 +71,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import org.studyime.android.clipboard.ClipboardHistoryState
 import org.studyime.android.engine.*
 import org.studyime.android.diagnostics.StartupTimings
 import org.studyime.android.diagnostics.StartupTimings.Phase
@@ -88,6 +89,9 @@ fun StudyKeyboard(
     update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
     send: (JSONObject) -> Unit, onSettings: () -> Unit,
     onSwitchIme: () -> Unit, onRetry: () -> Unit,
+    clipboard: ClipboardHistoryState, onClipboardEnabled: (Boolean) -> Unit,
+    onPasteClipboard: (String, Long) -> Unit, onPinClipboard: (String) -> Unit,
+    onDeleteClipboard: (String) -> Unit, onClearClipboard: () -> Unit,
 ) {
     val compositionStarted = SystemClock.elapsedRealtimeNanos()
     val colors = LocalStudyColors.current
@@ -104,6 +108,9 @@ fun StudyKeyboard(
     var upper by remember(state.generation) { mutableStateOf(false) }
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
+    var clipboardOpen by remember(state.generation) { mutableStateOf(false) }
+    val clipboardAllowed = !editor.sensitive && !editor.noPersonalization
+    val clipboardShowing = clipboardOpen && clipboardAllowed
     val currentState by rememberUpdatedState(state)
     // Keep letter keys independent of candidate revisions. The callback reads
     // the current snapshot at activation; a new editor still cancels gestures.
@@ -136,7 +143,8 @@ fun StudyKeyboard(
             if (upper) upper = false
         } else send(event("literal", "text" to text))
     } }
-    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, upper, prefs.theme, prefs.skin) {
+    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, clipboardShowing,
+        upper, prefs.theme, prefs.skin, prefs.showEnglish) {
         announceImeSubtree(view, accessibility)
     }
     val keyHeight = maxOf(if (landscape) 40f else 48f, (if (landscape) 42f else 52f) * prefs.keyHeight,
@@ -146,7 +154,8 @@ fun StudyKeyboard(
     // English. First-candidate delivery must never move a finger's target.
     val statusHeight = maxOf(60f, 39f * density.fontScale * prefs.textScale + 12f).dp
     val active = state.ready && !state.error
-    val openSettings = { quickSettings = true; expanded = false }
+    val openSettings = { quickSettings = true; expanded = false; clipboardOpen = false }
+    val openClipboard = { clipboardOpen = !clipboardOpen; quickSettings = false; expanded = false }
 
     Column(Modifier.fillMaxWidth().background(colors.board).navigationBarsPadding().drawWithContent {
         drawContent()
@@ -155,6 +164,9 @@ fun StudyKeyboard(
         .semantics { testTagsAsResourceId = true }.testTag("study_keyboard")) {
         val keys: @Composable (Modifier) -> Unit = { modifier ->
             when {
+                clipboardShowing -> ClipboardPanel(clipboard, modifier.height(keyRowsHeight), active, onClipboardEnabled,
+                    onPaste = { id -> onPasteClipboard(id, state.generation); clipboardOpen = false },
+                    onPinClipboard, onDeleteClipboard, onClearClipboard, close = { clipboardOpen = false })
                 quickSettings -> QuickSettings(prefs, update, state.input.isNotEmpty(), editor.sensitive,
                     modifier.height(keyRowsHeight), close = { quickSettings = false }, allSettings = {
                         quickSettings = false
@@ -173,8 +185,10 @@ fun StudyKeyboard(
         }
 
         if (landscape) {
-            IdleToolbar(state, prefs, editor, update, openSettings, onRetry, Modifier.fillMaxWidth().height(60.dp))
-            Row(Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp), verticalAlignment = Alignment.Bottom) {
+            IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, onRetry, Modifier.fillMaxWidth().height(60.dp))
+            val row = Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp)
+            if (clipboardShowing) keys(row)
+            else Row(row, verticalAlignment = Alignment.Bottom) {
                 Column(Modifier.widthIn(max = 270.dp).weight(.34f).height(keyRowsHeight).padding(end = 7.dp)) {
                     if (active && state.candidates.isNotEmpty()) {
                         LazyColumn(Modifier.weight(1f)) {
@@ -189,9 +203,9 @@ fun StudyKeyboard(
             }
         } else {
             Box(Modifier.fillMaxWidth().height(statusHeight).testTag("keyboard_status")) {
-                if (state.candidates.isNotEmpty() && !quickSettings) {
+                if (state.candidates.isNotEmpty() && !quickSettings && !clipboardShowing) {
                     CandidateStrip(state, effectivePrefs, send, expanded, openSettings) { expanded = !expanded }
-                } else IdleToolbar(state, prefs, editor, update, openSettings, onRetry, Modifier.fillMaxSize())
+                } else IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, onRetry, Modifier.fillMaxSize())
             }
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
@@ -214,7 +228,7 @@ fun StudyKeyboard(
     }
 }
 
-private suspend fun announceImeSubtree(view: View, accessibility: AccessibilityManager) {
+internal suspend fun announceImeSubtree(view: View, accessibility: AccessibilityManager) {
     // The non-focused IME window needs a subtree invalidation after layout,
     // including scroll-only movement, to expose current virtual-node bounds.
     withFrameNanos { }
@@ -229,41 +243,43 @@ private suspend fun announceImeSubtree(view: View, accessibility: AccessibilityM
 }
 
 @Composable
-private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean = true, mark: String? = null, onClick: () -> Unit) {
+private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean = true, onClick: () -> Unit) {
     val colors = LocalStudyColors.current
     IconButton(onClick = onClick, enabled = enabled, modifier = Modifier.size(48.dp)) {
         val ink = if (enabled) colors.subtle else colors.subtle.copy(alpha = .5f)
-        if (mark == null) Icon(icon, description, Modifier.size(20.dp), tint = ink)
-        else Box(Modifier.size(24.dp).semantics { contentDescription = description }) { SoftPopMark(mark, ink, Modifier.fillMaxSize()) }
+        Icon(icon, description, Modifier.size(20.dp), tint = ink)
     }
 }
 
 @Composable
 private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
                         update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
-                        settings: () -> Unit, retry: () -> Unit, modifier: Modifier) {
+                        settings: () -> Unit, clipboard: () -> Unit, retry: () -> Unit, modifier: Modifier) {
     val colors = LocalStudyColors.current
-    val soft = prefs.skin == KeyboardSkin.SOFT_POP
-    Row(modifier.padding(horizontal = 7.dp), verticalAlignment = Alignment.CenterVertically) {
-        ToolButton(Icons.Outlined.Settings, "键盘设置", mark = if (soft) "settings" else null, onClick = settings)
-        if (!state.ready || state.error || editor.sensitive) {
+    val toolbar = modifier.testTag("idle_toolbar")
+    if (!state.ready || state.error || editor.sensitive) {
+        Row(toolbar.padding(horizontal = 7.dp), verticalAlignment = Alignment.CenterVertically) {
+            ToolbarButton(ToolbarGlyph.Menu, "键盘设置", onClick = settings)
             ReadyHint(state, editor, retry, Modifier.weight(1f))
-        } else {
-            ToolButton(if (colors.dark) Icons.Outlined.LightMode else Icons.Outlined.DarkMode, "切换浅深色",
-                mark = if (soft) { if (colors.dark) "sun" else "moon" } else null) {
+            ToolbarButton(ToolbarGlyph.Clipboard, "剪贴板历史", enabled = false, onClick = clipboard)
+        }
+    } else {
+        Row(toolbar, horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically) {
+            ToolbarButton(ToolbarGlyph.Menu, "键盘设置", onClick = settings)
+            ToolbarButton(if (colors.dark) ToolbarGlyph.Sun else ToolbarGlyph.Moon, "切换浅深色") {
                 update { it.copy(theme = if (colors.dark) "light" else "dark") }
             }
-            Spacer(Modifier.weight(1f))
+            ToolbarButton(ToolbarGlyph.Clipboard, "剪贴板历史", enabled = !editor.noPersonalization, onClick = clipboard)
+            GlossBubble(prefs.showEnglish) { checked -> update { it.copy(showEnglish = checked) } }
         }
-        if (!editor.sensitive) EnglishToggle(state.showEnglish, soft = soft) { update { it.copy(showEnglish = !it.showEnglish) } }
     }
 }
 
 @Composable
-private fun EnglishToggle(checked: Boolean, enabled: Boolean = true, soft: Boolean = false, onClick: () -> Unit) {
+private fun EnglishToggle(checked: Boolean, enabled: Boolean = true, onClick: () -> Unit) {
     val colors = LocalStudyColors.current
     Row(Modifier.heightIn(min = 48.dp).clip(RoundedCornerShape(22.dp))
-        .background(if (soft) colors.key else Color.Transparent)
         .toggleable(value = checked, enabled = enabled, role = Role.Switch) { onClick() }
         .padding(horizontal = 10.dp).semantics(mergeDescendants = true) {
             contentDescription = "显示英文释义"

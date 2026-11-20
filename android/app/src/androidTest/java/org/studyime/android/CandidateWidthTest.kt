@@ -27,6 +27,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
+import org.studyime.android.clipboard.ClipboardHistoryState
 import org.studyime.android.engine.Candidate
 import org.studyime.android.engine.EngineSnapshot
 import org.studyime.android.ime.EditorSpec
@@ -57,7 +58,9 @@ class CandidateWidthTest {
             ) {
                 Box(Modifier.width(width.dp)) {
                     StudyTheme(skin = prefs.skin) {
-                        StudyKeyboard(state.value, prefs, EditorSpec(), {}, { events.add(it) }, {}, {}, {})
+                        StudyKeyboard(state.value, prefs, EditorSpec(), {}, { events.add(it) }, {}, {}, {},
+                            clipboard = ClipboardHistoryState(), onClipboardEnabled = {}, onPasteClipboard = { _, _ -> },
+                            onPinClipboard = {}, onDeleteClipboard = {}, onClearClipboard = {})
                     }
                 }
             }
