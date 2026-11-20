@@ -90,8 +90,6 @@ class SkinSwitchTest {
             d.candidate("公园")
             d.expectText("gong yuan")
             check("First candidates do not move the keyboard", idleBounds == d.key("q").visibleBounds)
-            check("Compact strip fits six candidates at 390 dp", ui.findObject(By.res("candidate_scroll")).visibleBounds.width() /
-                ui.findObject(By.res("candidate_0")).visibleBounds.width() >= 6)
             shot("soft-pop-light-candidates")
 
             d.tapKey("page")

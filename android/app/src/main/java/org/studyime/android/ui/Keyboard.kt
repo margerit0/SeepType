@@ -20,9 +20,6 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed as gridItemsIndexed
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
@@ -52,7 +49,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.AwaitPointerEventScope
 import androidx.compose.ui.input.pointer.PointerId
 import androidx.compose.ui.input.pointer.changedToUpIgnoreConsumed
-import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -348,46 +344,29 @@ private fun SettingChoice(title: String, selected: Boolean, tag: String, onClick
 @Composable
 private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, send: (JSONObject) -> Unit,
                            expanded: Boolean, settings: () -> Unit, onExpand: () -> Unit) {
-    val fontScale = LocalDensity.current.fontScale
-    Box(Modifier.fillMaxSize().padding(start = 5.dp, end = 1.dp), contentAlignment = Alignment.Center) {
-            val scroll = rememberScrollState()
-            val view = LocalView.current
-            val accessibility = remember(view) { view.context.getSystemService(AccessibilityManager::class.java) }
-            LaunchedEffect(scroll) {
-                snapshotFlow { scroll.value }.drop(1).collectLatest { announceImeSubtree(view, accessibility) }
-            }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                // Measure directly instead of subcomposing during each input
-                // revision. Normally 6–7 slots, fewer on narrow/large-type screens.
-                Layout(modifier = Modifier.weight(1f).testTag("candidate_scroll").horizontalScroll(scroll), content = {
-                    state.candidates.forEachIndexed { index, candidate ->
-                        key(state.page, index) {
-                            CandidateCard(candidate, index, state, prefs, send, compact = true)
-                        }
-                    }
-                }) { measurables, constraints ->
-                    // Row.weight fixes the viewport width; horizontalScroll
-                    // keeps that minimum while relaxing the maximum width.
-                    val viewport = constraints.minWidth
-                    val visible = (viewport / (48.dp.toPx() * fontScale * prefs.textScale)).toInt().coerceIn(1, 7)
-                    val slot = (viewport / visible).coerceAtLeast(1)
-                    val gap = 2.dp.roundToPx()
-                    val cardWidth = (slot - gap).coerceAtLeast(0)
-                    val cards = measurables.map {
-                        it.measure(constraints.copy(minWidth = cardWidth, maxWidth = cardWidth, minHeight = 0))
-                    }
-                    val height = (cards.maxOfOrNull { it.height } ?: 0).coerceIn(constraints.minHeight, constraints.maxHeight)
-                    layout((slot * cards.size - gap).coerceAtLeast(viewport), height) {
-                        cards.forEachIndexed { index, card -> card.placeRelative(index * slot, (height - card.height) / 2) }
-                    }
-                }
-                Box(Modifier.size(48.dp).clip(RoundedCornerShape(10.dp))
-                    .combinedClickable(onClick = onExpand, onLongClick = settings, onLongClickLabel = "键盘设置"),
-                    contentAlignment = Alignment.Center) {
-                    Icon(if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
-                        if (expanded) "收起候选" else "展开候选", Modifier.size(20.dp), tint = LocalStudyColors.current.subtle)
+    val scroll = key(state.generation, state.input, state.page) { rememberScrollState() }
+    val view = LocalView.current
+    val accessibility = remember(view) { view.context.getSystemService(AccessibilityManager::class.java) }
+    LaunchedEffect(scroll) {
+        snapshotFlow { scroll.value }.drop(1).collectLatest { announceImeSubtree(view, accessibility) }
+    }
+    Row(Modifier.fillMaxSize().padding(start = 5.dp, end = 1.dp), verticalAlignment = Alignment.CenterVertically) {
+        // Scroll only the candidates. The row measures each card at its content
+        // width so long words use more space without shrinking the touch targets.
+        Row(Modifier.weight(1f).testTag("candidate_scroll").horizontalScroll(scroll),
+            horizontalArrangement = Arrangement.spacedBy(2.dp), verticalAlignment = Alignment.CenterVertically) {
+            state.candidates.forEachIndexed { index, candidate ->
+                key(state.page, index) {
+                    CandidateCard(candidate, index, state, prefs, send, Modifier.widthIn(min = 48.dp), compact = true)
                 }
             }
+        }
+        Box(Modifier.size(48.dp).clip(RoundedCornerShape(10.dp))
+            .combinedClickable(onClick = onExpand, onLongClick = settings, onLongClickLabel = "键盘设置"),
+            contentAlignment = Alignment.Center) {
+            Icon(if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
+                if (expanded) "收起候选" else "展开候选", Modifier.size(20.dp), tint = LocalStudyColors.current.subtle)
+        }
     }
 }
 
@@ -414,15 +393,16 @@ private fun CandidateCard(candidate: Candidate, index: Int, state: EngineSnapsho
             onLongClick(label = if (state.showEnglish) "查看释义与选词学习" else "查看选词学习") { inspect(); true }
         }.testTag("candidate_$index").heightIn(min = 48.dp).padding(horizontal = if (compact) 3.dp else 5.dp, vertical = if (compact) 3.dp else 7.dp),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+        val maxLines = if (compact) 1 else Int.MAX_VALUE
+        val label = Modifier.clearAndSetSemantics { }
         if (state.showEnglish) Text(candidate.english.ifEmpty { " " }, color = if (index == state.highlighted) colors.accent else colors.subtle,
             fontFamily = LocalLatinFont.current, fontSize = ((if (compact) 11 else 12) * prefs.textScale).sp,
-            lineHeight = ((if (compact) 15 else 16) * prefs.textScale).sp, maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth().clearAndSetSemantics { })
+            lineHeight = ((if (compact) 15 else 16) * prefs.textScale).sp, maxLines = maxLines, softWrap = !compact,
+            textAlign = TextAlign.Center, modifier = label)
         Text(candidate.chinese, color = colors.ink, fontSize = ((if (compact) 18 else 20) * prefs.textScale).sp,
             lineHeight = ((if (compact) 24 else 28) * prefs.textScale).sp,
             fontWeight = if (prefs.skin == KeyboardSkin.SOFT_POP) FontWeight.Normal else FontWeight.Medium,
-            maxLines = 1, overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().clearAndSetSemantics { })
+            maxLines = maxLines, softWrap = !compact, textAlign = TextAlign.Center, modifier = label)
     }
 }
 
@@ -450,13 +430,20 @@ private fun Paging(state: EngineSnapshot, send: (JSONObject) -> Unit, modifier: 
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ExpandedCandidates(state: EngineSnapshot, prefs: KeyboardPreferences, send: (JSONObject) -> Unit,
                                modifier: Modifier, settings: () -> Unit, close: () -> Unit) {
     Column(modifier.padding(horizontal = 5.dp)) {
-        LazyVerticalGrid(columns = GridCells.Adaptive((92 * LocalDensity.current.fontScale).dp), modifier = Modifier.weight(1f),
+        val scroll = key(state.generation, state.input, state.page) { rememberScrollState() }
+        val minCardWidth = (92 * LocalDensity.current.fontScale).dp
+        FlowRow(Modifier.weight(1f).fillMaxWidth().verticalScroll(scroll),
             horizontalArrangement = Arrangement.spacedBy(5.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-            gridItemsIndexed(state.candidates) { index, candidate -> CandidateCard(candidate, index, state, prefs, send) }
+            state.candidates.forEachIndexed { index, candidate ->
+                key(state.page, index) {
+                    CandidateCard(candidate, index, state, prefs, send, Modifier.widthIn(min = minCardWidth))
+                }
+            }
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = close, modifier = Modifier.heightIn(min = 48.dp)) { Text("返回键盘") }
