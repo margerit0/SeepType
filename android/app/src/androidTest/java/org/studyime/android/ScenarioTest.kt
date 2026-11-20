@@ -99,7 +99,7 @@ class ScenarioTest {
                 d.candidate("公园")
                 check("$mode navigation leaves bottom keys reachable", d.key("enter").visibleBounds.bottom < ui.displayHeight)
                 shot("navigation-$mode")
-                d.tapKey("space")
+                d.candidate("公园").click()
                 d.expectText("公园")
             }
 

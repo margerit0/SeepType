@@ -35,7 +35,7 @@ class PerformanceTest {
             d.launch()
             d.type("nihao")
             d.tapKey("space")
-            d.expectText("你好")
+            d.expectText("nihao")
             report.put("initialServiceTimings", metrics())
             val initialPid = ui.executeShellCommand("pidof ${d.imePackage}").trim()
             assertTrue("The measured IME has one live process", initialPid.matches(Regex("[0-9]+")))
@@ -52,7 +52,7 @@ class PerformanceTest {
             }
             report.put("syntheticWordObservations", observations)
             report.put("syntheticFinalText", d.editor().text)
-            d.expectText("你好".repeat(31))
+            d.expectText("nihao".repeat(31))
             repeat(20) { iteration ->
                 ui.pressBack()
                 assertTrue("The keyboard is fully hidden before the next reopening", ui.wait(Until.gone(By.res("study_keyboard")), 5000))

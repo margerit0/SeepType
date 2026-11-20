@@ -93,7 +93,7 @@ class PreviewRecordingTest {
             step("Expanded candidates expose page controls")
             d.capture("recording", "release-expanded")
             ui.findObject(By.text("返回键盘")).click()
-            d.tapKey("space")
+            d.candidate("公园").click()
             expect("公园hello\n公园")
             d.tapKey("enter")
             val beforeRapid = d.key("h").visibleBounds
@@ -101,11 +101,11 @@ class PreviewRecordingTest {
             report.put("rapidPreedit", ui.findObject(By.res(d.imePackage, "practice_editor")).text)
             assertTrue("First candidates keep rapid-touch key bounds stable", beforeRapid == d.key("h").visibleBounds)
             d.tapKey("space")
-            expect("公园hello\n公园\n你好")
-            step("Rapid touches and space produce one Chinese commit")
+            expect("公园hello\n公园\nnihao")
+            step("Rapid touches and space commit the typed pinyin once")
             ui.findObject(By.desc("切换浅深色")).click()
             d.capture("recording", "release-final")
-            report.put("passed", true).put("syntheticFinalText", "公园hello\n公园\n你好")
+            report.put("passed", true).put("syntheticFinalText", "公园hello\n公园\nnihao")
         } finally {
             if (recorder.matches(Regex("[0-9]+"))) {
                 val stopped = ui.executeShellCommand("$recordingHelper stop $recorder").trim()

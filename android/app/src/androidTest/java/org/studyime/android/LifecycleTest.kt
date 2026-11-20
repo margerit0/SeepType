@@ -62,13 +62,13 @@ class LifecycleTest {
             }
             SystemClock.sleep(200)
             check("Verified framework restart retains Chinese candidates", driver.candidate("公园").isEnabled && currentText() == "gong yuan")
-            driver.tapKey("space")
+            driver.candidate("公园").click()
             driver.expectText("公园")
             check("Restarted composition commits once", currentText() == "公园")
 
             editorAction { _, view -> view.setSelection(0, 2) }
             driver.type("nihao")
-            driver.tapKey("space")
+            driver.candidate("你好").click()
             driver.expectText("你好")
             check("Selected application text is replaced by the next Chinese commit", currentText() == "你好")
             driver.launch("email")
@@ -98,12 +98,11 @@ class LifecycleTest {
             driver.chooseScheme("自然码")
             driver.closeQuickSettings()
             check("Changing scheme preserves pending composition", driver.candidate("公园").isEnabled && currentText() == "gong yuan")
-            driver.tapKey("space")
+            driver.candidate("公园").click()
             driver.expectText("公园")
             editorAction { _, view -> view.setText("") }
             driver.type("gsyr")
-            driver.candidate("公园")
-            driver.tapKey("space")
+            driver.candidate("公园").click()
             driver.expectText("公园")
             check("Deferred natural-code scheme takes effect after selection", currentText() == "公园")
 
@@ -125,7 +124,7 @@ class LifecycleTest {
                 By.res(driver.context.packageName, "probe_text").focused(true)), 5000))
             driver.key("g")
             driver.type("nihao")
-            driver.tapKey("space")
+            driver.candidate("你好").click()
             driver.expectText("你好")
             check("Fresh input works after refocusing the recreated landscape editor", currentText() == "你好")
             device.setOrientationNatural()
@@ -134,14 +133,14 @@ class LifecycleTest {
             driver.launch()
             repeat(10) {
                 driver.type("nihao", delayMs = 0)
-                driver.tapKey("space")
+                driver.candidate("你好").click()
             }
             driver.expectText("你好".repeat(10))
             check("Rapid Chinese candidate updates commit every word exactly once", currentText() == "你好".repeat(10))
             driver.launch()
             driver.type("nihaom", delayMs = 0)
             driver.tapKey("delete")
-            driver.tapKey("space")
+            driver.candidate("你好").click()
             driver.expectText("你好")
             check("Deleting after a rapid Chinese sequence selects the updated candidate", currentText() == "你好")
 

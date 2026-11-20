@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 pub type Result<T> = std::result::Result<T, String>;
 pub const BACKSPACE: u32 = 0xff08;
 pub const RETURN: u32 = 0xff0d;
+pub const SPACE: u32 = b' ' as u32;
 
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct Candidate {
@@ -279,13 +280,16 @@ impl<E: Engine> Session<E> {
                     }
                 } else if code == BACKSPACE && before.input.is_empty() {
                     self.command(&mut commands, "delete", String::new())?;
-                } else if code == RETURN && before.input.is_empty() {
-                    self.command(&mut commands, "action", String::new())?;
-                } else if code == RETURN {
-                    if before.candidates.is_empty() {
+                } else if code == RETURN || (code == SPACE && modifiers == 0) {
+                    if !before.input.is_empty() {
+                        // Commit the typed spelling, not formatted preedit or a candidate.
                         self.engine.clear()?;
                         self.command(&mut commands, "commit", before.input)?;
-                    } else { self.engine.select(before.highlighted)?; }
+                    } else if code == RETURN {
+                        self.command(&mut commands, "action", String::new())?;
+                    } else {
+                        self.command(&mut commands, "commit", " ".into())?;
+                    }
                 } else if !self.engine.key(code, modifiers)? {
                     self.drain(&mut commands)?;
                     if let Some(c) = char::from_u32(code).filter(|c| !c.is_control() && code < 0xff00) {

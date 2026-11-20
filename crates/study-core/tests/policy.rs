@@ -9,7 +9,7 @@ struct Fake(Rc<RefCell<Model>>);
 impl Engine for Fake {
     fn read(&mut self) -> Result<Context> { Ok(self.0.borrow().context.clone()) }
     fn key(&mut self, code: u32, _: u32) -> Result<bool> {
-        if code == 32 { return self.select(0); }
+        if code == SPACE { return self.select(0); }
         let mut m = self.0.borrow_mut();
         m.calls += 1;
         if code == BACKSPACE { m.context.input.pop(); }
@@ -88,15 +88,46 @@ fn dictionary_revalidation_rejects_changed_definition_without_losing_input() {
     assert_eq!(result.notice, "target-changed");
 }
 #[test]
-fn chinese_click_and_space_ignore_english_annotation() {
+fn chinese_candidate_click_ignores_english_annotation() {
     let (mut session, _) = fixture();
     let before = type_word(&mut session);
     let clicked = session.process(event(Action::Select { index: 0, revision: before.revision })).unwrap();
-    type_word(&mut session);
-    let spaced = session.process(event(Action::Key { code: 32, modifiers: 0 })).unwrap();
+    assert_eq!(clicked.commands.len(), 1);
     assert_eq!(clicked.commands[0].text, "你好");
-    assert_eq!(spaced.commands[0].text, "你好");
-    assert_ne!(clicked.commands[0].id, spaced.commands[0].id);
+}
+#[test]
+fn space_and_return_commit_raw_spelling_instead_of_selecting_candidates() {
+    for code in [SPACE, RETURN] {
+        for has_candidates in [true, false] {
+            let (mut session, state) = fixture();
+            let before = type_word(&mut session);
+            {
+                let mut m = state.borrow_mut();
+                m.context.preedit = "ni hao".into();
+                m.context.caret = 2;
+                if !has_candidates { m.context.candidates.clear(); }
+            }
+            let pressed = session.process(event(Action::Key { code, modifiers: 0 })).unwrap();
+            assert_eq!(pressed.commands, vec![EditorCommand { id: 1, kind: "commit".into(), text: "nihao".into() }]);
+            assert!(pressed.context.input.is_empty() && pressed.context.candidates.is_empty());
+            assert_eq!(state.borrow().calls, 5);
+            let stale = session.process(event(Action::Select { index: 0, revision: before.revision })).unwrap();
+            assert!(stale.commands.is_empty());
+        }
+    }
+}
+#[test]
+fn space_and_return_keep_their_normal_behavior_without_composition() {
+    let (mut session, _) = fixture();
+    for ascii in [false, true] {
+        session.process(event(Action::Mode { ascii })).unwrap();
+        for (code, kind, text) in [(SPACE, "commit", " "), (RETURN, "action", "")] {
+            let pressed = session.process(event(Action::Key { code, modifiers: 0 })).unwrap();
+            assert_eq!(pressed.commands.len(), 1);
+            assert_eq!(pressed.commands[0].kind, kind);
+            assert_eq!(pressed.commands[0].text, text);
+        }
+    }
 }
 #[test]
 fn english_toggle_invalidates_panel_and_preserves_learning_and_composition() {
@@ -147,8 +178,8 @@ fn schema_change_waits_for_composition_to_finish() {
     let pending = session.process(event(Action::Configure { config })).unwrap();
     assert_eq!(pending.pending_schema.as_deref(), Some("study_flypy"));
     assert_eq!(state.borrow().schema, "study");
-    let committed = session.process(event(Action::Key { code: 32, modifiers: 0 })).unwrap();
-    assert_eq!(committed.commands[0].text, "你好");
+    let committed = session.process(event(Action::Key { code: SPACE, modifiers: 0 })).unwrap();
+    assert_eq!(committed.commands[0].text, "nihao");
     assert_eq!(committed.schema, "study_flypy");
 }
 #[test]

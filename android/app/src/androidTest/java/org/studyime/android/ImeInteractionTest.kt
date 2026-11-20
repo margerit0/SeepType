@@ -77,10 +77,13 @@ class ImeInteractionTest {
             // Tap the upper English row: it must still commit Chinese.
             device.click(bounds.centerX(), bounds.top + (bounds.height() * .25).toInt())
             check("Tapping English candidate row commits Chinese", waitText("公园"))
-            objectById("probe_text").text = ""
-            type("gongyuan")
-            key("space")
-            check("Ordinary space commits Chinese", waitText("公园"))
+            listOf("space" to "ni", "enter" to "nihao").forEach { (keyName, spelling) ->
+                objectById("probe_text").text = ""
+                type(spelling)
+                assertTrue("Chinese candidates are available before $keyName", device.wait(Until.hasObject(By.res("candidate_0")), 8000))
+                key(keyName)
+                check("$keyName commits only the typed spelling", waitText(spelling) && device.wait(Until.gone(By.res("candidate_0")), 8000))
+            }
             objectById("probe_text").text = ""
             type("gongyuan")
             device.wait(Until.findObject(By.descContains("公园")), 8000)!!.longClick()
@@ -101,13 +104,13 @@ class ImeInteractionTest {
             listOf("search" to 3, "send" to 4, "next" to 5, "text" to 6).forEach { (kind, expected) ->
                 launch(kind)
                 type("nihao")
-                key("space")
+                device.wait(Until.findObject(By.descContains("你好")), 8000)!!.click()
                 key("enter")
                 check("$kind dispatches the requested EditorInfo action", device.wait(Until.hasObject(By.res(context.packageName, "probe_action").text("action:$expected")), 8000))
             }
             launch("multiline")
             type("nihao")
-            key("space")
+            device.wait(Until.findObject(By.descContains("你好")), 8000)!!.click()
             key("enter")
             check("Multiline Enter inserts newline", waitText("你好\n"))
 

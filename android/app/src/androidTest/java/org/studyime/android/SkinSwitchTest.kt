@@ -122,7 +122,7 @@ class SkinSwitchTest {
             check("Appearance and English visibility survive skin changes", selected("theme_dark") && englishToggle().isChecked)
             shot("skin-settings-dark")
             d.closeQuickSettings()
-            d.tapKey("space")
+            d.candidate("公园").click()
             d.tapKey("1")
             d.expectText("公园1")
             check("Numeric page commits Chinese normally before a digit", d.editor().text == "公园1")
@@ -210,7 +210,7 @@ class SkinSwitchTest {
                             else -> 0xff202d25.toInt()
                         }
                         pixels("$skin-$theme-${width}dp", expected)
-                        d.tapKey("space")
+                        d.candidate("公园").click()
                         d.expectText("公园")
                         if (skin == "soft-pop") {
                             d.tapKey("page")
@@ -232,7 +232,7 @@ class SkinSwitchTest {
                 d.tapKey("page")
                 shot("soft-pop-320dp-font$font-symbols")
                 check("Font $font retains ${allKeys.size} distinct keys and visible bottom actions", ui.findObjects(By.res(java.util.regex.Pattern.compile("key_.+"))).size == allKeys.size && d.keyBounds("enter").bottom <= ui.displayHeight)
-                d.tapKey("space")
+                d.candidate("公园").click()
                 d.expectText("公园")
             }
             ui.executeShellCommand("settings put system font_scale 1.0")

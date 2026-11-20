@@ -51,7 +51,7 @@ class AppEditorTest {
             check("Real browser textarea accepts explicit English after Chinese", ui.wait(Until.hasObject(By.text("公园hello")), 8000))
             d.tapKey("enter")
             d.type("nihao")
-            d.tapKey("space")
+            d.candidate("你好").click()
             check("Browser multiline editing retains the newline", ui.wait(Until.hasObject(By.text("公园hello\n你好")), 8000))
             d.capture("scenarios", "external-browser")
 

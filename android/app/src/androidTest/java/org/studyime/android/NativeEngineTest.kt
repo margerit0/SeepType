@@ -138,6 +138,14 @@ class NativeEngineTest {
                 val located = find(type(input), chinese)
                 check("Full pinyin special spelling $input resolves $chinese", located.first.candidates[located.second].chinese == chinese)
             }
+            for ((code, name) in listOf(' '.code to "Space", 0xff0d to "Enter")) {
+                val composing = type("nihao")
+                check("$name has Chinese candidates before committing spelling", composing.candidates.isNotEmpty())
+                val committed = send(event("key", "code" to code))
+                val command = committed.commands.single()
+                check("$name commits raw pinyin and clears composition", command.kind == "commit" && command.text == "nihao" &&
+                    committed.input.isEmpty() && committed.candidates.isEmpty())
+            }
             var deleting = type("gongyuan")
             repeat(8) { deleting = send(event("key", "code" to 0xff08)) }
             check("Repeated deletion removes composition before touching editor text", deleting.input.isEmpty() && deleting.commands.isEmpty())

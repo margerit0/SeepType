@@ -526,14 +526,15 @@ private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled
                 spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey,
                 specialLong = if (soft) { { onKey("symbols", "") } } else null, specialLongLabel = "更多符号")
             KeyCell(KeySpec("comma", if (asciiMode) "," else "，", spoken = "逗号"), height, prefs, enabled, onKey, onLongKey)
-            KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 2.6f, spoken = "空格，选取中文候选"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
+            KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 2.6f,
+                spoken = if (composing) "空格，输入原始拼写" else "空格"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
             KeyCell(KeySpec(".", if (asciiMode) "." else "。", spoken = "句号"), height, prefs, enabled,
                 { id, _ -> onKey(id, if (letters) "." else if (asciiMode) "." else "。") }, onLongKey)
             KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.2f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
                 enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec("enter", if (composing) "选词" else editor.actionLabel, 1.5f, true,
+            KeyCell(KeySpec("enter", if (composing) "原样" else editor.actionLabel, 1.5f, true,
                 if (soft) null else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
-                spoken = if (composing) "确认中文选词" else editor.actionLabel, caption = caption), height, prefs, enabled, onKey, onLongKey)
+                spoken = if (composing) "输入原始拼写" else editor.actionLabel, caption = caption), height, prefs, enabled, onKey, onLongKey)
         }
     }
     }

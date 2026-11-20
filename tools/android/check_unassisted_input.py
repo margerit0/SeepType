@@ -36,13 +36,18 @@ def check(serial):
     if header[:8] != b"\x89PNG\r\n\x1a\n" or struct.unpack(">II", header[16:24]) != (780, 1688):
         raise ValueError("Run the 390 dp recording before this regression")
     keys = {}
+    first_candidate = None
     for node in tree.iter("node"):
         name = node.get("resource-id", "")
-        if not name.startswith("key_"):
+        if not name.startswith("key_") and name != "candidate_0":
             continue
         left, top, right, bottom = map(int, re.findall(r"\d+", node.get("bounds", "")))
-        keys[name.removeprefix("key_")] = ((left + right) // 2, (top + bottom) // 2)
-    if not set("gongyuanihao").issubset(keys) or "space" not in keys:
+        center = ((left + right) // 2, (top + bottom) // 2)
+        if name == "candidate_0":
+            first_candidate = center
+        else:
+            keys[name.removeprefix("key_")] = center
+    if not set("gongyuanihao").issubset(keys) or "space" not in keys or first_candidate is None:
         raise ValueError("Recorded keyboard geometry is incomplete")
     component = next(value.strip() for value in command("shell", "ime", "list", "-a", "-s").stdout.splitlines()
                      if value.strip().startswith(package + "/"))
@@ -78,7 +83,7 @@ def check(serial):
         assert_check("Optimized IME starts without an accessibility service", bool(process))
         for key in "gongyuan":
             command("shell", "input", "tap", *keys[key])
-        command("shell", "input", "tap", *keys["space"])
+        command("shell", "input", "tap", *first_candidate)
         first = snapshot()
         assert_check("Chinese commit works with accessibility disabled", first["text"] == "公园" and not first["accessibilityEnabled"])
         command("shell", "input", "keyevent", "4")
@@ -90,7 +95,7 @@ def check(serial):
             command("shell", "input", "tap", *keys[key])
         command("shell", "input", "tap", *keys["space"])
         second = snapshot()
-        assert_check("New editor input still works after hiding the keyboard", second["text"] == "你好" and not second["accessibilityEnabled"])
+        assert_check("Space commits raw pinyin after hiding and reopening the keyboard", second["text"] == "nihao" and not second["accessibilityEnabled"])
         assert_check("The optimized IME process did not crash or restart", command("shell", "pidof", package).stdout.strip() == process)
         report["syntheticEditorSnapshots"] = [first, second]
         write(CACHE / "evidence/unassisted-input.png", command("exec-out", "screencap", "-p", binary=True).stdout)
