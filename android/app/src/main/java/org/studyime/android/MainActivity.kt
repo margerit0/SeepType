@@ -311,18 +311,19 @@ private fun AboutScreen(license: String, select: (String) -> Unit) {
             Text("拾词 ${BuildConfig.VERSION_NAME}", fontSize = 22.sp, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(12.dp))
             val entries = dictionary
-            Text(if (entries == null) "正在读取本机词库信息…" else "${"%,d".format(entries.getInt("chineseEntries"))} 条中文词条\n${entries.getInt("englishEntries")} 条英文释义 · 人工审核 ${entries.getInt("humanApproved")} 条", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
+            Text(if (entries == null) "正在读取本机词库信息…" else "${"%,d".format(entries.getInt("chineseEntries"))} 条中文候选记录（含读音）\n${"%,d".format(entries.getInt("englishEntries"))} 条英文开发记录", fontSize = 15.sp, lineHeight = 27.sp, color = c.ink)
             entries?.let {
                 Text("词库版本 ${it.getString("version")}\n中文快照 ${it.getString("chineseSnapshot")}", fontSize = 11.sp, lineHeight = 18.sp, color = c.subtle)
             }
             Spacer(Modifier.height(12.dp))
-            Text("中文候选来自固定的 CC-CEDICT 快照，结合 wordfreq 和 Unihan 读音频次。英文释义只用于开发预览，部分词义仍需人工核对。", fontSize = 13.sp, lineHeight = 22.sp, color = c.subtle)
+            Text("中文候选来自固定的 CC-CEDICT 快照及扩充词库的补充读音。英文释义沿用 Windows 开发词库，仅用于预览，未获人工发布审批。", fontSize = 13.sp, lineHeight = 22.sp, color = c.subtle)
             SettingLabel("只在本机")
             Text("输入、查词与中文选词学习均离线运行。拾词不申请网络权限。选词记录位于应用私有目录，不上传，也不参与 Android 备份。关闭选词学习可暂停新记录；逐词遗忘不修改应用正文。", fontSize = 13.sp, lineHeight = 22.sp, color = c.subtle)
             SettingLabel("开源与数据许可")
             listOf(
                 "软件源码 · GPL-3.0-or-later" to "notices/LICENSE",
                 "词库数据 · CC BY-SA 4.0" to "notices/chinese/CC-BY-SA-4.0.txt",
+                "英文词库来源与审核状态" to "notices/english/NOTICE.txt",
                 "词频语料与作者署名" to "notices/chinese/WORDFREQ-README.md",
                 "Unicode 数据" to "notices/chinese/UNICODE-LICENSE.txt",
                 "Rime 引擎" to "notices/third-party/librime/LICENSE",

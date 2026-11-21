@@ -31,7 +31,7 @@ impl Engine for Fake {
         let mut m = self.0.borrow_mut();
         m.context.highlighted = index;
         let reason = if !m.config.english() { "disabled" } else if m.partial || m.context.caret != m.context.input.len() { "partial-composition" } else { "ready" };
-        Ok(Inspection { chinese: "你好".into(), english: m.english.clone(), reason: reason.into() })
+        Ok(Inspection { chinese: "你好".into(), english: m.english.clone(), reason: reason.into(), reading: "ni hao".into() })
     }
     fn commit_english(&mut self) -> Result<bool> {
         let english = self.0.borrow().english.clone();

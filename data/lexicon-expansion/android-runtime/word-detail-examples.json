@@ -1,0 +1,244 @@
+[
+  {
+    "id": "sense-20f6b9e3f4db0db9d022",
+    "chinese": "解决",
+    "reading": "jie jue",
+    "english": "solve",
+    "collocation": "solve a problem",
+    "exampleEn": "We need to solve this problem.",
+    "exampleZh": "我们需要解决这个问题。",
+    "usage": "解决问题、找出答案"
+  },
+  {
+    "id": "sense-db0f5509a920055c19d7",
+    "chinese": "解决",
+    "reading": "jie jue",
+    "english": "settle",
+    "collocation": "settle a dispute",
+    "exampleEn": "They met to settle the dispute.",
+    "exampleZh": "他们见面解决这场纠纷。",
+    "usage": "解决争端、达成和解"
+  },
+  {
+    "id": "sense-a8c5bc2ffc45ff45a405",
+    "chinese": "还",
+    "reading": "hai",
+    "english": "even",
+    "collocation": "even better",
+    "exampleEn": "This one is even better.",
+    "exampleZh": "这个还要好。"
+  },
+  {
+    "id": "sense-fd6e7fa7b90897a22892",
+    "chinese": "还",
+    "reading": "huan",
+    "english": "return",
+    "collocation": "return a book",
+    "exampleEn": "I need to return this book today.",
+    "exampleZh": "我今天得还这本书。"
+  },
+  {
+    "id": "sense-00d45882624d6a35bb4e",
+    "chinese": "安排",
+    "reading": "an pai",
+    "english": "arrange",
+    "collocation": "arrange a visit",
+    "exampleEn": "We need to arrange a visit.",
+    "exampleZh": "我们需要安排一次参观。"
+  },
+  {
+    "id": "sense-57d5b08f25a4fbe57bb6",
+    "chinese": "安排",
+    "reading": "an pai",
+    "english": "arrangement",
+    "collocation": "make an arrangement",
+    "exampleEn": "We made an arrangement to meet after work.",
+    "exampleZh": "我们安排在下班后见面。"
+  },
+  {
+    "id": "sense-0c9415caec6f37ff5915",
+    "chinese": "申请",
+    "reading": "shen qing",
+    "english": "apply",
+    "collocation": "apply for a job",
+    "exampleEn": "I want to apply for this job.",
+    "exampleZh": "我想申请这份工作。"
+  },
+  {
+    "id": "sense-8da35dc4d0a017df1e40",
+    "chinese": "申请",
+    "reading": "shen qing",
+    "english": "application",
+    "collocation": "submit an application",
+    "exampleEn": "Please submit your application by Friday.",
+    "exampleZh": "请在周五前提交申请。"
+  },
+  {
+    "id": "sense-261b0720da8eb4ac70c7",
+    "chinese": "考虑",
+    "reading": "kao lv",
+    "english": "consider",
+    "collocation": "consider an offer",
+    "exampleEn": "I need a day to consider your offer.",
+    "exampleZh": "我需要一天时间考虑你的提议。"
+  },
+  {
+    "id": "sense-95c4154af30af7a75886",
+    "chinese": "考虑",
+    "reading": "kao lv",
+    "english": "consideration",
+    "collocation": "under consideration",
+    "exampleEn": "The plan is still under consideration.",
+    "exampleZh": "这项计划仍在考虑中。"
+  },
+  {
+    "id": "sense-dceae8ceaa53f5f15960",
+    "chinese": "预订",
+    "reading": "yu ding",
+    "english": "book",
+    "collocation": "book a room",
+    "exampleEn": "I'd like to book a room for two nights.",
+    "exampleZh": "我想预订一间房，住两晚。"
+  },
+  {
+    "id": "sense-7b00248b92420769197b",
+    "chinese": "预订",
+    "reading": "yu ding",
+    "english": "reservation",
+    "collocation": "confirm a reservation",
+    "exampleEn": "The hotel confirmed our reservation.",
+    "exampleZh": "酒店确认了我们的预订。"
+  },
+  {
+    "id": "sense-426f32b9ea36bfe27122",
+    "chinese": "完成",
+    "reading": "wan cheng",
+    "english": "complete",
+    "collocation": "complete a form",
+    "exampleEn": "Please complete this form.",
+    "exampleZh": "请填完这张表。"
+  },
+  {
+    "id": "sense-52ab08c7340440129246",
+    "chinese": "完成",
+    "reading": "wan cheng",
+    "english": "completion",
+    "collocation": "the completion of a project",
+    "exampleEn": "We celebrated the completion of the project.",
+    "exampleZh": "我们庆祝项目顺利完成。"
+  },
+  {
+    "id": "sense-c8596c4da5b8c1d94262",
+    "chinese": "完成",
+    "reading": "wan cheng",
+    "english": "finish",
+    "collocation": "finish a report",
+    "exampleEn": "I can finish the report by noon.",
+    "exampleZh": "我能在中午前完成这份报告。"
+  },
+  {
+    "id": "sense-9be3c02716619cec7e99",
+    "chinese": "支持",
+    "reading": "zhi chi",
+    "english": "support",
+    "collocation": "support a friend",
+    "exampleEn": "I want to support my friend through this.",
+    "exampleZh": "我想支持朋友渡过这道难关。"
+  },
+  {
+    "id": "sense-63d11c57068f282dc96d",
+    "chinese": "支持",
+    "reading": "zhi chi",
+    "english": "back",
+    "collocation": "back a proposal",
+    "exampleEn": "We agreed to back her proposal.",
+    "exampleZh": "我们一致同意支持她的提案。"
+  },
+  {
+    "id": "sense-73dbf1fe46dea51451f4",
+    "chinese": "支持",
+    "reading": "zhi chi",
+    "english": "endorsement",
+    "collocation": "win an endorsement",
+    "exampleEn": "The plan won the mayor's endorsement.",
+    "exampleZh": "这项计划得到了市长的公开支持。"
+  },
+  {
+    "id": "legacy-daily-107",
+    "chinese": "公园",
+    "reading": "gong yuan",
+    "english": "park",
+    "collocation": "at the park",
+    "exampleEn": "Let's meet at the park.",
+    "exampleZh": "我们在公园见吧。",
+    "usage": "供散步、休闲的公共场所",
+    "pos": "n"
+  },
+  {
+    "id": "legacy-daily-018",
+    "chinese": "建议",
+    "reading": "jian yi",
+    "english": "suggestion",
+    "collocation": "make a suggestion",
+    "exampleEn": "Can I make a suggestion?",
+    "exampleZh": "我可以提个建议吗？",
+    "usage": "一条具体的建议",
+    "pos": "n"
+  },
+  {
+    "id": "sense-e37ec09c9ad571721b2a",
+    "chinese": "建议",
+    "reading": "jian yi",
+    "english": "advice",
+    "collocation": "ask for advice",
+    "exampleEn": "Can I ask you for some advice?",
+    "exampleZh": "我能请你给我一些建议吗？"
+  },
+  {
+    "id": "sense-8e2f1adcccae5e734a46",
+    "chinese": "建议",
+    "reading": "jian yi",
+    "english": "suggest",
+    "collocation": "suggest a solution",
+    "exampleEn": "Can you suggest a solution?",
+    "exampleZh": "你能建议一个解决办法吗？"
+  },
+  {
+    "id": "sense-08e255faae6af78c00e5",
+    "chinese": "成功",
+    "reading": "cheng gong",
+    "english": "succeed",
+    "collocation": "succeed in doing something",
+    "exampleEn": "I hope you succeed in finding a job.",
+    "exampleZh": "希望你能成功找到工作。"
+  },
+  {
+    "id": "sense-28f8304d6144c12235ab",
+    "chinese": "成功",
+    "reading": "cheng gong",
+    "english": "success",
+    "collocation": "be a success",
+    "exampleEn": "The event was a success.",
+    "exampleZh": "这次活动很成功。"
+  },
+  {
+    "id": "legacy-daily-014",
+    "chinese": "拒绝",
+    "reading": "ju jue",
+    "english": "refuse",
+    "collocation": "refuse an offer",
+    "exampleEn": "She decided to refuse the offer.",
+    "exampleZh": "她决定拒绝这个提议。",
+    "usage": "拒绝接受或拒绝去做",
+    "pos": "v"
+  },
+  {
+    "id": "sense-b8a0cedadb1799d0cf04",
+    "chinese": "拒绝",
+    "reading": "ju jue",
+    "english": "reject",
+    "collocation": "reject an application",
+    "exampleEn": "The committee may reject the application.",
+    "exampleZh": "委员会可能会拒绝这份申请。"
+  }
+]

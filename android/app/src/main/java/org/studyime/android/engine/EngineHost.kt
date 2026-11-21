@@ -26,6 +26,7 @@ class EngineHost(context: Context) : AutoCloseable {
     // another frame. Callbacks remain serial on the main thread and gated by
     // the editor generation, including after disconnect/close.
     private val main = Handler.createAsync(Looper.getMainLooper())
+    private val wordDetails = WordDetails { name -> app.assets.open(name).bufferedReader(Charsets.UTF_8).use { it.readText() } }
     private val active = AtomicLong(0)
     private var handle = 0L
     @Volatile private var closed = false
@@ -71,7 +72,8 @@ class EngineHost(context: Context) : AutoCloseable {
                 val raw = NativeCore.dispatch(handle, encoded)
                 val dispatched = SystemClock.elapsedRealtimeNanos()
                 if (type == "start" || type == "restart") StartupTimings.record(Phase.FIRST_DISPATCH, initialized, dispatched)
-                val snapshot = EngineSnapshot.parse(raw)
+                val parsedSnapshot = EngineSnapshot.parse(raw)
+                val snapshot = parsedSnapshot.target?.let { parsedSnapshot.copy(target = wordDetails.enrich(it)) } ?: parsedSnapshot
                 val parsed = SystemClock.elapsedRealtimeNanos()
                 main.post {
                     if (!closed && active.get() == generation && snapshot.generation == generation) {

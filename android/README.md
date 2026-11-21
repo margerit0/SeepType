@@ -2,6 +2,18 @@
 
 Kotlin / Jetpack Compose 输入法，Rust 管理会话与候选动作，NDK 构建固定的 librime / Lua。最低 API 29，目标 API 35；同时打包 `arm64-v8a` 和 `x86_64`。功能范围及验收见 [完整计划](../docs/android-plan.md)，接续状态见 [交接文档](../docs/android-handoff.md)，实际版本、设备与限制见 [验证记录](../docs/android-validation.md)。
 
+## 离线词库
+
+Android 使用 Windows 分支 `1977d31` 的 2026-11-17 开发词库快照：13,137 条英文开发记录、10,495 个中文／读音入口；中文候选词典含 124,066 条词形／读音记录，其中 2,561 条是扩充快照补充的读音。全拼、自然码和小鹤均使用同一快照，候选栏和英文提交仍只使用该候选／读音的默认英文义项。委派审校不等于人工发布审批。
+
+来源、摘要与后续同步方式见 [词库快照](../data/lexicon-expansion/android-runtime/README.md)。常规 APK、测试和一键验收构建会检查并刷新旧词库资源，不需要重新编译 JNI 库，也不需要访问 Windows 工作目录。
+
+## 单词详情
+
+点底栏的详情键或长按候选，打开沿用当前皮肤的浮卡。浮卡按实际读音把默认译法置顶，并列展示该读音的其他义项、词性和中文用法；有搭配和中英例句时一并展示。可以对照用法，但只有「输入 <默认英文>」会提交英文。关闭不会改变输入，隐藏英文时仍可打开选词学习操作。
+
+首批原创示例覆盖 12 个词、26 个义项，尚未获人工发布审批。详情资源独立放在 APK 中，打开卡片时才按需读取。没有例句的词只展示已有内容。
+
 ## 构建环境
 
 从仓库根目录执行以下 Python 命令。当前构建脚本以 Windows x64 为宿主，需要 Python 3.11+、Rust 1.88.0 的 MSVC 宿主工具链，以及已有的 Visual Studio C++ Build Tools / CMake / Ninja。脚本不会更新全局工具或系统 PATH。
@@ -44,7 +56,7 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 ## 数据和恢复
 
-首轮使用固定 CC-CEDICT / wordfreq / Unihan 数据生成 121,505 条中文词条，携带 200 条**待人工审核**的英文释义。`prepare_data.py` 复用现有词库流程，不加入网页原型中的示例，不启动词库扩充请求。原始来源、摘要、署名和审核记录随生成资源保存。
+中文基础词典使用固定的 CC-CEDICT / wordfreq / Unihan 数据；英文释义和补充读音来自上述开发快照。`prepare_data.py` 不启动词库扩充或联网查词。原始来源、摘要、署名和审核记录见快照及 APK 许可资料。
 
 资源按摘要生成版本，在后台校验、部署和编译，成功后切换活动版本。用户词典独立保存在 `noBackupFilesDir/rime/user`；三种方案共用它。应用不申请网络权限，用户词典和设置均显式排除 Android 备份。卸载应用仍会删除其本机数据。
 
@@ -63,10 +75,11 @@ python -X utf8 tools/android/build.py apk --debug
 python -X utf8 tools/android/run_device_checks.py install --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py native --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py ime --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py word-details --serial 127.0.0.1:5555
 python -X utf8 tools/android/build.py lint
 ```
 
-`native` 在隔离的合成用户词典中执行真实 JNI / Rust / Rime / Lua 验证，包含三种方案各 200 条中英文样本、候选动作保护、隐私、学习和遗忘。`ime` 使用真实 Android 编辑器和系统输入法窗口操作；调试用编辑器不会打进发布优化包。测试结果及安装 APK 摘要位于 `.cache/android/evidence`，命令日志位于 `.cache/android/logs`。
+`native` 在隔离的合成用户词典中执行真实 JNI / Rust / Rime / Lua 验证，包含三种方案各 234 条中英文样本（包括保留的旧候选、新增词、补充读音和多音字）、候选动作保护、隐私、学习和遗忘。`ime` 使用真实 Android 编辑器和系统输入法窗口操作；调试用编辑器不会打进发布优化包。测试结果及安装 APK 摘要位于 `.cache/android/evidence`，命令日志位于 `.cache/android/logs`。
 
 优化 APK 的输入检查使用独立 Debug 编辑器与测试运行器，实际键盘是 Release 进程。先安装 Release，再运行相关检查；每次开始前都会读取设备中的 APK 并验证摘要：
 

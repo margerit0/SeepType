@@ -1,0 +1,4916 @@
+[
+  {
+    "schema": "study",
+    "input": "zhangfu",
+    "chinese": "丈夫",
+    "english": "husband",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shangchuan",
+    "chinese": "上传",
+    "english": "upload",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shangwu",
+    "chinese": "上午",
+    "english": "morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiawu",
+    "chinese": "下午",
+    "english": "afternoon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiazai",
+    "chinese": "下载",
+    "english": "download",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiayu",
+    "chinese": "下雨",
+    "english": "rain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiaxue",
+    "chinese": "下雪",
+    "english": "snow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "buqieshiji",
+    "chinese": "不切实际",
+    "english": "impractical",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "bukeqi",
+    "chinese": "不客气",
+    "english": "you're welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "buyinrenzhumude",
+    "chinese": "不引人注目地",
+    "english": "unobtrusively",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "buyueer",
+    "chinese": "不悦耳",
+    "english": "unmusical",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "yanlide",
+    "chinese": "严厉的",
+    "english": "strict",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "zhongwu",
+    "chinese": "中午",
+    "english": "noon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jinhou",
+    "chinese": "今后",
+    "english": "henceforth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "jintian",
+    "chinese": "今天",
+    "english": "today",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jinnian",
+    "chinese": "今年",
+    "english": "this year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jieshao",
+    "chinese": "介绍",
+    "english": "introduce",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "fukuan",
+    "chinese": "付款",
+    "english": "pay",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "lingrenmaogusongrande",
+    "chinese": "令人毛骨悚然地",
+    "english": "gruesomely",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "jiage",
+    "chinese": "价格",
+    "english": "price",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "renwu",
+    "chinese": "任务",
+    "english": "task",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shangwangrenyuan",
+    "chinese": "伤亡人员",
+    "english": "casualty",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "disheng",
+    "chinese": "低声",
+    "english": "softly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "zuoye",
+    "chinese": "作业",
+    "english": "homework",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "nihao",
+    "chinese": "你好",
+    "english": "hello",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shifuzahua",
+    "chinese": "使复杂化",
+    "english": "complicate",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "cuxiao",
+    "chinese": "促销",
+    "english": "promotion",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "baocun",
+    "chinese": "保存",
+    "english": "save",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qingpende",
+    "chinese": "倾盆的",
+    "english": "torrential",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "zuofan",
+    "chinese": "做饭",
+    "english": "cook",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jiankang",
+    "chinese": "健康",
+    "english": "health",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "aoman",
+    "chinese": "傲慢",
+    "english": "arrogant",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "erzi",
+    "chinese": "儿子",
+    "english": "son",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "quanshifanweide",
+    "chinese": "全市范围的",
+    "english": "citywide",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "gongyuan",
+    "chinese": "公园",
+    "english": "park",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "neicun",
+    "chinese": "内存",
+    "english": "memory",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "zaijian",
+    "chinese": "再见",
+    "english": "goodbye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiezi",
+    "chinese": "写字",
+    "english": "write",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "dongtian",
+    "chinese": "冬天",
+    "english": "winter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "bingxiang",
+    "chinese": "冰箱",
+    "english": "refrigerator",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qiliangde",
+    "chinese": "凄凉地",
+    "english": "forlornly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "chuzuche",
+    "chinese": "出租车",
+    "english": "taxi",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "fenzhong",
+    "chinese": "分钟",
+    "english": "minute",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shanchu",
+    "chinese": "删除",
+    "english": "delete",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "bangongshi",
+    "chinese": "办公室",
+    "english": "office",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yisheng",
+    "chinese": "医生",
+    "english": "doctor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yiyuan",
+    "chinese": "医院",
+    "english": "hospital",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shiqi",
+    "chinese": "十七",
+    "english": "seventeen",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "wucan",
+    "chinese": "午餐",
+    "english": "lunch",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qunian",
+    "chinese": "去年",
+    "english": "last year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "fapiao",
+    "chinese": "发票",
+    "english": "invoice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chifan",
+    "chinese": "吃饭",
+    "english": "eat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "hetong",
+    "chinese": "合同",
+    "english": "contract",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "tongshi",
+    "chinese": "同事",
+    "english": "colleague",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "tongxue",
+    "chinese": "同学",
+    "english": "classmate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "tongyi",
+    "chinese": "同意",
+    "english": "agree",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "houwei",
+    "chinese": "后卫",
+    "english": "defender",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "houjianzhiming",
+    "chinese": "后见之明",
+    "english": "hindsight",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "yuangong",
+    "chinese": "员工",
+    "english": "employee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zhoumo",
+    "chinese": "周末",
+    "english": "weekend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "kafei",
+    "chinese": "咖啡",
+    "english": "coffee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "gege",
+    "chinese": "哥哥",
+    "english": "older brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shangdian",
+    "chinese": "商店",
+    "english": "shop",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xihuan",
+    "chinese": "喜欢",
+    "english": "like",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "hezuide",
+    "chinese": "喝醉的",
+    "english": "drunk",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "huida",
+    "chinese": "回答",
+    "english": "answer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "tushuguan",
+    "chinese": "图书馆",
+    "english": "library",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "ditu",
+    "chinese": "地图",
+    "english": "map",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "dizhi",
+    "chinese": "地址",
+    "english": "address",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "ditie",
+    "chinese": "地铁",
+    "english": "subway",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chengshi",
+    "chinese": "城市",
+    "english": "city",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jidi",
+    "chinese": "基地",
+    "english": "base",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "xiatian",
+    "chinese": "夏天",
+    "english": "summer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "tianqi",
+    "chinese": "天气",
+    "english": "weather",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "taikongcang",
+    "chinese": "太空舱",
+    "english": "capsule",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "taiyang",
+    "chinese": "太阳",
+    "english": "sun",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "toufa",
+    "chinese": "头发",
+    "english": "hair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "nver",
+    "chinese": "女儿",
+    "english": "daughter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mama",
+    "chinese": "妈妈",
+    "english": "mom",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "meimei",
+    "chinese": "妹妹",
+    "english": "younger sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qizi",
+    "chinese": "妻子",
+    "english": "wife",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jiejie",
+    "chinese": "姐姐",
+    "english": "older sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xuexiao",
+    "chinese": "学校",
+    "english": "school",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xuesheng",
+    "chinese": "学生",
+    "english": "student",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "haizi",
+    "chinese": "孩子",
+    "english": "child",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "anjing",
+    "chinese": "安静",
+    "english": "quiet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "kehu",
+    "chinese": "客户",
+    "english": "client",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "haipa",
+    "chinese": "害怕",
+    "english": "be afraid",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jiaren",
+    "chinese": "家人",
+    "english": "family member",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jiating",
+    "chinese": "家庭",
+    "english": "family",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mima",
+    "chinese": "密码",
+    "english": "password",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "duibuqi",
+    "chinese": "对不起",
+    "english": "sorry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiaoshi",
+    "chinese": "小时",
+    "english": "hour",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiaomuniu",
+    "chinese": "小母牛",
+    "english": "heifer",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "weiba",
+    "chinese": "尾巴",
+    "english": "tail",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "pingmu",
+    "chinese": "屏幕",
+    "english": "screen",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "bangzhu",
+    "chinese": "帮助",
+    "english": "help",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "maozi",
+    "chinese": "帽子",
+    "english": "hat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jianyi",
+    "chinese": "建议",
+    "english": "suggestion",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "kaishi",
+    "chinese": "开始",
+    "english": "begin",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "kaimu",
+    "chinese": "开幕",
+    "english": "inaugurate",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "didi",
+    "chinese": "弟弟",
+    "english": "younger brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chedi",
+    "chinese": "彻底",
+    "english": "utterly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "manglu",
+    "chinese": "忙碌",
+    "english": "busy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zongjie",
+    "chinese": "总结",
+    "english": "summarise",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "konghuangde",
+    "chinese": "恐慌的",
+    "english": "terrified",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "jingxia",
+    "chinese": "惊吓",
+    "english": "terrify",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "ganmao",
+    "chinese": "感冒",
+    "english": "common cold",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "nuofu",
+    "chinese": "懦夫",
+    "english": "coward",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "fangjian",
+    "chinese": "房间",
+    "english": "room",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shouzhi",
+    "chinese": "手指",
+    "english": "finger",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shouji",
+    "chinese": "手机",
+    "english": "mobile phone",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "baogao",
+    "chinese": "报告",
+    "english": "report",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jujue",
+    "chinese": "拒绝",
+    "english": "refuse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chijiude",
+    "chinese": "持久地",
+    "english": "enduringly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "wenjian",
+    "chinese": "文件",
+    "english": "document",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "lvxing",
+    "chinese": "旅行",
+    "english": "travel",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zaoan",
+    "chinese": "早安",
+    "english": "good morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zaochen",
+    "chinese": "早晨",
+    "english": "early morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zaocan",
+    "chinese": "早餐",
+    "english": "breakfast",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shijian",
+    "chinese": "时间",
+    "english": "time",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mingtian",
+    "chinese": "明天",
+    "english": "tomorrow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mingnian",
+    "chinese": "明年",
+    "english": "next year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xingxing",
+    "chinese": "星星",
+    "english": "star",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xingqi",
+    "chinese": "星期",
+    "english": "week",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chuntian",
+    "chinese": "春天",
+    "english": "spring",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zuotian",
+    "chinese": "昨天",
+    "english": "yesterday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "wanan",
+    "chinese": "晚安",
+    "english": "good night",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "wancan",
+    "chinese": "晚餐",
+    "english": "dinner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "gengduode",
+    "chinese": "更多的",
+    "english": "more",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "yueliang",
+    "chinese": "月亮",
+    "english": "moon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yuefen",
+    "chinese": "月份",
+    "english": "month",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "youyingyangde",
+    "chinese": "有营养的",
+    "english": "nutritious",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "pengyou",
+    "chinese": "朋友",
+    "english": "friend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jichang",
+    "chinese": "机场",
+    "english": "airport",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "gelv",
+    "chinese": "格律",
+    "english": "metre",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "zhuozi",
+    "chinese": "桌子",
+    "english": "table",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yizi",
+    "chinese": "椅子",
+    "english": "chair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chengzi",
+    "chinese": "橙子",
+    "english": "orange",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "huanying",
+    "chinese": "欢迎",
+    "english": "welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "wuzhuangde",
+    "chinese": "武装的",
+    "english": "armed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "muqin",
+    "chinese": "母亲",
+    "english": "mother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shuiguo",
+    "chinese": "水果",
+    "english": "fruit",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "meiguanxi",
+    "chinese": "没关系",
+    "english": "it doesn't matter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zhanzhanzixide",
+    "chinese": "沾沾自喜的",
+    "english": "smug",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "xizao",
+    "chinese": "洗澡",
+    "english": "bathe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiyiji",
+    "chinese": "洗衣机",
+    "english": "washing machine",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "youyong",
+    "chinese": "游泳",
+    "english": "swim",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "huoche",
+    "chinese": "火车",
+    "english": "train",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zhaopian",
+    "chinese": "照片",
+    "english": "photo",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "fuqin",
+    "chinese": "父亲",
+    "english": "father",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "baba",
+    "chinese": "爸爸",
+    "english": "dad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yachi",
+    "chinese": "牙齿",
+    "english": "tooth",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "niunai",
+    "chinese": "牛奶",
+    "english": "milk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xianzai",
+    "chinese": "现在",
+    "english": "now",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shengri",
+    "chinese": "生日",
+    "english": "birthday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "diannao",
+    "chinese": "电脑",
+    "english": "computer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shuhude",
+    "chinese": "疏忽的",
+    "english": "neglectful",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "pijuan",
+    "chinese": "疲倦",
+    "english": "tired",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yanjing",
+    "chinese": "眼睛",
+    "english": "eye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shuijiao",
+    "chinese": "睡觉",
+    "english": "sleep",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "pochan",
+    "chinese": "破产",
+    "english": "bankruptcy",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "zhuhe",
+    "chinese": "祝贺",
+    "english": "congratulate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qiutian",
+    "chinese": "秋天",
+    "english": "autumn",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shui",
+    "chinese": "税",
+    "english": "duties",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "kongtiao",
+    "chinese": "空调",
+    "english": "air conditioner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chuanghu",
+    "chinese": "窗户",
+    "english": "window",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mifan",
+    "chinese": "米饭",
+    "english": "cooked rice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "ji",
+    "chinese": "系",
+    "english": "fasten",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study",
+    "input": "xi",
+    "chinese": "系",
+    "english": "tie",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study",
+    "input": "jinzhua",
+    "chinese": "紧抓",
+    "english": "clutch",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "jinbengde",
+    "chinese": "紧绷的",
+    "english": "taut",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "fanyan",
+    "chinese": "繁衍",
+    "english": "multiply",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "lianxi",
+    "chinese": "练习",
+    "english": "practice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jingli",
+    "chinese": "经理",
+    "english": "manager",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jieshu",
+    "chinese": "结束",
+    "english": "end",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jifu",
+    "chinese": "继父",
+    "english": "stepfather",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "wangluo",
+    "chinese": "网络",
+    "english": "network",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "laoshi",
+    "chinese": "老师",
+    "english": "teacher",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "kaoshi",
+    "chinese": "考试",
+    "english": "exam",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "erduo",
+    "chinese": "耳朵",
+    "english": "ear",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "cuide",
+    "chinese": "脆的",
+    "english": "crisp",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "fubaide",
+    "chinese": "腐败的",
+    "english": "corrupt",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "zixingche",
+    "chinese": "自行车",
+    "english": "bicycle",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shufu",
+    "chinese": "舒服",
+    "english": "comfortable",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "pingguo",
+    "chinese": "苹果",
+    "english": "apple",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chaye",
+    "chinese": "茶叶",
+    "english": "tea leaves",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "caomei",
+    "chinese": "草莓",
+    "english": "strawberry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "putao",
+    "chinese": "葡萄",
+    "english": "grape",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jiedao",
+    "chinese": "街道",
+    "english": "street",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yifu",
+    "chinese": "衣服",
+    "english": "clothes",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "buzhujin",
+    "chinese": "补助金",
+    "english": "grants",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "wazi",
+    "chinese": "袜子",
+    "english": "socks",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xigua",
+    "chinese": "西瓜",
+    "english": "watermelon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shipin",
+    "chinese": "视频",
+    "english": "video",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jieshi",
+    "chinese": "解释",
+    "english": "explain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "dingdan",
+    "chinese": "订单",
+    "english": "order",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xuduo",
+    "chinese": "许多",
+    "english": "many",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "qingwen",
+    "chinese": "请问",
+    "english": "excuse me",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiexie",
+    "chinese": "谢谢",
+    "english": "thank you",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zoulu",
+    "chinese": "走路",
+    "english": "walk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qichuang",
+    "chinese": "起床",
+    "english": "get up",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chaoshi",
+    "chinese": "超市",
+    "english": "supermarket",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "paobu",
+    "chinese": "跑步",
+    "english": "run",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "lukou",
+    "chinese": "路口",
+    "english": "intersection",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shenti",
+    "chinese": "身体",
+    "english": "body",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "chezhan",
+    "chinese": "车站",
+    "english": "station",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "ruanjian",
+    "chinese": "软件",
+    "english": "software",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "hai",
+    "chinese": "还",
+    "english": "even",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study",
+    "input": "huan",
+    "chinese": "还",
+    "english": "return",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study",
+    "input": "yaoqing",
+    "chinese": "邀请",
+    "english": "invite",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "youjian",
+    "chinese": "邮件",
+    "english": "email",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "linju",
+    "chinese": "邻居",
+    "english": "neighbor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yaoshi",
+    "chinese": "钥匙",
+    "english": "key",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "qianbao",
+    "chinese": "钱包",
+    "english": "wallet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yinhang",
+    "chinese": "银行",
+    "english": "bank",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jianpan",
+    "chinese": "键盘",
+    "english": "keyboard",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jianjiede",
+    "chinese": "间接地",
+    "english": "indirectly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "yuedu",
+    "chinese": "阅读",
+    "english": "read",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiandu",
+    "chinese": "限度",
+    "english": "limit",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "nanguo",
+    "chinese": "难过",
+    "english": "feel sad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yusan",
+    "chinese": "雨伞",
+    "english": "umbrella",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "mianbao",
+    "chinese": "面包",
+    "english": "bread",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "miantiao",
+    "chinese": "面条",
+    "english": "noodles",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiezi",
+    "chinese": "鞋子",
+    "english": "shoe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiangmu",
+    "chinese": "项目",
+    "english": "project",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "feiji",
+    "chinese": "飞机",
+    "english": "airplane",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "canting",
+    "chinese": "餐厅",
+    "english": "restaurant",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "yinliao",
+    "chinese": "饮料",
+    "english": "beverage",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xiangjiao",
+    "chinese": "香蕉",
+    "english": "banana",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "gaoxing",
+    "chinese": "高兴",
+    "english": "happy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "jidan",
+    "chinese": "鸡蛋",
+    "english": "egg",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "shubiao",
+    "chinese": "鼠标",
+    "english": "computer mouse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "bizi",
+    "chinese": "鼻子",
+    "english": "nose",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vhfu",
+    "chinese": "丈夫",
+    "english": "husband",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uhir",
+    "chinese": "上传",
+    "english": "upload",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uhwu",
+    "chinese": "上午",
+    "english": "morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xwwu",
+    "chinese": "下午",
+    "english": "afternoon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xwzl",
+    "chinese": "下载",
+    "english": "download",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xwyu",
+    "chinese": "下雨",
+    "english": "rain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xwxt",
+    "chinese": "下雪",
+    "english": "snow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "buqxuiji",
+    "chinese": "不切实际",
+    "english": "impractical",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bukeqi",
+    "chinese": "不客气",
+    "english": "you're welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "buynrfvumude",
+    "chinese": "不引人注目地",
+    "english": "unobtrusively",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "buyter",
+    "chinese": "不悦耳",
+    "english": "unmusical",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yjlide",
+    "chinese": "严厉的",
+    "english": "strict",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vswu",
+    "chinese": "中午",
+    "english": "noon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jnhb",
+    "chinese": "今后",
+    "english": "henceforth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jntm",
+    "chinese": "今天",
+    "english": "today",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jnnm",
+    "chinese": "今年",
+    "english": "this year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jxuk",
+    "chinese": "介绍",
+    "english": "introduce",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fukr",
+    "chinese": "付款",
+    "english": "pay",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lyrfmkgussrjde",
+    "chinese": "令人毛骨悚然地",
+    "english": "gruesomely",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jwge",
+    "chinese": "价格",
+    "english": "price",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "rfwu",
+    "chinese": "任务",
+    "english": "task",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uhwhrfyr",
+    "chinese": "伤亡人员",
+    "english": "casualty",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "diug",
+    "chinese": "低声",
+    "english": "softly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zoye",
+    "chinese": "作业",
+    "english": "homework",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "nihk",
+    "chinese": "你好",
+    "english": "hello",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uifuzahw",
+    "chinese": "使复杂化",
+    "english": "complicate",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "cuxc",
+    "chinese": "促销",
+    "english": "promotion",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bkcp",
+    "chinese": "保存",
+    "english": "save",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qypfde",
+    "chinese": "倾盆的",
+    "english": "torrential",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zofj",
+    "chinese": "做饭",
+    "english": "cook",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jmkh",
+    "chinese": "健康",
+    "english": "health",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "aomj",
+    "chinese": "傲慢",
+    "english": "arrogant",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "erzi",
+    "chinese": "儿子",
+    "english": "son",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qruifjwzde",
+    "chinese": "全市范围的",
+    "english": "citywide",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "gsyr",
+    "chinese": "公园",
+    "english": "park",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "nzcp",
+    "chinese": "内存",
+    "english": "memory",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zljm",
+    "chinese": "再见",
+    "english": "goodbye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xxzi",
+    "chinese": "写字",
+    "english": "write",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "dstm",
+    "chinese": "冬天",
+    "english": "winter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "byxd",
+    "chinese": "冰箱",
+    "english": "refrigerator",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qildde",
+    "chinese": "凄凉地",
+    "english": "forlornly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iuzuie",
+    "chinese": "出租车",
+    "english": "taxi",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ffvs",
+    "chinese": "分钟",
+    "english": "minute",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ujiu",
+    "chinese": "删除",
+    "english": "delete",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bjgsui",
+    "chinese": "办公室",
+    "english": "office",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yiug",
+    "chinese": "医生",
+    "english": "doctor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yiyr",
+    "chinese": "医院",
+    "english": "hospital",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uiqi",
+    "chinese": "十七",
+    "english": "seventeen",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wucj",
+    "chinese": "午餐",
+    "english": "lunch",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qunm",
+    "chinese": "去年",
+    "english": "last year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fapc",
+    "chinese": "发票",
+    "english": "invoice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iifj",
+    "chinese": "吃饭",
+    "english": "eat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hets",
+    "chinese": "合同",
+    "english": "contract",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tsui",
+    "chinese": "同事",
+    "english": "colleague",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tsxt",
+    "chinese": "同学",
+    "english": "classmate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tsyi",
+    "chinese": "同意",
+    "english": "agree",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hbwz",
+    "chinese": "后卫",
+    "english": "defender",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hbjmvimy",
+    "chinese": "后见之明",
+    "english": "hindsight",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yrgs",
+    "chinese": "员工",
+    "english": "employee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vbmo",
+    "chinese": "周末",
+    "english": "weekend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "kafz",
+    "chinese": "咖啡",
+    "english": "coffee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "gege",
+    "chinese": "哥哥",
+    "english": "older brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uhdm",
+    "chinese": "商店",
+    "english": "shop",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xihr",
+    "chinese": "喜欢",
+    "english": "like",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hezvde",
+    "chinese": "喝醉的",
+    "english": "drunk",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hvda",
+    "chinese": "回答",
+    "english": "answer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tuuugr",
+    "chinese": "图书馆",
+    "english": "library",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ditu",
+    "chinese": "地图",
+    "english": "map",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "divi",
+    "chinese": "地址",
+    "english": "address",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ditx",
+    "chinese": "地铁",
+    "english": "subway",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "igui",
+    "chinese": "城市",
+    "english": "city",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jidi",
+    "chinese": "基地",
+    "english": "base",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xwtm",
+    "chinese": "夏天",
+    "english": "summer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tmqi",
+    "chinese": "天气",
+    "english": "weather",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tlksch",
+    "chinese": "太空舱",
+    "english": "capsule",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tlyh",
+    "chinese": "太阳",
+    "english": "sun",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tbfa",
+    "chinese": "头发",
+    "english": "hair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "nver",
+    "chinese": "女儿",
+    "english": "daughter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mama",
+    "chinese": "妈妈",
+    "english": "mom",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mzmz",
+    "chinese": "妹妹",
+    "english": "younger sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qizi",
+    "chinese": "妻子",
+    "english": "wife",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jxjx",
+    "chinese": "姐姐",
+    "english": "older sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xtxc",
+    "chinese": "学校",
+    "english": "school",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xtug",
+    "chinese": "学生",
+    "english": "student",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hlzi",
+    "chinese": "孩子",
+    "english": "child",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "anjy",
+    "chinese": "安静",
+    "english": "quiet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "kehu",
+    "chinese": "客户",
+    "english": "client",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hlpa",
+    "chinese": "害怕",
+    "english": "be afraid",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jwrf",
+    "chinese": "家人",
+    "english": "family member",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jwty",
+    "chinese": "家庭",
+    "english": "family",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mima",
+    "chinese": "密码",
+    "english": "password",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "dvbuqi",
+    "chinese": "对不起",
+    "english": "sorry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xcui",
+    "chinese": "小时",
+    "english": "hour",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xcmunq",
+    "chinese": "小母牛",
+    "english": "heifer",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wzba",
+    "chinese": "尾巴",
+    "english": "tail",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "pymu",
+    "chinese": "屏幕",
+    "english": "screen",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bhvu",
+    "chinese": "帮助",
+    "english": "help",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mkzi",
+    "chinese": "帽子",
+    "english": "hat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jmyi",
+    "chinese": "建议",
+    "english": "suggestion",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "klui",
+    "chinese": "开始",
+    "english": "begin",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "klmu",
+    "chinese": "开幕",
+    "english": "inaugurate",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "didi",
+    "chinese": "弟弟",
+    "english": "younger brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iedi",
+    "chinese": "彻底",
+    "english": "utterly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mhlu",
+    "chinese": "忙碌",
+    "english": "busy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zsjx",
+    "chinese": "总结",
+    "english": "summarise",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "kshdde",
+    "chinese": "恐慌的",
+    "english": "terrified",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jyxw",
+    "chinese": "惊吓",
+    "english": "terrify",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "gjmk",
+    "chinese": "感冒",
+    "english": "common cold",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "nofu",
+    "chinese": "懦夫",
+    "english": "coward",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fhjm",
+    "chinese": "房间",
+    "english": "room",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ubvi",
+    "chinese": "手指",
+    "english": "finger",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ubji",
+    "chinese": "手机",
+    "english": "mobile phone",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bkgk",
+    "chinese": "报告",
+    "english": "report",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jujt",
+    "chinese": "拒绝",
+    "english": "refuse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iijqde",
+    "chinese": "持久地",
+    "english": "enduringly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wfjm",
+    "chinese": "文件",
+    "english": "document",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lvxy",
+    "chinese": "旅行",
+    "english": "travel",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zkan",
+    "chinese": "早安",
+    "english": "good morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zkif",
+    "chinese": "早晨",
+    "english": "early morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zkcj",
+    "chinese": "早餐",
+    "english": "breakfast",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uijm",
+    "chinese": "时间",
+    "english": "time",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mytm",
+    "chinese": "明天",
+    "english": "tomorrow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mynm",
+    "chinese": "明年",
+    "english": "next year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xyxy",
+    "chinese": "星星",
+    "english": "star",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xyqi",
+    "chinese": "星期",
+    "english": "week",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iptm",
+    "chinese": "春天",
+    "english": "spring",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zotm",
+    "chinese": "昨天",
+    "english": "yesterday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wjan",
+    "chinese": "晚安",
+    "english": "good night",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wjcj",
+    "chinese": "晚餐",
+    "english": "dinner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ggdode",
+    "chinese": "更多的",
+    "english": "more",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ytld",
+    "chinese": "月亮",
+    "english": "moon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ytff",
+    "chinese": "月份",
+    "english": "month",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ybyyyhde",
+    "chinese": "有营养的",
+    "english": "nutritious",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "pgyb",
+    "chinese": "朋友",
+    "english": "friend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jiih",
+    "chinese": "机场",
+    "english": "airport",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "gelv",
+    "chinese": "格律",
+    "english": "metre",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vozi",
+    "chinese": "桌子",
+    "english": "table",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yizi",
+    "chinese": "椅子",
+    "english": "chair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "igzi",
+    "chinese": "橙子",
+    "english": "orange",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hryy",
+    "chinese": "欢迎",
+    "english": "welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wuvdde",
+    "chinese": "武装的",
+    "english": "armed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "muqn",
+    "chinese": "母亲",
+    "english": "mother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uvgo",
+    "chinese": "水果",
+    "english": "fruit",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mzgrxi",
+    "chinese": "没关系",
+    "english": "it doesn't matter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vjvjzixide",
+    "chinese": "沾沾自喜的",
+    "english": "smug",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xizk",
+    "chinese": "洗澡",
+    "english": "bathe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xiyiji",
+    "chinese": "洗衣机",
+    "english": "washing machine",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ybys",
+    "chinese": "游泳",
+    "english": "swim",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hoie",
+    "chinese": "火车",
+    "english": "train",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vkpm",
+    "chinese": "照片",
+    "english": "photo",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fuqn",
+    "chinese": "父亲",
+    "english": "father",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "baba",
+    "chinese": "爸爸",
+    "english": "dad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yaii",
+    "chinese": "牙齿",
+    "english": "tooth",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "nqnl",
+    "chinese": "牛奶",
+    "english": "milk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xmzl",
+    "chinese": "现在",
+    "english": "now",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ugri",
+    "chinese": "生日",
+    "english": "birthday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "dmnk",
+    "chinese": "电脑",
+    "english": "computer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uuhude",
+    "chinese": "疏忽的",
+    "english": "neglectful",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "pijr",
+    "chinese": "疲倦",
+    "english": "tired",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yjjy",
+    "chinese": "眼睛",
+    "english": "eye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uvjc",
+    "chinese": "睡觉",
+    "english": "sleep",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "poij",
+    "chinese": "破产",
+    "english": "bankruptcy",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vuhe",
+    "chinese": "祝贺",
+    "english": "congratulate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qqtm",
+    "chinese": "秋天",
+    "english": "autumn",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uv",
+    "chinese": "税",
+    "english": "duties",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "kstc",
+    "chinese": "空调",
+    "english": "air conditioner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "idhu",
+    "chinese": "窗户",
+    "english": "window",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mifj",
+    "chinese": "米饭",
+    "english": "cooked rice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ji",
+    "chinese": "系",
+    "english": "fasten",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xi",
+    "chinese": "系",
+    "english": "tie",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jnvw",
+    "chinese": "紧抓",
+    "english": "clutch",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jnbgde",
+    "chinese": "紧绷的",
+    "english": "taut",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fjyj",
+    "chinese": "繁衍",
+    "english": "multiply",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lmxi",
+    "chinese": "练习",
+    "english": "practice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jyli",
+    "chinese": "经理",
+    "english": "manager",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jxuu",
+    "chinese": "结束",
+    "english": "end",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jifu",
+    "chinese": "继父",
+    "english": "stepfather",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "whlo",
+    "chinese": "网络",
+    "english": "network",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lkui",
+    "chinese": "老师",
+    "english": "teacher",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "kkui",
+    "chinese": "考试",
+    "english": "exam",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "erdo",
+    "chinese": "耳朵",
+    "english": "ear",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "cvde",
+    "chinese": "脆的",
+    "english": "crisp",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fublde",
+    "chinese": "腐败的",
+    "english": "corrupt",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zixyie",
+    "chinese": "自行车",
+    "english": "bicycle",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uufu",
+    "chinese": "舒服",
+    "english": "comfortable",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "pygo",
+    "chinese": "苹果",
+    "english": "apple",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "iaye",
+    "chinese": "茶叶",
+    "english": "tea leaves",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ckmz",
+    "chinese": "草莓",
+    "english": "strawberry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "putk",
+    "chinese": "葡萄",
+    "english": "grape",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jxdk",
+    "chinese": "街道",
+    "english": "street",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yifu",
+    "chinese": "衣服",
+    "english": "clothes",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "buvujn",
+    "chinese": "补助金",
+    "english": "grants",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "wazi",
+    "chinese": "袜子",
+    "english": "socks",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xigw",
+    "chinese": "西瓜",
+    "english": "watermelon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uipn",
+    "chinese": "视频",
+    "english": "video",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jxui",
+    "chinese": "解释",
+    "english": "explain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "dydj",
+    "chinese": "订单",
+    "english": "order",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xudo",
+    "chinese": "许多",
+    "english": "many",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qywf",
+    "chinese": "请问",
+    "english": "excuse me",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xxxx",
+    "chinese": "谢谢",
+    "english": "thank you",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zblu",
+    "chinese": "走路",
+    "english": "walk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qiid",
+    "chinese": "起床",
+    "english": "get up",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ikui",
+    "chinese": "超市",
+    "english": "supermarket",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "pkbu",
+    "chinese": "跑步",
+    "english": "run",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lukb",
+    "chinese": "路口",
+    "english": "intersection",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ufti",
+    "chinese": "身体",
+    "english": "body",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ievj",
+    "chinese": "车站",
+    "english": "station",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "rrjm",
+    "chinese": "软件",
+    "english": "software",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hl",
+    "chinese": "还",
+    "english": "even",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hr",
+    "chinese": "还",
+    "english": "return",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ykqy",
+    "chinese": "邀请",
+    "english": "invite",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ybjm",
+    "chinese": "邮件",
+    "english": "email",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "lnju",
+    "chinese": "邻居",
+    "english": "neighbor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ykui",
+    "chinese": "钥匙",
+    "english": "key",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "qmbk",
+    "chinese": "钱包",
+    "english": "wallet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ynhh",
+    "chinese": "银行",
+    "english": "bank",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jmpj",
+    "chinese": "键盘",
+    "english": "keyboard",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jmjxde",
+    "chinese": "间接地",
+    "english": "indirectly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ytdu",
+    "chinese": "阅读",
+    "english": "read",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xmdu",
+    "chinese": "限度",
+    "english": "limit",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "njgo",
+    "chinese": "难过",
+    "english": "feel sad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yusj",
+    "chinese": "雨伞",
+    "english": "umbrella",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mmbk",
+    "chinese": "面包",
+    "english": "bread",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mmtc",
+    "chinese": "面条",
+    "english": "noodles",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xxzi",
+    "chinese": "鞋子",
+    "english": "shoe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xdmu",
+    "chinese": "项目",
+    "english": "project",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fzji",
+    "chinese": "飞机",
+    "english": "airplane",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "cjty",
+    "chinese": "餐厅",
+    "english": "restaurant",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ynlc",
+    "chinese": "饮料",
+    "english": "beverage",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xdjc",
+    "chinese": "香蕉",
+    "english": "banana",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "gkxy",
+    "chinese": "高兴",
+    "english": "happy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "jidj",
+    "chinese": "鸡蛋",
+    "english": "egg",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "uubc",
+    "chinese": "鼠标",
+    "english": "computer mouse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bizi",
+    "chinese": "鼻子",
+    "english": "nose",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vhfu",
+    "chinese": "丈夫",
+    "english": "husband",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uhir",
+    "chinese": "上传",
+    "english": "upload",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uhwu",
+    "chinese": "上午",
+    "english": "morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xxwu",
+    "chinese": "下午",
+    "english": "afternoon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xxzd",
+    "chinese": "下载",
+    "english": "download",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xxyu",
+    "chinese": "下雨",
+    "english": "rain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xxxt",
+    "chinese": "下雪",
+    "english": "snow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "buqpuiji",
+    "chinese": "不切实际",
+    "english": "impractical",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bukeqi",
+    "chinese": "不客气",
+    "english": "you're welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "buybrfvumude",
+    "chinese": "不引人注目地",
+    "english": "unobtrusively",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "buyter",
+    "chinese": "不悦耳",
+    "english": "unmusical",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yjlide",
+    "chinese": "严厉的",
+    "english": "strict",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vswu",
+    "chinese": "中午",
+    "english": "noon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jbhz",
+    "chinese": "今后",
+    "english": "henceforth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jbtm",
+    "chinese": "今天",
+    "english": "today",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jbnm",
+    "chinese": "今年",
+    "english": "this year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jpuc",
+    "chinese": "介绍",
+    "english": "introduce",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fukr",
+    "chinese": "付款",
+    "english": "pay",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lkrfmcgussrjde",
+    "chinese": "令人毛骨悚然地",
+    "english": "gruesomely",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jxge",
+    "chinese": "价格",
+    "english": "price",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "rfwu",
+    "chinese": "任务",
+    "english": "task",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uhwhrfyr",
+    "chinese": "伤亡人员",
+    "english": "casualty",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "diug",
+    "chinese": "低声",
+    "english": "softly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zoye",
+    "chinese": "作业",
+    "english": "homework",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "nihc",
+    "chinese": "你好",
+    "english": "hello",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uifuzahx",
+    "chinese": "使复杂化",
+    "english": "complicate",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "cuxn",
+    "chinese": "促销",
+    "english": "promotion",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bccy",
+    "chinese": "保存",
+    "english": "save",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qkpfde",
+    "chinese": "倾盆的",
+    "english": "torrential",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zofj",
+    "chinese": "做饭",
+    "english": "cook",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jmkh",
+    "chinese": "健康",
+    "english": "health",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "aomj",
+    "chinese": "傲慢",
+    "english": "arrogant",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "erzi",
+    "chinese": "儿子",
+    "english": "son",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qruifjwwde",
+    "chinese": "全市范围的",
+    "english": "citywide",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "gsyr",
+    "chinese": "公园",
+    "english": "park",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "nwcy",
+    "chinese": "内存",
+    "english": "memory",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zdjm",
+    "chinese": "再见",
+    "english": "goodbye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xpzi",
+    "chinese": "写字",
+    "english": "write",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "dstm",
+    "chinese": "冬天",
+    "english": "winter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bkxl",
+    "chinese": "冰箱",
+    "english": "refrigerator",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qillde",
+    "chinese": "凄凉地",
+    "english": "forlornly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iuzuie",
+    "chinese": "出租车",
+    "english": "taxi",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ffvs",
+    "chinese": "分钟",
+    "english": "minute",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ujiu",
+    "chinese": "删除",
+    "english": "delete",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bjgsui",
+    "chinese": "办公室",
+    "english": "office",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yiug",
+    "chinese": "医生",
+    "english": "doctor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yiyr",
+    "chinese": "医院",
+    "english": "hospital",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uiqi",
+    "chinese": "十七",
+    "english": "seventeen",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wucj",
+    "chinese": "午餐",
+    "english": "lunch",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qunm",
+    "chinese": "去年",
+    "english": "last year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fapn",
+    "chinese": "发票",
+    "english": "invoice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iifj",
+    "chinese": "吃饭",
+    "english": "eat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hets",
+    "chinese": "合同",
+    "english": "contract",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tsui",
+    "chinese": "同事",
+    "english": "colleague",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tsxt",
+    "chinese": "同学",
+    "english": "classmate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tsyi",
+    "chinese": "同意",
+    "english": "agree",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hzww",
+    "chinese": "后卫",
+    "english": "defender",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hzjmvimk",
+    "chinese": "后见之明",
+    "english": "hindsight",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yrgs",
+    "chinese": "员工",
+    "english": "employee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vzmo",
+    "chinese": "周末",
+    "english": "weekend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kafw",
+    "chinese": "咖啡",
+    "english": "coffee",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "gege",
+    "chinese": "哥哥",
+    "english": "older brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uhdm",
+    "chinese": "商店",
+    "english": "shop",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xihr",
+    "chinese": "喜欢",
+    "english": "like",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hezvde",
+    "chinese": "喝醉的",
+    "english": "drunk",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hvda",
+    "chinese": "回答",
+    "english": "answer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tuuugr",
+    "chinese": "图书馆",
+    "english": "library",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ditu",
+    "chinese": "地图",
+    "english": "map",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "divi",
+    "chinese": "地址",
+    "english": "address",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ditp",
+    "chinese": "地铁",
+    "english": "subway",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "igui",
+    "chinese": "城市",
+    "english": "city",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jidi",
+    "chinese": "基地",
+    "english": "base",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xxtm",
+    "chinese": "夏天",
+    "english": "summer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tmqi",
+    "chinese": "天气",
+    "english": "weather",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tdksch",
+    "chinese": "太空舱",
+    "english": "capsule",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tdyh",
+    "chinese": "太阳",
+    "english": "sun",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tzfa",
+    "chinese": "头发",
+    "english": "hair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "nver",
+    "chinese": "女儿",
+    "english": "daughter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mama",
+    "chinese": "妈妈",
+    "english": "mom",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mwmw",
+    "chinese": "妹妹",
+    "english": "younger sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qizi",
+    "chinese": "妻子",
+    "english": "wife",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jpjp",
+    "chinese": "姐姐",
+    "english": "older sister",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xtxn",
+    "chinese": "学校",
+    "english": "school",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xtug",
+    "chinese": "学生",
+    "english": "student",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hdzi",
+    "chinese": "孩子",
+    "english": "child",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "anjk",
+    "chinese": "安静",
+    "english": "quiet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kehu",
+    "chinese": "客户",
+    "english": "client",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hdpa",
+    "chinese": "害怕",
+    "english": "be afraid",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jxrf",
+    "chinese": "家人",
+    "english": "family member",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jxtk",
+    "chinese": "家庭",
+    "english": "family",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mima",
+    "chinese": "密码",
+    "english": "password",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "dvbuqi",
+    "chinese": "对不起",
+    "english": "sorry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xnui",
+    "chinese": "小时",
+    "english": "hour",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xnmunq",
+    "chinese": "小母牛",
+    "english": "heifer",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wwba",
+    "chinese": "尾巴",
+    "english": "tail",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "pkmu",
+    "chinese": "屏幕",
+    "english": "screen",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bhvu",
+    "chinese": "帮助",
+    "english": "help",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mczi",
+    "chinese": "帽子",
+    "english": "hat",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jmyi",
+    "chinese": "建议",
+    "english": "suggestion",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kdui",
+    "chinese": "开始",
+    "english": "begin",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kdmu",
+    "chinese": "开幕",
+    "english": "inaugurate",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "didi",
+    "chinese": "弟弟",
+    "english": "younger brother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iedi",
+    "chinese": "彻底",
+    "english": "utterly",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mhlu",
+    "chinese": "忙碌",
+    "english": "busy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zsjp",
+    "chinese": "总结",
+    "english": "summarise",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kshlde",
+    "chinese": "恐慌的",
+    "english": "terrified",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jkxx",
+    "chinese": "惊吓",
+    "english": "terrify",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "gjmc",
+    "chinese": "感冒",
+    "english": "common cold",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "nofu",
+    "chinese": "懦夫",
+    "english": "coward",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fhjm",
+    "chinese": "房间",
+    "english": "room",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uzvi",
+    "chinese": "手指",
+    "english": "finger",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uzji",
+    "chinese": "手机",
+    "english": "mobile phone",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bcgc",
+    "chinese": "报告",
+    "english": "report",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jujt",
+    "chinese": "拒绝",
+    "english": "refuse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iijqde",
+    "chinese": "持久地",
+    "english": "enduringly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wfjm",
+    "chinese": "文件",
+    "english": "document",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lvxk",
+    "chinese": "旅行",
+    "english": "travel",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zcan",
+    "chinese": "早安",
+    "english": "good morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zcif",
+    "chinese": "早晨",
+    "english": "early morning",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zccj",
+    "chinese": "早餐",
+    "english": "breakfast",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uijm",
+    "chinese": "时间",
+    "english": "time",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mktm",
+    "chinese": "明天",
+    "english": "tomorrow",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mknm",
+    "chinese": "明年",
+    "english": "next year",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xkxk",
+    "chinese": "星星",
+    "english": "star",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xkqi",
+    "chinese": "星期",
+    "english": "week",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iytm",
+    "chinese": "春天",
+    "english": "spring",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zotm",
+    "chinese": "昨天",
+    "english": "yesterday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wjan",
+    "chinese": "晚安",
+    "english": "good night",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wjcj",
+    "chinese": "晚餐",
+    "english": "dinner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ggdode",
+    "chinese": "更多的",
+    "english": "more",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ytll",
+    "chinese": "月亮",
+    "english": "moon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ytff",
+    "chinese": "月份",
+    "english": "month",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yzykyhde",
+    "chinese": "有营养的",
+    "english": "nutritious",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "pgyz",
+    "chinese": "朋友",
+    "english": "friend",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jiih",
+    "chinese": "机场",
+    "english": "airport",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "gelv",
+    "chinese": "格律",
+    "english": "metre",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vozi",
+    "chinese": "桌子",
+    "english": "table",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yizi",
+    "chinese": "椅子",
+    "english": "chair",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "igzi",
+    "chinese": "橙子",
+    "english": "orange",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hryk",
+    "chinese": "欢迎",
+    "english": "welcome",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wuvlde",
+    "chinese": "武装的",
+    "english": "armed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "muqb",
+    "chinese": "母亲",
+    "english": "mother",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uvgo",
+    "chinese": "水果",
+    "english": "fruit",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mwgrxi",
+    "chinese": "没关系",
+    "english": "it doesn't matter",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vjvjzixide",
+    "chinese": "沾沾自喜的",
+    "english": "smug",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xizc",
+    "chinese": "洗澡",
+    "english": "bathe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xiyiji",
+    "chinese": "洗衣机",
+    "english": "washing machine",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yzys",
+    "chinese": "游泳",
+    "english": "swim",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hoie",
+    "chinese": "火车",
+    "english": "train",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vcpm",
+    "chinese": "照片",
+    "english": "photo",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fuqb",
+    "chinese": "父亲",
+    "english": "father",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "baba",
+    "chinese": "爸爸",
+    "english": "dad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yaii",
+    "chinese": "牙齿",
+    "english": "tooth",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "nqnd",
+    "chinese": "牛奶",
+    "english": "milk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xmzd",
+    "chinese": "现在",
+    "english": "now",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ugri",
+    "chinese": "生日",
+    "english": "birthday",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "dmnc",
+    "chinese": "电脑",
+    "english": "computer",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uuhude",
+    "chinese": "疏忽的",
+    "english": "neglectful",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "pijr",
+    "chinese": "疲倦",
+    "english": "tired",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yjjk",
+    "chinese": "眼睛",
+    "english": "eye",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uvjn",
+    "chinese": "睡觉",
+    "english": "sleep",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "poij",
+    "chinese": "破产",
+    "english": "bankruptcy",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vuhe",
+    "chinese": "祝贺",
+    "english": "congratulate",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qqtm",
+    "chinese": "秋天",
+    "english": "autumn",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uv",
+    "chinese": "税",
+    "english": "duties",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kstn",
+    "chinese": "空调",
+    "english": "air conditioner",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ilhu",
+    "chinese": "窗户",
+    "english": "window",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mifj",
+    "chinese": "米饭",
+    "english": "cooked rice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ji",
+    "chinese": "系",
+    "english": "fasten",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xi",
+    "chinese": "系",
+    "english": "tie",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jbvx",
+    "chinese": "紧抓",
+    "english": "clutch",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jbbgde",
+    "chinese": "紧绷的",
+    "english": "taut",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fjyj",
+    "chinese": "繁衍",
+    "english": "multiply",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lmxi",
+    "chinese": "练习",
+    "english": "practice",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jkli",
+    "chinese": "经理",
+    "english": "manager",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jpuu",
+    "chinese": "结束",
+    "english": "end",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jifu",
+    "chinese": "继父",
+    "english": "stepfather",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "whlo",
+    "chinese": "网络",
+    "english": "network",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lcui",
+    "chinese": "老师",
+    "english": "teacher",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "kcui",
+    "chinese": "考试",
+    "english": "exam",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "erdo",
+    "chinese": "耳朵",
+    "english": "ear",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "cvde",
+    "chinese": "脆的",
+    "english": "crisp",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fubdde",
+    "chinese": "腐败的",
+    "english": "corrupt",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zixkie",
+    "chinese": "自行车",
+    "english": "bicycle",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uufu",
+    "chinese": "舒服",
+    "english": "comfortable",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "pkgo",
+    "chinese": "苹果",
+    "english": "apple",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "iaye",
+    "chinese": "茶叶",
+    "english": "tea leaves",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ccmw",
+    "chinese": "草莓",
+    "english": "strawberry",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "putc",
+    "chinese": "葡萄",
+    "english": "grape",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jpdc",
+    "chinese": "街道",
+    "english": "street",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yifu",
+    "chinese": "衣服",
+    "english": "clothes",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "buvujb",
+    "chinese": "补助金",
+    "english": "grants",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "wazi",
+    "chinese": "袜子",
+    "english": "socks",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xigx",
+    "chinese": "西瓜",
+    "english": "watermelon",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uipb",
+    "chinese": "视频",
+    "english": "video",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jpui",
+    "chinese": "解释",
+    "english": "explain",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "dkdj",
+    "chinese": "订单",
+    "english": "order",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xudo",
+    "chinese": "许多",
+    "english": "many",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qkwf",
+    "chinese": "请问",
+    "english": "excuse me",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xpxp",
+    "chinese": "谢谢",
+    "english": "thank you",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zzlu",
+    "chinese": "走路",
+    "english": "walk",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qiil",
+    "chinese": "起床",
+    "english": "get up",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "icui",
+    "chinese": "超市",
+    "english": "supermarket",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "pcbu",
+    "chinese": "跑步",
+    "english": "run",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lukz",
+    "chinese": "路口",
+    "english": "intersection",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ufti",
+    "chinese": "身体",
+    "english": "body",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ievj",
+    "chinese": "车站",
+    "english": "station",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "rrjm",
+    "chinese": "软件",
+    "english": "software",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hd",
+    "chinese": "还",
+    "english": "even",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hr",
+    "chinese": "还",
+    "english": "return",
+    "coverage": "reading-sensitive"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ycqk",
+    "chinese": "邀请",
+    "english": "invite",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yzjm",
+    "chinese": "邮件",
+    "english": "email",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "lbju",
+    "chinese": "邻居",
+    "english": "neighbor",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ycui",
+    "chinese": "钥匙",
+    "english": "key",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "qmbc",
+    "chinese": "钱包",
+    "english": "wallet",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ybhh",
+    "chinese": "银行",
+    "english": "bank",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jmpj",
+    "chinese": "键盘",
+    "english": "keyboard",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jmjpde",
+    "chinese": "间接地",
+    "english": "indirectly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ytdu",
+    "chinese": "阅读",
+    "english": "read",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xmdu",
+    "chinese": "限度",
+    "english": "limit",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "njgo",
+    "chinese": "难过",
+    "english": "feel sad",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yusj",
+    "chinese": "雨伞",
+    "english": "umbrella",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mmbc",
+    "chinese": "面包",
+    "english": "bread",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mmtn",
+    "chinese": "面条",
+    "english": "noodles",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xpzi",
+    "chinese": "鞋子",
+    "english": "shoe",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xlmu",
+    "chinese": "项目",
+    "english": "project",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fwji",
+    "chinese": "飞机",
+    "english": "airplane",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "cjtk",
+    "chinese": "餐厅",
+    "english": "restaurant",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "ybln",
+    "chinese": "饮料",
+    "english": "beverage",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xljn",
+    "chinese": "香蕉",
+    "english": "banana",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "gcxk",
+    "chinese": "高兴",
+    "english": "happy",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "jidj",
+    "chinese": "鸡蛋",
+    "english": "egg",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "uubn",
+    "chinese": "鼠标",
+    "english": "computer mouse",
+    "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bizi",
+    "chinese": "鼻子",
+    "english": "nose",
+    "coverage": "legacy-preview"
+  }
+]

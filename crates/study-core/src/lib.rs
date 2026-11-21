@@ -62,6 +62,8 @@ pub struct Inspection {
     pub chinese: String,
     pub english: String,
     pub reason: String,
+    /// Optional toneless dictionary code for display metadata, not a commit value.
+    pub reading: String,
 }
 
 pub trait Engine {
@@ -119,6 +121,8 @@ pub struct Target {
     pub chinese: String,
     pub english: String,
     pub reason: String,
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub reading: String,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
@@ -352,7 +356,7 @@ impl<E: Engine> Session<E> {
                 self.target = Some(Target { token: format!("{}:{}", self.generation, self.revision),
                     generation: self.generation, revision: self.revision, index, page: context.page,
                     input: context.input, caret: context.caret, chinese: inspection.chinese,
-                    english: inspection.english, reason: inspection.reason });
+                    english: inspection.english, reason: inspection.reason, reading: inspection.reading });
             },
             Action::English { token } => {
                 let Some(target) = self.matching_target(&token)? else { return self.snapshot(commands, "stale-target".into()) };

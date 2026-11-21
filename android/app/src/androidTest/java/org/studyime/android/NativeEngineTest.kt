@@ -80,6 +80,7 @@ class NativeEngineTest {
             send(event("configure", "config" to config.engineConfig(false, false, false)))
         }
         fun inspect(value: EngineSnapshot, index: Int) = send(event("inspect", "index" to index, "revision" to value.revision))
+        val details = WordDetails { file -> context.assets.open(file).bufferedReader(Charsets.UTF_8).use { it.readText() } }
 
         try {
             start()
@@ -99,19 +100,34 @@ class NativeEngineTest {
             val smoke = type("gongyuan")
             check("P0 returns real park candidate and Lua annotation", smoke.candidates.any { it.chinese == "公园" && it.english == "park" })
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })
-            assertEquals(600, cases.length())
+            val manifest = context.assets.open("generated/manifest.json").bufferedReader().use { JSONObject(it.readText()) }
+            assertEquals(manifest.getInt("englishRegressionCases"), cases.length())
+            val coverage = (0 until cases.length()).map(cases::getJSONObject).groupBy { it.getString("schema") }
+            assertEquals(setOf("study", "study_double_pinyin", "study_flypy"), coverage.keys)
+            coverage.values.forEach { group ->
+                assertEquals(setOf("legacy-preview", "expansion", "supplemental", "reading-sensitive"),
+                    group.map { it.getString("coverage") }.toSet())
+            }
             var failures = 0
             for (number in 0 until cases.length()) {
                 val case = cases.getJSONObject(number)
                 val record = JSONObject(case.toString())
                 try {
-                    scheme(case.getString("schema"))
+                    if (config.schema != case.getString("schema")) scheme(case.getString("schema"))
                     var (value, index) = find(type(case.getString("input")), case.getString("chinese"))
                     assertEquals(case.getString("english"), value.candidates[index].english)
                     value = inspect(value, index)
                     val target = value.target!!
                     assertEquals("ready", target.reason)
                     assertEquals(case.getString("english"), target.english)
+                    if (target.chinese == "还") {
+                        val (code, pinyin) = if (target.english == "even") "hai" to "hái" else "huan" to "huán"
+                        assertEquals(code, target.reading)
+                        val rich = details.enrich(target)
+                        assertEquals(pinyin, rich.pinyin)
+                        assertEquals(target.english, rich.senses.single().english)
+                        assertTrue(rich.senses.single().exampleEn.isNotBlank())
+                    }
                     val english = send(event("english", "token" to target.token))
                     assertEquals(case.getString("english"), english.commands.single().text)
                     assertTrue(english.input.isEmpty())
@@ -129,11 +145,21 @@ class NativeEngineTest {
                     record.put("passed", false).put("error", error.message)
                 }
                 regressions.put(record)
-                if ((number + 1) % 50 == 0) android.util.Log.i("StudyVerification", "Synthetic engine cases: ${number + 1}/600; failures=$failures")
+                if ((number + 1) % 50 == 0) android.util.Log.i("StudyVerification", "Synthetic engine cases: ${number + 1}/${cases.length()}; failures=$failures")
             }
-            check("600 dictionary annotations and Chinese/English commits", failures == 0)
+            check("${cases.length()} dictionary annotations and Chinese/English commits", failures == 0)
 
             scheme("study")
+            val (solve, solveIndex) = find(type("jiejue"), "解决")
+            val richInspection = inspect(solve, solveIndex)
+            val base = richInspection.target!!
+            val enriched = details.enrich(base)
+            check("Details use the genuine reading and keep the engine default first", base.reading == "jie jue" &&
+                enriched.pinyin == "jiějué" && enriched.senses.map { it.english } == listOf("solve", "settle"))
+            check("Inspecting and adding display data do not commit or alter the composition", richInspection.commands.isEmpty() &&
+                richInspection.input == solve.input && enriched.english == base.english)
+            check("Missing detail assets fall back to the native target", WordDetails { throw java.io.IOException() }.enrich(base) == base)
+            check("A sidecar with a different default is ignored", details.enrich(base.copy(english = "resolve")).senses.isEmpty())
             for ((input, chinese) in listOf("nv" to "女", "lvse" to "绿色", "ertong" to "儿童", "xi'an" to "西安", "nh" to "你好")) {
                 val located = find(type(input), chinese)
                 check("Full pinyin special spelling $input resolves $chinese", located.first.candidates[located.second].chinese == chinese)

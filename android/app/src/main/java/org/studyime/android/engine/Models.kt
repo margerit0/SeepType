@@ -4,9 +4,14 @@ package org.studyime.android.engine
 import org.json.JSONObject
 
 data class Candidate(val chinese: String, val english: String)
+data class WordSense(
+    val english: String, val pos: String = "", val usage: String = "",
+    val collocation: String = "", val exampleEn: String = "", val exampleZh: String = "",
+)
 data class CandidateTarget(
     val token: String, val index: Int, val chinese: String,
-    val english: String, val reason: String,
+    val english: String, val reason: String, val reading: String = "",
+    val pinyin: String = "", val senses: List<WordSense> = emptyList(),
 ) {
     val canCommitEnglish: Boolean get() = reason == "ready"
 }
@@ -42,7 +47,7 @@ data class EngineSnapshot(
             val commands = json.getJSONArray("commands")
             val target = json.optJSONObject("target")?.let {
                 CandidateTarget(it.getString("token"), it.getInt("index"), it.getString("chinese"),
-                    it.getString("english"), it.getString("reason"))
+                    it.getString("english"), it.getString("reason"), it.optString("reading"))
             }
             return EngineSnapshot(
                 generation = json.getLong("generation"), revision = json.getLong("revision"),

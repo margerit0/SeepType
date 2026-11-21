@@ -49,7 +49,7 @@ class VisualMatrixTest {
                         capture(name)
                         if (width == 320 && font == 2f) {
                             driver.candidate("公园").longClick()
-                            check("$name opens an accessible definition", device.wait(Until.hasObject(By.text("输入英文")), 8000))
+                            check("$name opens an accessible definition", device.wait(Until.hasObject(By.res("commit_english")), 8000))
                             capture("$name-definition")
                             device.findObject(By.desc("关闭释义")).click()
                         }

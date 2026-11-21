@@ -229,6 +229,8 @@ class Acceptance:
 
     def ensure_apks(self):
         from tools.android.build import input_hashes, gradle
+        from tools.android.prepare_data import refresh_if_needed
+        refresh_if_needed()
         current = input_hashes()
         variants = []
         changed = set()

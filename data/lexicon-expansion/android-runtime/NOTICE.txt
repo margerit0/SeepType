@@ -1,0 +1,30 @@
+StudyIME for Android — expanded offline development lexicon
+
+Android ships the exact Rime dictionary and Lua lexicon from the verified
+Windows development snapshot. The companion snapshot.json records the source
+Git commit, upstream snapshot directory, engine verification hash, and Android
+runtime file hashes. The complete adoption decisions and per-sense provenance
+remain in that Git commit under the indicated snapshot directory.
+
+The Chinese base is adapted from CC-CEDICT (community contributors and the
+editor team, published by MDBG, based on CEDICT by Paul Andrew Denisowski),
+with weights from wordfreq and pronunciation data from Unihan. The imported
+snapshot adds reviewed trigger readings, retains multiple English senses and
+chooses a default by Chinese candidate/reading. See the adjacent Chinese
+provenance, third-party credits and CC BY-SA 4.0 license for the base data.
+The original 200-entry development batch has its own legacy-preview notice.
+
+The Android detail assets preserve the imported sense metadata under the same
+source attributions. The additional collocations and bilingual examples in
+word-detail-examples.json are original StudyIME development-preview content,
+provided under GPL-3.0-or-later; no external sentence corpus is bundled.
+
+Expansion inputs include CC-CEDICT references and English vocabulary metadata
+from ECDICT, the CEFR-J Wordlist Version 1.5 (compiled by Yukio Tono, Tokyo
+University of Foreign Studies), and Octanove Vocabulary Profile C1/C2 Version
+1.0 (Octanove Labs). Source scope, upstream revisions and attribution are
+recorded in sources.lock.json and its notices; see also the CC BY-SA 4.0 text
+in the Chinese notices. No endorsement by the upstream projects is implied.
+
+Delegated review and functional engine validation are not human distribution
+approval. This is development-preview data, not a release-ready dictionary.

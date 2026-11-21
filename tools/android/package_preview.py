@@ -11,7 +11,7 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.android.common import CACHE, ROOT, digest, json_write, safe, write
 from tools.android.build_env import tool_env
-from tools.android.build import input_hashes
+from tools.android.build import apk_version, input_hashes
 from tools.android.verify_artifact import verify
 
 
@@ -117,12 +117,14 @@ def package():
     reports = validate_evidence(apk)
     with zipfile.ZipFile(apk) as bundle:
         resources = json.loads(bundle.read("assets/generated/manifest.json"))
-        for name, expected in resources["files"].items():
+        for name, expected in (resources["files"] | resources["detailFiles"]).items():
             if hashlib.sha256(bundle.read("assets/generated/" + name)).hexdigest() != expected:
                 raise ValueError("Packaged resource hash mismatch: " + name)
-    output = safe(CACHE / "delivery" / ("0.1.0-preview.1-" + head[:10]))
+    version = apk_version(apk)
+    version_name = version["versionName"]
+    output = safe(CACHE / "delivery" / f"{version_name}-{head[:10]}")
     output.mkdir(parents=True, exist_ok=True)
-    installed = output / "StudyIME-0.1.0-preview.1-arm64-x86_64.apk"
+    installed = output / f"StudyIME-{version_name}-arm64-x86_64.apk"
     shutil.copy2(apk, installed)
     source = output / "StudyIME-Android-source.zip"
     subprocess.run(["git", "archive", "--format=zip", "--prefix=studyime/", "--output", str(source), head], cwd=ROOT, check=True)
@@ -164,13 +166,13 @@ def package():
     write(output / "APK-PERMISSIONS.txt", permissions)
     for name in ("dependency-receipt.json", "data-receipt.json", "native-sources.json", "build-tools-receipt.json", "assembly-release.json"):
         shutil.copy2(CACHE / name, output / name)
-    readme = """拾词 Android 0.1.0-preview.1
+    readme = f"""拾词 Android {version_name}（versionCode={version['versionCode']}）
 
 这是供本机安装和验证的开发预览，采用本地开发签名。支持的打包 ABI：arm64-v8a、x86_64；minSdk 29、targetSdk 35。
 实际模拟器、测试边界、性能及未完成项见源码 docs/android-validation.md。真机、触感、高刷新率和实际 16 KB 页面设备需补验。
 
 安装 APK 后打开「拾词」，按引导启用并切换键盘。点候选输入中文；拼音输入中按回车或空格原样提交拼写；长按后明确点「输入英文」才提交英文。
-中文 121,505 条；英文 200 条均为待人工审核的开发数据。应用离线运行，不申请网络权限；用户词典不参与 Android 备份。
+中文候选（含读音）{resources["chineseEntries"]:,} 条；英文开发记录 {resources["englishEntries"]:,} 条，未获人工发布审批。应用离线运行，不申请网络权限；用户词典不参与 Android 备份。
 
 StudyIME-Android-source.zip 保存本次提交的完整项目源码、GPL-3.0-or-later 许可、锁文件和构建脚本。
 StudyIME-native-sources.zip 保存实际构建使用的第三方源码（已应用 Android 补丁）及原始来源摘要。
@@ -194,8 +196,9 @@ APK-SIGNATURE.txt 为公开签名信息；开发私钥不包含在这些材料�
     readme += "模拟器暖态候选绘制 p95 {:.2f} ms／p99 {:.2f} ms；新进程首次显示回调至可用绘制 p95 {:.2f} ms。\n".format(
         performance["warmTimings"]["keyToComposeDrawMs"]["p95"], performance["warmTimings"]["keyToComposeDrawMs"]["p99"], startup["readyDrawMs"]["p95"])
     write(output / "README.txt", readme)
-    manifest = {"version": "0.1.0-preview.1", "gitCommit": head, "branch": branch, "apkSha256": apk_hash,
+    manifest = {"version": version_name, "versionCode": version["versionCode"], "gitCommit": head, "branch": branch, "apkSha256": apk_hash,
                 "resourceVersion": resources["version"], "humanApprovedEnglish": resources["humanApproved"],
+                "englishEntries": resources["englishEntries"], "windowsLexiconCommit": resources["windowsLexiconCommit"],
                 "performance": performance_summary,
                 "files": {file.name: {"bytes": file.stat().st_size, "sha256": digest(file)} for file in sorted(output.iterdir()) if file.is_file() and file.name != "manifest.json"}}
     json_write(output / "manifest.json", manifest)

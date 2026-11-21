@@ -6,6 +6,8 @@
 
 **新增 Windows 手动验收入口：** 根目录双击 `启动安卓验收.cmd`，会自动准备可操作的真实 APK 手机窗口，并提供输入场景、原生设置、显示预设、截图和录像。入口源码为 `tools/android/acceptance.py` 与 `acceptance_ui.py`，使用现有 Release 输入法和 Debug 原生输入页；使用方法、本轮 14／28／16 项检查及冷启动验证见 [一键交互验收](android-acceptance.md)。产物在专用缓存的 `acceptance` 目录。本轮未重新导出开发预览 ZIP，原交付材料和真机待办仍保留各自范围。
 
+**2026-11-20 · Android 词库同步：** 已导入 Windows 分支 `1977d31` 的已接入开发快照：13,137 条英文开发记录，包含按读音匹配默认释义的运行逻辑。来源及复建见 [快照说明](../data/lexicon-expansion/android-runtime/README.md)。资源版本 `9efd4fb487a254b47f31` 已组装进 Debug 和 Release APK，并逐字节核对词典及 Lua；Android API 30 x86_64 模拟器实际通过 702 条三方案词库用例和 36 项引擎／会话检查。随后已将带相同词库的 Release APK 重建为 `0.1.0-preview.3`（`versionCode=3`），以实际 APK 清单为准。未在真机安装。下文的 200 条词库和原 APK 摘要属于历史验收构建，不代表当前源码。
+
 ## 工作目录与授权
 
 | 用途 | 目录 | 分支 |

@@ -12,6 +12,7 @@ import org.json.JSONObject
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.studyime.android.settings.KeyboardSkin
 import org.studyime.android.settings.Preferences
 
 @RunWith(AndroidJUnit4::class)
@@ -19,11 +20,15 @@ class ScenarioTest {
     @Test fun definitionsGesturesNavigationAndSettings() {
         val d = ImeDriver()
         val ui = d.device
+        val prefs = Preferences.get(d.context)
+        val original = prefs.state.value
         val checks = JSONArray()
         val report = JSONObject().put("scope", "Native long/missing/partial definitions, gestures, navigation and setup/settings").put("checks", checks)
         fun check(name: String, passed: Boolean) { checks.put(JSONObject().put("name", name).put("passed", passed)); assertTrue(name, passed) }
         fun shot(name: String) = d.capture("scenarios", name)
         try {
+            // The symbol-navigation scenario uses the default skin's separate symbols key.
+            prefs.update { it.copy(skin = KeyboardSkin.DEFAULT) }
             ui.executeShellCommand("wm density 320")
             ui.executeShellCommand("wm size 640x1688")
             d.launch()
@@ -31,7 +36,7 @@ class ScenarioTest {
             d.candidate("没关系").longClick()
             check("Full long definition is exposed independently of candidate ellipsis", ui.wait(Until.hasObject(By.text("it doesn't matter")), 5000))
             shot("long-definition")
-            ui.findObject(By.text("输入英文")).click()
+            ui.findObject(By.res("commit_english")).click()
             d.expectText("it doesn't matter")
 
             d.launch()
@@ -116,7 +121,7 @@ class ScenarioTest {
             for (theme in listOf("light", "dark")) {
                 for (screen in listOf("home", "settings", "about")) {
                     ui.pressHome()
-                    d.instrumentation.runOnMainSync { Preferences.get(d.context).update { it.copy(theme = theme) } }
+                    d.instrumentation.runOnMainSync { prefs.update { it.copy(theme = theme) } }
                     d.context.startActivity(Intent(d.context, MainActivity::class.java).putExtra("screen", screen)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
                     assertTrue(ui.wait(Until.hasObject(By.textContains(when (screen) { "settings" -> "拼音方案"; "about" -> "关于拾词"; else -> "顺便拾起一个词" })), 8000))
@@ -132,6 +137,7 @@ class ScenarioTest {
             ui.executeShellCommand("settings put system font_scale 1.0")
             ui.executeShellCommand("wm size reset")
             ui.executeShellCommand("wm density reset")
+            prefs.update { original }
             File(d.context.filesDir, "scenario-report.json").writeText(report.toString(2))
         }
     }

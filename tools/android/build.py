@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -14,7 +15,8 @@ from tools.android.build_env import tool_env
 
 def input_hashes():
     """Bind APK assembly to source and prepared bytes, including dirty inputs."""
-    source_roots = ["android", "crates", "tools/android", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"]
+    source_roots = ["android", "crates", "tools/android", "data/lexicon-expansion/android-runtime",
+                    "src/study/lua/study_core.lua", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"]
     if (ROOT / ".git").exists():
         names = subprocess.check_output(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", *source_roots],
                                         cwd=ROOT).decode("utf-8").split("\0")
@@ -48,6 +50,17 @@ def input_hashes():
         if path.is_file():
             result[path.relative_to(ROOT).as_posix()] = digest(path)
     return result
+
+
+def apk_version(apk):
+    """Read the installable package's version, not the Rime resource version."""
+    aapt = CACHE / "sdk/build-tools/35.0.0/aapt.exe"
+    badging = subprocess.check_output([str(aapt), "dump", "badging", str(apk)]).decode("utf-8", errors="replace")
+    match = re.search(r"^package: .*?versionCode='([0-9]+)' versionName='([A-Za-z0-9][A-Za-z0-9.+-]*)'",
+                      badging, re.MULTILINE)
+    if not match:
+        raise ValueError(f"Cannot read versionName and versionCode from APK: {apk}")
+    return {"versionName": match[2], "versionCode": int(match[1])}
 
 
 def signing_key():
@@ -105,18 +118,24 @@ def main():
     elif args.step == "compile":
         gradle([":app:compileDebugKotlin"], log="gradle-compile", wrapper=False, locks=True)
     elif args.step == "apk":
+        from tools.android.prepare_data import prepare, refresh_if_needed
         variant = "Debug" if args.debug else "Release"
         if not (ROOT / "android/app/src/main/assets/generated/notices/THIRD-PARTY.txt").is_file():
-            from tools.android.prepare_data import prepare
             gradle([":app:compile" + variant + "Kotlin"], log="gradle-prepare-notices", locks=True)
-            prepare()
+            prepare(args.source_cache)
+        else:
+            refresh_if_needed(args.source_cache)
         gradle([":app:assemble" + variant], log="gradle-apk-" + variant.lower(), locks=True)
         output = ROOT / "android/app/build/outputs/apk" / variant.lower() / ("app-" + variant.lower() + ".apk")
-        print(f"APK: {output.resolve()}\nSHA256: {digest(output)}")
+        version = apk_version(output)
+        sha = digest(output)
+        print(f"APK: {output.resolve()}\nVersion: {version['versionName']} ({version['versionCode']})\nSHA256: {sha}")
         json_write(CACHE / ("apk-" + variant.lower() + ".json"), {"variant": variant, "path": str(output.resolve()),
-                    "sha256": digest(output), "bytes": output.stat().st_size, "gitHead": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip() if (ROOT / ".git").exists() else None,
+                    **version, "sha256": sha, "bytes": output.stat().st_size, "gitHead": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip() if (ROOT / ".git").exists() else None,
                     "sourceState": "worktree build; see delivery manifest for final source hashes"})
     elif args.step == "tests":
+        from tools.android.prepare_data import refresh_if_needed
+        refresh_if_needed(args.source_cache)
         gradle([":app:testDebugUnitTest", ":app:assembleDebugAndroidTest"], log="gradle-tests", locks=True)
     else:
         gradle([":app:lintDebug", ":app:lintRelease"], log="gradle-lint")

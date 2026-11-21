@@ -87,7 +87,7 @@ class ImeInteractionTest {
             objectById("probe_text").text = ""
             type("gongyuan")
             device.wait(Until.findObject(By.descContains("公园")), 8000)!!.longClick()
-            val english = device.wait(Until.findObject(By.text("输入英文")), 8000) ?: error("Definition panel did not open")
+            val english = device.wait(Until.findObject(By.res("commit_english")), 8000) ?: error("Definition panel did not open")
             english.click()
             check("Explicit English action uses full engine value", waitText("park"))
             check("Long press does not also submit Chinese", objectById("probe_text").text == "park")

@@ -39,7 +39,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -59,11 +58,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import kotlinx.coroutines.coroutineScope
@@ -229,15 +225,15 @@ fun StudyKeyboard(
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
         Spacer(Modifier.height(if (landscape) 3.dp else 7.dp))
-    }
-
-    state.target?.takeUnless { emojiShowing }?.let { target ->
-        val vertical = with(density) { -(keyRowsHeight + 14.dp).roundToPx() }
-        Popup(alignment = Alignment.BottomCenter, offset = IntOffset(0, vertical),
-            onDismissRequest = { send(event("dismiss")) },
-            properties = PopupProperties(focusable = false, clippingEnabled = true, dismissOnBackPress = true, dismissOnClickOutside = true)) {
-            DefinitionPanel(target, state.showEnglish, prefs, send,
-                Modifier.widthIn(max = 480.dp).fillMaxWidth(.92f).heightIn(max = if (landscape) (configuration.screenHeightDp - 48).dp else 430.dp))
+        state.target?.takeUnless { emojiShowing }?.let { target ->
+            val screen = configuration.screenHeightDp.dp
+            val boardHeight = keyRowsHeight + if (landscape) 66.dp else statusHeight + 7.dp
+            val nav = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+            val room = screen - boardHeight - nav - 18.dp
+            // Above the candidate strip in portrait; on short windows allow
+            // overlap rather than losing the actions or resizing any keys.
+            val height = minOf(430.dp, maxOf(1.dp, screen - 24.dp), maxOf(230.dp, room))
+            WordDetailPopup(target, state.showEnglish, prefs.textScale, height, send)
         }
     }
     val compositionFinished = SystemClock.elapsedRealtimeNanos()
@@ -262,7 +258,7 @@ internal suspend fun announceImeSubtree(view: View, accessibility: Accessibility
 }
 
 @Composable
-private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean = true, onClick: () -> Unit) {
+internal fun ToolButton(icon: ImageVector, description: String, enabled: Boolean = true, onClick: () -> Unit) {
     val colors = LocalStudyColors.current
     IconButton(onClick = onClick, enabled = enabled, modifier = Modifier.size(48.dp)) {
         val ink = if (enabled) colors.subtle else colors.subtle.copy(alpha = .5f)
@@ -669,39 +665,6 @@ private suspend fun AwaitPointerEventScope.awaitKeyRelease(id: PointerId, start:
         if (change.changedToUpIgnoreConsumed()) {
             change.consume()
             return true
-        }
-    }
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-private fun DefinitionPanel(target: CandidateTarget, showEnglish: Boolean, prefs: KeyboardPreferences,
-                            send: (JSONObject) -> Unit, modifier: Modifier) {
-    val colors = LocalStudyColors.current
-    Surface(modifier.shadow(12.dp, RoundedCornerShape(19.dp)).semantics { testTagsAsResourceId = true }.testTag("definition_panel"),
-        color = colors.paper, shape = RoundedCornerShape(19.dp), border = androidx.compose.foundation.BorderStroke(1.dp, colors.line)) {
-        Column(Modifier.padding(start = 18.dp, end = 18.dp, bottom = 12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(target.chinese, Modifier.weight(1f), color = colors.ink, fontSize = (16 * prefs.textScale).sp, fontWeight = FontWeight.SemiBold)
-                ToolButton(Icons.Outlined.Close, "关闭释义") { send(event("dismiss")) }
-            }
-            if (showEnglish) {
-                Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())) {
-                    Text(target.english.ifEmpty { "暂未收录释义" }, fontFamily = LocalLatinFont.current, color = colors.accent, fontSize = (25 * prefs.textScale).sp,
-                        lineHeight = (33 * prefs.textScale).sp, fontWeight = FontWeight.Medium)
-                    Spacer(Modifier.height(7.dp))
-                    Text(if (target.reason == "partial-composition") "选完整个词后可输入英文" else "本机开发词库 · 释义待审核",
-                        fontSize = 11.sp, color = colors.subtle)
-                }
-                Spacer(Modifier.height(12.dp))
-                Button(onClick = { send(event("english", "token" to target.token)) }, enabled = target.canCommitEnglish,
-                    shape = RoundedCornerShape(11.dp), modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("commit_english")) {
-                    Text("输入英文", fontSize = 14.sp)
-                }
-            }
-            TextButton(onClick = { send(event("forget", "token" to target.token)) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
-                Text("忘记这个词的选词习惯", fontSize = 13.sp, textAlign = TextAlign.Center)
-            }
         }
     }
 }

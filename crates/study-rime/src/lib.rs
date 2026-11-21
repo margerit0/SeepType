@@ -86,7 +86,7 @@ impl RimeEngine {
 
     fn request(&mut self, request: &str) -> Result<bool> {
         if self.property("study_protocol")? != "1" { return Ok(false); }
-        for key in ["study_response", "study_target_text", "study_target_english", "study_target_reason"] {
+        for key in ["study_response", "study_target_text", "study_target_english", "study_target_reason", "study_target_reading"] {
             self.set_property(key, "")?;
         }
         self.set_property("study_request", request)?;
@@ -201,7 +201,8 @@ impl Engine for RimeEngine {
         if !self.request("inspect-v1")? {
             return Err("rime-inspection-protocol-unavailable".into());
         }
-        Ok(Inspection { chinese: self.property("study_target_text")?, english: self.property("study_target_english")?, reason: self.property("study_target_reason")? })
+        Ok(Inspection { chinese: self.property("study_target_text")?, english: self.property("study_target_english")?,
+            reason: self.property("study_target_reason")?, reading: self.property("study_target_reading")? })
     }
     fn commit_english(&mut self) -> Result<bool> {
         Ok(self.request("commit-v1")? && self.property("study_action")? == "english-committed")

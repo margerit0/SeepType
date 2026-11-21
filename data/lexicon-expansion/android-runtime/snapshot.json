@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "windowsCommit": "1977d315e0b2de82bcd3bb33950a576f133048ec",
+  "windowsSnapshot": "data/lexicon-expansion/reviews/adopted-expansion-8000-20261117",
+  "verificationSha256": "7f9c6e08532283a2ff07a0d12d44a4d58571a92ec8bd59a87000529300dff93b",
+  "windowsEngineChecks": 39786,
+  "acceptedRecords": 13137,
+  "englishTriggerReadings": 10495,
+  "supplementalReadings": 2561,
+  "chineseDictionaryRows": 124066,
+  "baseDictionarySha256": "c278d1e67cbbde1d96906a753dbda9c51cd2b01fb051892166cce009e5faec70",
+  "studyCoreSha256": "962de7cbc9b086c8da755c48057273dd7704ff004a954bda8cdbd090a4da443c",
+  "humanApproved": 0,
+  "releaseReady": false,
+  "files": {
+    "cedict_study.dict.yaml": "1910fcbfa25abd15b570f2f468a7c4471023b4788374467b166f7b5780ded784",
+    "lexicon.lua": "154bda5b20307be63229259ea5c598cf57dfc2ebf298b0eb1116086712f331c9",
+    "engine-cases.json": "400a9ecbeb4cba70764d7572ff55b6496b509acc6a2424e3c9ebd5e2827ea274",
+    "word-details.jsonl": "d72f9a721dacd6ad185e5134d145d33d11a6372bdbe4d060c581f9e41de66907"
+  }
+}

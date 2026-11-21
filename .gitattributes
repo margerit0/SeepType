@@ -20,6 +20,7 @@ packaging/patches/*.patch whitespace=-blank-at-eol
 licensing/** text eol=lf
 licensing/third-party/** -text whitespace=-blank-at-eof,-blank-at-eol
 LICENSE -text whitespace=-blank-at-eof,cr-at-eol
+src/study/lua/study_core.lua text eol=lf
 src/study/windows/Product* text eol=lf
 src/study/windows/UiPreferences.cpp text eol=lf
 experiments/phase4/build-service.py text eol=lf
