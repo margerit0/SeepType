@@ -8,6 +8,8 @@ Android 使用 Windows 分支 `1977d31` 的 2026-11-17 开发词库快照：13,1
 
 来源、摘要与后续同步方式见 [词库快照](../data/lexicon-expansion/android-runtime/README.md)。常规 APK、测试和一键验收构建会检查并刷新旧词库资源，不需要重新编译 JNI 库，也不需要访问 Windows 工作目录。
 
+另附 [420 条影视与游戏专名](../data/lexicon-expansion/android-names/README.md)，由 Wikidata 固定修订和开发侧校对读音生成，随 APK 离线更新。三种方案沿用原有用户词典，无联机查词或专题包下载。实测分别见 [首版验证](../docs/android-offline-names-validation.md) 与 [作品名补录验证](../docs/android-offline-names-supplement-validation.md)。
+
 ## 单词详情
 
 点底栏的详情键或长按候选，打开沿用当前皮肤的浮卡。浮卡按实际读音把默认译法置顶，并列展示该读音的其他义项、词性和中文用法；有搭配和中英例句时一并展示。可以对照用法，但只有「输入 <默认英文>」会提交英文。关闭不会改变输入，隐藏英文时仍可打开选词学习操作。
@@ -76,6 +78,9 @@ python -X utf8 tools/android/run_device_checks.py install --serial 127.0.0.1:555
 python -X utf8 tools/android/run_device_checks.py native --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py ime --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py word-details --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py offline-names-engine --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py offline-names-ui --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py offline-names-coverage --serial 127.0.0.1:5555
 python -X utf8 tools/android/build.py lint
 ```
 

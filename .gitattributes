@@ -40,3 +40,6 @@ experiments/phase4/prepare-weasel.py text eol=lf
 /android/app/src/main/assets/fonts/*-OFL.txt -text whitespace=-blank-at-eof,-blank-at-eol
 # Unified diffs intentionally contain space-only context lines.
 /android/native/patches/*.patch whitespace=-blank-at-eol
+
+# Empty optional English cells are represented by trailing tabs in this TSV.
+data/lexicon-expansion/android-names/names.tsv whitespace=-blank-at-eol

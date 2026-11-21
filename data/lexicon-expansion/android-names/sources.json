@@ -1,0 +1,11 @@
+{
+  "collectedOn": "2026-11-21",
+  "source": "Wikidata",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Copyright",
+  "phase": "first-edition-with-work-title-supplement",
+  "selection": "Explicit allowlist of films (including Chinese and international animation) and named characters from Genshin Impact (Q65059474) and Honkai: Star Rail (Q108896777), plus the Genshin Impact title. Film candidates were located by selected credits (P57) or specific film sitelinks; game characters by appearance (P1441) or characters (P674). Ambiguous entities, unrelated roles, unverified aliases, mixed-script titles and words already in the base reading were omitted. The supplement adds manually chosen series, standalone game titles, and films absent from the first eight engine pages in all three schemes on the 381-entry APK. No chart scraping, inferred aliases or mixed-script titles.",
+  "nameEvidence": "Each row pins a QID, Wikidata revision and exact Chinese label language. An alias: prefix selects the matching text in that revision's aliases for the named language, never a transliteration or an inferred alias. Mandarin syllables and selection are project data; dev-checked is not human release approval.",
+  "entityRevisionUrlTemplate": "https://www.wikidata.org/wiki/Special:EntityData/{qid}.json?revision={revision}",
+  "englishPolicy": "Use only separately verified publisher spelling; no English label is assumed official. No publisher descriptions or media are copied."
+}

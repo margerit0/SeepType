@@ -10,6 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.android.common import CACHE, ROOT, digest, fetch, json_write, safe, write
+from tools.android.offline_names import load_names
 from tools.android.word_details import pack_details
 from tools.dictionary.cedict import files as chinese_files
 
@@ -18,12 +19,15 @@ STUDY_CORE = ROOT / "src/study/lua/study_core.lua"
 ASSETS = ROOT / "android/app/src/main/assets/generated"
 ENGINE_CASES = ROOT / "android/app/src/androidTest/assets/generated/engine-cases.json"
 RUNTIME_ASSETS = {"lexicon.lua": "rime/lua/lexicon.lua", "cedict_study.dict.yaml": "rime/cedict_study.dict.yaml"}
-SCHEMAS = ("study", "study_double_pinyin", "study_flypy")
+SCHEMES = ("study", "study_double_pinyin", "study_flypy")
 RIME_SOURCES = {
-    **{f"rime/{schema}.schema.yaml": ROOT / f"packaging/data/{schema}.schema.yaml" for schema in SCHEMAS},
+    **{f"rime/{schema}.schema.yaml": ROOT / f"packaging/data/{schema}.schema.yaml" for schema in SCHEMES},
     "rime/rime.lua": ROOT / "android/rime/rime.lua",
     "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua",
+    "rime/study_android.dict.yaml": ROOT / "android/rime/study_android.dict.yaml",
 }
+# The prism and the shared cedict_study user dictionary stay unchanged.
+SCHEME_PATCH = b"patch:\n  menu/page_size: 9\n  translator/dictionary: study_android\n  translator/user_dict: cedict_study\n"
 DETAIL_ROWS = "word-details.jsonl"
 EXAMPLES = SNAPSHOT / "word-detail-examples.json"
 
@@ -51,24 +55,29 @@ def load_snapshot():
 def refresh_if_needed(source_cache=None):
     snapshot, lock, runtime, _ = load_snapshot()
     detail_hashes = {name: sha(content) for name, content in pack_details(runtime[DETAIL_ROWS], EXAMPLES.read_bytes()).items()}
+    names, names_summary = load_names(runtime["cedict_study.dict.yaml"])
     expected = {ASSETS / "notices/english/snapshot.json": sha(lock),
                 ASSETS / "rime/lua/study_core.lua": snapshot["studyCoreSha256"],
                 ENGINE_CASES: snapshot["files"]["engine-cases.json"],
                 **{ASSETS / asset: snapshot["files"][name] for name, asset in RUNTIME_ASSETS.items()},
                 **{ASSETS / asset: digest(source) for asset, source in RIME_SOURCES.items()},
+                **{ASSETS / f"rime/{schema}.custom.yaml": sha(SCHEME_PATCH) for schema in SCHEMES},
+                **{ASSETS / asset: sha(content) for asset, content in names.items()},
                 **{ASSETS / asset: expected_hash for asset, expected_hash in detail_hashes.items()}}
     expected[ASSETS / "notices/english/NOTICE.txt"] = digest(SNAPSHOT / "NOTICE.txt")
     expected[ASSETS / "notices/README.txt"] = sha(notice_text(snapshot))
     manifest = ASSETS / "manifest.json"
-    if not manifest.is_file() or json.loads(manifest.read_bytes()).get("detailFiles") != detail_hashes or any(
+    existing = json.loads(manifest.read_bytes()) if manifest.is_file() else {}
+    if (existing.get("detailFiles") != detail_hashes or existing.get("offlineNames") != names_summary or any(
         not path.is_file() or digest(path) != expected_hash for path, expected_hash in expected.items()
-    ):
+    )):
         prepare(source_cache)
 
 
 def prepare(source_cache=None):
     snapshot, lock, runtime, study_core = load_snapshot()
     details = pack_details(runtime[DETAIL_ROWS], EXAMPLES.read_bytes())
+    names, names_summary = load_names(runtime["cedict_study.dict.yaml"])
     source_cache = Path(source_cache).resolve() if source_cache else None
     chinese_lock = json.loads((ROOT / "data/chinese/sources.lock.json").read_text())
     cedict_lock = json.loads((ROOT / "data/lexicon/source.lock.json").read_text())
@@ -95,7 +104,8 @@ def prepare(source_cache=None):
         raise ValueError("Imported supplemental readings were built on a different Chinese base dictionary")
     payload = {"rime/lua/study_core.lua": study_core,
                **{asset: runtime[name] for name, asset in RUNTIME_ASSETS.items()},
-               **{asset: source.read_bytes() for asset, source in RIME_SOURCES.items()}}
+               **{asset: source.read_bytes() for asset, source in RIME_SOURCES.items()},
+               **names}
     for source in (CACHE / "src/rime-prelude").glob("*.yaml"):
         payload["rime/" + source.name] = source.read_bytes()
     for source in (CACHE / "src/rime-luna-pinyin").glob("*.yaml"):
@@ -104,8 +114,8 @@ def prepare(source_cache=None):
     # Android's compact strip shows 6–7 entries and the expanded panel shows
     # nine. Override each schema locally; the Windows five-entry menu is shared
     # source and must retain its original configuration.
-    for schema in SCHEMAS:
-        payload[f"rime/{schema}.custom.yaml"] = b"patch:\n  menu/page_size: 9\n"
+    for schema in SCHEMES:
+        payload[f"rime/{schema}.custom.yaml"] = SCHEME_PATCH
     payload["notices/english/snapshot.json"] = lock
     payload["notices/english/NOTICE.txt"] = (SNAPSHOT / "NOTICE.txt").read_bytes()
     payload["notices/english/legacy-preview-NOTICE.txt"] = (ROOT / "data/lexicon/NOTICE.txt").read_bytes()
@@ -146,7 +156,7 @@ def prepare(source_cache=None):
                 "englishTriggerReadings": snapshot["englishTriggerReadings"], "humanApproved": snapshot["humanApproved"],
                 "windowsLexiconCommit": snapshot["windowsCommit"],
                 "englishRegressionCases": len(json.loads(runtime["engine-cases.json"])),
-                "status": "developer-preview", "files": hashes,
+                "status": "developer-preview", "files": hashes, "offlineNames": names_summary,
                 "detailFiles": {name: sha(content) for name, content in details.items()}}
     write(ENGINE_CASES, runtime["engine-cases.json"])
     json_write(ASSETS / "manifest.json", manifest)
@@ -160,6 +170,7 @@ def notice_text(snapshot):
         "新 Kotlin、Rust 和桥接代码：GPL-3.0-or-later。\n"
         "中文基础数据：CC-CEDICT 2026-11-06，wordfreq 3.1.1，Unihan 17.0.0；完整署名见 chinese。\n"
         f"英文词库：{snapshot['acceptedRecords']:,} 条开发记录；仅作开发预览，未获人工发布审批。来源见 english。\n"
+        "安卓影视与游戏专名：Wikidata 结构化标签（CC0-1.0）及项目分音节读音；固定来源见 android-names。\n"
         "Rime、librime-lua、LevelDB、marisa、OpenCC、yaml-cpp、Boost 与双拼方案的许可见 third-party。\n"
         "AndroidX、Kotlin 与 kotlinx.coroutines：Apache-2.0；Rust 标准库及 JNI/serde 依赖：MIT / Apache-2.0。\n"
         "NDK libc++：Apache-2.0 WITH LLVM-exception。源码、锁文件、构建脚本随开发预览材料提供。\n"

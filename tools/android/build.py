@@ -16,7 +16,7 @@ from tools.android.build_env import tool_env
 def input_hashes():
     """Bind APK assembly to source and prepared bytes, including dirty inputs."""
     source_roots = ["android", "crates", "tools/android", "data/lexicon-expansion/android-runtime",
-                    "src/study/lua/study_core.lua", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"]
+                    "data/lexicon-expansion/android-names", "src/study/lua/study_core.lua", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml"]
     source_roots.extend(path.relative_to(ROOT).as_posix() for path in (ROOT / "packaging/data").glob("study*.schema.yaml"))
     if (ROOT / ".git").exists():
         names = subprocess.check_output(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", *source_roots],
