@@ -66,10 +66,19 @@ def install(serial):
         "fingerprint": adb("shell", "getprop", "ro.build.fingerprint", serial=serial).stdout.strip()})
 
 
-def test(section, serial, ime_package=None):
+def test(section, serial, ime_package=None, *, names_baseline=False):
     if ime_package not in (None, PACKAGE, "org.studyime.android"):
         raise ValueError("Only the StudyIME development builds are supported")
+    name_check = section.startswith("offline-names-")
+    if names_baseline and section not in ("offline-names-engine", "offline-names-ui"):
+        raise ValueError("--names-baseline is for the offline names checks only")
+    if name_check and ime_package not in (None, PACKAGE):
+        raise ValueError("Offline name comparisons use the same debug APK and test editor")
     test_class, report = {
+        "offline-names-engine": ("OfflineNamesTest#nativeCandidates", "offline-names-engine.json"),
+        "offline-names-ui": ("OfflineNamesTest#foldedCandidates", "offline-names-ui.json"),
+        "offline-names-coverage": ("OfflineNamesTest#allPackagedNames", "offline-names-coverage.json"),
+        "offline-names-work-titles": ("OfflineNamesTest#workTitleCandidates", "offline-names-work-titles.json"),
         "native": ("NativeEngineTest", "native-engine-report.json"),
         "ime": ("ImeInteractionTest", "ime-interaction-report.json"),
         "emoji": ("EmojiPickerTest", "emoji-picker-report.json"),
@@ -110,7 +119,7 @@ def test(section, serial, ime_package=None):
         helper = CACHE / "temp/studyime-recording.sh"
         write(helper, RECORDING_SCRIPT)
         adb("push", helper, "/data/local/tmp/studyime-recording.sh", serial=serial)
-    if section == "native":
+    if section in ("native", "offline-names-engine", "offline-names-coverage", "offline-names-work-titles"):
         methods = adb("shell", "ime", "list", "-s", serial=serial).stdout.splitlines()
         other = next((method.strip() for method in methods if "inputmethod.latin" in method), None)
         if other: adb("shell", "ime", "set", other, serial=serial)
@@ -122,6 +131,8 @@ def test(section, serial, ime_package=None):
         adb("shell", "ime", "set", component, serial=serial)
     print("Running Android " + test_class, flush=True)
     extra = ["-e", "imePackage", ime_package] if ime_package else []
+    if names_baseline:
+        extra += ["-e", "namesBaseline", "true"]
     result = adb("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.studyime.android." + test_class, *extra,
         PACKAGE + ".test/androidx.test.runner.AndroidJUnitRunner", serial=serial, timeout=1200, check=False)
     write(CACHE / "logs" / ("instrumentation-" + section + ".log"), result.stdout + result.stderr)
@@ -142,6 +153,8 @@ def test(section, serial, ime_package=None):
         write(CACHE / "logs" / ("instrumentation-" + section + "-invalid-report.txt"), pulled.stdout + pulled.stderr)
         value = {"passed": False, "failure": "Instrumentation did not produce a valid JSON object report"}
     value["passed"] = passed and value.get("passed", False)
+    if name_check:
+        value["passed"] = value["passed"] and value.get("baseline") == names_baseline
     value["run"] = {"startedAt": started, "finishedAt": datetime.now(timezone.utc).isoformat(),
                     "serial": serial, "class": test_class, "instrumentationPassed": passed}
     value["observedInstalledApks"] = observed
@@ -170,9 +183,10 @@ def test(section, serial, ime_package=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "ime", "emoji", "recovery", "visual", "skins", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "emoji", "recovery", "visual", "skins", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
+    parser.add_argument("--names-baseline", action="store_true", help="Record candidates from an APK without the names table")
     args = parser.parse_args()
     if args.step == "install": install(args.serial)
-    else: test(args.step, args.serial, args.ime_package)
+    else: test(args.step, args.serial, args.ime_package, names_baseline=args.names_baseline)
