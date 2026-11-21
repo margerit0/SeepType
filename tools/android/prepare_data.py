@@ -18,8 +18,12 @@ STUDY_CORE = ROOT / "src/study/lua/study_core.lua"
 ASSETS = ROOT / "android/app/src/main/assets/generated"
 ENGINE_CASES = ROOT / "android/app/src/androidTest/assets/generated/engine-cases.json"
 RUNTIME_ASSETS = {"lexicon.lua": "rime/lua/lexicon.lua", "cedict_study.dict.yaml": "rime/cedict_study.dict.yaml"}
-ANDROID_RIME = {"rime/rime.lua": ROOT / "android/rime/rime.lua",
-                "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua"}
+SCHEMAS = ("study", "study_double_pinyin", "study_flypy")
+RIME_SOURCES = {
+    **{f"rime/{schema}.schema.yaml": ROOT / f"packaging/data/{schema}.schema.yaml" for schema in SCHEMAS},
+    "rime/rime.lua": ROOT / "android/rime/rime.lua",
+    "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua",
+}
 DETAIL_ROWS = "word-details.jsonl"
 EXAMPLES = SNAPSHOT / "word-detail-examples.json"
 
@@ -51,7 +55,7 @@ def refresh_if_needed(source_cache=None):
                 ASSETS / "rime/lua/study_core.lua": snapshot["studyCoreSha256"],
                 ENGINE_CASES: snapshot["files"]["engine-cases.json"],
                 **{ASSETS / asset: snapshot["files"][name] for name, asset in RUNTIME_ASSETS.items()},
-                **{ASSETS / asset: digest(source) for asset, source in ANDROID_RIME.items()},
+                **{ASSETS / asset: digest(source) for asset, source in RIME_SOURCES.items()},
                 **{ASSETS / asset: expected_hash for asset, expected_hash in detail_hashes.items()}}
     expected[ASSETS / "notices/english/NOTICE.txt"] = digest(SNAPSHOT / "NOTICE.txt")
     expected[ASSETS / "notices/README.txt"] = sha(notice_text(snapshot))
@@ -91,9 +95,7 @@ def prepare(source_cache=None):
         raise ValueError("Imported supplemental readings were built on a different Chinese base dictionary")
     payload = {"rime/lua/study_core.lua": study_core,
                **{asset: runtime[name] for name, asset in RUNTIME_ASSETS.items()},
-               **{asset: source.read_bytes() for asset, source in ANDROID_RIME.items()}}
-    for name in ("study.schema.yaml", "study_double_pinyin.schema.yaml", "study_flypy.schema.yaml"):
-        payload["rime/" + name] = (ROOT / "packaging/data" / name).read_bytes()
+               **{asset: source.read_bytes() for asset, source in RIME_SOURCES.items()}}
     for source in (CACHE / "src/rime-prelude").glob("*.yaml"):
         payload["rime/" + source.name] = source.read_bytes()
     for source in (CACHE / "src/rime-luna-pinyin").glob("*.yaml"):
@@ -102,7 +104,7 @@ def prepare(source_cache=None):
     # Android's compact strip shows 6–7 entries and the expanded panel shows
     # nine. Override each schema locally; the Windows five-entry menu is shared
     # source and must retain its original configuration.
-    for schema in ("study", "study_double_pinyin", "study_flypy"):
+    for schema in SCHEMAS:
         payload[f"rime/{schema}.custom.yaml"] = b"patch:\n  menu/page_size: 9\n"
     payload["notices/english/snapshot.json"] = lock
     payload["notices/english/NOTICE.txt"] = (SNAPSHOT / "NOTICE.txt").read_bytes()

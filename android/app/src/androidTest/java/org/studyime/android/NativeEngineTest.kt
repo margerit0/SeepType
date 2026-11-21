@@ -99,6 +99,16 @@ class NativeEngineTest {
             } finally { foreign.shutdownNow() }
             val smoke = type("gongyuan")
             check("P0 returns real park candidate and Lua annotation", smoke.candidates.any { it.chinese == "公园" && it.english == "park" })
+            for ((schema, fullCode) in listOf("study_double_pinyin" to "xmzl", "study_flypy" to "xmzd")) {
+                scheme(schema)
+                val abbreviated = type("xz")
+                check("$schema suggests 现在 first for xz", abbreviated.candidates.firstOrNull()?.chinese == "现在")
+                val selected = send(event("select", "index" to 0, "revision" to abbreviated.revision))
+                check("$schema commits the entire xz candidate", selected.input.isEmpty() && selected.commands.singleOrNull()?.text == "现在")
+                check("$schema accepts an explicit separator in x'z", type("x'z").candidates.firstOrNull()?.chinese == "现在")
+                check("$schema still resolves the full code $fullCode", type(fullCode).candidates.firstOrNull()?.chinese == "现在")
+                check("$schema gives the complete xs syllable precedence", type("xs").candidates.firstOrNull()?.chinese == "胸")
+            }
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })
             val manifest = context.assets.open("generated/manifest.json").bufferedReader().use { JSONObject(it.readText()) }
             assertEquals(manifest.getInt("englishRegressionCases"), cases.length())

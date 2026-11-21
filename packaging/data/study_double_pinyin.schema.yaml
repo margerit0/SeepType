@@ -1,12 +1,12 @@
 # Adapted 2026-11-08 from rime/rime-double-pinyin at 01a13287cbd27819be1c34fa1ddc1b3643d5001b.
 # Upstream author: 佛振 <chen.sst@gmail.com>; Flypy keyboard layout: 鶴.
 # GPLv3; original schemas and license: licensing/third-party/rime-double-pinyin/.
-# Changes: StudyIME schema identity, shared dictionary and study.schema inheritance.
+# Changes: StudyIME schema identity, shared dictionary, study.schema inheritance and initial-key abbreviations.
 __include: study.schema:/
 schema:
   schema_id: study_double_pinyin
   name: 拾词自然码双拼
-  version: '0.5.2'
+  version: '0.5.3'
   dependencies: []
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
@@ -42,8 +42,11 @@ speller:
     - xform/(.)ou$/$1B/
     - xform/in$/N/
     - xlit/QWRTYUIOPSDFGHMJCKLZXVBN/qwrtyuiopsdfghmjcklzxvbn/
-    #- abbrev/^(.).+$/$1/
+    # Use the first key of each mapped syllable; full syllable codes take precedence.
+    - abbrev/^(.).+$/$1/
 translator:
+  # A lone initial still uses normal completion, not a one-syllable abbreviation.
+  strict_spelling: true
   prism: study_double_pinyin
   preedit_format:
     - xform/([bpmnljqxy])n/$1in/

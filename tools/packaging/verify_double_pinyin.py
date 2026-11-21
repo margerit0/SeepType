@@ -114,7 +114,7 @@ def main():
                       ("ao", "熬"), ("ou", "欧"), ("en", "嗯"), ("er", "儿"), ("ah", "昂"), ("eg", "鞥"),
                       ("nv", "女"), ("lv", "绿"), ("nt", "虐"), ("lt", "略"), ("ju", "句"), ("jv", "句"),
                       ("qu", "去"), ("qv", "去"), ("xu", "需"), ("xv", "需"), ("yu", "雨"), ("yv", "雨"),
-                      ("vsgo", "中国"), ("xtxi", "学习")]
+                      ("vsgo", "中国"), ("xtxi", "学习"), ("xz", "现在"), ("x'z", "现在")]
             specific = {
                 "study_double_pinyin": [("nihk", "你好"), ("ni'hk", "你好"), ("al", "爱"), ("aj", "安"),
                                         ("ez", "诶"), ("jp", "军"), ("yp", "云"), ("xtxc", "学校"), ("pgyb", "朋友")],
@@ -130,6 +130,11 @@ def main():
                       len(words) == 200 and all(item["passed"] for item in words))
                 if schema == "study":
                     continue
+                for code, chinese in [("xz", "现在"), ("xs", "胸")]:
+                    probe.command("clear")
+                    candidates = probe.command("type " + code)["candidates"]
+                    check(schema + " shows " + chinese + " first for " + code,
+                          candidates and candidates[0]["text"] == chinese)
                 for code, chinese in common + specific[schema]:
                     _, index = probe.find(code, chinese, pages=80)
                     actual = probe.command("choose " + str(index))
