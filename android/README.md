@@ -36,6 +36,12 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 候选卡片按显示的中英文内容适配宽度；竖屏候选条放不下时可左右滑动，展开按钮和下方键位保持不动。展开后，超宽词条会换行显示。
 
+## 表情符号
+
+工具栏第二个按钮打开表情面板，可在字母页和「123／符号」页使用；正在输入拼音时，展开候选也能进入表情面板。支持按分类浏览、查看本机最近使用的表情，以及长按有变体的表情选择肤色。点选后会先确认尚在编辑的拼音，再插入完整的 Unicode 表情；可以连续选择，点「返回键盘」回到原键盘页。
+
+面板使用 AndroidX Emoji Picker，只提交文本，不下载表情包，也不需要联网。可显示的表情取决于设备和接收应用的字体。密码、数字、邮箱／网址、要求 ASCII 或要求停用个性化的输入框不启用表情入口。
+
 ## 数据和恢复
 
 首轮使用固定 CC-CEDICT / wordfreq / Unihan 数据生成 121,505 条中文词条，携带 200 条**待人工审核**的英文释义。`prepare_data.py` 复用现有词库流程，不加入网页原型中的示例，不启动词库扩充请求。原始来源、摘要、署名和审核记录随生成资源保存。
@@ -67,6 +73,7 @@ python -X utf8 tools/android/build.py lint
 ```powershell
 python -X utf8 tools/android/device.py --serial 127.0.0.1:5555 install -r android/app/build/outputs/apk/release/app-release.apk
 python -X utf8 tools/android/run_device_checks.py ime --serial 127.0.0.1:5555 --ime-package org.studyime.android
+python -X utf8 tools/android/run_device_checks.py emoji --serial 127.0.0.1:5555 --ime-package org.studyime.android
 python -X utf8 tools/android/run_device_checks.py lifecycle --serial 127.0.0.1:5555 --ime-package org.studyime.android
 python -X utf8 tools/android/run_device_checks.py apps --serial 127.0.0.1:5555 --ime-package org.studyime.android
 python -X utf8 tools/android/run_device_checks.py performance --serial 127.0.0.1:5555 --ime-package org.studyime.android

@@ -13,6 +13,9 @@ data class EditorSpec(
     val action: Int = EditorInfo.IME_ACTION_UNSPECIFIED,
     val actionLabel: String = "换行",
 ) {
+    // The picker remembers recent emoji and skin-tone choices locally.
+    val allowsEmoji: Boolean get() = !sensitive && !noPersonalization && !numeric && !asciiPreferred
+
     companion object {
         fun from(info: EditorInfo): EditorSpec {
             val category = info.inputType and InputType.TYPE_MASK_CLASS

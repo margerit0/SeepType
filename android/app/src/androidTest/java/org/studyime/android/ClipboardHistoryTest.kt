@@ -99,7 +99,7 @@ class ClipboardHistoryTest {
             val toolbar = ui.wait(Until.findObject(By.res("idle_toolbar").hasDescendant(By.desc("切换浅深色"))), 5000)
                 ?: error("Ready toolbar missing")
             val bounds = toolbar.visibleBounds
-            val buttons = listOf("键盘设置", "切换浅深色", "剪贴板历史", "显示英文释义").map { description ->
+            val buttons = listOf("键盘设置", "表情符号", "剪贴板历史", "切换浅深色", "显示英文释义").map { description ->
                 val button = toolbar.findObject(By.desc(description)) ?: error("Missing toolbar button: $description")
                 check("$label: $description has a 48 dp touch target", button.isEnabled && button.visibleBounds.let {
                     it.width() >= 96 && it.height() >= 96 && abs(it.centerY() - bounds.centerY()) <= 1

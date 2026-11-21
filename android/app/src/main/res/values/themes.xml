@@ -9,4 +9,12 @@
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:windowBackground">#FBFCFA</item>
     </style>
+    <style name="Theme.StudyIME.Emoji.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorAccent">#506598</item>
+        <item name="colorAccent">#506598</item>
+    </style>
+    <style name="Theme.StudyIME.Emoji.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:colorAccent">#A8BFF7</item>
+        <item name="colorAccent">#A8BFF7</item>
+    </style>
 </resources>

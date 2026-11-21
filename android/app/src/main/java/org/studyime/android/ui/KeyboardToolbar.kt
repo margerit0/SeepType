@@ -20,7 +20,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 
-internal enum class ToolbarGlyph { Menu, Moon, Sun, Clipboard, GlossOff, GlossOn }
+internal enum class ToolbarGlyph { Menu, Emoji, Moon, Sun, Clipboard, GlossOff, GlossOn }
 
 @Composable
 internal fun ToolbarButton(glyph: ToolbarGlyph, description: String, enabled: Boolean = true, onClick: () -> Unit) {
@@ -44,6 +44,9 @@ internal fun GlossBubble(checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
 // The selected 32-unit toolbar study, rendered as vectors at a fixed 27 dp.
 private object ToolbarArt {
     val menu = softPath("M11.5 7.5H23.1M5.1 16H26.9M7.7 24.5H19.3")
+    // Second glyph in the reference: an open arch over a short blue smile.
+    val emojiArch = softPath("M4 19.1C4 12.45 9.37 7.1 16 7.1S28 12.45 28 19.1")
+    val emojiSmile = softPath("M12.35 20.65C12.35 22.69 13.97 24.35 16 24.35S19.65 22.69 19.65 20.65")
     val moon = softPath("M14.45 5.75C12 14.3 18.7 22.15 26.55 20.15C24.47 25.25 19.23 27.85 14.02 26.55C8.13 25.08 4.65 20.2 5.6 14.62C6.26 10.1 9.76 6.49 14.45 5.75Z")
     val rays = softPath("M16 4.25V6.62M16 25.38V27.75M4.25 16H6.62M25.38 16H27.75M7.69 7.69L9.37 9.37M22.63 22.63L24.31 24.31M7.69 24.31L9.37 22.63M22.63 9.37L24.31 7.69")
     val clipboard = softPath("M4.85 24.5V11.23C4.85 8.3 6.86 6.7 9.61 6.7H22.39C25.14 6.7 27.15 8.3 27.15 11.23V24.5")
@@ -69,12 +72,17 @@ private fun ToolbarIcon(glyph: ToolbarGlyph, enabled: Boolean = true) {
     val alpha = if (enabled) 1f else .38f
     val ink = colors.ink.copy(alpha = alpha)
     val coral = (if (colors.dark) Color(0xFFFF909A) else Color(0xFFED6E76)).copy(alpha = alpha)
+    val blue = (if (colors.dark) Color(0xFFA8BFF7) else Color(0xFF506598)).copy(alpha = alpha)
     Canvas(Modifier.size(27.dp)) {
         val unit = size.minDimension / 32f
         scale(unit, unit, pivot = Offset.Zero) {
             with(ToolbarArt) {
                 when (glyph) {
                     ToolbarGlyph.Menu -> drawPath(menu, ink, style = menuPen)
+                    ToolbarGlyph.Emoji -> {
+                        drawPath(emojiArch, ink, style = outline)
+                        drawPath(emojiSmile, blue, style = outline)
+                    }
                     ToolbarGlyph.Moon -> drawPath(moon, ink, style = outline)
                     ToolbarGlyph.Sun -> {
                         drawCircle(ink, radius = 5.1f, center = Offset(16f, 16f), style = bubblePen)

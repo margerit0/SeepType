@@ -59,7 +59,7 @@ class CandidateWidthTest {
                 Box(Modifier.width(width.dp)) {
                     StudyTheme(skin = prefs.skin) {
                         StudyKeyboard(state.value, prefs, EditorSpec(), {}, { events.add(it) }, {}, {}, {},
-                            clipboard = ClipboardHistoryState(), onClipboardEnabled = {}, onPasteClipboard = { _, _ -> },
+                            onPickEmoji = { _, _ -> }, clipboard = ClipboardHistoryState(), onClipboardEnabled = {}, onPasteClipboard = { _, _ -> },
                             onPinClipboard = {}, onDeleteClipboard = {}, onClearClipboard = {})
                     }
                 }

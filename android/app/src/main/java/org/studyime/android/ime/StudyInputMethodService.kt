@@ -128,6 +128,7 @@ class StudyInputMethodService : InputMethodService() {
                         },
                         onSwitchIme = { (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showInputMethodPicker() },
                         onRetry = { restartEditor() },
+                        onPickEmoji = ::pickEmoji,
                         clipboard = clipboardState, onClipboardEnabled = clipboard::setEnabled,
                         onPasteClipboard = ::pasteClipboard, onPinClipboard = clipboard::togglePin,
                         onDeleteClipboard = clipboard::remove, onClearClipboard = clipboard::clear,
@@ -254,9 +255,18 @@ class StudyInputMethodService : InputMethodService() {
         if (generation != 0L) engine.submit(generation, command)
     }
 
+    private fun canInsertLiteral(requestedGeneration: Long) =
+        requestedGeneration == generation && generation != 0L && boundConnection != null &&
+            isInputViewShown && state.ready && !state.error
+
+    private fun pickEmoji(text: String, requestedGeneration: Long) {
+        if (!canInsertLiteral(requestedGeneration) || !editor.allowsEmoji) return
+        // Submit the entire Unicode sequence as one literal, just like punctuation.
+        send(event("literal", "text" to text))
+    }
+
     private fun pasteClipboard(id: String, requestedGeneration: Long) {
-        if (requestedGeneration != generation || generation == 0L || boundConnection == null ||
-            !isInputViewShown || editor.sensitive || editor.noPersonalization || !state.ready || state.error) return
+        if (!canInsertLiteral(requestedGeneration) || editor.sensitive || editor.noPersonalization) return
         val history = clipboard.state.value.history
         if (!history.enabled) return
         val entry = history.entries.firstOrNull { it.id == id } ?: return

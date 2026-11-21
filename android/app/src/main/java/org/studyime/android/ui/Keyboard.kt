@@ -64,6 +64,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -80,6 +82,8 @@ import org.studyime.android.ime.InputMetrics
 import org.studyime.android.settings.KeyboardPreferences
 import org.studyime.android.settings.KeyboardSkin
 
+private const val EMOJI_LABEL = "表情符号"
+
 private val LocalGestureGeneration = staticCompositionLocalOf { 0L }
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
@@ -88,7 +92,7 @@ fun StudyKeyboard(
     state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
     update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
     send: (JSONObject) -> Unit, onSettings: () -> Unit,
-    onSwitchIme: () -> Unit, onRetry: () -> Unit,
+    onSwitchIme: () -> Unit, onRetry: () -> Unit, onPickEmoji: (String, Long) -> Unit,
     clipboard: ClipboardHistoryState, onClipboardEnabled: (Boolean) -> Unit,
     onPasteClipboard: (String, Long) -> Unit, onPinClipboard: (String) -> Unit,
     onDeleteClipboard: (String) -> Unit, onClearClipboard: () -> Unit,
@@ -109,6 +113,10 @@ fun StudyKeyboard(
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
     var clipboardOpen by remember(state.generation) { mutableStateOf(false) }
+    var emojiOpen by remember(state.generation) { mutableStateOf(false) }
+    if (emojiOpen) LifecycleEventEffect(Lifecycle.Event.ON_STOP) { emojiOpen = false }
+    val active = state.ready && !state.error
+    val emojiShowing = emojiOpen && editor.allowsEmoji && active
     val clipboardAllowed = !editor.sensitive && !editor.noPersonalization
     val clipboardShowing = clipboardOpen && clipboardAllowed
     val currentState by rememberUpdatedState(state)
@@ -143,7 +151,7 @@ fun StudyKeyboard(
             if (upper) upper = false
         } else send(event("literal", "text" to text))
     } }
-    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, clipboardShowing,
+    LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, clipboardShowing, emojiShowing,
         upper, prefs.theme, prefs.skin, prefs.showEnglish) {
         announceImeSubtree(view, accessibility)
     }
@@ -153,9 +161,15 @@ fun StudyKeyboard(
     // Keep the same height while idle, composing, switching skins or hiding
     // English. First-candidate delivery must never move a finger's target.
     val statusHeight = maxOf(60f, 39f * density.fontScale * prefs.textScale + 12f).dp
-    val active = state.ready && !state.error
     val openSettings = { quickSettings = true; expanded = false; clipboardOpen = false }
     val openClipboard = { clipboardOpen = !clipboardOpen; quickSettings = false; expanded = false }
+    val openEmoji = {
+        emojiOpen = true
+        clipboardOpen = false
+        quickSettings = false
+        expanded = false
+        if (state.target != null) send(event("dismiss"))
+    }
 
     Column(Modifier.fillMaxWidth().background(colors.board).navigationBarsPadding().drawWithContent {
         drawContent()
@@ -184,8 +198,12 @@ fun StudyKeyboard(
             }
         }
 
-        if (landscape) {
-            IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, onRetry, Modifier.fillMaxWidth().height(60.dp))
+        if (emojiShowing) {
+            EmojiPanel(if (landscape) 60.dp else statusHeight, keyRowsHeight, landscape,
+                onClose = { emojiOpen = false }, onPick = { onPickEmoji(it, state.generation) })
+        } else if (landscape) {
+            IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, openEmoji, onRetry,
+                Modifier.fillMaxWidth().height(60.dp))
             val row = Modifier.fillMaxWidth().padding(horizontal = 5.dp, vertical = 3.dp)
             if (clipboardShowing) keys(row)
             else Row(row, verticalAlignment = Alignment.Bottom) {
@@ -204,15 +222,16 @@ fun StudyKeyboard(
         } else {
             Box(Modifier.fillMaxWidth().height(statusHeight).testTag("keyboard_status")) {
                 if (state.candidates.isNotEmpty() && !quickSettings && !clipboardShowing) {
-                    CandidateStrip(state, effectivePrefs, send, expanded, openSettings) { expanded = !expanded }
-                } else IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, onRetry, Modifier.fillMaxSize())
+                    CandidateStrip(state, effectivePrefs, send, expanded, openSettings,
+                        openEmoji.takeIf { expanded && active && editor.allowsEmoji }) { expanded = !expanded }
+                } else IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, openEmoji, onRetry, Modifier.fillMaxSize())
             }
             keys(Modifier.fillMaxWidth().padding(horizontal = 4.dp))
         }
         Spacer(Modifier.height(if (landscape) 3.dp else 7.dp))
     }
 
-    state.target?.let { target ->
+    state.target?.takeUnless { emojiShowing }?.let { target ->
         val vertical = with(density) { -(keyRowsHeight + 14.dp).roundToPx() }
         Popup(alignment = Alignment.BottomCenter, offset = IntOffset(0, vertical),
             onDismissRequest = { send(event("dismiss")) },
@@ -254,7 +273,8 @@ private fun ToolButton(icon: ImageVector, description: String, enabled: Boolean 
 @Composable
 private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, editor: EditorSpec,
                         update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
-                        settings: () -> Unit, clipboard: () -> Unit, retry: () -> Unit, modifier: Modifier) {
+                        settings: () -> Unit, clipboard: () -> Unit, emoji: () -> Unit,
+                        retry: () -> Unit, modifier: Modifier) {
     val colors = LocalStudyColors.current
     val toolbar = modifier.testTag("idle_toolbar")
     if (!state.ready || state.error || editor.sensitive) {
@@ -267,10 +287,11 @@ private fun IdleToolbar(state: EngineSnapshot, prefs: KeyboardPreferences, edito
         Row(toolbar, horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically) {
             ToolbarButton(ToolbarGlyph.Menu, "键盘设置", onClick = settings)
+            ToolbarButton(ToolbarGlyph.Emoji, EMOJI_LABEL, enabled = editor.allowsEmoji, onClick = emoji)
+            ToolbarButton(ToolbarGlyph.Clipboard, "剪贴板历史", enabled = !editor.noPersonalization, onClick = clipboard)
             ToolbarButton(if (colors.dark) ToolbarGlyph.Sun else ToolbarGlyph.Moon, "切换浅深色") {
                 update { it.copy(theme = if (colors.dark) "light" else "dark") }
             }
-            ToolbarButton(ToolbarGlyph.Clipboard, "剪贴板历史", enabled = !editor.noPersonalization, onClick = clipboard)
             GlossBubble(prefs.showEnglish) { checked -> update { it.copy(showEnglish = checked) } }
         }
     }
@@ -360,7 +381,7 @@ private fun SettingChoice(title: String, selected: Boolean, tag: String, onClick
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, send: (JSONObject) -> Unit,
-                           expanded: Boolean, settings: () -> Unit, onExpand: () -> Unit) {
+                           expanded: Boolean, settings: () -> Unit, openEmoji: (() -> Unit)?, onExpand: () -> Unit) {
     val scroll = key(state.generation, state.input, state.page) { rememberScrollState() }
     val view = LocalView.current
     val accessibility = remember(view) { view.context.getSystemService(AccessibilityManager::class.java) }
@@ -378,6 +399,7 @@ private fun CandidateStrip(state: EngineSnapshot, prefs: KeyboardPreferences, se
                 }
             }
         }
+        if (openEmoji != null) ToolbarButton(ToolbarGlyph.Emoji, EMOJI_LABEL, onClick = openEmoji)
         Box(Modifier.size(48.dp).clip(RoundedCornerShape(10.dp))
             .combinedClickable(onClick = onExpand, onLongClick = settings, onLongClickLabel = "键盘设置"),
             contentAlignment = Alignment.Center) {
