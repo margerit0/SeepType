@@ -132,16 +132,19 @@ internal fun SoftPopKeyFace(key: KeySpec, prefs: KeyboardPreferences, rowHeight:
             key.letter != null && key.symbol != null -> Canvas(Modifier.fillMaxSize()) {
                 drawPair(key.letter, key.symbol, key.symbolLayer, textScale, colors.ink, art.ink(key.symbol))
             }
-            key.id == "shift" -> {
+            key.shift != null -> {
                 Canvas(Modifier.fillMaxSize()) {
                     scale(size.width / 164f, size.height / 150f, pivot = Offset.Zero) {
                         drawPath(Trim.sweep, art.mintDetail.copy(alpha = .72f), style = Trim.sweepPen)
                         drawPath(Trim.rim, art.mintLine, style = Trim.rimPen)
                         drawPath(Trim.stars, art.mintDetail)
+                        if (key.shift == ShiftMode.LOCKED) {
+                            drawLine(Color.White, Offset(26f, 127f), Offset(74f, 127f), strokeWidth = 5f, cap = StrokeCap.Round)
+                        }
                     }
                 }
-                FaceLabel(if (key.shifted) "AB" else "ab", ShiftSlot, textScale, Quicksand, FontWeight.Normal,
-                    if (key.shifted) Color.White else art.mintLetter)
+                FaceLabel(if (key.shift.upper) "AB" else "ab", ShiftSlot, textScale, Quicksand, FontWeight.Normal,
+                    if (key.shift.upper) Color.White else art.mintLetter)
             }
             key.id == "delete" || key.id == "enter" -> {
                 val del = key.id == "delete"

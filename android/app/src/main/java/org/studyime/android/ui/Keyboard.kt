@@ -5,6 +5,7 @@ import android.provider.Settings
 import android.os.SystemClock
 import android.view.HapticFeedbackConstants
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.EditorInfo
@@ -105,7 +106,8 @@ fun StudyKeyboard(
     val reduced = prefs.reduceMotion || systemReduced
     val effectivePrefs = prefs.copy(reduceMotion = reduced)
     var page by remember(state.generation) { mutableStateOf(if (editor.numeric) "numbers" else "letters") }
-    var upper by remember(state.generation) { mutableStateOf(false) }
+    var shift by remember(state.generation) { mutableStateOf(ShiftMode.LOWER) }
+    var firstShiftTapAt by remember(state.generation) { mutableStateOf<Long?>(null) }
     var expanded by remember(state.generation) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
     var clipboardOpen by remember(state.generation) { mutableStateOf(false) }
@@ -121,9 +123,22 @@ fun StudyKeyboard(
     val onKey = remember(state.generation, send) {
         { id: String, text: String ->
             val latest = currentState
+            if (id != "shift") firstShiftTapAt = null
             when (id) {
-                "shift" -> { upper = !upper; if (!latest.asciiMode) send(event("mode", "ascii" to true)) }
-                "mode" -> { upper = false; send(event("mode", "ascii" to !latest.asciiMode)) }
+                "shift" -> {
+                    val now = SystemClock.uptimeMillis()
+                    val rapidSecondTap = firstShiftTapAt?.let { now - it <= ViewConfiguration.getDoubleTapTimeout() } == true
+                    shift = when (shift) {
+                        ShiftMode.LOWER -> ShiftMode.ONCE
+                        ShiftMode.ONCE -> if (rapidSecondTap) ShiftMode.LOCKED else ShiftMode.LOWER
+                        ShiftMode.LOCKED -> ShiftMode.LOWER
+                    }
+                    firstShiftTapAt = now.takeIf { shift == ShiftMode.ONCE }
+                }
+                "mode" -> {
+                    if (shift == ShiftMode.ONCE) shift = ShiftMode.LOWER
+                    send(event("mode", "ascii" to !latest.asciiMode))
+                }
                 "details" -> send(event("inspect", "index" to latest.highlighted, "revision" to latest.revision))
                 "comma" -> send(event("literal", "text" to text))
                 "page" -> { page = if (page == "letters") "numbers" else "letters" }
@@ -132,23 +147,30 @@ fun StudyKeyboard(
                 "enter" -> send(event("key", "code" to 0xff0d))
                 "space" -> send(event("key", "code" to 32))
                 else -> {
-                    if ((text.length == 1 && (page == "letters" || text[0].isAsciiLetter())) || (text == "'" && latest.input.isNotEmpty() && !latest.asciiMode))
+                    if (page == "letters" && id.length == 1 && id[0] in 'a'..'z') {
+                        // Read Shift at the tap, since the key face may not have redrawn yet.
+                        val letter = id[0]
+                        if (shift.upper) {
+                            if (shift == ShiftMode.ONCE) shift = ShiftMode.LOWER
+                            send(event("literal", "text" to letter.uppercase()))
+                        } else send(event("key", "code" to letter.code))
+                    } else if ((text.length == 1 && (page == "letters" || text[0].isAsciiLetter())) ||
+                        (text == "'" && latest.input.isNotEmpty() && !latest.asciiMode)) {
                         send(event("key", "code" to text[0].code))
-                    else send(event("literal", "text" to text))
-                    if (upper && text.any { it.isAsciiLetter() }) upper = false
+                    } else send(event("literal", "text" to text))
                 }
             }
         }
     }
     val onLongKey = remember(state.generation, send) { { text: String ->
+        firstShiftTapAt = null
         val latest = currentState
         if (text.length == 1 && (text[0].isAsciiLetter() || (text == "'" && latest.input.isNotEmpty() && !latest.asciiMode))) {
             send(event("key", "code" to text[0].code))
-            if (upper) upper = false
         } else send(event("literal", "text" to text))
     } }
     LaunchedEffect(state.generation, state.revision, state.ready, page, expanded, quickSettings, clipboardShowing, emojiShowing,
-        upper, prefs.theme, prefs.skin, prefs.showEnglish) {
+        shift, prefs.theme, prefs.skin, prefs.showEnglish) {
         announceImeSubtree(view, accessibility)
     }
     val keyHeight = maxOf(if (landscape) 40f else 48f, (if (landscape) 42f else 52f) * prefs.keyHeight,
@@ -187,7 +209,7 @@ fun StudyKeyboard(
                 // Never reuse the preceding editor's key faces or pressed state
                 // when the IME window survives an input connection change.
                 else -> key(state.generation) {
-                    KeyboardRows(page, upper, state.generation, active, state.asciiMode, state.input.isNotEmpty(),
+                    KeyboardRows(page, shift, state.generation, active, state.asciiMode, state.input.isNotEmpty(),
                         canInspect = !editor.sensitive && state.highlighted in state.candidates.indices,
                         effectivePrefs, editor, keyHeight, modifier, onKey, onLongKey, onSwitchIme)
                 }
@@ -491,13 +513,21 @@ private fun ExpandedCandidates(state: EngineSnapshot, prefs: KeyboardPreferences
 private fun Char.isAsciiLetter() = this in 'a'..'z' || this in 'A'..'Z'
 private val SecondaryKeys = "qwertyuiopasdfghjklzxcvbnm".zip("1234567890!@#¥%&*()~/-_:;?").toMap()
 
+internal enum class ShiftMode(val description: String, val actionLabel: String) {
+    LOWER("小写", "切换大写"),
+    ONCE("大写", "切换小写"),
+    LOCKED("大写锁定", "解除大写锁定");
+
+    val upper get() = this != LOWER
+}
+
 internal data class KeySpec(val id: String, val text: String, val weight: Float = 1f, val function: Boolean = false,
                            val icon: ImageVector? = null, val secondary: String? = null, val spoken: String = text,
                            val letter: String? = null, val symbol: String? = null, val symbolLayer: Boolean = false,
-                           val shifted: Boolean = false, val caption: String = text)
+                           val shift: ShiftMode? = null, val caption: String = text)
 
 @Composable
-private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled: Boolean, asciiMode: Boolean,
+private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabled: Boolean, asciiMode: Boolean,
                          composing: Boolean, canInspect: Boolean, prefs: KeyboardPreferences, editor: EditorSpec,
                          height: Dp, modifier: Modifier, onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, onSwitchIme: () -> Unit) {
     val letters = page == "letters"
@@ -517,7 +547,7 @@ private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled
     val second = if (paired) "asdfghjkl" else when (page) { "numbers" -> if (asciiMode) "@#$%&*()-+" else "@#¥%&*()-+"; "symbols" -> if (asciiMode) "()[]{}<>\\|" else "’（）【】《》〈〉"; else -> "asdfghjkl" }
     val third = if (paired) "zxcvbnm" else when (page) { "numbers" -> ".,'\":/?"; "symbols" -> if (asciiMode) "_-+=&*%" else "…—·～「」•"; else -> "zxcvbnm" }
     fun letter(char: Char, index: Int = -1): KeySpec {
-        val text = if (upper) char.uppercase() else char.toString()
+        val text = if (shift.upper) char.uppercase() else char.toString()
         if (paired) {
             val symbol = SecondaryKeys.getValue(char).toString()
             return KeySpec(if (letters) char.toString() else symbol, if (letters) text else symbol,
@@ -545,8 +575,9 @@ private fun KeyboardRows(page: String, upper: Boolean, generation: Long, enabled
             if (second.length == 9) Spacer(Modifier.weight(.5f))
         }
         Row {
-            KeyCell(if (letters || paired) KeySpec("shift", "", 1.45f, true, if (upper) Icons.Outlined.KeyboardCapslock else Icons.Outlined.ArrowUpward,
-                spoken = if (upper) "切换小写" else "切换大写", shifted = upper)
+            KeyCell(if (letters || paired) KeySpec("shift", "", 1.45f, true,
+                if (shift == ShiftMode.LOCKED) Icons.Outlined.KeyboardCapslock else Icons.Outlined.ArrowUpward,
+                spoken = shift.actionLabel, shift = shift)
                 else KeySpec("symbols", if (page == "symbols") "123" else "符号", 1.45f, true,
                     if (largeLabels) Icons.Outlined.MoreHoriz else null), height, prefs, enabled, onKey, onLongKey)
             third.forEach { char -> KeyCell(letter(char), height, prefs, enabled, onKey, onLongKey) }
@@ -592,7 +623,7 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
         role = Role.Button
         if (!enabled) disabled()
         onClick { if (enabled) { feedback(); action(); true } else false }
-        if (key.id == "shift") stateDescription = if (key.shifted) "大写" else "小写"
+        key.shift?.let { stateDescription = it.description }
         if (longAction != null) onLongClick(label = if (specialLong != null) specialLongLabel else "输入${key.secondary}") {
             if (enabled) { longAction?.invoke(); true } else false
         }
@@ -632,7 +663,8 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
             SoftPopKeyFace(key, prefs, height, enabled, pressed)
             return@Box
         }
-        val base = when { key.id == "enter" -> colors.accent; key.function -> colors.function; else -> colors.key }
+        val accented = key.id == "enter" || key.shift?.upper == true
+        val base = when { accented -> colors.accent; key.function -> colors.function; else -> colors.key }
         val fill = animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
         Box(Modifier.fillMaxSize().padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp).drawWithCache {
             val corner = CornerRadius(9.dp.toPx())
@@ -645,7 +677,7 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
                 drawRoundRect(fill.value, cornerRadius = corner)
             }
         }, contentAlignment = Alignment.Center) {
-            val ink = if (key.id == "enter" && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
+            val ink = if (accented && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
             if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = if (enabled) ink else ink.copy(alpha = .4f))
             else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,
                 lineHeight = (23 * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
