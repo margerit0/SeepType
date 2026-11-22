@@ -514,7 +514,12 @@ private fun ExpandedCandidates(state: EngineSnapshot, prefs: KeyboardPreferences
 }
 
 private fun Char.isAsciiLetter() = this in 'a'..'z' || this in 'A'..'Z'
-private val SecondaryKeys = "qwertyuiopasdfghjklzxcvbnm".zip("1234567890!@#¥%&*()~/-_:;?").toMap()
+private val SecondaryKeys = "qwertyuiopasdfghjklzxcvbnm".zip("1234567890!@#\$%&*()~/-_:;?").toMap()
+// Only language-specific punctuation changes; digits and technical symbols share the same keys.
+private val ChineseSecondaryMarks = mapOf(
+    '!' to '！', '$' to '￥', '(' to '（', ')' to '）',
+    '~' to '～', ':' to '：', ';' to '；', '?' to '？',
+)
 
 internal enum class ShiftMode(val description: String, val actionLabel: String) {
     LOWER("小写", "切换大写"),
@@ -526,7 +531,7 @@ internal enum class ShiftMode(val description: String, val actionLabel: String) 
 
 internal data class KeySpec(val id: String, val text: String, val weight: Float = 1f, val function: Boolean = false,
                            val icon: ImageVector? = null, val secondary: String? = null, val spoken: String = text,
-                           val letter: String? = null, val symbol: String? = null,
+                           val letter: String? = null,
                            val shift: ShiftMode? = null, val caption: String = text) {
     val isPadDigit get() = id.length == 1 && id[0] in '0'..'9'
 }
@@ -577,8 +582,9 @@ private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabl
         fun face(char: Char, index: Int = -1): KeySpec {
             val text = if (letters && shift.upper) char.uppercase() else char.toString()
             if (letters && soft) {
-                val symbol = SecondaryKeys.getValue(char).toString()
-                return KeySpec(char.toString(), text, secondary = symbol, letter = char.uppercase(), symbol = symbol)
+                val mark = SecondaryKeys.getValue(char)
+                val symbol = if (asciiMode) mark else ChineseSecondaryMarks[mark] ?: mark
+                return KeySpec(char.toString(), text, secondary = symbol.toString(), letter = char.uppercase())
             }
             return KeySpec(char.toString(), text, secondary = if (letters && index >= 0) "1234567890"[index].toString() else null)
         }

@@ -129,8 +129,8 @@ internal fun SoftPopKeyFace(key: KeySpec, prefs: KeyboardPreferences, rowHeight:
         }.clearAndSetSemantics { }, contentAlignment = Alignment.Center) {
         val textScale = prefs.textScale * LocalDensity.current.fontScale
         when {
-            key.letter != null && key.symbol != null -> Canvas(Modifier.fillMaxSize()) {
-                drawPair(key.letter, key.symbol, textScale, colors.ink, art.ink(key.symbol))
+            key.letter != null && key.secondary != null -> Canvas(Modifier.fillMaxSize()) {
+                drawPair(key.letter, key.secondary, textScale, colors.ink, art.ink(key.secondary))
             }
             key.isPadDigit -> Canvas(Modifier.fillMaxSize()) {
                 // The pastel secondary glyph is now a primary legend. Add graphite on light caps,

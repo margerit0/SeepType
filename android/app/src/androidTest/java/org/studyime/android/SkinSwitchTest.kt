@@ -34,7 +34,8 @@ class SkinSwitchTest {
         val report = JSONObject().put("imePackage", d.imePackage).put("checks", checks).put("captures", captures)
             .put("scope", "Native skin switching, paired key input, persistence and screenshots on a development emulator")
         val alphabet = "qwertyuiopasdfghjklzxcvbnm"
-        val symbols = "1234567890!@#¥%&*()~/-_:;?"
+        val chineseSymbols = "1234567890！@#￥%&*（）～/-_：；？"
+        val englishSymbols = "1234567890!@#\$%&*()~/-_:;?"
         val bottomRow = listOf("details", "page", "comma", "space", ".", "mode", "enter")
         val allKeys = alphabet.map(Char::toString) + listOf("shift", "delete") + bottomRow
         val padKeys = "0123456789".map(Char::toString) + listOf("symbols", "space", "delete", "page", "comma", ".", "enter", "+", "-", "×", "÷", "%")
@@ -142,16 +143,37 @@ class SkinSwitchTest {
             d.expectText("park")
             check("English is committed only by the explicit definition action", d.editor().text == "park")
 
+            // Stay in the same editor across both mode changes, just as a user would.
+            choose("soft-pop", "light")
+            val markBounds = listOf("a", "f", "m").associateWith(::boundsOf)
+            shot("soft-pop-chinese-long-press")
+            alphabet.forEach { d.holdKey(it.toString()) }
+            val afterChinese = "park$chineseSymbols"
+            d.expectText(afterChinese)
+            check("All 26 Chinese long presses commit their exact secondary symbols", d.editor().text == afterChinese)
+
+            d.tapKey("mode")
+            ui.waitForIdle()
+            shot("soft-pop-english-long-press")
+            alphabet.forEach { d.holdKey(it.toString()) }
+            val afterEnglish = afterChinese + englishSymbols
+            d.expectText(afterEnglish)
+            check("All 26 English long presses use English symbols without moving the keys",
+                d.editor().text == afterEnglish && markBounds.all { (id, bounds) -> boundsOf(id) == bounds })
+
+            d.tapKey("mode")
+            ui.waitForIdle()
+            "afm".forEach { d.holdKey(it.toString()) }
+            d.expectText(afterEnglish + "！￥？")
+            check("Switching back restores Chinese long-press symbols", d.editor().text == afterEnglish + "！￥？")
+
             d.launch("email")
             choose("soft-pop", "light")
             d.type(alphabet, 0)
             d.expectText(alphabet)
             check("Vector keycaps retain all 26 ordinary letter inputs", d.editor().text == alphabet)
             clear()
-            alphabet.forEach { d.holdKey(it.toString()) }
-            d.expectText(symbols)
-            check("All 26 letter-page secondary symbols match the design", d.editor().text == symbols)
-            clear()
+
             d.tapKey("page")
             shot("soft-pop-light-symbols")
             d.type("1234567890")
