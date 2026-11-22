@@ -68,7 +68,10 @@ def refresh_if_needed(source_cache=None):
     expected[ASSETS / "notices/README.txt"] = sha(notice_text(snapshot))
     manifest = ASSETS / "manifest.json"
     existing = json.loads(manifest.read_bytes()) if manifest.is_file() else {}
-    if (existing.get("detailFiles") != detail_hashes or existing.get("offlineNames") != names_summary or any(
+    actual_files = {path.relative_to(ASSETS).as_posix() for path in ASSETS.rglob("*") if path.is_file()}
+    declared_files = set(existing.get("files", {})) | set(detail_hashes) | {"manifest.json"}
+    if (actual_files != declared_files or existing.get("detailFiles") != detail_hashes or
+            existing.get("offlineNames") != names_summary or any(
         not path.is_file() or digest(path) != expected_hash for path, expected_hash in expected.items()
     )):
         prepare(source_cache)
@@ -146,8 +149,10 @@ def prepare(source_cache=None):
     # Detail assets are covered by build/packaging receipts, but neither
     # copied nor hashed during Rime startup. Kotlin reads the signed APK.
     payload.update(details)
-    for old in ASSETS.rglob("*") if ASSETS.exists() else []:
-        if old.is_file() and old.relative_to(ASSETS).as_posix() not in payload and old.name != "manifest.json":
+    for old in ASSETS.rglob("*"):
+        # Only the root manifest is replaced below; same-named nested files
+        # from another preview must not survive in the signed APK.
+        if old.is_file() and old != ASSETS / "manifest.json" and old.relative_to(ASSETS).as_posix() not in payload:
             safe(old).unlink()
     for name, content in payload.items():
         write(ASSETS / name, content)
