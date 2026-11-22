@@ -4,6 +4,7 @@ package org.studyime.android
 import android.os.Build
 import android.os.SystemClock
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until
 import java.io.File
@@ -22,7 +23,8 @@ class PerformanceTest {
         val artifactNames = listOf("memory-before.txt", "memory-after.txt", "gfxinfo.txt", "failure.png", "failure.xml")
         artifactNames.forEach { File(output, it).delete() }
         val report = JSONObject().put("fingerprint", Build.FINGERPRINT).put("imePackage", d.imePackage)
-            .put("scope", "Sequential real touch events, optimized IME when imePackage is release; emulator SwiftShader, not physical display timings")
+            .put("runId", InstrumentationRegistry.getArguments().getString("evidenceRunId"))
+            .put("scope", "Sequential real touch events, optimized IME when imePackage is release; callback to Compose draw, excludes physical display timings")
         val observations = JSONArray()
         val reopenings = JSONArray()
         report.put("reopeningObservations", reopenings)
@@ -48,7 +50,9 @@ class PerformanceTest {
             repeat(30) { iteration ->
                 d.type("nihao")
                 d.tapKey("space")
-                observations.put(JSONObject().put("iteration", iteration + 1).put("syntheticEditorText", d.editor().text))
+                val text = d.editor().text
+                observations.put(JSONObject().put("iteration", iteration + 1).put("syntheticEditorText", text))
+                assertEquals("Every synthetic word is committed once and in order", "你好".repeat(iteration + 2), text)
             }
             report.put("syntheticWordObservations", observations)
             report.put("syntheticFinalText", d.editor().text)
@@ -81,12 +85,15 @@ class PerformanceTest {
             val finalPid = ui.executeShellCommand("pidof ${d.imePackage}").trim()
             report.put("finalImePid", finalPid)
             assertEquals("The measured IME must not crash and restart during input", initialPid, finalPid)
-            assertTrue("At least 180 delivered keys were measured", warm.getJSONObject("keyToDeliveryMs").getInt("samples") >= 180)
-            assertTrue("The visible keyboard was drawn", warm.getJSONObject("keyToComposeDrawMs").getInt("samples") >= 170)
+            assertEquals("All 180 delivered keys were measured", 180, warm.getJSONObject("keyToDeliveryMs").getInt("samples"))
+            assertEquals("All 180 keys reached a draw", 180, warm.getJSONObject("keyToComposeDrawMs").getInt("samples"))
             assertEquals("Every measured draw has ordered, paired phase timestamps", 0, warm.getInt("invalidPhasePairs"))
-            assertTrue("Paired phases cover the measured keys", warm.getJSONArray("pairedKeySamplesMs").length() >= 170)
+            assertEquals("Paired phases cover all 180 keys", 180, warm.getJSONArray("pairedKeySamplesMs").length())
+            assertEquals("No measured keys share a later draw", 0, warm.getInt("coalescedKeysBeforeDraw"))
+            assertEquals("No measured keys were discarded before drawing", 0, warm.getInt("discardedBeforeDraw"))
             assertEquals("No input remains waiting for a draw", 0, warm.getInt("pendingDraws"))
-            assertTrue("Every requested reopening was exercised", warm.getInt("showRequests") >= 20)
+            assertEquals("All 20 requested reopenings were exercised", 20, warm.getInt("showRequests"))
+            assertEquals("All 20 reopenings reached a first draw", 20, warm.getJSONObject("showInputViewToDrawMs").getInt("samples"))
             assertEquals("Every reopening reaches a ready draw", warm.getInt("showRequests"), warm.getJSONObject("showInputViewToReadyDrawMs").getInt("samples"))
             assertFalse("No keyboard reopening remains waiting for a first draw", warm.getBoolean("pendingShowDraw"))
             assertFalse("No keyboard reopening remains waiting for a ready draw", warm.getBoolean("pendingReadyDraw"))
@@ -100,7 +107,10 @@ class PerformanceTest {
             report.put("passed", false).put("failure", failure.toString())
                 .put("syntheticWordObservations", observations)
                 .put("failureTimings", runCatching { metrics() }.getOrNull())
-            d.capture("performance", "failure")
+            runCatching { d.capture("performance", "failure") }.onFailure {
+                report.put("captureFailure", it.toString())
+                failure.addSuppressed(it)
+            }
             throw failure
         } finally {
             report.put("artifacts", JSONArray(artifactNames.filter { File(output, it).isFile }))

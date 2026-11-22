@@ -2,12 +2,13 @@
 package org.studyime.android.ime
 
 import android.os.SystemClock
+import androidx.compose.runtime.mutableIntStateOf
 import org.json.JSONArray
 import org.json.JSONObject
 import org.studyime.android.diagnostics.StartupTimings
 import org.studyime.android.engine.DispatchTiming
 
-/** Bounded timing-only counters, with no text, keys, package names or file I/O. */
+/** Bounded timing counters and show redraws; no text, keys, packages or file I/O. */
 object InputMetrics {
     private data class Pending(val generation: Long, val revision: Long, val timing: DispatchTiming,
         val delivered: Long, var compositionBegin: Long = 0, var compositionEnd: Long = 0, var applied: Long = 0)
@@ -25,6 +26,12 @@ object InputMetrics {
     private var discarded = 0
     private var invalidPairs = 0
     private var showRequests = 0
+    // Read by frame() inside drawWithContent. Invalidating the parent
+    // ComposeView alone can reuse the child's display list without invoking
+    // that callback. A show changes only this draw-phase dependency, so even
+    // unchanged ready content records a real new draw without recomposition.
+    private val showDrawEpoch = mutableIntStateOf(0)
+    private var drawnShowEpoch = 0
     private fun ArrayDeque<Long>.sample(value: Long) {
         addLast(value)
         if (size > 1024) removeFirst()
@@ -47,9 +54,11 @@ object InputMetrics {
         showRequests++
         requested = SystemClock.elapsedRealtimeNanos()
         waitingReady = requested
+        showDrawEpoch.intValue++
     }
     @Synchronized fun frame(generation: Long, revision: Long, isReady: Boolean) {
         val now = SystemClock.elapsedRealtimeNanos()
+        drawnShowEpoch = showDrawEpoch.intValue
         var batch = 0
         while (pending.isNotEmpty()) {
             val key = pending.first()
@@ -73,6 +82,7 @@ object InputMetrics {
         if (isReady) StartupTimings.ready(now)
     }
     @Synchronized fun reset() {
+        // Keep draw epochs monotonic; clearing measurements must not schedule a draw.
         pending.clear(); main.clear(); drawn.clear(); show.clear(); ready.clear(); paired.clear()
         requested = 0; waitingReady = 0; coalesced = 0; discarded = 0; invalidPairs = 0; showRequests = 0
     }
@@ -90,6 +100,7 @@ object InputMetrics {
         .put("keyToDeliveryMs", summary(main)).put("keyToComposeDrawMs", summary(drawn))
         .put("showInputViewToDrawMs", summary(show)).put("showInputViewToReadyDrawMs", summary(ready))
         .put("showRequests", showRequests).put("pendingShowDraw", requested != 0L).put("pendingReadyDraw", waitingReady != 0L)
+        .put("showDrawEpoch", showDrawEpoch.intValue).put("drawnShowEpoch", drawnShowEpoch)
         .put("coalescedKeysBeforeDraw", coalesced).put("discardedBeforeDraw", discarded)
         .put("pendingDraws", pending.size).put("invalidPhasePairs", invalidPairs)
         .put("phaseOrder", JSONArray(phaseNames))

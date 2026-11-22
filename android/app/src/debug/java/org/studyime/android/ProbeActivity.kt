@@ -33,6 +33,11 @@ class ProbeActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (intent.getBooleanExtra("nativeVerification", false)) {
+            window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            setContentView(TextView(this).apply { text = "拾词 · 正在验证合成词库"; textSize = 22f })
+            return
+        }
         val kind = intent.getStringExtra("field") ?: "text"
         val manual = intent.getBooleanExtra("manual", false)
         org.studyime.android.settings.Preferences.get(this).update { preferences -> preferences.copy(
@@ -117,6 +122,10 @@ class ProbeActivity : Activity() {
             textSize = 17f
             inputType = InputType.TYPE_CLASS_TEXT
             imeOptions = EditorInfo.IME_ACTION_DONE
+        }
+        if (intent.getBooleanExtra("noPersonalization", false)) {
+            primary.imeOptions = primary.imeOptions or EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
+            secondary.imeOptions = secondary.imeOptions or EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
         }
         primaryEditor = primary
         root.addView(primary, LinearLayout.LayoutParams(-1, -2))

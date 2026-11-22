@@ -17,6 +17,12 @@ def adb(*arguments, serial="emulator-5554", binary=False, check=True, timeout=12
                           text=not binary, encoding=None if binary else "utf-8", check=check, timeout=timeout)
 
 
+def require_emulator(serial):
+    if not serial or not any(adb("shell", "getprop", key, serial=serial).stdout.strip() == "1"
+                            for key in ("ro.kernel.qemu", "ro.boot.qemu")):
+        raise ValueError("Use the separate validate_phone.py workflow for physical hardware")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--serial", default="emulator-5554")

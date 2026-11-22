@@ -31,8 +31,11 @@ class ImeDriver {
         }
         rebind()
     }
+    val privateDevice = InstrumentationRegistry.getArguments().getString("privateDevice") == "true"
     fun rebind() {
-        val latin = device.executeShellCommand("ime list -s").lineSequence().first { it.contains("inputmethod.latin") }.trim()
+        val latin = InstrumentationRegistry.getArguments().getString("fallbackIme")
+            ?: device.executeShellCommand("ime list -s").lineSequence().first { it.contains("inputmethod.latin") }.trim()
+        require(latin.matches(Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")))
         device.executeShellCommand("ime set $latin")
         device.executeShellCommand("ime enable $component")
         device.executeShellCommand("ime set $component")
@@ -64,16 +67,16 @@ class ImeDriver {
         // A stationary 650 ms gesture exercises the real 480 ms IME handler.
         device.executeShellCommand("input swipe ${hit.x} ${hit.y} ${hit.x} ${hit.y} 650")
     }
-    fun launch(kind: String = "text", theme: String = "light") {
+    fun launch(kind: String = "text", theme: String = "light", configure: Boolean = true) {
         val token = SystemClock.elapsedRealtimeNanos()
         context.startActivity(Intent(context, ProbeActivity::class.java).putExtra("field", kind).putExtra("theme", theme)
-            .putExtra("schema", "study").putExtra("english", true).putExtra("launchToken", token)
+            .putExtra("noPersonalization", privateDevice).putExtra("schema", "study").putExtra("english", true).putExtra("launchToken", token)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
         assertTrue("Fresh synthetic activity is ready", device.wait(Until.hasObject(By.desc("probe_launch_$token")), 8000))
         editor().click()
         key(if (kind in listOf("number", "phone", "numberPassword")) "1" else "g")
         device.waitForIdle()
-        if (imePackage != context.packageName && kind !in listOf("password", "numberPassword")) {
+        if (configure && imePackage != context.packageName && kind !in listOf("password", "numberPassword")) {
             // Preferences belong to the separate optimized app process. Set
             // its scheme through the same visible UI a user operates.
             openQuickSettings()
@@ -128,6 +131,8 @@ class ImeDriver {
         assertTrue("Expected synthetic editor content: $text", device.wait(Until.hasObject(By.res(context.packageName, "probe_text").text(text)), 8000))
     }
     fun capture(directory: String, name: String): File {
+        val privateFile = File(context.filesDir, "$directory/$name.disabled")
+        if (privateDevice) return privateFile
         device.waitForIdle()
         val file = File(context.filesDir, "$directory/$name.png").apply { parentFile!!.mkdirs() }
         assertTrue(device.takeScreenshot(file))

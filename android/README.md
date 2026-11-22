@@ -107,6 +107,8 @@ python -X utf8 tools/android/measure_startup.py --serial 127.0.0.1:5555 --sample
 
 Debug 侧的 `recovery`、`scenarios`、`visual` 分别覆盖资源故障、特殊输入／导航／设置，以及四种宽度 × 四档字号 × 浅深色。运行后用 `collect_device_evidence.py visual`、`scenarios`、`performance` 收集相应截图和诊断文件，均需传相同的 `--serial`。`verify_design.py` 测量真实主题颜色及 320 dp 截图中的工具触区；逐图审阅另记 `visual-review.json`。
 
+集成候选可用 `draw` 检查计数清零后不会主动触发新绘制，用 `reopen --ime-package org.studyime.android` 检查 Release 键盘连续隐藏和重开（均需传相同的 `--serial`）。模拟器工具不应用于真机；真机使用独立的[限定回归流程](../docs/android-phone-validation.md)。
+
 原生 ELF / APK 的 16 KB 对齐检查与实际在 16 KB 页面设备运行是两项不同验证。模拟器测试也不能替代真机触感、60 Hz / 高刷新率表现及常用第三方应用验收；交付记录会分别列出结果和待补验项。
 
 ## 交付开发包
