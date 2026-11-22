@@ -52,7 +52,7 @@ class PerformanceTest {
                 d.tapKey("space")
                 val text = d.editor().text
                 observations.put(JSONObject().put("iteration", iteration + 1).put("syntheticEditorText", text))
-                assertEquals("Every synthetic word is committed once and in order", "你好".repeat(iteration + 2), text)
+                assertEquals("Every raw pinyin spelling is committed once and in order", "nihao".repeat(iteration + 2), text)
             }
             report.put("syntheticWordObservations", observations)
             report.put("syntheticFinalText", d.editor().text)

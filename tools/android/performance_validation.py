@@ -41,9 +41,9 @@ def _assess_performance(report):
         require(metrics.get(key) is False, key + " must be false")
     words = report.get("syntheticWordObservations", [])
     require(len(words) == 30 and all(
-        item.get("iteration") == index + 1 and item.get("syntheticEditorText") == "你好" * (index + 2)
+        item.get("iteration") == index + 1 and item.get("syntheticEditorText") == "nihao" * (index + 2)
         for index, item in enumerate(words)), "Every word must be committed once in order")
-    require(report.get("syntheticFinalText") == "你好" * 31, "Final synthetic editor text differs")
+    require(report.get("syntheticFinalText") == "nihao" * 31, "Final synthetic editor text differs")
     reopenings = report.get("reopeningObservations", [])
     require(len(reopenings) == 20 and all(
         item.get("iteration") == index + 1 and item.get("showRequests") == index + 1

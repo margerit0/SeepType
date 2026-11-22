@@ -18,8 +18,8 @@ def completed_report():
     def summary(samples, duration):
         return {"samples": samples, "p50": duration, "p95": duration, "p99": duration, "max": duration}
     return {"passed": True, "initialImePid": "123", "finalImePid": "123",
-            "syntheticFinalText": "你好" * 31,
-            "syntheticWordObservations": [{"iteration": i + 1, "syntheticEditorText": "你好" * (i + 2)} for i in range(30)],
+            "syntheticFinalText": "nihao" * 31,
+            "syntheticWordObservations": [{"iteration": i + 1, "syntheticEditorText": "nihao" * (i + 2)} for i in range(30)],
             "reopeningObservations": [{"iteration": i + 1, "showRequests": i + 1, "readyDraws": i + 1, "pendingReadyDraw": False} for i in range(20)],
             "warmTimings": {"keyToDeliveryMs": summary(180, 6), "keyToComposeDrawMs": summary(180, 10),
                             "showInputViewToDrawMs": summary(20, 20), "showInputViewToReadyDrawMs": summary(20, 20),
@@ -55,7 +55,7 @@ class PerformanceEvidenceTest(unittest.TestCase):
 
     def test_a_missing_then_duplicate_word_is_not_hidden_by_final_text(self):
         report = completed_report()
-        report["syntheticWordObservations"][8]["syntheticEditorText"] = "你好" * 9
+        report["syntheticWordObservations"][8]["syntheticEditorText"] = "nihao" * 9
         self.assertFalse(assess_performance(report)["coverageComplete"])
 
     def test_stale_percentiles_cannot_override_raw_phases(self):

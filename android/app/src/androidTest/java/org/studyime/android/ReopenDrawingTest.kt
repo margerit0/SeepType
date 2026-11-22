@@ -33,7 +33,7 @@ class ReopenDrawingTest {
         try {
             d.launch()
             d.type("nihao")
-            d.tapKey("space")
+            d.candidate("你好").click()
             d.expectText("你好")
             val pid = ui.executeShellCommand("pidof ${d.imePackage}").trim()
             report.put("initialImePid", pid)

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class PhoneInputTest {
     @Test fun threeSchemesAndDefinitionGuards() {
         val d = ImeDriver()
-        require(d.privateDevice && d.imePackage != d.context.packageName)
+        require(d.imePackage != d.context.packageName)
         val ui = d.device
         val checks = JSONArray()
         val report = JSONObject().put("passed", false).put("checks", checks).put("imePackage", d.imePackage)
@@ -55,10 +55,10 @@ class PhoneInputTest {
             check("Preview word detail explicitly commits the pinned default", d.editor().text == "solve")
 
             d.launch()
-            d.type("liulangdiqiu")
-            d.candidate("流浪地球").click()
-            d.expectText("流浪地球")
-            check("Preview offline title commits through Release InputConnection", d.editor().text == "流浪地球")
+            d.type("naweilaite")
+            d.candidate("那维莱特").click()
+            d.expectText("那维莱特")
+            check("Preview offline name commits through Release InputConnection", d.editor().text == "那维莱特")
 
             for ((input, english) in listOf("hai" to "even", "huan" to "return")) {
                 d.launch()
@@ -78,7 +78,8 @@ class PhoneInputTest {
             d.candidate("你好，英文释义：hello").click()
             check("Partial Chinese selection preserves remaining composition", d.editor().text.startsWith("你好") && d.editor().text.contains("ma"))
             d.tapKey("space")
-            check("Remaining syllable can still commit", d.editor().text.startsWith("你好") && !d.editor().text.contains("ma"))
+            d.expectText("你好ma")
+            check("Space commits the remaining spelling without an implicit Chinese selection", ui.wait(Until.gone(By.res("candidate_0")), 8000))
             report.put("passed", true)
         } finally {
             File(d.context.filesDir, "phone-input-report.json").writeText(report.toString(2))

@@ -79,6 +79,8 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
     if ime_package not in (None, PACKAGE, "org.studyime.android"):
         raise ValueError("Only the StudyIME development builds are supported")
     require_emulator(serial)
+    if section == "preview-input" and ime_package != "org.studyime.android":
+        raise ValueError("Preview input requires the optimized Release IME")
     name_check = section.startswith("offline-names-")
     if names_baseline and section not in ("offline-names-engine", "offline-names-ui"):
         raise ValueError("--names-baseline is for the offline names checks only")
@@ -91,6 +93,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
         "offline-names-work-titles": ("OfflineNamesTest#workTitleCandidates", "offline-names-work-titles.json"),
         "native": ("NativeEngineTest", "native-engine-report.json"),
         "ime": ("ImeInteractionTest", "ime-interaction-report.json"),
+        "preview-input": ("PhoneInputTest", "phone-input-report.json"),
         "emoji": ("EmojiPickerTest", "emoji-picker-report.json"),
         "recovery": ("ResourceRecoveryTest", "resource-recovery-report.json"),
         "visual": ("VisualMatrixTest", "visual-matrix-report.json"),
@@ -283,7 +286,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "preview-input", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
     parser.add_argument("--names-baseline", action="store_true", help="Record candidates from an APK without the names table")
