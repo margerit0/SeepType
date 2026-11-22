@@ -77,10 +77,14 @@ class PhoneInputTest {
             ui.findObject(By.desc("关闭释义")).click()
             d.candidate("你好，英文释义：hello").click()
             check("Partial Chinese selection preserves remaining composition", d.editor().text.startsWith("你好") && d.editor().text.contains("ma"))
-            d.tapKey("space")
-            d.expectText("你好ma")
-            check("Space commits the remaining spelling without an implicit Chinese selection", ui.wait(Until.gone(By.res("candidate_0")), 8000))
+            d.candidate("吗").click()
+            check("Explicit selection completes the remaining segment", ui.wait(Until.hasObject(
+                By.res(d.context.packageName, "probe_text").text("你好吗")), 8000) &&
+                ui.wait(Until.gone(By.res("candidate_0")), 8000))
             report.put("passed", true)
+        } catch (failure: Throwable) {
+            report.put("failure", failure.toString())
+            throw failure
         } finally {
             File(d.context.filesDir, "phone-input-report.json").writeText(report.toString(2))
         }
