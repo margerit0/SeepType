@@ -75,12 +75,20 @@ def install(serial):
         "fingerprint": adb("shell", "getprop", "ro.build.fingerprint", serial=serial).stdout.strip()})
 
 
+def apk_inputs(release=None):
+    return {
+        PACKAGE: ROOT / "android/app/build/outputs/apk/debug/app-debug.apk",
+        PACKAGE + ".test": ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "org.studyime.android": release or ROOT / "android/app/build/outputs/apk/release/app-release.apk",
+    }
+
+
 def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, timeout=1200, capture_runtime=False):
     if ime_package not in (None, PACKAGE, "org.studyime.android"):
         raise ValueError("Only the StudyIME development builds are supported")
     require_emulator(serial)
-    if section == "preview-input" and ime_package != "org.studyime.android":
-        raise ValueError("Preview input requires the optimized Release IME")
+    if section in ("preview-input", "clipboard-privacy") and ime_package != "org.studyime.android":
+        raise ValueError(section + " requires the optimized Release IME")
     name_check = section.startswith("offline-names-")
     if names_baseline and section not in ("offline-names-engine", "offline-names-ui"):
         raise ValueError("--names-baseline is for the offline names checks only")
@@ -102,6 +110,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
         "word-details": ("WordDetailTest", "word-detail-report.json"),
         "clipboard": ("ClipboardHistoryTest", "clipboard-history-report.json"),
         "clipboard-persistence": ("ClipboardPersistenceTest", "clipboard-persistence-report.json"),
+        "clipboard-privacy": ("ClipboardPrivacyTest", "clipboard-privacy-report.json"),
         "lifecycle": ("LifecycleTest", "lifecycle-report.json"),
         "scenarios": ("ScenarioTest", "scenario-report.json"),
         "performance": ("PerformanceTest", "performance-report.json"),
@@ -110,11 +119,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
         "apps": ("AppEditorTest", "app-editor-report.json"),
         "recording": ("PreviewRecordingTest", "preview-recording-report.json"),
     }[section]
-    apks = apks or {
-        PACKAGE: ROOT / "android/app/build/outputs/apk/debug/app-debug.apk",
-        PACKAGE + ".test": ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
-        "org.studyime.android": ROOT / "android/app/build/outputs/apk/release/app-release.apk",
-    }
+    apks = apks or apk_inputs()
     observed = [installed_apk(serial, package, apks[package]) for package in (PACKAGE, PACKAGE + ".test")]
     if ime_package and ime_package != PACKAGE:
         observed.append(installed_apk(serial, ime_package, apks[ime_package]))
@@ -286,11 +291,15 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "preview-input", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "preview-input", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "clipboard-privacy", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
+    parser.add_argument("--release-apk", type=Path, help="Pin the installed optimized IME to a different APK, such as the final signed release")
     parser.add_argument("--names-baseline", action="store_true", help="Record candidates from an APK without the names table")
     parser.add_argument("--runtime-evidence", action="store_true", help="Collect system logs from the dedicated test emulator only")
     args = parser.parse_args()
+    if args.release_apk and (args.step == "install" or args.ime_package != "org.studyime.android"):
+        parser.error("--release-apk requires a test with --ime-package org.studyime.android")
     if args.step == "install": install(args.serial)
-    else: test(args.step, args.serial, args.ime_package, names_baseline=args.names_baseline, capture_runtime=args.runtime_evidence)
+    else: test(args.step, args.serial, args.ime_package, names_baseline=args.names_baseline,
+               apks=apk_inputs(args.release_apk), capture_runtime=args.runtime_evidence)

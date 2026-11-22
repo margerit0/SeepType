@@ -26,8 +26,10 @@ The StudyIME-specific changes are marked in each derived schema and recorded in
 
 The CC-CEDICT-derived English learning data is separately licensed under
 `CC-BY-SA-4.0`. Its attribution, source records, change descriptions and full
-license are in [data/lexicon](data/lexicon/README.md). Human review is a release
-quality requirement; pending review is not removed by choosing a code license.
+license are in [data/lexicon](data/lexicon/README.md). The legacy 200-entry
+formal export workflow has its own quality checks. The Android public preview
+uses the separate [release policy](docs/releases.md#android); its review
+workflow does not change the data licensing or attribution.
 
 The CC-CEDICT/wordfreq-derived Chinese input data is also under CC-BY-SA-4.0,
 with its separate source and contributor records in [data/chinese](data/chinese/README.md).

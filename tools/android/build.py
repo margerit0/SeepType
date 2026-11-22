@@ -76,20 +76,30 @@ def signing_key():
         "development-signing-key", env=tool_env())
 
 
-def gradle(tasks, *, log="gradle-build", wrapper=True, locks=False):
-    signing_key()
+def apk_path(variant, *, unsigned_release=False):
+    if variant == "DebugAndroidTest":
+        return ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
+    kind = variant.lower()
+    suffix = "-unsigned" if variant == "Release" and unsigned_release else ""
+    return ROOT / f"android/app/build/outputs/apk/{kind}/app-{kind}{suffix}.apk"
+
+
+def gradle(tasks, *, log="gradle-build", wrapper=True, locks=False, unsigned_release=False):
+    if not unsigned_release or any("Debug" in task for task in tasks):
+        signing_key()
     before = input_hashes()
     executable = ROOT / "android/gradlew.bat" if wrapper else CACHE / "gradle-8.11.1/bin/gradle.bat"
     command = [executable, *tasks, "--no-daemon", "--console=plain"]
     if locks: command.append("--write-locks")
+    if unsigned_release: command.append("-PstudyimeUnsignedRelease=true")
     run(command, log, env=tool_env(), cwd=ROOT / "android")
     after = input_hashes()
     for variant in ("Debug", "Release", "DebugAndroidTest"):
         if not any(task.split(":")[-1] == "assemble" + variant for task in tasks):
             continue
-        apk = (ROOT / "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk" if variant == "DebugAndroidTest"
-               else ROOT / f"android/app/build/outputs/apk/{variant.lower()}/app-{variant.lower()}.apk")
-        json_write(CACHE / ("assembly-" + variant.lower() + ".json"), {
+        apk = apk_path(variant, unsigned_release=unsigned_release)
+        receipt = variant.lower() + ("-unsigned" if variant == "Release" and unsigned_release else "")
+        json_write(CACHE / ("assembly-" + receipt + ".json"), {
             "variant": variant, "apkSha256": digest(apk), "bytes": apk.stat().st_size,
             "inputHashing": "SHA-256; UTF-8 source CRLF normalized to LF; prepared binaries hashed verbatim",
             "inputHashes": after, "inputsUnchangedDuringBuild": before == after,
@@ -102,8 +112,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("step", choices=["prepare", "compile", "apk", "tests", "lint"])
     parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--unsigned-release", action="store_true", help="Build the optimized APK without the local development signature")
     parser.add_argument("--source-cache", type=Path)
     args = parser.parse_args()
+    if args.unsigned_release and (args.step != "apk" or args.debug):
+        parser.error("--unsigned-release is only for the optimized apk build")
     if args.step == "prepare":
         from tools.android import bootstrap, prepare_sources, prepare_build_tools, prepare_data, build_native, build_rust
         if not (CACHE / "sdk-downloads.json").exists(): bootstrap.metadata()
@@ -128,12 +141,14 @@ def main():
             prepare(args.source_cache)
         else:
             refresh_if_needed(args.source_cache)
-        gradle([":app:assemble" + variant], log="gradle-apk-" + variant.lower(), locks=True)
-        output = ROOT / "android/app/build/outputs/apk" / variant.lower() / ("app-" + variant.lower() + ".apk")
+        receipt = variant.lower() + ("-unsigned" if args.unsigned_release else "")
+        gradle([":app:assemble" + variant], log="gradle-apk-" + receipt,
+               locks=not args.unsigned_release, unsigned_release=args.unsigned_release)
+        output = apk_path(variant, unsigned_release=args.unsigned_release)
         version = apk_version(output)
         sha = digest(output)
         print(f"APK: {output.resolve()}\nVersion: {version['versionName']} ({version['versionCode']})\nSHA256: {sha}")
-        json_write(CACHE / ("apk-" + variant.lower() + ".json"), {"variant": variant, "path": str(output.resolve()),
+        json_write(CACHE / ("apk-" + receipt + ".json"), {"variant": variant, "path": str(output.resolve()),
                     **version, "sha256": sha, "bytes": output.stat().st_size, "gitHead": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip() if (ROOT / ".git").exists() else None,
                     "sourceState": "worktree build; see delivery manifest for final source hashes"})
     elif args.step == "tests":

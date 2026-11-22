@@ -4,6 +4,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+val unsignedRelease = providers.gradleProperty("studyimeUnsignedRelease").map(String::toBoolean).orElse(false)
+
 android {
     namespace = "org.studyime.android"
     compileSdk = 35
@@ -24,8 +26,8 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            // This is a local development preview, not a store signing key.
-            signingConfig = signingConfigs.getByName("debug")
+            // Developer builds remain installable; public artifacts must be signed outside Gradle.
+            signingConfig = if (unsignedRelease.get()) null else signingConfigs.getByName("debug")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
