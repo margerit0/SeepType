@@ -51,6 +51,7 @@ import androidx.compose.ui.input.pointer.changedToUpIgnoreConsumed
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
@@ -59,6 +60,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
@@ -142,7 +144,8 @@ fun StudyKeyboard(
                 "details" -> send(event("inspect", "index" to latest.highlighted, "revision" to latest.revision))
                 "comma" -> send(event("literal", "text" to text))
                 "page" -> { page = if (page == "letters") "numbers" else "letters" }
-                "symbols" -> { page = if (page == "symbols") "numbers" else "symbols" }
+                "symbols" -> { page = when (page) { "numbers" -> "commonSymbols"; "letters" -> "symbols"; else -> "numbers" } }
+                "symbolSet" -> { page = if (page == "commonSymbols") "symbols" else "commonSymbols" }
                 "delete" -> send(event("key", "code" to 0xff08))
                 "enter" -> send(event("key", "code" to 0xff0d))
                 "space" -> send(event("key", "code" to 32))
@@ -523,8 +526,10 @@ internal enum class ShiftMode(val description: String, val actionLabel: String) 
 
 internal data class KeySpec(val id: String, val text: String, val weight: Float = 1f, val function: Boolean = false,
                            val icon: ImageVector? = null, val secondary: String? = null, val spoken: String = text,
-                           val letter: String? = null, val symbol: String? = null, val symbolLayer: Boolean = false,
-                           val shift: ShiftMode? = null, val caption: String = text)
+                           val letter: String? = null, val symbol: String? = null,
+                           val shift: ShiftMode? = null, val caption: String = text) {
+    val isPadDigit get() = id.length == 1 && id[0] in '0'..'9'
+}
 
 @Composable
 private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabled: Boolean, asciiMode: Boolean,
@@ -532,7 +537,6 @@ private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabl
                          height: Dp, modifier: Modifier, onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, onSwitchIme: () -> Unit) {
     val letters = page == "letters"
     val soft = prefs.skin == KeyboardSkin.SOFT_POP
-    val paired = soft && page != "symbols"
     // Compact labels before the 320 dp mode key clips at 1.3x font scale.
     val largeLabels = LocalDensity.current.fontScale * prefs.textScale >= 1.25f
     val actionIcon = when {
@@ -542,19 +546,6 @@ private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabl
         editor.action in listOf(EditorInfo.IME_ACTION_NEXT, EditorInfo.IME_ACTION_GO, EditorInfo.IME_ACTION_PREVIOUS) -> Icons.AutoMirrored.Outlined.ArrowForward
         editor.action == EditorInfo.IME_ACTION_DONE -> Icons.Outlined.Check
         else -> Icons.AutoMirrored.Outlined.KeyboardReturn
-    }
-    val first = if (paired) "qwertyuiop" else when (page) { "numbers" -> "1234567890"; "symbols" -> if (asciiMode) "!?.,:;\"'`~" else "！？。，、；：“”‘"; else -> "qwertyuiop" }
-    val second = if (paired) "asdfghjkl" else when (page) { "numbers" -> if (asciiMode) "@#$%&*()-+" else "@#¥%&*()-+"; "symbols" -> if (asciiMode) "()[]{}<>\\|" else "’（）【】《》〈〉"; else -> "asdfghjkl" }
-    val third = if (paired) "zxcvbnm" else when (page) { "numbers" -> ".,'\":/?"; "symbols" -> if (asciiMode) "_-+=&*%" else "…—·～「」•"; else -> "zxcvbnm" }
-    fun letter(char: Char, index: Int = -1): KeySpec {
-        val text = if (shift.upper) char.uppercase() else char.toString()
-        if (paired) {
-            val symbol = SecondaryKeys.getValue(char).toString()
-            return KeySpec(if (letters) char.toString() else symbol, if (letters) text else symbol,
-                secondary = if (letters) symbol else text, letter = char.uppercase(), symbol = symbol, symbolLayer = !letters)
-        }
-        return KeySpec(char.toString(), if (letters) text else char.toString(),
-            secondary = if (letters && index >= 0) "1234567890"[index].toString() else null)
     }
     val caption = when {
         composing -> "Done"
@@ -566,47 +557,91 @@ private fun KeyboardRows(page: String, shift: ShiftMode, generation: Long, enabl
         editor.action == EditorInfo.IME_ACTION_DONE -> "Done"
         else -> "Enter"
     }
+    val enter = KeySpec("enter", if (composing) "原样" else editor.actionLabel, 1.5f, true,
+        if (soft) null else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
+        spoken = if (composing) "输入原始拼写" else editor.actionLabel, caption = caption)
+    val delete = KeySpec("delete", "", 1.45f, true, Icons.AutoMirrored.Outlined.Backspace, spoken = "删除", caption = "Del")
     CompositionLocalProvider(LocalGestureGeneration provides generation) {
-    Column(modifier) {
-        Row { first.forEachIndexed { index, char -> KeyCell(letter(char, index), height, prefs, enabled, onKey, onLongKey) } }
-        Row {
-            if (second.length == 9) Spacer(Modifier.weight(.5f))
-            second.forEach { char -> KeyCell(letter(char), height, prefs, enabled, onKey, onLongKey) }
-            if (second.length == 9) Spacer(Modifier.weight(.5f))
+        if (page == "numbers") {
+            // A physical number pad keeps 1–2–3 and its side controls in the same places in RTL editors.
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                NumberPad(height, prefs, enabled, asciiMode, composing, enter, delete, largeLabels, modifier, onKey, onLongKey, onSwitchIme)
+            }
+            return@CompositionLocalProvider
         }
-        Row {
-            KeyCell(if (letters || paired) KeySpec("shift", "", 1.45f, true,
-                if (shift == ShiftMode.LOCKED) Icons.Outlined.KeyboardCapslock else Icons.Outlined.ArrowUpward,
-                spoken = shift.actionLabel, shift = shift)
-                else KeySpec("symbols", if (page == "symbols") "123" else "符号", 1.45f, true,
-                    if (largeLabels) Icons.Outlined.MoreHoriz else null), height, prefs, enabled, onKey, onLongKey)
-            third.forEach { char -> KeyCell(letter(char), height, prefs, enabled, onKey, onLongKey) }
-            KeyCell(KeySpec("delete", "", 1.45f, true, Icons.AutoMirrored.Outlined.Backspace, spoken = "删除", caption = "Del"), height, prefs, enabled, onKey, onLongKey)
+        // Keep the old number row's punctuation available behind #+=, alongside the original symbol sheet.
+        val common = page == "commonSymbols"
+        val first = when { letters -> "qwertyuiop"; common -> "@#\$¥%&*()+"; asciiMode -> "!?.,:;\"'`~"; else -> "！？。，、；：“”‘" }
+        val second = when { letters -> "asdfghjkl"; common -> "!?~:;/\\'\"|"; asciiMode -> "()[]{}<>\\|"; else -> "’（）【】《》〈〉" }
+        val third = when { letters -> "zxcvbnm"; common -> "-_=<>[]"; asciiMode -> "_-+=&*%"; else -> "…—·～「」•" }
+        fun face(char: Char, index: Int = -1): KeySpec {
+            val text = if (letters && shift.upper) char.uppercase() else char.toString()
+            if (letters && soft) {
+                val symbol = SecondaryKeys.getValue(char).toString()
+                return KeySpec(char.toString(), text, secondary = symbol, letter = char.uppercase(), symbol = symbol)
+            }
+            return KeySpec(char.toString(), text, secondary = if (letters && index >= 0) "1234567890"[index].toString() else null)
         }
-        Row {
-            KeyCell(KeySpec("details", "", 1.55f, true, Icons.Outlined.MenuBook, spoken = "查看当前候选词详情"),
-                height, prefs, enabled && canInspect, onKey, onLongKey)
-            KeyCell(KeySpec("page", if (letters) "123" else "ABC", 1.15f, true,
-                if (largeLabels && !soft) { if (letters) Icons.Outlined.Dialpad else Icons.Outlined.Keyboard } else null,
-                spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey,
-                specialLong = if (soft) { { onKey("symbols", "") } } else null, specialLongLabel = "更多符号")
-            KeyCell(KeySpec("comma", if (asciiMode) "," else "，", spoken = "逗号"), height, prefs, enabled, onKey, onLongKey)
-            KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 2.6f,
-                spoken = if (composing) "空格，输入原始拼写" else "空格"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec(".", if (asciiMode) "." else "。", spoken = "句号"), height, prefs, enabled,
-                { id, _ -> onKey(id, if (letters) "." else if (asciiMode) "." else "。") }, onLongKey)
-            KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.2f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
-                enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
-            KeyCell(KeySpec("enter", if (composing) "原样" else editor.actionLabel, 1.5f, true,
-                if (soft) null else if (largeLabels) actionIcon else if (!composing && editor.actionLabel == "换行") Icons.AutoMirrored.Outlined.KeyboardReturn else null,
-                spoken = if (composing) "输入原始拼写" else editor.actionLabel, caption = caption), height, prefs, enabled, onKey, onLongKey)
+        Column(modifier) {
+            Row { first.forEachIndexed { index, char -> KeyCell(face(char, index), height, prefs, enabled, onKey, onLongKey) } }
+            Row {
+                if (second.length == 9) Spacer(Modifier.weight(.5f))
+                second.forEach { char -> KeyCell(face(char), height, prefs, enabled, onKey, onLongKey) }
+                if (second.length == 9) Spacer(Modifier.weight(.5f))
+            }
+            Row {
+                KeyCell(if (letters) KeySpec("shift", "", 1.45f, true,
+                    if (shift == ShiftMode.LOCKED) Icons.Outlined.KeyboardCapslock else Icons.Outlined.ArrowUpward,
+                    spoken = shift.actionLabel, shift = shift)
+                    else KeySpec("symbols", "123", 1.45f, true, if (largeLabels) Icons.Outlined.Dialpad else null, spoken = "数字键盘"), height, prefs, enabled, onKey, onLongKey)
+                third.forEach { char -> KeyCell(face(char), height, prefs, enabled, onKey, onLongKey) }
+                if (!letters) KeyCell(KeySpec("symbolSet", if (common) "1/2" else "2/2", function = true, spoken = "切换符号页"),
+                    height, prefs, enabled, onKey, onLongKey)
+                KeyCell(delete, height, prefs, enabled, onKey, onLongKey)
+            }
+            Row {
+                KeyCell(KeySpec("details", "", 1.55f, true, Icons.Outlined.MenuBook, spoken = "查看当前候选词详情"),
+                    height, prefs, enabled && canInspect, onKey, onLongKey)
+                KeyCell(KeySpec("page", if (letters) "123" else "ABC", 1.15f, true,
+                    if (largeLabels && !soft) { if (letters) Icons.Outlined.Dialpad else Icons.Outlined.Keyboard } else null,
+                    spoken = if (letters) "数字与符号" else "字母键盘"), height, prefs, enabled, onKey, onLongKey,
+                    specialLong = if (soft) { { onKey("symbols", "") } } else null, specialLongLabel = "更多符号")
+                KeyCell(KeySpec("comma", if (asciiMode) "," else "，", spoken = "逗号"), height, prefs, enabled, onKey, onLongKey)
+                KeyCell(KeySpec("space", if (asciiMode) "space" else "空格", 2.6f,
+                    spoken = if (composing) "空格，输入原始拼写" else "空格"), height, prefs, enabled, onKey, onLongKey, onSwitchIme)
+                KeyCell(KeySpec(".", if (asciiMode) "." else "。", spoken = "句号"), height, prefs, enabled,
+                    { id, _ -> onKey(id, if (letters) "." else if (asciiMode) "." else "。") }, onLongKey)
+                KeyCell(KeySpec("mode", if (largeLabels) { if (asciiMode) "英" else "中" } else if (asciiMode) "英/中" else "中/英", 1.2f, true, spoken = "切换中英文，长按切换输入法"), height, prefs,
+                    enabled && !editor.sensitive, onKey, onLongKey, onSwitchIme)
+                KeyCell(enter, height, prefs, enabled, onKey, onLongKey)
+            }
         }
-    }
     }
 }
 
+// The number pad's continuous operator strip uses the same painted edges as a regular key.
+// Insets are visual only: the touch targets still meet at their outer bounds.
+internal data class KeyCapFrame(val side: Dp, val vertical: Dp, val radius: Dp) {
+    fun inset(modifier: Modifier) = modifier.padding(horizontal = side, vertical = vertical)
+
+    fun defaultFace(modifier: Modifier, pressed: Boolean, fill: () -> Color) = inset(modifier).drawWithCache {
+        val corner = CornerRadius(radius.toPx())
+        onDrawBehind {
+            if (!pressed) {
+                drawRoundRect(Color.Black.copy(alpha = .06f), topLeft = Offset(0f, 1.dp.toPx()), size = size, cornerRadius = corner)
+                drawRoundRect(Color.Black.copy(alpha = .08f), topLeft = Offset(0f, .5.dp.toPx()), size = size, cornerRadius = corner)
+            }
+            drawRoundRect(fill(), cornerRadius = corner)
+        }
+    }
+}
+
+internal val DefaultKeyCap = KeyCapFrame(2.5.dp, 3.dp, 9.dp)
+private val TightKeyCap = DefaultKeyCap.copy(side = .5.dp)
+internal fun softPopKeyCap(height: Dp) = KeyCapFrame((height * .038f).coerceIn(1.5.dp, 2.6.dp), height * .076f, height * .18f)
+
 @Composable
-private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreferences, enabled: Boolean,
+internal fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreferences, enabled: Boolean,
                             onKey: (String, String) -> Unit, onLongKey: (String) -> Unit, specialLong: (() -> Unit)? = null,
                             specialLongLabel: String = "切换输入法") {
     val colors = LocalStudyColors.current
@@ -666,21 +701,12 @@ private fun RowScope.KeyCell(key: KeySpec, height: Dp, prefs: KeyboardPreference
         val accented = key.id == "enter" || key.shift?.upper == true
         val base = when { accented -> colors.accent; key.function -> colors.function; else -> colors.key }
         val fill = animateColorAsState(if (pressed) colors.tint else base, tween(if (prefs.reduceMotion) 0 else 75), label = "keyPress")
-        Box(Modifier.fillMaxSize().padding(horizontal = if (tightLetters) .5.dp else 2.5.dp, vertical = 3.dp).drawWithCache {
-            val corner = CornerRadius(9.dp.toPx())
-            onDrawBehind {
-                // A shallow contact shadow without an elevation layer for every key.
-                if (!pressed) {
-                    drawRoundRect(Color.Black.copy(alpha = .06f), topLeft = Offset(0f, 1.dp.toPx()), size = size, cornerRadius = corner)
-                    drawRoundRect(Color.Black.copy(alpha = .08f), topLeft = Offset(0f, .5.dp.toPx()), size = size, cornerRadius = corner)
-                }
-                drawRoundRect(fill.value, cornerRadius = corner)
-            }
-        }, contentAlignment = Alignment.Center) {
+        val cap = if (tightLetters) TightKeyCap else DefaultKeyCap
+        Box(cap.defaultFace(Modifier.fillMaxSize(), pressed) { fill.value }, contentAlignment = Alignment.Center) {
             val ink = if (accented && !pressed) colors.onAccent else if (key.id == "space") colors.subtle else colors.ink
             if (key.icon != null) Icon(key.icon, null, Modifier.size(21.dp), tint = if (enabled) ink else ink.copy(alpha = .4f))
-            else Text(key.text, color = ink, fontSize = ((if (key.function || key.id == "space") 12f else 19f) * prefs.textScale).sp,
-                lineHeight = (23 * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
+            else Text(key.text, color = ink, fontSize = ((when { key.isPadDigit -> 24f; key.function || key.id == "space" -> 12f; else -> 19f }) * prefs.textScale).sp,
+                lineHeight = ((if (key.isPadDigit) 27 else 23) * prefs.textScale).sp, fontFamily = if (!key.function && key.id != "space") FontFamily.Monospace else FontFamily.SansSerif,
                 textAlign = TextAlign.Center, maxLines = if (key.id == "enter") 2 else 1, overflow = TextOverflow.Clip,
                 modifier = Modifier.padding(horizontal = if (tightLetters) 0.dp else 1.dp).clearAndSetSemantics { })
         }

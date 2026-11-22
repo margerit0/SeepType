@@ -85,6 +85,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False):
         "recovery": ("ResourceRecoveryTest", "resource-recovery-report.json"),
         "visual": ("VisualMatrixTest", "visual-matrix-report.json"),
         "skins": ("SkinSwitchTest", "skin-switch-report.json"),
+        "number-pad": ("NumberPadTest", "number-pad-report.json"),
         "word-details": ("WordDetailTest", "word-detail-report.json"),
         "clipboard": ("ClipboardHistoryTest", "clipboard-history-report.json"),
         "clipboard-persistence": ("ClipboardPersistenceTest", "clipboard-persistence-report.json"),
@@ -183,7 +184,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "emoji", "recovery", "visual", "skins", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "lifecycle", "scenarios", "performance", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
     parser.add_argument("--names-baseline", action="store_true", help="Record candidates from an APK without the names table")

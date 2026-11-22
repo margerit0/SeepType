@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -101,11 +102,11 @@ internal fun SoftPopKeyFace(key: KeySpec, prefs: KeyboardPreferences, rowHeight:
     val special = key.id == "delete" || key.id == "enter" || key.id == "shift"
     val wash = animateColorAsState(if (!pressed) Color.Transparent else if (special) Color.Black.copy(alpha = .12f) else colors.tint,
         tween(if (prefs.reduceMotion) 0 else 75), label = "softKeyPress")
-    val side = (rowHeight * .038f).coerceIn(1.5.dp, 2.6.dp)
+    val cap = softPopKeyCap(rowHeight)
     val underlay = when {
-        key.id == "space" -> Modifier.drawBehind {
+        key.id == "space" && key.weight > 1f -> Modifier.drawBehind {
             // Two hairline bridges join the white punctuation caps to the spacebar.
-            drawLine(colors.key, Offset(-side.toPx() * 2, center.y), Offset(size.width + side.toPx() * 2, center.y),
+            drawLine(colors.key, Offset(-cap.side.toPx() * 2, center.y), Offset(size.width + cap.side.toPx() * 2, center.y),
                 strokeWidth = (rowHeight.toPx() / 90f).coerceAtLeast(1f))
         }
         key.id == "delete" && !colors.dark -> Modifier.drawWithCache {
@@ -115,8 +116,7 @@ internal fun SoftPopKeyFace(key: KeySpec, prefs: KeyboardPreferences, rowHeight:
         }
         else -> Modifier
     }
-    Box(Modifier.fillMaxSize().then(underlay).padding(horizontal = side, vertical = rowHeight * .076f)
-        .clip(RoundedCornerShape(rowHeight * .18f)).drawWithCache {
+    Box(cap.inset(Modifier.fillMaxSize().then(underlay)).clip(RoundedCornerShape(cap.radius)).drawWithCache {
             val gradient = when (key.id) {
                 "delete" -> Brush.linearGradient(art.lemon, Offset.Zero, Offset(size.width, size.height * .35f))
                 "enter" -> Brush.linearGradient(art.violet, Offset.Zero, Offset(size.width, size.height))
@@ -130,7 +130,13 @@ internal fun SoftPopKeyFace(key: KeySpec, prefs: KeyboardPreferences, rowHeight:
         val textScale = prefs.textScale * LocalDensity.current.fontScale
         when {
             key.letter != null && key.symbol != null -> Canvas(Modifier.fillMaxSize()) {
-                drawPair(key.letter, key.symbol, key.symbolLayer, textScale, colors.ink, art.ink(key.symbol))
+                drawPair(key.letter, key.symbol, textScale, colors.ink, art.ink(key.symbol))
+            }
+            key.isPadDigit -> Canvas(Modifier.fillMaxSize()) {
+                // The pastel secondary glyph is now a primary legend. Add graphite on light caps,
+                // especially to the two yellow digits; retain the original paths and dark inks.
+                val mix = if (colors.dark) 0f else if (key.text == "4" || key.text == "9") .66f else .42f
+                drawPadDigit(key.text, textScale, lerp(art.ink(key.text), colors.ink, mix).copy(alpha = if (enabled) 1f else .4f))
             }
             key.shift != null -> {
                 Canvas(Modifier.fillMaxSize()) {

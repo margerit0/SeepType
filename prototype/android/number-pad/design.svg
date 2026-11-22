@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590" role="img" aria-labelledby="title desc">
+<title id="title">数字键盘：九宫格与右侧滑选运算符</title><desc id="desc">左为轻彩浅色，右为默认深色。中间三列为一到九，底排逗号、零、小数点；右侧符号可点选或按住滑动，松开才输入。</desc>
+<defs>
+<linearGradient id="lemon" x2="1" y2=".35" gradientUnits="objectBoundingBox"><stop stop-color="#ffd462"/><stop offset=".5" stop-color="#ffe781"/><stop offset="1" stop-color="#faffa6"/></linearGradient>
+<linearGradient id="violet" x2="1" y2="1"><stop stop-color="#7d7cf4"/><stop offset=".5" stop-color="#605fc9"/><stop offset="1" stop-color="#393982"/></linearGradient>
+</defs>
+<rect x="0.00" y="0.00" width="1200.00" height="590.00" rx="0.00" fill="#fafaf7"/>
+<text x="36.00" y="36.00" fill="#51695d" font-family="Segoe UI, sans-serif" font-size="14" font-weight="650" text-anchor="start" letter-spacing="2">STUDY IME   /   ANDROID</text>
+<text x="36.00" y="96.00" fill="#23382e" font-family="Microsoft YaHei, sans-serif" font-size="45" font-weight="700" text-anchor="start" letter-spacing="0">数字键盘</text>
+<text x="253.00" y="94.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="22" font-weight="400" text-anchor="start" letter-spacing="0">九宫格与右侧滑选</text>
+<text x="1164.00" y="88.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="16" font-weight="500" text-anchor="end" letter-spacing="0">123   /   交互设计稿</text>
+<path d="M36.00 117.00L1164.00 117.00" fill="none" stroke="#d6dfd8" stroke-width="1" stroke-linecap="round"/>
+<text x="36.00" y="157.00" fill="#23382e" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="650" text-anchor="start" letter-spacing="0">轻彩 · 浅色</text>
+<text x="582.00" y="157.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="500" text-anchor="end" letter-spacing="0">静止</text>
+<g transform="translate(36 171) scale(1.4)">
+<rect x="0.00" y="0.00" width="390.00" height="275.00" rx="7.00" fill="#f0eff4"/>
+<g transform="translate(73.5 16.5) scale(.84375)">
+<path d="M11.5 7.5H23.1M5.1 16H26.9M7.7 24.5H19.3" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(127.5 16.5) scale(.84375)">
+<path d="M4 19.1C4 12.45 9.37 7.1 16 7.1S28 12.45 28 19.1" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.35 20.65C12.35 22.69 13.97 24.35 16 24.35S19.65 22.69 19.65 20.65" fill="none" stroke="#506598" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(181.5 16.5) scale(.84375)">
+<path d="M4.85 24.5V11.23C4.85 8.3 6.86 6.7 9.61 6.7H22.39C25.14 6.7 27.15 8.3 27.15 11.23V24.5" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.75 15.35H20.25" fill="none" stroke="#ed6e76" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(235.5 16.5) scale(.84375)">
+<path d="M14.45 5.75C12 14.3 18.7 22.15 26.55 20.15C24.47 25.25 19.23 27.85 14.02 26.55C8.13 25.08 4.65 20.2 5.6 14.62C6.26 10.1 9.76 6.49 14.45 5.75Z" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(289.5 16.5) scale(.84375)">
+<path d="M26.27 15.7V10.83C26.27 7.5 24.18 5.65 20.97 5.65H10.57C7.31 5.65 5.1 7.68 5.1 10.98V17.72C5.1 20.88 7.03 22.89 9.72 23.08L9.65 26.06C9.65 26.49 9.93 26.65 10.32 26.39L15.03 23.14H17.2" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.03 18.09L14.55 10.45C14.82 9.27 15.34 9.27 15.61 10.45L19.13 18.09" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.22 15.51H17.94" fill="none" stroke="#636363" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.42 21.86L23.03 24.3L27.74 18.99" fill="none" stroke="#237963" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="6.00" y="64.00" width="57.95" height="44.00" rx="9.40" fill="#ffffff"/>
+<text x="34.97" y="91.30" fill="#636363" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="600" text-anchor="middle" letter-spacing="0">#+=</text>
+<rect x="67.95" y="64.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(94.96 72.00) scale(.875)">
+<path d="M12.4 13.3L18.7 3.8M18.9 13.9V28.1" fill="none" stroke="#b3666a" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="153.98" y="64.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(181.00 72.00) scale(.875)">
+<path d="M7.2 12C6.8 6.6 11.8 2.3 18.4 3.9M22.4 7C26.3 14.6 19.1 17.1 14.3 19.1Q7.5 21.8 7.5 27.7M13.4 28H24" fill="none" stroke="#499882" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="240.02" y="64.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(267.04 72.00) scale(.875)">
+<path d="M8 10.8Q8.4 1.8 18.6 4M22.3 7.1Q24.5 16.4 13.8 15.4M22.7 19C27.6 30.2 8.1 32.2 7.2 21.3" fill="none" stroke="#887a9a" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="6.00" y="116.00" width="57.95" height="44.00" rx="9.40" fill="#ffffff"/>
+<path d="M26.30 138.00L43.65 138.00" fill="none" stroke="#f8de80" stroke-width="2" stroke-linecap="round"/>
+<rect x="67.95" y="116.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(94.96 124.00) scale(.875)">
+<path d="M19.4 3.5L7.2 21.9H13M19.3 13.1V28M22.9 21.9H23.6" fill="none" stroke="#b8ad77" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="153.98" y="116.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(181.00 124.00) scale(.875)">
+<path d="M11.9 4L9.3 13.3Q14.5 12.7 18.2 14.2M18.5 4H20M22.5 18C27.4 27 15.8 32.1 8.4 25.2" fill="none" stroke="#706eab" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="240.02" y="116.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(267.04 124.00) scale(.875)">
+<path d="M18.8 3.7L10.2 17.5Q7.1 22.4 9.1 25.2M19.5 13.4C30.1 17.4 24.5 32.8 13.2 27.2" fill="none" stroke="#499882" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="6.00" y="168.00" width="57.95" height="44.00" rx="9.40" fill="url(#lemon)"/>
+<text x="56.03" y="181.00" fill="#917014" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="600" text-anchor="end" letter-spacing="0">Del</text>
+<g transform="translate(15.66 188.24) scale(.293)">
+<path d="M51 10H23Q18 10 15 15L10 23Q7 28 10 33L14 40Q17 45 24 45H51" fill="none" stroke="#cfb20f" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M51.00 27.50L59.00 27.50" fill="none" stroke="#fff5af" stroke-width="5.3" stroke-linecap="round"/>
+</g>
+<rect x="67.95" y="168.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(94.96 176.00) scale(.875)">
+<path d="M8 4H17.3M24 4L9 28" fill="none" stroke="#887a9a" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="153.98" y="168.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(181.00 176.00) scale(.875)">
+<path d="M8.3 12.1C6.7 6.1 11.8 2.1 18.7 4M23 7.3C24.8 13.4 20.3 16.5 15.3 16C9.4 15.5 6.4 20.4 8.1 24.5M12.2 27.6C18.7 30.2 25.1 25.8 23.3 20.1" fill="none" stroke="#b3666a" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="240.02" y="168.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(267.04 176.00) scale(.875)">
+<path d="M13.5 18.3C4.2 15.5 7 1.1 18.8 4M23 7.3Q25.5 12.7 21.8 18.1L15.1 28" fill="none" stroke="#b8ad77" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="6.00" y="220.00" width="57.95" height="44.00" rx="9.40" fill="#ffffff"/>
+<text x="34.97" y="247.30" fill="#636363" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="600" text-anchor="middle" letter-spacing="0">ABC</text>
+<rect x="67.95" y="220.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<path d="M109.96 240.60L108.26 245.50" fill="none" stroke="#636363" stroke-width="2.9" stroke-linecap="round"/>
+<rect x="153.98" y="220.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<g transform="translate(181.00 228.00) scale(.875)">
+<path d="M6 23C.4 13.1 8 2.4 18.1 3.6Q21.9 4 24.5 6M28.2 10C34.4 22.4 20.9 33.8 9.7 26.9" fill="none" stroke="#887a9a" stroke-width="3.45" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="240.02" y="220.00" width="82.04" height="44.00" rx="9.40" fill="#ffffff"/>
+<rect x="279.14" y="240.10" width="3.80" height="3.80" rx="1.90" fill="#636363"/>
+<rect x="326.05" y="220.00" width="57.95" height="44.00" rx="9.40" fill="url(#violet)"/>
+<text x="376.09" y="233.00" fill="#e0deff" font-family="Segoe UI, sans-serif" font-size="9.5" font-weight="600" text-anchor="end" letter-spacing="0">Send</text>
+<g transform="translate(335.72 240.24) scale(.293)">
+<path d="M6 43L20 18Q24 10 32 10Q40 10 44 18L58 43" fill="none" stroke="#424194" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.00 29.00L32.00 41.00" fill="none" stroke="#9391ea" stroke-width="5" stroke-linecap="round"/>
+</g>
+<rect x="326.05" y="64.00" width="57.95" height="148.00" rx="9.40" fill="#ffffff"/>
+<text x="355.03" y="85.10" fill="#636363" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">+</text>
+<path d="M341.12 93.60L368.93 93.60" fill="none" stroke="#e7e8ee" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="114.70" fill="#636363" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">−</text>
+<path d="M341.12 123.20L368.93 123.20" fill="none" stroke="#e7e8ee" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="144.30" fill="#636363" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">×</text>
+<path d="M341.12 152.80L368.93 152.80" fill="none" stroke="#e7e8ee" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="173.90" fill="#636363" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">÷</text>
+<path d="M341.12 182.40L368.93 182.40" fill="none" stroke="#e7e8ee" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="203.50" fill="#636363" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">%</text>
+</g>
+<text x="618.00" y="157.00" fill="#23382e" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="650" text-anchor="start" letter-spacing="0">默认 · 深色</text>
+<text x="1164.00" y="157.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="500" text-anchor="end" letter-spacing="0">滑到「×」</text>
+<g transform="translate(618 171) scale(1.4)">
+<rect x="0.00" y="0.00" width="390.00" height="275.00" rx="7.00" fill="#202d25"/>
+<g transform="translate(73.5 16.5) scale(.84375)">
+<path d="M11.5 7.5H23.1M5.1 16H26.9M7.7 24.5H19.3" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(127.5 16.5) scale(.84375)">
+<path d="M4 19.1C4 12.45 9.37 7.1 16 7.1S28 12.45 28 19.1" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.35 20.65C12.35 22.69 13.97 24.35 16 24.35S19.65 22.69 19.65 20.65" fill="none" stroke="#a8bff7" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(181.5 16.5) scale(.84375)">
+<path d="M4.85 24.5V11.23C4.85 8.3 6.86 6.7 9.61 6.7H22.39C25.14 6.7 27.15 8.3 27.15 11.23V24.5" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.75 15.35H20.25" fill="none" stroke="#ff909a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(235.5 16.5) scale(.84375)">
+<path d="M16 4.25V6.62M16 25.38V27.75M4.25 16H6.62M25.38 16H27.75M7.69 7.69L9.37 9.37M22.63 22.63L24.31 24.31M7.69 24.31L9.37 22.63M22.63 9.37L24.31 7.69" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="16" cy="16" r="5.1" stroke="#e4eee8" fill="none" stroke-width="2.3"/>
+</g>
+<g transform="translate(289.5 16.5) scale(.84375)">
+<path d="M26.27 15.7V10.83C26.27 7.5 24.18 5.65 20.97 5.65H10.57C7.31 5.65 5.1 7.68 5.1 10.98V17.72C5.1 20.88 7.03 22.89 9.72 23.08L9.65 26.06C9.65 26.49 9.93 26.65 10.32 26.39L15.03 23.14H17.2" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.03 18.09L14.55 10.45C14.82 9.27 15.34 9.27 15.61 10.45L19.13 18.09" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.22 15.51H17.94" fill="none" stroke="#e4eee8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.42 21.86L23.03 24.3L27.74 18.99" fill="none" stroke="#acd5bb" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="6.50" y="64.00" width="56.95" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="6.50" y="63.00" width="56.95" height="46.00" rx="9.00" fill="#2b3d31"/>
+<text x="34.97" y="91.30" fill="#e4eee8" font-family="Microsoft YaHei, sans-serif" font-size="12" font-weight="450" text-anchor="middle" letter-spacing="0">#+=</text>
+<rect x="68.45" y="64.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="68.45" y="63.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="108.96" y="94.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">1</text>
+<rect x="154.48" y="64.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="154.48" y="63.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="195.00" y="94.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">2</text>
+<rect x="240.52" y="64.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="240.52" y="63.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="281.04" y="94.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">3</text>
+<rect x="6.50" y="116.00" width="56.95" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="6.50" y="115.00" width="56.95" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="34.97" y="143.30" fill="#b0beb4" font-family="Microsoft YaHei, sans-serif" font-size="12" font-weight="450" text-anchor="middle" letter-spacing="0">空格</text>
+<rect x="68.45" y="116.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="68.45" y="115.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="108.96" y="146.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">4</text>
+<rect x="154.48" y="116.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="154.48" y="115.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="195.00" y="146.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">5</text>
+<rect x="240.52" y="116.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="240.52" y="115.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="281.04" y="146.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">6</text>
+<rect x="6.50" y="168.00" width="56.95" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="6.50" y="167.00" width="56.95" height="46.00" rx="9.00" fill="#2b3d31"/>
+<g transform="translate(24.47297297297297 179.5) scale(.875)">
+<path d="M21 5H8L2 12L8 19H21ZM10 9L16 15M16 9L10 15" fill="none" stroke="#e4eee8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="68.45" y="168.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="68.45" y="167.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="108.96" y="198.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">7</text>
+<rect x="154.48" y="168.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="154.48" y="167.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="195.00" y="198.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">8</text>
+<rect x="240.52" y="168.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="240.52" y="167.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="281.04" y="198.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">9</text>
+<rect x="6.50" y="220.00" width="56.95" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="6.50" y="219.00" width="56.95" height="46.00" rx="9.00" fill="#2b3d31"/>
+<text x="34.97" y="247.30" fill="#e4eee8" font-family="Microsoft YaHei, sans-serif" font-size="12" font-weight="450" text-anchor="middle" letter-spacing="0">ABC</text>
+<rect x="68.45" y="220.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="68.45" y="219.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<path d="M109.96 240.60L108.26 245.50" fill="none" stroke="#e4eee8" stroke-width="2.9" stroke-linecap="round"/>
+<rect x="154.48" y="220.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="154.48" y="219.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<text x="195.00" y="250.20" fill="#e4eee8" font-family="Consolas, monospace" font-size="24" font-weight="500" text-anchor="middle" letter-spacing="0">0</text>
+<rect x="240.52" y="220.00" width="81.04" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="240.52" y="219.00" width="81.04" height="46.00" rx="9.00" fill="#35433a"/>
+<rect x="279.14" y="240.10" width="3.80" height="3.80" rx="1.90" fill="#e4eee8"/>
+<rect x="326.55" y="220.00" width="56.95" height="46.00" rx="9.00" fill="#1e2821"/>
+<rect x="326.55" y="219.00" width="56.95" height="46.00" rx="9.00" fill="#acd5bb"/>
+<text x="355.03" y="247.00" fill="#192d20" font-family="Microsoft YaHei, sans-serif" font-size="12" font-weight="500" text-anchor="middle" letter-spacing="0">发送</text>
+<rect x="326.55" y="64.00" width="56.95" height="150.00" rx="9.00" fill="#1e2821"/>
+<rect x="326.55" y="63.00" width="56.95" height="150.00" rx="9.00" fill="#2b3d31"/>
+<text x="355.03" y="84.30" fill="#e4eee8" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">+</text>
+<path d="M341.36 93.00L368.69 93.00" fill="none" stroke="#425448" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="114.30" fill="#e4eee8" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">−</text>
+<path d="M341.36 123.00L368.69 123.00" fill="none" stroke="#425448" stroke-width="0.7" stroke-linecap="round"/>
+<rect x="329.55" y="124.50" width="50.95" height="27.00" rx="7.00" fill="#3b5141"/>
+<rect x="331.55" y="133.00" width="2.30" height="10.00" rx="1.15" fill="#acd5bb"/>
+<text x="355.03" y="144.30" fill="#acd5bb" font-family="Segoe UI, sans-serif" font-size="19" font-weight="600" text-anchor="middle" letter-spacing="0">×</text>
+<path d="M341.36 153.00L368.69 153.00" fill="none" stroke="#425448" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="174.30" fill="#e4eee8" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">÷</text>
+<path d="M341.36 183.00L368.69 183.00" fill="none" stroke="#425448" stroke-width="0.7" stroke-linecap="round"/>
+<text x="355.03" y="204.30" fill="#e4eee8" font-family="Segoe UI, sans-serif" font-size="19" font-weight="500" text-anchor="middle" letter-spacing="0">%</text>
+</g>
+<path d="M36.00 568.00L1164.00 568.00" fill="none" stroke="#d6dfd8" stroke-width="1" stroke-linecap="round"/>
+<text x="36.00" y="585.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="13" font-weight="400" text-anchor="start" letter-spacing="0">点按直接输入  /  按住右栏上下滑动，松开时输入高亮符号；滑出取消。</text>
+<text x="1164.00" y="585.00" fill="#51695d" font-family="Microsoft YaHei, sans-serif" font-size="13" font-weight="400" text-anchor="end" letter-spacing="0">键位与键高不随皮肤切换</text>
+</svg>

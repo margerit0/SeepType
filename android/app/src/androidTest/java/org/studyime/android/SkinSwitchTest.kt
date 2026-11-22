@@ -37,6 +37,7 @@ class SkinSwitchTest {
         val symbols = "1234567890!@#¥%&*()~/-_:;?"
         val bottomRow = listOf("details", "page", "comma", "space", ".", "mode", "enter")
         val allKeys = alphabet.map(Char::toString) + listOf("shift", "delete") + bottomRow
+        val padKeys = "0123456789".map(Char::toString) + listOf("symbols", "space", "delete", "page", "comma", ".", "enter", "+", "-", "×", "÷", "%")
         fun boundsOf(id: String) = d.keyBounds(id, enabledOnly = false)
         val originalFont = ui.executeShellCommand("settings get system font_scale").trim()
         val originalNight = ui.executeShellCommand("cmd uimode night").substringAfter(":").trim()
@@ -111,13 +112,13 @@ class SkinSwitchTest {
             shot("soft-pop-light-candidates")
 
             d.tapKey("page")
-            val pairedBounds = d.keyBounds("1")
+            val padBounds = d.keyBounds("1")
             choose("default", "dark")
             d.expectText("gong yuan")
             check("Switching skins preserves the numeric page", ui.hasObject(By.res("key_1")) && !ui.hasObject(By.res("key_q")))
             choose("soft-pop")
             d.expectText("gong yuan")
-            check("Paired page returns without moving the first key", pairedBounds == d.keyBounds("1"))
+            check("Number pad returns without moving the first key", padBounds == d.keyBounds("1"))
             d.openQuickSettings()
             check("Appearance and English visibility survive skin changes", selected("theme_dark") && englishToggle().isChecked)
             shot("skin-settings-dark")
@@ -127,8 +128,8 @@ class SkinSwitchTest {
             d.expectText("公园1")
             check("Numeric page commits Chinese normally before a digit", d.editor().text == "公园1")
             d.holdKey("1")
-            d.expectText("公园1q")
-            check("Numeric secondary letter starts real pinyin composition", ui.hasObject(By.res("candidate_0")))
+            d.expectText("公园11")
+            check("Holding a pad digit inserts it once, not a pinyin letter", !ui.hasObject(By.res("candidate_0")))
             d.tapKey("delete")
             d.tapKey("page")
             clear()
@@ -153,16 +154,9 @@ class SkinSwitchTest {
             clear()
             d.tapKey("page")
             shot("soft-pop-light-symbols")
-            symbols.forEach { d.tapKey(it.toString()) }
-            d.expectText(symbols)
-            check("All 26 numeric-page primary symbols match the design", d.editor().text == symbols)
-            clear()
-            // UiAutomator setText restarts the editor, which opens its default
-            // letter page. Re-enter numbers before testing their secondary keys.
-            d.tapKey("page")
-            symbols.forEach { d.holdKey(it.toString()) }
-            d.expectText(alphabet)
-            check("All 26 numeric-page secondary letters avoid duplicate taps", d.editor().text == alphabet)
+            d.type("1234567890")
+            d.expectText("1234567890")
+            check("All ten primary pad digits type literally", d.editor().text == "1234567890")
             d.tapKey("page")
             clear()
             d.tapKey("shift")
@@ -231,7 +225,8 @@ class SkinSwitchTest {
                 shot("soft-pop-320dp-font$font")
                 d.tapKey("page")
                 shot("soft-pop-320dp-font$font-symbols")
-                check("Font $font retains ${allKeys.size} distinct keys and visible bottom actions", ui.findObjects(By.res(java.util.regex.Pattern.compile("key_.+"))).size == allKeys.size && d.keyBounds("enter").bottom <= ui.displayHeight)
+                check("Font $font retains the complete number pad and visible bottom actions",
+                    padKeys.all { ui.hasObject(By.res("key_$it")) } && d.keyBounds("enter").bottom <= ui.displayHeight)
                 d.candidate("公园").click()
                 d.expectText("公园")
             }
@@ -286,10 +281,15 @@ class SkinSwitchTest {
                 if (nativeText != "1") SystemClock.sleep(50)
             }
             check("Large landscape digit reaches the real editor", nativeText == "1")
-            check("Large landscape symbols keep both layers and actions reachable", d.keyBounds("enter").bottom <= ui.displayHeight)
+            val abc = d.keyBounds("page")
+            check("Large landscape number pad keeps the left rail, top-right Delete and bottom actions reachable",
+                d.keyBounds("%").let { it.bottom == abc.top && it.right == abc.right } &&
+                    d.keyBounds("3").right == d.keyBounds("delete").left && d.keyBounds("enter").bottom <= ui.displayHeight)
             ui.setOrientationNatural()
             ui.executeShellCommand("settings put system font_scale 1.0")
-            d.launch()
+            // Android recreates ProbeActivity when uiMode changes. In Debug it
+            // shares IME preferences, so its intent must not reapply light.
+            d.launch(theme = "system")
             choose("soft-pop", "system")
             for ((night, expected) in listOf("yes" to 0xff292b36.toInt(), "no" to 0xfff0eff4.toInt())) {
                 ui.executeShellCommand("cmd uimode night $night")

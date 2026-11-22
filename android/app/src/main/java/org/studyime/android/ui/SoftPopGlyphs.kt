@@ -85,18 +85,17 @@ private val DotStroke = roundStroke(4.35f)
 // Position by the measured face, not the screen: split landscape keyboards and
 // narrow windows use the same two anchors. Grow both layers for large type,
 // stopping before the widest glyphs cross the cap edge or the other legend.
-internal fun DrawScope.drawPair(letter: String, symbol: String, swapped: Boolean, textScale: Float,
+internal fun DrawScope.drawPair(letter: String, symbol: String, textScale: Float,
                                 ink: Color, mark: Color) {
     val unit = minOf(size.width / 106f, size.height / 150f) * textScale.coerceAtMost(1.62f)
-    fun tile(name: String, cap: Boolean, upper: Boolean) {
+    fun tile(name: String, cap: Boolean) {
         val factor = unit * when {
-            cap -> if (upper) 1f else 1.48f
-            upper -> .94f
+            cap -> 1f
             symbol[0].isDigit() -> 1.50f
             else -> 1.37f
         }
-        val x = size.width * (if (upper) .66f else .345f)
-        val y = size.height * (if (upper) .295f else .697f)
+        val x = size.width * (if (cap) .66f else .345f)
+        val y = size.height * (if (cap) .295f else .697f)
         translate(x - 16f * factor, y - 16f * factor) {
             scale(factor, factor, pivot = Offset.Zero) {
                 val stroke = when {
@@ -109,6 +108,13 @@ internal fun DrawScope.drawPair(letter: String, symbol: String, swapped: Boolean
             }
         }
     }
-    tile(letter, cap = true, upper = !swapped)
-    tile(symbol, cap = false, upper = swapped)
+    tile(letter, cap = true)
+    tile(symbol, cap = false)
+}
+
+internal fun DrawScope.drawPadDigit(digit: String, textScale: Float, ink: Color) {
+    val side = size.minDimension * (.64f * textScale).coerceAtMost(.90f)
+    translate(center.x - side / 2, center.y - side / 2) {
+        scale(side / 32f, side / 32f, pivot = Offset.Zero) { drawPath(Marks.getValue(digit), ink, style = MarkStroke) }
+    }
 }

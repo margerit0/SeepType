@@ -27,7 +27,7 @@ class ScenarioTest {
         fun check(name: String, passed: Boolean) { checks.put(JSONObject().put("name", name).put("passed", passed)); assertTrue(name, passed) }
         fun shot(name: String) = d.capture("scenarios", name)
         try {
-            // The symbol-navigation scenario uses the default skin's separate symbols key.
+            // Exercise symbol navigation using the default skin.
             prefs.update { it.copy(skin = KeyboardSkin.DEFAULT) }
             ui.executeShellCommand("wm density 320")
             ui.executeShellCommand("wm size 640x1688")
@@ -90,6 +90,7 @@ class ScenarioTest {
             d.launch()
             d.type("xi")
             d.tapKey("page")
+            d.tapKey("symbols")
             d.tapKey("'")
             d.tapKey("page")
             d.type("an")
