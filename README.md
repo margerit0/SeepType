@@ -1,8 +1,8 @@
-# 拾词输入法 · StudyIME
+# 拾词输入法 · SeepType
 
 用中文打字，顺便记一个英文词。拾词是一款离线拼音输入法：英文释义显示在中文候选上方，点候选照常输入中文；想多看一眼，再长按打开释义。
 
-**Android 是目前主要开发的平台，尚未提供公开 APK。** [Android 获取与启用](docs/releases.md#android) · [从源码构建](android/README.md#构建环境)
+**Android 公开预览：** [0.1.0-preview.3 下载和发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.3) · [安装与启用](docs/releases.md#android) · [从源码构建](android/README.md#构建环境)
 
 ## 在 Android 上试打
 
