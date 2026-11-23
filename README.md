@@ -18,7 +18,7 @@
 
 ## Windows 版
 
-Windows 11 x64 版仍在实验阶段，暂不提供面向普通用户的安装包，也不影响 Android 单独发版。对桌面输入法感兴趣的开发者可以查看 [Windows 打包进度](docs/packaging.md)与[桌面验收记录](docs/installed-desktop-acceptance.md)。
+Windows 11 x64 版仍在实验阶段，暂不提供面向普通用户的安装包，也不影响 Android 单独发版。开发入口：[Windows 打包](docs/packaging.md) · [扩展词库验证](data/lexicon-expansion/windows-runtime/README.md) · [双平台开发工作流](docs/development.md)。
 
 ## 许可
 

@@ -11,7 +11,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.lexicon_expand.catalog import prepare
 from tools.lexicon_expand.common import CACHE, Invalid
 from tools.lexicon_expand.generation import generate
-from tools.lexicon_expand.planning import make_plan
+from tools.lexicon_expand.planning import make_plan, make_repair_plan
+from tools.lexicon_expand.quality import audit_file
+from tools.lexicon_expand.evaluation import make_comparison
 from tools.lexicon_expand.provider import load_config, read_key
 from tools.lexicon_expand.sources import fetch_sources, verify_sources
 
@@ -26,18 +28,31 @@ def main():
     build.add_argument("--output", type=Path, default=CACHE / "prepared")
     plan = commands.add_parser("plan", help="Build inspectable request JSONL without a model call")
     plan.add_argument("--prepared", type=Path, default=CACHE / "prepared")
-    plan.add_argument("--output", type=Path, default=CACHE / "pilot")
+    plan.add_argument("--output", type=Path)
+    plan.add_argument("--prompt-version", type=int, choices=[1, 2, 3, 4], default=2)
     plan.add_argument("--pack", choices=["ielts", "cefr"], default="ielts")
     plan.add_argument("--words", type=int, default=200)
     plan.add_argument("--scene-terms", type=int, default=100)
     plan.add_argument("--batch-size", type=int, default=10)
+    repair = commands.add_parser('repair-plan', help='Plan only reviewed revision senses; never send or adopt results')
+    repair.add_argument('--review', type=Path, required=True, help='Explicit reviewed batch (historical inputs are not bundled)')
+    repair.add_argument('--output', type=Path, default=CACHE / 'repair-v2')
+    repair.add_argument('--prepared', type=Path, default=CACHE / 'prepared')
+    repair.add_argument('--batch-size', type=int, default=5)
+    audit = commands.add_parser('quality-audit', help='Check pronunciation and case without semantic approval')
+    audit.add_argument('--drafts', type=Path, required=True)
+    audit.add_argument('--output', type=Path, required=True)
+    audit.add_argument('--prepared', type=Path, default=CACHE / 'prepared')
+    audit.add_argument('--quality-version', type=int, choices=[1, 2], default=2)
+    comparison = commands.add_parser('comparison-plan', help='Prepare two same-target plans excluding prompt examples')
+    comparison.add_argument('--output', type=Path, default=CACHE / 'comparison-v2-final')
     config = commands.add_parser("config", help="Validate endpoint configuration without connecting")
     config.add_argument("path", type=Path)
     config.add_argument("--check-key", action="store_true", help="Check only whether the named key is available")
     run = commands.add_parser("generate", help="Preview a run; --execute sends requests to the configured API")
-    run.add_argument("--plan", type=Path, default=CACHE / "pilot")
+    run.add_argument("--plan", type=Path, default=CACHE / "pilot-v2")
     run.add_argument("--config", type=Path, required=True)
-    run.add_argument("--output", type=Path, default=CACHE / "pilot-results")
+    run.add_argument("--output", type=Path, default=CACHE / "pilot-v2-results")
     run.add_argument("--execute", action="store_true")
     run.add_argument("--max-items", type=int, default=300)
     run.add_argument("--max-requests", type=int, default=60)
@@ -57,7 +72,13 @@ def main():
                   "output": str(args.output.resolve()), "model_requests": 0, "generated_translations": 0}
     elif args.command == "plan":
         result = make_plan(args.prepared, args.output, word_count=args.words, scene_count=args.scene_terms,
-                           batch_size=args.batch_size, pack=args.pack)
+                           batch_size=args.batch_size, pack=args.pack, prompt_version=args.prompt_version)
+    elif args.command == 'repair-plan':
+        result = make_repair_plan(args.review, args.output, prepared=args.prepared, batch_size=args.batch_size)
+    elif args.command == 'quality-audit':
+        result = audit_file(args.drafts, args.output, args.prepared, version=args.quality_version)
+    elif args.command == 'comparison-plan':
+        result = make_comparison(args.output)
     elif args.command == "config":
         result = load_config(args.path)
         result["network_requests"] = 0

@@ -429,6 +429,246 @@ class ExpansionTests(unittest.TestCase):
         with generation.run_lock(self.output):
             pass
 
+    def test_normalization_is_limited_audited_and_keeps_meanings(self):
+        from tools.lexicon_expand.normalization import normalize_reply, parse_reply
+        reply = copy.deepcopy(self.reply)
+        reply['results'][0]['senses'][0]['pos'] = 'noun'
+        content = '```json\n' + json.dumps(reply, ensure_ascii=False) + '\n```'
+        records, metadata = parse_reply(content, self.job, self.metadata)
+        sense = records[0]['senses'][0]
+        self.assertEqual(sense['pos'], 'n')
+        self.assertEqual(sense['meaning_zh'], self.reply['results'][0]['senses'][0]['meaning_zh'])
+        self.assertEqual(records[0]['english'], self.target['english'])
+        self.assertEqual([c['rule'] for c in metadata['normalization']['changes']],
+                         ['complete-json-fence', 'pos-alias'])
+        reply['results'][0]['senses'][0]['pinyin'] = 'lu:4 lü4'
+        normalized, audit = normalize_reply(json.dumps(reply))
+        self.assertEqual(json.loads(normalized)['results'][0]['senses'][0]['pinyin'], 'lv4 lv4')
+        self.assertEqual(audit['changes'][-1]['before'], 'lu:4 lü4')
+
+    @unittest.skipUnless(__import__('os').name == 'nt', 'Windows sharing semantics')
+    def test_windows_state_write_survives_a_reader_temporarily_denying_replacement(self):
+        import ctypes
+        from ctypes import wintypes
+        from threading import Timer
+        from tools.lexicon_expand.storage import write_json
+        path = self.directory / 'shared-state.json'
+        write_json(path, {'value': 'before'})
+        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+        kernel.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD,
+                                      wintypes.LPVOID, wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE]
+        kernel.CreateFileW.restype = wintypes.HANDLE
+        kernel.CloseHandle.argtypes = [wintypes.HANDLE]
+        handle = kernel.CreateFileW(str(path), 0x80000000, 3, None, 3, 0, None)
+        self.assertNotEqual(handle, wintypes.HANDLE(-1).value)
+        timer = Timer(0.12, lambda: kernel.CloseHandle(handle))
+        timer.start()
+        try:
+            write_json(path, {'value': 'after'})
+        finally:
+            timer.join()
+        self.assertEqual(read_json(path), {'value': 'after'})
+
+    def test_permanent_local_write_errors_do_not_repeat_api_calls(self):
+        from tools.lexicon_expand import storage
+        error = PermissionError('TEST ONLY')
+        error.winerror = 32
+        with patch.object(storage, '_atomic_write', side_effect=error) as write, \
+             patch.object(storage.time, 'sleep') as sleep:
+            with self.assertRaises(PermissionError):
+                storage.write_json(self.directory / 'test.json', {})
+            self.assertEqual(write.call_count, 8 if storage.os.name == 'nt' else 1)
+            self.assertEqual(sleep.call_count, 7 if storage.os.name == 'nt' else 0)
+
+    def test_normalization_rejects_extra_prose_duplicate_keys_and_bad_content(self):
+        from tools.lexicon_expand.normalization import parse_reply, ResponseValidationError
+        content = json.dumps(self.reply)
+        for malformed in ('explanation\n```json\n' + content + '\n```',
+                          '{"sensitive-model-text":1,"sensitive-model-text":2}'):
+            with self.assertRaises(ResponseValidationError) as caught:
+                parse_reply(malformed, self.job, self.metadata)
+            self.assertNotIn('sensitive-model-text', str(caught.exception))
+        self.reply['results'][0]['senses'][0]['pos'] = 'unsupported'
+        with self.assertRaises(ResponseValidationError) as caught:
+            parse_reply(content := json.dumps(self.reply), self.job, self.metadata)
+        self.assertEqual(caught.exception.detail['path'], '$.results[0].senses[0].pos')
+
+    def test_exact_v3_request_metadata_echo_is_audited_without_changing_senses(self):
+        from tools.lexicon_expand.normalization import parse_reply
+        from tools.lexicon_expand.quality import policy
+        job = planning.make_job('map_targets', [self.target], 'TEST ONLY', response_version=3,
+                                quality_policy=policy(2))
+        reply = copy.deepcopy(self.reply)
+        reply['results'][0]['senses'][0]['english'] = self.target['english']
+        original = copy.deepcopy(reply)
+        clean, _ = parse_reply(json.dumps(reply), job, self.metadata)
+        reply.update(response_schema_version=3, quality_policy=job['payload']['quality_policy'])
+        records, metadata = parse_reply(json.dumps(reply), job, self.metadata)
+        self.assertEqual(records[0]['senses'], clean[0]['senses'])
+        self.assertEqual(reply['results'], original['results'])
+        self.assertEqual(metadata['normalization']['version'], 2)
+        self.assertEqual(metadata['normalization']['changes'][0]['rule'], 'exact-request-metadata-echo')
+        self.assertEqual(records[0]['review']['status'], 'pending')
+
+    def test_metadata_echo_never_hides_mismatches_unknown_fields_or_bad_senses(self):
+        from tools.lexicon_expand.normalization import parse_reply, ResponseValidationError
+        from tools.lexicon_expand.quality import policy
+        job = planning.make_job('map_targets', [self.target], 'TEST ONLY', response_version=3,
+                                quality_policy=policy(2))
+        original = copy.deepcopy(self.reply)
+        original['results'][0]['senses'][0]['english'] = self.target['english']
+        original.update(response_schema_version=3, quality_policy=job['payload']['quality_policy'])
+        for change in ('version', 'policy', 'unknown-field', 'bad-sense'):
+            reply = copy.deepcopy(original)
+            if change == 'version':
+                reply['response_schema_version'] = '3'
+            elif change == 'policy':
+                reply['quality_policy']['version'] = True
+            elif change == 'unknown-field':
+                reply['review'] = {'status': 'approved'}
+            else:
+                reply['results'][0]['senses'][0]['source_ref_ids'] = ['invented-reference']
+            with self.assertRaises(ResponseValidationError):
+                parse_reply(json.dumps(reply), job, self.metadata)
+
+    def test_normalized_generation_resumes_without_duplicate_calls(self):
+        reply = copy.deepcopy(self.reply)
+        reply['results'][0]['senses'][0]['pos'] = 'verb'
+        envelope = json.loads(self.envelope(reply))
+        envelope['choices'][0]['message']['content'] = '```json\n' + json.dumps(reply) + '\n```'
+        self.run_generation(raw=canonical(envelope))
+        summary, count = self.run_generation()
+        self.assertEqual(count, 0)
+        self.assertEqual(summary['returned_items'], 1)
+
+    def test_offline_recovery_preserves_receipts_budgets_and_is_idempotent(self):
+        from tools.lexicon_expand import recover
+        from tools.lexicon_expand.normalization import ResponseValidationError
+        with patch.object(generation, 'parse_reply', side_effect=ResponseValidationError('Unknown part of speech')):
+            with self.assertRaises(Invalid):
+                self.run_generation()
+        paths = [self.output / 'attempts/00001.json', self.output / 'responses/00001.json']
+        original = {path: path.read_bytes() for path in paths}
+        before = read_json(self.output / 'summary.json')
+        with patch.object(recover, 'load_plan', return_value=(self.plan, [self.job])), \
+             patch.object(provider, 'read_key') as key, patch.object(provider, 'complete') as call:
+            result = recover.recover_saved(self.plan_directory, self.config_path, self.output)
+            self.assertEqual(len(result['recovered']), 1)
+            recovery_path = self.output / 'recoveries/00001.json'
+            recovery_bytes = recovery_path.read_bytes()
+            again = recover.recover_saved(self.plan_directory, self.config_path, self.output)
+            self.assertEqual(again['recovered'], [])
+            self.assertEqual(recovery_bytes, recovery_path.read_bytes())
+            key.assert_not_called()
+            call.assert_not_called()
+        self.assertEqual(original, {path: path.read_bytes() for path in paths})
+        after, count = self.run_generation()
+        self.assertEqual(count, 0)
+        self.assertEqual(after['returned_items'], 1)
+        self.assertEqual(after['recovered_requests'], 1)
+        for field in ('attempts', 'failed_attempts', 'reserved_output_tokens', 'provider_reported_usage'):
+            self.assertEqual(before[field], after[field])
+        recovery = read_json(recovery_path)
+        recovery['receipt_sha256'] = 'tampered'
+        write_json(recovery_path, recovery)
+        with self.assertRaisesRegex(Invalid, 'original failure receipt'):
+            self.run_generation()
+
+    def test_offline_recovery_rejects_changed_response_and_invalid_meanings(self):
+        from tools.lexicon_expand import recover
+        self.reply['results'][0]['senses'][0]['source_ref_ids'] = ['unknown']
+        with self.assertRaises(Invalid):
+            self.run_generation()
+        with patch.object(recover, 'load_plan', return_value=(self.plan, [self.job])):
+            result = recover.recover_saved(self.plan_directory, self.config_path, self.output)
+            self.assertEqual(result['recovered'], [])
+            self.assertEqual(result['rejected'][0]['validation_error']['path'],
+                             '$.results[0].senses[0].source_ref_ids')
+            (self.output / 'responses/00001.json').write_bytes(b'{}')
+            with self.assertRaisesRegex(Invalid, 'Saved provider response changed'):
+                recover.recover_saved(self.plan_directory, self.config_path, self.output)
+
+    def test_recovered_receipt_can_be_in_a_new_fixed_policy_baseline(self):
+        import shutil
+        from tools.lexicon_expand import recover, parallel_run
+        from tools.lexicon_expand.normalization import ResponseValidationError
+        with patch.object(generation, 'parse_reply', side_effect=ResponseValidationError('Unknown part of speech')):
+            with self.assertRaises(Invalid):
+                self.run_generation()
+        with patch.object(recover, 'load_plan', return_value=(self.plan, [self.job])):
+            recover.recover_saved(self.plan_directory, self.config_path, self.output)
+        shutil.copytree(self.output, self.directory / 'pilot-results-v1')
+        for name in ('api.local.json', 'api.grok.local.json'):
+            write_json(self.directory / name, self.config)
+        with patch.object(parallel_run, 'CACHE', self.directory), \
+             patch.object(parallel_run, 'load_plan', return_value=(self.plan, [self.job])), \
+             patch.object(provider, 'read_key') as key, patch.object(provider, 'complete') as call:
+            result = parallel_run.run(execute=True, retry_failed=True, max_retries=15)
+            self.assertEqual(result['returned_items'], 1)
+            self.assertEqual(result['recovered_requests'], 1)
+            self.assertEqual(result['retry_policy']['baseline_counts'], [1, 0])
+            parallel_run.run(execute=True, retry_failed=True)
+            key.assert_not_called()
+            call.assert_not_called()
+
+    def test_content_retry_limit_queues_one_request_and_continues_with_durable_limits(self):
+        from tools.lexicon_expand import parallel_run, retry
+        jobs = [planning.make_job('map_targets', [{**self.target, 'target_id': str(i)}], 'TEST ONLY') for i in range(4)]
+        plan = {**self.plan, 'maximum_items': 4, 'request_count': 4}
+        for name in ('api.local.json', 'api.grok.local.json'):
+            write_json(self.directory / name, self.config)
+        def respond(config, key, job):
+            reply = copy.deepcopy(self.reply)
+            reply['results'][0]['target_id'] = job['payload']['targets'][0]['target_id']
+            if job['id'] == jobs[0]['id']:
+                reply['results'][0]['senses'][0]['pos'] = 'unsupported'
+            return self.envelope(reply)
+        with patch.object(parallel_run, 'CACHE', self.directory), \
+             patch.object(parallel_run, 'load_plan', return_value=(plan, jobs)), \
+             patch.object(generation, 'load_plan', return_value=(plan, jobs)), \
+             patch.object(provider, 'read_key', return_value=self.key), \
+             patch.object(provider, 'complete', side_effect=respond) as call, \
+             patch.object(retry, 'wait_until') as wait:
+            result = parallel_run.run(execute=True, retry_failed=True, max_retries=1)
+            self.assertEqual(result['returned_items'], 3)
+            self.assertEqual(result['requests_with_issues'], 1)
+            self.assertEqual(call.call_count, 5)
+            self.assertEqual(wait.call_count, 1)
+            issue = json.loads((self.directory / 'pilot-results-combined/issues.jsonl').read_text())
+            self.assertEqual(issue['state'], 'retry-limit')
+            self.assertEqual(issue['validation_error']['path'], '$.results[0].senses[0].pos')
+            policy_bytes = (self.directory / 'pilot-results-combined/retry-policy.json').read_bytes()
+            call.reset_mock()
+            resumed = parallel_run.run(execute=True, retry_failed=True)
+            call.assert_not_called()
+            self.assertEqual(resumed['attempts_including_legacy'], result['attempts_including_legacy'])
+            self.assertEqual(policy_bytes, (self.directory / 'pilot-results-combined/retry-policy.json').read_bytes())
+
+    def test_auth_failure_stops_only_its_provider_without_using_retries(self):
+        from tools.lexicon_expand import parallel_run, retry
+        jobs = [planning.make_job('map_targets', [{**self.target, 'target_id': str(i)}], 'TEST ONLY') for i in range(4)]
+        plan = {**self.plan, 'maximum_items': 4, 'request_count': 4}
+        for name, model in [('api.local.json', 'first-model'), ('api.grok.local.json', 'second-model')]:
+            write_json(self.directory / name, {**self.config, 'model': model})
+        def respond(config, key, job):
+            if config['model'] == 'first-model':
+                raise provider.ProviderFailure('HTTP 401', retryable=False)
+            reply = copy.deepcopy(self.reply)
+            reply['results'][0]['target_id'] = job['payload']['targets'][0]['target_id']
+            return self.envelope(reply)
+        with patch.object(parallel_run, 'CACHE', self.directory), \
+             patch.object(parallel_run, 'load_plan', return_value=(plan, jobs)), \
+             patch.object(generation, 'load_plan', return_value=(plan, jobs)), \
+             patch.object(provider, 'read_key', return_value=self.key), \
+             patch.object(provider, 'complete', side_effect=respond) as call, \
+             patch.object(retry, 'wait_until') as wait:
+            result = parallel_run.run(execute=True, retry_failed=True, max_retries=15)
+            self.assertEqual(result['returned_items'], 2)
+            self.assertEqual(call.call_count, 3)
+            wait.assert_not_called()
+            issue = json.loads((self.directory / 'pilot-results-combined/issues.jsonl').read_text())
+            self.assertEqual(issue['state'], 'provider-stopped')
+
     def test_parallel_owners_resume_without_duplicate_calls(self):
         from tools.lexicon_expand import parallel_run
         second = planning.make_job('map_targets', [{**self.target, 'target_id': 'second'}], 'TEST ONLY')
@@ -470,6 +710,48 @@ class ExpansionTests(unittest.TestCase):
             self.assertEqual(call.call_count, 2)
             self.assertEqual(summary['attempts_including_legacy'], 4)
             self.assertEqual(summary['returned_items'], 0)
+
+    def test_parallel_retry_policy_is_bounded_and_resumes_without_duplicate_calls(self):
+        from tools.lexicon_expand import parallel_run, retry
+        second = planning.make_job('map_targets', [{**self.target, 'target_id': 'second'}], 'TEST ONLY')
+        plan = {**self.plan, 'maximum_items': 2, 'request_count': 2}
+        for name in ('api.local.json', 'api.grok.local.json'):
+            write_json(self.directory / name, self.config)
+        calls = {}
+        def respond(config, key, job):
+            request_id = job['id']
+            calls[request_id] = calls.get(request_id, 0) + 1
+            if calls[request_id] == 1:
+                raise provider.ProviderFailure('HTTP 504')
+            reply = copy.deepcopy(self.reply)
+            reply['results'][0]['target_id'] = job['payload']['targets'][0]['target_id']
+            return self.envelope(reply)
+        with patch.object(parallel_run, 'CACHE', self.directory), \
+             patch.object(parallel_run, 'load_plan', return_value=(plan, [self.job, second])), \
+             patch.object(generation, 'load_plan', return_value=(plan, [self.job, second])), \
+             patch.object(provider, 'read_key', return_value=self.key), \
+             patch.object(provider, 'complete', side_effect=respond) as call, \
+             patch.object(retry, 'wait_until') as wait:
+            result = parallel_run.run(execute=True, retry_failed=True, max_retries=15)
+            self.assertEqual(result['returned_items'], 2)
+            self.assertEqual(call.call_count, 4)
+            self.assertEqual(wait.call_count, 2)
+            policy = result['retry_policy']
+            self.assertEqual(policy['max_retries'], 15)
+            self.assertEqual(policy['max_delay_seconds'], 30)
+            self.assertEqual(policy['shared_attempt_cap'], 60)
+            self.assertEqual(policy['shared_output_token_cap'], 245760)
+            self.assertEqual(sum(b['attempt_cap'] for b in policy['provider_budgets']), 32)
+            old_policy = {k: v for k, v in policy.items() if k != 'max_delay_seconds'}
+            policy_path = self.directory / 'pilot-results-combined/retry-policy.json'
+            for previous_policy in (old_policy, {**old_policy, 'max_delay_seconds': 180}):
+                write_json(policy_path, previous_policy)
+                call.reset_mock()
+                parallel_run.run(execute=True, retry_failed=True)
+                call.assert_not_called()
+                self.assertEqual(read_json(policy_path), {**old_policy, 'max_delay_seconds': 30})
+            with self.assertRaisesRegex(Invalid, 'policy is fixed'):
+                parallel_run.run(execute=True, max_retries=1)
 
 
 if __name__ == "__main__":

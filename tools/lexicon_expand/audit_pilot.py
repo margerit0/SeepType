@@ -2,7 +2,8 @@
 from collections import Counter, defaultdict
 from tools.lexicon import pipeline as legacy
 from tools.lexicon_expand.catalog import input_reading
-from tools.lexicon_expand.common import CACHE, ROOT, digest, read_jsonl, require, write_json, write_jsonl
+from tools.lexicon_expand.common import CACHE, ROOT, digest, read_jsonl, require
+from tools.lexicon_expand.storage import write_json, write_jsonl
 
 
 def audit():

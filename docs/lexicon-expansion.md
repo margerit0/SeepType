@@ -127,4 +127,6 @@ python -B -X utf8 tools/lexicon_expand/cli.py generate --config .cache/lexicon-e
 python -B -X utf8 tools/lexicon_expand/verify.py
 ```
 
-结果记录在 `experiments/lexicon-expansion/results/offline-checks.json`。检查范围包括来源摘录、真实词表覆盖、确定性请求、目标/引用/拼音校验、多义结构、凭据隔离、失败用量、调用上限、进程锁和断点续跑。外部传输全部使用隔离的模拟响应；测试用词从已有审核数据取，不写入产品数据。它不构成实际服务连通性、译文质量或原生输入法验收。
+本地结果记录在 `.cache/lexicon-expansion/verification/offline-checks.json`。检查范围包括来源摘录、真实词表覆盖、确定性请求、目标/引用/拼音校验、多义结构、凭据隔离、失败用量、调用上限、进程锁和断点续跑。外部传输使用隔离的模拟响应，不写入产品数据。它不构成实际服务连通性、译文质量或原生输入法验收。
+
+公版仓库不包含历史 `reviews/` 批次；依赖具体历史审校资料的测试会注明跳过。旧批次归档重放仍在原开发仓库运行。本仓库的词汇目录准备、请求规划、可复用审校和运行模型工具不要求合并原 Git 历史；`repair-plan` 需要显式提供 `--review`。现在的离线模型与真实引擎测试见 [Windows 扩展词库](../data/lexicon-expansion/windows-runtime/README.md)。

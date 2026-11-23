@@ -9,7 +9,7 @@
 - `word-detail-examples.json` 是拾词编写的首批原创搭配与中英例句（以 GPL-3.0-or-later 提供）。按义项 ID 绑定，打包同时核对词形、读音和英文。新增示例只需编辑此文件，无需从 Windows 重新导入；没有示例的义项照常显示已有释义。
 - 快照用于离线预览。`humanApproved` 和 `releaseReady` 保留原开发快照的记录，不用作 Android 公开预览门槛，也不改写为人工通过。预览采用 AI 语义审校和自动回归；来源及署名见 [NOTICE.txt](NOTICE.txt)，发布规则见[获取与发布](../../../docs/releases.md#android)。
 
-已有本地 Windows Git 引用时可复现同步，不需要检出另一工作目录：
+下面的旧同步命令仅在能访问原 Windows 归档的开发仓库中使用。公版 `main` 不带该旧引用，也不需要获取或合并原历史；[Windows 开发词库](../windows-runtime/README.md)直接复用本目录的已验证运行文件：
 
 ```powershell
 python -X utf8 tools/android/import_windows_lexicon.py 1977d31

@@ -23,3 +23,6 @@ experiments/phase6/runtime/
 /android/hs_err_pid*.log
 /android/replay_pid*.log
 
+# Historical review inputs/receipts are not a public build dependency.
+/data/lexicon-expansion/reviews/
+

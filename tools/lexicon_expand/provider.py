@@ -12,7 +12,9 @@ from tools.lexicon_expand.common import Invalid, canonical, clean_text, read_jso
 
 
 class ProviderFailure(RuntimeError):
-    pass
+    def __init__(self, message, *, retryable=True):
+        super().__init__(message)
+        self.retryable = retryable
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -120,9 +122,10 @@ def complete(config, key, job):
             except (ValueError, OSError):
                 pass
         raise ProviderFailure(f"Provider returned HTTP {error.code}" +
-                              (detail or "; response body withheld")) from None
+                              (detail or "; response body withheld"),
+                              retryable=error.code in (408, 429, 500, 502, 503, 504)) from None
     except (URLError, TimeoutError, OSError):
-        raise ProviderFailure("Connection failed or timed out; no automatic retry was sent") from None
+        raise ProviderFailure("Connection failed or timed out") from None
 
 
 def token_usage(raw):
