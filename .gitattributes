@@ -43,3 +43,8 @@ experiments/phase4/prepare-weasel.py text eol=lf
 
 # Empty optional English cells are represented by trailing tabs in this TSV.
 data/lexicon-expansion/android-names/names.tsv whitespace=-blank-at-eol
+
+# Exclude Lua, HTML, and Python from the GitHub language breakdown.
+*.lua -linguist-detectable
+*.html -linguist-detectable
+*.py -linguist-detectable
