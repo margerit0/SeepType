@@ -107,10 +107,11 @@ fun StudyKeyboard(
     val systemReduced = remember { Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f }
     val reduced = prefs.reduceMotion || systemReduced
     val effectivePrefs = prefs.copy(reduceMotion = reduced)
+    val hasCandidates = state.candidates.isNotEmpty()
     var page by remember(state.generation) { mutableStateOf(if (editor.numeric) "numbers" else "letters") }
     var shift by remember(state.generation) { mutableStateOf(ShiftMode.LOWER) }
     var firstShiftTapAt by remember(state.generation) { mutableStateOf<Long?>(null) }
-    var expanded by remember(state.generation) { mutableStateOf(false) }
+    var expanded by remember(state.generation, hasCandidates) { mutableStateOf(false) }
     var quickSettings by remember(state.generation) { mutableStateOf(false) }
     var clipboardOpen by remember(state.generation) { mutableStateOf(false) }
     var emojiOpen by remember(state.generation) { mutableStateOf(false) }
@@ -207,7 +208,7 @@ fun StudyKeyboard(
                         quickSettings = false
                         onSettings()
                     })
-                expanded && state.candidates.isNotEmpty() -> ExpandedCandidates(state, prefs, send,
+                expanded && hasCandidates -> ExpandedCandidates(state, prefs, send,
                     modifier.height(keyRowsHeight), openSettings) { expanded = false }
                 // Never reuse the preceding editor's key faces or pressed state
                 // when the IME window survives an input connection change.
@@ -229,7 +230,7 @@ fun StudyKeyboard(
             if (clipboardShowing) keys(row)
             else Row(row, verticalAlignment = Alignment.Bottom) {
                 Column(Modifier.widthIn(max = 270.dp).weight(.34f).height(keyRowsHeight).padding(end = 7.dp)) {
-                    if (active && state.candidates.isNotEmpty()) {
+                    if (active && hasCandidates) {
                         LazyColumn(Modifier.weight(1f)) {
                             itemsIndexed(state.candidates) { index, candidate ->
                                 CandidateCard(candidate, index, state, prefs, send, Modifier.fillMaxWidth())
@@ -242,7 +243,7 @@ fun StudyKeyboard(
             }
         } else {
             Box(Modifier.fillMaxWidth().height(statusHeight).testTag("keyboard_status")) {
-                if (state.candidates.isNotEmpty() && !quickSettings && !clipboardShowing) {
+                if (hasCandidates && !quickSettings && !clipboardShowing) {
                     CandidateStrip(state, effectivePrefs, send, expanded, openSettings,
                         openEmoji.takeIf { expanded && active && editor.allowsEmoji }) { expanded = !expanded }
                 } else IdleToolbar(state, prefs, editor, update, openSettings, openClipboard, openEmoji, onRetry, Modifier.fillMaxSize())

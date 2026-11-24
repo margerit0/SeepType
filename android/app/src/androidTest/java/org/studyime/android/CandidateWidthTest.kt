@@ -121,4 +121,32 @@ class CandidateWidthTest {
         assertTrue(expanded.height > compact.height)
         assertTrue(next.top >= expanded.bottom)
     }
+
+    @Test fun newInputStartsCollapsedAfterSelectingFromExpandedCandidates() {
+        val initial = EngineSnapshot(ready = true, generation = 1, revision = 1, input = "nihao",
+            candidates = listOf(Candidate("你好", "hello")))
+        state.value = initial
+        showKeyboard(320)
+        val expand = compose.onNodeWithContentDescription("展开候选")
+        val collapse = compose.onNodeWithContentDescription("收起候选")
+        val keyboardKey = compose.onNodeWithTag("key_q")
+        expand.performClick()
+        collapse.assertIsDisplayed()
+
+        compose.runOnIdle { state.value = initial.copy(revision = 2, page = 1) }
+        collapse.assertIsDisplayed()
+        val insideStrip = hasAnyAncestor(hasTestTag("candidate_scroll"))
+        compose.onNode(hasTestTag("candidate_0") and !insideStrip).performClick()
+        compose.runOnIdle {
+            assertEquals("select", events.single().getString("type"))
+            state.value = initial.copy(revision = 3, input = "", page = 0, candidates = emptyList())
+        }
+        keyboardKey.assertIsDisplayed()
+
+        compose.runOnIdle {
+            state.value = initial.copy(revision = 4, input = "shi", candidates = listOf(Candidate("是", "to be")))
+        }
+        expand.assertIsDisplayed()
+        keyboardKey.assertIsDisplayed()
+    }
 }
