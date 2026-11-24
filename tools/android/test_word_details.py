@@ -30,10 +30,10 @@ class WordDetailsTest(unittest.TestCase):
         self.assertEqual(solve["pinyin"], "jiějué")
         self.assertEqual([sense["english"] for sense in solve["senses"]], ["solve", "settle"])
         self.assertEqual([sense["collocation"] for sense in solve["senses"]], ["solve a problem", "settle a dispute"])
-        for code, pinyin, english in (("hai", "hái", "even"), ("huan", "huán", "return")):
+        for code, pinyin, meanings in (("hai", "hái", ["even", "yet"]), ("huan", "huán", ["return"])):
             entry = self.words["还"][code]
             self.assertEqual(entry["pinyin"], pinyin)
-            self.assertEqual([sense["english"] for sense in entry["senses"]], [english])
+            self.assertEqual([sense["english"] for sense in entry["senses"]], meanings)
 
     def test_wrong_example_binding_is_rejected(self):
         example = dict(json.loads(self.examples)[0], reading="ji jue")

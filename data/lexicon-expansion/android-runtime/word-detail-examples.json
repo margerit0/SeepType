@@ -240,5 +240,185 @@
     "collocation": "reject an application",
     "exampleEn": "The committee may reject the application.",
     "exampleZh": "委员会可能会拒绝这份申请。"
+  },
+  {
+    "id": "sense-candidate-857d886921b140fb0a688c02",
+    "chinese": "逼真性",
+    "reading": "bi zhen xing",
+    "english": "verisimilitude",
+    "collocation": "give a story verisimilitude",
+    "exampleEn": "The small details give the story verisimilitude.",
+    "exampleZh": "这些小细节让故事显得格外真实。"
+  },
+  {
+    "id": "sense-candidate-fd4f769a381b7f5dd3cfa4ca",
+    "chinese": "名副其实的",
+    "reading": "ming fu qi shi de",
+    "english": "veritable",
+    "collocation": "a veritable treasure trove",
+    "exampleEn": "The museum's archive is a veritable treasure trove.",
+    "exampleZh": "这座博物馆的档案库真是个宝库。"
+  },
+  {
+    "id": "sense-candidate-2603dc10871c3569db4ab4ab",
+    "chinese": "活力",
+    "reading": "huo li",
+    "english": "verve",
+    "collocation": "perform with verve",
+    "exampleEn": "She performed the part with verve.",
+    "exampleZh": "她把这个角色演得活力十足。"
+  },
+  {
+    "id": "sense-candidate-073b191103b70394982028fc",
+    "chinese": "正名",
+    "reading": "zheng ming",
+    "english": "vindication",
+    "collocation": "vindication of a decision",
+    "exampleEn": "The independent review was a vindication of her decision.",
+    "exampleZh": "独立评估证明她的决定是正确的。"
+  },
+  {
+    "id": "sense-candidate-8fae3a8369653a6cbaaaebb6",
+    "chinese": "精湛技艺",
+    "reading": "jing zhan ji yi",
+    "english": "virtuosity",
+    "collocation": "show remarkable virtuosity",
+    "exampleEn": "The pianist impressed the audience with her virtuosity.",
+    "exampleZh": "这位钢琴家凭精湛的技艺打动了观众。"
+  },
+  {
+    "id": "sense-candidate-336cabc544bbc19d6971e853",
+    "chinese": "对于",
+    "reading": "dui yu",
+    "english": "vis-a-vis",
+    "collocation": "clarify a position vis-a-vis something",
+    "exampleEn": "We need to clarify our position vis-a-vis the new policy.",
+    "exampleZh": "我们需要明确对这项新政策的立场。"
+  },
+  {
+    "id": "sense-candidate-c65b0c210fee3d3d146b0833",
+    "chinese": "如饥似渴的",
+    "reading": "ru ji si ke de",
+    "english": "voracious",
+    "collocation": "a voracious reader",
+    "exampleEn": "He was a voracious reader long before he started school.",
+    "exampleZh": "他还没上学就已经如饥似渴地读书了。"
+  },
+  {
+    "id": "sense-candidate-603302a5b6e4d9c01e47a8a2",
+    "chinese": "巡访",
+    "reading": "xun fang",
+    "english": "walkabout",
+    "collocation": "go on a walkabout",
+    "exampleEn": "The mayor went on a walkabout through the market.",
+    "exampleZh": "市长到市场走访，与民众交谈。"
+  },
+  {
+    "id": "sense-candidate-f15ddfd77541769e33494c8f",
+    "chinese": "沉溺",
+    "reading": "chen ni",
+    "english": "wallow",
+    "collocation": "wallow in self-pity",
+    "exampleEn": "He tried not to wallow in self-pity after the setback.",
+    "exampleZh": "遇到挫折后，他努力不让自己陷在自怜里。"
+  },
+  {
+    "id": "sense-candidate-30e27f813f2dece6947f7ead",
+    "chinese": "任性的",
+    "reading": "ren xing de",
+    "english": "wayward",
+    "collocation": "a wayward teenager",
+    "exampleEn": "The novel follows a wayward teenager who keeps breaking the rules.",
+    "exampleZh": "这部小说讲的是一个任性、总爱违反规矩的少年。"
+  },
+  {
+    "id": "sense-candidate-00cf71d5c65187fdb157e180",
+    "chinese": "令人厌倦的",
+    "reading": "ling ren yan juan de",
+    "english": "wearisome",
+    "collocation": "a wearisome routine",
+    "exampleEn": "The long, repetitive meetings became wearisome.",
+    "exampleZh": "会议又长又重复，渐渐让人厌烦。"
+  },
+  {
+    "id": "sense-candidate-f15d7576d34ca1553ab26cda",
+    "chinese": "任意一个",
+    "reading": "ren yi yi ge",
+    "english": "whichever",
+    "collocation": "whichever is shorter",
+    "exampleEn": "Both routes are open, so take whichever is shorter.",
+    "exampleZh": "两条路都能走，哪条近就走哪条。"
+  },
+  {
+    "id": "sense-candidate-61d72e38f61c161491520895",
+    "chinese": "而",
+    "reading": "er",
+    "english": "while",
+    "collocation": "while someone prefers something else",
+    "exampleEn": "I like tea, while my sister prefers coffee.",
+    "exampleZh": "我喜欢喝茶，而我姐姐更喜欢咖啡。"
+  },
+  {
+    "id": "sense-candidate-ec9c0fa8a1eb87752d8e0324",
+    "chinese": "蜿蜒的",
+    "reading": "wan yan de",
+    "english": "winding",
+    "collocation": "a winding road",
+    "exampleEn": "The winding road leads to a small village.",
+    "exampleZh": "这条蜿蜒的路通向一个小村庄。"
+  },
+  {
+    "id": "sense-candidate-3e0012189f19063a86ea4ff4",
+    "chinese": "取款",
+    "reading": "qu kuan",
+    "english": "withdrawal",
+    "collocation": "make a cash withdrawal",
+    "exampleEn": "The bank charges a fee for each cash withdrawal.",
+    "exampleZh": "这家银行每次取现都会收手续费。"
+  },
+  {
+    "id": "sense-candidate-383a4c3401b98bd609faa20a",
+    "chinese": "怅然的",
+    "reading": "chang ran de",
+    "english": "wistful",
+    "collocation": "a wistful smile",
+    "exampleEn": "She gave a wistful smile as she looked at the old photographs.",
+    "exampleZh": "她看着旧照片，露出一丝怅然的微笑。"
+  },
+  {
+    "id": "sense-candidate-b08aab0dcec78499c80c84ab",
+    "chinese": "干瘪的",
+    "reading": "gan bie de",
+    "english": "wizened",
+    "collocation": "a wizened face",
+    "exampleEn": "Time had left him with a wizened face and bright, watchful eyes.",
+    "exampleZh": "岁月让他的脸变得干瘪，但他的眼睛依然明亮而警觉。"
+  },
+  {
+    "id": "sense-candidate-aa3e0e3efd04f5f7f1fc6b54",
+    "chinese": "文字高手",
+    "reading": "wen zi gao shou",
+    "english": "wordsmith",
+    "collocation": "a skilled wordsmith",
+    "exampleEn": "A skilled wordsmith can make a complex idea sound simple.",
+    "exampleZh": "文字高手能把复杂的想法讲得通俗易懂。"
+  },
+  {
+    "id": "sense-candidate-a2c7a7a02f5f7894f26586bb",
+    "chinese": "略带自嘲地",
+    "reading": "lve dai zi chao de",
+    "english": "wryly",
+    "collocation": "smile wryly",
+    "exampleEn": "He smiled wryly at his own mistake.",
+    "exampleZh": "他看着自己的失误，略带自嘲地笑了笑。"
+  },
+  {
+    "id": "sense-candidate-42bbe7a854ea9d3a0430749b",
+    "chinese": "你的",
+    "reading": "ni de",
+    "english": "yours",
+    "collocation": "is that one yours?",
+    "exampleEn": "My bag is blue. Is that one yours?",
+    "exampleZh": "我的包是蓝色的。那个是你的吗？"
   }
 ]

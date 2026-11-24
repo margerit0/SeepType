@@ -121524,6 +121524,7 @@ use_preset_vocabulary: false
 一半地	yi ban de	100
 一圈	yi quan	100
 一大口	yi da kou	100
+一小会儿	yi xiao hui r	100
 一批	yi pi	100
 一抱	yi bao	100
 一条面包	yi tiao mian bao	100
@@ -121531,6 +121532,7 @@ use_preset_vocabulary: false
 一楼的	yi lou de	100
 一百周年	yi bai zhou nian	100
 一角硬币	yi jiao ying bi	100
+一言不发地	yi yan bu fa de	100
 一餐	yi can	100
 三人组	san ren zu	100
 三倍的	san bei de	100
@@ -121577,6 +121579,7 @@ use_preset_vocabulary: false
 不可阻挡的	bu ke zu dang de	100
 不可靠地	bu ke kao de	100
 不合常规作息的	bu he chang gui zuo xi de	100
+不合群的	bu he qun de	100
 不合适	bu he shi	100
 不合逻辑的	bu he luo ji de	100
 不同地	bu tong de	100
@@ -121709,6 +121712,7 @@ use_preset_vocabulary: false
 习惯做法	xi guan zuo fa	100
 习惯的	xi guan de	100
 习语的	xi yu de	100
+书面的	shu mian de	100
 乳品厂	ru pin chang	100
 乳霜	ru shuang	100
 事实上的	shi shi shang de	100
@@ -121759,6 +121763,7 @@ use_preset_vocabulary: false
 令人兴奋的	ling ren xing fen de	100
 令人动弹不得地	ling ren dong tan bu de de	100
 令人印象深刻的	ling ren yin xiang shen ke de	100
+令人厌倦的	ling ren yan juan de	100
 令人反感的	ling ren fan gan de	100
 令人困惑的	ling ren kun huo de	100
 令人失望	ling ren shi wang	100
@@ -121775,6 +121780,7 @@ use_preset_vocabulary: false
 令人憎恶的	ling ren zeng wu de	100
 令人扫兴地	ling ren sao xing de	100
 令人扫兴的	ling ren sao xing de	100
+令人担忧的	ling ren dan you de	100
 令人放松的	ling ren fang song de	100
 令人毛骨悚然地	ling ren mao gu song ran de	100
 令人毛骨悚然的	ling ren mao gu song ran de	100
@@ -121793,11 +121799,13 @@ use_preset_vocabulary: false
 令人震惊的	ling ren zhen jing de	100
 令人鼓舞的	ling ren gu wu de	100
 以兼职方式	yi jian zhi fang shi	100
+以残迹形式	yi can ji xing shi	100
 以电子方式	yi dian zi fang shi	100
 仪式的	yi shi de	100
 任何一个	ren he yi ge	100
 任何人	ren he ren	100
 任性的	ren xing de	100
+任意一个	ren yi yi ge	100
 企业的	qi ye de	100
 休会期	xiu hui qi	100
 休眠的	xiu mian de	100
@@ -121819,11 +121827,13 @@ use_preset_vocabulary: false
 估计的	gu ji de	100
 伸开四肢坐卧	shen kai si zhi zuo wo	100
 低俗的	di su de	100
+低声说	di sheng shuo	100
 低语声	di yu sheng	100
 低风险	di feng xian	100
 住宅的	zhu zhai de	100
 体力劳动者	ti li lao dong zhe	100
 体操的	ti cao de	100
+体格健壮的	ti ge jian zhuang de	100
 体系结构	ti xi jie gou	100
 体育中心	ti yu zhong xin	100
 体育的	ti yu de	100
@@ -121832,6 +121842,8 @@ use_preset_vocabulary: false
 作品集	zuo pin ji	100
 作定语的	zuo ding yu de	100
 作表语的	zuo biao yu de	100
+你的	ni de	100
+你自己	ni zi ji	100
 使不安	shi bu an	100
 使不朽	shi bu xiu	100
 使个性化	shi ge xing hua	100
@@ -121845,6 +121857,7 @@ use_preset_vocabulary: false
 使厌恶	shi yan wu	100
 使厌烦	shi yan fan	100
 使发酵	shi fa jiao	100
+使受伤	shi shou shang	100
 使吃惊	shi chi jing	100
 使呆住	shi dai zhu	100
 使困惑	shi kun huo	100
@@ -121909,6 +121922,7 @@ use_preset_vocabulary: false
 倒吸气	dao xi qi	100
 倒霉的	dao mei de	100
 倚着	yi zhe	100
+值得尊敬的	zhi de zun jing de	100
 值得推荐的	zhi de tui jian de	100
 值机柜台	zhi ji gui tai	100
 倾盆的	qing pen de	100
@@ -121917,6 +121931,7 @@ use_preset_vocabulary: false
 假设的	jia she de	100
 做作地	zuo zuo de	100
 做作的	zuo zuo de	100
+做得好	zuo de hao	100
 做志愿服务	zuo zhi yuan fu wu	100
 做标记	zuo biao ji	100
 停滞的	ting zhi de	100
@@ -121954,6 +121969,7 @@ use_preset_vocabulary: false
 全州范围地	quan zhou fan wei de	100
 全市范围的	quan shi fan wei de	100
 全景的	quan jing de	100
+全球性的	quan qiu xing de	100
 全球本土化的	quan qiu ben tu hua de	100
 全球的	quan qiu de	100
 全等的	quan deng de	100
@@ -122062,9 +122078,11 @@ use_preset_vocabulary: false
 加拿大的	jia na da de	100
 动态地	dong tai de	100
 动态的	dong tai de	100
+动物学家	dong wu xue jia	100
 动物尸体	dong wu shi ti	100
 动画的	dong hua de	100
 助产学	zhu chan xue	100
+助行器	zhu xing qi	100
 勇敢地	yong gan de	100
 勇敢的	yong gan de	100
 勉强地	mian qiang de	100
@@ -122072,6 +122090,7 @@ use_preset_vocabulary: false
 勤勉地	qin mian de	100
 包含在内地	bao han zai nei de	100
 包罗万象的	bao luo wan xiang de	100
+包装材料	bao zhuang cai liao	100
 化学的	hua xue de	100
 化脓的	hua nong de	100
 北方的	bei fang de	100
@@ -122142,6 +122161,7 @@ use_preset_vocabulary: false
 反问地	fan wen de	100
 反问的	fan wen de	100
 发光的	fa guang de	100
+发出喘鸣	fa chu chuan ming	100
 发微光	fa wei guang	100
 发抖的	fa dou de	100
 发疯的	fa feng de	100
@@ -122166,6 +122186,7 @@ use_preset_vocabulary: false
 口语的	kou yu de	100
 古代的	gu dai de	100
 古怪地	gu guai de	100
+古怪滑稽的	gu guai hua ji de	100
 古怪的	gu guai de	100
 古怪装置	gu guai zhuang zhi	100
 古板的	gu ban de	100
@@ -122230,6 +122251,7 @@ use_preset_vocabulary: false
 同时的	tong shi de	100
 同样地	tong yang de	100
 同质的	tong zhi de	100
+名副其实的	ming fu qi shi de	100
 名牌的	ming pai de	100
 后半期的	hou ban qi de	100
 向下的	xiang xia de	100
@@ -122279,9 +122301,11 @@ use_preset_vocabulary: false
 喜爱的	xi ai de	100
 喝醉的	he zui de	100
 喷涌的	pen yong de	100
+嗡嗡作响	weng weng zuo xiang	100
 嘲笑地	chao xiao de	100
 嘲笑的	chao xiao de	100
 器乐的	qi yue de	100
+四轮货车	si lun huo che	100
 回家的	hui jia de	100
 回收利用	hui shou li yong	100
 回收利用的	hui shou li yong de	100
@@ -122300,9 +122324,11 @@ use_preset_vocabulary: false
 在上面	zai shang mian	100
 在之后	zai zhi hou	100
 在修辞上	zai xiu ci shang	100
+在全球	zai quan qiu	100
 在其中	zai qi zhong	100
 在内部	zai nei bu	100
 在前方	zai qian fang	100
+在哪里	zai na li	100
 在商店行窃	zai shang dian xing qie	100
 在国内	zai guo nei	100
 在地形上	zai di xing shang	100
@@ -122327,6 +122353,7 @@ use_preset_vocabulary: false
 在社交上	zai she jiao shang	100
 在职者	zai zhi zhe	100
 在船上	zai chuan shang	100
+在视觉上	zai shi jue shang	100
 在附近	zai fu jin	100
 地形的	di xing de	100
 地理的	di li de	100
@@ -122334,6 +122361,7 @@ use_preset_vocabulary: false
 地质的	di zhi de	100
 地震的	di zhen de	100
 均匀地	jun yun de	100
+均衡的	jun heng de	100
 坏的	huai de	100
 坐立不安的	zuo li bu an de	100
 坚固的	jian gu de	100
@@ -122359,6 +122387,7 @@ use_preset_vocabulary: false
 塑料的	su liao de	100
 塞进	sai jin	100
 填满的	tian man de	100
+墙面板	qiang mian ban	100
 增肌	zeng ji	100
 壮观景象	zhuang guan jing xiang	100
 声名狼藉地	sheng ming lang ji de	100
@@ -122387,6 +122416,7 @@ use_preset_vocabulary: false
 大体的	da ti de	100
 大块	da kuai	100
 大声咀嚼	da sheng ju jue	100
+大声喊	da sheng han	100
 大声地	da sheng de	100
 大声的	da sheng de	100
 大大地	da da de	100
@@ -122443,6 +122473,7 @@ use_preset_vocabulary: false
 她的	ta de	100
 她自己	ta zi ji	100
 好交际的	hao jiao ji de	100
+好吃的	hao chi de	100
 好奇地	hao qi de	100
 好斗地	hao dou de	100
 好斗的	hao dou de	100
@@ -122450,6 +122481,8 @@ use_preset_vocabulary: false
 好看的	hao kan de	100
 好色的	hao se de	100
 如杂技般地	ru za ji ban de	100
+如饥似渴地	ru ji si ke de	100
+如饥似渴的	ru ji si ke de	100
 始终如一的	shi zhong ru yi de	100
 委婉地	wei wan de	100
 委婉的	wei wan de	100
@@ -122552,8 +122585,10 @@ use_preset_vocabulary: false
 展示方面的	zhan shi fang mian de	100
 崇高地	chong gao de	100
 巡回的	xun hui de	100
+巡访	xun fang	100
 工业化前的	gong ye hua qian de	100
 工业的	gong ye de	100
+工作场所	gong zuo chang suo	100
 工作的	gong zuo de	100
 工具包	gong ju bao	100
 左侧的	zuo ce de	100
@@ -122564,10 +122599,13 @@ use_preset_vocabulary: false
 市政的	shi zheng de	100
 布满灰尘的	bu man hui chen de	100
 布置家具	bu zhi jia ju	100
+帆板运动	fan ban yun dong	100
 帆船运动	fan chuan yun dong	100
 帝国的	di guo de	100
 带有异国情调地	dai you yi guo qing diao de	100
+带讥讽的	dai ji feng de	100
 常年的	chang nian de	100
+干瘪的	gan bie de	100
 干的	gan de	100
 平平无奇地	ping ping wu qi de	100
 平平无奇的	ping ping wu qi de	100
@@ -122582,11 +122620,13 @@ use_preset_vocabulary: false
 平静无事的	ping jing wu shi de	100
 平静的	ping jing de	100
 年老的	nian lao de	100
+年轻的	nian qing de	100
 幸运的	xing yun de	100
 幼小的	you xiao de	100
 幽灵般的	you ling ban de	100
 幽闭恐惧的	you bi kong ju de	100
 广泛地	guang fan de	100
+广泛存在的	guang fan cun zai de	100
 应付的	ying fu de	100
 应得的	ying de de	100
 应用性的	ying yong xing de	100
@@ -122647,6 +122687,7 @@ use_preset_vocabulary: false
 心理上	xin li shang	100
 心理的	xin li de	100
 心理语言学	xin li yu yan xue	100
+心甘情愿地	xin gan qing yuan de	100
 必然的	bi ran de	100
 忘恩负义的人	wang en fu yi de ren	100
 忙乱的	mang luan de	100
@@ -122658,6 +122699,8 @@ use_preset_vocabulary: false
 怀有恶意地	huai you e yi de	100
 怀疑地	huai yi de	100
 怀疑的	huai yi de	100
+怅然地	chang ran de	100
+怅然的	chang ran de	100
 急切地	ji qie de	100
 急剧地	ji ju de	100
 急剧的	ji ju de	100
@@ -122677,6 +122720,7 @@ use_preset_vocabulary: false
 恶劣的	e lie de	100
 恶心的	e xin de	100
 恶毒地	e du de	100
+恶狠狠地	e hen hen de	100
 恼怒的	nao nu de	100
 恼火的	nao huo de	100
 悔恨地	hui hen de	100
@@ -122693,6 +122737,7 @@ use_preset_vocabulary: false
 惨淡地	can dan de	100
 惩罚性地	cheng fa xing de	100
 惰性的	duo xing de	100
+想知道	xiang zhi dao	100
 惹人注目的	re ren zhu mu de	100
 愉快地	yu kuai de	100
 意识到的	yi shi dao de	100
@@ -122755,6 +122800,7 @@ use_preset_vocabulary: false
 抚慰的	fu wei de	100
 护照查验	hu zhao cha yan	100
 抽象概念	chou xiang gai nian	100
+担心的	dan xin de	100
 拆包	chai bao	100
 拍摄下来的	pai she xia lai de	100
 拙劣地	zhuo lie de	100
@@ -122820,6 +122866,7 @@ use_preset_vocabulary: false
 数学的	shu xue de	100
 文书工作	wen shu gong zuo	100
 文书的	wen shu de	100
+文字高手	wen zi gao shou	100
 文学的	wen xue de	100
 文绉绉的	wen zhou zhou de	100
 斜躺的	xie tang de	100
@@ -122838,6 +122885,7 @@ use_preset_vocabulary: false
 无休止的	wu xiu zhi de	100
 无力做到	wu li zuo dao	100
 无力偿还的	wu li chang huan de	100
+无力地	wu li de	100
 无味的	wu wei de	100
 无定形地	wu ding xing de	100
 无定形的	wu ding xing de	100
@@ -122862,6 +122910,7 @@ use_preset_vocabulary: false
 无精打采地	wu jing da cai de	100
 无精打采的	wu jing da cai de	100
 无论什么	wu lun shen me	100
+无论是谁	wu lun shi shei	100
 无负担的	wu fu dan de	100
 无遮蔽的	wu zhe bi de	100
 无限期地	wu xian qi de	100
@@ -122893,6 +122942,8 @@ use_preset_vocabulary: false
 易爆的	yi bao de	100
 易犯错的	yi fan cuo de	100
 易碎的	yi sui de	100
+是啊	shi a	100
+是谁的	shi shei de	100
 显微的	xian wei de	100
 显而易见地	xian er yi jian de	100
 显著地	xian zhu de	100
@@ -122918,6 +122969,8 @@ use_preset_vocabulary: false
 更可取的	geng ke qu de	100
 更多的	geng duo de	100
 更强壮	geng qiang zhuang	100
+更糟地	geng zao de	100
+更糟的	geng zao de	100
 更远	geng yuan	100
 更高的	geng gao de	100
 替代的	ti dai de	100
@@ -122926,12 +122979,14 @@ use_preset_vocabulary: false
 最后一刻的	zui hou yi ke de	100
 最后的	zui hou de	100
 最喜爱的	zui xi ai de	100
+最坏的情况	zui huai de qing kuang	100
 最大的	zui da de	100
 最大量	zui da liang	100
 最小的	zui xiao de	100
 最新动态	zui xin dong tai	100
 最新的	zui xin de	100
 最深处的	zui shen chu de	100
+最糟的	zui zao de	100
 最纯净的	zui chun jing de	100
 最终的	zui zhong de	100
 最近的	zui jin de	100
@@ -122962,6 +123017,7 @@ use_preset_vocabulary: false
 有效地	you xiao de	100
 有教育意义的	you jiao yu yi yi de	100
 有新闻价值的	you xin wen jia zhi de	100
+有朝气的	you zhao qi de	100
 有机的	you ji de	100
 有条件的	you tiao jian de	100
 有条理	you tiao li	100
@@ -122998,10 +123054,13 @@ use_preset_vocabulary: false
 有进取心的	you jin qu xin de	100
 有限的	you xian de	100
 有雾的	you wu de	100
+有风的	you feng de	100
 有风险的	you feng xian de	100
 有魔力的	you mo li de	100
 望远镜的	wang yuan jing de	100
 期刊的一期	qi kan de yi qi	100
+木制的	mu zhi de	100
+木雕	mu diao	100
 未付的	wei fu de	100
 未加工的	wei jia gong de	100
 未变的	wei bian de	100
@@ -123024,6 +123083,7 @@ use_preset_vocabulary: false
 朴素的	pu su de	100
 朴素舒适	pu su shu shi	100
 机关刊物	ji guan kan wu	100
+机智风趣的	ji zhi feng qu de	100
 机械的	ji xie de	100
 机组人员	ji zu ren yuan	100
 机群	ji qun	100
@@ -123053,6 +123113,7 @@ use_preset_vocabulary: false
 某个	mou ge	100
 柔韧性	rou ren xing	100
 柔韧的	rou ren de	100
+树木茂密的	shu mu mao mi de	100
 核能的	he neng de	100
 根据语境	gen ju yu jing	100
 根本的	gen ben de	100
@@ -123111,6 +123172,7 @@ use_preset_vocabulary: false
 毛骨悚然的	mao gu song ran de	100
 毫不减弱地	hao bu jian ruo de	100
 毫不减弱的	hao bu jian ruo de	100
+毫无价值的	hao wu jia zhi de	100
 毫无光彩的	hao wu guang cai de	100
 毫无意义地	hao wu yi yi de	100
 毫无愧色地	hao wu kui se de	100
@@ -123152,6 +123214,7 @@ use_preset_vocabulary: false
 注意到	zhu yi dao	100
 注重物质的	zhu zhong wu zhi de	100
 洗淋浴	xi lin yu	100
+洗衣盆	xi yi pen	100
 活泼的	huo po de	100
 活着的	huo zhe de	100
 活跃的	huo yue de	100
@@ -123161,6 +123224,7 @@ use_preset_vocabulary: false
 流浪的	liu lang de	100
 流血的	liu xue de	100
 浅的	qian de	100
+浪费的	lang fei de	100
 浮华的	fu hua de	100
 海事的	hai shi de	100
 海军的	hai jun de	100
@@ -123201,6 +123265,7 @@ use_preset_vocabulary: false
 游手好闲者	you shou hao xian zhe	100
 游泳者	you yong zhe	100
 游牧民	you mu min	100
+湿的	shi de	100
 湿透的	shi tou de	100
 滑板者	hua ban zhe	100
 滑板运动	hua ban yun dong	100
@@ -123209,8 +123274,10 @@ use_preset_vocabulary: false
 滑稽的	hua ji de	100
 满的	man de	100
 满载的	man zai de	100
+滨水区	bin shui qu	100
 演出团体	yan chu tuan ti	100
 演出经理人	yan chu jing li ren	100
+演奏大师	yan zou da shi	100
 漫无目的地	man wu mu di de	100
 漫画杂志	man hua za zhi	100
 漫长历程	man chang li cheng	100
@@ -123272,6 +123339,7 @@ use_preset_vocabulary: false
 特立独行者	te li du xing zhe	100
 犯罪的	fan zui de	100
 状语的	zhuang yu de	100
+狂乱地	kuang luan de	100
 狂喜地	kuang xi de	100
 狂喜的	kuang xi de	100
 狂热地	kuang re de	100
@@ -123321,6 +123389,7 @@ use_preset_vocabulary: false
 生的	sheng de	100
 生锈的	sheng xiu de	100
 用力拉	yong li la	100
+用坏了的	yong huai le de	100
 用平头钉固定	yong ping tou ding gu ding	100
 用斜体排印	yong xie ti pai yin	100
 用电的	yong dian de	100
@@ -123342,6 +123411,7 @@ use_preset_vocabulary: false
 留下深刻印象	liu xia shen ke yin xiang	100
 留言板	liu yan ban	100
 畜群	chu qun	100
+略带自嘲地	lve dai zi chao de	100
 略知	lve zhi	100
 疏忽地	shu hu de	100
 疏忽的	shu hu de	100
@@ -123352,6 +123422,7 @@ use_preset_vocabulary: false
 痛苦地	tong ku de	100
 痛苦的	tong ku de	100
 登山者	deng shan zhe	100
+白色的	bai se de	100
 皮包骨的	pi bao gu de	100
 盈利能力	ying li neng li	100
 监管的	jian guan de	100
@@ -123382,6 +123453,7 @@ use_preset_vocabulary: false
 真正地	zhen zheng de	100
 真正的	zhen zheng de	100
 真诚地	zhen cheng de	100
+眨眼示意	zha yan shi yi	100
 着迷的	zhao mi de	100
 睡觉的	shui jiao de	100
 瞬间地	shun jian de	100
@@ -123411,6 +123483,8 @@ use_preset_vocabulary: false
 碎石铺就的	sui shi pu jiu de	100
 磁偏角	ci pian jiao	100
 磁带录像	ci dai lu xiang	100
+磨坏的	mo huai de	100
+磨损的	mo sun de	100
 社交的	she jiao de	100
 社交网络	she jiao wang luo	100
 社会的	she hui de	100
@@ -123450,6 +123524,7 @@ use_preset_vocabulary: false
 穿不下	chuan bu xia	100
 穿好衣服的	chuan hao yi fu de	100
 穿梭班车	chuan suo ban che	100
+穿着得体的	chuan zhuo de ti de	100
 突出物	tu chu wu	100
 突击备考	tu ji bei kao	100
 突然的	tu ran de	100
@@ -123472,6 +123547,7 @@ use_preset_vocabulary: false
 第二人称	di er ren cheng	100
 等价物	deng jia wu	100
 等同的	deng tong de	100
+筋疲力尽的	jin pi li jin de	100
 答疑时间	da yi shi jian	100
 简朴地	jian pu de	100
 简朴的	jian pu de	100
@@ -123488,7 +123564,9 @@ use_preset_vocabulary: false
 粗鲁地	cu lu de	100
 精力充沛的	jing li chong pei de	100
 精密的	jing mi de	100
+精彩的	jing cai de	100
 精心制作	jing xin zhi zuo	100
+精湛技艺	jing zhan ji yi	100
 精确地	jing que de	100
 精确的	jing que de	100
 精神特质	jing shen te zhi	100
@@ -123517,11 +123595,13 @@ use_preset_vocabulary: false
 紧绷地	jin beng de	100
 紧绷的	jin beng de	100
 紫外线的	zi wai xian de	100
+紫罗兰色的	zi luo lan se de	100
 紫色的	zi se de	100
 累人	lei ren	100
 累人的	lei ren de	100
 繁荣的	fan rong de	100
 红色的	hong se de	100
+纯洁的	chun jie de	100
 纯粹的	chun cui de	100
 纵容地	zong rong de	100
 纵容的	zong rong de	100
@@ -123572,6 +123652,7 @@ use_preset_vocabulary: false
 罐装的	guan zhuang de	100
 网瘾患者	wang yin huan zhe	100
 网络学校	wang luo xue xiao	100
+网络摄像头	wang luo she xiang tou	100
 网络犯罪	wang luo fan zui	100
 罕见的	han jian de	100
 美味的	mei wei de	100
@@ -123601,6 +123682,8 @@ use_preset_vocabulary: false
 肥皂泡沫	fei zao pao mo	100
 胆怯的	dan qie de	100
 背痛	bei tong	100
+胜利地	sheng li de	100
+胜局	sheng ju	100
 能适应的	neng shi ying de	100
 脆弱的	cui ruo de	100
 脆的	cui de	100
@@ -123623,6 +123706,7 @@ use_preset_vocabulary: false
 自发性	zi fa xing	100
 自己的	zi ji de	100
 自恋的	zi lian de	100
+自愿地	zi yuan de	100
 自我价值	zi wo jia zhi	100
 自我扩张	zi wo kuo zhang	100
 自由主义的	zi you zhu yi de	100
@@ -123660,6 +123744,7 @@ use_preset_vocabulary: false
 荒谬地	huang miu de	100
 莎士比亚风格的	sha shi bi ya feng ge de	100
 莫名其妙地	mo ming qi miao de	100
+获胜的	huo sheng de	100
 营业场所	ying ye chang suo	100
 萨尔萨舞	sa er sa wu	100
 著名的	zhu ming de	100
@@ -123667,6 +123752,7 @@ use_preset_vocabulary: false
 蓄意破坏财物者	xu yi po huai cai wu zhe	100
 蓝色的	lan se de	100
 蓬勃发展的	peng bo fa zhan de	100
+薄弱的	bo ruo de	100
 薪资谈判	xin zi tan pan	100
 虔诚的	qian cheng de	100
 虚伪地	xu wei de	100
@@ -123678,6 +123764,7 @@ use_preset_vocabulary: false
 虚构的	xu gou de	100
 蚀刻画	shi ke hua	100
 蛋筒	dan tong	100
+蜿蜒的	wan yan de	100
 螺旋形的	luo xuan xing de	100
 行政的	xing zheng de	100
 行李提取	xing li ti qu	100
@@ -123704,11 +123791,13 @@ use_preset_vocabulary: false
 西北的	xi bei de	100
 西方的	xi fang de	100
 西班牙的	xi ban ya de	100
+西装马甲	xi zhuang ma jia	100
 西部的	xi bu de	100
 要求高的	yao qiu gao de	100
 规划师	gui hua shi	100
 规范性的	gui fan xing de	100
 视觉的	shi jue de	100
+视频片段	shi pin pian duan	100
 解开的	jie kai de	100
 解释性的	jie shi xing de	100
 触觉的	chu jue de	100
@@ -123746,6 +123835,7 @@ use_preset_vocabulary: false
 说唱音乐	shuo chang yin yue	100
 课程大纲	ke cheng da gang	100
 课间休息	ke jian xiu xi	100
+谁的	shei de	100
 谚语的	yan yu de	100
 谨小慎微的	jin xiao shen wei de	100
 谨慎地	jin shen de	100
@@ -123761,6 +123851,8 @@ use_preset_vocabulary: false
 财政的	cai zheng de	100
 账户余额	zhang hu yu e	100
 货币的	huo bi de	100
+货车车厢	huo che che xiang	100
+贪吃的	tan chi de	100
 贫困的	pin kun de	100
 贬低地	bian di de	100
 贬低的	bian di de	100
@@ -123865,6 +123957,7 @@ use_preset_vocabulary: false
 迷人的	mi ren de	100
 迷路的	mi lu de	100
 退休的	tui xiu de	100
+退化的	tui hua de	100
 送冰工	song bing gong	100
 适合引用的	shi he yin yong de	100
 适应的	shi ying de	100
@@ -123882,6 +123975,7 @@ use_preset_vocabulary: false
 逐渐的	zhu jian de	100
 通勤者	tong qin zhe	100
 通用的	tong yong de	100
+逼真性	bi zhen xing	100
 逼真的	bi zhen de	100
 逾期的	yu qi de	100
 道德严苛的	dao de yan ke de	100
@@ -123920,9 +124014,11 @@ use_preset_vocabulary: false
 重新考虑	chong xin kao lv	100
 重要的是	zhong yao de shi	100
 重说	chong shuo	100
+野生的	ye sheng de	100
 量子计算	liang zi ji suan	100
 金发女郎	jin fa nv lang	100
 金发的	jin fa de	100
+金属丝	jin shu si	100
 金属的	jin shu de	100
 金属罐	jin shu guan	100
 金色的	jin se de	100
@@ -123931,6 +124027,8 @@ use_preset_vocabulary: false
 银行业务	yin hang ye wu	100
 银行账户	yin hang zhang hu	100
 锋利的	feng li de	100
+错误地	cuo wu de	100
+错误的	cuo wu de	100
 错误观念	cuo wu guan nian	100
 锚地	mao di	100
 锤击	chui ji	100
@@ -124065,6 +124163,7 @@ use_preset_vocabulary: false
 高的	gao de	100
 高科技的	gao ke ji de	100
 高耸的	gao song de	100
+高薪的	gao xin de	100
 高高地	gao gao de	100
 鲸脂	jing zhi	100
 鵟	kuang	100

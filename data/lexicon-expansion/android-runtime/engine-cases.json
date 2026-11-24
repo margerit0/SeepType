@@ -50,10 +50,10 @@
   },
   {
     "schema": "study",
-    "input": "buqieshiji",
-    "chinese": "不切实际",
-    "english": "impractical",
-    "coverage": "expansion"
+    "input": "buhequnde",
+    "chinese": "不合群的",
+    "english": "withdrawn",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -64,27 +64,6 @@
   },
   {
     "schema": "study",
-    "input": "buyinrenzhumude",
-    "chinese": "不引人注目地",
-    "english": "unobtrusively",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "buyueer",
-    "chinese": "不悦耳",
-    "english": "unmusical",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "yanlide",
-    "chinese": "严厉的",
-    "english": "strict",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "zhongwu",
     "chinese": "中午",
     "english": "noon",
@@ -92,9 +71,9 @@
   },
   {
     "schema": "study",
-    "input": "jinhou",
-    "chinese": "今后",
-    "english": "henceforth",
+    "input": "weishenme",
+    "chinese": "为什么",
+    "english": "why",
     "coverage": "expansion"
   },
   {
@@ -127,9 +106,9 @@
   },
   {
     "schema": "study",
-    "input": "lingrenmaogusongrande",
-    "chinese": "令人毛骨悚然地",
-    "english": "gruesomely",
+    "input": "lingrendanyoude",
+    "chinese": "令人担忧的",
+    "english": "worrying",
     "coverage": "supplemental"
   },
   {
@@ -148,16 +127,23 @@
   },
   {
     "schema": "study",
-    "input": "shangwangrenyuan",
-    "chinese": "伤亡人员",
-    "english": "casualty",
+    "input": "hui",
+    "chinese": "会",
+    "english": "would",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "tigejianzhuangde",
+    "chinese": "体格健壮的",
+    "english": "well-built",
     "coverage": "supplemental"
   },
   {
     "schema": "study",
-    "input": "disheng",
-    "chinese": "低声",
-    "english": "softly",
+    "input": "heshi",
+    "chinese": "何时",
+    "english": "when",
     "coverage": "expansion"
   },
   {
@@ -169,24 +155,17 @@
   },
   {
     "schema": "study",
+    "input": "nimen",
+    "chinese": "你们",
+    "english": "you",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "nihao",
     "chinese": "你好",
     "english": "hello",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "shifuzahua",
-    "chinese": "使复杂化",
-    "english": "complicate",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "cuxiao",
-    "chinese": "促销",
-    "english": "promotion",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -197,9 +176,23 @@
   },
   {
     "schema": "study",
-    "input": "qingpende",
-    "chinese": "倾盆的",
-    "english": "torrential",
+    "input": "zhide",
+    "chinese": "值得",
+    "english": "worth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "zhidezunjingde",
+    "chinese": "值得尊敬的",
+    "english": "worthy",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "zuodehao",
+    "chinese": "做得好",
+    "english": "well",
     "coverage": "supplemental"
   },
   {
@@ -218,13 +211,6 @@
   },
   {
     "schema": "study",
-    "input": "aoman",
-    "chinese": "傲慢",
-    "english": "arrogant",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "erzi",
     "chinese": "儿子",
     "english": "son",
@@ -232,9 +218,9 @@
   },
   {
     "schema": "study",
-    "input": "quanshifanweide",
-    "chinese": "全市范围的",
-    "english": "citywide",
+    "input": "quanqiuxingde",
+    "chinese": "全球性的",
+    "english": "worldwide",
     "coverage": "supplemental"
   },
   {
@@ -243,13 +229,6 @@
     "chinese": "公园",
     "english": "park",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "neicun",
-    "chinese": "内存",
-    "english": "memory",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -281,13 +260,6 @@
   },
   {
     "schema": "study",
-    "input": "qiliangde",
-    "chinese": "凄凉地",
-    "english": "forlornly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "chuzuche",
     "chinese": "出租车",
     "english": "taxi",
@@ -309,10 +281,24 @@
   },
   {
     "schema": "study",
+    "input": "fuzongcai",
+    "chinese": "副总裁",
+    "english": "vice president",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "bangongshi",
     "chinese": "办公室",
     "english": "office",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zhuxingqi",
+    "chinese": "助行器",
+    "english": "walker",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -327,13 +313,6 @@
     "chinese": "医院",
     "english": "hospital",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "shiqi",
-    "chinese": "十七",
-    "english": "seventeen",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -393,20 +372,6 @@
   },
   {
     "schema": "study",
-    "input": "houwei",
-    "chinese": "后卫",
-    "english": "defender",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
-    "input": "houjianzhiming",
-    "chinese": "后见之明",
-    "english": "hindsight",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "yuangong",
     "chinese": "员工",
     "english": "employee",
@@ -449,9 +414,9 @@
   },
   {
     "schema": "study",
-    "input": "hezuide",
-    "chinese": "喝醉的",
-    "english": "drunk",
+    "input": "silunhuoche",
+    "chinese": "四轮货车",
+    "english": "wagon",
     "coverage": "supplemental"
   },
   {
@@ -467,6 +432,13 @@
     "chinese": "图书馆",
     "english": "library",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "zaiquanqiu",
+    "chinese": "在全球",
+    "english": "worldwide",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -498,13 +470,6 @@
   },
   {
     "schema": "study",
-    "input": "jidi",
-    "chinese": "基地",
-    "english": "base",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "xiatian",
     "chinese": "夏天",
     "english": "summer",
@@ -516,13 +481,6 @@
     "chinese": "天气",
     "english": "weather",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "taikongcang",
-    "chinese": "太空舱",
-    "english": "capsule",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -544,6 +502,13 @@
     "chinese": "女儿",
     "english": "daughter",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "haochide",
+    "chinese": "好吃的",
+    "english": "yummy",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -610,6 +575,13 @@
   },
   {
     "schema": "study",
+    "input": "haishou",
+    "chinese": "害兽",
+    "english": "vermin",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "haipa",
     "chinese": "害怕",
     "english": "be afraid",
@@ -638,6 +610,13 @@
   },
   {
     "schema": "study",
+    "input": "guafu",
+    "chinese": "寡妇",
+    "english": "widow",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "duibuqi",
     "chinese": "对不起",
     "english": "sorry",
@@ -652,16 +631,9 @@
   },
   {
     "schema": "study",
-    "input": "xiaomuniu",
-    "chinese": "小母牛",
-    "english": "heifer",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "weiba",
-    "chinese": "尾巴",
-    "english": "tail",
+    "input": "weiliu",
+    "chinese": "尾流",
+    "english": "wake",
     "coverage": "expansion"
   },
   {
@@ -670,6 +642,20 @@
     "chinese": "屏幕",
     "english": "screen",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xunfang",
+    "chinese": "巡访",
+    "english": "walkabout",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "fanbanyundong",
+    "chinese": "帆板运动",
+    "english": "windsurfing",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -687,6 +673,13 @@
   },
   {
     "schema": "study",
+    "input": "ganbiede",
+    "chinese": "干瘪的",
+    "english": "wizened",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
     "input": "jianyi",
     "chinese": "建议",
     "english": "suggestion",
@@ -701,24 +694,10 @@
   },
   {
     "schema": "study",
-    "input": "kaimu",
-    "chinese": "开幕",
-    "english": "inaugurate",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "didi",
     "chinese": "弟弟",
     "english": "younger brother",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "chedi",
-    "chinese": "彻底",
-    "english": "utterly",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -729,24 +708,17 @@
   },
   {
     "schema": "study",
-    "input": "zongjie",
-    "chinese": "总结",
-    "english": "summarise",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
-    "input": "konghuangde",
-    "chinese": "恐慌的",
-    "english": "terrified",
+    "input": "changrande",
+    "chinese": "怅然的",
+    "english": "wistful",
     "coverage": "supplemental"
   },
   {
     "schema": "study",
-    "input": "jingxia",
-    "chinese": "惊吓",
-    "english": "terrify",
-    "coverage": "expansion"
+    "input": "ehenhende",
+    "chinese": "恶狠狠地",
+    "english": "viciously",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -754,13 +726,6 @@
     "chinese": "感冒",
     "english": "common cold",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "nuofu",
-    "chinese": "懦夫",
-    "english": "coward",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -799,10 +764,10 @@
   },
   {
     "schema": "study",
-    "input": "chijiude",
-    "chinese": "持久地",
-    "english": "enduringly",
-    "coverage": "supplemental"
+    "input": "caozuotai",
+    "chinese": "操作台",
+    "english": "worktable",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -890,6 +855,13 @@
   },
   {
     "schema": "study",
+    "input": "shide",
+    "chinese": "是的",
+    "english": "yes",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "wanan",
     "chinese": "晚安",
     "english": "good night",
@@ -904,9 +876,9 @@
   },
   {
     "schema": "study",
-    "input": "gengduode",
-    "chinese": "更多的",
-    "english": "more",
+    "input": "zuihuaideqingkuang",
+    "chinese": "最坏的情况",
+    "english": "worst",
     "coverage": "supplemental"
   },
   {
@@ -925,13 +897,6 @@
   },
   {
     "schema": "study",
-    "input": "youyingyangde",
-    "chinese": "有营养的",
-    "english": "nutritious",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "pengyou",
     "chinese": "朋友",
     "english": "friend",
@@ -946,9 +911,9 @@
   },
   {
     "schema": "study",
-    "input": "gelv",
-    "chinese": "格律",
-    "english": "metre",
+    "input": "laifang",
+    "chinese": "来访",
+    "english": "visit",
     "coverage": "expansion"
   },
   {
@@ -981,13 +946,6 @@
   },
   {
     "schema": "study",
-    "input": "wuzhuangde",
-    "chinese": "武装的",
-    "english": "armed",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "muqin",
     "chinese": "母亲",
     "english": "mother",
@@ -1009,17 +967,17 @@
   },
   {
     "schema": "study",
-    "input": "zhanzhanzixide",
-    "chinese": "沾沾自喜的",
-    "english": "smug",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "xizao",
     "chinese": "洗澡",
     "english": "bathe",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "xilianpen",
+    "chinese": "洗脸盆",
+    "english": "washbowl",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1034,6 +992,27 @@
     "chinese": "游泳",
     "english": "swim",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "youting",
+    "chinese": "游艇",
+    "english": "yacht",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
+    "input": "binshuiqu",
+    "chinese": "滨水区",
+    "english": "waterfront",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "yanzoudashi",
+    "chinese": "演奏大师",
+    "english": "virtuoso",
+    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -1079,6 +1058,13 @@
   },
   {
     "schema": "study",
+    "input": "lang",
+    "chinese": "狼",
+    "english": "wolf",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "xianzai",
     "chinese": "现在",
     "english": "now",
@@ -1097,13 +1083,6 @@
     "chinese": "电脑",
     "english": "computer",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "shuhude",
-    "chinese": "疏忽的",
-    "english": "neglectful",
-    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -1128,9 +1107,16 @@
   },
   {
     "schema": "study",
-    "input": "pochan",
-    "chinese": "破产",
-    "english": "bankruptcy",
+    "input": "mohuaide",
+    "chinese": "磨坏的",
+    "english": "worn-out",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
+    "input": "zhuyuan",
+    "chinese": "祝愿",
+    "english": "wish",
     "coverage": "expansion"
   },
   {
@@ -1149,13 +1135,6 @@
   },
   {
     "schema": "study",
-    "input": "shui",
-    "chinese": "税",
-    "english": "duties",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "kongtiao",
     "chinese": "空调",
     "english": "air conditioner",
@@ -1163,10 +1142,24 @@
   },
   {
     "schema": "study",
+    "input": "chuanzhuodetide",
+    "chinese": "穿着得体的",
+    "english": "well-dressed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
     "input": "chuanghu",
     "chinese": "窗户",
     "english": "window",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "dengdaishijian",
+    "chinese": "等待时间",
+    "english": "wait",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1191,24 +1184,10 @@
   },
   {
     "schema": "study",
-    "input": "jinzhua",
-    "chinese": "紧抓",
-    "english": "clutch",
+    "input": "chunjiede",
+    "chinese": "纯洁的",
+    "english": "virginal",
     "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "jinbengde",
-    "chinese": "紧绷的",
-    "english": "taut",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "fanyan",
-    "chinese": "繁衍",
-    "english": "multiply",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1233,17 +1212,17 @@
   },
   {
     "schema": "study",
-    "input": "jifu",
-    "chinese": "继父",
-    "english": "stepfather",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study",
     "input": "wangluo",
     "chinese": "网络",
     "english": "network",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "meide",
+    "chinese": "美德",
+    "english": "virtue",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1268,17 +1247,10 @@
   },
   {
     "schema": "study",
-    "input": "cuide",
-    "chinese": "脆的",
-    "english": "crisp",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
-    "input": "fubaide",
-    "chinese": "腐败的",
-    "english": "corrupt",
-    "coverage": "supplemental"
+    "input": "shengli",
+    "chinese": "胜利",
+    "english": "victory",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1324,6 +1296,13 @@
   },
   {
     "schema": "study",
+    "input": "wanyande",
+    "chinese": "蜿蜒的",
+    "english": "winding",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
     "input": "jiedao",
     "chinese": "街道",
     "english": "street",
@@ -1335,13 +1314,6 @@
     "chinese": "衣服",
     "english": "clothes",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "buzhujin",
-    "chinese": "补助金",
-    "english": "grants",
-    "coverage": "supplemental"
   },
   {
     "schema": "study",
@@ -1373,17 +1345,17 @@
   },
   {
     "schema": "study",
+    "input": "jinggao",
+    "chinese": "警告",
+    "english": "warn",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "dingdan",
     "chinese": "订单",
     "english": "order",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "xuduo",
-    "chinese": "许多",
-    "english": "many",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1394,10 +1366,24 @@
   },
   {
     "schema": "study",
+    "input": "shei",
+    "chinese": "谁",
+    "english": "who",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "xiexie",
     "chinese": "谢谢",
     "english": "thank you",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study",
+    "input": "huopin",
+    "chinese": "货品",
+    "english": "wares",
+    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1450,6 +1436,13 @@
   },
   {
     "schema": "study",
+    "input": "lunyi",
+    "chinese": "轮椅",
+    "english": "wheelchair",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "ruanjian",
     "chinese": "软件",
     "english": "software",
@@ -1492,6 +1485,13 @@
   },
   {
     "schema": "study",
+    "input": "jinshusi",
+    "chinese": "金属丝",
+    "english": "wire",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
     "input": "yaoshi",
     "chinese": "钥匙",
     "english": "key",
@@ -1513,6 +1513,13 @@
   },
   {
     "schema": "study",
+    "input": "cuowude",
+    "chinese": "错误地",
+    "english": "wrongly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study",
     "input": "jianpan",
     "chinese": "键盘",
     "english": "keyboard",
@@ -1520,24 +1527,10 @@
   },
   {
     "schema": "study",
-    "input": "jianjiede",
-    "chinese": "间接地",
-    "english": "indirectly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study",
     "input": "yuedu",
     "chinese": "阅读",
     "english": "read",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study",
-    "input": "xiandu",
-    "chinese": "限度",
-    "english": "limit",
-    "coverage": "expansion"
   },
   {
     "schema": "study",
@@ -1625,6 +1618,13 @@
   },
   {
     "schema": "study",
+    "input": "huangfeng",
+    "chinese": "黄蜂",
+    "english": "wasp",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study",
     "input": "shubiao",
     "chinese": "鼠标",
     "english": "computer mouse",
@@ -1688,10 +1688,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "buqxuiji",
-    "chinese": "不切实际",
-    "english": "impractical",
-    "coverage": "expansion"
+    "input": "buheqpde",
+    "chinese": "不合群的",
+    "english": "withdrawn",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -1702,27 +1702,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "buynrfvumude",
-    "chinese": "不引人注目地",
-    "english": "unobtrusively",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "buyter",
-    "chinese": "不悦耳",
-    "english": "unmusical",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "yjlide",
-    "chinese": "严厉的",
-    "english": "strict",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "vswu",
     "chinese": "中午",
     "english": "noon",
@@ -1730,9 +1709,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jnhb",
-    "chinese": "今后",
-    "english": "henceforth",
+    "input": "wzufme",
+    "chinese": "为什么",
+    "english": "why",
     "coverage": "expansion"
   },
   {
@@ -1765,9 +1744,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "lyrfmkgussrjde",
-    "chinese": "令人毛骨悚然地",
-    "english": "gruesomely",
+    "input": "lyrfdjybde",
+    "chinese": "令人担忧的",
+    "english": "worrying",
     "coverage": "supplemental"
   },
   {
@@ -1786,16 +1765,23 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "uhwhrfyr",
-    "chinese": "伤亡人员",
-    "english": "casualty",
+    "input": "hv",
+    "chinese": "会",
+    "english": "would",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "tigejmvdde",
+    "chinese": "体格健壮的",
+    "english": "well-built",
     "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
-    "input": "diug",
-    "chinese": "低声",
-    "english": "softly",
+    "input": "heui",
+    "chinese": "何时",
+    "english": "when",
     "coverage": "expansion"
   },
   {
@@ -1807,24 +1793,17 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "nimf",
+    "chinese": "你们",
+    "english": "you",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "nihk",
     "chinese": "你好",
     "english": "hello",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "uifuzahw",
-    "chinese": "使复杂化",
-    "english": "complicate",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "cuxc",
-    "chinese": "促销",
-    "english": "promotion",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -1835,9 +1814,23 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "qypfde",
-    "chinese": "倾盆的",
-    "english": "torrential",
+    "input": "vide",
+    "chinese": "值得",
+    "english": "worth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "videzpjyde",
+    "chinese": "值得尊敬的",
+    "english": "worthy",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zodehk",
+    "chinese": "做得好",
+    "english": "well",
     "coverage": "supplemental"
   },
   {
@@ -1856,13 +1849,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "aomj",
-    "chinese": "傲慢",
-    "english": "arrogant",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "erzi",
     "chinese": "儿子",
     "english": "son",
@@ -1870,9 +1856,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "qruifjwzde",
-    "chinese": "全市范围的",
-    "english": "citywide",
+    "input": "qrqqxyde",
+    "chinese": "全球性的",
+    "english": "worldwide",
     "coverage": "supplemental"
   },
   {
@@ -1881,13 +1867,6 @@
     "chinese": "公园",
     "english": "park",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "nzcp",
-    "chinese": "内存",
-    "english": "memory",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -1919,13 +1898,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "qildde",
-    "chinese": "凄凉地",
-    "english": "forlornly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "iuzuie",
     "chinese": "出租车",
     "english": "taxi",
@@ -1947,10 +1919,24 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "fuzscl",
+    "chinese": "副总裁",
+    "english": "vice president",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "bjgsui",
     "chinese": "办公室",
     "english": "office",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vuxyqi",
+    "chinese": "助行器",
+    "english": "walker",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -1965,13 +1951,6 @@
     "chinese": "医院",
     "english": "hospital",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "uiqi",
-    "chinese": "十七",
-    "english": "seventeen",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2031,20 +2010,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "hbwz",
-    "chinese": "后卫",
-    "english": "defender",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "hbjmvimy",
-    "chinese": "后见之明",
-    "english": "hindsight",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "yrgs",
     "chinese": "员工",
     "english": "employee",
@@ -2087,9 +2052,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "hezvde",
-    "chinese": "喝醉的",
-    "english": "drunk",
+    "input": "silphoie",
+    "chinese": "四轮货车",
+    "english": "wagon",
     "coverage": "supplemental"
   },
   {
@@ -2105,6 +2070,13 @@
     "chinese": "图书馆",
     "english": "library",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "zlqrqq",
+    "chinese": "在全球",
+    "english": "worldwide",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2136,13 +2108,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jidi",
-    "chinese": "基地",
-    "english": "base",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "xwtm",
     "chinese": "夏天",
     "english": "summer",
@@ -2154,13 +2119,6 @@
     "chinese": "天气",
     "english": "weather",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "tlksch",
-    "chinese": "太空舱",
-    "english": "capsule",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2182,6 +2140,13 @@
     "chinese": "女儿",
     "english": "daughter",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hkiide",
+    "chinese": "好吃的",
+    "english": "yummy",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2248,6 +2213,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "hlub",
+    "chinese": "害兽",
+    "english": "vermin",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "hlpa",
     "chinese": "害怕",
     "english": "be afraid",
@@ -2276,6 +2248,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "gwfu",
+    "chinese": "寡妇",
+    "english": "widow",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "dvbuqi",
     "chinese": "对不起",
     "english": "sorry",
@@ -2290,16 +2269,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "xcmunq",
-    "chinese": "小母牛",
-    "english": "heifer",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "wzba",
-    "chinese": "尾巴",
-    "english": "tail",
+    "input": "wzlq",
+    "chinese": "尾流",
+    "english": "wake",
     "coverage": "expansion"
   },
   {
@@ -2308,6 +2280,20 @@
     "chinese": "屏幕",
     "english": "screen",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xpfh",
+    "chinese": "巡访",
+    "english": "walkabout",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "fjbjypds",
+    "chinese": "帆板运动",
+    "english": "windsurfing",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2325,6 +2311,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "gjbxde",
+    "chinese": "干瘪的",
+    "english": "wizened",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "jmyi",
     "chinese": "建议",
     "english": "suggestion",
@@ -2339,24 +2332,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "klmu",
-    "chinese": "开幕",
-    "english": "inaugurate",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "didi",
     "chinese": "弟弟",
     "english": "younger brother",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "iedi",
-    "chinese": "彻底",
-    "english": "utterly",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2367,24 +2346,17 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "zsjx",
-    "chinese": "总结",
-    "english": "summarise",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "kshdde",
-    "chinese": "恐慌的",
-    "english": "terrified",
+    "input": "ihrjde",
+    "chinese": "怅然的",
+    "english": "wistful",
     "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jyxw",
-    "chinese": "惊吓",
-    "english": "terrify",
-    "coverage": "expansion"
+    "input": "eehfhfde",
+    "chinese": "恶狠狠地",
+    "english": "viciously",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2392,13 +2364,6 @@
     "chinese": "感冒",
     "english": "common cold",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "nofu",
-    "chinese": "懦夫",
-    "english": "coward",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2437,10 +2402,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "iijqde",
-    "chinese": "持久地",
-    "english": "enduringly",
-    "coverage": "supplemental"
+    "input": "ckzotl",
+    "chinese": "操作台",
+    "english": "worktable",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2528,6 +2493,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "uide",
+    "chinese": "是的",
+    "english": "yes",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "wjan",
     "chinese": "晚安",
     "english": "good night",
@@ -2542,9 +2514,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "ggdode",
-    "chinese": "更多的",
-    "english": "more",
+    "input": "zvhydeqykd",
+    "chinese": "最坏的情况",
+    "english": "worst",
     "coverage": "supplemental"
   },
   {
@@ -2563,13 +2535,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "ybyyyhde",
-    "chinese": "有营养的",
-    "english": "nutritious",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "pgyb",
     "chinese": "朋友",
     "english": "friend",
@@ -2584,9 +2549,9 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "gelv",
-    "chinese": "格律",
-    "english": "metre",
+    "input": "llfh",
+    "chinese": "来访",
+    "english": "visit",
     "coverage": "expansion"
   },
   {
@@ -2619,13 +2584,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "wuvdde",
-    "chinese": "武装的",
-    "english": "armed",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "muqn",
     "chinese": "母亲",
     "english": "mother",
@@ -2647,17 +2605,17 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "vjvjzixide",
-    "chinese": "沾沾自喜的",
-    "english": "smug",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "xizk",
     "chinese": "洗澡",
     "english": "bathe",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "xilmpf",
+    "chinese": "洗脸盆",
+    "english": "washbowl",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2672,6 +2630,27 @@
     "chinese": "游泳",
     "english": "swim",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "ybty",
+    "chinese": "游艇",
+    "english": "yacht",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "bnuvqu",
+    "chinese": "滨水区",
+    "english": "waterfront",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "yjzbdaui",
+    "chinese": "演奏大师",
+    "english": "virtuoso",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2717,6 +2696,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "lh",
+    "chinese": "狼",
+    "english": "wolf",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "xmzl",
     "chinese": "现在",
     "english": "now",
@@ -2735,13 +2721,6 @@
     "chinese": "电脑",
     "english": "computer",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "uuhude",
-    "chinese": "疏忽的",
-    "english": "neglectful",
-    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -2766,9 +2745,16 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "poij",
-    "chinese": "破产",
-    "english": "bankruptcy",
+    "input": "mohyde",
+    "chinese": "磨坏的",
+    "english": "worn-out",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "vuyr",
+    "chinese": "祝愿",
+    "english": "wish",
     "coverage": "expansion"
   },
   {
@@ -2787,13 +2773,6 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "uv",
-    "chinese": "税",
-    "english": "duties",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "kstc",
     "chinese": "空调",
     "english": "air conditioner",
@@ -2801,10 +2780,24 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "irvodetide",
+    "chinese": "穿着得体的",
+    "english": "well-dressed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "idhu",
     "chinese": "窗户",
     "english": "window",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "dgdluijm",
+    "chinese": "等待时间",
+    "english": "wait",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2829,24 +2822,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jnvw",
-    "chinese": "紧抓",
-    "english": "clutch",
+    "input": "ipjxde",
+    "chinese": "纯洁的",
+    "english": "virginal",
     "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "jnbgde",
-    "chinese": "紧绷的",
-    "english": "taut",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "fjyj",
-    "chinese": "繁衍",
-    "english": "multiply",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2871,17 +2850,17 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jifu",
-    "chinese": "继父",
-    "english": "stepfather",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "whlo",
     "chinese": "网络",
     "english": "network",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "mzde",
+    "chinese": "美德",
+    "english": "virtue",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2906,17 +2885,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "cvde",
-    "chinese": "脆的",
-    "english": "crisp",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "fublde",
-    "chinese": "腐败的",
-    "english": "corrupt",
-    "coverage": "supplemental"
+    "input": "ugli",
+    "chinese": "胜利",
+    "english": "victory",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -2962,6 +2934,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "wjyjde",
+    "chinese": "蜿蜒的",
+    "english": "winding",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "jxdk",
     "chinese": "街道",
     "english": "street",
@@ -2973,13 +2952,6 @@
     "chinese": "衣服",
     "english": "clothes",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "buvujn",
-    "chinese": "补助金",
-    "english": "grants",
-    "coverage": "supplemental"
   },
   {
     "schema": "study_double_pinyin",
@@ -3011,17 +2983,17 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "jygk",
+    "chinese": "警告",
+    "english": "warn",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "dydj",
     "chinese": "订单",
     "english": "order",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "xudo",
-    "chinese": "许多",
-    "english": "many",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -3032,10 +3004,24 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "uz",
+    "chinese": "谁",
+    "english": "who",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "xxxx",
     "chinese": "谢谢",
     "english": "thank you",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_double_pinyin",
+    "input": "hopn",
+    "chinese": "货品",
+    "english": "wares",
+    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -3088,6 +3074,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "lpyi",
+    "chinese": "轮椅",
+    "english": "wheelchair",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "rrjm",
     "chinese": "软件",
     "english": "software",
@@ -3130,6 +3123,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "jnuusi",
+    "chinese": "金属丝",
+    "english": "wire",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "ykui",
     "chinese": "钥匙",
     "english": "key",
@@ -3151,6 +3151,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "cowude",
+    "chinese": "错误地",
+    "english": "wrongly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "jmpj",
     "chinese": "键盘",
     "english": "keyboard",
@@ -3158,24 +3165,10 @@
   },
   {
     "schema": "study_double_pinyin",
-    "input": "jmjxde",
-    "chinese": "间接地",
-    "english": "indirectly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_double_pinyin",
     "input": "ytdu",
     "chinese": "阅读",
     "english": "read",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_double_pinyin",
-    "input": "xmdu",
-    "chinese": "限度",
-    "english": "limit",
-    "coverage": "expansion"
   },
   {
     "schema": "study_double_pinyin",
@@ -3263,6 +3256,13 @@
   },
   {
     "schema": "study_double_pinyin",
+    "input": "hdfg",
+    "chinese": "黄蜂",
+    "english": "wasp",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_double_pinyin",
     "input": "uubc",
     "chinese": "鼠标",
     "english": "computer mouse",
@@ -3326,10 +3326,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "buqpuiji",
-    "chinese": "不切实际",
-    "english": "impractical",
-    "coverage": "expansion"
+    "input": "buheqyde",
+    "chinese": "不合群的",
+    "english": "withdrawn",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -3340,27 +3340,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "buybrfvumude",
-    "chinese": "不引人注目地",
-    "english": "unobtrusively",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "buyter",
-    "chinese": "不悦耳",
-    "english": "unmusical",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "yjlide",
-    "chinese": "严厉的",
-    "english": "strict",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "vswu",
     "chinese": "中午",
     "english": "noon",
@@ -3368,9 +3347,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "jbhz",
-    "chinese": "今后",
-    "english": "henceforth",
+    "input": "wwufme",
+    "chinese": "为什么",
+    "english": "why",
     "coverage": "expansion"
   },
   {
@@ -3403,9 +3382,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "lkrfmcgussrjde",
-    "chinese": "令人毛骨悚然地",
-    "english": "gruesomely",
+    "input": "lkrfdjyzde",
+    "chinese": "令人担忧的",
+    "english": "worrying",
     "coverage": "supplemental"
   },
   {
@@ -3424,16 +3403,23 @@
   },
   {
     "schema": "study_flypy",
-    "input": "uhwhrfyr",
-    "chinese": "伤亡人员",
-    "english": "casualty",
+    "input": "hv",
+    "chinese": "会",
+    "english": "would",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "tigejmvlde",
+    "chinese": "体格健壮的",
+    "english": "well-built",
     "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
-    "input": "diug",
-    "chinese": "低声",
-    "english": "softly",
+    "input": "heui",
+    "chinese": "何时",
+    "english": "when",
     "coverage": "expansion"
   },
   {
@@ -3445,24 +3431,17 @@
   },
   {
     "schema": "study_flypy",
+    "input": "nimf",
+    "chinese": "你们",
+    "english": "you",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "nihc",
     "chinese": "你好",
     "english": "hello",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "uifuzahx",
-    "chinese": "使复杂化",
-    "english": "complicate",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "cuxn",
-    "chinese": "促销",
-    "english": "promotion",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -3473,9 +3452,23 @@
   },
   {
     "schema": "study_flypy",
-    "input": "qkpfde",
-    "chinese": "倾盆的",
-    "english": "torrential",
+    "input": "vide",
+    "chinese": "值得",
+    "english": "worth",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "videzyjkde",
+    "chinese": "值得尊敬的",
+    "english": "worthy",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zodehc",
+    "chinese": "做得好",
+    "english": "well",
     "coverage": "supplemental"
   },
   {
@@ -3494,13 +3487,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "aomj",
-    "chinese": "傲慢",
-    "english": "arrogant",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "erzi",
     "chinese": "儿子",
     "english": "son",
@@ -3508,9 +3494,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "qruifjwwde",
-    "chinese": "全市范围的",
-    "english": "citywide",
+    "input": "qrqqxkde",
+    "chinese": "全球性的",
+    "english": "worldwide",
     "coverage": "supplemental"
   },
   {
@@ -3519,13 +3505,6 @@
     "chinese": "公园",
     "english": "park",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "nwcy",
-    "chinese": "内存",
-    "english": "memory",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -3557,13 +3536,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "qillde",
-    "chinese": "凄凉地",
-    "english": "forlornly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "iuzuie",
     "chinese": "出租车",
     "english": "taxi",
@@ -3585,10 +3557,24 @@
   },
   {
     "schema": "study_flypy",
+    "input": "fuzscd",
+    "chinese": "副总裁",
+    "english": "vice president",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "bjgsui",
     "chinese": "办公室",
     "english": "office",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vuxkqi",
+    "chinese": "助行器",
+    "english": "walker",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -3603,13 +3589,6 @@
     "chinese": "医院",
     "english": "hospital",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "uiqi",
-    "chinese": "十七",
-    "english": "seventeen",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -3669,20 +3648,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "hzww",
-    "chinese": "后卫",
-    "english": "defender",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "hzjmvimk",
-    "chinese": "后见之明",
-    "english": "hindsight",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "yrgs",
     "chinese": "员工",
     "english": "employee",
@@ -3725,9 +3690,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "hezvde",
-    "chinese": "喝醉的",
-    "english": "drunk",
+    "input": "silyhoie",
+    "chinese": "四轮货车",
+    "english": "wagon",
     "coverage": "supplemental"
   },
   {
@@ -3743,6 +3708,13 @@
     "chinese": "图书馆",
     "english": "library",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "zdqrqq",
+    "chinese": "在全球",
+    "english": "worldwide",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -3774,13 +3746,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "jidi",
-    "chinese": "基地",
-    "english": "base",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "xxtm",
     "chinese": "夏天",
     "english": "summer",
@@ -3792,13 +3757,6 @@
     "chinese": "天气",
     "english": "weather",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "tdksch",
-    "chinese": "太空舱",
-    "english": "capsule",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -3820,6 +3778,13 @@
     "chinese": "女儿",
     "english": "daughter",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hciide",
+    "chinese": "好吃的",
+    "english": "yummy",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -3886,6 +3851,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "hduz",
+    "chinese": "害兽",
+    "english": "vermin",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "hdpa",
     "chinese": "害怕",
     "english": "be afraid",
@@ -3914,6 +3886,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "gxfu",
+    "chinese": "寡妇",
+    "english": "widow",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "dvbuqi",
     "chinese": "对不起",
     "english": "sorry",
@@ -3928,16 +3907,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "xnmunq",
-    "chinese": "小母牛",
-    "english": "heifer",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "wwba",
-    "chinese": "尾巴",
-    "english": "tail",
+    "input": "wwlq",
+    "chinese": "尾流",
+    "english": "wake",
     "coverage": "expansion"
   },
   {
@@ -3946,6 +3918,20 @@
     "chinese": "屏幕",
     "english": "screen",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xyfh",
+    "chinese": "巡访",
+    "english": "walkabout",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "fjbjyyds",
+    "chinese": "帆板运动",
+    "english": "windsurfing",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -3963,6 +3949,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "gjbpde",
+    "chinese": "干瘪的",
+    "english": "wizened",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
     "input": "jmyi",
     "chinese": "建议",
     "english": "suggestion",
@@ -3977,24 +3970,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "kdmu",
-    "chinese": "开幕",
-    "english": "inaugurate",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "didi",
     "chinese": "弟弟",
     "english": "younger brother",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "iedi",
-    "chinese": "彻底",
-    "english": "utterly",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4005,24 +3984,17 @@
   },
   {
     "schema": "study_flypy",
-    "input": "zsjp",
-    "chinese": "总结",
-    "english": "summarise",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "kshlde",
-    "chinese": "恐慌的",
-    "english": "terrified",
+    "input": "ihrjde",
+    "chinese": "怅然的",
+    "english": "wistful",
     "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
-    "input": "jkxx",
-    "chinese": "惊吓",
-    "english": "terrify",
-    "coverage": "expansion"
+    "input": "eehfhfde",
+    "chinese": "恶狠狠地",
+    "english": "viciously",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -4030,13 +4002,6 @@
     "chinese": "感冒",
     "english": "common cold",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "nofu",
-    "chinese": "懦夫",
-    "english": "coward",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4075,10 +4040,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "iijqde",
-    "chinese": "持久地",
-    "english": "enduringly",
-    "coverage": "supplemental"
+    "input": "cczotd",
+    "chinese": "操作台",
+    "english": "worktable",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4166,6 +4131,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "uide",
+    "chinese": "是的",
+    "english": "yes",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "wjan",
     "chinese": "晚安",
     "english": "good night",
@@ -4180,9 +4152,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "ggdode",
-    "chinese": "更多的",
-    "english": "more",
+    "input": "zvhkdeqkkl",
+    "chinese": "最坏的情况",
+    "english": "worst",
     "coverage": "supplemental"
   },
   {
@@ -4201,13 +4173,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "yzykyhde",
-    "chinese": "有营养的",
-    "english": "nutritious",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "pgyz",
     "chinese": "朋友",
     "english": "friend",
@@ -4222,9 +4187,9 @@
   },
   {
     "schema": "study_flypy",
-    "input": "gelv",
-    "chinese": "格律",
-    "english": "metre",
+    "input": "ldfh",
+    "chinese": "来访",
+    "english": "visit",
     "coverage": "expansion"
   },
   {
@@ -4257,13 +4222,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "wuvlde",
-    "chinese": "武装的",
-    "english": "armed",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "muqb",
     "chinese": "母亲",
     "english": "mother",
@@ -4285,17 +4243,17 @@
   },
   {
     "schema": "study_flypy",
-    "input": "vjvjzixide",
-    "chinese": "沾沾自喜的",
-    "english": "smug",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "xizc",
     "chinese": "洗澡",
     "english": "bathe",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "xilmpf",
+    "chinese": "洗脸盆",
+    "english": "washbowl",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4310,6 +4268,27 @@
     "chinese": "游泳",
     "english": "swim",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yztk",
+    "chinese": "游艇",
+    "english": "yacht",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "bbuvqu",
+    "chinese": "滨水区",
+    "english": "waterfront",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "yjzzdaui",
+    "chinese": "演奏大师",
+    "english": "virtuoso",
+    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -4355,6 +4334,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "lh",
+    "chinese": "狼",
+    "english": "wolf",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "xmzd",
     "chinese": "现在",
     "english": "now",
@@ -4373,13 +4359,6 @@
     "chinese": "电脑",
     "english": "computer",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "uuhude",
-    "chinese": "疏忽的",
-    "english": "neglectful",
-    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -4404,9 +4383,16 @@
   },
   {
     "schema": "study_flypy",
-    "input": "poij",
-    "chinese": "破产",
-    "english": "bankruptcy",
+    "input": "mohkde",
+    "chinese": "磨坏的",
+    "english": "worn-out",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "vuyr",
+    "chinese": "祝愿",
+    "english": "wish",
     "coverage": "expansion"
   },
   {
@@ -4425,13 +4411,6 @@
   },
   {
     "schema": "study_flypy",
-    "input": "uv",
-    "chinese": "税",
-    "english": "duties",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "kstn",
     "chinese": "空调",
     "english": "air conditioner",
@@ -4439,10 +4418,24 @@
   },
   {
     "schema": "study_flypy",
+    "input": "irvodetide",
+    "chinese": "穿着得体的",
+    "english": "well-dressed",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
     "input": "ilhu",
     "chinese": "窗户",
     "english": "window",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "dgdduijm",
+    "chinese": "等待时间",
+    "english": "wait",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4467,24 +4460,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "jbvx",
-    "chinese": "紧抓",
-    "english": "clutch",
+    "input": "iyjpde",
+    "chinese": "纯洁的",
+    "english": "virginal",
     "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "jbbgde",
-    "chinese": "紧绷的",
-    "english": "taut",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "fjyj",
-    "chinese": "繁衍",
-    "english": "multiply",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4509,17 +4488,17 @@
   },
   {
     "schema": "study_flypy",
-    "input": "jifu",
-    "chinese": "继父",
-    "english": "stepfather",
-    "coverage": "expansion"
-  },
-  {
-    "schema": "study_flypy",
     "input": "whlo",
     "chinese": "网络",
     "english": "network",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "mwde",
+    "chinese": "美德",
+    "english": "virtue",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4544,17 +4523,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "cvde",
-    "chinese": "脆的",
-    "english": "crisp",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "fubdde",
-    "chinese": "腐败的",
-    "english": "corrupt",
-    "coverage": "supplemental"
+    "input": "ugli",
+    "chinese": "胜利",
+    "english": "victory",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4600,6 +4572,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "wjyjde",
+    "chinese": "蜿蜒的",
+    "english": "winding",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
     "input": "jpdc",
     "chinese": "街道",
     "english": "street",
@@ -4611,13 +4590,6 @@
     "chinese": "衣服",
     "english": "clothes",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "buvujb",
-    "chinese": "补助金",
-    "english": "grants",
-    "coverage": "supplemental"
   },
   {
     "schema": "study_flypy",
@@ -4649,17 +4621,17 @@
   },
   {
     "schema": "study_flypy",
+    "input": "jkgc",
+    "chinese": "警告",
+    "english": "warn",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "dkdj",
     "chinese": "订单",
     "english": "order",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "xudo",
-    "chinese": "许多",
-    "english": "many",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4670,10 +4642,24 @@
   },
   {
     "schema": "study_flypy",
+    "input": "uw",
+    "chinese": "谁",
+    "english": "who",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "xpxp",
     "chinese": "谢谢",
     "english": "thank you",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hopb",
+    "chinese": "货品",
+    "english": "wares",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4726,6 +4712,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "lyyi",
+    "chinese": "轮椅",
+    "english": "wheelchair",
+    "coverage": "expansion"
+  },
+  {
+    "schema": "study_flypy",
     "input": "rrjm",
     "chinese": "软件",
     "english": "software",
@@ -4768,6 +4761,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "jbuusi",
+    "chinese": "金属丝",
+    "english": "wire",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
     "input": "ycui",
     "chinese": "钥匙",
     "english": "key",
@@ -4789,6 +4789,13 @@
   },
   {
     "schema": "study_flypy",
+    "input": "cowude",
+    "chinese": "错误地",
+    "english": "wrongly",
+    "coverage": "supplemental"
+  },
+  {
+    "schema": "study_flypy",
     "input": "jmpj",
     "chinese": "键盘",
     "english": "keyboard",
@@ -4796,24 +4803,10 @@
   },
   {
     "schema": "study_flypy",
-    "input": "jmjpde",
-    "chinese": "间接地",
-    "english": "indirectly",
-    "coverage": "supplemental"
-  },
-  {
-    "schema": "study_flypy",
     "input": "ytdu",
     "chinese": "阅读",
     "english": "read",
     "coverage": "legacy-preview"
-  },
-  {
-    "schema": "study_flypy",
-    "input": "xmdu",
-    "chinese": "限度",
-    "english": "limit",
-    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",
@@ -4898,6 +4891,13 @@
     "chinese": "鸡蛋",
     "english": "egg",
     "coverage": "legacy-preview"
+  },
+  {
+    "schema": "study_flypy",
+    "input": "hlfg",
+    "chinese": "黄蜂",
+    "english": "wasp",
+    "coverage": "expansion"
   },
   {
     "schema": "study_flypy",

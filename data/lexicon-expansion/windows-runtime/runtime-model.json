@@ -262,6 +262,21 @@
         }
       ]
     },
+    "一小会儿": {
+      "primary_sense_id": "sense-candidate-776a6e8c778a016886110b46",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yi xiao hui r": "sense-candidate-776a6e8c778a016886110b46"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-776a6e8c778a016886110b46",
+          "display_english": "while",
+          "commit_english": "while"
+        }
+      ]
+    },
     "一打": {
       "primary_sense_id": "sense-b73696b696bb22eb81dd",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -554,6 +569,21 @@
           "id": "sense-revision-d652ae2e371e8feeaa919754",
           "display_english": "dime",
           "commit_english": "dime"
+        }
+      ]
+    },
+    "一言不发地": {
+      "primary_sense_id": "sense-candidate-7d612e0221e4238fc5ea7fd6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yi yan bu fa de": "sense-candidate-7d612e0221e4238fc5ea7fd6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7d612e0221e4238fc5ea7fd6",
+          "display_english": "wordlessly",
+          "commit_english": "wordlessly"
         }
       ]
     },
@@ -2322,6 +2352,21 @@
         }
       ]
     },
+    "不合群的": {
+      "primary_sense_id": "sense-candidate-e3e62619f9850c55af0e7281",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bu he qun de": "sense-candidate-e3e62619f9850c55af0e7281"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e3e62619f9850c55af0e7281",
+          "display_english": "withdrawn",
+          "commit_english": "withdrawn"
+        }
+      ]
+    },
     "不合适": {
       "primary_sense_id": "sense-d39da45ee3a8d3f782de",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -2689,6 +2734,21 @@
           "id": "sense-1af4b14404687ddf3009",
           "display_english": "unfortunately",
           "commit_english": "unfortunately"
+        }
+      ]
+    },
+    "不带": {
+      "primary_sense_id": "sense-candidate-17d5e2f30158a8e2e2d63049",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bu dai": "sense-candidate-17d5e2f30158a8e2e2d63049"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-17d5e2f30158a8e2e2d63049",
+          "display_english": "without",
+          "commit_english": "without"
         }
       ]
     },
@@ -4584,7 +4644,7 @@
     },
     "世俗的": {
       "primary_sense_id": "sense-e23327cfb7f36c0a9806",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "shi su de": "sense-e23327cfb7f36c0a9806"
       },
@@ -4594,6 +4654,11 @@
           "id": "sense-e23327cfb7f36c0a9806",
           "display_english": "mundane",
           "commit_english": "mundane"
+        },
+        {
+          "id": "sense-candidate-691ecdaf4c6dab0e731a05b5",
+          "display_english": "worldly",
+          "commit_english": "worldly"
         }
       ]
     },
@@ -4609,6 +4674,21 @@
           "id": "sense-96cbb1ede0e313c46000",
           "display_english": "world",
           "commit_english": "world"
+        }
+      ]
+    },
+    "世界观": {
+      "primary_sense_id": "sense-candidate-5f2beb747372efd9cd4655e4",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi jie guan": "sense-candidate-5f2beb747372efd9cd4655e4"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5f2beb747372efd9cd4655e4",
+          "display_english": "worldview",
+          "commit_english": "worldview"
         }
       ]
     },
@@ -6077,6 +6157,21 @@
         }
       ]
     },
+    "为什么": {
+      "primary_sense_id": "sense-candidate-4c4f0c53c1db173a73adbdb3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wei shen me": "sense-candidate-4c4f0c53c1db173a73adbdb3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-4c4f0c53c1db173a73adbdb3",
+          "display_english": "why",
+          "commit_english": "why"
+        }
+      ]
+    },
     "主人": {
       "primary_sense_id": "sense-822f7843ad9fa00b4ece",
       "selection_reason": "先取招待客人的主人，master的所有与支配关系另保留。",
@@ -7447,6 +7542,21 @@
         }
       ]
     },
+    "书面的": {
+      "primary_sense_id": "sense-candidate-fc9384b67387f5c05d98b497",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shu mian de": "sense-candidate-fc9384b67387f5c05d98b497"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fc9384b67387f5c05d98b497",
+          "display_english": "written",
+          "commit_english": "written"
+        }
+      ]
+    },
     "买": {
       "primary_sense_id": "sense-bf264b9477a20febf751",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -7632,6 +7742,21 @@
         }
       ]
     },
+    "争取": {
+      "primary_sense_id": "sense-candidate-ac39edd0ae442692e3913b2d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zheng qu": "sense-candidate-ac39edd0ae442692e3913b2d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ac39edd0ae442692e3913b2d",
+          "display_english": "woo",
+          "commit_english": "woo"
+        }
+      ]
+    },
     "争夺": {
       "primary_sense_id": "sense-2c4fe715b9f5ae608a68",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -7644,6 +7769,21 @@
           "id": "sense-2c4fe715b9f5ae608a68",
           "display_english": "contest",
           "commit_english": "contest"
+        }
+      ]
+    },
+    "争执": {
+      "primary_sense_id": "sense-candidate-7c8eeba9cf826b878b289b67",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zheng zhi": "sense-candidate-7c8eeba9cf826b878b289b67"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7c8eeba9cf826b878b289b67",
+          "display_english": "wrangle",
+          "commit_english": "wrangle"
         }
       ]
     },
@@ -9637,6 +9777,21 @@
         }
       ]
     },
+    "什么": {
+      "primary_sense_id": "sense-candidate-13f3fe529fbae9923f80b090",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shen me": "sense-candidate-13f3fe529fbae9923f80b090"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-13f3fe529fbae9923f80b090",
+          "display_english": "what",
+          "commit_english": "what"
+        }
+      ]
+    },
     "仁慈": {
       "primary_sense_id": "sense-0db7ac33dc5b92463867",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定benevolent，adj，充满同情心、和善且乐善好施的；其余通过英文保留。",
@@ -10622,6 +10777,21 @@
         }
       ]
     },
+    "令人厌倦的": {
+      "primary_sense_id": "sense-candidate-00cf71d5c65187fdb157e180",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ling ren yan juan de": "sense-candidate-00cf71d5c65187fdb157e180"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-00cf71d5c65187fdb157e180",
+          "display_english": "wearisome",
+          "commit_english": "wearisome"
+        }
+      ]
+    },
     "令人反感的": {
       "primary_sense_id": "sense-d87cdb4edb5f14712eb1",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -10744,7 +10914,7 @@
     },
     "令人惊叹的": {
       "primary_sense_id": "sense-7baf0e4fadfb002b1d97",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "ling ren jing tan de": "sense-7baf0e4fadfb002b1d97"
       },
@@ -10754,6 +10924,11 @@
           "id": "sense-7baf0e4fadfb002b1d97",
           "display_english": "amazing",
           "commit_english": "amazing"
+        },
+        {
+          "id": "sense-candidate-36df0d0e6231d1d6598f3bef",
+          "display_english": "wondrous",
+          "commit_english": "wondrous"
         }
       ]
     },
@@ -10879,6 +11054,21 @@
           "id": "sense-ec6ed3970ef084c0808f",
           "display_english": "anticlimactic",
           "commit_english": "anticlimactic"
+        }
+      ]
+    },
+    "令人担忧的": {
+      "primary_sense_id": "sense-candidate-540ca1831c0e3afac80a31e5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ling ren dan you de": "sense-candidate-540ca1831c0e3afac80a31e5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-540ca1831c0e3afac80a31e5",
+          "display_english": "worrying",
+          "commit_english": "worrying"
         }
       ]
     },
@@ -11197,6 +11387,21 @@
         }
       ]
     },
+    "以内": {
+      "primary_sense_id": "sense-candidate-fc6a9e4a896a11211095642d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yi nei": "sense-candidate-fc6a9e4a896a11211095642d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fc6a9e4a896a11211095642d",
+          "display_english": "within",
+          "commit_english": "within"
+        }
+      ]
+    },
     "以前": {
       "primary_sense_id": "sense-50020406ef4d34dff08a",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定ago，adv，从现在算起时间在此之前；其余通过英文保留。",
@@ -11274,6 +11479,21 @@
           "id": "sense-a5ceb5e25a891b264e03",
           "display_english": "thereby",
           "commit_english": "thereby"
+        }
+      ]
+    },
+    "以残迹形式": {
+      "primary_sense_id": "sense-candidate-598a8261c279006c28e21fbb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yi can ji xing shi": "sense-candidate-598a8261c279006c28e21fbb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-598a8261c279006c28e21fbb",
+          "display_english": "vestigially",
+          "commit_english": "vestigially"
         }
       ]
     },
@@ -11534,7 +11754,7 @@
     },
     "任性的": {
       "primary_sense_id": "sense-4c494978106432868715",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "ren xing de": "sense-4c494978106432868715"
       },
@@ -11544,6 +11764,26 @@
           "id": "sense-4c494978106432868715",
           "display_english": "perverse",
           "commit_english": "perverse"
+        },
+        {
+          "id": "sense-candidate-30e27f813f2dece6947f7ead",
+          "display_english": "wayward",
+          "commit_english": "wayward"
+        }
+      ]
+    },
+    "任意一个": {
+      "primary_sense_id": "sense-candidate-f15d7576d34ca1553ab26cda",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ren yi yi ge": "sense-candidate-f15d7576d34ca1553ab26cda"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f15d7576d34ca1553ab26cda",
+          "display_english": "whichever",
+          "commit_english": "whichever"
         }
       ]
     },
@@ -11909,6 +12149,11 @@
           "id": "sense-058d5bc449f27c2e3fba",
           "display_english": "advantage",
           "commit_english": "advantage"
+        },
+        {
+          "id": "sense-candidate-3eaa94acd2d671a44a3ea30d",
+          "display_english": "virtue",
+          "commit_english": "virtue"
         }
       ]
     },
@@ -12039,6 +12284,21 @@
           "id": "sense-7086fee9e6bea4871522",
           "display_english": "meals",
           "commit_english": "meals"
+        }
+      ]
+    },
+    "会": {
+      "primary_sense_id": "sense-candidate-b832ceafbf3da7df9a55acfb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "hui": "sense-candidate-b832ceafbf3da7df9a55acfb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b832ceafbf3da7df9a55acfb",
+          "display_english": "would",
+          "commit_english": "would"
         }
       ]
     },
@@ -12559,7 +12819,7 @@
     },
     "伤口": {
       "primary_sense_id": "sense-a8b80938af238b4b239c",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "shang kou": "sense-a8b80938af238b4b239c"
       },
@@ -12569,6 +12829,11 @@
           "id": "sense-a8b80938af238b4b239c",
           "display_english": "cut",
           "commit_english": "cut"
+        },
+        {
+          "id": "sense-candidate-91c08d8a2474fa146e407f00",
+          "display_english": "wound",
+          "commit_english": "wound"
         }
       ]
     },
@@ -13077,6 +13342,21 @@
         }
       ]
     },
+    "低声说": {
+      "primary_sense_id": "sense-candidate-9deaeabdba29d223b5b0c60e",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "di sheng shuo": "sense-candidate-9deaeabdba29d223b5b0c60e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-9deaeabdba29d223b5b0c60e",
+          "display_english": "whisper",
+          "commit_english": "whisper"
+        }
+      ]
+    },
     "低廉": {
       "primary_sense_id": "sense-002a149f705a65e485e5",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -13357,6 +13637,21 @@
         }
       ]
     },
+    "体格健壮的": {
+      "primary_sense_id": "sense-candidate-219d92e412adad0d13129b44",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ti ge jian zhuang de": "sense-candidate-219d92e412adad0d13129b44"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-219d92e412adad0d13129b44",
+          "display_english": "well-built",
+          "commit_english": "well-built"
+        }
+      ]
+    },
     "体检": {
       "primary_sense_id": "sense-3a5ad77fbe7e9b94d2c7",
       "selection_reason": "沿用943开发快照及其基础预览中「体检」的既有默认medical checkup；checkup的全部已保留范围继续存在。",
@@ -13594,6 +13889,21 @@
           "id": "sense-9663e7c6b0b8bb9e10ce",
           "display_english": "caring",
           "commit_english": "caring"
+        }
+      ]
+    },
+    "何时": {
+      "primary_sense_id": "sense-candidate-56192e592060983b545fd5e6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "he shi": "sense-candidate-56192e592060983b545fd5e6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-56192e592060983b545fd5e6",
+          "display_english": "when",
+          "commit_english": "when"
         }
       ]
     },
@@ -13852,6 +14162,36 @@
         }
       ]
     },
+    "你": {
+      "primary_sense_id": "sense-candidate-7c04103e88f42823e3e34121",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ni": "sense-candidate-7c04103e88f42823e3e34121"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7c04103e88f42823e3e34121",
+          "display_english": "you",
+          "commit_english": "you"
+        }
+      ]
+    },
+    "你们": {
+      "primary_sense_id": "sense-candidate-bcf75fe217eb5031666acd6f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ni men": "sense-candidate-bcf75fe217eb5031666acd6f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bcf75fe217eb5031666acd6f",
+          "display_english": "you",
+          "commit_english": "you"
+        }
+      ]
+    },
     "你好": {
       "primary_sense_id": "legacy-daily-001",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -13864,6 +14204,41 @@
           "id": "legacy-daily-001",
           "display_english": "hello",
           "commit_english": "hello"
+        }
+      ]
+    },
+    "你的": {
+      "primary_sense_id": "sense-candidate-3f71f09557b6c0474f2e132e",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "ni de": "sense-candidate-3f71f09557b6c0474f2e132e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3f71f09557b6c0474f2e132e",
+          "display_english": "your",
+          "commit_english": "your"
+        },
+        {
+          "id": "sense-candidate-42bbe7a854ea9d3a0430749b",
+          "display_english": "yours",
+          "commit_english": "yours"
+        }
+      ]
+    },
+    "你自己": {
+      "primary_sense_id": "sense-candidate-c7e5b23fa98fa4b0ad305ee0",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ni zi ji": "sense-candidate-c7e5b23fa98fa4b0ad305ee0"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c7e5b23fa98fa4b0ad305ee0",
+          "display_english": "yourself",
+          "commit_english": "yourself"
         }
       ]
     },
@@ -14164,6 +14539,21 @@
           "id": "sense-7dfce0934c9c03f4f178",
           "display_english": "leaven",
           "commit_english": "leaven"
+        }
+      ]
+    },
+    "使受伤": {
+      "primary_sense_id": "sense-candidate-85dc775958039c2990ec2d15",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi shou shang": "sense-candidate-85dc775958039c2990ec2d15"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-85dc775958039c2990ec2d15",
+          "display_english": "wound",
+          "commit_english": "wound"
         }
       ]
     },
@@ -17117,6 +17507,36 @@
         }
       ]
     },
+    "值得": {
+      "primary_sense_id": "sense-candidate-dea9aafdba40973c0abefb65",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhi de": "sense-candidate-dea9aafdba40973c0abefb65"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-dea9aafdba40973c0abefb65",
+          "display_english": "worth",
+          "commit_english": "worth"
+        }
+      ]
+    },
+    "值得尊敬的": {
+      "primary_sense_id": "sense-candidate-23884ce5e5a45f1e81aed8f6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhi de zun jing de": "sense-candidate-23884ce5e5a45f1e81aed8f6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-23884ce5e5a45f1e81aed8f6",
+          "display_english": "worthy",
+          "commit_english": "worthy"
+        }
+      ]
+    },
     "值得推荐的": {
       "primary_sense_id": "sense-96ab62022cf49e269be2",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -17787,6 +18207,21 @@
         }
       ]
     },
+    "做得好": {
+      "primary_sense_id": "sense-candidate-92f6a19df33667b72826db53",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zuo de hao": "sense-candidate-92f6a19df33667b72826db53"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-92f6a19df33667b72826db53",
+          "display_english": "well",
+          "commit_english": "well"
+        }
+      ]
+    },
     "做志愿服务": {
       "primary_sense_id": "sense-bc1c465f6c1f35662aeb",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -18064,7 +18499,7 @@
     },
     "健康的": {
       "primary_sense_id": "sense-3da0132e6ef0574816f8",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "jian kang de": "sense-3da0132e6ef0574816f8"
       },
@@ -18074,6 +18509,11 @@
           "id": "sense-3da0132e6ef0574816f8",
           "display_english": "healthy",
           "commit_english": "healthy"
+        },
+        {
+          "id": "sense-candidate-7ded785e02acef8acbea4f96",
+          "display_english": "well",
+          "commit_english": "well"
         }
       ]
     },
@@ -18619,6 +19059,21 @@
           "id": "sense-8fde32ad6540e23127c7",
           "display_english": "permissible",
           "commit_english": "permissible"
+        }
+      ]
+    },
+    "元音": {
+      "primary_sense_id": "sense-candidate-dc2502d2ec3cc244fac6c3e3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yuan yin": "sense-candidate-dc2502d2ec3cc244fac6c3e3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-dc2502d2ec3cc244fac6c3e3",
+          "display_english": "vowel",
+          "commit_english": "vowel"
         }
       ]
     },
@@ -19674,6 +20129,21 @@
           "id": "sense-71b739c259729d529de1",
           "display_english": "globally",
           "commit_english": "globally"
+        }
+      ]
+    },
+    "全球性的": {
+      "primary_sense_id": "sense-candidate-e8e0ff1c33014f777b3cb87c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "quan qiu xing de": "sense-candidate-e8e0ff1c33014f777b3cb87c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e8e0ff1c33014f777b3cb87c",
+          "display_english": "worldwide",
+          "commit_english": "worldwide"
         }
       ]
     },
@@ -21414,7 +21884,7 @@
     },
     "兽医": {
       "primary_sense_id": "sense-630615f6aaa185d0fcf7",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "shou yi": "sense-630615f6aaa185d0fcf7"
       },
@@ -21424,6 +21894,11 @@
           "id": "sense-630615f6aaa185d0fcf7",
           "display_english": "veterinarian",
           "commit_english": "veterinarian"
+        },
+        {
+          "id": "sense-candidate-b14ffa1e5ad60c5890d0024c",
+          "display_english": "vet",
+          "commit_english": "vet"
         }
       ]
     },
@@ -26037,6 +26512,21 @@
         }
       ]
     },
+    "别墅": {
+      "primary_sense_id": "sense-candidate-05614cc2a1eee3ccc1f0056c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bie shu": "sense-candidate-05614cc2a1eee3ccc1f0056c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-05614cc2a1eee3ccc1f0056c",
+          "display_english": "villa",
+          "commit_english": "villa"
+        }
+      ]
+    },
     "别处": {
       "primary_sense_id": "sense-2037d1ded6acc7187aa1",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -26959,6 +27449,11 @@
           "id": "sense-6f6fb70eab5d1d449d4f",
           "display_english": "cripple",
           "commit_english": "cripple"
+        },
+        {
+          "id": "sense-candidate-c90e0a90ca196352f8001feb",
+          "display_english": "weaken",
+          "commit_english": "weaken"
         }
       ]
     },
@@ -27607,6 +28102,36 @@
         }
       ]
     },
+    "副总统": {
+      "primary_sense_id": "sense-candidate-30e3bd8de3314ddb31fdcf2b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "fu zong tong": "sense-candidate-30e3bd8de3314ddb31fdcf2b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-30e3bd8de3314ddb31fdcf2b",
+          "display_english": "vice president",
+          "commit_english": "vice president"
+        }
+      ]
+    },
+    "副总裁": {
+      "primary_sense_id": "sense-candidate-ca521f350c02bed8ae621b36",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "fu zong cai": "sense-candidate-ca521f350c02bed8ae621b36"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ca521f350c02bed8ae621b36",
+          "display_english": "vice president",
+          "commit_english": "vice president"
+        }
+      ]
+    },
     "副手": {
       "primary_sense_id": "sense-63e17cb11795bae1d5f8",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -28097,6 +28622,21 @@
         }
       ]
     },
+    "加宽": {
+      "primary_sense_id": "sense-candidate-1fb8085c61f2519df79c7a92",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jia kuan": "sense-candidate-1fb8085c61f2519df79c7a92"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1fb8085c61f2519df79c7a92",
+          "display_english": "widen",
+          "commit_english": "widen"
+        }
+      ]
+    },
     "加工": {
       "primary_sense_id": "sense-4a90596af64463f64630",
       "selection_reason": "沿用943开发快照及其基础预览中「加工」的既有默认process；processing的全部已保留范围继续存在。",
@@ -28517,6 +29057,21 @@
         }
       ]
     },
+    "动物学家": {
+      "primary_sense_id": "sense-candidate-c53d0a9c570e809c0a4f5294",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dong wu xue jia": "sense-candidate-c53d0a9c570e809c0a4f5294"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c53d0a9c570e809c0a4f5294",
+          "display_english": "zoologist",
+          "commit_english": "zoologist"
+        }
+      ]
+    },
     "动物尸体": {
       "primary_sense_id": "sense-c39a44c6e7ed05ab3f3b",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -28709,6 +29264,21 @@
           "id": "sense-e929df57db22b5544339",
           "display_english": "assistant",
           "commit_english": "assistant"
+        }
+      ]
+    },
+    "助行器": {
+      "primary_sense_id": "sense-candidate-6db475d6125943934ae5c911",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhu xing qi": "sense-candidate-6db475d6125943934ae5c911"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6db475d6125943934ae5c911",
+          "display_english": "walker",
+          "commit_english": "walker"
         }
       ]
     },
@@ -29342,6 +29912,21 @@
         }
       ]
     },
+    "包装材料": {
+      "primary_sense_id": "sense-candidate-861823a2ade2594031c559d8",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bao zhuang cai liao": "sense-candidate-861823a2ade2594031c559d8"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-861823a2ade2594031c559d8",
+          "display_english": "wrapping",
+          "commit_english": "wrapping"
+        }
+      ]
+    },
     "包裹": {
       "primary_sense_id": "sense-82f9824e0fd7f839a3e9",
       "selection_reason": "保持上一版运行时已有默认英文。",
@@ -29759,6 +30344,11 @@
           "id": "sense-21878be45e4ebd42c110",
           "display_english": "district",
           "commit_english": "district"
+        },
+        {
+          "id": "sense-candidate-14d9f3b684cda36c66669b93",
+          "display_english": "zone",
+          "commit_english": "zone"
         }
       ]
     },
@@ -30949,6 +31539,21 @@
           "id": "sense-1aa3e903c0f9698b67f4",
           "display_english": "frail",
           "commit_english": "frail"
+        }
+      ]
+    },
+    "单词": {
+      "primary_sense_id": "sense-candidate-11ff4f07ae925181b3b04314",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dan ci": "sense-candidate-11ff4f07ae925181b3b04314"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-11ff4f07ae925181b3b04314",
+          "display_english": "word",
+          "commit_english": "word"
         }
       ]
     },
@@ -33962,6 +34567,21 @@
         }
       ]
     },
+    "发出喘鸣": {
+      "primary_sense_id": "sense-candidate-76e37fa0fa3898bf39817493",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "fa chu chuan ming": "sense-candidate-76e37fa0fa3898bf39817493"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-76e37fa0fa3898bf39817493",
+          "display_english": "wheeze",
+          "commit_english": "wheeze"
+        }
+      ]
+    },
     "发动": {
       "primary_sense_id": "sense-498e6c92452c9ecca518",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -34777,6 +35397,21 @@
         }
       ]
     },
+    "取款": {
+      "primary_sense_id": "sense-candidate-3e0012189f19063a86ea4ff4",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "qu kuan": "sense-candidate-3e0012189f19063a86ea4ff4"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3e0012189f19063a86ea4ff4",
+          "display_english": "withdrawal",
+          "commit_english": "withdrawal"
+        }
+      ]
+    },
     "取消": {
       "primary_sense_id": "sense-86b792b33af44e31ccb2",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -34839,6 +35474,21 @@
           "id": "sense-1ef92a8bcc77b7ca0cf9",
           "display_english": "conception",
           "commit_english": "conception"
+        }
+      ]
+    },
+    "受害者": {
+      "primary_sense_id": "sense-candidate-deafb7c6bf884a392fc10f62",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shou hai zhe": "sense-candidate-deafb7c6bf884a392fc10f62"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-deafb7c6bf884a392fc10f62",
+          "display_english": "victim",
+          "commit_english": "victim"
         }
       ]
     },
@@ -35154,6 +35804,21 @@
           "id": "sense-47bf60a95fb2898dd346",
           "display_english": "warming",
           "commit_english": "warming"
+        }
+      ]
+    },
+    "变焦": {
+      "primary_sense_id": "sense-candidate-94704d52bb13d8eedca03f30",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bian jiao": "sense-candidate-94704d52bb13d8eedca03f30"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-94704d52bb13d8eedca03f30",
+          "display_english": "zoom",
+          "commit_english": "zoom"
         }
       ]
     },
@@ -35634,6 +36299,21 @@
           "id": "sense-e4b72845304c8f603a3f",
           "display_english": "eccentrically",
           "commit_english": "eccentrically"
+        }
+      ]
+    },
+    "古怪滑稽的": {
+      "primary_sense_id": "sense-candidate-9912a9e2073fdc6cefeab2c8",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gu guai hua ji de": "sense-candidate-9912a9e2073fdc6cefeab2c8"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-9912a9e2073fdc6cefeab2c8",
+          "display_english": "zany",
+          "commit_english": "zany"
         }
       ]
     },
@@ -38297,6 +38977,21 @@
         }
       ]
     },
+    "名副其实的": {
+      "primary_sense_id": "sense-candidate-fd4f769a381b7f5dd3cfa4ca",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ming fu qi shi de": "sense-candidate-fd4f769a381b7f5dd3cfa4ca"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fd4f769a381b7f5dd3cfa4ca",
+          "display_english": "veritable",
+          "commit_english": "veritable"
+        }
+      ]
+    },
     "名声": {
       "primary_sense_id": "sense-2b7ee3a4ccf1d393d308",
       "selection_reason": "保持上一版运行时已有默认英文。",
@@ -38889,7 +39584,7 @@
     },
     "向西": {
       "primary_sense_id": "sense-ca02a462ace4ecccd544",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xiang xi": "sense-ca02a462ace4ecccd544"
       },
@@ -38899,6 +39594,11 @@
           "id": "sense-ca02a462ace4ecccd544",
           "display_english": "west",
           "commit_english": "west"
+        },
+        {
+          "id": "sense-candidate-74ab0ddba0d5f132c5fdfccb",
+          "display_english": "westward",
+          "commit_english": "westward"
         }
       ]
     },
@@ -41097,6 +41797,36 @@
         }
       ]
     },
+    "哪": {
+      "primary_sense_id": "sense-candidate-599987e7a0e849b167254890",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "na": "sense-candidate-599987e7a0e849b167254890"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-599987e7a0e849b167254890",
+          "display_english": "which",
+          "commit_english": "which"
+        }
+      ]
+    },
+    "哪个": {
+      "primary_sense_id": "sense-candidate-595fdc146708b1e0453f8cc1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "na ge": "sense-candidate-595fdc146708b1e0453f8cc1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-595fdc146708b1e0453f8cc1",
+          "display_english": "which",
+          "commit_english": "which"
+        }
+      ]
+    },
     "哭": {
       "primary_sense_id": "sense-1cad7c0c781afc5a3337",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -41109,6 +41839,21 @@
           "id": "sense-1cad7c0c781afc5a3337",
           "display_english": "cry",
           "commit_english": "cry"
+        }
+      ]
+    },
+    "哭泣": {
+      "primary_sense_id": "sense-candidate-2657a84d8aa09e9b681737d3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ku qi": "sense-candidate-2657a84d8aa09e9b681737d3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-2657a84d8aa09e9b681737d3",
+          "display_english": "weep",
+          "commit_english": "weep"
         }
       ]
     },
@@ -41827,6 +42572,21 @@
         }
       ]
     },
+    "喊声": {
+      "primary_sense_id": "sense-candidate-80f6f5b302ad47ed71531a72",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "han sheng": "sense-candidate-80f6f5b302ad47ed71531a72"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-80f6f5b302ad47ed71531a72",
+          "display_english": "yell",
+          "commit_english": "yell"
+        }
+      ]
+    },
     "喘息": {
       "primary_sense_id": "sense-20bab0c4c7db7d6dfbe6",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -42204,6 +42964,36 @@
           "id": "sense-7ebb25247bb0ace51e88",
           "display_english": "sniff",
           "commit_english": "sniff"
+        }
+      ]
+    },
+    "嗓音": {
+      "primary_sense_id": "sense-candidate-b8e2d3bece6ef3dfcca69a62",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "sang yin": "sense-candidate-b8e2d3bece6ef3dfcca69a62"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b8e2d3bece6ef3dfcca69a62",
+          "display_english": "voice",
+          "commit_english": "voice"
+        }
+      ]
+    },
+    "嗡嗡作响": {
+      "primary_sense_id": "sense-candidate-33b8213ab476d9928c8a4e25",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "weng weng zuo xiang": "sense-candidate-33b8213ab476d9928c8a4e25"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-33b8213ab476d9928c8a4e25",
+          "display_english": "whir",
+          "commit_english": "whir"
         }
       ]
     },
@@ -42619,6 +43409,21 @@
           "id": "sense-97f615cc4d0338322153",
           "display_english": "April",
           "commit_english": "April"
+        }
+      ]
+    },
+    "四轮货车": {
+      "primary_sense_id": "sense-candidate-f38c715ddcb286156babbedb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "si lun huo che": "sense-candidate-f38c715ddcb286156babbedb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f38c715ddcb286156babbedb",
+          "display_english": "wagon",
+          "commit_english": "wagon"
         }
       ]
     },
@@ -44332,6 +45137,21 @@
         }
       ]
     },
+    "在全球": {
+      "primary_sense_id": "sense-candidate-5baed48f4b1ff553e5477a83",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zai quan qiu": "sense-candidate-5baed48f4b1ff553e5477a83"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5baed48f4b1ff553e5477a83",
+          "display_english": "worldwide",
+          "commit_english": "worldwide"
+        }
+      ]
+    },
     "在其中": {
       "primary_sense_id": "sense-d82e1f74c82bd8da9441",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -44389,6 +45209,21 @@
           "id": "sense-323ecf95aecd4e1f036f",
           "display_english": "behind",
           "commit_english": "behind"
+        }
+      ]
+    },
+    "在哪里": {
+      "primary_sense_id": "sense-candidate-8b4bd9294a83f9dedfa82d27",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zai na li": "sense-candidate-8b4bd9294a83f9dedfa82d27"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8b4bd9294a83f9dedfa82d27",
+          "display_english": "where",
+          "commit_english": "where"
         }
       ]
     },
@@ -44819,6 +45654,21 @@
           "id": "sense-revision2-a4d19d17515f500aeb7c64cd",
           "display_english": "aboard",
           "commit_english": "aboard"
+        }
+      ]
+    },
+    "在视觉上": {
+      "primary_sense_id": "sense-candidate-2e770ada33e77e3ae6c48bea",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zai shi jue shang": "sense-candidate-2e770ada33e77e3ae6c48bea"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-2e770ada33e77e3ae6c48bea",
+          "display_english": "visually",
+          "commit_english": "visually"
         }
       ]
     },
@@ -45609,6 +46459,21 @@
           "id": "sense-bd257e75d6c79e552f2a",
           "display_english": "balanced",
           "commit_english": "balanced"
+        }
+      ]
+    },
+    "均衡的": {
+      "primary_sense_id": "sense-candidate-7ea72540bb1e87b836f2b62b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jun heng de": "sense-candidate-7ea72540bb1e87b836f2b62b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7ea72540bb1e87b836f2b62b",
+          "display_english": "well-balanced",
+          "commit_english": "well-balanced"
         }
       ]
     },
@@ -47047,6 +47912,21 @@
         }
       ]
     },
+    "墙面板": {
+      "primary_sense_id": "sense-candidate-3505ab59239b6d08cd911bad",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "qiang mian ban": "sense-candidate-3505ab59239b6d08cd911bad"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3505ab59239b6d08cd911bad",
+          "display_english": "wallboard",
+          "commit_english": "wallboard"
+        }
+      ]
+    },
     "增加": {
       "primary_sense_id": "sense-7e1745f76706aa042382",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -48469,7 +49349,7 @@
     },
     "多才多艺": {
       "primary_sense_id": "sense-04e5f94a1dc67f26d2bb",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "duo cai duo yi": "sense-04e5f94a1dc67f26d2bb"
       },
@@ -48479,6 +49359,11 @@
           "id": "sense-04e5f94a1dc67f26d2bb",
           "display_english": "versatile",
           "commit_english": "versatile"
+        },
+        {
+          "id": "sense-candidate-786e33d53533a6458b963479",
+          "display_english": "versatility",
+          "commit_english": "versatility"
         }
       ]
     },
@@ -48579,7 +49464,7 @@
     },
     "多用途": {
       "primary_sense_id": "sense-1ba8ed1357a3347a9d9d",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "duo yong tu": "sense-1ba8ed1357a3347a9d9d"
       },
@@ -48589,6 +49474,11 @@
           "id": "sense-1ba8ed1357a3347a9d9d",
           "display_english": "versatile",
           "commit_english": "versatile"
+        },
+        {
+          "id": "sense-candidate-b03176872fadf98345d7202c",
+          "display_english": "versatility",
+          "commit_english": "versatility"
         }
       ]
     },
@@ -49039,6 +49929,21 @@
           "id": "sense-baacee5087adfdc21636",
           "display_english": "munch",
           "commit_english": "munch"
+        }
+      ]
+    },
+    "大声喊": {
+      "primary_sense_id": "sense-candidate-482f8ce4f39778879bb5ff63",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "da sheng han": "sense-candidate-482f8ce4f39778879bb5ff63"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-482f8ce4f39778879bb5ff63",
+          "display_english": "yell",
+          "commit_english": "yell"
         }
       ]
     },
@@ -50257,6 +51162,21 @@
         }
       ]
     },
+    "天气预报": {
+      "primary_sense_id": "sense-candidate-b6caf8234d26b8a8e6568035",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "tian qi yu bao": "sense-candidate-b6caf8234d26b8a8e6568035"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b6caf8234d26b8a8e6568035",
+          "display_english": "weather forecast",
+          "commit_english": "weather forecast"
+        }
+      ]
+    },
     "天然": {
       "primary_sense_id": "sense-8f6913e3d557e4361c10",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -51254,7 +52174,7 @@
     },
     "奇迹": {
       "primary_sense_id": "sense-d769e82088080ff37756",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "qi ji": "sense-d769e82088080ff37756"
       },
@@ -51264,6 +52184,11 @@
           "id": "sense-d769e82088080ff37756",
           "display_english": "miracle",
           "commit_english": "miracle"
+        },
+        {
+          "id": "sense-candidate-59e3d76cfb9f0dd0925d13c0",
+          "display_english": "wonder",
+          "commit_english": "wonder"
         }
       ]
     },
@@ -51704,6 +52629,21 @@
           "id": "sense-2311e8a3ef36e3b82397",
           "display_english": "heroine",
           "commit_english": "heroine"
+        }
+      ]
+    },
+    "女人": {
+      "primary_sense_id": "sense-candidate-bbc786c7fb8e3f5b492160d4",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "nv ren": "sense-candidate-bbc786c7fb8e3f5b492160d4"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bbc786c7fb8e3f5b492160d4",
+          "display_english": "woman",
+          "commit_english": "woman"
         }
       ]
     },
@@ -52292,6 +53232,21 @@
         }
       ]
     },
+    "好吃的": {
+      "primary_sense_id": "sense-candidate-7dfa9df0315d6b737046098b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "hao chi de": "sense-candidate-7dfa9df0315d6b737046098b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7dfa9df0315d6b737046098b",
+          "display_english": "yummy",
+          "commit_english": "yummy"
+        }
+      ]
+    },
     "好处": {
       "primary_sense_id": "sense-0058157a31d8b2e51759",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -52639,6 +53594,36 @@
           "id": "sense-140895bfa0a3d0d05f82",
           "display_english": "picturesque",
           "commit_english": "picturesque"
+        }
+      ]
+    },
+    "如饥似渴地": {
+      "primary_sense_id": "sense-candidate-c9ac21f090a185d03b166e92",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ru ji si ke de": "sense-candidate-c9ac21f090a185d03b166e92"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c9ac21f090a185d03b166e92",
+          "display_english": "voraciously",
+          "commit_english": "voraciously"
+        }
+      ]
+    },
+    "如饥似渴的": {
+      "primary_sense_id": "sense-candidate-c65b0c210fee3d3d146b0833",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ru ji si ke de": "sense-candidate-c65b0c210fee3d3d146b0833"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c65b0c210fee3d3d146b0833",
+          "display_english": "voracious",
+          "commit_english": "voracious"
         }
       ]
     },
@@ -53134,6 +54119,26 @@
           "id": "sense-252ca943ad2a7df62265",
           "display_english": "intimidate",
           "commit_english": "intimidate"
+        }
+      ]
+    },
+    "威士忌": {
+      "primary_sense_id": "sense-candidate-f641fc08fb32015bcf28f843",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "wei shi ji": "sense-candidate-f641fc08fb32015bcf28f843"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f641fc08fb32015bcf28f843",
+          "display_english": "whiskey",
+          "commit_english": "whiskey"
+        },
+        {
+          "id": "sense-candidate-f85c11b4bbbe326d18390faf",
+          "display_english": "whisky",
+          "commit_english": "whisky"
         }
       ]
     },
@@ -53759,6 +54764,21 @@
           "id": "sense-1fc2d756616dc1d84520",
           "display_english": "caption",
           "commit_english": "caption"
+        }
+      ]
+    },
+    "字数": {
+      "primary_sense_id": "sense-candidate-dca192ec9037170be187929c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zi shu": "sense-candidate-dca192ec9037170be187929c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-dca192ec9037170be187929c",
+          "display_english": "wordage",
+          "commit_english": "wordage"
         }
       ]
     },
@@ -55049,7 +56069,7 @@
     },
     "完全地": {
       "primary_sense_id": "sense-f8678fd5203f04d3589c",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "wan quan de": "sense-f8678fd5203f04d3589c"
       },
@@ -55059,6 +56079,11 @@
           "id": "sense-f8678fd5203f04d3589c",
           "display_english": "entirely",
           "commit_english": "entirely"
+        },
+        {
+          "id": "sense-candidate-0b0f20f08c10624829599698",
+          "display_english": "wholly",
+          "commit_english": "wholly"
         }
       ]
     },
@@ -56572,6 +57597,21 @@
         }
       ]
     },
+    "害兽": {
+      "primary_sense_id": "sense-candidate-67728e299160ebbb9f3f4afc",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "hai shou": "sense-candidate-67728e299160ebbb9f3f4afc"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-67728e299160ebbb9f3f4afc",
+          "display_english": "vermin",
+          "commit_english": "vermin"
+        }
+      ]
+    },
     "害怕": {
       "primary_sense_id": "legacy-daily-196",
       "selection_reason": "保持上一版运行时已有默认英文。",
@@ -57569,7 +58609,7 @@
     },
     "富有的": {
       "primary_sense_id": "sense-7437e50b03d2fded429e",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "fu you de": "sense-7437e50b03d2fded429e"
       },
@@ -57579,6 +58619,11 @@
           "id": "sense-7437e50b03d2fded429e",
           "display_english": "rich",
           "commit_english": "rich"
+        },
+        {
+          "id": "sense-candidate-3845c9b4129dd57fae38a96a",
+          "display_english": "wealthy",
+          "commit_english": "wealthy"
         }
       ]
     },
@@ -57702,6 +58747,21 @@
         }
       ]
     },
+    "寡妇": {
+      "primary_sense_id": "sense-candidate-2be91eeae37a008ef3d0a993",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gua fu": "sense-candidate-2be91eeae37a008ef3d0a993"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-2be91eeae37a008ef3d0a993",
+          "display_english": "widow",
+          "commit_english": "widow"
+        }
+      ]
+    },
     "寡淡": {
       "primary_sense_id": "sense-7e7614e2e2a5c58a3d76",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -57744,6 +58804,21 @@
           "id": "legacy-daily-004",
           "display_english": "sorry",
           "commit_english": "sorry"
+        }
+      ]
+    },
+    "对于": {
+      "primary_sense_id": "sense-candidate-336cabc544bbc19d6971e853",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dui yu": "sense-candidate-336cabc544bbc19d6971e853"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-336cabc544bbc19d6971e853",
+          "display_english": "vis-a-vis",
+          "commit_english": "vis-a-vis"
         }
       ]
     },
@@ -58359,7 +59434,7 @@
     },
     "将要": {
       "primary_sense_id": "sense-ad95109d95c693061178",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "jiang yao": "sense-ad95109d95c693061178"
       },
@@ -58369,6 +59444,11 @@
           "id": "sense-ad95109d95c693061178",
           "display_english": "shall",
           "commit_english": "shall"
+        },
+        {
+          "id": "sense-candidate-7d79c94266c0d1389d2b6b94",
+          "display_english": "will",
+          "commit_english": "will"
         }
       ]
     },
@@ -58669,7 +59749,7 @@
     },
     "小提琴": {
       "primary_sense_id": "sense-d6949ce2f5f9cff14b2a",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xiao ti qin": "sense-d6949ce2f5f9cff14b2a"
       },
@@ -58679,6 +59759,11 @@
           "id": "sense-d6949ce2f5f9cff14b2a",
           "display_english": "fiddle",
           "commit_english": "fiddle"
+        },
+        {
+          "id": "sense-candidate-aad82cf04a4789d84445eac7",
+          "display_english": "violin",
+          "commit_english": "violin"
         }
       ]
     },
@@ -59064,6 +60149,21 @@
           "id": "sense-revision-a411d3f7f9e87ced4fded9f5",
           "display_english": "chicks",
           "commit_english": "chicks"
+        }
+      ]
+    },
+    "小麦": {
+      "primary_sense_id": "sense-candidate-3fb86de84ab6fdfee0d77329",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xiao mai": "sense-candidate-3fb86de84ab6fdfee0d77329"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3fb86de84ab6fdfee0d77329",
+          "display_english": "wheat",
+          "commit_english": "wheat"
         }
       ]
     },
@@ -59569,6 +60669,21 @@
           "id": "sense-cd3e394cffb555b6b28f",
           "display_english": "tail",
           "commit_english": "tail"
+        }
+      ]
+    },
+    "尾流": {
+      "primary_sense_id": "sense-candidate-9f18ca19aded0ec2ce79a54d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wei liu": "sense-candidate-9f18ca19aded0ec2ce79a54d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-9f18ca19aded0ec2ce79a54d",
+          "display_english": "wake",
+          "commit_english": "wake"
         }
       ]
     },
@@ -60642,6 +61757,21 @@
         }
       ]
     },
+    "巡访": {
+      "primary_sense_id": "sense-candidate-603302a5b6e4d9c01e47a8a2",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xun fang": "sense-candidate-603302a5b6e4d9c01e47a8a2"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-603302a5b6e4d9c01e47a8a2",
+          "display_english": "walkabout",
+          "commit_english": "walkabout"
+        }
+      ]
+    },
     "巡逻": {
       "primary_sense_id": "sense-5c51206124de65f84dca",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -60719,7 +61849,7 @@
     },
     "工人": {
       "primary_sense_id": "sense-3a400de3378feb3421ea",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "gong ren": "sense-3a400de3378feb3421ea"
       },
@@ -60729,6 +61859,11 @@
           "id": "sense-3a400de3378feb3421ea",
           "display_english": "worker",
           "commit_english": "worker"
+        },
+        {
+          "id": "sense-candidate-0e0538191bea5c7bce4a8181",
+          "display_english": "workman",
+          "commit_english": "workman"
         }
       ]
     },
@@ -60749,6 +61884,36 @@
           "id": "sense-5bb92e578203b293969e",
           "display_english": "jobs",
           "commit_english": "jobs"
+        }
+      ]
+    },
+    "工作台": {
+      "primary_sense_id": "sense-candidate-64ed98bebbc59722fb483bd5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gong zuo tai": "sense-candidate-64ed98bebbc59722fb483bd5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-64ed98bebbc59722fb483bd5",
+          "display_english": "workbench",
+          "commit_english": "workbench"
+        }
+      ]
+    },
+    "工作场所": {
+      "primary_sense_id": "sense-candidate-045945c2b602dd4879fad85f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gong zuo chang suo": "sense-candidate-045945c2b602dd4879fad85f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-045945c2b602dd4879fad85f",
+          "display_english": "workplace",
+          "commit_english": "workplace"
         }
       ]
     },
@@ -60779,6 +61944,21 @@
           "id": "sense-9d5c374116d45550743f",
           "display_english": "weekdays",
           "commit_english": "weekdays"
+        }
+      ]
+    },
+    "工作狂": {
+      "primary_sense_id": "sense-candidate-6ce98a0b393c2ea38b040a9e",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gong zuo kuang": "sense-candidate-6ce98a0b393c2ea38b040a9e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6ce98a0b393c2ea38b040a9e",
+          "display_english": "workaholic",
+          "commit_english": "workaholic"
         }
       ]
     },
@@ -60934,6 +62114,21 @@
           "id": "sense-538761a9c4527c86d252",
           "display_english": "engineers",
           "commit_english": "engineers"
+        }
+      ]
+    },
+    "工资": {
+      "primary_sense_id": "sense-candidate-7e47bfdf2c5c436231aeacc8",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gong zi": "sense-candidate-7e47bfdf2c5c436231aeacc8"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7e47bfdf2c5c436231aeacc8",
+          "display_english": "wage",
+          "commit_english": "wage"
         }
       ]
     },
@@ -61174,6 +62369,21 @@
           "id": "sense-57632dd629ceb4a9cc52",
           "display_english": "consolidate",
           "commit_english": "consolidate"
+        }
+      ]
+    },
+    "巫师": {
+      "primary_sense_id": "sense-candidate-ceebc9bce29b8adff9dfaa3c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wu shi": "sense-candidate-ceebc9bce29b8adff9dfaa3c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ceebc9bce29b8adff9dfaa3c",
+          "display_english": "wizard",
+          "commit_english": "wizard"
         }
       ]
     },
@@ -61572,6 +62782,21 @@
         }
       ]
     },
+    "帆板运动": {
+      "primary_sense_id": "sense-candidate-eab289210837335296521dd4",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "fan ban yun dong": "sense-candidate-eab289210837335296521dd4"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-eab289210837335296521dd4",
+          "display_english": "windsurfing",
+          "commit_english": "windsurfing"
+        }
+      ]
+    },
     "帆船运动": {
       "primary_sense_id": "sense-2a14547940188dda9403",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -61744,6 +62969,21 @@
           "id": "sense-7bfba5ca5b872c17f9a3",
           "display_english": "bring",
           "commit_english": "bring"
+        }
+      ]
+    },
+    "带讥讽的": {
+      "primary_sense_id": "sense-candidate-b13bd65af4a12f6b8e2ce4b3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dai ji feng de": "sense-candidate-b13bd65af4a12f6b8e2ce4b3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b13bd65af4a12f6b8e2ce4b3",
+          "display_english": "wry",
+          "commit_english": "wry"
         }
       ]
     },
@@ -62029,6 +63269,21 @@
           "id": "sense-aeb868a402b59fa78a48",
           "display_english": "interfere",
           "commit_english": "interfere"
+        }
+      ]
+    },
+    "干瘪的": {
+      "primary_sense_id": "sense-candidate-b08aab0dcec78499c80c84ab",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gan bie de": "sense-candidate-b08aab0dcec78499c80c84ab"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b08aab0dcec78499c80c84ab",
+          "display_english": "wizened",
+          "commit_english": "wizened"
         }
       ]
     },
@@ -62319,6 +63574,21 @@
           "id": "sense-4cab1a6d2a34edf784dc",
           "display_english": "bungalow",
           "commit_english": "bungalow"
+        }
+      ]
+    },
+    "平日": {
+      "primary_sense_id": "sense-candidate-59d3f1bc4223c70d0d70a87d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ping ri": "sense-candidate-59d3f1bc4223c70d0d70a87d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-59d3f1bc4223c70d0d70a87d",
+          "display_english": "weekday",
+          "commit_english": "weekday"
         }
       ]
     },
@@ -62662,6 +63932,21 @@
         }
       ]
     },
+    "年": {
+      "primary_sense_id": "sense-candidate-f3edf8572352f4ab5f088b38",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "nian": "sense-candidate-f3edf8572352f4ab5f088b38"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f3edf8572352f4ab5f088b38",
+          "display_english": "year",
+          "commit_english": "year"
+        }
+      ]
+    },
     "年度": {
       "primary_sense_id": "sense-d014bee29462beb2a53c",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -62734,6 +64019,21 @@
           "id": "sense-2be90db45fb25b8eca94",
           "display_english": "youngster",
           "commit_english": "youngster"
+        }
+      ]
+    },
+    "年轻的": {
+      "primary_sense_id": "sense-candidate-1c7e37fa010a951bc55d2256",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "nian qing de": "sense-candidate-1c7e37fa010a951bc55d2256"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1c7e37fa010a951bc55d2256",
+          "display_english": "young",
+          "commit_english": "young"
         }
       ]
     },
@@ -63229,7 +64529,7 @@
     },
     "广泛地": {
       "primary_sense_id": "sense-5d919ad9cfcde36c2084",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "guang fan de": "sense-5d919ad9cfcde36c2084"
       },
@@ -63239,6 +64539,26 @@
           "id": "sense-5d919ad9cfcde36c2084",
           "display_english": "extensively",
           "commit_english": "extensively"
+        },
+        {
+          "id": "sense-candidate-9007f0db581e6ea3f6f36d7f",
+          "display_english": "widely",
+          "commit_english": "widely"
+        }
+      ]
+    },
+    "广泛存在的": {
+      "primary_sense_id": "sense-candidate-ae01bc14af79ccda1e874ed6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "guang fan cun zai de": "sense-candidate-ae01bc14af79ccda1e874ed6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ae01bc14af79ccda1e874ed6",
+          "display_english": "widespread",
+          "commit_english": "widespread"
         }
       ]
     },
@@ -65377,6 +66697,21 @@
         }
       ]
     },
+    "弱点": {
+      "primary_sense_id": "sense-candidate-c3545088979aafac3947948c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ruo dian": "sense-candidate-c3545088979aafac3947948c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c3545088979aafac3947948c",
+          "display_english": "weakness",
+          "commit_english": "weakness"
+        }
+      ]
+    },
     "弹": {
       "primary_sense_id": "sense-3ba6f3b2afbdabb5be01",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -65974,6 +67309,21 @@
           "id": "sense-0df1de29a34ac0350f90",
           "display_english": "summarize",
           "commit_english": "summarize"
+        }
+      ]
+    },
+    "当": {
+      "primary_sense_id": "sense-candidate-c3e8eeaf32b82eb6a1a99f41",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dang": "sense-candidate-c3e8eeaf32b82eb6a1a99f41"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c3e8eeaf32b82eb6a1a99f41",
+          "display_english": "when",
+          "commit_english": "when"
         }
       ]
     },
@@ -66674,7 +68024,7 @@
     },
     "很": {
       "primary_sense_id": "sense-c146aa6e62a8f05475d1",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "hen": "sense-c146aa6e62a8f05475d1"
       },
@@ -66684,6 +68034,11 @@
           "id": "sense-c146aa6e62a8f05475d1",
           "display_english": "really",
           "commit_english": "really"
+        },
+        {
+          "id": "sense-candidate-7bd49e71aa7f04da41a9f077",
+          "display_english": "very",
+          "commit_english": "very"
         }
       ]
     },
@@ -67372,6 +68727,21 @@
         }
       ]
     },
+    "心愿": {
+      "primary_sense_id": "sense-candidate-d2cbdc0ae83dd308bfd508cd",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xin yuan": "sense-candidate-d2cbdc0ae83dd308bfd508cd"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-d2cbdc0ae83dd308bfd508cd",
+          "display_english": "wish",
+          "commit_english": "wish"
+        }
+      ]
+    },
     "心灵": {
       "primary_sense_id": "sense-11b57f38951ba25e4c8e",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -67534,6 +68904,21 @@
           "id": "sense-c278c80bf35339f5ac9b",
           "display_english": "psycholinguistics",
           "commit_english": "psycholinguistics"
+        }
+      ]
+    },
+    "心甘情愿地": {
+      "primary_sense_id": "sense-candidate-254493d4d20be270a27fb257",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xin gan qing yuan de": "sense-candidate-254493d4d20be270a27fb257"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-254493d4d20be270a27fb257",
+          "display_english": "willingly",
+          "commit_english": "willingly"
         }
       ]
     },
@@ -68044,7 +69429,7 @@
     },
     "忧虑": {
       "primary_sense_id": "sense-dc472eef9ebda932b8f1",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "you lv": "sense-dc472eef9ebda932b8f1"
       },
@@ -68054,6 +69439,11 @@
           "id": "sense-dc472eef9ebda932b8f1",
           "display_english": "apprehension",
           "commit_english": "apprehension"
+        },
+        {
+          "id": "sense-candidate-f123751e5cb673dbf5444a49",
+          "display_english": "worry",
+          "commit_english": "worry"
         }
       ]
     },
@@ -68384,6 +69774,36 @@
           "id": "sense-a6e054f467316ef5bfa6",
           "display_english": "manner",
           "commit_english": "manner"
+        }
+      ]
+    },
+    "怅然地": {
+      "primary_sense_id": "sense-candidate-0f1e8fb3a046f8d9412be014",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "chang ran de": "sense-candidate-0f1e8fb3a046f8d9412be014"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-0f1e8fb3a046f8d9412be014",
+          "display_english": "wistfully",
+          "commit_english": "wistfully"
+        }
+      ]
+    },
+    "怅然的": {
+      "primary_sense_id": "sense-candidate-383a4c3401b98bd609faa20a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "chang ran de": "sense-candidate-383a4c3401b98bd609faa20a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-383a4c3401b98bd609faa20a",
+          "display_english": "wistful",
+          "commit_english": "wistful"
         }
       ]
     },
@@ -69764,7 +71184,7 @@
     },
     "恶化": {
       "primary_sense_id": "sense-dc7b660a5c41bc84b0dd",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "e hua": "sense-dc7b660a5c41bc84b0dd"
       },
@@ -69774,6 +71194,11 @@
           "id": "sense-dc7b660a5c41bc84b0dd",
           "display_english": "deteriorate",
           "commit_english": "deteriorate"
+        },
+        {
+          "id": "sense-candidate-d9f0de0aa82298397d595c56",
+          "display_english": "worsen",
+          "commit_english": "worsen"
         }
       ]
     },
@@ -69884,7 +71309,7 @@
     },
     "恶毒地": {
       "primary_sense_id": "sense-8f2a7c56cdc4990dee7f",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "e du de": "sense-8f2a7c56cdc4990dee7f"
       },
@@ -69894,6 +71319,11 @@
           "id": "sense-8f2a7c56cdc4990dee7f",
           "display_english": "venomously",
           "commit_english": "venomously"
+        },
+        {
+          "id": "sense-candidate-b3ca0e82bf3578926406de07",
+          "display_english": "wickedly",
+          "commit_english": "wickedly"
         }
       ]
     },
@@ -69909,6 +71339,21 @@
           "id": "sense-5db8b726e7eec5c02407",
           "display_english": "foul",
           "commit_english": "foul"
+        }
+      ]
+    },
+    "恶狠狠地": {
+      "primary_sense_id": "sense-candidate-e9ee7486aab469b97b79f6d1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "e hen hen de": "sense-candidate-e9ee7486aab469b97b79f6d1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e9ee7486aab469b97b79f6d1",
+          "display_english": "viciously",
+          "commit_english": "viciously"
         }
       ]
     },
@@ -71047,9 +72492,24 @@
         }
       ]
     },
+    "想知道": {
+      "primary_sense_id": "sense-candidate-fea8f010468dcb69c1340981",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xiang zhi dao": "sense-candidate-fea8f010468dcb69c1340981"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fea8f010468dcb69c1340981",
+          "display_english": "wonder",
+          "commit_english": "wonder"
+        }
+      ]
+    },
     "想要": {
       "primary_sense_id": "sense-dd182cfb0c805aa0a662",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xiang yao": "sense-dd182cfb0c805aa0a662"
       },
@@ -71059,6 +72519,11 @@
           "id": "sense-dd182cfb0c805aa0a662",
           "display_english": "fancy",
           "commit_english": "fancy"
+        },
+        {
+          "id": "sense-candidate-7ce7ef5f7575a46c853d10b6",
+          "display_english": "want",
+          "commit_english": "want"
         }
       ]
     },
@@ -71319,6 +72784,21 @@
           "id": "sense-6be9bfe89c3ade347bb9",
           "display_english": "pasta",
           "commit_english": "pasta"
+        }
+      ]
+    },
+    "意愿": {
+      "primary_sense_id": "sense-candidate-acdd2570956108cc436e108d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yi yuan": "sense-candidate-acdd2570956108cc436e108d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-acdd2570956108cc436e108d",
+          "display_english": "willingness",
+          "commit_english": "willingness"
         }
       ]
     },
@@ -71799,7 +73279,7 @@
     },
     "愿意的": {
       "primary_sense_id": "sense-bce7740b1feab197d7ba",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "yuan yi de": "sense-bce7740b1feab197d7ba"
       },
@@ -71809,6 +73289,26 @@
           "id": "sense-bce7740b1feab197d7ba",
           "display_english": "ready",
           "commit_english": "ready"
+        },
+        {
+          "id": "sense-candidate-fdff84860b8d0fc4acee8393",
+          "display_english": "willing",
+          "commit_english": "willing"
+        }
+      ]
+    },
+    "愿景": {
+      "primary_sense_id": "sense-candidate-7bbb4cfee5379c6d4791a679",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yuan jing": "sense-candidate-7bbb4cfee5379c6d4791a679"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7bbb4cfee5379c6d4791a679",
+          "display_english": "vision",
+          "commit_english": "vision"
         }
       ]
     },
@@ -72594,7 +74094,7 @@
     },
     "我们": {
       "primary_sense_id": "sense-bc6bba65d3bdb25d9f6a",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "wo men": "sense-bc6bba65d3bdb25d9f6a"
       },
@@ -72604,6 +74104,11 @@
           "id": "sense-bc6bba65d3bdb25d9f6a",
           "display_english": "us",
           "commit_english": "us"
+        },
+        {
+          "id": "sense-candidate-e5af5c848f28ccab8a140fb6",
+          "display_english": "we",
+          "commit_english": "we"
         }
       ]
     },
@@ -72692,6 +74197,21 @@
         }
       ]
     },
+    "戒断": {
+      "primary_sense_id": "sense-candidate-1072b7b093fa6ee433e803d3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jie duan": "sense-candidate-1072b7b093fa6ee433e803d3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1072b7b093fa6ee433e803d3",
+          "display_english": "withdrawal",
+          "commit_english": "withdrawal"
+        }
+      ]
+    },
     "戒除": {
       "primary_sense_id": "sense-c659ae8513ea6fed7ce1",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -72724,6 +74244,21 @@
           "id": "sense-8b55dd1c0bb214ae4936",
           "display_english": "or",
           "commit_english": "or"
+        }
+      ]
+    },
+    "战争": {
+      "primary_sense_id": "sense-candidate-1e383e16b2f2c3dd7bfec178",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhan zheng": "sense-candidate-1e383e16b2f2c3dd7bfec178"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1e383e16b2f2c3dd7bfec178",
+          "display_english": "war",
+          "commit_english": "war"
         }
       ]
     },
@@ -72774,7 +74309,7 @@
     },
     "战士": {
       "primary_sense_id": "sense-f754fb6aa3b05d3d27cd",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "zhan shi": "sense-f754fb6aa3b05d3d27cd"
       },
@@ -72784,6 +74319,11 @@
           "id": "sense-f754fb6aa3b05d3d27cd",
           "display_english": "fighter",
           "commit_english": "fighter"
+        },
+        {
+          "id": "sense-candidate-ebbfd865e41cc45b55219e26",
+          "display_english": "warrior",
+          "commit_english": "warrior"
         }
       ]
     },
@@ -72834,6 +74374,21 @@
           "id": "sense-b6d017cccc192f827c86",
           "display_english": "fighter",
           "commit_english": "fighter"
+        }
+      ]
+    },
+    "战时": {
+      "primary_sense_id": "sense-candidate-d2b08b3cbd0ee56b93851435",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhan shi": "sense-candidate-d2b08b3cbd0ee56b93851435"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-d2b08b3cbd0ee56b93851435",
+          "display_english": "wartime",
+          "commit_english": "wartime"
         }
       ]
     },
@@ -72894,6 +74449,21 @@
           "id": "sense-dc1e2a9d8a37f7e864f5",
           "display_english": "defeat",
           "commit_english": "defeat"
+        }
+      ]
+    },
+    "战舰": {
+      "primary_sense_id": "sense-candidate-0042b492f0c693f8bab49346",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhan jian": "sense-candidate-0042b492f0c693f8bab49346"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-0042b492f0c693f8bab49346",
+          "display_english": "warship",
+          "commit_english": "warship"
         }
       ]
     },
@@ -73632,6 +75202,21 @@
         }
       ]
     },
+    "手腕": {
+      "primary_sense_id": "sense-candidate-bfe5a4fc9148a65da5feefa9",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shou wan": "sense-candidate-bfe5a4fc9148a65da5feefa9"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bfe5a4fc9148a65da5feefa9",
+          "display_english": "wrist",
+          "commit_english": "wrist"
+        }
+      ]
+    },
     "手艺": {
       "primary_sense_id": "sense-664daebd7f46546f4809",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -73644,6 +75229,21 @@
           "id": "sense-664daebd7f46546f4809",
           "display_english": "craft",
           "commit_english": "craft"
+        }
+      ]
+    },
+    "手表": {
+      "primary_sense_id": "sense-candidate-f27cbd383056c468baaf402f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shou biao": "sense-candidate-f27cbd383056c468baaf402f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f27cbd383056c468baaf402f",
+          "display_english": "watch",
+          "commit_english": "watch"
         }
       ]
     },
@@ -74104,6 +75704,21 @@
           "id": "sense-f7430c013853d69ae0af",
           "display_english": "slip",
           "commit_english": "slip"
+        }
+      ]
+    },
+    "打滚": {
+      "primary_sense_id": "sense-candidate-85a6564e9119c3b88de0d637",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "da gun": "sense-candidate-85a6564e9119c3b88de0d637"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-85a6564e9119c3b88de0d637",
+          "display_english": "wallow",
+          "commit_english": "wallow"
         }
       ]
     },
@@ -75527,6 +77142,21 @@
         }
       ]
     },
+    "投票": {
+      "primary_sense_id": "sense-candidate-acb19738852fb16c8b1e0d59",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "tou piao": "sense-candidate-acb19738852fb16c8b1e0d59"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-acb19738852fb16c8b1e0d59",
+          "display_english": "vote",
+          "commit_english": "vote"
+        }
+      ]
+    },
     "投篮": {
       "primary_sense_id": "sense-revision-121ce61361456a44b4fbd19e",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -75849,6 +77479,11 @@
           "id": "sense-35ffce7d4971ba51b1aa",
           "display_english": "torment",
           "commit_english": "torment"
+        },
+        {
+          "id": "sense-candidate-8f191467aab4762ff1674755",
+          "display_english": "wrack",
+          "commit_english": "wrack"
         }
       ]
     },
@@ -76732,6 +78367,36 @@
         }
       ]
     },
+    "担心": {
+      "primary_sense_id": "sense-candidate-da70231d4eac84fc1734cdb6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dan xin": "sense-candidate-da70231d4eac84fc1734cdb6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-da70231d4eac84fc1734cdb6",
+          "display_english": "worry",
+          "commit_english": "worry"
+        }
+      ]
+    },
+    "担心的": {
+      "primary_sense_id": "sense-candidate-73461100e7e5bb764a751f40",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dan xin de": "sense-candidate-73461100e7e5bb764a751f40"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-73461100e7e5bb764a751f40",
+          "display_english": "worried",
+          "commit_english": "worried"
+        }
+      ]
+    },
     "拆下": {
       "primary_sense_id": "sense-90f77a95c6323dade6e6",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -76849,6 +78514,21 @@
           "id": "sense-0ef89b09d26808793e2e",
           "display_english": "stretch",
           "commit_english": "stretch"
+        }
+      ]
+    },
+    "拉链": {
+      "primary_sense_id": "sense-candidate-d39ed48c4f706e117e17551d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "la lian": "sense-candidate-d39ed48c4f706e117e17551d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-d39ed48c4f706e117e17551d",
+          "display_english": "zip",
+          "commit_english": "zip"
         }
       ]
     },
@@ -78532,6 +80212,26 @@
         }
       ]
     },
+    "挡风玻璃": {
+      "primary_sense_id": "sense-candidate-4a8461f3754a5ac0233924e1",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "dang feng bo li": "sense-candidate-4a8461f3754a5ac0233924e1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-4a8461f3754a5ac0233924e1",
+          "display_english": "windscreen",
+          "commit_english": "windscreen"
+        },
+        {
+          "id": "sense-candidate-e25c32ea878d2c63137460ac",
+          "display_english": "windshield",
+          "commit_english": "windshield"
+        }
+      ]
+    },
     "挣扎": {
       "primary_sense_id": "sense-d9699d547dfff95c1d31",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -78689,7 +80389,7 @@
     },
     "振动": {
       "primary_sense_id": "sense-06a19c19c053499f58a7",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "zhen dong": "sense-06a19c19c053499f58a7"
       },
@@ -78699,6 +80399,11 @@
           "id": "sense-06a19c19c053499f58a7",
           "display_english": "vibrate",
           "commit_english": "vibrate"
+        },
+        {
+          "id": "sense-candidate-caa812edb5b2f1dfeb7b00b5",
+          "display_english": "vibration",
+          "commit_english": "vibration"
         }
       ]
     },
@@ -79317,6 +81022,21 @@
         }
       ]
     },
+    "排球": {
+      "primary_sense_id": "sense-candidate-636b9a426dc67dcfee64c223",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "pai qiu": "sense-candidate-636b9a426dc67dcfee64c223"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-636b9a426dc67dcfee64c223",
+          "display_english": "volleyball",
+          "commit_english": "volleyball"
+        }
+      ]
+    },
     "排练": {
       "primary_sense_id": "sense-1a336b2353f0f9f4f90f",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -79744,6 +81464,21 @@
           "id": "sense-a1b82b4cf8d6192a4299",
           "display_english": "acceptance",
           "commit_english": "acceptance"
+        }
+      ]
+    },
+    "接线": {
+      "primary_sense_id": "sense-candidate-317383cbd0599ea569ca4ba5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jie xian": "sense-candidate-317383cbd0599ea569ca4ba5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-317383cbd0599ea569ca4ba5",
+          "display_english": "wire",
+          "commit_english": "wire"
         }
       ]
     },
@@ -81609,7 +83344,7 @@
     },
     "撤出": {
       "primary_sense_id": "sense-9f47c50e6a524901de2a",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "che chu": "sense-9f47c50e6a524901de2a"
       },
@@ -81619,6 +83354,11 @@
           "id": "sense-9f47c50e6a524901de2a",
           "display_english": "withdraw",
           "commit_english": "withdraw"
+        },
+        {
+          "id": "sense-candidate-3fd6abab3f82a04fa9f3f812",
+          "display_english": "withdrawal",
+          "commit_english": "withdrawal"
         }
       ]
     },
@@ -81792,6 +83532,21 @@
         }
       ]
     },
+    "操作台": {
+      "primary_sense_id": "sense-candidate-e85d9770be485489ea903414",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cao zuo tai": "sense-candidate-e85d9770be485489ea903414"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e85d9770be485489ea903414",
+          "display_english": "worktable",
+          "commit_english": "worktable"
+        }
+      ]
+    },
     "操作员": {
       "primary_sense_id": "sense-087e27ac8d5be455b8a6",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -81889,6 +83644,21 @@
           "id": "sense-ce4c44112648da90d1a1",
           "display_english": "polish",
           "commit_english": "polish"
+        }
+      ]
+    },
+    "擦拭": {
+      "primary_sense_id": "sense-candidate-acefd7d88eee2e29e6ef6344",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ca shi": "sense-candidate-acefd7d88eee2e29e6ef6344"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-acefd7d88eee2e29e6ef6344",
+          "display_english": "wipe",
+          "commit_english": "wipe"
         }
       ]
     },
@@ -84129,7 +85899,7 @@
     },
     "整个": {
       "primary_sense_id": "sense-e8c3949c73023f9f51f0",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "zheng ge": "sense-e8c3949c73023f9f51f0"
       },
@@ -84139,6 +85909,26 @@
           "id": "sense-e8c3949c73023f9f51f0",
           "display_english": "entire",
           "commit_english": "entire"
+        },
+        {
+          "id": "sense-candidate-78b9b6778c23fffef4294676",
+          "display_english": "whole",
+          "commit_english": "whole"
+        }
+      ]
+    },
+    "整体": {
+      "primary_sense_id": "sense-candidate-30902e55f26b781628a39c09",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zheng ti": "sense-candidate-30902e55f26b781628a39c09"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-30902e55f26b781628a39c09",
+          "display_english": "whole",
+          "commit_english": "whole"
         }
       ]
     },
@@ -84387,6 +86177,21 @@
         }
       ]
     },
+    "文字高手": {
+      "primary_sense_id": "sense-candidate-aa3e0e3efd04f5f7f1fc6b54",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wen zi gao shou": "sense-candidate-aa3e0e3efd04f5f7f1fc6b54"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-aa3e0e3efd04f5f7f1fc6b54",
+          "display_english": "wordsmith",
+          "commit_english": "wordsmith"
+        }
+      ]
+    },
     "文学": {
       "primary_sense_id": "sense-e6eb96ff2ea0fab1d9b3",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -84549,6 +86354,21 @@
           "id": "sense-9902ec4c55ad31381264",
           "display_english": "spot",
           "commit_english": "spot"
+        }
+      ]
+    },
+    "斑马": {
+      "primary_sense_id": "sense-candidate-371305a613353ad2b05896bc",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ban ma": "sense-candidate-371305a613353ad2b05896bc"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-371305a613353ad2b05896bc",
+          "display_english": "zebra",
+          "commit_english": "zebra"
         }
       ]
     },
@@ -85364,6 +87184,11 @@
           "id": "sense-e875e107012049d4c388",
           "display_english": "methods",
           "commit_english": "methods"
+        },
+        {
+          "id": "sense-candidate-d8c2d0d1e3a536786c81f4d1",
+          "display_english": "way",
+          "commit_english": "way"
         }
       ]
     },
@@ -85777,6 +87602,21 @@
         }
       ]
     },
+    "旋风": {
+      "primary_sense_id": "sense-candidate-5e22a4cf3fc18972b89682d1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xuan feng": "sense-candidate-5e22a4cf3fc18972b89682d1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5e22a4cf3fc18972b89682d1",
+          "display_english": "whirlwind",
+          "commit_english": "whirlwind"
+        }
+      ]
+    },
     "族": {
       "primary_sense_id": "sense-048d104e45aa1ac0724d",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -85934,6 +87774,21 @@
           "id": "sense-revision-688014a0640c9fc736760fc4",
           "display_english": "insolvent",
           "commit_english": "insolvent"
+        }
+      ]
+    },
+    "无力地": {
+      "primary_sense_id": "sense-candidate-a8de38685877e83479ce4761",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wu li de": "sense-candidate-a8de38685877e83479ce4761"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a8de38685877e83479ce4761",
+          "display_english": "weakly",
+          "commit_english": "weakly"
         }
       ]
     },
@@ -86719,7 +88574,7 @@
     },
     "无论何处": {
       "primary_sense_id": "sense-335aba2818273d2523cb",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "wu lun he chu": "sense-335aba2818273d2523cb"
       },
@@ -86729,6 +88584,26 @@
           "id": "sense-335aba2818273d2523cb",
           "display_english": "anywhere",
           "commit_english": "anywhere"
+        },
+        {
+          "id": "sense-candidate-82d0d0a0adf80141bd1243cf",
+          "display_english": "wherever",
+          "commit_english": "wherever"
+        }
+      ]
+    },
+    "无论何时": {
+      "primary_sense_id": "sense-candidate-05f1a14f6fa263162e79ab2a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wu lun he shi": "sense-candidate-05f1a14f6fa263162e79ab2a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-05f1a14f6fa263162e79ab2a",
+          "display_english": "whenever",
+          "commit_english": "whenever"
         }
       ]
     },
@@ -86744,6 +88619,21 @@
           "id": "sense-60eb40005a56950791b2",
           "display_english": "anyhow",
           "commit_english": "anyhow"
+        }
+      ]
+    },
+    "无论是谁": {
+      "primary_sense_id": "sense-candidate-4c12622b58d64d48db259eb1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wu lun shi shei": "sense-candidate-4c12622b58d64d48db259eb1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-4c12622b58d64d48db259eb1",
+          "display_english": "whoever",
+          "commit_english": "whoever"
         }
       ]
     },
@@ -87759,6 +89649,11 @@
           "id": "sense-c1dc45d16cf04f8b53e6",
           "display_english": "recognizably",
           "commit_english": "recognizably"
+        },
+        {
+          "id": "sense-candidate-967b7865588f2bf21daacb3a",
+          "display_english": "visibly",
+          "commit_english": "visibly"
         }
       ]
     },
@@ -88479,7 +90374,7 @@
     },
     "是否": {
       "primary_sense_id": "sense-d4ee3b50a1ab0ade6d9a",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "shi fou": "sense-d4ee3b50a1ab0ade6d9a"
       },
@@ -88489,6 +90384,56 @@
           "id": "sense-d4ee3b50a1ab0ade6d9a",
           "display_english": "if",
           "commit_english": "if"
+        },
+        {
+          "id": "sense-candidate-da533063f179024bf148e5a3",
+          "display_english": "whether",
+          "commit_english": "whether"
+        }
+      ]
+    },
+    "是啊": {
+      "primary_sense_id": "sense-candidate-bc801987368061d03531033f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi a": "sense-candidate-bc801987368061d03531033f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bc801987368061d03531033f",
+          "display_english": "yeah",
+          "commit_english": "yeah"
+        }
+      ]
+    },
+    "是的": {
+      "primary_sense_id": "sense-candidate-c0c23021623f129aa6cfb587",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi de": "sense-candidate-c0c23021623f129aa6cfb587"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c0c23021623f129aa6cfb587",
+          "display_english": "yes",
+          "commit_english": "yes"
+        }
+      ]
+    },
+    "是谁的": {
+      "primary_sense_id": "sense-candidate-308c520ceceadec6e1e6386b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi shei de": "sense-candidate-308c520ceceadec6e1e6386b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-308c520ceceadec6e1e6386b",
+          "display_english": "whose",
+          "commit_english": "whose"
         }
       ]
     },
@@ -89447,6 +91392,21 @@
         }
       ]
     },
+    "暖意": {
+      "primary_sense_id": "sense-candidate-08cca8f57f66c08f320f8a8d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "nuan yi": "sense-candidate-08cca8f57f66c08f320f8a8d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-08cca8f57f66c08f320f8a8d",
+          "display_english": "warmth",
+          "commit_english": "warmth"
+        }
+      ]
+    },
     "暖气": {
       "primary_sense_id": "sense-revision-80c4770754ae1d9c730b89d3",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定heater，n，用于给室内空间供暖的设备；其余通过英文保留。",
@@ -89634,6 +91594,21 @@
           "id": "sense-b7248581516a8f46afe7",
           "display_english": "riot",
           "commit_english": "riot"
+        }
+      ]
+    },
+    "暴力": {
+      "primary_sense_id": "sense-candidate-aad07fb4778db105e6970beb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bao li": "sense-candidate-aad07fb4778db105e6970beb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-aad07fb4778db105e6970beb",
+          "display_english": "violence",
+          "commit_english": "violence"
         }
       ]
     },
@@ -90172,6 +92147,36 @@
         }
       ]
     },
+    "更糟地": {
+      "primary_sense_id": "sense-candidate-a6846531633e0051db1ef542",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "geng zao de": "sense-candidate-a6846531633e0051db1ef542"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a6846531633e0051db1ef542",
+          "display_english": "worse",
+          "commit_english": "worse"
+        }
+      ]
+    },
+    "更糟的": {
+      "primary_sense_id": "sense-candidate-3800fe3f4b1b158c0c7e504f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "geng zao de": "sense-candidate-3800fe3f4b1b158c0c7e504f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3800fe3f4b1b158c0c7e504f",
+          "display_english": "worse",
+          "commit_english": "worse"
+        }
+      ]
+    },
     "更远": {
       "primary_sense_id": "sense-5205b06b0dd39dfba0c2",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -90457,6 +92462,21 @@
         }
       ]
     },
+    "最坏的情况": {
+      "primary_sense_id": "sense-candidate-9680531ead408f0e09cb0dfd",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zui huai de qing kuang": "sense-candidate-9680531ead408f0e09cb0dfd"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-9680531ead408f0e09cb0dfd",
+          "display_english": "worst",
+          "commit_english": "worst"
+        }
+      ]
+    },
     "最大的": {
       "primary_sense_id": "sense-4e33cfb9f1596b01d60a",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -90634,6 +92654,21 @@
           "id": "sense-457926fe57ec018650a6",
           "display_english": "innermost",
           "commit_english": "innermost"
+        }
+      ]
+    },
+    "最糟的": {
+      "primary_sense_id": "sense-candidate-cb4b84f16e2f0b30041efe24",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zui zao de": "sense-candidate-cb4b84f16e2f0b30041efe24"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-cb4b84f16e2f0b30041efe24",
+          "display_english": "worst",
+          "commit_english": "worst"
         }
       ]
     },
@@ -91134,6 +93169,11 @@
           "id": "sense-9108741f504efdc2e050",
           "display_english": "powerfully",
           "commit_english": "powerfully"
+        },
+        {
+          "id": "sense-candidate-bf9fd865f2e490be0394e4f2",
+          "display_english": "vigorously",
+          "commit_english": "vigorously"
         }
       ]
     },
@@ -91562,6 +93602,21 @@
         }
       ]
     },
+    "有朝气的": {
+      "primary_sense_id": "sense-candidate-e073ef321b5c72804615fd9a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "you zhao qi de": "sense-candidate-e073ef321b5c72804615fd9a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e073ef321b5c72804615fd9a",
+          "display_english": "youthful",
+          "commit_english": "youthful"
+        }
+      ]
+    },
     "有机的": {
       "primary_sense_id": "sense-b1b54e0094e547febd17",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -91624,6 +93679,16 @@
           "id": "sense-45f31b41bd6ecb31016c",
           "display_english": "organized",
           "commit_english": "organized"
+        },
+        {
+          "id": "sense-candidate-3981b867135d2088c9c7825d",
+          "display_english": "well-organised",
+          "commit_english": "well-organised"
+        },
+        {
+          "id": "sense-candidate-75c0eac2e5c8589fe40de69e",
+          "display_english": "well-organized",
+          "commit_english": "well-organized"
         }
       ]
     },
@@ -92337,6 +94402,21 @@
         }
       ]
     },
+    "有风的": {
+      "primary_sense_id": "sense-candidate-838822f7946980a31c087eb7",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "you feng de": "sense-candidate-838822f7946980a31c087eb7"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-838822f7946980a31c087eb7",
+          "display_english": "windy",
+          "commit_english": "windy"
+        }
+      ]
+    },
     "有风险的": {
       "primary_sense_id": "sense-85ea0cc250a011f72401",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -92777,6 +94857,21 @@
         }
       ]
     },
+    "木制的": {
+      "primary_sense_id": "sense-candidate-acdfa095ef358d10f8369117",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mu zhi de": "sense-candidate-acdfa095ef358d10f8369117"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-acdfa095ef358d10f8369117",
+          "display_english": "wooden",
+          "commit_english": "wooden"
+        }
+      ]
+    },
     "木匠": {
       "primary_sense_id": "sense-132a69447c7c1db28edf",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -92884,6 +94979,21 @@
           "id": "sense-2fbca978f5a4da738508",
           "display_english": "peg",
           "commit_english": "peg"
+        }
+      ]
+    },
+    "木雕": {
+      "primary_sense_id": "sense-candidate-b32f494341dd62f434cbd1fa",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mu diao": "sense-candidate-b32f494341dd62f434cbd1fa"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b32f494341dd62f434cbd1fa",
+          "display_english": "woodcarving",
+          "commit_english": "woodcarving"
         }
       ]
     },
@@ -93537,6 +95647,21 @@
         }
       ]
     },
+    "机智风趣的": {
+      "primary_sense_id": "sense-candidate-283fdfdb74b9476c2f086196",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ji zhi feng qu de": "sense-candidate-283fdfdb74b9476c2f086196"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-283fdfdb74b9476c2f086196",
+          "display_english": "witty",
+          "commit_english": "witty"
+        }
+      ]
+    },
     "机构": {
       "primary_sense_id": "sense-d1f14430ab40dedf6bfb",
       "selection_reason": "沿用943开发快照及其基础预览中「机构」的既有默认institution；agency、mechanism的全部已保留范围继续存在。一般组织机构默认institution；agency提供特定服务的机构义保留。",
@@ -94012,6 +96137,21 @@
         }
       ]
     },
+    "权衡": {
+      "primary_sense_id": "sense-candidate-8831cb2369c44da2c11d4516",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "quan heng": "sense-candidate-8831cb2369c44da2c11d4516"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8831cb2369c44da2c11d4516",
+          "display_english": "weigh",
+          "commit_english": "weigh"
+        }
+      ]
+    },
     "杆子": {
       "primary_sense_id": "sense-d9c7e564a390a21ce37a",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -94074,6 +96214,21 @@
           "id": "sense-1c6c4cecf4d43ba2aa3c",
           "display_english": "village",
           "commit_english": "village"
+        }
+      ]
+    },
+    "村民": {
+      "primary_sense_id": "sense-candidate-218c31577b24a208b0761543",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cun min": "sense-candidate-218c31577b24a208b0761543"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-218c31577b24a208b0761543",
+          "display_english": "villager",
+          "commit_english": "villager"
         }
       ]
     },
@@ -94317,9 +96472,24 @@
         }
       ]
     },
+    "来访": {
+      "primary_sense_id": "sense-candidate-112f834e47ca9e42b408c7b1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lai fang": "sense-candidate-112f834e47ca9e42b408c7b1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-112f834e47ca9e42b408c7b1",
+          "display_english": "visit",
+          "commit_english": "visit"
+        }
+      ]
+    },
     "来访者": {
       "primary_sense_id": "sense-88b20375ce865a61ff7c",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "lai fang zhe": "sense-88b20375ce865a61ff7c"
       },
@@ -94329,6 +96499,11 @@
           "id": "sense-88b20375ce865a61ff7c",
           "display_english": "caller",
           "commit_english": "caller"
+        },
+        {
+          "id": "sense-candidate-ee5e0aafd3582cc739e90acd",
+          "display_english": "visitor",
+          "commit_english": "visitor"
         }
       ]
     },
@@ -96012,6 +98187,21 @@
         }
       ]
     },
+    "树木茂密的": {
+      "primary_sense_id": "sense-candidate-5d0ae5aff6bbaadacff77255",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shu mu mao mi de": "sense-candidate-5d0ae5aff6bbaadacff77255"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5d0ae5aff6bbaadacff77255",
+          "display_english": "wooded",
+          "commit_english": "wooded"
+        }
+      ]
+    },
     "树林": {
       "primary_sense_id": "sense-7f0bae93c925301f2c3a",
       "selection_reason": "保持上一版运行时已有默认英文。",
@@ -96259,6 +98449,21 @@
           "id": "sense-e34686eaa9fa7c29b0f1",
           "display_english": "core",
           "commit_english": "core"
+        }
+      ]
+    },
+    "核桃": {
+      "primary_sense_id": "sense-candidate-6ab307763fae8ba1c215e6ea",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "he tao": "sense-candidate-6ab307763fae8ba1c215e6ea"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6ab307763fae8ba1c215e6ea",
+          "display_english": "walnut",
+          "commit_english": "walnut"
         }
       ]
     },
@@ -98274,7 +100479,7 @@
     },
     "歌手": {
       "primary_sense_id": "sense-21999a2873ec6df7e755",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "ge shou": "sense-21999a2873ec6df7e755"
       },
@@ -98284,6 +100489,11 @@
           "id": "sense-21999a2873ec6df7e755",
           "display_english": "singer",
           "commit_english": "singer"
+        },
+        {
+          "id": "sense-candidate-c1f088a492ed9d12dd322722",
+          "display_english": "vocalist",
+          "commit_english": "vocalist"
         }
       ]
     },
@@ -98349,6 +100559,21 @@
           "id": "sense-8099490cbaf0ccb664b9",
           "display_english": "incoming",
           "commit_english": "incoming"
+        }
+      ]
+    },
+    "正名": {
+      "primary_sense_id": "sense-candidate-073b191103b70394982028fc",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zheng ming": "sense-candidate-073b191103b70394982028fc"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-073b191103b70394982028fc",
+          "display_english": "vindication",
+          "commit_english": "vindication"
         }
       ]
     },
@@ -98694,6 +100919,21 @@
           "id": "sense-5a3e5e4764b3474167a1",
           "display_english": "walking",
           "commit_english": "walking"
+        }
+      ]
+    },
+    "步行者": {
+      "primary_sense_id": "sense-candidate-322bd8045f76a8d9964c1ee7",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bu xing zhe": "sense-candidate-322bd8045f76a8d9964c1ee7"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-322bd8045f76a8d9964c1ee7",
+          "display_english": "walker",
+          "commit_english": "walker"
         }
       ]
     },
@@ -99662,6 +101902,21 @@
         }
       ]
     },
+    "每当": {
+      "primary_sense_id": "sense-candidate-43c3e2e39c3716ca2007113e",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mei dang": "sense-candidate-43c3e2e39c3716ca2007113e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-43c3e2e39c3716ca2007113e",
+          "display_english": "whenever",
+          "commit_english": "whenever"
+        }
+      ]
+    },
     "每日": {
       "primary_sense_id": "sense-34e8ff80f498fd5754bc",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -100144,6 +102399,21 @@
           "id": "sense-111b06dd8837d5595dd7",
           "display_english": "effortless",
           "commit_english": "effortless"
+        }
+      ]
+    },
+    "毫无价值的": {
+      "primary_sense_id": "sense-candidate-9b7a60a820e48482dfa85159",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "hao wu jia zhi de": "sense-candidate-9b7a60a820e48482dfa85159"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-9b7a60a820e48482dfa85159",
+          "display_english": "worthless",
+          "commit_english": "worthless"
         }
       ]
     },
@@ -101407,6 +103677,21 @@
         }
       ]
     },
+    "求爱": {
+      "primary_sense_id": "sense-candidate-e62c9c8db6766e0687b2f26d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "qiu ai": "sense-candidate-e62c9c8db6766e0687b2f26d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e62c9c8db6766e0687b2f26d",
+          "display_english": "woo",
+          "commit_english": "woo"
+        }
+      ]
+    },
     "求职信": {
       "primary_sense_id": "sense-a475d6a1d1813c2232b9",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -101944,6 +104229,21 @@
           "id": "sense-cee99aa6458b99c9afa5",
           "display_english": "immerse",
           "commit_english": "immerse"
+        }
+      ]
+    },
+    "沉溺": {
+      "primary_sense_id": "sense-candidate-f15ddfd77541769e33494c8f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "chen ni": "sense-candidate-f15ddfd77541769e33494c8f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f15ddfd77541769e33494c8f",
+          "display_english": "wallow",
+          "commit_english": "wallow"
         }
       ]
     },
@@ -103282,6 +105582,21 @@
         }
       ]
     },
+    "洗": {
+      "primary_sense_id": "sense-candidate-ddc3bdc03ed225436353326c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xi": "sense-candidate-ddc3bdc03ed225436353326c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ddc3bdc03ed225436353326c",
+          "display_english": "wash",
+          "commit_english": "wash"
+        }
+      ]
+    },
     "洗发水": {
       "primary_sense_id": "sense-f483c66cf98faa204875",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -103314,7 +105629,7 @@
     },
     "洗涤": {
       "primary_sense_id": "sense-720c35b0095865d093ee",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xi di": "sense-720c35b0095865d093ee"
       },
@@ -103324,6 +105639,11 @@
           "id": "sense-720c35b0095865d093ee",
           "display_english": "washing",
           "commit_english": "washing"
+        },
+        {
+          "id": "sense-candidate-f2031903fdd55ef7170cefd6",
+          "display_english": "wash",
+          "commit_english": "wash"
         }
       ]
     },
@@ -103377,6 +105697,21 @@
         }
       ]
     },
+    "洗碗": {
+      "primary_sense_id": "sense-candidate-d727b1d53705bb685d68301e",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xi wan": "sense-candidate-d727b1d53705bb685d68301e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-d727b1d53705bb685d68301e",
+          "display_english": "washing-up",
+          "commit_english": "washing-up"
+        }
+      ]
+    },
     "洗碗机": {
       "primary_sense_id": "sense-c60a3525dbdcc442321f",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -103412,6 +105747,21 @@
         }
       ]
     },
+    "洗脸盆": {
+      "primary_sense_id": "sense-candidate-469e74db36d747c033bf84ff",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xi lian pen": "sense-candidate-469e74db36d747c033bf84ff"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-469e74db36d747c033bf84ff",
+          "display_english": "washbowl",
+          "commit_english": "washbowl"
+        }
+      ]
+    },
     "洗衣": {
       "primary_sense_id": "sense-6d03283fa880a8076d64",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -103439,6 +105789,21 @@
           "id": "legacy-daily-093",
           "display_english": "washing machine",
           "commit_english": "washing machine"
+        }
+      ]
+    },
+    "洗衣盆": {
+      "primary_sense_id": "sense-candidate-4ae4290299fecfcb0e36fa39",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xi yi pen": "sense-candidate-4ae4290299fecfcb0e36fa39"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-4ae4290299fecfcb0e36fa39",
+          "display_english": "washtub",
+          "commit_english": "washtub"
         }
       ]
     },
@@ -103539,7 +105904,7 @@
     },
     "活力": {
       "primary_sense_id": "sense-ea356e13a3cd4cfa7bad",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "huo li": "sense-ea356e13a3cd4cfa7bad"
       },
@@ -103549,6 +105914,21 @@
           "id": "sense-ea356e13a3cd4cfa7bad",
           "display_english": "animation",
           "commit_english": "animation"
+        },
+        {
+          "id": "sense-candidate-2603dc10871c3569db4ab4ab",
+          "display_english": "verve",
+          "commit_english": "verve"
+        },
+        {
+          "id": "sense-candidate-10809409b1c96fe9eb26acc3",
+          "display_english": "vigor",
+          "commit_english": "vigor"
+        },
+        {
+          "id": "sense-candidate-1cc09b166c44469f52274934",
+          "display_english": "vigour",
+          "commit_english": "vigour"
         }
       ]
     },
@@ -104444,6 +106824,21 @@
           "id": "sense-6d0f77b034e92fbec75d",
           "display_english": "squander",
           "commit_english": "squander"
+        }
+      ]
+    },
+    "浪费的": {
+      "primary_sense_id": "sense-candidate-774468688d6ad44053c649c4",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lang fei de": "sense-candidate-774468688d6ad44053c649c4"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-774468688d6ad44053c649c4",
+          "display_english": "wasteful",
+          "commit_english": "wasteful"
         }
       ]
     },
@@ -106569,7 +108964,7 @@
     },
     "温情": {
       "primary_sense_id": "sense-0210892c43c24a3a9adf",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "wen qing": "sense-0210892c43c24a3a9adf"
       },
@@ -106579,6 +108974,11 @@
           "id": "sense-0210892c43c24a3a9adf",
           "display_english": "tenderness",
           "commit_english": "tenderness"
+        },
+        {
+          "id": "sense-candidate-d605b04caa57ffc33e769734",
+          "display_english": "warmth",
+          "commit_english": "warmth"
         }
       ]
     },
@@ -106952,6 +109352,21 @@
         }
       ]
     },
+    "游艇": {
+      "primary_sense_id": "sense-candidate-e4691ed731b69763d1a143b7",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "you ting": "sense-candidate-e4691ed731b69763d1a143b7"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e4691ed731b69763d1a143b7",
+          "display_english": "yacht",
+          "commit_english": "yacht"
+        }
+      ]
+    },
     "游行": {
       "primary_sense_id": "sense-df6b1a54d44ee5225921",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -107074,6 +109489,21 @@
           "id": "sense-3b7a92d19e716e86a5e2",
           "display_english": "moist",
           "commit_english": "moist"
+        }
+      ]
+    },
+    "湿的": {
+      "primary_sense_id": "sense-candidate-f1afef64eedc3ffce64de339",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi de": "sense-candidate-f1afef64eedc3ffce64de339"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f1afef64eedc3ffce64de339",
+          "display_english": "wet",
+          "commit_english": "wet"
         }
       ]
     },
@@ -107692,6 +110122,21 @@
         }
       ]
     },
+    "滨水区": {
+      "primary_sense_id": "sense-candidate-1fadf289d36246a41b1f5cb1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bin shui qu": "sense-candidate-1fadf289d36246a41b1f5cb1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1fadf289d36246a41b1f5cb1",
+          "display_english": "waterfront",
+          "commit_english": "waterfront"
+        }
+      ]
+    },
     "滴下": {
       "primary_sense_id": "sense-d12caea9c8083ff2a867",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -107922,6 +110367,21 @@
         }
       ]
     },
+    "演奏大师": {
+      "primary_sense_id": "sense-candidate-ad8af8ab35753894582edeb0",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yan zou da shi": "sense-candidate-ad8af8ab35753894582edeb0"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ad8af8ab35753894582edeb0",
+          "display_english": "virtuoso",
+          "commit_english": "virtuoso"
+        }
+      ]
+    },
     "演示": {
       "primary_sense_id": "sense-d92fa19511e8c761c782",
       "selection_reason": "动作入口取操作展示，presentation讲解陈述名词另保留。",
@@ -108044,7 +110504,7 @@
     },
     "漩涡": {
       "primary_sense_id": "sense-203e9cedfe57212457b9",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xuan wo": "sense-203e9cedfe57212457b9"
       },
@@ -108054,6 +110514,11 @@
           "id": "sense-203e9cedfe57212457b9",
           "display_english": "eddy",
           "commit_english": "eddy"
+        },
+        {
+          "id": "sense-candidate-518d40cdf3ce5cec6c87efc4",
+          "display_english": "vortex",
+          "commit_english": "vortex"
         }
       ]
     },
@@ -110229,6 +112694,11 @@
           "id": "sense-a4cb7c8e074f6494a24a",
           "display_english": "passionately",
           "commit_english": "passionately"
+        },
+        {
+          "id": "sense-candidate-5391e8bbff4e64e0998f6609",
+          "display_english": "warmly",
+          "commit_english": "warmly"
         }
       ]
     },
@@ -110564,6 +113034,21 @@
           "id": "sense-d21777250812f13193ef",
           "display_english": "anxious",
           "commit_english": "anxious"
+        }
+      ]
+    },
+    "然而": {
+      "primary_sense_id": "sense-candidate-bca0bc46bc2811af2b154856",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ran er": "sense-candidate-bca0bc46bc2811af2b154856"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bca0bc46bc2811af2b154856",
+          "display_english": "yet",
+          "commit_english": "yet"
         }
       ]
     },
@@ -112817,6 +115302,21 @@
         }
       ]
     },
+    "狂乱地": {
+      "primary_sense_id": "sense-candidate-bca3876ff854ede04adeed99",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "kuang luan de": "sense-candidate-bca3876ff854ede04adeed99"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-bca3876ff854ede04adeed99",
+          "display_english": "wildly",
+          "commit_english": "wildly"
+        }
+      ]
+    },
     "狂喜": {
       "primary_sense_id": "sense-68ab966e71ca5753da1f",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -113352,6 +115852,21 @@
         }
       ]
     },
+    "狼": {
+      "primary_sense_id": "sense-candidate-856409e18e23275775490982",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lang": "sense-candidate-856409e18e23275775490982"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-856409e18e23275775490982",
+          "display_english": "wolf",
+          "commit_english": "wolf"
+        }
+      ]
+    },
     "猎人": {
       "primary_sense_id": "sense-5f446a678fc61a42ec8e",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -113499,7 +116014,7 @@
     },
     "猛烈地": {
       "primary_sense_id": "sense-f263e3b3215fcb07a0f2",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "meng lie de": "sense-f263e3b3215fcb07a0f2"
       },
@@ -113509,6 +116024,11 @@
           "id": "sense-f263e3b3215fcb07a0f2",
           "display_english": "fiercely",
           "commit_english": "fiercely"
+        },
+        {
+          "id": "sense-candidate-b1974e5037b1f0b25470bda5",
+          "display_english": "violently",
+          "commit_english": "violently"
         }
       ]
     },
@@ -115224,7 +117744,7 @@
     },
     "生动地": {
       "primary_sense_id": "sense-39c6534df93f7d04ec4f",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "sheng dong de": "sense-39c6534df93f7d04ec4f"
       },
@@ -115234,6 +117754,11 @@
           "id": "sense-39c6534df93f7d04ec4f",
           "display_english": "graphically",
           "commit_english": "graphically"
+        },
+        {
+          "id": "sense-candidate-6fdc25c7067c6761fe5b3816",
+          "display_english": "vividly",
+          "commit_english": "vividly"
         }
       ]
     },
@@ -115264,6 +117789,21 @@
           "id": "sense-8f8ea71fd58fd3d54a48",
           "display_english": "life",
           "commit_english": "life"
+        }
+      ]
+    },
+    "生命力": {
+      "primary_sense_id": "sense-candidate-43b8fa2d9c23422542d2e074",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "sheng ming li": "sense-candidate-43b8fa2d9c23422542d2e074"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-43b8fa2d9c23422542d2e074",
+          "display_english": "vitality",
+          "commit_english": "vitality"
         }
       ]
     },
@@ -115807,6 +118347,21 @@
         }
       ]
     },
+    "用坏了的": {
+      "primary_sense_id": "sense-candidate-387a4db1562855ee88c4abf5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yong huai le de": "sense-candidate-387a4db1562855ee88c4abf5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-387a4db1562855ee88c4abf5",
+          "display_english": "worn out",
+          "commit_english": "worn out"
+        }
+      ]
+    },
     "用平头钉固定": {
       "primary_sense_id": "sense-7a098a086e8fa882abd9",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -116242,6 +118797,21 @@
         }
       ]
     },
+    "电子游戏": {
+      "primary_sense_id": "sense-candidate-be1fb88bc492717267378e66",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dian zi you xi": "sense-candidate-be1fb88bc492717267378e66"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-be1fb88bc492717267378e66",
+          "display_english": "video game",
+          "commit_english": "video game"
+        }
+      ]
+    },
     "电子表格": {
       "primary_sense_id": "sense-b95b15cb4e7828877bda",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -116514,6 +119084,21 @@
           "id": "sense-b4b749173ce32d8be3d2",
           "display_english": "electrical",
           "commit_english": "electrical"
+        }
+      ]
+    },
+    "电线": {
+      "primary_sense_id": "sense-candidate-3a4f7061a1429b91394e8f67",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "dian xian": "sense-candidate-3a4f7061a1429b91394e8f67"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3a4f7061a1429b91394e8f67",
+          "display_english": "wire",
+          "commit_english": "wire"
         }
       ]
     },
@@ -116909,6 +119494,21 @@
           "id": "sense-revision-97bf9803a18fa209e62acc10",
           "display_english": "herd",
           "commit_english": "herd"
+        }
+      ]
+    },
+    "略带自嘲地": {
+      "primary_sense_id": "sense-candidate-a2c7a7a02f5f7894f26586bb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lve dai zi chao de": "sense-candidate-a2c7a7a02f5f7894f26586bb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a2c7a7a02f5f7894f26586bb",
+          "display_english": "wryly",
+          "commit_english": "wryly"
         }
       ]
     },
@@ -118014,6 +120614,36 @@
           "id": "sense-004b07b403485228cc0f",
           "display_english": "daydream",
           "commit_english": "daydream"
+        }
+      ]
+    },
+    "白色": {
+      "primary_sense_id": "sense-candidate-32472ffe5a6e9aa09a336328",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bai se": "sense-candidate-32472ffe5a6e9aa09a336328"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-32472ffe5a6e9aa09a336328",
+          "display_english": "white",
+          "commit_english": "white"
+        }
+      ]
+    },
+    "白色的": {
+      "primary_sense_id": "sense-candidate-f971d8130a18c11d84a1c1f6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bai se de": "sense-candidate-f971d8130a18c11d84a1c1f6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f971d8130a18c11d84a1c1f6",
+          "display_english": "white",
+          "commit_english": "white"
         }
       ]
     },
@@ -120187,6 +122817,21 @@
         }
       ]
     },
+    "眨眼示意": {
+      "primary_sense_id": "sense-candidate-46a36b89c21e34cd21ed1693",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zha yan shi yi": "sense-candidate-46a36b89c21e34cd21ed1693"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-46a36b89c21e34cd21ed1693",
+          "display_english": "wink",
+          "commit_english": "wink"
+        }
+      ]
+    },
     "眯眼": {
       "primary_sense_id": "sense-5926c4c5ec03afaa4e02",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -122232,6 +124877,36 @@
         }
       ]
     },
+    "磨坏的": {
+      "primary_sense_id": "sense-candidate-8b9aadfc727aa5f7184984c6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mo huai de": "sense-candidate-8b9aadfc727aa5f7184984c6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8b9aadfc727aa5f7184984c6",
+          "display_english": "worn-out",
+          "commit_english": "worn-out"
+        }
+      ]
+    },
+    "磨损的": {
+      "primary_sense_id": "sense-candidate-6dca3529cd2088e7c1c09ac3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mo sun de": "sense-candidate-6dca3529cd2088e7c1c09ac3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6dca3529cd2088e7c1c09ac3",
+          "display_english": "worn",
+          "commit_english": "worn"
+        }
+      ]
+    },
     "磨碎": {
       "primary_sense_id": "sense-9078999fc743471ae003",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定grind，v，通过碾压或研磨将物体变成粉末或小颗粒；其余通过英文保留。",
@@ -122734,6 +125409,21 @@
           "id": "sense-revision2-2103edb88cdd057d70fe11e6",
           "display_english": "grandparent",
           "commit_english": "grandparent"
+        }
+      ]
+    },
+    "祝愿": {
+      "primary_sense_id": "sense-candidate-3d0038bc3409d9802325bec5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zhu yuan": "sense-candidate-3d0038bc3409d9802325bec5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-3d0038bc3409d9802325bec5",
+          "display_english": "wish",
+          "commit_english": "wish"
         }
       ]
     },
@@ -124197,6 +126887,21 @@
         }
       ]
     },
+    "称重": {
+      "primary_sense_id": "sense-candidate-a82011a3b9450b2d0f6b0416",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cheng zhong": "sense-candidate-a82011a3b9450b2d0f6b0416"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a82011a3b9450b2d0f6b0416",
+          "display_english": "weigh",
+          "commit_english": "weigh"
+        }
+      ]
+    },
     "秸秆": {
       "primary_sense_id": "sense-96e6acc90c135535af56",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -125054,6 +127759,21 @@
           "id": "sense-5b6d95fb59106c68048f",
           "display_english": "shuttle",
           "commit_english": "shuttle"
+        }
+      ]
+    },
+    "穿着得体的": {
+      "primary_sense_id": "sense-candidate-2bc3e10235503b0828699e99",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "chuan zhuo de ti de": "sense-candidate-2bc3e10235503b0828699e99"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-2bc3e10235503b0828699e99",
+          "display_english": "well-dressed",
+          "commit_english": "well-dressed"
         }
       ]
     },
@@ -126372,6 +129092,21 @@
         }
       ]
     },
+    "等候": {
+      "primary_sense_id": "sense-candidate-ea7c6d040e60ba1294c74928",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "deng hou": "sense-candidate-ea7c6d040e60ba1294c74928"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ea7c6d040e60ba1294c74928",
+          "display_english": "wait",
+          "commit_english": "wait"
+        }
+      ]
+    },
     "等同的": {
       "primary_sense_id": "sense-12efce6b7fec111a6bf9",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -126402,6 +129137,21 @@
         }
       ]
     },
+    "等待时间": {
+      "primary_sense_id": "sense-candidate-20d387d830f92b189e96e1ad",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "deng dai shi jian": "sense-candidate-20d387d830f92b189e96e1ad"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-20d387d830f92b189e96e1ad",
+          "display_english": "wait",
+          "commit_english": "wait"
+        }
+      ]
+    },
     "等级制度": {
       "primary_sense_id": "sense-9a58118c9687996e902b",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -126429,6 +129179,26 @@
           "id": "sense-69c6e9ddb031ca6f0d73",
           "display_english": "exhausted",
           "commit_english": "exhausted"
+        }
+      ]
+    },
+    "筋疲力尽的": {
+      "primary_sense_id": "sense-candidate-7611d98add0b4b7816ab7c9f",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "jin pi li jin de": "sense-candidate-7611d98add0b4b7816ab7c9f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-7611d98add0b4b7816ab7c9f",
+          "display_english": "worn out",
+          "commit_english": "worn out"
+        },
+        {
+          "id": "sense-candidate-a7cd41421ab8b81ad212d0b2",
+          "display_english": "worn-out",
+          "commit_english": "worn-out"
         }
       ]
     },
@@ -127732,6 +130502,21 @@
         }
       ]
     },
+    "精彩的": {
+      "primary_sense_id": "sense-candidate-81ef172b29a4be3af71bf7cc",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jing cai de": "sense-candidate-81ef172b29a4be3af71bf7cc"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-81ef172b29a4be3af71bf7cc",
+          "display_english": "wonderful",
+          "commit_english": "wonderful"
+        }
+      ]
+    },
     "精心制作": {
       "primary_sense_id": "sense-e115b5f7c23e9dc51058",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -127759,6 +130544,21 @@
           "id": "sense-f769b59ea1470f7a6b17",
           "display_english": "shrewd",
           "commit_english": "shrewd"
+        }
+      ]
+    },
+    "精湛技艺": {
+      "primary_sense_id": "sense-candidate-8fae3a8369653a6cbaaaebb6",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jing zhan ji yi": "sense-candidate-8fae3a8369653a6cbaaaebb6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8fae3a8369653a6cbaaaebb6",
+          "display_english": "virtuosity",
+          "commit_english": "virtuosity"
         }
       ]
     },
@@ -128673,6 +131473,21 @@
         }
       ]
     },
+    "紫罗兰色的": {
+      "primary_sense_id": "sense-candidate-604c26c2df2432089eeb67e0",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zi luo lan se de": "sense-candidate-604c26c2df2432089eeb67e0"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-604c26c2df2432089eeb67e0",
+          "display_english": "violet",
+          "commit_english": "violet"
+        }
+      ]
+    },
     "紫色": {
       "primary_sense_id": "sense-fcb23a0bcc81db1f8b53",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -129335,6 +132150,21 @@
           "id": "sense-c72472184a27e90a3189",
           "display_english": "purity",
           "commit_english": "purity"
+        }
+      ]
+    },
+    "纯洁的": {
+      "primary_sense_id": "sense-candidate-f3a30d050d329b93329e3d23",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "chun jie de": "sense-candidate-f3a30d050d329b93329e3d23"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f3a30d050d329b93329e3d23",
+          "display_english": "virginal",
+          "commit_english": "virginal"
         }
       ]
     },
@@ -130705,7 +133535,7 @@
     },
     "结婚": {
       "primary_sense_id": "sense-f59972071f6ba7f1fbf9",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "jie hun": "sense-f59972071f6ba7f1fbf9"
       },
@@ -130715,6 +133545,11 @@
           "id": "sense-f59972071f6ba7f1fbf9",
           "display_english": "marry",
           "commit_english": "marry"
+        },
+        {
+          "id": "sense-candidate-b0e2b8d061ac51ffab02f2b1",
+          "display_english": "wed",
+          "commit_english": "wed"
         }
       ]
     },
@@ -131488,6 +134323,21 @@
         }
       ]
     },
+    "维生素": {
+      "primary_sense_id": "sense-candidate-a13429d033cd05e0efbdfc19",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wei sheng su": "sense-candidate-a13429d033cd05e0efbdfc19"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a13429d033cd05e0efbdfc19",
+          "display_english": "vitamin",
+          "commit_english": "vitamin"
+        }
+      ]
+    },
     "绵羊": {
       "primary_sense_id": "sense-581391fbbbf1cd2696dd",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -132075,6 +134925,11 @@
           "id": "sense-47a205cc2de21e77e9f3",
           "display_english": "deficiency",
           "commit_english": "deficiency"
+        },
+        {
+          "id": "sense-candidate-0a5cebde3ae85b72518dff5c",
+          "display_english": "want",
+          "commit_english": "want"
         }
       ]
     },
@@ -132498,6 +135353,21 @@
         }
       ]
     },
+    "网络摄像头": {
+      "primary_sense_id": "sense-candidate-0c41a8f4a5e367caeb813a4d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wang luo she xiang tou": "sense-candidate-0c41a8f4a5e367caeb813a4d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-0c41a8f4a5e367caeb813a4d",
+          "display_english": "webcam",
+          "commit_english": "webcam"
+        }
+      ]
+    },
     "网络犯罪": {
       "primary_sense_id": "sense-a9b43936d2ee68982778",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -132525,6 +135395,21 @@
           "id": "sense-6fbada4cdb644db37946",
           "display_english": "cyberspace",
           "commit_english": "cyberspace"
+        }
+      ]
+    },
+    "网页": {
+      "primary_sense_id": "sense-candidate-1061f9b76aaa6b4b155a0fab",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wang ye": "sense-candidate-1061f9b76aaa6b4b155a0fab"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-1061f9b76aaa6b4b155a0fab",
+          "display_english": "web page",
+          "commit_english": "web page"
         }
       ]
     },
@@ -132740,6 +135625,21 @@
           "id": "sense-91c0cd6de83379e80633",
           "display_english": "comment",
           "commit_english": "comment"
+        }
+      ]
+    },
+    "羊毛": {
+      "primary_sense_id": "sense-candidate-008a964ae3c5e2b3e8d100e1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yang mao": "sense-candidate-008a964ae3c5e2b3e8d100e1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-008a964ae3c5e2b3e8d100e1",
+          "display_english": "wool",
+          "commit_english": "wool"
         }
       ]
     },
@@ -132980,6 +135880,21 @@
           "id": "sense-ee374c4b8622c56c0529",
           "display_english": "salon",
           "commit_english": "salon"
+        }
+      ]
+    },
+    "美德": {
+      "primary_sense_id": "sense-candidate-c9328269907fced00669c696",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "mei de": "sense-candidate-c9328269907fced00669c696"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c9328269907fced00669c696",
+          "display_english": "virtue",
+          "commit_english": "virtue"
         }
       ]
     },
@@ -133685,7 +136600,7 @@
     },
     "而": {
       "primary_sense_id": "sense-df27d84b436ed321b879",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "er": "sense-df27d84b436ed321b879"
       },
@@ -133695,6 +136610,11 @@
           "id": "sense-df27d84b436ed321b879",
           "display_english": "whereas",
           "commit_english": "whereas"
+        },
+        {
+          "id": "sense-candidate-61d72e38f61c161491520895",
+          "display_english": "while",
+          "commit_english": "while"
         }
       ]
     },
@@ -133960,6 +136880,21 @@
           "id": "sense-57b5292e00dda9c54c5b",
           "display_english": "refreshing",
           "commit_english": "refreshing"
+        }
+      ]
+    },
+    "耳语": {
+      "primary_sense_id": "sense-candidate-ecf456d074af71640a65fd7e",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "er yu": "sense-candidate-ecf456d074af71640a65fd7e"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ecf456d074af71640a65fd7e",
+          "display_english": "whisper",
+          "commit_english": "whisper"
         }
       ]
     },
@@ -135438,6 +138373,51 @@
         }
       ]
     },
+    "胜利": {
+      "primary_sense_id": "sense-candidate-90c131953f3e4f4571afe21c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "sheng li": "sense-candidate-90c131953f3e4f4571afe21c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-90c131953f3e4f4571afe21c",
+          "display_english": "victory",
+          "commit_english": "victory"
+        }
+      ]
+    },
+    "胜利地": {
+      "primary_sense_id": "sense-candidate-874f24f826c4402502ffde37",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "sheng li de": "sense-candidate-874f24f826c4402502ffde37"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-874f24f826c4402502ffde37",
+          "display_english": "victoriously",
+          "commit_english": "victoriously"
+        }
+      ]
+    },
+    "胜局": {
+      "primary_sense_id": "sense-candidate-12cdf01574227b6e9617d980",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "sheng ju": "sense-candidate-12cdf01574227b6e9617d980"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-12cdf01574227b6e9617d980",
+          "display_english": "win",
+          "commit_english": "win"
+        }
+      ]
+    },
     "胜过": {
       "primary_sense_id": "sense-0e7c686963472d0c4d9b",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定surpass，v，在程度、质量或能力上超过；其余通过英文保留。",
@@ -136268,6 +139248,21 @@
         }
       ]
     },
+    "腕表": {
+      "primary_sense_id": "sense-candidate-e873cecc20136029fe7e4e95",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wan biao": "sense-candidate-e873cecc20136029fe7e4e95"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-e873cecc20136029fe7e4e95",
+          "display_english": "wristwatch",
+          "commit_english": "wristwatch"
+        }
+      ]
+    },
     "腭": {
       "primary_sense_id": "sense-b26ec3540ee660b11ad1",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -136300,6 +139295,21 @@
           "id": "sense-857cb90d0a49f6063d89",
           "display_english": "belt",
           "commit_english": "belt"
+        }
+      ]
+    },
+    "腰部": {
+      "primary_sense_id": "sense-candidate-594d1534b3477725883c956f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yao bu": "sense-candidate-594d1534b3477725883c956f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-594d1534b3477725883c956f",
+          "display_english": "waist",
+          "commit_english": "waist"
         }
       ]
     },
@@ -136880,6 +139890,21 @@
           "id": "sense-0bdc4b04143d2dfe1840",
           "display_english": "volunteers",
           "commit_english": "volunteers"
+        }
+      ]
+    },
+    "自愿地": {
+      "primary_sense_id": "sense-candidate-12da8ec51cd18e0748798db1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "zi yuan de": "sense-candidate-12da8ec51cd18e0748798db1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-12da8ec51cd18e0748798db1",
+          "display_english": "voluntarily",
+          "commit_english": "voluntarily"
         }
       ]
     },
@@ -137805,6 +140830,11 @@
           "id": "sense-afd04a12552b2049bf5f",
           "display_english": "sail",
           "commit_english": "sail"
+        },
+        {
+          "id": "sense-candidate-af5ecbd9a9caaf9f5256bbbe",
+          "display_english": "voyage",
+          "commit_english": "voyage"
         }
       ]
     },
@@ -139873,6 +142903,36 @@
         }
       ]
     },
+    "获胜的": {
+      "primary_sense_id": "sense-candidate-fbc828068cf87b690633aaaa",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "huo sheng de": "sense-candidate-fbc828068cf87b690633aaaa"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fbc828068cf87b690633aaaa",
+          "display_english": "victorious",
+          "commit_english": "victorious"
+        }
+      ]
+    },
+    "获胜者": {
+      "primary_sense_id": "sense-candidate-f167bda0e4080b067dba582b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "huo sheng zhe": "sense-candidate-f167bda0e4080b067dba582b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f167bda0e4080b067dba582b",
+          "display_english": "winner",
+          "commit_english": "winner"
+        }
+      ]
+    },
     "菜单": {
       "primary_sense_id": "sense-14b29ee75cd7e1bd5615",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -140210,7 +143270,7 @@
     },
     "著名的": {
       "primary_sense_id": "sense-a2d68f8f1694e7c9eb1e",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "zhu ming de": "sense-a2d68f8f1694e7c9eb1e"
       },
@@ -140220,6 +143280,11 @@
           "id": "sense-a2d68f8f1694e7c9eb1e",
           "display_english": "fabled",
           "commit_english": "fabled"
+        },
+        {
+          "id": "sense-candidate-c1bee9a926693e6e9a36c7b0",
+          "display_english": "well-known",
+          "commit_english": "well-known"
         }
       ]
     },
@@ -140250,6 +143315,21 @@
           "id": "sense-6c505863f3437b785ae9",
           "display_english": "grapefruit",
           "commit_english": "grapefruit"
+        }
+      ]
+    },
+    "葡萄酒": {
+      "primary_sense_id": "sense-candidate-50be0bb51df3cad9e977cd78",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "pu tao jiu": "sense-candidate-50be0bb51df3cad9e977cd78"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-50be0bb51df3cad9e977cd78",
+          "display_english": "wine",
+          "commit_english": "wine"
         }
       ]
     },
@@ -140505,6 +143585,21 @@
           "id": "sense-155a148ff0522518cd9f",
           "display_english": "thin",
           "commit_english": "thin"
+        }
+      ]
+    },
+    "薄弱的": {
+      "primary_sense_id": "sense-candidate-96c9c0e6f53044deaecfc4df",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bo ruo de": "sense-candidate-96c9c0e6f53044deaecfc4df"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-96c9c0e6f53044deaecfc4df",
+          "display_english": "weak",
+          "commit_english": "weak"
         }
       ]
     },
@@ -140895,7 +143990,7 @@
     },
     "虚弱的": {
       "primary_sense_id": "sense-978b119b305d659ce482",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xu ruo de": "sense-978b119b305d659ce482"
       },
@@ -140905,6 +144000,26 @@
           "id": "sense-978b119b305d659ce482",
           "display_english": "feeble",
           "commit_english": "feeble"
+        },
+        {
+          "id": "sense-candidate-e3e48a4419faa266c0415745",
+          "display_english": "weak",
+          "commit_english": "weak"
+        }
+      ]
+    },
+    "虚拟现实": {
+      "primary_sense_id": "sense-candidate-6a2b4a89aa1bf797ab30554b",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xu ni xian shi": "sense-candidate-6a2b4a89aa1bf797ab30554b"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6a2b4a89aa1bf797ab30554b",
+          "display_english": "virtual reality",
+          "commit_english": "virtual reality"
         }
       ]
     },
@@ -141428,6 +144543,21 @@
         }
       ]
     },
+    "蜿蜒的": {
+      "primary_sense_id": "sense-candidate-ec9c0fa8a1eb87752d8e0324",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "wan yan de": "sense-candidate-ec9c0fa8a1eb87752d8e0324"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ec9c0fa8a1eb87752d8e0324",
+          "display_english": "winding",
+          "commit_english": "winding"
+        }
+      ]
+    },
     "蝙蝠": {
       "primary_sense_id": "sense-702ffefd605e4278982a",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -141630,6 +144760,21 @@
           "id": "sense-240d7cc799bd1153d367",
           "display_english": "squirm",
           "commit_english": "squirm"
+        }
+      ]
+    },
+    "蠕虫": {
+      "primary_sense_id": "sense-candidate-698288dc17b61101b774fd7c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ru chong": "sense-candidate-698288dc17b61101b774fd7c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-698288dc17b61101b774fd7c",
+          "display_english": "worm",
+          "commit_english": "worm"
         }
       ]
     },
@@ -142565,6 +145710,11 @@
           "id": "sense-dd2c55f26f0736b27800",
           "display_english": "expression",
           "commit_english": "expression"
+        },
+        {
+          "id": "sense-candidate-9f6aa6b3b62fa111d370cc36",
+          "display_english": "voice",
+          "commit_english": "voice"
         }
       ]
     },
@@ -143578,6 +146728,21 @@
         }
       ]
     },
+    "西装马甲": {
+      "primary_sense_id": "sense-candidate-42fb0d7157f9da0010aef78d",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xi zhuang ma jia": "sense-candidate-42fb0d7157f9da0010aef78d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-42fb0d7157f9da0010aef78d",
+          "display_english": "waistcoat",
+          "commit_english": "waistcoat"
+        }
+      ]
+    },
     "西部的": {
       "primary_sense_id": "sense-f0a20b9ee72816dabf3b",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -143743,6 +146908,21 @@
         }
       ]
     },
+    "观众": {
+      "primary_sense_id": "sense-candidate-62075d47b870ba96eb92ee5f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "guan zhong": "sense-candidate-62075d47b870ba96eb92ee5f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-62075d47b870ba96eb92ee5f",
+          "display_english": "viewer",
+          "commit_english": "viewer"
+        }
+      ]
+    },
     "观光": {
       "primary_sense_id": "sense-70e666fe0dbf2422c7e7",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -143855,6 +147035,26 @@
           "id": "sense-bb7cf6437a1414e269c8",
           "display_english": "point of view",
           "commit_english": "point of view"
+        },
+        {
+          "id": "sense-candidate-a0a5a7eb92f471cb9a2fe526",
+          "display_english": "viewpoint",
+          "commit_english": "viewpoint"
+        }
+      ]
+    },
+    "观看": {
+      "primary_sense_id": "sense-candidate-5794feb69a27832fd402c0a5",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "guan kan": "sense-candidate-5794feb69a27832fd402c0a5"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5794feb69a27832fd402c0a5",
+          "display_english": "watch",
+          "commit_english": "watch"
         }
       ]
     },
@@ -144088,6 +147288,21 @@
         }
       ]
     },
+    "视觉": {
+      "primary_sense_id": "sense-candidate-53555b262b8e379ec0708900",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi jue": "sense-candidate-53555b262b8e379ec0708900"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-53555b262b8e379ec0708900",
+          "display_english": "vision",
+          "commit_english": "vision"
+        }
+      ]
+    },
     "视觉的": {
       "primary_sense_id": "sense-c7c330a0331fa693ae25",
       "selection_reason": "保持上一版运行时已有默认英文。",
@@ -144145,6 +147360,21 @@
           "id": "legacy-daily-150",
           "display_english": "video",
           "commit_english": "video"
+        }
+      ]
+    },
+    "视频片段": {
+      "primary_sense_id": "sense-candidate-8d421e01f8a7d9f3ed1cb094",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi pin pian duan": "sense-candidate-8d421e01f8a7d9f3ed1cb094"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8d421e01f8a7d9f3ed1cb094",
+          "display_english": "video clip",
+          "commit_english": "video clip"
         }
       ]
     },
@@ -144628,6 +147858,21 @@
         }
       ]
     },
+    "警告": {
+      "primary_sense_id": "sense-candidate-d5a6c0f2ff65e87009500180",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jing gao": "sense-candidate-d5a6c0f2ff65e87009500180"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-d5a6c0f2ff65e87009500180",
+          "display_english": "warn",
+          "commit_english": "warn"
+        }
+      ]
+    },
     "警官": {
       "primary_sense_id": "sense-6ed36073b1e7a10c48c1",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -144765,6 +148010,21 @@
           "id": "sense-142cc04f65137f7c21fd",
           "display_english": "police",
           "commit_english": "police"
+        }
+      ]
+    },
+    "警示": {
+      "primary_sense_id": "sense-candidate-69a2920d8fde60285a5be44a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jing shi": "sense-candidate-69a2920d8fde60285a5be44a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-69a2920d8fde60285a5be44a",
+          "display_english": "warning",
+          "commit_english": "warning"
         }
       ]
     },
@@ -146100,7 +149360,7 @@
     },
     "访问": {
       "primary_sense_id": "sense-ea558734a0e4e1327260",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "fang wen": "sense-ea558734a0e4e1327260"
       },
@@ -146110,6 +149370,11 @@
           "id": "sense-ea558734a0e4e1327260",
           "display_english": "access",
           "commit_english": "access"
+        },
+        {
+          "id": "sense-candidate-640e66b41bebebc3a035f736",
+          "display_english": "visit",
+          "commit_english": "visit"
         }
       ]
     },
@@ -146733,6 +149998,21 @@
         }
       ]
     },
+    "诗句": {
+      "primary_sense_id": "sense-candidate-b0438465bf96ca44eb91d51c",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shi ju": "sense-candidate-b0438465bf96ca44eb91d51c"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b0438465bf96ca44eb91d51c",
+          "display_english": "verse",
+          "commit_english": "verse"
+        }
+      ]
+    },
     "诗歌": {
       "primary_sense_id": "sense-11dbef4e8c3dfd37573b",
       "selection_reason": "新中文入口采用开发默认策略：在所有歧义读音共同可用的通过选项中，按固定ECDICT的BNC/FRQ较小正排名优先，无排名或并列时取通过来源顺序；不据此认定语义优劣。当前选定poem，n，一首押韵或讲究节奏意境的文学作品；其余通过英文保留。",
@@ -146755,7 +150035,7 @@
     },
     "诗节": {
       "primary_sense_id": "sense-130336d41447d7d89400",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "shi jie": "sense-130336d41447d7d89400"
       },
@@ -146765,6 +150045,11 @@
           "id": "sense-130336d41447d7d89400",
           "display_english": "stanza",
           "commit_english": "stanza"
+        },
+        {
+          "id": "sense-candidate-2cb8b4fc1d3cad17a017a24a",
+          "display_english": "verse",
+          "commit_english": "verse"
         }
       ]
     },
@@ -147885,6 +151170,41 @@
           "id": "sense-a90479a5cc6d66486a76",
           "display_english": "recess",
           "commit_english": "recess"
+        }
+      ]
+    },
+    "谁": {
+      "primary_sense_id": "sense-candidate-a777bfad2f9f1dfb194530d6",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "shei": "sense-candidate-a777bfad2f9f1dfb194530d6"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a777bfad2f9f1dfb194530d6",
+          "display_english": "who",
+          "commit_english": "who"
+        },
+        {
+          "id": "sense-candidate-356b0326e9484858e6860adf",
+          "display_english": "whom",
+          "commit_english": "whom"
+        }
+      ]
+    },
+    "谁的": {
+      "primary_sense_id": "sense-candidate-04252b8f351125542c2f9fe9",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "shei de": "sense-candidate-04252b8f351125542c2f9fe9"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-04252b8f351125542c2f9fe9",
+          "display_english": "whose",
+          "commit_english": "whose"
         }
       ]
     },
@@ -149073,6 +152393,21 @@
         }
       ]
     },
+    "货品": {
+      "primary_sense_id": "sense-candidate-a1fab3634bf5d4cd07717590",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "huo pin": "sense-candidate-a1fab3634bf5d4cd07717590"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-a1fab3634bf5d4cd07717590",
+          "display_english": "wares",
+          "commit_english": "wares"
+        }
+      ]
+    },
     "货币": {
       "primary_sense_id": "sense-158da03631c1ad909d00",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -149125,6 +152460,21 @@
           "id": "sense-4b2ec489118262768e21",
           "display_english": "merchandise",
           "commit_english": "merchandise"
+        }
+      ]
+    },
+    "货车车厢": {
+      "primary_sense_id": "sense-candidate-344116760210329a75f7144f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "huo che che xiang": "sense-candidate-344116760210329a75f7144f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-344116760210329a75f7144f",
+          "display_english": "wagon",
+          "commit_english": "wagon"
         }
       ]
     },
@@ -149193,6 +152543,21 @@
         }
       ]
     },
+    "贪吃的": {
+      "primary_sense_id": "sense-candidate-90228460edc1281e29f3e6bc",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "tan chi de": "sense-candidate-90228460edc1281e29f3e6bc"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-90228460edc1281e29f3e6bc",
+          "display_english": "voracious",
+          "commit_english": "voracious"
+        }
+      ]
+    },
     "贪婪": {
       "primary_sense_id": "sense-6dd350f970ad1884bc7a",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -149205,6 +152570,21 @@
           "id": "sense-6dd350f970ad1884bc7a",
           "display_english": "greedy",
           "commit_english": "greedy"
+        }
+      ]
+    },
+    "贪食": {
+      "primary_sense_id": "sense-candidate-66d31eea891aaa0990a0e525",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "tan shi": "sense-candidate-66d31eea891aaa0990a0e525"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-66d31eea891aaa0990a0e525",
+          "display_english": "voracity",
+          "commit_english": "voracity"
         }
       ]
     },
@@ -150278,6 +153658,21 @@
         }
       ]
     },
+    "赢": {
+      "primary_sense_id": "sense-candidate-c917f634afe0620b6768835a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ying": "sense-candidate-c917f634afe0620b6768835a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-c917f634afe0620b6768835a",
+          "display_english": "win",
+          "commit_english": "win"
+        }
+      ]
+    },
     "赤纬": {
       "primary_sense_id": "sense-2d77aaf68a1f6ca505ef",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -151233,6 +154628,21 @@
         }
       ]
     },
+    "跟": {
+      "primary_sense_id": "sense-candidate-5b59003030182e7634dae222",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gen": "sense-candidate-5b59003030182e7634dae222"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-5b59003030182e7634dae222",
+          "display_english": "with",
+          "commit_english": "with"
+        }
+      ]
+    },
     "跟踪": {
       "primary_sense_id": "sense-4f959b92b9afa4e98f32",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -151293,9 +154703,24 @@
         }
       ]
     },
+    "路径": {
+      "primary_sense_id": "sense-candidate-b48589e266c679479b9556c8",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lu jing": "sense-candidate-b48589e266c679479b9556c8"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b48589e266c679479b9556c8",
+          "display_english": "way",
+          "commit_english": "way"
+        }
+      ]
+    },
     "路旁": {
       "primary_sense_id": "sense-e1b24b9e7d95fb00ada7",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "lu pang": "sense-e1b24b9e7d95fb00ada7"
       },
@@ -151305,6 +154730,11 @@
           "id": "sense-e1b24b9e7d95fb00ada7",
           "display_english": "roadside",
           "commit_english": "roadside"
+        },
+        {
+          "id": "sense-candidate-b1ffbd13e8655eb3911632e7",
+          "display_english": "wayside",
+          "commit_english": "wayside"
         }
       ]
     },
@@ -152340,6 +155770,21 @@
           "id": "sense-d11ec10e5fca1ecf8b69",
           "display_english": "chiselled",
           "commit_english": "chiselled"
+        }
+      ]
+    },
+    "轮椅": {
+      "primary_sense_id": "sense-candidate-cad03cf6507d63dfcc915ea1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "lun yi": "sense-candidate-cad03cf6507d63dfcc915ea1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-cad03cf6507d63dfcc915ea1",
+          "display_english": "wheelchair",
+          "commit_english": "wheelchair"
         }
       ]
     },
@@ -154594,8 +158039,8 @@
       ]
     },
     "还": {
-      "primary_sense_id": "sense-fd6e7fa7b90897a22892",
-      "selection_reason": "不同读音各自对应已通过的英文，按真实候选读音选择。",
+      "primary_sense_id": "sense-a8c5bc2ffc45ff45a405",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "huan": "sense-fd6e7fa7b90897a22892",
         "hai": "sense-a8c5bc2ffc45ff45a405"
@@ -154611,6 +158056,11 @@
           "id": "sense-a8c5bc2ffc45ff45a405",
           "display_english": "even",
           "commit_english": "even"
+        },
+        {
+          "id": "sense-candidate-09bae7458ce2cbffcd7fc2db",
+          "display_english": "yet",
+          "commit_english": "yet"
         }
       ]
     },
@@ -154926,6 +158376,21 @@
           "id": "sense-314936e7295fdd717fba",
           "display_english": "remotely",
           "commit_english": "remotely"
+        }
+      ]
+    },
+    "远见": {
+      "primary_sense_id": "sense-candidate-ad26a22f9dfe4462fdb74c99",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "yuan jian": "sense-candidate-ad26a22f9dfe4462fdb74c99"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-ad26a22f9dfe4462fdb74c99",
+          "display_english": "vision",
+          "commit_english": "vision"
         }
       ]
     },
@@ -155724,6 +159189,21 @@
         }
       ]
     },
+    "退化的": {
+      "primary_sense_id": "sense-candidate-88ac24f66bd0ed276095a22f",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "tui hua de": "sense-candidate-88ac24f66bd0ed276095a22f"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-88ac24f66bd0ed276095a22f",
+          "display_english": "vestigial",
+          "commit_english": "vestigial"
+        }
+      ]
+    },
     "退款": {
       "primary_sense_id": "sense-9c0d505415392bf89bb6",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -156189,9 +159669,24 @@
         }
       ]
     },
+    "选民": {
+      "primary_sense_id": "sense-candidate-54681ef97361794802d868bf",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xuan min": "sense-candidate-54681ef97361794802d868bf"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-54681ef97361794802d868bf",
+          "display_english": "voter",
+          "commit_english": "voter"
+        }
+      ]
+    },
     "选票": {
       "primary_sense_id": "sense-71c1b794a78fdaf6ccec",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "xuan piao": "sense-71c1b794a78fdaf6ccec"
       },
@@ -156201,6 +159696,11 @@
           "id": "sense-71c1b794a78fdaf6ccec",
           "display_english": "ballot",
           "commit_english": "ballot"
+        },
+        {
+          "id": "sense-candidate-055d0b0a5e4c93773e897d12",
+          "display_english": "vote",
+          "commit_english": "vote"
         }
       ]
     },
@@ -156859,6 +160359,21 @@
         }
       ]
     },
+    "逼真性": {
+      "primary_sense_id": "sense-candidate-857d886921b140fb0a688c02",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "bi zhen xing": "sense-candidate-857d886921b140fb0a688c02"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-857d886921b140fb0a688c02",
+          "display_english": "verisimilitude",
+          "commit_english": "verisimilitude"
+        }
+      ]
+    },
     "逼真的": {
       "primary_sense_id": "sense-3efc32268d5e04657feb",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -157216,7 +160731,7 @@
     },
     "遗嘱": {
       "primary_sense_id": "sense-5f12289acd70135e98b0",
-      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "selection_reason": "保持上一版该中文读音的默认英文。",
       "primary_by_reading": {
         "yi zhu": "sense-5f12289acd70135e98b0"
       },
@@ -157226,6 +160741,11 @@
           "id": "sense-5f12289acd70135e98b0",
           "display_english": "testament",
           "commit_english": "testament"
+        },
+        {
+          "id": "sense-candidate-052393b6634ac776f8b89322",
+          "display_english": "will",
+          "commit_english": "will"
         }
       ]
     },
@@ -158419,6 +161939,26 @@
         }
       ]
     },
+    "酸奶": {
+      "primary_sense_id": "sense-candidate-389c8273bf4976181fb5335d",
+      "selection_reason": "新入口的共同选项按审校顺序选择默认值，其余义项继续保留。",
+      "primary_by_reading": {
+        "suan nai": "sense-candidate-389c8273bf4976181fb5335d"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-389c8273bf4976181fb5335d",
+          "display_english": "yoghurt",
+          "commit_english": "yoghurt"
+        },
+        {
+          "id": "sense-candidate-0a0fee598519922bcef68503",
+          "display_english": "yogurt",
+          "commit_english": "yogurt"
+        }
+      ]
+    },
     "酸性的": {
       "primary_sense_id": "sense-6a1d12a32b4a53bc4d0d",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -158476,6 +162016,36 @@
           "id": "sense-aba7f1621240843ae5fc",
           "display_english": "brew",
           "commit_english": "brew"
+        }
+      ]
+    },
+    "醋": {
+      "primary_sense_id": "sense-candidate-fcde47fa88cf1b106ab6159a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cu": "sense-candidate-fcde47fa88cf1b106ab6159a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-fcde47fa88cf1b106ab6159a",
+          "display_english": "vinegar",
+          "commit_english": "vinegar"
+        }
+      ]
+    },
+    "醒来": {
+      "primary_sense_id": "sense-candidate-63d7591a9ca4100e35c69ad0",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "xing lai": "sense-candidate-63d7591a9ca4100e35c69ad0"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-63d7591a9ca4100e35c69ad0",
+          "display_english": "wake",
+          "commit_english": "wake"
         }
       ]
     },
@@ -159229,6 +162799,21 @@
         }
       ]
     },
+    "野生的": {
+      "primary_sense_id": "sense-candidate-8027c03be937c65a830afc7a",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "ye sheng de": "sense-candidate-8027c03be937c65a830afc7a"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-8027c03be937c65a830afc7a",
+          "display_english": "wild",
+          "commit_english": "wild"
+        }
+      ]
+    },
     "野营": {
       "primary_sense_id": "sense-2dc9799ed2987c0951a5",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -159376,6 +162961,21 @@
           "id": "sense-3199b1c82ad98cef1ec0",
           "display_english": "metal",
           "commit_english": "metal"
+        }
+      ]
+    },
+    "金属丝": {
+      "primary_sense_id": "sense-candidate-da88dacbf01cb04cf14ba3f2",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jin shu si": "sense-candidate-da88dacbf01cb04cf14ba3f2"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-da88dacbf01cb04cf14ba3f2",
+          "display_english": "wire",
+          "commit_english": "wire"
         }
       ]
     },
@@ -160476,6 +164076,36 @@
           "id": "sense-8cd10c510e45d172c75d",
           "display_english": "mistake",
           "commit_english": "mistake"
+        }
+      ]
+    },
+    "错误地": {
+      "primary_sense_id": "sense-candidate-dc00632935afbbd24c5f63c3",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cuo wu de": "sense-candidate-dc00632935afbbd24c5f63c3"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-dc00632935afbbd24c5f63c3",
+          "display_english": "wrongly",
+          "commit_english": "wrongly"
+        }
+      ]
+    },
+    "错误的": {
+      "primary_sense_id": "sense-candidate-6e522a7f44c9f642abdbbf16",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "cuo wu de": "sense-candidate-6e522a7f44c9f642abdbbf16"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-6e522a7f44c9f642abdbbf16",
+          "display_english": "wrong",
+          "commit_english": "wrong"
         }
       ]
     },
@@ -162046,6 +165676,21 @@
           "id": "sense-518ba3012d08e4622a07",
           "display_english": "defense",
           "commit_english": "defense"
+        }
+      ]
+    },
+    "防水": {
+      "primary_sense_id": "sense-candidate-b411e7780d9c76fae0984db1",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "fang shui": "sense-candidate-b411e7780d9c76fae0984db1"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-b411e7780d9c76fae0984db1",
+          "display_english": "waterproof",
+          "commit_english": "waterproof"
         }
       ]
     },
@@ -170124,6 +173769,21 @@
         }
       ]
     },
+    "高薪的": {
+      "primary_sense_id": "sense-candidate-f49bb8661fbc85e2900cc3bb",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "gao xin de": "sense-candidate-f49bb8661fbc85e2900cc3bb"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-f49bb8661fbc85e2900cc3bb",
+          "display_english": "well-paid",
+          "commit_english": "well-paid"
+        }
+      ]
+    },
     "高贵": {
       "primary_sense_id": "sense-e672351c50a2659cb7d8",
       "selection_reason": "该中文全部保留义项的英文提交值一致。",
@@ -170496,6 +174156,21 @@
           "id": "sense-5b026828697a39b32075",
           "display_english": "vivid",
           "commit_english": "vivid"
+        }
+      ]
+    },
+    "鲸": {
+      "primary_sense_id": "sense-candidate-80b92c7c25dd17c94191d835",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "jing": "sense-candidate-80b92c7c25dd17c94191d835"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-80b92c7c25dd17c94191d835",
+          "display_english": "whale",
+          "commit_english": "whale"
         }
       ]
     },
@@ -171041,6 +174716,21 @@
           "id": "sense-697777935ea48db9e9b3",
           "display_english": "yellow",
           "commit_english": "yellow"
+        }
+      ]
+    },
+    "黄蜂": {
+      "primary_sense_id": "sense-candidate-4c13c1617bece66a43d53713",
+      "selection_reason": "该中文全部保留义项的英文提交值一致。",
+      "primary_by_reading": {
+        "huang feng": "sense-candidate-4c13c1617bece66a43d53713"
+      },
+      "requires_reading": false,
+      "senses": [
+        {
+          "id": "sense-candidate-4c13c1617bece66a43d53713",
+          "display_english": "wasp",
+          "commit_english": "wasp"
         }
       ]
     },

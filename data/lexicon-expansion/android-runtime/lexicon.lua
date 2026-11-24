@@ -53,6 +53,9 @@ return {schema_version = 2, entries = {
   ["一套"] = {primary_sense_id = "sense-fc24f778b0e6866fee96", senses = {
     {id = "sense-fc24f778b0e6866fee96", display_english = "set", commit_english = "set"},
   }},
+  ["一小会儿"] = {primary_sense_id = "sense-candidate-776a6e8c778a016886110b46", senses = {
+    {id = "sense-candidate-776a6e8c778a016886110b46", display_english = "while", commit_english = "while"},
+  }},
   ["一打"] = {primary_sense_id = "sense-b73696b696bb22eb81dd", senses = {
     {id = "sense-b73696b696bb22eb81dd", display_english = "dozen", commit_english = "dozen"},
   }},
@@ -111,6 +114,9 @@ return {schema_version = 2, entries = {
   }},
   ["一角硬币"] = {primary_sense_id = "sense-revision-d652ae2e371e8feeaa919754", senses = {
     {id = "sense-revision-d652ae2e371e8feeaa919754", display_english = "dime", commit_english = "dime"},
+  }},
+  ["一言不发地"] = {primary_sense_id = "sense-candidate-7d612e0221e4238fc5ea7fd6", senses = {
+    {id = "sense-candidate-7d612e0221e4238fc5ea7fd6", display_english = "wordlessly", commit_english = "wordlessly"},
   }},
   ["一贯"] = {primary_sense_id = "sense-985a43b709ec8fa14e9d", senses = {
     {id = "sense-985a43b709ec8fa14e9d", display_english = "consistent", commit_english = "consistent"},
@@ -465,6 +471,9 @@ return {schema_version = 2, entries = {
   ["不合理"] = {primary_sense_id = "sense-636193644641f00c7a5c", senses = {
     {id = "sense-636193644641f00c7a5c", display_english = "unreasonable", commit_english = "unreasonable"},
   }},
+  ["不合群的"] = {primary_sense_id = "sense-candidate-e3e62619f9850c55af0e7281", senses = {
+    {id = "sense-candidate-e3e62619f9850c55af0e7281", display_english = "withdrawn", commit_english = "withdrawn"},
+  }},
   ["不合适"] = {primary_sense_id = "sense-d39da45ee3a8d3f782de", senses = {
     {id = "sense-d39da45ee3a8d3f782de", display_english = "unsuitable", commit_english = "unsuitable"},
   }},
@@ -538,6 +547,9 @@ return {schema_version = 2, entries = {
   }},
   ["不巧"] = {primary_sense_id = "sense-1af4b14404687ddf3009", senses = {
     {id = "sense-1af4b14404687ddf3009", display_english = "unfortunately", commit_english = "unfortunately"},
+  }},
+  ["不带"] = {primary_sense_id = "sense-candidate-17d5e2f30158a8e2e2d63049", senses = {
+    {id = "sense-candidate-17d5e2f30158a8e2e2d63049", display_english = "without", commit_english = "without"},
   }},
   ["不平"] = {primary_sense_id = "sense-c49b9fea23b60e169538", senses = {
     {id = "sense-c49b9fea23b60e169538", display_english = "grievance", commit_english = "grievance"},
@@ -919,9 +931,13 @@ return {schema_version = 2, entries = {
   }},
   ["世俗的"] = {primary_sense_id = "sense-e23327cfb7f36c0a9806", senses = {
     {id = "sense-e23327cfb7f36c0a9806", display_english = "mundane", commit_english = "mundane"},
+    {id = "sense-candidate-691ecdaf4c6dab0e731a05b5", display_english = "worldly", commit_english = "worldly"},
   }},
   ["世界"] = {primary_sense_id = "sense-96cbb1ede0e313c46000", senses = {
     {id = "sense-96cbb1ede0e313c46000", display_english = "world", commit_english = "world"},
+  }},
+  ["世界观"] = {primary_sense_id = "sense-candidate-5f2beb747372efd9cd4655e4", senses = {
+    {id = "sense-candidate-5f2beb747372efd9cd4655e4", display_english = "worldview", commit_english = "worldview"},
   }},
   ["世纪"] = {primary_sense_id = "sense-97def4743f1e5773459f", senses = {
     {id = "sense-97def4743f1e5773459f", display_english = "century", commit_english = "century"},
@@ -1216,6 +1232,9 @@ return {schema_version = 2, entries = {
   ["为了"] = {primary_sense_id = "sense-8cba577afa64bd582120", senses = {
     {id = "sense-8cba577afa64bd582120", display_english = "in behalf of", commit_english = "in behalf of"},
   }},
+  ["为什么"] = {primary_sense_id = "sense-candidate-4c4f0c53c1db173a73adbdb3", senses = {
+    {id = "sense-candidate-4c4f0c53c1db173a73adbdb3", display_english = "why", commit_english = "why"},
+  }},
   ["主人"] = {primary_sense_id = "sense-822f7843ad9fa00b4ece", senses = {
     {id = "sense-c6e5571a632f8bf4e4d9", display_english = "master", commit_english = "master"},
     {id = "sense-822f7843ad9fa00b4ece", display_english = "host", commit_english = "host"},
@@ -1490,6 +1509,9 @@ return {schema_version = 2, entries = {
   ["书籍"] = {primary_sense_id = "sense-026cd6fa187d9ea7bdf1", senses = {
     {id = "sense-026cd6fa187d9ea7bdf1", display_english = "books", commit_english = "books"},
   }},
+  ["书面的"] = {primary_sense_id = "sense-candidate-fc9384b67387f5c05d98b497", senses = {
+    {id = "sense-candidate-fc9384b67387f5c05d98b497", display_english = "written", commit_english = "written"},
+  }},
   ["买"] = {primary_sense_id = "sense-bf264b9477a20febf751", senses = {
     {id = "sense-bf264b9477a20febf751", display_english = "buy", commit_english = "buy"},
   }},
@@ -1527,8 +1549,14 @@ return {schema_version = 2, entries = {
   ["予以"] = {primary_sense_id = "sense-1efd27b9bc4eaa16de1b", senses = {
     {id = "sense-1efd27b9bc4eaa16de1b", display_english = "give", commit_english = "give"},
   }},
+  ["争取"] = {primary_sense_id = "sense-candidate-ac39edd0ae442692e3913b2d", senses = {
+    {id = "sense-candidate-ac39edd0ae442692e3913b2d", display_english = "woo", commit_english = "woo"},
+  }},
   ["争夺"] = {primary_sense_id = "sense-2c4fe715b9f5ae608a68", senses = {
     {id = "sense-2c4fe715b9f5ae608a68", display_english = "contest", commit_english = "contest"},
+  }},
+  ["争执"] = {primary_sense_id = "sense-candidate-7c8eeba9cf826b878b289b67", senses = {
+    {id = "sense-candidate-7c8eeba9cf826b878b289b67", display_english = "wrangle", commit_english = "wrangle"},
   }},
   ["争端"] = {primary_sense_id = "sense-8bb255f2ea21b822382a", senses = {
     {id = "sense-8bb255f2ea21b822382a", display_english = "dispute", commit_english = "dispute"},
@@ -1928,6 +1956,9 @@ return {schema_version = 2, entries = {
   ["人际的"] = {primary_sense_id = "sense-3067e8d81aa32b97233b", senses = {
     {id = "sense-3067e8d81aa32b97233b", display_english = "interpersonal", commit_english = "interpersonal"},
   }},
+  ["什么"] = {primary_sense_id = "sense-candidate-13f3fe529fbae9923f80b090", senses = {
+    {id = "sense-candidate-13f3fe529fbae9923f80b090", display_english = "what", commit_english = "what"},
+  }},
   ["仁慈"] = {primary_sense_id = "sense-0db7ac33dc5b92463867", senses = {
     {id = "sense-0db7ac33dc5b92463867", display_english = "benevolent", commit_english = "benevolent"},
     {id = "sense-5731161ffbc175d934fd", display_english = "kind", commit_english = "kind"},
@@ -2125,6 +2156,9 @@ return {schema_version = 2, entries = {
   ["令人印象深刻的"] = {primary_sense_id = "sense-8ee8f217933e7a070819", senses = {
     {id = "sense-8ee8f217933e7a070819", display_english = "impressive", commit_english = "impressive"},
   }},
+  ["令人厌倦的"] = {primary_sense_id = "sense-candidate-00cf71d5c65187fdb157e180", senses = {
+    {id = "sense-candidate-00cf71d5c65187fdb157e180", display_english = "wearisome", commit_english = "wearisome"},
+  }},
   ["令人反感的"] = {primary_sense_id = "sense-d87cdb4edb5f14712eb1", senses = {
     {id = "sense-d87cdb4edb5f14712eb1", display_english = "repellant", commit_english = "repellant"},
   }},
@@ -2151,6 +2185,7 @@ return {schema_version = 2, entries = {
   }},
   ["令人惊叹的"] = {primary_sense_id = "sense-7baf0e4fadfb002b1d97", senses = {
     {id = "sense-7baf0e4fadfb002b1d97", display_english = "amazing", commit_english = "amazing"},
+    {id = "sense-candidate-36df0d0e6231d1d6598f3bef", display_english = "wondrous", commit_english = "wondrous"},
   }},
   ["令人愉快"] = {primary_sense_id = "sense-bd93e68ebc673d57cc66", senses = {
     {id = "sense-bd93e68ebc673d57cc66", display_english = "pleasant", commit_english = "pleasant"},
@@ -2176,6 +2211,9 @@ return {schema_version = 2, entries = {
   }},
   ["令人扫兴的"] = {primary_sense_id = "sense-ec6ed3970ef084c0808f", senses = {
     {id = "sense-ec6ed3970ef084c0808f", display_english = "anticlimactic", commit_english = "anticlimactic"},
+  }},
+  ["令人担忧的"] = {primary_sense_id = "sense-candidate-540ca1831c0e3afac80a31e5", senses = {
+    {id = "sense-candidate-540ca1831c0e3afac80a31e5", display_english = "worrying", commit_english = "worrying"},
   }},
   ["令人振奋"] = {primary_sense_id = "sense-4acba91671e266135e7d", senses = {
     {id = "sense-4acba91671e266135e7d", display_english = "inspiring", commit_english = "inspiring"},
@@ -2240,6 +2278,9 @@ return {schema_version = 2, entries = {
   ["以兼职方式"] = {primary_sense_id = "sense-revision2-634c35920649610ccb72c784", senses = {
     {id = "sense-revision2-634c35920649610ccb72c784", display_english = "part-time", commit_english = "part-time"},
   }},
+  ["以内"] = {primary_sense_id = "sense-candidate-fc6a9e4a896a11211095642d", senses = {
+    {id = "sense-candidate-fc6a9e4a896a11211095642d", display_english = "within", commit_english = "within"},
+  }},
   ["以前"] = {primary_sense_id = "sense-50020406ef4d34dff08a", senses = {
     {id = "sense-50020406ef4d34dff08a", display_english = "ago", commit_english = "ago"},
     {id = "sense-40c470b414473145fdef", display_english = "before", commit_english = "before"},
@@ -2255,6 +2296,9 @@ return {schema_version = 2, entries = {
   }},
   ["以此"] = {primary_sense_id = "sense-a5ceb5e25a891b264e03", senses = {
     {id = "sense-a5ceb5e25a891b264e03", display_english = "thereby", commit_english = "thereby"},
+  }},
+  ["以残迹形式"] = {primary_sense_id = "sense-candidate-598a8261c279006c28e21fbb", senses = {
+    {id = "sense-candidate-598a8261c279006c28e21fbb", display_english = "vestigially", commit_english = "vestigially"},
   }},
   ["以物易物"] = {primary_sense_id = "sense-8da269e5de8837b7fdb7", senses = {
     {id = "sense-8da269e5de8837b7fdb7", display_english = "barter", commit_english = "barter"},
@@ -2309,6 +2353,10 @@ return {schema_version = 2, entries = {
   }},
   ["任性的"] = {primary_sense_id = "sense-4c494978106432868715", senses = {
     {id = "sense-4c494978106432868715", display_english = "perverse", commit_english = "perverse"},
+    {id = "sense-candidate-30e27f813f2dece6947f7ead", display_english = "wayward", commit_english = "wayward"},
+  }},
+  ["任意一个"] = {primary_sense_id = "sense-candidate-f15d7576d34ca1553ab26cda", senses = {
+    {id = "sense-candidate-f15d7576d34ca1553ab26cda", display_english = "whichever", commit_english = "whichever"},
   }},
   ["份额"] = {primary_sense_id = "sense-d18b513cef3808a63c0a", senses = {
     {id = "sense-d18b513cef3808a63c0a", display_english = "portion", commit_english = "portion"},
@@ -2382,6 +2430,7 @@ return {schema_version = 2, entries = {
   ["优点"] = {primary_sense_id = "sense-cc8cfb27438c91f704ca", senses = {
     {id = "sense-cc8cfb27438c91f704ca", display_english = "merit", commit_english = "merit"},
     {id = "sense-058d5bc449f27c2e3fba", display_english = "advantage", commit_english = "advantage"},
+    {id = "sense-candidate-3eaa94acd2d671a44a3ea30d", display_english = "virtue", commit_english = "virtue"},
   }},
   ["优秀"] = {primary_sense_id = "sense-f1209741408a9b32af8a", senses = {
     {id = "sense-f1209741408a9b32af8a", display_english = "excellent", commit_english = "excellent"},
@@ -2408,6 +2457,9 @@ return {schema_version = 2, entries = {
   }},
   ["伙食"] = {primary_sense_id = "sense-7086fee9e6bea4871522", senses = {
     {id = "sense-7086fee9e6bea4871522", display_english = "meals", commit_english = "meals"},
+  }},
+  ["会"] = {primary_sense_id = "sense-candidate-b832ceafbf3da7df9a55acfb", senses = {
+    {id = "sense-candidate-b832ceafbf3da7df9a55acfb", display_english = "would", commit_english = "would"},
   }},
   ["会合"] = {primary_sense_id = "sense-dffd2fc6584113ffb70e", senses = {
     {id = "sense-dffd2fc6584113ffb70e", display_english = "rendezvous", commit_english = "rendezvous"},
@@ -2514,6 +2566,7 @@ return {schema_version = 2, entries = {
   }},
   ["伤口"] = {primary_sense_id = "sense-a8b80938af238b4b239c", senses = {
     {id = "sense-a8b80938af238b4b239c", display_english = "cut", commit_english = "cut"},
+    {id = "sense-candidate-91c08d8a2474fa146e407f00", display_english = "wound", commit_english = "wound"},
   }},
   ["伤害"] = {primary_sense_id = "sense-16eb20773feb80f5a0db", senses = {
     {id = "sense-16eb20773feb80f5a0db", display_english = "harm", commit_english = "harm"},
@@ -2616,6 +2669,9 @@ return {schema_version = 2, entries = {
   ["低声"] = {primary_sense_id = "sense-b48e5f9ef9f3ee4092af", senses = {
     {id = "sense-b48e5f9ef9f3ee4092af", display_english = "softly", commit_english = "softly"},
   }},
+  ["低声说"] = {primary_sense_id = "sense-candidate-9deaeabdba29d223b5b0c60e", senses = {
+    {id = "sense-candidate-9deaeabdba29d223b5b0c60e", display_english = "whisper", commit_english = "whisper"},
+  }},
   ["低廉"] = {primary_sense_id = "sense-002a149f705a65e485e5", senses = {
     {id = "sense-002a149f705a65e485e5", display_english = "inexpensive", commit_english = "inexpensive"},
   }},
@@ -2672,6 +2728,9 @@ return {schema_version = 2, entries = {
   ["体格"] = {primary_sense_id = "sense-106dd0739750259d627e", senses = {
     {id = "sense-106dd0739750259d627e", display_english = "physique", commit_english = "physique"},
   }},
+  ["体格健壮的"] = {primary_sense_id = "sense-candidate-219d92e412adad0d13129b44", senses = {
+    {id = "sense-candidate-219d92e412adad0d13129b44", display_english = "well-built", commit_english = "well-built"},
+  }},
   ["体检"] = {primary_sense_id = "sense-3a5ad77fbe7e9b94d2c7", senses = {
     {id = "sense-3a5ad77fbe7e9b94d2c7", display_english = "medical checkup", commit_english = "medical checkup"},
     {id = "sense-7edc94246af6e05a3de2", display_english = "checkup", commit_english = "checkup"},
@@ -2719,6 +2778,9 @@ return {schema_version = 2, entries = {
   ["体贴"] = {primary_sense_id = "sense-449704b64a52f8d2b5eb", senses = {
     {id = "sense-449704b64a52f8d2b5eb", display_english = "thoughtful", commit_english = "thoughtful"},
     {id = "sense-9663e7c6b0b8bb9e10ce", display_english = "caring", commit_english = "caring"},
+  }},
+  ["何时"] = {primary_sense_id = "sense-candidate-56192e592060983b545fd5e6", senses = {
+    {id = "sense-candidate-56192e592060983b545fd5e6", display_english = "when", commit_english = "when"},
   }},
   ["余地"] = {primary_sense_id = "sense-77e15e3d26f2dc6ae591", senses = {
     {id = "sense-77e15e3d26f2dc6ae591", display_english = "margin", commit_english = "margin"},
@@ -2771,8 +2833,21 @@ return {schema_version = 2, entries = {
   ["作证"] = {primary_sense_id = "sense-b639ff26da6cf2b4b81b", senses = {
     {id = "sense-b639ff26da6cf2b4b81b", display_english = "testify", commit_english = "testify"},
   }},
+  ["你"] = {primary_sense_id = "sense-candidate-7c04103e88f42823e3e34121", senses = {
+    {id = "sense-candidate-7c04103e88f42823e3e34121", display_english = "you", commit_english = "you"},
+  }},
+  ["你们"] = {primary_sense_id = "sense-candidate-bcf75fe217eb5031666acd6f", senses = {
+    {id = "sense-candidate-bcf75fe217eb5031666acd6f", display_english = "you", commit_english = "you"},
+  }},
   ["你好"] = {primary_sense_id = "legacy-daily-001", senses = {
     {id = "legacy-daily-001", display_english = "hello", commit_english = "hello"},
+  }},
+  ["你的"] = {primary_sense_id = "sense-candidate-3f71f09557b6c0474f2e132e", senses = {
+    {id = "sense-candidate-3f71f09557b6c0474f2e132e", display_english = "your", commit_english = "your"},
+    {id = "sense-candidate-42bbe7a854ea9d3a0430749b", display_english = "yours", commit_english = "yours"},
+  }},
+  ["你自己"] = {primary_sense_id = "sense-candidate-c7e5b23fa98fa4b0ad305ee0", senses = {
+    {id = "sense-candidate-c7e5b23fa98fa4b0ad305ee0", display_english = "yourself", commit_english = "yourself"},
   }},
   ["佣人"] = {primary_sense_id = "sense-5f6a4cb04a9d59872863", senses = {
     {id = "sense-5f6a4cb04a9d59872863", display_english = "servant", commit_english = "servant"},
@@ -2833,6 +2908,9 @@ return {schema_version = 2, entries = {
   }},
   ["使发酵"] = {primary_sense_id = "sense-7dfce0934c9c03f4f178", senses = {
     {id = "sense-7dfce0934c9c03f4f178", display_english = "leaven", commit_english = "leaven"},
+  }},
+  ["使受伤"] = {primary_sense_id = "sense-candidate-85dc775958039c2990ec2d15", senses = {
+    {id = "sense-candidate-85dc775958039c2990ec2d15", display_english = "wound", commit_english = "wound"},
   }},
   ["使吃惊"] = {primary_sense_id = "sense-0026d111793ec6b40e4c", senses = {
     {id = "sense-0026d111793ec6b40e4c", display_english = "surprise", commit_english = "surprise"},
@@ -3424,6 +3502,12 @@ return {schema_version = 2, entries = {
     {id = "sense-46e9608d8584ca8443e9", display_english = "debt", commit_english = "debt"},
     {id = "sense-02c73ae70086551f0465", display_english = "liability", commit_english = "liability"},
   }},
+  ["值得"] = {primary_sense_id = "sense-candidate-dea9aafdba40973c0abefb65", senses = {
+    {id = "sense-candidate-dea9aafdba40973c0abefb65", display_english = "worth", commit_english = "worth"},
+  }},
+  ["值得尊敬的"] = {primary_sense_id = "sense-candidate-23884ce5e5a45f1e81aed8f6", senses = {
+    {id = "sense-candidate-23884ce5e5a45f1e81aed8f6", display_english = "worthy", commit_english = "worthy"},
+  }},
   ["值得推荐的"] = {primary_sense_id = "sense-96ab62022cf49e269be2", senses = {
     {id = "sense-96ab62022cf49e269be2", display_english = "recommendable", commit_english = "recommendable"},
   }},
@@ -3558,6 +3642,9 @@ return {schema_version = 2, entries = {
   ["做到"] = {primary_sense_id = "sense-25d128afda51c18b89fd", senses = {
     {id = "sense-25d128afda51c18b89fd", display_english = "achieve", commit_english = "achieve"},
   }},
+  ["做得好"] = {primary_sense_id = "sense-candidate-92f6a19df33667b72826db53", senses = {
+    {id = "sense-candidate-92f6a19df33667b72826db53", display_english = "well", commit_english = "well"},
+  }},
   ["做志愿服务"] = {primary_sense_id = "sense-bc1c465f6c1f35662aeb", senses = {
     {id = "sense-bc1c465f6c1f35662aeb", display_english = "volunteer", commit_english = "volunteer"},
   }},
@@ -3615,6 +3702,7 @@ return {schema_version = 2, entries = {
   }},
   ["健康的"] = {primary_sense_id = "sense-3da0132e6ef0574816f8", senses = {
     {id = "sense-3da0132e6ef0574816f8", display_english = "healthy", commit_english = "healthy"},
+    {id = "sense-candidate-7ded785e02acef8acbea4f96", display_english = "well", commit_english = "well"},
   }},
   ["健谈的"] = {primary_sense_id = "sense-e203942ef86e1f64c1b1", senses = {
     {id = "sense-e203942ef86e1f64c1b1", display_english = "communicative", commit_english = "communicative"},
@@ -3724,6 +3812,9 @@ return {schema_version = 2, entries = {
   }},
   ["允许的"] = {primary_sense_id = "sense-8fde32ad6540e23127c7", senses = {
     {id = "sense-8fde32ad6540e23127c7", display_english = "permissible", commit_english = "permissible"},
+  }},
+  ["元音"] = {primary_sense_id = "sense-candidate-dc2502d2ec3cc244fac6c3e3", senses = {
+    {id = "sense-candidate-dc2502d2ec3cc244fac6c3e3", display_english = "vowel", commit_english = "vowel"},
   }},
   ["兄弟"] = {primary_sense_id = "sense-135d9ced993e9e3633ef", senses = {
     {id = "sense-135d9ced993e9e3633ef", display_english = "brothers", commit_english = "brothers"},
@@ -3935,6 +4026,9 @@ return {schema_version = 2, entries = {
   }},
   ["全球"] = {primary_sense_id = "sense-71b739c259729d529de1", senses = {
     {id = "sense-71b739c259729d529de1", display_english = "globally", commit_english = "globally"},
+  }},
+  ["全球性的"] = {primary_sense_id = "sense-candidate-e8e0ff1c33014f777b3cb87c", senses = {
+    {id = "sense-candidate-e8e0ff1c33014f777b3cb87c", display_english = "worldwide", commit_english = "worldwide"},
   }},
   ["全球本土化的"] = {primary_sense_id = "sense-cec0e8b01aa0f4b0b803", senses = {
     {id = "sense-cec0e8b01aa0f4b0b803", display_english = "glocal", commit_english = "glocal"},
@@ -4285,6 +4379,7 @@ return {schema_version = 2, entries = {
   }},
   ["兽医"] = {primary_sense_id = "sense-630615f6aaa185d0fcf7", senses = {
     {id = "sense-630615f6aaa185d0fcf7", display_english = "veterinarian", commit_english = "veterinarian"},
+    {id = "sense-candidate-b14ffa1e5ad60c5890d0024c", display_english = "vet", commit_english = "vet"},
   }},
   ["内在"] = {primary_sense_id = "sense-e777af2df9c0ffbb4da8", senses = {
     {id = "sense-e777af2df9c0ffbb4da8", display_english = "internal", commit_english = "internal"},
@@ -5208,6 +5303,9 @@ return {schema_version = 2, entries = {
   ["利索地"] = {primary_sense_id = "sense-42f85f78c42ffe4ffbd6", senses = {
     {id = "sense-42f85f78c42ffe4ffbd6", display_english = "cleanly", commit_english = "cleanly"},
   }},
+  ["别墅"] = {primary_sense_id = "sense-candidate-05614cc2a1eee3ccc1f0056c", senses = {
+    {id = "sense-candidate-05614cc2a1eee3ccc1f0056c", display_english = "villa", commit_english = "villa"},
+  }},
   ["别处"] = {primary_sense_id = "sense-2037d1ded6acc7187aa1", senses = {
     {id = "sense-2037d1ded6acc7187aa1", display_english = "elsewhere", commit_english = "elsewhere"},
   }},
@@ -5392,6 +5490,7 @@ return {schema_version = 2, entries = {
   ["削弱"] = {primary_sense_id = "sense-e19cbd4152f5fe96738d", senses = {
     {id = "sense-e19cbd4152f5fe96738d", display_english = "undermine", commit_english = "undermine"},
     {id = "sense-6f6fb70eab5d1d449d4f", display_english = "cripple", commit_english = "cripple"},
+    {id = "sense-candidate-c90e0a90ca196352f8001feb", display_english = "weaken", commit_english = "weaken"},
   }},
   ["削瘦"] = {primary_sense_id = "sense-f76bace1629829ccbac3", senses = {
     {id = "sense-f76bace1629829ccbac3", display_english = "lean", commit_english = "lean"},
@@ -5522,6 +5621,12 @@ return {schema_version = 2, entries = {
   ["副刊"] = {primary_sense_id = "sense-9005752321a14a12d6be", senses = {
     {id = "sense-9005752321a14a12d6be", display_english = "supplement", commit_english = "supplement"},
   }},
+  ["副总统"] = {primary_sense_id = "sense-candidate-30e3bd8de3314ddb31fdcf2b", senses = {
+    {id = "sense-candidate-30e3bd8de3314ddb31fdcf2b", display_english = "vice president", commit_english = "vice president"},
+  }},
+  ["副总裁"] = {primary_sense_id = "sense-candidate-ca521f350c02bed8ae621b36", senses = {
+    {id = "sense-candidate-ca521f350c02bed8ae621b36", display_english = "vice president", commit_english = "vice president"},
+  }},
   ["副手"] = {primary_sense_id = "sense-63e17cb11795bae1d5f8", senses = {
     {id = "sense-63e17cb11795bae1d5f8", display_english = "deputy", commit_english = "deputy"},
   }},
@@ -5620,6 +5725,9 @@ return {schema_version = 2, entries = {
   ["加固的"] = {primary_sense_id = "sense-772b134edd71da4358a0", senses = {
     {id = "sense-772b134edd71da4358a0", display_english = "reinforced", commit_english = "reinforced"},
   }},
+  ["加宽"] = {primary_sense_id = "sense-candidate-1fb8085c61f2519df79c7a92", senses = {
+    {id = "sense-candidate-1fb8085c61f2519df79c7a92", display_english = "widen", commit_english = "widen"},
+  }},
   ["加工"] = {primary_sense_id = "sense-4a90596af64463f64630", senses = {
     {id = "sense-4a90596af64463f64630", display_english = "process", commit_english = "process"},
     {id = "sense-c2e1ee535d109b239965", display_english = "processing", commit_english = "processing"},
@@ -5704,6 +5812,9 @@ return {schema_version = 2, entries = {
   ["动物学"] = {primary_sense_id = "sense-7050ffc7307c1ace4a5b", senses = {
     {id = "sense-7050ffc7307c1ace4a5b", display_english = "zoology", commit_english = "zoology"},
   }},
+  ["动物学家"] = {primary_sense_id = "sense-candidate-c53d0a9c570e809c0a4f5294", senses = {
+    {id = "sense-candidate-c53d0a9c570e809c0a4f5294", display_english = "zoologist", commit_english = "zoologist"},
+  }},
   ["动物尸体"] = {primary_sense_id = "sense-c39a44c6e7ed05ab3f3b", senses = {
     {id = "sense-c39a44c6e7ed05ab3f3b", display_english = "carcase", commit_english = "carcase"},
   }},
@@ -5742,6 +5853,9 @@ return {schema_version = 2, entries = {
   }},
   ["助理"] = {primary_sense_id = "sense-e929df57db22b5544339", senses = {
     {id = "sense-e929df57db22b5544339", display_english = "assistant", commit_english = "assistant"},
+  }},
+  ["助行器"] = {primary_sense_id = "sense-candidate-6db475d6125943934ae5c911", senses = {
+    {id = "sense-candidate-6db475d6125943934ae5c911", display_english = "walker", commit_english = "walker"},
   }},
   ["努力"] = {primary_sense_id = "sense-5cb3e922ba3fc1e1ab7a", senses = {
     {id = "sense-5cb3e922ba3fc1e1ab7a", display_english = "hard", commit_english = "hard"},
@@ -5869,6 +5983,9 @@ return {schema_version = 2, entries = {
   ["包菜"] = {primary_sense_id = "sense-9c258c813ab621a236a4", senses = {
     {id = "sense-9c258c813ab621a236a4", display_english = "cabbage", commit_english = "cabbage"},
   }},
+  ["包装材料"] = {primary_sense_id = "sense-candidate-861823a2ade2594031c559d8", senses = {
+    {id = "sense-candidate-861823a2ade2594031c559d8", display_english = "wrapping", commit_english = "wrapping"},
+  }},
   ["包裹"] = {primary_sense_id = "sense-82f9824e0fd7f839a3e9", senses = {
     {id = "sense-82f9824e0fd7f839a3e9", display_english = "package", commit_english = "package"},
     {id = "sense-16a92be9b9b13d391600", display_english = "parcel", commit_english = "parcel"},
@@ -5952,6 +6069,7 @@ return {schema_version = 2, entries = {
     {id = "sense-decafa29317de8b3ce66", display_english = "region", commit_english = "region"},
     {id = "sense-revision-a33c46061f14a65d635afd63", display_english = "areas", commit_english = "areas"},
     {id = "sense-21878be45e4ebd42c110", display_english = "district", commit_english = "district"},
+    {id = "sense-candidate-14d9f3b684cda36c66669b93", display_english = "zone", commit_english = "zone"},
   }},
   ["医务室"] = {primary_sense_id = "sense-795d35c3bea9a32581f3", senses = {
     {id = "sense-795d35c3bea9a32581f3", display_english = "infirmary", commit_english = "infirmary"},
@@ -6190,6 +6308,9 @@ return {schema_version = 2, entries = {
   }},
   ["单薄"] = {primary_sense_id = "sense-1aa3e903c0f9698b67f4", senses = {
     {id = "sense-1aa3e903c0f9698b67f4", display_english = "frail", commit_english = "frail"},
+  }},
+  ["单词"] = {primary_sense_id = "sense-candidate-11ff4f07ae925181b3b04314", senses = {
+    {id = "sense-candidate-11ff4f07ae925181b3b04314", display_english = "word", commit_english = "word"},
   }},
   ["单调"] = {primary_sense_id = "sense-0a619a93f182a989f88e", senses = {
     {id = "sense-0a619a93f182a989f88e", display_english = "monotonous", commit_english = "monotonous"},
@@ -6793,6 +6914,9 @@ return {schema_version = 2, entries = {
   ["发光的"] = {primary_sense_id = "sense-d6bc88275a047e4ca74d", senses = {
     {id = "sense-d6bc88275a047e4ca74d", display_english = "luminous", commit_english = "luminous"},
   }},
+  ["发出喘鸣"] = {primary_sense_id = "sense-candidate-76e37fa0fa3898bf39817493", senses = {
+    {id = "sense-candidate-76e37fa0fa3898bf39817493", display_english = "wheeze", commit_english = "wheeze"},
+  }},
   ["发动"] = {primary_sense_id = "sense-498e6c92452c9ecca518", senses = {
     {id = "sense-498e6c92452c9ecca518", display_english = "launch", commit_english = "launch"},
   }},
@@ -6956,6 +7080,9 @@ return {schema_version = 2, entries = {
   ["取悦"] = {primary_sense_id = "sense-658a9ee76bcde882c44a", senses = {
     {id = "sense-658a9ee76bcde882c44a", display_english = "delight", commit_english = "delight"},
   }},
+  ["取款"] = {primary_sense_id = "sense-candidate-3e0012189f19063a86ea4ff4", senses = {
+    {id = "sense-candidate-3e0012189f19063a86ea4ff4", display_english = "withdrawal", commit_english = "withdrawal"},
+  }},
   ["取消"] = {primary_sense_id = "sense-86b792b33af44e31ccb2", senses = {
     {id = "sense-86b792b33af44e31ccb2", display_english = "cancel", commit_english = "cancel"},
   }},
@@ -6968,6 +7095,9 @@ return {schema_version = 2, entries = {
   }},
   ["受孕"] = {primary_sense_id = "sense-1ef92a8bcc77b7ca0cf9", senses = {
     {id = "sense-1ef92a8bcc77b7ca0cf9", display_english = "conception", commit_english = "conception"},
+  }},
+  ["受害者"] = {primary_sense_id = "sense-candidate-deafb7c6bf884a392fc10f62", senses = {
+    {id = "sense-candidate-deafb7c6bf884a392fc10f62", display_english = "victim", commit_english = "victim"},
   }},
   ["受尊敬的"] = {primary_sense_id = "sense-a780c582c6e0cf63d745", senses = {
     {id = "sense-a780c582c6e0cf63d745", display_english = "respected", commit_english = "respected"},
@@ -7031,6 +7161,9 @@ return {schema_version = 2, entries = {
   ["变暖"] = {primary_sense_id = "sense-fbc98ff4df2f6e9b2bd6", senses = {
     {id = "sense-fbc98ff4df2f6e9b2bd6", display_english = "warm", commit_english = "warm"},
     {id = "sense-47bf60a95fb2898dd346", display_english = "warming", commit_english = "warming"},
+  }},
+  ["变焦"] = {primary_sense_id = "sense-candidate-94704d52bb13d8eedca03f30", senses = {
+    {id = "sense-candidate-94704d52bb13d8eedca03f30", display_english = "zoom", commit_english = "zoom"},
   }},
   ["变硬"] = {primary_sense_id = "sense-aa17e15ca622b6fb9b25", senses = {
     {id = "sense-aa17e15ca622b6fb9b25", display_english = "stiffen", commit_english = "stiffen"},
@@ -7127,6 +7260,9 @@ return {schema_version = 2, entries = {
   }},
   ["古怪地"] = {primary_sense_id = "sense-e4b72845304c8f603a3f", senses = {
     {id = "sense-e4b72845304c8f603a3f", display_english = "eccentrically", commit_english = "eccentrically"},
+  }},
+  ["古怪滑稽的"] = {primary_sense_id = "sense-candidate-9912a9e2073fdc6cefeab2c8", senses = {
+    {id = "sense-candidate-9912a9e2073fdc6cefeab2c8", display_english = "zany", commit_english = "zany"},
   }},
   ["古怪的"] = {primary_sense_id = "sense-3a1399f849c0b43f4df6", senses = {
     {id = "sense-3a1399f849c0b43f4df6", display_english = "bizarre", commit_english = "bizarre"},
@@ -7660,6 +7796,9 @@ return {schema_version = 2, entries = {
   ["名人"] = {primary_sense_id = "sense-d823639af1a7a09e164d", senses = {
     {id = "sense-d823639af1a7a09e164d", display_english = "celebrity", commit_english = "celebrity"},
   }},
+  ["名副其实的"] = {primary_sense_id = "sense-candidate-fd4f769a381b7f5dd3cfa4ca", senses = {
+    {id = "sense-candidate-fd4f769a381b7f5dd3cfa4ca", display_english = "veritable", commit_english = "veritable"},
+  }},
   ["名声"] = {primary_sense_id = "sense-2b7ee3a4ccf1d393d308", senses = {
     {id = "sense-2b7ee3a4ccf1d393d308", display_english = "reputation", commit_english = "reputation"},
     {id = "sense-d287271f6a8b2d3c46d2", display_english = "repute", commit_english = "repute"},
@@ -7780,6 +7919,7 @@ return {schema_version = 2, entries = {
   }},
   ["向西"] = {primary_sense_id = "sense-ca02a462ace4ecccd544", senses = {
     {id = "sense-ca02a462ace4ecccd544", display_english = "west", commit_english = "west"},
+    {id = "sense-candidate-74ab0ddba0d5f132c5fdfccb", display_english = "westward", commit_english = "westward"},
   }},
   ["吓呆的"] = {primary_sense_id = "sense-f751545fcf8fd1a00253", senses = {
     {id = "sense-f751545fcf8fd1a00253", display_english = "petrified", commit_english = "petrified"},
@@ -8220,8 +8360,17 @@ return {schema_version = 2, entries = {
   ["哨子"] = {primary_sense_id = "sense-1f3ddeaddb3e23d8fcde", senses = {
     {id = "sense-1f3ddeaddb3e23d8fcde", display_english = "whistle", commit_english = "whistle"},
   }},
+  ["哪"] = {primary_sense_id = "sense-candidate-599987e7a0e849b167254890", senses = {
+    {id = "sense-candidate-599987e7a0e849b167254890", display_english = "which", commit_english = "which"},
+  }},
+  ["哪个"] = {primary_sense_id = "sense-candidate-595fdc146708b1e0453f8cc1", senses = {
+    {id = "sense-candidate-595fdc146708b1e0453f8cc1", display_english = "which", commit_english = "which"},
+  }},
   ["哭"] = {primary_sense_id = "sense-1cad7c0c781afc5a3337", senses = {
     {id = "sense-1cad7c0c781afc5a3337", display_english = "cry", commit_english = "cry"},
+  }},
+  ["哭泣"] = {primary_sense_id = "sense-candidate-2657a84d8aa09e9b681737d3", senses = {
+    {id = "sense-candidate-2657a84d8aa09e9b681737d3", display_english = "weep", commit_english = "weep"},
   }},
   ["哲学"] = {primary_sense_id = "sense-fc2e7414163ae7ae579f", senses = {
     {id = "sense-fc2e7414163ae7ae579f", display_english = "philosophy", commit_english = "philosophy"},
@@ -8366,6 +8515,9 @@ return {schema_version = 2, entries = {
   ["喊叫"] = {primary_sense_id = "sense-d20498cce5f641224f48", senses = {
     {id = "sense-d20498cce5f641224f48", display_english = "shout", commit_english = "shout"},
   }},
+  ["喊声"] = {primary_sense_id = "sense-candidate-80f6f5b302ad47ed71531a72", senses = {
+    {id = "sense-candidate-80f6f5b302ad47ed71531a72", display_english = "yell", commit_english = "yell"},
+  }},
   ["喘息"] = {primary_sense_id = "sense-20bab0c4c7db7d6dfbe6", senses = {
     {id = "sense-20bab0c4c7db7d6dfbe6", display_english = "respite", commit_english = "respite"},
   }},
@@ -8441,6 +8593,12 @@ return {schema_version = 2, entries = {
   }},
   ["嗅"] = {primary_sense_id = "sense-7ebb25247bb0ace51e88", senses = {
     {id = "sense-7ebb25247bb0ace51e88", display_english = "sniff", commit_english = "sniff"},
+  }},
+  ["嗓音"] = {primary_sense_id = "sense-candidate-b8e2d3bece6ef3dfcca69a62", senses = {
+    {id = "sense-candidate-b8e2d3bece6ef3dfcca69a62", display_english = "voice", commit_english = "voice"},
+  }},
+  ["嗡嗡作响"] = {primary_sense_id = "sense-candidate-33b8213ab476d9928c8a4e25", senses = {
+    {id = "sense-candidate-33b8213ab476d9928c8a4e25", display_english = "whir", commit_english = "whir"},
   }},
   ["嗡嗡声"] = {primary_sense_id = "sense-94f2c1f5dd2318a04447", senses = {
     {id = "sense-94f2c1f5dd2318a04447", display_english = "buzz", commit_english = "buzz"},
@@ -8524,6 +8682,9 @@ return {schema_version = 2, entries = {
   }},
   ["四月"] = {primary_sense_id = "sense-97f615cc4d0338322153", senses = {
     {id = "sense-97f615cc4d0338322153", display_english = "April", commit_english = "April"},
+  }},
+  ["四轮货车"] = {primary_sense_id = "sense-candidate-f38c715ddcb286156babbedb", senses = {
+    {id = "sense-candidate-f38c715ddcb286156babbedb", display_english = "wagon", commit_english = "wagon"},
   }},
   ["四轮马车"] = {primary_sense_id = "sense-2972dc247a564f61987c", senses = {
     {id = "sense-2972dc247a564f61987c", display_english = "waggon", commit_english = "waggon"},
@@ -8867,6 +9028,9 @@ return {schema_version = 2, entries = {
   ["在修辞上"] = {primary_sense_id = "sense-1d19fc6676b232a54ebc", senses = {
     {id = "sense-1d19fc6676b232a54ebc", display_english = "rhetorically", commit_english = "rhetorically"},
   }},
+  ["在全球"] = {primary_sense_id = "sense-candidate-5baed48f4b1ff553e5477a83", senses = {
+    {id = "sense-candidate-5baed48f4b1ff553e5477a83", display_english = "worldwide", commit_english = "worldwide"},
+  }},
   ["在其中"] = {primary_sense_id = "sense-d82e1f74c82bd8da9441", senses = {
     {id = "sense-d82e1f74c82bd8da9441", display_english = "amidst", commit_english = "amidst"},
   }},
@@ -8878,6 +9042,9 @@ return {schema_version = 2, entries = {
   }},
   ["在后"] = {primary_sense_id = "sense-323ecf95aecd4e1f036f", senses = {
     {id = "sense-323ecf95aecd4e1f036f", display_english = "behind", commit_english = "behind"},
+  }},
+  ["在哪里"] = {primary_sense_id = "sense-candidate-8b4bd9294a83f9dedfa82d27", senses = {
+    {id = "sense-candidate-8b4bd9294a83f9dedfa82d27", display_english = "where", commit_english = "where"},
   }},
   ["在商店行窃"] = {primary_sense_id = "sense-88803a6047dd9ca94b70", senses = {
     {id = "sense-88803a6047dd9ca94b70", display_english = "shoplift", commit_english = "shoplift"},
@@ -8964,6 +9131,9 @@ return {schema_version = 2, entries = {
   }},
   ["在船上"] = {primary_sense_id = "sense-revision2-a4d19d17515f500aeb7c64cd", senses = {
     {id = "sense-revision2-a4d19d17515f500aeb7c64cd", display_english = "aboard", commit_english = "aboard"},
+  }},
+  ["在视觉上"] = {primary_sense_id = "sense-candidate-2e770ada33e77e3ae6c48bea", senses = {
+    {id = "sense-candidate-2e770ada33e77e3ae6c48bea", display_english = "visually", commit_english = "visually"},
   }},
   ["在附近"] = {primary_sense_id = "sense-75048590c857944db8c7", senses = {
     {id = "sense-75048590c857944db8c7", display_english = "nearby", commit_english = "nearby"},
@@ -9122,6 +9292,9 @@ return {schema_version = 2, entries = {
   }},
   ["均衡"] = {primary_sense_id = "sense-bd257e75d6c79e552f2a", senses = {
     {id = "sense-bd257e75d6c79e552f2a", display_english = "balanced", commit_english = "balanced"},
+  }},
+  ["均衡的"] = {primary_sense_id = "sense-candidate-7ea72540bb1e87b836f2b62b", senses = {
+    {id = "sense-candidate-7ea72540bb1e87b836f2b62b", display_english = "well-balanced", commit_english = "well-balanced"},
   }},
   ["坏"] = {primary_sense_id = "sense-c5852a828fed11b98a34", senses = {
     {id = "sense-c5852a828fed11b98a34", display_english = "bad", commit_english = "bad"},
@@ -9410,6 +9583,9 @@ return {schema_version = 2, entries = {
     {id = "sense-9b1ea22408521b4382dc", display_english = "wall", commit_english = "wall"},
     {id = "sense-dc16b249ea5b63a58e5b", display_english = "walls", commit_english = "walls"},
   }},
+  ["墙面板"] = {primary_sense_id = "sense-candidate-3505ab59239b6d08cd911bad", senses = {
+    {id = "sense-candidate-3505ab59239b6d08cd911bad", display_english = "wallboard", commit_english = "wallboard"},
+  }},
   ["增加"] = {primary_sense_id = "sense-7e1745f76706aa042382", senses = {
     {id = "sense-7e1745f76706aa042382", display_english = "gain", commit_english = "gain"},
   }},
@@ -9696,6 +9872,7 @@ return {schema_version = 2, entries = {
   }},
   ["多才多艺"] = {primary_sense_id = "sense-04e5f94a1dc67f26d2bb", senses = {
     {id = "sense-04e5f94a1dc67f26d2bb", display_english = "versatile", commit_english = "versatile"},
+    {id = "sense-candidate-786e33d53533a6458b963479", display_english = "versatility", commit_english = "versatility"},
   }},
   ["多数"] = {primary_sense_id = "sense-868216dacddf4064ac2b", senses = {
     {id = "sense-868216dacddf4064ac2b", display_english = "majority", commit_english = "majority"},
@@ -9718,6 +9895,7 @@ return {schema_version = 2, entries = {
   }},
   ["多用途"] = {primary_sense_id = "sense-1ba8ed1357a3347a9d9d", senses = {
     {id = "sense-1ba8ed1357a3347a9d9d", display_english = "versatile", commit_english = "versatile"},
+    {id = "sense-candidate-b03176872fadf98345d7202c", display_english = "versatility", commit_english = "versatility"},
   }},
   ["多石的"] = {primary_sense_id = "sense-7e7219c2ad4bc581a172", senses = {
     {id = "sense-7e7219c2ad4bc581a172", display_english = "rocky", commit_english = "rocky"},
@@ -9808,6 +9986,9 @@ return {schema_version = 2, entries = {
   }},
   ["大声咀嚼"] = {primary_sense_id = "sense-baacee5087adfdc21636", senses = {
     {id = "sense-baacee5087adfdc21636", display_english = "munch", commit_english = "munch"},
+  }},
+  ["大声喊"] = {primary_sense_id = "sense-candidate-482f8ce4f39778879bb5ff63", senses = {
+    {id = "sense-candidate-482f8ce4f39778879bb5ff63", display_english = "yell", commit_english = "yell"},
   }},
   ["大声地"] = {primary_sense_id = "sense-75d4ccfb86da80c747bb", senses = {
     {id = "sense-75d4ccfb86da80c747bb", display_english = "loud", commit_english = "loud"},
@@ -10052,6 +10233,9 @@ return {schema_version = 2, entries = {
   ["天气"] = {primary_sense_id = "legacy-daily-171", senses = {
     {id = "legacy-daily-171", display_english = "weather", commit_english = "weather"},
   }},
+  ["天气预报"] = {primary_sense_id = "sense-candidate-b6caf8234d26b8a8e6568035", senses = {
+    {id = "sense-candidate-b6caf8234d26b8a8e6568035", display_english = "weather forecast", commit_english = "weather forecast"},
+  }},
   ["天然"] = {primary_sense_id = "sense-8f6913e3d557e4361c10", senses = {
     {id = "sense-8f6913e3d557e4361c10", display_english = "natural", commit_english = "natural"},
   }},
@@ -10253,6 +10437,7 @@ return {schema_version = 2, entries = {
   }},
   ["奇迹"] = {primary_sense_id = "sense-d769e82088080ff37756", senses = {
     {id = "sense-d769e82088080ff37756", display_english = "miracle", commit_english = "miracle"},
+    {id = "sense-candidate-59e3d76cfb9f0dd0925d13c0", display_english = "wonder", commit_english = "wonder"},
   }},
   ["奉承"] = {primary_sense_id = "sense-6bec21bd63faf6e51b53", senses = {
     {id = "sense-6bec21bd63faf6e51b53", display_english = "flatter", commit_english = "flatter"},
@@ -10341,6 +10526,9 @@ return {schema_version = 2, entries = {
   }},
   ["女主角"] = {primary_sense_id = "sense-2311e8a3ef36e3b82397", senses = {
     {id = "sense-2311e8a3ef36e3b82397", display_english = "heroine", commit_english = "heroine"},
+  }},
+  ["女人"] = {primary_sense_id = "sense-candidate-bbc786c7fb8e3f5b492160d4", senses = {
+    {id = "sense-candidate-bbc786c7fb8e3f5b492160d4", display_english = "woman", commit_english = "woman"},
   }},
   ["女佣"] = {primary_sense_id = "sense-79afcdce0954a644992e", senses = {
     {id = "sense-79afcdce0954a644992e", display_english = "maid", commit_english = "maid"},
@@ -10459,6 +10647,9 @@ return {schema_version = 2, entries = {
   ["好友"] = {primary_sense_id = "sense-0c53dac88d5080434f06", senses = {
     {id = "sense-0c53dac88d5080434f06", display_english = "pal", commit_english = "pal"},
   }},
+  ["好吃的"] = {primary_sense_id = "sense-candidate-7dfa9df0315d6b737046098b", senses = {
+    {id = "sense-candidate-7dfa9df0315d6b737046098b", display_english = "yummy", commit_english = "yummy"},
+  }},
   ["好处"] = {primary_sense_id = "sense-0058157a31d8b2e51759", senses = {
     {id = "sense-0058157a31d8b2e51759", display_english = "benefits", commit_english = "benefits"},
   }},
@@ -10528,6 +10719,12 @@ return {schema_version = 2, entries = {
   }},
   ["如画"] = {primary_sense_id = "sense-140895bfa0a3d0d05f82", senses = {
     {id = "sense-140895bfa0a3d0d05f82", display_english = "picturesque", commit_english = "picturesque"},
+  }},
+  ["如饥似渴地"] = {primary_sense_id = "sense-candidate-c9ac21f090a185d03b166e92", senses = {
+    {id = "sense-candidate-c9ac21f090a185d03b166e92", display_english = "voraciously", commit_english = "voraciously"},
+  }},
+  ["如饥似渴的"] = {primary_sense_id = "sense-candidate-c65b0c210fee3d3d146b0833", senses = {
+    {id = "sense-candidate-c65b0c210fee3d3d146b0833", display_english = "voracious", commit_english = "voracious"},
   }},
   ["妄想狂"] = {primary_sense_id = "sense-cc3d739d2237cc8c8038", senses = {
     {id = "sense-cc3d739d2237cc8c8038", display_english = "paranoia", commit_english = "paranoia"},
@@ -10627,6 +10824,10 @@ return {schema_version = 2, entries = {
   }},
   ["威吓"] = {primary_sense_id = "sense-252ca943ad2a7df62265", senses = {
     {id = "sense-252ca943ad2a7df62265", display_english = "intimidate", commit_english = "intimidate"},
+  }},
+  ["威士忌"] = {primary_sense_id = "sense-candidate-f641fc08fb32015bcf28f843", senses = {
+    {id = "sense-candidate-f641fc08fb32015bcf28f843", display_english = "whiskey", commit_english = "whiskey"},
+    {id = "sense-candidate-f85c11b4bbbe326d18390faf", display_english = "whisky", commit_english = "whisky"},
   }},
   ["威慑"] = {primary_sense_id = "sense-2bca20f8e7f54e81c93e", senses = {
     {id = "sense-2bca20f8e7f54e81c93e", display_english = "deter", commit_english = "deter"},
@@ -10752,6 +10953,9 @@ return {schema_version = 2, entries = {
     {id = "sense-52c0972c402163bf2466", display_english = "subtitle", commit_english = "subtitle"},
     {id = "sense-3120bd8725fe32a5a2f7", display_english = "subtitles", commit_english = "subtitles"},
     {id = "sense-1fc2d756616dc1d84520", display_english = "caption", commit_english = "caption"},
+  }},
+  ["字数"] = {primary_sense_id = "sense-candidate-dca192ec9037170be187929c", senses = {
+    {id = "sense-candidate-dca192ec9037170be187929c", display_english = "wordage", commit_english = "wordage"},
   }},
   ["字母"] = {primary_sense_id = "sense-46c0a87c55968ec4abb0", senses = {
     {id = "sense-46c0a87c55968ec4abb0", display_english = "letter", commit_english = "letter"},
@@ -11012,6 +11216,7 @@ return {schema_version = 2, entries = {
   }},
   ["完全地"] = {primary_sense_id = "sense-f8678fd5203f04d3589c", senses = {
     {id = "sense-f8678fd5203f04d3589c", display_english = "entirely", commit_english = "entirely"},
+    {id = "sense-candidate-0b0f20f08c10624829599698", display_english = "wholly", commit_english = "wholly"},
   }},
   ["完全的"] = {primary_sense_id = "sense-b45971204ca562595b5f", senses = {
     {id = "sense-b45971204ca562595b5f", display_english = "utter", commit_english = "utter"},
@@ -11315,6 +11520,9 @@ return {schema_version = 2, entries = {
   ["宫殿"] = {primary_sense_id = "sense-e0cd9bd80138ad673bd5", senses = {
     {id = "sense-e0cd9bd80138ad673bd5", display_english = "palace", commit_english = "palace"},
   }},
+  ["害兽"] = {primary_sense_id = "sense-candidate-67728e299160ebbb9f3f4afc", senses = {
+    {id = "sense-candidate-67728e299160ebbb9f3f4afc", display_english = "vermin", commit_english = "vermin"},
+  }},
   ["害怕"] = {primary_sense_id = "legacy-daily-196", senses = {
     {id = "sense-9260aa69fb0699ec2d94", display_english = "afraid", commit_english = "afraid"},
     {id = "legacy-daily-196", display_english = "be afraid", commit_english = "be afraid"},
@@ -11516,6 +11724,7 @@ return {schema_version = 2, entries = {
   }},
   ["富有的"] = {primary_sense_id = "sense-7437e50b03d2fded429e", senses = {
     {id = "sense-7437e50b03d2fded429e", display_english = "rich", commit_english = "rich"},
+    {id = "sense-candidate-3845c9b4129dd57fae38a96a", display_english = "wealthy", commit_english = "wealthy"},
   }},
   ["寒冷"] = {primary_sense_id = "sense-07b93406bdbecf69584c", senses = {
     {id = "sense-07b93406bdbecf69584c", display_english = "chilly", commit_english = "chilly"},
@@ -11541,6 +11750,9 @@ return {schema_version = 2, entries = {
     {id = "sense-3401dc1feb2915eac9e8", display_english = "perceive", commit_english = "perceive"},
     {id = "sense-db0c6cb53e2c49d1a45d", display_english = "discern", commit_english = "discern"},
   }},
+  ["寡妇"] = {primary_sense_id = "sense-candidate-2be91eeae37a008ef3d0a993", senses = {
+    {id = "sense-candidate-2be91eeae37a008ef3d0a993", display_english = "widow", commit_english = "widow"},
+  }},
   ["寡淡"] = {primary_sense_id = "sense-7e7614e2e2a5c58a3d76", senses = {
     {id = "sense-7e7614e2e2a5c58a3d76", display_english = "insipid", commit_english = "insipid"},
   }},
@@ -11549,6 +11761,9 @@ return {schema_version = 2, entries = {
   }},
   ["对不起"] = {primary_sense_id = "legacy-daily-004", senses = {
     {id = "legacy-daily-004", display_english = "sorry", commit_english = "sorry"},
+  }},
+  ["对于"] = {primary_sense_id = "sense-candidate-336cabc544bbc19d6971e853", senses = {
+    {id = "sense-candidate-336cabc544bbc19d6971e853", display_english = "vis-a-vis", commit_english = "vis-a-vis"},
   }},
   ["对号"] = {primary_sense_id = "sense-dc430fda964dedfff653", senses = {
     {id = "sense-dc430fda964dedfff653", display_english = "tick", commit_english = "tick"},
@@ -11674,6 +11889,7 @@ return {schema_version = 2, entries = {
   }},
   ["将要"] = {primary_sense_id = "sense-ad95109d95c693061178", senses = {
     {id = "sense-ad95109d95c693061178", display_english = "shall", commit_english = "shall"},
+    {id = "sense-candidate-7d79c94266c0d1389d2b6b94", display_english = "will", commit_english = "will"},
   }},
   ["尊严"] = {primary_sense_id = "sense-1bbcbc959de64a9334ca", senses = {
     {id = "sense-1bbcbc959de64a9334ca", display_english = "dignity", commit_english = "dignity"},
@@ -11736,6 +11952,7 @@ return {schema_version = 2, entries = {
   }},
   ["小提琴"] = {primary_sense_id = "sense-d6949ce2f5f9cff14b2a", senses = {
     {id = "sense-d6949ce2f5f9cff14b2a", display_english = "fiddle", commit_english = "fiddle"},
+    {id = "sense-candidate-aad82cf04a4789d84445eac7", display_english = "violin", commit_english = "violin"},
   }},
   ["小提琴手"] = {primary_sense_id = "sense-549f2ff4f67b220e7c5b", senses = {
     {id = "sense-549f2ff4f67b220e7c5b", display_english = "fiddler", commit_english = "fiddler"},
@@ -11813,6 +12030,9 @@ return {schema_version = 2, entries = {
   }},
   ["小鸡"] = {primary_sense_id = "sense-revision-a411d3f7f9e87ced4fded9f5", senses = {
     {id = "sense-revision-a411d3f7f9e87ced4fded9f5", display_english = "chicks", commit_english = "chicks"},
+  }},
+  ["小麦"] = {primary_sense_id = "sense-candidate-3fb86de84ab6fdfee0d77329", senses = {
+    {id = "sense-candidate-3fb86de84ab6fdfee0d77329", display_english = "wheat", commit_english = "wheat"},
   }},
   ["小鼠"] = {primary_sense_id = "sense-385a42a130216d4d2841", senses = {
     {id = "sense-385a42a130216d4d2841", display_english = "mouse", commit_english = "mouse"},
@@ -11914,6 +12134,9 @@ return {schema_version = 2, entries = {
   }},
   ["尾巴"] = {primary_sense_id = "sense-cd3e394cffb555b6b28f", senses = {
     {id = "sense-cd3e394cffb555b6b28f", display_english = "tail", commit_english = "tail"},
+  }},
+  ["尾流"] = {primary_sense_id = "sense-candidate-9f18ca19aded0ec2ce79a54d", senses = {
+    {id = "sense-candidate-9f18ca19aded0ec2ce79a54d", display_english = "wake", commit_english = "wake"},
   }},
   ["尿尿"] = {primary_sense_id = "sense-a871dda71ea19dad42d5", senses = {
     {id = "sense-a871dda71ea19dad42d5", display_english = "pee", commit_english = "pee"},
@@ -12129,6 +12352,9 @@ return {schema_version = 2, entries = {
   ["巡游"] = {primary_sense_id = "sense-3dfbec69644f6a2a71a2", senses = {
     {id = "sense-3dfbec69644f6a2a71a2", display_english = "cruise", commit_english = "cruise"},
   }},
+  ["巡访"] = {primary_sense_id = "sense-candidate-603302a5b6e4d9c01e47a8a2", senses = {
+    {id = "sense-candidate-603302a5b6e4d9c01e47a8a2", display_english = "walkabout", commit_english = "walkabout"},
+  }},
   ["巡逻"] = {primary_sense_id = "sense-5c51206124de65f84dca", senses = {
     {id = "sense-5c51206124de65f84dca", display_english = "patrol", commit_english = "patrol"},
   }},
@@ -12146,16 +12372,26 @@ return {schema_version = 2, entries = {
   }},
   ["工人"] = {primary_sense_id = "sense-3a400de3378feb3421ea", senses = {
     {id = "sense-3a400de3378feb3421ea", display_english = "worker", commit_english = "worker"},
+    {id = "sense-candidate-0e0538191bea5c7bce4a8181", display_english = "workman", commit_english = "workman"},
   }},
   ["工作"] = {primary_sense_id = "sense-e0a887ddbd5ca5f50223", senses = {
     {id = "sense-e0a887ddbd5ca5f50223", display_english = "job", commit_english = "job"},
     {id = "sense-5bb92e578203b293969e", display_english = "jobs", commit_english = "jobs"},
+  }},
+  ["工作台"] = {primary_sense_id = "sense-candidate-64ed98bebbc59722fb483bd5", senses = {
+    {id = "sense-candidate-64ed98bebbc59722fb483bd5", display_english = "workbench", commit_english = "workbench"},
+  }},
+  ["工作场所"] = {primary_sense_id = "sense-candidate-045945c2b602dd4879fad85f", senses = {
+    {id = "sense-candidate-045945c2b602dd4879fad85f", display_english = "workplace", commit_english = "workplace"},
   }},
   ["工作室"] = {primary_sense_id = "sense-546e86f26f162e4fb589", senses = {
     {id = "sense-546e86f26f162e4fb589", display_english = "studio", commit_english = "studio"},
   }},
   ["工作日"] = {primary_sense_id = "sense-9d5c374116d45550743f", senses = {
     {id = "sense-9d5c374116d45550743f", display_english = "weekdays", commit_english = "weekdays"},
+  }},
+  ["工作狂"] = {primary_sense_id = "sense-candidate-6ce98a0b393c2ea38b040a9e", senses = {
+    {id = "sense-candidate-6ce98a0b393c2ea38b040a9e", display_english = "workaholic", commit_english = "workaholic"},
   }},
   ["工作的"] = {primary_sense_id = "sense-ed28eb0b62fd436dff5c", senses = {
     {id = "sense-ed28eb0b62fd436dff5c", display_english = "working", commit_english = "working"},
@@ -12187,6 +12423,9 @@ return {schema_version = 2, entries = {
   ["工程师"] = {primary_sense_id = "sense-452ca8804101151f8ed8", senses = {
     {id = "sense-452ca8804101151f8ed8", display_english = "engineer", commit_english = "engineer"},
     {id = "sense-538761a9c4527c86d252", display_english = "engineers", commit_english = "engineers"},
+  }},
+  ["工资"] = {primary_sense_id = "sense-candidate-7e47bfdf2c5c436231aeacc8", senses = {
+    {id = "sense-candidate-7e47bfdf2c5c436231aeacc8", display_english = "wage", commit_english = "wage"},
   }},
   ["左"] = {primary_sense_id = "sense-867df50d6a7c79948597", senses = {
     {id = "sense-867df50d6a7c79948597", display_english = "left", commit_english = "left"},
@@ -12235,6 +12474,9 @@ return {schema_version = 2, entries = {
   }},
   ["巩固"] = {primary_sense_id = "sense-57632dd629ceb4a9cc52", senses = {
     {id = "sense-57632dd629ceb4a9cc52", display_english = "consolidate", commit_english = "consolidate"},
+  }},
+  ["巫师"] = {primary_sense_id = "sense-candidate-ceebc9bce29b8adff9dfaa3c", senses = {
+    {id = "sense-candidate-ceebc9bce29b8adff9dfaa3c", display_english = "wizard", commit_english = "wizard"},
   }},
   ["差事"] = {primary_sense_id = "sense-c5bb6099e0a832879b69", senses = {
     {id = "sense-c5bb6099e0a832879b69", display_english = "assignment", commit_english = "assignment"},
@@ -12315,6 +12557,9 @@ return {schema_version = 2, entries = {
   ["帆布"] = {primary_sense_id = "sense-5b501bb86e585b32db8b", senses = {
     {id = "sense-5b501bb86e585b32db8b", display_english = "canvas", commit_english = "canvas"},
   }},
+  ["帆板运动"] = {primary_sense_id = "sense-candidate-eab289210837335296521dd4", senses = {
+    {id = "sense-candidate-eab289210837335296521dd4", display_english = "windsurfing", commit_english = "windsurfing"},
+  }},
   ["帆船运动"] = {primary_sense_id = "sense-2a14547940188dda9403", senses = {
     {id = "sense-2a14547940188dda9403", display_english = "sailing", commit_english = "sailing"},
   }},
@@ -12349,6 +12594,9 @@ return {schema_version = 2, entries = {
   }},
   ["带来"] = {primary_sense_id = "sense-7bfba5ca5b872c17f9a3", senses = {
     {id = "sense-7bfba5ca5b872c17f9a3", display_english = "bring", commit_english = "bring"},
+  }},
+  ["带讥讽的"] = {primary_sense_id = "sense-candidate-b13bd65af4a12f6b8e2ce4b3", senses = {
+    {id = "sense-candidate-b13bd65af4a12f6b8e2ce4b3", display_english = "wry", commit_english = "wry"},
   }},
   ["席卷"] = {primary_sense_id = "sense-f06b3a4f1bf9b8be67c1", senses = {
     {id = "sense-f06b3a4f1bf9b8be67c1", display_english = "sweep", commit_english = "sweep"},
@@ -12407,6 +12655,9 @@ return {schema_version = 2, entries = {
     {id = "sense-6806d6a92054e85427b3", display_english = "meddle", commit_english = "meddle"},
     {id = "sense-aeb868a402b59fa78a48", display_english = "interfere", commit_english = "interfere"},
   }},
+  ["干瘪的"] = {primary_sense_id = "sense-candidate-b08aab0dcec78499c80c84ab", senses = {
+    {id = "sense-candidate-b08aab0dcec78499c80c84ab", display_english = "wizened", commit_english = "wizened"},
+  }},
   ["干的"] = {primary_sense_id = "sense-c6a67c9d200c592fe2d3", senses = {
     {id = "sense-c6a67c9d200c592fe2d3", display_english = "dry", commit_english = "dry"},
   }},
@@ -12464,6 +12715,9 @@ return {schema_version = 2, entries = {
   }},
   ["平房"] = {primary_sense_id = "sense-4cab1a6d2a34edf784dc", senses = {
     {id = "sense-4cab1a6d2a34edf784dc", display_english = "bungalow", commit_english = "bungalow"},
+  }},
+  ["平日"] = {primary_sense_id = "sense-candidate-59d3f1bc4223c70d0d70a87d", senses = {
+    {id = "sense-candidate-59d3f1bc4223c70d0d70a87d", display_english = "weekday", commit_english = "weekday"},
   }},
   ["平时"] = {primary_sense_id = "sense-a091496531bd6a340409", senses = {
     {id = "sense-a091496531bd6a340409", display_english = "ordinarily", commit_english = "ordinarily"},
@@ -12533,6 +12787,9 @@ return {schema_version = 2, entries = {
   ["平静的"] = {primary_sense_id = "sense-4096a5ce886467c02f58", senses = {
     {id = "sense-4096a5ce886467c02f58", display_english = "peaceful", commit_english = "peaceful"},
   }},
+  ["年"] = {primary_sense_id = "sense-candidate-f3edf8572352f4ab5f088b38", senses = {
+    {id = "sense-candidate-f3edf8572352f4ab5f088b38", display_english = "year", commit_english = "year"},
+  }},
   ["年度"] = {primary_sense_id = "sense-d014bee29462beb2a53c", senses = {
     {id = "sense-d014bee29462beb2a53c", display_english = "annual", commit_english = "annual"},
   }},
@@ -12547,6 +12804,9 @@ return {schema_version = 2, entries = {
   }},
   ["年轻人"] = {primary_sense_id = "sense-2be90db45fb25b8eca94", senses = {
     {id = "sense-2be90db45fb25b8eca94", display_english = "youngster", commit_english = "youngster"},
+  }},
+  ["年轻的"] = {primary_sense_id = "sense-candidate-1c7e37fa010a951bc55d2256", senses = {
+    {id = "sense-candidate-1c7e37fa010a951bc55d2256", display_english = "young", commit_english = "young"},
   }},
   ["年迈"] = {primary_sense_id = "sense-31c8be1a647d641ccfd3", senses = {
     {id = "sense-31c8be1a647d641ccfd3", display_english = "old", commit_english = "old"},
@@ -12648,6 +12908,10 @@ return {schema_version = 2, entries = {
   }},
   ["广泛地"] = {primary_sense_id = "sense-5d919ad9cfcde36c2084", senses = {
     {id = "sense-5d919ad9cfcde36c2084", display_english = "extensively", commit_english = "extensively"},
+    {id = "sense-candidate-9007f0db581e6ea3f6f36d7f", display_english = "widely", commit_english = "widely"},
+  }},
+  ["广泛存在的"] = {primary_sense_id = "sense-candidate-ae01bc14af79ccda1e874ed6", senses = {
+    {id = "sense-candidate-ae01bc14af79ccda1e874ed6", display_english = "widespread", commit_english = "widespread"},
   }},
   ["庄严"] = {primary_sense_id = "sense-a69e8b44b33dc83e0721", senses = {
     {id = "sense-a69e8b44b33dc83e0721", display_english = "solemn", commit_english = "solemn"},
@@ -13076,6 +13340,9 @@ return {schema_version = 2, entries = {
   ["弯道"] = {primary_sense_id = "sense-711a160cc591054b4577", senses = {
     {id = "sense-711a160cc591054b4577", display_english = "bend", commit_english = "bend"},
   }},
+  ["弱点"] = {primary_sense_id = "sense-candidate-c3545088979aafac3947948c", senses = {
+    {id = "sense-candidate-c3545088979aafac3947948c", display_english = "weakness", commit_english = "weakness"},
+  }},
   ["弹"] = {primary_sense_id = "sense-3ba6f3b2afbdabb5be01", senses = {
     {id = "sense-3ba6f3b2afbdabb5be01", display_english = "flick", commit_english = "flick"},
   }},
@@ -13195,6 +13462,9 @@ return {schema_version = 2, entries = {
   ["归纳"] = {primary_sense_id = "sense-31c2760c7a2e435e0496", senses = {
     {id = "sense-31c2760c7a2e435e0496", display_english = "induction", commit_english = "induction"},
     {id = "sense-0df1de29a34ac0350f90", display_english = "summarize", commit_english = "summarize"},
+  }},
+  ["当"] = {primary_sense_id = "sense-candidate-c3e8eeaf32b82eb6a1a99f41", senses = {
+    {id = "sense-candidate-c3e8eeaf32b82eb6a1a99f41", display_english = "when", commit_english = "when"},
   }},
   ["当中"] = {primary_sense_id = "sense-a5609b0667322b9c24c2", senses = {
     {id = "sense-a5609b0667322b9c24c2", display_english = "amid", commit_english = "amid"},
@@ -13337,6 +13607,7 @@ return {schema_version = 2, entries = {
   }},
   ["很"] = {primary_sense_id = "sense-c146aa6e62a8f05475d1", senses = {
     {id = "sense-c146aa6e62a8f05475d1", display_english = "really", commit_english = "really"},
+    {id = "sense-candidate-7bd49e71aa7f04da41a9f077", display_english = "very", commit_english = "very"},
   }},
   ["很好地"] = {primary_sense_id = "sense-358caa7a587d2e551ece", senses = {
     {id = "sense-358caa7a587d2e551ece", display_english = "nicely", commit_english = "nicely"},
@@ -13475,6 +13746,9 @@ return {schema_version = 2, entries = {
   ["心态"] = {primary_sense_id = "sense-322d04a6626a80008673", senses = {
     {id = "sense-322d04a6626a80008673", display_english = "mentality", commit_english = "mentality"},
   }},
+  ["心愿"] = {primary_sense_id = "sense-candidate-d2cbdc0ae83dd308bfd508cd", senses = {
+    {id = "sense-candidate-d2cbdc0ae83dd308bfd508cd", display_english = "wish", commit_english = "wish"},
+  }},
   ["心灵"] = {primary_sense_id = "sense-11b57f38951ba25e4c8e", senses = {
     {id = "sense-11b57f38951ba25e4c8e", display_english = "psyche", commit_english = "psyche"},
   }},
@@ -13507,6 +13781,9 @@ return {schema_version = 2, entries = {
   }},
   ["心理语言学"] = {primary_sense_id = "sense-c278c80bf35339f5ac9b", senses = {
     {id = "sense-c278c80bf35339f5ac9b", display_english = "psycholinguistics", commit_english = "psycholinguistics"},
+  }},
+  ["心甘情愿地"] = {primary_sense_id = "sense-candidate-254493d4d20be270a27fb257", senses = {
+    {id = "sense-candidate-254493d4d20be270a27fb257", display_english = "willingly", commit_english = "willingly"},
   }},
   ["心碎"] = {primary_sense_id = "sense-66a9728fc16d8e908afe", senses = {
     {id = "sense-66a9728fc16d8e908afe", display_english = "heartbroken", commit_english = "heartbroken"},
@@ -13611,6 +13888,7 @@ return {schema_version = 2, entries = {
   }},
   ["忧虑"] = {primary_sense_id = "sense-dc472eef9ebda932b8f1", senses = {
     {id = "sense-dc472eef9ebda932b8f1", display_english = "apprehension", commit_english = "apprehension"},
+    {id = "sense-candidate-f123751e5cb673dbf5444a49", display_english = "worry", commit_english = "worry"},
   }},
   ["忧郁"] = {primary_sense_id = "sense-1ae0459033a121d8a338", senses = {
     {id = "sense-1ae0459033a121d8a338", display_english = "melancholy", commit_english = "melancholy"},
@@ -13677,6 +13955,12 @@ return {schema_version = 2, entries = {
   ["态度"] = {primary_sense_id = "sense-daeb610e77261f7c1a8e", senses = {
     {id = "sense-daeb610e77261f7c1a8e", display_english = "attitude", commit_english = "attitude"},
     {id = "sense-a6e054f467316ef5bfa6", display_english = "manner", commit_english = "manner"},
+  }},
+  ["怅然地"] = {primary_sense_id = "sense-candidate-0f1e8fb3a046f8d9412be014", senses = {
+    {id = "sense-candidate-0f1e8fb3a046f8d9412be014", display_english = "wistfully", commit_english = "wistfully"},
+  }},
+  ["怅然的"] = {primary_sense_id = "sense-candidate-383a4c3401b98bd609faa20a", senses = {
+    {id = "sense-candidate-383a4c3401b98bd609faa20a", display_english = "wistful", commit_english = "wistful"},
   }},
   ["怎样"] = {primary_sense_id = "sense-f8d5fa0a516d5ae97935", senses = {
     {id = "sense-f8d5fa0a516d5ae97935", display_english = "how", commit_english = "how"},
@@ -13955,6 +14239,7 @@ return {schema_version = 2, entries = {
   }},
   ["恶化"] = {primary_sense_id = "sense-dc7b660a5c41bc84b0dd", senses = {
     {id = "sense-dc7b660a5c41bc84b0dd", display_english = "deteriorate", commit_english = "deteriorate"},
+    {id = "sense-candidate-d9f0de0aa82298397d595c56", display_english = "worsen", commit_english = "worsen"},
   }},
   ["恶名"] = {primary_sense_id = "sense-448b0a1c1b51249e1f88", senses = {
     {id = "sense-448b0a1c1b51249e1f88", display_english = "notoriety", commit_english = "notoriety"},
@@ -13979,9 +14264,13 @@ return {schema_version = 2, entries = {
   }},
   ["恶毒地"] = {primary_sense_id = "sense-8f2a7c56cdc4990dee7f", senses = {
     {id = "sense-8f2a7c56cdc4990dee7f", display_english = "venomously", commit_english = "venomously"},
+    {id = "sense-candidate-b3ca0e82bf3578926406de07", display_english = "wickedly", commit_english = "wickedly"},
   }},
   ["恶浊"] = {primary_sense_id = "sense-5db8b726e7eec5c02407", senses = {
     {id = "sense-5db8b726e7eec5c02407", display_english = "foul", commit_english = "foul"},
+  }},
+  ["恶狠狠地"] = {primary_sense_id = "sense-candidate-e9ee7486aab469b97b79f6d1", senses = {
+    {id = "sense-candidate-e9ee7486aab469b97b79f6d1", display_english = "viciously", commit_english = "viciously"},
   }},
   ["恶行"] = {primary_sense_id = "sense-72ea28c5d49dd61efcb4", senses = {
     {id = "sense-72ea28c5d49dd61efcb4", display_english = "misdeed", commit_english = "misdeed"},
@@ -14210,8 +14499,12 @@ return {schema_version = 2, entries = {
     {id = "sense-e36e0e6232c107822e5f", display_english = "ideas", commit_english = "ideas"},
     {id = "sense-039ea73c38a9a9a59f2b", display_english = "thoughts", commit_english = "thoughts"},
   }},
+  ["想知道"] = {primary_sense_id = "sense-candidate-fea8f010468dcb69c1340981", senses = {
+    {id = "sense-candidate-fea8f010468dcb69c1340981", display_english = "wonder", commit_english = "wonder"},
+  }},
   ["想要"] = {primary_sense_id = "sense-dd182cfb0c805aa0a662", senses = {
     {id = "sense-dd182cfb0c805aa0a662", display_english = "fancy", commit_english = "fancy"},
+    {id = "sense-candidate-7ce7ef5f7575a46c853d10b6", display_english = "want", commit_english = "want"},
   }},
   ["想象"] = {primary_sense_id = "sense-73cfdc9b61885575fbaf", senses = {
     {id = "sense-73cfdc9b61885575fbaf", display_english = "visualize", commit_english = "visualize"},
@@ -14264,6 +14557,9 @@ return {schema_version = 2, entries = {
   }},
   ["意大利面"] = {primary_sense_id = "sense-6be9bfe89c3ade347bb9", senses = {
     {id = "sense-6be9bfe89c3ade347bb9", display_english = "pasta", commit_english = "pasta"},
+  }},
+  ["意愿"] = {primary_sense_id = "sense-candidate-acdd2570956108cc436e108d", senses = {
+    {id = "sense-candidate-acdd2570956108cc436e108d", display_english = "willingness", commit_english = "willingness"},
   }},
   ["意见"] = {primary_sense_id = "sense-9503fcf5dd3a4eb3678f", senses = {
     {id = "sense-9503fcf5dd3a4eb3678f", display_english = "opinion", commit_english = "opinion"},
@@ -14362,6 +14658,10 @@ return {schema_version = 2, entries = {
   }},
   ["愿意的"] = {primary_sense_id = "sense-bce7740b1feab197d7ba", senses = {
     {id = "sense-bce7740b1feab197d7ba", display_english = "ready", commit_english = "ready"},
+    {id = "sense-candidate-fdff84860b8d0fc4acee8393", display_english = "willing", commit_english = "willing"},
+  }},
+  ["愿景"] = {primary_sense_id = "sense-candidate-7bbb4cfee5379c6d4791a679", senses = {
+    {id = "sense-candidate-7bbb4cfee5379c6d4791a679", display_english = "vision", commit_english = "vision"},
   }},
   ["慈善"] = {primary_sense_id = "sense-eed9519da854a20ca1c3", senses = {
     {id = "sense-eed9519da854a20ca1c3", display_english = "philanthropy", commit_english = "philanthropy"},
@@ -14521,6 +14821,7 @@ return {schema_version = 2, entries = {
   }},
   ["我们"] = {primary_sense_id = "sense-bc6bba65d3bdb25d9f6a", senses = {
     {id = "sense-bc6bba65d3bdb25d9f6a", display_english = "us", commit_english = "us"},
+    {id = "sense-candidate-e5af5c848f28ccab8a140fb6", display_english = "we", commit_english = "we"},
   }},
   ["我们的"] = {primary_sense_id = "sense-81ad105e453d587d72e0", senses = {
     {id = "sense-81ad105e453d587d72e0", display_english = "ours", commit_english = "ours"},
@@ -14539,12 +14840,18 @@ return {schema_version = 2, entries = {
   ["戒指"] = {primary_sense_id = "sense-9935ad6f032190c649d4", senses = {
     {id = "sense-9935ad6f032190c649d4", display_english = "ring", commit_english = "ring"},
   }},
+  ["戒断"] = {primary_sense_id = "sense-candidate-1072b7b093fa6ee433e803d3", senses = {
+    {id = "sense-candidate-1072b7b093fa6ee433e803d3", display_english = "withdrawal", commit_english = "withdrawal"},
+  }},
   ["戒除"] = {primary_sense_id = "sense-c659ae8513ea6fed7ce1", senses = {
     {id = "sense-c659ae8513ea6fed7ce1", display_english = "quit", commit_english = "quit"},
   }},
   ["或者"] = {primary_sense_id = "sense-4814efa68f3c8ed2ed14", senses = {
     {id = "sense-4814efa68f3c8ed2ed14", display_english = "alternatively", commit_english = "alternatively"},
     {id = "sense-8b55dd1c0bb214ae4936", display_english = "or", commit_english = "or"},
+  }},
+  ["战争"] = {primary_sense_id = "sense-candidate-1e383e16b2f2c3dd7bfec178", senses = {
+    {id = "sense-candidate-1e383e16b2f2c3dd7bfec178", display_english = "war", commit_english = "war"},
   }},
   ["战事"] = {primary_sense_id = "sense-8619afe8481d7f8af7aa", senses = {
     {id = "sense-8619afe8481d7f8af7aa", display_english = "fighting", commit_english = "fighting"},
@@ -14557,6 +14864,7 @@ return {schema_version = 2, entries = {
   }},
   ["战士"] = {primary_sense_id = "sense-f754fb6aa3b05d3d27cd", senses = {
     {id = "sense-f754fb6aa3b05d3d27cd", display_english = "fighter", commit_english = "fighter"},
+    {id = "sense-candidate-ebbfd865e41cc45b55219e26", display_english = "warrior", commit_english = "warrior"},
   }},
   ["战役"] = {primary_sense_id = "sense-8e63a62bd6ffb9eb71c0", senses = {
     {id = "sense-8e63a62bd6ffb9eb71c0", display_english = "campaign", commit_english = "campaign"},
@@ -14567,6 +14875,9 @@ return {schema_version = 2, entries = {
   }},
   ["战斗机"] = {primary_sense_id = "sense-b6d017cccc192f827c86", senses = {
     {id = "sense-b6d017cccc192f827c86", display_english = "fighter", commit_english = "fighter"},
+  }},
+  ["战时"] = {primary_sense_id = "sense-candidate-d2b08b3cbd0ee56b93851435", senses = {
+    {id = "sense-candidate-d2b08b3cbd0ee56b93851435", display_english = "wartime", commit_english = "wartime"},
   }},
   ["战术的"] = {primary_sense_id = "sense-834ef4ed4490635b73c4", senses = {
     {id = "sense-834ef4ed4490635b73c4", display_english = "tactical", commit_english = "tactical"},
@@ -14579,6 +14890,9 @@ return {schema_version = 2, entries = {
   }},
   ["战胜"] = {primary_sense_id = "sense-dc1e2a9d8a37f7e864f5", senses = {
     {id = "sense-dc1e2a9d8a37f7e864f5", display_english = "defeat", commit_english = "defeat"},
+  }},
+  ["战舰"] = {primary_sense_id = "sense-candidate-0042b492f0c693f8bab49346", senses = {
+    {id = "sense-candidate-0042b492f0c693f8bab49346", display_english = "warship", commit_english = "warship"},
   }},
   ["战车"] = {primary_sense_id = "sense-328acb6c45104972ebcc", senses = {
     {id = "sense-328acb6c45104972ebcc", display_english = "chariot", commit_english = "chariot"},
@@ -14727,8 +15041,14 @@ return {schema_version = 2, entries = {
   ["手肘"] = {primary_sense_id = "sense-8229a71085a5a14b6ad8", senses = {
     {id = "sense-8229a71085a5a14b6ad8", display_english = "elbow", commit_english = "elbow"},
   }},
+  ["手腕"] = {primary_sense_id = "sense-candidate-bfe5a4fc9148a65da5feefa9", senses = {
+    {id = "sense-candidate-bfe5a4fc9148a65da5feefa9", display_english = "wrist", commit_english = "wrist"},
+  }},
   ["手艺"] = {primary_sense_id = "sense-664daebd7f46546f4809", senses = {
     {id = "sense-664daebd7f46546f4809", display_english = "craft", commit_english = "craft"},
+  }},
+  ["手表"] = {primary_sense_id = "sense-candidate-f27cbd383056c468baaf402f", senses = {
+    {id = "sense-candidate-f27cbd383056c468baaf402f", display_english = "watch", commit_english = "watch"},
   }},
   ["手铐"] = {primary_sense_id = "sense-c81caa09cfb1c996aef0", senses = {
     {id = "sense-c81caa09cfb1c996aef0", display_english = "manacle", commit_english = "manacle"},
@@ -14821,6 +15141,9 @@ return {schema_version = 2, entries = {
   }},
   ["打滑"] = {primary_sense_id = "sense-f7430c013853d69ae0af", senses = {
     {id = "sense-f7430c013853d69ae0af", display_english = "slip", commit_english = "slip"},
+  }},
+  ["打滚"] = {primary_sense_id = "sense-candidate-85a6564e9119c3b88de0d637", senses = {
+    {id = "sense-candidate-85a6564e9119c3b88de0d637", display_english = "wallow", commit_english = "wallow"},
   }},
   ["打火机"] = {primary_sense_id = "sense-bd68b2e7c6311fd99cd5", senses = {
     {id = "sense-bd68b2e7c6311fd99cd5", display_english = "lighter", commit_english = "lighter"},
@@ -15106,6 +15429,9 @@ return {schema_version = 2, entries = {
     {id = "sense-1680171740ac6bdf5ef6", display_english = "bid", commit_english = "bid"},
     {id = "sense-revision-7458198dd06385e03e7b4440", display_english = "bidding", commit_english = "bidding"},
   }},
+  ["投票"] = {primary_sense_id = "sense-candidate-acb19738852fb16c8b1e0d59", senses = {
+    {id = "sense-candidate-acb19738852fb16c8b1e0d59", display_english = "vote", commit_english = "vote"},
+  }},
   ["投篮"] = {primary_sense_id = "sense-revision-121ce61361456a44b4fbd19e", senses = {
     {id = "sense-revision-121ce61361456a44b4fbd19e", display_english = "shot", commit_english = "shot"},
   }},
@@ -15170,6 +15496,7 @@ return {schema_version = 2, entries = {
     {id = "sense-b932b5942535e7a781af", display_english = "afflict", commit_english = "afflict"},
     {id = "sense-d2e63319807eb2726b0f", display_english = "torture", commit_english = "torture"},
     {id = "sense-35ffce7d4971ba51b1aa", display_english = "torment", commit_english = "torment"},
+    {id = "sense-candidate-8f191467aab4762ff1674755", display_english = "wrack", commit_english = "wrack"},
   }},
   ["折磨人的"] = {primary_sense_id = "sense-ac2ad53d1b6bcb524a90", senses = {
     {id = "sense-ac2ad53d1b6bcb524a90", display_english = "torturous", commit_english = "torturous"},
@@ -15347,6 +15674,12 @@ return {schema_version = 2, entries = {
   ["担"] = {primary_sense_id = "sense-ce0f94bdc6b7327759dc", senses = {
     {id = "sense-ce0f94bdc6b7327759dc", display_english = "carry", commit_english = "carry"},
   }},
+  ["担心"] = {primary_sense_id = "sense-candidate-da70231d4eac84fc1734cdb6", senses = {
+    {id = "sense-candidate-da70231d4eac84fc1734cdb6", display_english = "worry", commit_english = "worry"},
+  }},
+  ["担心的"] = {primary_sense_id = "sense-candidate-73461100e7e5bb764a751f40", senses = {
+    {id = "sense-candidate-73461100e7e5bb764a751f40", display_english = "worried", commit_english = "worried"},
+  }},
   ["拆下"] = {primary_sense_id = "sense-90f77a95c6323dade6e6", senses = {
     {id = "sense-90f77a95c6323dade6e6", display_english = "detach", commit_english = "detach"},
   }},
@@ -15370,6 +15703,9 @@ return {schema_version = 2, entries = {
   ["拉伸"] = {primary_sense_id = "sense-fe31ab3352589f5ae2ab", senses = {
     {id = "sense-fe31ab3352589f5ae2ab", display_english = "stretching", commit_english = "stretching"},
     {id = "sense-0ef89b09d26808793e2e", display_english = "stretch", commit_english = "stretch"},
+  }},
+  ["拉链"] = {primary_sense_id = "sense-candidate-d39ed48c4f706e117e17551d", senses = {
+    {id = "sense-candidate-d39ed48c4f706e117e17551d", display_english = "zip", commit_english = "zip"},
   }},
   ["拉长"] = {primary_sense_id = "sense-ea8243dd22144b1b64f9", senses = {
     {id = "sense-ea8243dd22144b1b64f9", display_english = "elongate", commit_english = "elongate"},
@@ -15707,6 +16043,10 @@ return {schema_version = 2, entries = {
   ["挠痒痒"] = {primary_sense_id = "sense-9d0c41c5bbe98c1a2b7b", senses = {
     {id = "sense-9d0c41c5bbe98c1a2b7b", display_english = "tickle", commit_english = "tickle"},
   }},
+  ["挡风玻璃"] = {primary_sense_id = "sense-candidate-4a8461f3754a5ac0233924e1", senses = {
+    {id = "sense-candidate-4a8461f3754a5ac0233924e1", display_english = "windscreen", commit_english = "windscreen"},
+    {id = "sense-candidate-e25c32ea878d2c63137460ac", display_english = "windshield", commit_english = "windshield"},
+  }},
   ["挣扎"] = {primary_sense_id = "sense-d9699d547dfff95c1d31", senses = {
     {id = "sense-d9699d547dfff95c1d31", display_english = "struggle", commit_english = "struggle"},
   }},
@@ -15740,6 +16080,7 @@ return {schema_version = 2, entries = {
   }},
   ["振动"] = {primary_sense_id = "sense-06a19c19c053499f58a7", senses = {
     {id = "sense-06a19c19c053499f58a7", display_english = "vibrate", commit_english = "vibrate"},
+    {id = "sense-candidate-caa812edb5b2f1dfeb7b00b5", display_english = "vibration", commit_english = "vibration"},
   }},
   ["挽回"] = {primary_sense_id = "sense-8dc384aafe9d42255e79", senses = {
     {id = "sense-8dc384aafe9d42255e79", display_english = "redeem", commit_english = "redeem"},
@@ -15864,6 +16205,9 @@ return {schema_version = 2, entries = {
     {id = "sense-ff51820fa50d8a11c826", display_english = "drain", commit_english = "drain"},
     {id = "sense-6e722c9e68b03982ba0c", display_english = "drainage", commit_english = "drainage"},
   }},
+  ["排球"] = {primary_sense_id = "sense-candidate-636b9a426dc67dcfee64c223", senses = {
+    {id = "sense-candidate-636b9a426dc67dcfee64c223", display_english = "volleyball", commit_english = "volleyball"},
+  }},
   ["排练"] = {primary_sense_id = "sense-1a336b2353f0f9f4f90f", senses = {
     {id = "sense-1a336b2353f0f9f4f90f", display_english = "rehearsal", commit_english = "rehearsal"},
   }},
@@ -15949,6 +16293,9 @@ return {schema_version = 2, entries = {
   }},
   ["接纳"] = {primary_sense_id = "sense-a1b82b4cf8d6192a4299", senses = {
     {id = "sense-a1b82b4cf8d6192a4299", display_english = "acceptance", commit_english = "acceptance"},
+  }},
+  ["接线"] = {primary_sense_id = "sense-candidate-317383cbd0599ea569ca4ba5", senses = {
+    {id = "sense-candidate-317383cbd0599ea569ca4ba5", display_english = "wire", commit_english = "wire"},
   }},
   ["接线员"] = {primary_sense_id = "sense-b9b79ac16ead07f60e3a", senses = {
     {id = "sense-b9b79ac16ead07f60e3a", display_english = "operator", commit_english = "operator"},
@@ -16324,6 +16671,7 @@ return {schema_version = 2, entries = {
   }},
   ["撤出"] = {primary_sense_id = "sense-9f47c50e6a524901de2a", senses = {
     {id = "sense-9f47c50e6a524901de2a", display_english = "withdraw", commit_english = "withdraw"},
+    {id = "sense-candidate-3fd6abab3f82a04fa9f3f812", display_english = "withdrawal", commit_english = "withdrawal"},
   }},
   ["撤回"] = {primary_sense_id = "sense-a6eb838c9c7e3af4e891", senses = {
     {id = "sense-a6eb838c9c7e3af4e891", display_english = "recall", commit_english = "recall"},
@@ -16359,6 +16707,9 @@ return {schema_version = 2, entries = {
     {id = "sense-11021beb03104e3407e4", display_english = "operate", commit_english = "operate"},
     {id = "sense-953ccd7484a04b403959", display_english = "operation", commit_english = "operation"},
   }},
+  ["操作台"] = {primary_sense_id = "sense-candidate-e85d9770be485489ea903414", senses = {
+    {id = "sense-candidate-e85d9770be485489ea903414", display_english = "worktable", commit_english = "worktable"},
+  }},
   ["操作员"] = {primary_sense_id = "sense-087e27ac8d5be455b8a6", senses = {
     {id = "sense-087e27ac8d5be455b8a6", display_english = "operator", commit_english = "operator"},
   }},
@@ -16378,6 +16729,9 @@ return {schema_version = 2, entries = {
   }},
   ["擦光剂"] = {primary_sense_id = "sense-ce4c44112648da90d1a1", senses = {
     {id = "sense-ce4c44112648da90d1a1", display_english = "polish", commit_english = "polish"},
+  }},
+  ["擦拭"] = {primary_sense_id = "sense-candidate-acefd7d88eee2e29e6ef6344", senses = {
+    {id = "sense-candidate-acefd7d88eee2e29e6ef6344", display_english = "wipe", commit_english = "wipe"},
   }},
   ["擦掠"] = {primary_sense_id = "sense-1e3148011478c1dc03d6", senses = {
     {id = "sense-1e3148011478c1dc03d6", display_english = "graze", commit_english = "graze"},
@@ -16828,6 +17182,10 @@ return {schema_version = 2, entries = {
   }},
   ["整个"] = {primary_sense_id = "sense-e8c3949c73023f9f51f0", senses = {
     {id = "sense-e8c3949c73023f9f51f0", display_english = "entire", commit_english = "entire"},
+    {id = "sense-candidate-78b9b6778c23fffef4294676", display_english = "whole", commit_english = "whole"},
+  }},
+  ["整体"] = {primary_sense_id = "sense-candidate-30902e55f26b781628a39c09", senses = {
+    {id = "sense-candidate-30902e55f26b781628a39c09", display_english = "whole", commit_english = "whole"},
   }},
   ["整修"] = {primary_sense_id = "sense-956c85ddf96dd06a7272", senses = {
     {id = "sense-956c85ddf96dd06a7272", display_english = "refurbish", commit_english = "refurbish"},
@@ -16878,6 +17236,9 @@ return {schema_version = 2, entries = {
   ["文字"] = {primary_sense_id = "sense-559dfbf25074fde90265", senses = {
     {id = "sense-559dfbf25074fde90265", display_english = "writing", commit_english = "writing"},
   }},
+  ["文字高手"] = {primary_sense_id = "sense-candidate-aa3e0e3efd04f5f7f1fc6b54", senses = {
+    {id = "sense-candidate-aa3e0e3efd04f5f7f1fc6b54", display_english = "wordsmith", commit_english = "wordsmith"},
+  }},
   ["文学"] = {primary_sense_id = "sense-e6eb96ff2ea0fab1d9b3", senses = {
     {id = "sense-e6eb96ff2ea0fab1d9b3", display_english = "literature", commit_english = "literature"},
   }},
@@ -16910,6 +17271,9 @@ return {schema_version = 2, entries = {
   }},
   ["斑点"] = {primary_sense_id = "sense-9902ec4c55ad31381264", senses = {
     {id = "sense-9902ec4c55ad31381264", display_english = "spot", commit_english = "spot"},
+  }},
+  ["斑马"] = {primary_sense_id = "sense-candidate-371305a613353ad2b05896bc", senses = {
+    {id = "sense-candidate-371305a613353ad2b05896bc", display_english = "zebra", commit_english = "zebra"},
   }},
   ["斑驳"] = {primary_sense_id = "sense-9e6e92baeeb092aaf5c1", senses = {
     {id = "sense-9e6e92baeeb092aaf5c1", display_english = "mottled", commit_english = "mottled"},
@@ -17073,6 +17437,7 @@ return {schema_version = 2, entries = {
     {id = "sense-a4a627066d08801a39f4", display_english = "approach", commit_english = "approach"},
     {id = "sense-7fdfaa52a0d28ff00fe2", display_english = "approaches", commit_english = "approaches"},
     {id = "sense-e875e107012049d4c388", display_english = "methods", commit_english = "methods"},
+    {id = "sense-candidate-d8c2d0d1e3a536786c81f4d1", display_english = "way", commit_english = "way"},
   }},
   ["方法论"] = {primary_sense_id = "sense-2cffac6a605e209b2266", senses = {
     {id = "sense-2cffac6a605e209b2266", display_english = "methodology", commit_english = "methodology"},
@@ -17156,6 +17521,9 @@ return {schema_version = 2, entries = {
     {id = "sense-6af29762031aff871ee3", display_english = "revolve", commit_english = "revolve"},
     {id = "sense-521be268fa8314c52e67", display_english = "whirl", commit_english = "whirl"},
   }},
+  ["旋风"] = {primary_sense_id = "sense-candidate-5e22a4cf3fc18972b89682d1", senses = {
+    {id = "sense-candidate-5e22a4cf3fc18972b89682d1", display_english = "whirlwind", commit_english = "whirlwind"},
+  }},
   ["族"] = {primary_sense_id = "sense-048d104e45aa1ac0724d", senses = {
     {id = "sense-048d104e45aa1ac0724d", display_english = "race", commit_english = "race"},
   }},
@@ -17187,6 +17555,9 @@ return {schema_version = 2, entries = {
   }},
   ["无力偿还的"] = {primary_sense_id = "sense-revision-688014a0640c9fc736760fc4", senses = {
     {id = "sense-revision-688014a0640c9fc736760fc4", display_english = "insolvent", commit_english = "insolvent"},
+  }},
+  ["无力地"] = {primary_sense_id = "sense-candidate-a8de38685877e83479ce4761", senses = {
+    {id = "sense-candidate-a8de38685877e83479ce4761", display_english = "weakly", commit_english = "weakly"},
   }},
   ["无动于衷"] = {primary_sense_id = "sense-fac90565dbea198b0dc5", senses = {
     {id = "sense-fac90565dbea198b0dc5", display_english = "unconcerned", commit_english = "unconcerned"},
@@ -17346,9 +17717,16 @@ return {schema_version = 2, entries = {
   }},
   ["无论何处"] = {primary_sense_id = "sense-335aba2818273d2523cb", senses = {
     {id = "sense-335aba2818273d2523cb", display_english = "anywhere", commit_english = "anywhere"},
+    {id = "sense-candidate-82d0d0a0adf80141bd1243cf", display_english = "wherever", commit_english = "wherever"},
+  }},
+  ["无论何时"] = {primary_sense_id = "sense-candidate-05f1a14f6fa263162e79ab2a", senses = {
+    {id = "sense-candidate-05f1a14f6fa263162e79ab2a", display_english = "whenever", commit_english = "whenever"},
   }},
   ["无论如何"] = {primary_sense_id = "sense-60eb40005a56950791b2", senses = {
     {id = "sense-60eb40005a56950791b2", display_english = "anyhow", commit_english = "anyhow"},
+  }},
+  ["无论是谁"] = {primary_sense_id = "sense-candidate-4c12622b58d64d48db259eb1", senses = {
+    {id = "sense-candidate-4c12622b58d64d48db259eb1", display_english = "whoever", commit_english = "whoever"},
   }},
   ["无谓"] = {primary_sense_id = "sense-f080d91b3a9c6b1c55ec", senses = {
     {id = "sense-f080d91b3a9c6b1c55ec", display_english = "pointless", commit_english = "pointless"},
@@ -17552,6 +17930,7 @@ return {schema_version = 2, entries = {
   ["明显地"] = {primary_sense_id = "sense-5a78d5e9e3d4858dd96c", senses = {
     {id = "sense-5a78d5e9e3d4858dd96c", display_english = "recognisably", commit_english = "recognisably"},
     {id = "sense-c1dc45d16cf04f8b53e6", display_english = "recognizably", commit_english = "recognizably"},
+    {id = "sense-candidate-967b7865588f2bf21daacb3a", display_english = "visibly", commit_english = "visibly"},
   }},
   ["明智"] = {primary_sense_id = "sense-0bd988140d7379a30eb2", senses = {
     {id = "sense-0bd988140d7379a30eb2", display_english = "sensible", commit_english = "sensible"},
@@ -17698,6 +18077,16 @@ return {schema_version = 2, entries = {
   }},
   ["是否"] = {primary_sense_id = "sense-d4ee3b50a1ab0ade6d9a", senses = {
     {id = "sense-d4ee3b50a1ab0ade6d9a", display_english = "if", commit_english = "if"},
+    {id = "sense-candidate-da533063f179024bf148e5a3", display_english = "whether", commit_english = "whether"},
+  }},
+  ["是啊"] = {primary_sense_id = "sense-candidate-bc801987368061d03531033f", senses = {
+    {id = "sense-candidate-bc801987368061d03531033f", display_english = "yeah", commit_english = "yeah"},
+  }},
+  ["是的"] = {primary_sense_id = "sense-candidate-c0c23021623f129aa6cfb587", senses = {
+    {id = "sense-candidate-c0c23021623f129aa6cfb587", display_english = "yes", commit_english = "yes"},
+  }},
+  ["是谁的"] = {primary_sense_id = "sense-candidate-308c520ceceadec6e1e6386b", senses = {
+    {id = "sense-candidate-308c520ceceadec6e1e6386b", display_english = "whose", commit_english = "whose"},
   }},
   ["昵称"] = {primary_sense_id = "sense-8c658d30e9aa221f6bea", senses = {
     {id = "sense-8c658d30e9aa221f6bea", display_english = "nickname", commit_english = "nickname"},
@@ -17890,6 +18279,9 @@ return {schema_version = 2, entries = {
   ["暖心的"] = {primary_sense_id = "sense-382b93e787f990212508", senses = {
     {id = "sense-382b93e787f990212508", display_english = "heart-warming", commit_english = "heart-warming"},
   }},
+  ["暖意"] = {primary_sense_id = "sense-candidate-08cca8f57f66c08f320f8a8d", senses = {
+    {id = "sense-candidate-08cca8f57f66c08f320f8a8d", display_english = "warmth", commit_english = "warmth"},
+  }},
   ["暖气"] = {primary_sense_id = "sense-revision-80c4770754ae1d9c730b89d3", senses = {
     {id = "sense-revision-80c4770754ae1d9c730b89d3", display_english = "heater", commit_english = "heater"},
     {id = "sense-367fce4e92317ee4d689", display_english = "central heating", commit_english = "central heating"},
@@ -17927,6 +18319,9 @@ return {schema_version = 2, entries = {
   }},
   ["暴乱"] = {primary_sense_id = "sense-b7248581516a8f46afe7", senses = {
     {id = "sense-b7248581516a8f46afe7", display_english = "riot", commit_english = "riot"},
+  }},
+  ["暴力"] = {primary_sense_id = "sense-candidate-aad07fb4778db105e6970beb", senses = {
+    {id = "sense-candidate-aad07fb4778db105e6970beb", display_english = "violence", commit_english = "violence"},
   }},
   ["暴力的"] = {primary_sense_id = "sense-6d2c82dcaaae30db4d39", senses = {
     {id = "sense-6d2c82dcaaae30db4d39", display_english = "violent", commit_english = "violent"},
@@ -18035,6 +18430,12 @@ return {schema_version = 2, entries = {
   ["更替"] = {primary_sense_id = "sense-48209d5644b414a49e29", senses = {
     {id = "sense-48209d5644b414a49e29", display_english = "alternate", commit_english = "alternate"},
   }},
+  ["更糟地"] = {primary_sense_id = "sense-candidate-a6846531633e0051db1ef542", senses = {
+    {id = "sense-candidate-a6846531633e0051db1ef542", display_english = "worse", commit_english = "worse"},
+  }},
+  ["更糟的"] = {primary_sense_id = "sense-candidate-3800fe3f4b1b158c0c7e504f", senses = {
+    {id = "sense-candidate-3800fe3f4b1b158c0c7e504f", display_english = "worse", commit_english = "worse"},
+  }},
   ["更远"] = {primary_sense_id = "sense-5205b06b0dd39dfba0c2", senses = {
     {id = "sense-5205b06b0dd39dfba0c2", display_english = "farther", commit_english = "farther"},
   }},
@@ -18092,6 +18493,9 @@ return {schema_version = 2, entries = {
     {id = "sense-79349b9fcd959a066112", display_english = "favorite", commit_english = "favorite"},
     {id = "sense-d70af318c799f0851e80", display_english = "favourite", commit_english = "favourite"},
   }},
+  ["最坏的情况"] = {primary_sense_id = "sense-candidate-9680531ead408f0e09cb0dfd", senses = {
+    {id = "sense-candidate-9680531ead408f0e09cb0dfd", display_english = "worst", commit_english = "worst"},
+  }},
   ["最大的"] = {primary_sense_id = "sense-4e33cfb9f1596b01d60a", senses = {
     {id = "sense-4e33cfb9f1596b01d60a", display_english = "maximum", commit_english = "maximum"},
   }},
@@ -18127,6 +18531,9 @@ return {schema_version = 2, entries = {
   }},
   ["最深处的"] = {primary_sense_id = "sense-457926fe57ec018650a6", senses = {
     {id = "sense-457926fe57ec018650a6", display_english = "innermost", commit_english = "innermost"},
+  }},
+  ["最糟的"] = {primary_sense_id = "sense-candidate-cb4b84f16e2f0b30041efe24", senses = {
+    {id = "sense-candidate-cb4b84f16e2f0b30041efe24", display_english = "worst", commit_english = "worst"},
   }},
   ["最纯净的"] = {primary_sense_id = "sense-a3a99c7abcffbb19fe92", senses = {
     {id = "sense-a3a99c7abcffbb19fe92", display_english = "purest", commit_english = "purest"},
@@ -18227,6 +18634,7 @@ return {schema_version = 2, entries = {
   ["有力地"] = {primary_sense_id = "sense-8201f657dc3ae445a94a", senses = {
     {id = "sense-8201f657dc3ae445a94a", display_english = "forcefully", commit_english = "forcefully"},
     {id = "sense-9108741f504efdc2e050", display_english = "powerfully", commit_english = "powerfully"},
+    {id = "sense-candidate-bf9fd865f2e490be0394e4f2", display_english = "vigorously", commit_english = "vigorously"},
   }},
   ["有助于康复的"] = {primary_sense_id = "sense-3a11baaf30567be1c8bf", senses = {
     {id = "sense-3a11baaf30567be1c8bf", display_english = "recuperative", commit_english = "recuperative"},
@@ -18313,6 +18721,9 @@ return {schema_version = 2, entries = {
   ["有朝一日"] = {primary_sense_id = "sense-6b4c954258afb0009657", senses = {
     {id = "sense-6b4c954258afb0009657", display_english = "someday", commit_english = "someday"},
   }},
+  ["有朝气的"] = {primary_sense_id = "sense-candidate-e073ef321b5c72804615fd9a", senses = {
+    {id = "sense-candidate-e073ef321b5c72804615fd9a", display_english = "youthful", commit_english = "youthful"},
+  }},
   ["有机的"] = {primary_sense_id = "sense-b1b54e0094e547febd17", senses = {
     {id = "sense-b1b54e0094e547febd17", display_english = "organic", commit_english = "organic"},
   }},
@@ -18325,6 +18736,8 @@ return {schema_version = 2, entries = {
   ["有条理的"] = {primary_sense_id = "sense-ad01588b391450ce0a9e", senses = {
     {id = "sense-ad01588b391450ce0a9e", display_english = "organised", commit_english = "organised"},
     {id = "sense-45f31b41bd6ecb31016c", display_english = "organized", commit_english = "organized"},
+    {id = "sense-candidate-3981b867135d2088c9c7825d", display_english = "well-organised", commit_english = "well-organised"},
+    {id = "sense-candidate-75c0eac2e5c8589fe40de69e", display_english = "well-organized", commit_english = "well-organized"},
   }},
   ["有棱角的"] = {primary_sense_id = "sense-4d44e045539e2017374e", senses = {
     {id = "sense-4d44e045539e2017374e", display_english = "angular", commit_english = "angular"},
@@ -18468,6 +18881,9 @@ return {schema_version = 2, entries = {
   ["有雾的"] = {primary_sense_id = "sense-39eafbad39babedea741", senses = {
     {id = "sense-39eafbad39babedea741", display_english = "foggy", commit_english = "foggy"},
   }},
+  ["有风的"] = {primary_sense_id = "sense-candidate-838822f7946980a31c087eb7", senses = {
+    {id = "sense-candidate-838822f7946980a31c087eb7", display_english = "windy", commit_english = "windy"},
+  }},
   ["有风险的"] = {primary_sense_id = "sense-85ea0cc250a011f72401", senses = {
     {id = "sense-85ea0cc250a011f72401", display_english = "risky", commit_english = "risky"},
   }},
@@ -18556,6 +18972,9 @@ return {schema_version = 2, entries = {
   ["期限"] = {primary_sense_id = "sense-7126af01346ff9b07475", senses = {
     {id = "sense-7126af01346ff9b07475", display_english = "term", commit_english = "term"},
   }},
+  ["木制的"] = {primary_sense_id = "sense-candidate-acdfa095ef358d10f8369117", senses = {
+    {id = "sense-candidate-acdfa095ef358d10f8369117", display_english = "wooden", commit_english = "wooden"},
+  }},
   ["木匠"] = {primary_sense_id = "sense-132a69447c7c1db28edf", senses = {
     {id = "sense-132a69447c7c1db28edf", display_english = "carpenter", commit_english = "carpenter"},
   }},
@@ -18577,6 +18996,9 @@ return {schema_version = 2, entries = {
   }},
   ["木钉"] = {primary_sense_id = "sense-2fbca978f5a4da738508", senses = {
     {id = "sense-2fbca978f5a4da738508", display_english = "peg", commit_english = "peg"},
+  }},
+  ["木雕"] = {primary_sense_id = "sense-candidate-b32f494341dd62f434cbd1fa", senses = {
+    {id = "sense-candidate-b32f494341dd62f434cbd1fa", display_english = "woodcarving", commit_english = "woodcarving"},
   }},
   ["未付的"] = {primary_sense_id = "sense-9afd2031f76f90abd0ad", senses = {
     {id = "sense-9afd2031f76f90abd0ad", display_english = "owing", commit_english = "owing"},
@@ -18708,6 +19130,9 @@ return {schema_version = 2, entries = {
   ["机智"] = {primary_sense_id = "sense-b02a0be108ef5825042c", senses = {
     {id = "sense-b02a0be108ef5825042c", display_english = "wit", commit_english = "wit"},
   }},
+  ["机智风趣的"] = {primary_sense_id = "sense-candidate-283fdfdb74b9476c2f086196", senses = {
+    {id = "sense-candidate-283fdfdb74b9476c2f086196", display_english = "witty", commit_english = "witty"},
+  }},
   ["机构"] = {primary_sense_id = "sense-d1f14430ab40dedf6bfb", senses = {
     {id = "sense-8a9e58ccd99d70921a23", display_english = "agency", commit_english = "agency"},
     {id = "sense-d1f14430ab40dedf6bfb", display_english = "institution", commit_english = "institution"},
@@ -18803,6 +19228,9 @@ return {schema_version = 2, entries = {
   ["权宜"] = {primary_sense_id = "sense-364e8fa4ca633aa69d9d", senses = {
     {id = "sense-364e8fa4ca633aa69d9d", display_english = "expedient", commit_english = "expedient"},
   }},
+  ["权衡"] = {primary_sense_id = "sense-candidate-8831cb2369c44da2c11d4516", senses = {
+    {id = "sense-candidate-8831cb2369c44da2c11d4516", display_english = "weigh", commit_english = "weigh"},
+  }},
   ["杆子"] = {primary_sense_id = "sense-d9c7e564a390a21ce37a", senses = {
     {id = "sense-d9c7e564a390a21ce37a", display_english = "pole", commit_english = "pole"},
   }},
@@ -18815,6 +19243,9 @@ return {schema_version = 2, entries = {
   }},
   ["村庄"] = {primary_sense_id = "sense-1c6c4cecf4d43ba2aa3c", senses = {
     {id = "sense-1c6c4cecf4d43ba2aa3c", display_english = "village", commit_english = "village"},
+  }},
+  ["村民"] = {primary_sense_id = "sense-candidate-218c31577b24a208b0761543", senses = {
+    {id = "sense-candidate-218c31577b24a208b0761543", display_english = "villager", commit_english = "villager"},
   }},
   ["村舍"] = {primary_sense_id = "sense-7cecd8014286ddbf6a52", senses = {
     {id = "sense-7cecd8014286ddbf6a52", display_english = "cottage", commit_english = "cottage"},
@@ -18864,8 +19295,12 @@ return {schema_version = 2, entries = {
   ["来自"] = {primary_sense_id = "sense-cf0d9bef4dad127cd3ac", senses = {
     {id = "sense-cf0d9bef4dad127cd3ac", display_english = "from", commit_english = "from"},
   }},
+  ["来访"] = {primary_sense_id = "sense-candidate-112f834e47ca9e42b408c7b1", senses = {
+    {id = "sense-candidate-112f834e47ca9e42b408c7b1", display_english = "visit", commit_english = "visit"},
+  }},
   ["来访者"] = {primary_sense_id = "sense-88b20375ce865a61ff7c", senses = {
     {id = "sense-88b20375ce865a61ff7c", display_english = "caller", commit_english = "caller"},
+    {id = "sense-candidate-ee5e0aafd3582cc739e90acd", display_english = "visitor", commit_english = "visitor"},
   }},
   ["杯子"] = {primary_sense_id = "sense-6c0544290d95ec47e66f", senses = {
     {id = "sense-531ae7366b26cd253a1e", display_english = "glass", commit_english = "glass"},
@@ -19203,6 +19638,9 @@ return {schema_version = 2, entries = {
   ["树木"] = {primary_sense_id = "sense-revision-3716920c6c70117074058018", senses = {
     {id = "sense-revision-3716920c6c70117074058018", display_english = "trees", commit_english = "trees"},
   }},
+  ["树木茂密的"] = {primary_sense_id = "sense-candidate-5d0ae5aff6bbaadacff77255", senses = {
+    {id = "sense-candidate-5d0ae5aff6bbaadacff77255", display_english = "wooded", commit_english = "wooded"},
+  }},
   ["树林"] = {primary_sense_id = "sense-7f0bae93c925301f2c3a", senses = {
     {id = "sense-7f0bae93c925301f2c3a", display_english = "wood", commit_english = "wood"},
     {id = "sense-488cbf2e6e7ffc19ef8d", display_english = "woods", commit_english = "woods"},
@@ -19252,6 +19690,9 @@ return {schema_version = 2, entries = {
     {id = "sense-02934b7c2a7cfba9f29e", display_english = "nucleus", commit_english = "nucleus"},
     {id = "sense-fc99f8d94281a062d00b", display_english = "kernel", commit_english = "kernel"},
     {id = "sense-e34686eaa9fa7c29b0f1", display_english = "core", commit_english = "core"},
+  }},
+  ["核桃"] = {primary_sense_id = "sense-candidate-6ab307763fae8ba1c215e6ea", senses = {
+    {id = "sense-candidate-6ab307763fae8ba1c215e6ea", display_english = "walnut", commit_english = "walnut"},
   }},
   ["核算"] = {primary_sense_id = "sense-7dd172cff689d05728a5", senses = {
     {id = "sense-7dd172cff689d05728a5", display_english = "accounting", commit_english = "accounting"},
@@ -19657,6 +20098,7 @@ return {schema_version = 2, entries = {
   }},
   ["歌手"] = {primary_sense_id = "sense-21999a2873ec6df7e755", senses = {
     {id = "sense-21999a2873ec6df7e755", display_english = "singer", commit_english = "singer"},
+    {id = "sense-candidate-c1f088a492ed9d12dd322722", display_english = "vocalist", commit_english = "vocalist"},
   }},
   ["歌曲"] = {primary_sense_id = "sense-7a907526bb44729436c9", senses = {
     {id = "sense-7a907526bb44729436c9", display_english = "song", commit_english = "song"},
@@ -19670,6 +20112,9 @@ return {schema_version = 2, entries = {
   }},
   ["正到达的"] = {primary_sense_id = "sense-8099490cbaf0ccb664b9", senses = {
     {id = "sense-8099490cbaf0ccb664b9", display_english = "incoming", commit_english = "incoming"},
+  }},
+  ["正名"] = {primary_sense_id = "sense-candidate-073b191103b70394982028fc", senses = {
+    {id = "sense-candidate-073b191103b70394982028fc", display_english = "vindication", commit_english = "vindication"},
   }},
   ["正好"] = {primary_sense_id = "sense-614ee9878beb63e2388f", senses = {
     {id = "sense-614ee9878beb63e2388f", display_english = "just", commit_english = "just"},
@@ -19739,6 +20184,9 @@ return {schema_version = 2, entries = {
   }},
   ["步行"] = {primary_sense_id = "sense-5a3e5e4764b3474167a1", senses = {
     {id = "sense-5a3e5e4764b3474167a1", display_english = "walking", commit_english = "walking"},
+  }},
+  ["步行者"] = {primary_sense_id = "sense-candidate-322bd8045f76a8d9964c1ee7", senses = {
+    {id = "sense-candidate-322bd8045f76a8d9964c1ee7", display_english = "walker", commit_english = "walker"},
   }},
   ["步调"] = {primary_sense_id = "sense-0b72eb2baf623a39bca6", senses = {
     {id = "sense-0b72eb2baf623a39bca6", display_english = "pace", commit_english = "pace"},
@@ -19933,6 +20381,9 @@ return {schema_version = 2, entries = {
   ["每年"] = {primary_sense_id = "sense-96f39674ef001008de4b", senses = {
     {id = "sense-96f39674ef001008de4b", display_english = "annually", commit_english = "annually"},
   }},
+  ["每当"] = {primary_sense_id = "sense-candidate-43c3e2e39c3716ca2007113e", senses = {
+    {id = "sense-candidate-43c3e2e39c3716ca2007113e", display_english = "whenever", commit_english = "whenever"},
+  }},
   ["每日"] = {primary_sense_id = "sense-34e8ff80f498fd5754bc", senses = {
     {id = "sense-34e8ff80f498fd5754bc", display_english = "daily", commit_english = "daily"},
     {id = "sense-a33e0c4361ffdd61049d", display_english = "daily", commit_english = "daily"},
@@ -20029,6 +20480,9 @@ return {schema_version = 2, entries = {
   }},
   ["毫不费力"] = {primary_sense_id = "sense-111b06dd8837d5595dd7", senses = {
     {id = "sense-111b06dd8837d5595dd7", display_english = "effortless", commit_english = "effortless"},
+  }},
+  ["毫无价值的"] = {primary_sense_id = "sense-candidate-9b7a60a820e48482dfa85159", senses = {
+    {id = "sense-candidate-9b7a60a820e48482dfa85159", display_english = "worthless", commit_english = "worthless"},
   }},
   ["毫无光彩的"] = {primary_sense_id = "sense-f80d762631c504e7abff", senses = {
     {id = "sense-f80d762631c504e7abff", display_english = "lackluster", commit_english = "lackluster"},
@@ -20282,6 +20736,9 @@ return {schema_version = 2, entries = {
   ["求婚者"] = {primary_sense_id = "sense-revision-b43b0766336a51aeb097d888", senses = {
     {id = "sense-revision-b43b0766336a51aeb097d888", display_english = "suitor", commit_english = "suitor"},
   }},
+  ["求爱"] = {primary_sense_id = "sense-candidate-e62c9c8db6766e0687b2f26d", senses = {
+    {id = "sense-candidate-e62c9c8db6766e0687b2f26d", display_english = "woo", commit_english = "woo"},
+  }},
   ["求职信"] = {primary_sense_id = "sense-a475d6a1d1813c2232b9", senses = {
     {id = "sense-a475d6a1d1813c2232b9", display_english = "cover letter", commit_english = "cover letter"},
   }},
@@ -20389,6 +20846,9 @@ return {schema_version = 2, entries = {
   }},
   ["沉浸"] = {primary_sense_id = "sense-cee99aa6458b99c9afa5", senses = {
     {id = "sense-cee99aa6458b99c9afa5", display_english = "immerse", commit_english = "immerse"},
+  }},
+  ["沉溺"] = {primary_sense_id = "sense-candidate-f15ddfd77541769e33494c8f", senses = {
+    {id = "sense-candidate-f15ddfd77541769e33494c8f", display_english = "wallow", commit_english = "wallow"},
   }},
   ["沉积物"] = {primary_sense_id = "sense-81427ba09d8dfe9db2a8", senses = {
     {id = "sense-81427ba09d8dfe9db2a8", display_english = "deposit", commit_english = "deposit"},
@@ -20657,6 +21117,9 @@ return {schema_version = 2, entries = {
   ["洒"] = {primary_sense_id = "sense-f448f9b150de799aaa16", senses = {
     {id = "sense-f448f9b150de799aaa16", display_english = "spill", commit_english = "spill"},
   }},
+  ["洗"] = {primary_sense_id = "sense-candidate-ddc3bdc03ed225436353326c", senses = {
+    {id = "sense-candidate-ddc3bdc03ed225436353326c", display_english = "wash", commit_english = "wash"},
+  }},
   ["洗发水"] = {primary_sense_id = "sense-f483c66cf98faa204875", senses = {
     {id = "sense-f483c66cf98faa204875", display_english = "shampoo", commit_english = "shampoo"},
   }},
@@ -20665,6 +21128,7 @@ return {schema_version = 2, entries = {
   }},
   ["洗涤"] = {primary_sense_id = "sense-720c35b0095865d093ee", senses = {
     {id = "sense-720c35b0095865d093ee", display_english = "washing", commit_english = "washing"},
+    {id = "sense-candidate-f2031903fdd55ef7170cefd6", display_english = "wash", commit_english = "wash"},
   }},
   ["洗涤剂"] = {primary_sense_id = "sense-e4e98ad2412e8252e1cc", senses = {
     {id = "sense-e4e98ad2412e8252e1cc", display_english = "detergent", commit_english = "detergent"},
@@ -20676,6 +21140,9 @@ return {schema_version = 2, entries = {
     {id = "sense-88445fd7175e335fa091", display_english = "bath", commit_english = "bath"},
     {id = "legacy-daily-185", display_english = "bathe", commit_english = "bathe"},
   }},
+  ["洗碗"] = {primary_sense_id = "sense-candidate-d727b1d53705bb685d68301e", senses = {
+    {id = "sense-candidate-d727b1d53705bb685d68301e", display_english = "washing-up", commit_english = "washing-up"},
+  }},
   ["洗碗机"] = {primary_sense_id = "sense-c60a3525dbdcc442321f", senses = {
     {id = "sense-c60a3525dbdcc442321f", display_english = "dishwasher", commit_english = "dishwasher"},
   }},
@@ -20683,11 +21150,17 @@ return {schema_version = 2, entries = {
     {id = "sense-59d8be4f7dbc3393e1a7", display_english = "brainwashing", commit_english = "brainwashing"},
     {id = "sense-ed143b3e4f085e3bc90f", display_english = "brainwash", commit_english = "brainwash"},
   }},
+  ["洗脸盆"] = {primary_sense_id = "sense-candidate-469e74db36d747c033bf84ff", senses = {
+    {id = "sense-candidate-469e74db36d747c033bf84ff", display_english = "washbowl", commit_english = "washbowl"},
+  }},
   ["洗衣"] = {primary_sense_id = "sense-6d03283fa880a8076d64", senses = {
     {id = "sense-6d03283fa880a8076d64", display_english = "laundry", commit_english = "laundry"},
   }},
   ["洗衣机"] = {primary_sense_id = "legacy-daily-093", senses = {
     {id = "legacy-daily-093", display_english = "washing machine", commit_english = "washing machine"},
+  }},
+  ["洗衣盆"] = {primary_sense_id = "sense-candidate-4ae4290299fecfcb0e36fa39", senses = {
+    {id = "sense-candidate-4ae4290299fecfcb0e36fa39", display_english = "washtub", commit_english = "washtub"},
   }},
   ["洞"] = {primary_sense_id = "sense-c67ffdb10390d91adb53", senses = {
     {id = "sense-c67ffdb10390d91adb53", display_english = "hole", commit_english = "hole"},
@@ -20710,6 +21183,9 @@ return {schema_version = 2, entries = {
   }},
   ["活力"] = {primary_sense_id = "sense-ea356e13a3cd4cfa7bad", senses = {
     {id = "sense-ea356e13a3cd4cfa7bad", display_english = "animation", commit_english = "animation"},
+    {id = "sense-candidate-2603dc10871c3569db4ab4ab", display_english = "verve", commit_english = "verve"},
+    {id = "sense-candidate-10809409b1c96fe9eb26acc3", display_english = "vigor", commit_english = "vigor"},
+    {id = "sense-candidate-1cc09b166c44469f52274934", display_english = "vigour", commit_english = "vigour"},
   }},
   ["活动"] = {primary_sense_id = "sense-b538db778cbb2452756a", senses = {
     {id = "sense-b538db778cbb2452756a", display_english = "activity", commit_english = "activity"},
@@ -20889,6 +21365,9 @@ return {schema_version = 2, entries = {
   ["浪费"] = {primary_sense_id = "sense-a7ecaed14cf0042b92c2", senses = {
     {id = "sense-a7ecaed14cf0042b92c2", display_english = "waste", commit_english = "waste"},
     {id = "sense-6d0f77b034e92fbec75d", display_english = "squander", commit_english = "squander"},
+  }},
+  ["浪费的"] = {primary_sense_id = "sense-candidate-774468688d6ad44053c649c4", senses = {
+    {id = "sense-candidate-774468688d6ad44053c649c4", display_english = "wasteful", commit_english = "wasteful"},
   }},
   ["浮"] = {primary_sense_id = "sense-66d44931969985ac4a99", senses = {
     {id = "sense-66d44931969985ac4a99", display_english = "float", commit_english = "float"},
@@ -21316,6 +21795,7 @@ return {schema_version = 2, entries = {
   }},
   ["温情"] = {primary_sense_id = "sense-0210892c43c24a3a9adf", senses = {
     {id = "sense-0210892c43c24a3a9adf", display_english = "tenderness", commit_english = "tenderness"},
+    {id = "sense-candidate-d605b04caa57ffc33e769734", display_english = "warmth", commit_english = "warmth"},
   }},
   ["温暖"] = {primary_sense_id = "sense-4a9787eff9acd1163d62", senses = {
     {id = "sense-4a9787eff9acd1163d62", display_english = "warm", commit_english = "warm"},
@@ -21391,6 +21871,9 @@ return {schema_version = 2, entries = {
   ["游猎"] = {primary_sense_id = "sense-a04ce71d5026c30bae35", senses = {
     {id = "sense-a04ce71d5026c30bae35", display_english = "safari", commit_english = "safari"},
   }},
+  ["游艇"] = {primary_sense_id = "sense-candidate-e4691ed731b69763d1a143b7", senses = {
+    {id = "sense-candidate-e4691ed731b69763d1a143b7", display_english = "yacht", commit_english = "yacht"},
+  }},
   ["游行"] = {primary_sense_id = "sense-df6b1a54d44ee5225921", senses = {
     {id = "sense-df6b1a54d44ee5225921", display_english = "parade", commit_english = "parade"},
   }},
@@ -21415,6 +21898,9 @@ return {schema_version = 2, entries = {
   }},
   ["湿润"] = {primary_sense_id = "sense-3b7a92d19e716e86a5e2", senses = {
     {id = "sense-3b7a92d19e716e86a5e2", display_english = "moist", commit_english = "moist"},
+  }},
+  ["湿的"] = {primary_sense_id = "sense-candidate-f1afef64eedc3ffce64de339", senses = {
+    {id = "sense-candidate-f1afef64eedc3ffce64de339", display_english = "wet", commit_english = "wet"},
   }},
   ["湿透的"] = {primary_sense_id = "sense-a94303afa393e6737a05", senses = {
     {id = "sense-a94303afa393e6737a05", display_english = "soaked", commit_english = "soaked"},
@@ -21539,6 +22025,9 @@ return {schema_version = 2, entries = {
     {id = "sense-b04b2cabc9804924d5b2", display_english = "abuse", commit_english = "abuse"},
     {id = "sense-916f61bb5fcfbd6dd146", display_english = "misuse", commit_english = "misuse"},
   }},
+  ["滨水区"] = {primary_sense_id = "sense-candidate-1fadf289d36246a41b1f5cb1", senses = {
+    {id = "sense-candidate-1fadf289d36246a41b1f5cb1", display_english = "waterfront", commit_english = "waterfront"},
+  }},
   ["滴下"] = {primary_sense_id = "sense-d12caea9c8083ff2a867", senses = {
     {id = "sense-d12caea9c8083ff2a867", display_english = "dribble", commit_english = "dribble"},
   }},
@@ -21585,6 +22074,9 @@ return {schema_version = 2, entries = {
   ["演员阵容"] = {primary_sense_id = "sense-80d8208b4a9f3f004d6b", senses = {
     {id = "sense-80d8208b4a9f3f004d6b", display_english = "cast", commit_english = "cast"},
   }},
+  ["演奏大师"] = {primary_sense_id = "sense-candidate-ad8af8ab35753894582edeb0", senses = {
+    {id = "sense-candidate-ad8af8ab35753894582edeb0", display_english = "virtuoso", commit_english = "virtuoso"},
+  }},
   ["演示"] = {primary_sense_id = "sense-d92fa19511e8c761c782", senses = {
     {id = "sense-d92fa19511e8c761c782", display_english = "demonstrate", commit_english = "demonstrate"},
     {id = "sense-4365c4c8cd4f2c56da36", display_english = "presentation", commit_english = "presentation"},
@@ -21611,6 +22103,7 @@ return {schema_version = 2, entries = {
   }},
   ["漩涡"] = {primary_sense_id = "sense-203e9cedfe57212457b9", senses = {
     {id = "sense-203e9cedfe57212457b9", display_english = "eddy", commit_english = "eddy"},
+    {id = "sense-candidate-518d40cdf3ce5cec6c87efc4", display_english = "vortex", commit_english = "vortex"},
   }},
   ["漫无目的"] = {primary_sense_id = "sense-f8d5ae466c146186d1a6", senses = {
     {id = "sense-f8d5ae466c146186d1a6", display_english = "aimless", commit_english = "aimless"},
@@ -22046,6 +22539,7 @@ return {schema_version = 2, entries = {
   ["热情地"] = {primary_sense_id = "sense-25af9cf01417595610d8", senses = {
     {id = "sense-25af9cf01417595610d8", display_english = "enthusiastically", commit_english = "enthusiastically"},
     {id = "sense-a4cb7c8e074f6494a24a", display_english = "passionately", commit_english = "passionately"},
+    {id = "sense-candidate-5391e8bbff4e64e0998f6609", display_english = "warmly", commit_english = "warmly"},
   }},
   ["热情洋溢地"] = {primary_sense_id = "sense-fa756f11d63b9b9dd0f4", senses = {
     {id = "sense-fa756f11d63b9b9dd0f4", display_english = "exuberantly", commit_english = "exuberantly"},
@@ -22113,6 +22607,9 @@ return {schema_version = 2, entries = {
     {id = "sense-0e66e8ab8b1ec4df97fb", display_english = "fraught", commit_english = "fraught"},
     {id = "sense-814a0c561ee6d181a385", display_english = "angsty", commit_english = "angsty"},
     {id = "sense-d21777250812f13193ef", display_english = "anxious", commit_english = "anxious"},
+  }},
+  ["然而"] = {primary_sense_id = "sense-candidate-bca0bc46bc2811af2b154856", senses = {
+    {id = "sense-candidate-bca0bc46bc2811af2b154856", display_english = "yet", commit_english = "yet"},
   }},
   ["煎炸"] = {primary_sense_id = "sense-52b20cced7f563064bbb", senses = {
     {id = "sense-52b20cced7f563064bbb", display_english = "fry", commit_english = "fry"},
@@ -22564,6 +23061,9 @@ return {schema_version = 2, entries = {
   ["犹豫不决"] = {primary_sense_id = "sense-f39297245e3276ebe648", senses = {
     {id = "sense-f39297245e3276ebe648", display_english = "dither", commit_english = "dither"},
   }},
+  ["狂乱地"] = {primary_sense_id = "sense-candidate-bca3876ff854ede04adeed99", senses = {
+    {id = "sense-candidate-bca3876ff854ede04adeed99", display_english = "wildly", commit_english = "wildly"},
+  }},
   ["狂喜"] = {primary_sense_id = "sense-68ab966e71ca5753da1f", senses = {
     {id = "sense-68ab966e71ca5753da1f", display_english = "ecstasy", commit_english = "ecstasy"},
   }},
@@ -22671,6 +23171,9 @@ return {schema_version = 2, entries = {
     {id = "sense-7b7c9d10aad7fb5227fe", display_english = "lions", commit_english = "lions"},
     {id = "sense-daf0c0d5e7a80ff7b6bd", display_english = "lion", commit_english = "lion"},
   }},
+  ["狼"] = {primary_sense_id = "sense-candidate-856409e18e23275775490982", senses = {
+    {id = "sense-candidate-856409e18e23275775490982", display_english = "wolf", commit_english = "wolf"},
+  }},
   ["猎人"] = {primary_sense_id = "sense-5f446a678fc61a42ec8e", senses = {
     {id = "sense-5f446a678fc61a42ec8e", display_english = "hunter", commit_english = "hunter"},
   }},
@@ -22702,6 +23205,7 @@ return {schema_version = 2, entries = {
   }},
   ["猛烈地"] = {primary_sense_id = "sense-f263e3b3215fcb07a0f2", senses = {
     {id = "sense-f263e3b3215fcb07a0f2", display_english = "fiercely", commit_english = "fiercely"},
+    {id = "sense-candidate-b1974e5037b1f0b25470bda5", display_english = "violently", commit_english = "violently"},
   }},
   ["猛烈的"] = {primary_sense_id = "sense-78985e364c50e46518e2", senses = {
     {id = "sense-78985e364c50e46518e2", display_english = "violent", commit_english = "violent"},
@@ -23047,12 +23551,16 @@ return {schema_version = 2, entries = {
   }},
   ["生动地"] = {primary_sense_id = "sense-39c6534df93f7d04ec4f", senses = {
     {id = "sense-39c6534df93f7d04ec4f", display_english = "graphically", commit_english = "graphically"},
+    {id = "sense-candidate-6fdc25c7067c6761fe5b3816", display_english = "vividly", commit_english = "vividly"},
   }},
   ["生动的"] = {primary_sense_id = "sense-5810ecb3f224c3f44079", senses = {
     {id = "sense-5810ecb3f224c3f44079", display_english = "graphic", commit_english = "graphic"},
   }},
   ["生命"] = {primary_sense_id = "sense-8f8ea71fd58fd3d54a48", senses = {
     {id = "sense-8f8ea71fd58fd3d54a48", display_english = "life", commit_english = "life"},
+  }},
+  ["生命力"] = {primary_sense_id = "sense-candidate-43b8fa2d9c23422542d2e074", senses = {
+    {id = "sense-candidate-43b8fa2d9c23422542d2e074", display_english = "vitality", commit_english = "vitality"},
   }},
   ["生存"] = {primary_sense_id = "sense-5025cacf518ecb65f6ec", senses = {
     {id = "sense-5025cacf518ecb65f6ec", display_english = "exist", commit_english = "exist"},
@@ -23162,6 +23670,9 @@ return {schema_version = 2, entries = {
   ["用力拉"] = {primary_sense_id = "sense-62f798c218be9e0391f3", senses = {
     {id = "sense-62f798c218be9e0391f3", display_english = "tug", commit_english = "tug"},
   }},
+  ["用坏了的"] = {primary_sense_id = "sense-candidate-387a4db1562855ee88c4abf5", senses = {
+    {id = "sense-candidate-387a4db1562855ee88c4abf5", display_english = "worn out", commit_english = "worn out"},
+  }},
   ["用平头钉固定"] = {primary_sense_id = "sense-7a098a086e8fa882abd9", senses = {
     {id = "sense-7a098a086e8fa882abd9", display_english = "tack", commit_english = "tack"},
   }},
@@ -23249,6 +23760,9 @@ return {schema_version = 2, entries = {
   ["电子宠物"] = {primary_sense_id = "sense-d96960249c1e21f02a10", senses = {
     {id = "sense-d96960249c1e21f02a10", display_english = "cyberpet", commit_english = "cyberpet"},
   }},
+  ["电子游戏"] = {primary_sense_id = "sense-candidate-be1fb88bc492717267378e66", senses = {
+    {id = "sense-candidate-be1fb88bc492717267378e66", display_english = "video game", commit_english = "video game"},
+  }},
   ["电子表格"] = {primary_sense_id = "sense-b95b15cb4e7828877bda", senses = {
     {id = "sense-b95b15cb4e7828877bda", display_english = "spreadsheet", commit_english = "spreadsheet"},
   }},
@@ -23303,6 +23817,9 @@ return {schema_version = 2, entries = {
   }},
   ["电的"] = {primary_sense_id = "sense-b4b749173ce32d8be3d2", senses = {
     {id = "sense-b4b749173ce32d8be3d2", display_english = "electrical", commit_english = "electrical"},
+  }},
+  ["电线"] = {primary_sense_id = "sense-candidate-3a4f7061a1429b91394e8f67", senses = {
+    {id = "sense-candidate-3a4f7061a1429b91394e8f67", display_english = "wire", commit_english = "wire"},
   }},
   ["电脑"] = {primary_sense_id = "legacy-daily-141", senses = {
     {id = "legacy-daily-141", display_english = "computer", commit_english = "computer"},
@@ -23382,6 +23899,9 @@ return {schema_version = 2, entries = {
   }},
   ["畜群"] = {primary_sense_id = "sense-revision-97bf9803a18fa209e62acc10", senses = {
     {id = "sense-revision-97bf9803a18fa209e62acc10", display_english = "herd", commit_english = "herd"},
+  }},
+  ["略带自嘲地"] = {primary_sense_id = "sense-candidate-a2c7a7a02f5f7894f26586bb", senses = {
+    {id = "sense-candidate-a2c7a7a02f5f7894f26586bb", display_english = "wryly", commit_english = "wryly"},
   }},
   ["略微"] = {primary_sense_id = "sense-7a2dfd4856b7355421fc", senses = {
     {id = "sense-7a2dfd4856b7355421fc", display_english = "marginally", commit_english = "marginally"},
@@ -23603,6 +24123,12 @@ return {schema_version = 2, entries = {
   }},
   ["白日梦"] = {primary_sense_id = "sense-004b07b403485228cc0f", senses = {
     {id = "sense-004b07b403485228cc0f", display_english = "daydream", commit_english = "daydream"},
+  }},
+  ["白色"] = {primary_sense_id = "sense-candidate-32472ffe5a6e9aa09a336328", senses = {
+    {id = "sense-candidate-32472ffe5a6e9aa09a336328", display_english = "white", commit_english = "white"},
+  }},
+  ["白色的"] = {primary_sense_id = "sense-candidate-f971d8130a18c11d84a1c1f6", senses = {
+    {id = "sense-candidate-f971d8130a18c11d84a1c1f6", display_english = "white", commit_english = "white"},
   }},
   ["百"] = {primary_sense_id = "sense-a0fe36b485d67c4a77dd", senses = {
     {id = "sense-a0fe36b485d67c4a77dd", display_english = "hundred", commit_english = "hundred"},
@@ -24038,6 +24564,9 @@ return {schema_version = 2, entries = {
   ["眨眼"] = {primary_sense_id = "sense-6e41950c7fc6afa7dd23", senses = {
     {id = "sense-6e41950c7fc6afa7dd23", display_english = "blink", commit_english = "blink"},
   }},
+  ["眨眼示意"] = {primary_sense_id = "sense-candidate-46a36b89c21e34cd21ed1693", senses = {
+    {id = "sense-candidate-46a36b89c21e34cd21ed1693", display_english = "wink", commit_english = "wink"},
+  }},
   ["眯眼"] = {primary_sense_id = "sense-5926c4c5ec03afaa4e02", senses = {
     {id = "sense-5926c4c5ec03afaa4e02", display_english = "squint", commit_english = "squint"},
   }},
@@ -24447,6 +24976,12 @@ return {schema_version = 2, entries = {
     {id = "sense-88b6e723fe8823643aa0", display_english = "mills", commit_english = "mills"},
     {id = "sense-4f1fc5b60b53808ef3c6", display_english = "mill", commit_english = "mill"},
   }},
+  ["磨坏的"] = {primary_sense_id = "sense-candidate-8b9aadfc727aa5f7184984c6", senses = {
+    {id = "sense-candidate-8b9aadfc727aa5f7184984c6", display_english = "worn-out", commit_english = "worn-out"},
+  }},
+  ["磨损的"] = {primary_sense_id = "sense-candidate-6dca3529cd2088e7c1c09ac3", senses = {
+    {id = "sense-candidate-6dca3529cd2088e7c1c09ac3", display_english = "worn", commit_english = "worn"},
+  }},
   ["磨碎"] = {primary_sense_id = "sense-9078999fc743471ae003", senses = {
     {id = "sense-9078999fc743471ae003", display_english = "grind", commit_english = "grind"},
     {id = "sense-7ee40a018522ccf70289", display_english = "grate", commit_english = "grate"},
@@ -24547,6 +25082,9 @@ return {schema_version = 2, entries = {
   }},
   ["祖父母或外祖父母中的一人"] = {primary_sense_id = "sense-revision2-2103edb88cdd057d70fe11e6", senses = {
     {id = "sense-revision2-2103edb88cdd057d70fe11e6", display_english = "grandparent", commit_english = "grandparent"},
+  }},
+  ["祝愿"] = {primary_sense_id = "sense-candidate-3d0038bc3409d9802325bec5", senses = {
+    {id = "sense-candidate-3d0038bc3409d9802325bec5", display_english = "wish", commit_english = "wish"},
   }},
   ["祝福"] = {primary_sense_id = "sense-f4575d1c2ba39fce5376", senses = {
     {id = "sense-f4575d1c2ba39fce5376", display_english = "blessing", commit_english = "blessing"},
@@ -24840,6 +25378,9 @@ return {schema_version = 2, entries = {
   ["称赞"] = {primary_sense_id = "sense-133566b3d34404269c4e", senses = {
     {id = "sense-133566b3d34404269c4e", display_english = "praise", commit_english = "praise"},
   }},
+  ["称重"] = {primary_sense_id = "sense-candidate-a82011a3b9450b2d0f6b0416", senses = {
+    {id = "sense-candidate-a82011a3b9450b2d0f6b0416", display_english = "weigh", commit_english = "weigh"},
+  }},
   ["秸秆"] = {primary_sense_id = "sense-96e6acc90c135535af56", senses = {
     {id = "sense-96e6acc90c135535af56", display_english = "straw", commit_english = "straw"},
   }},
@@ -25011,6 +25552,9 @@ return {schema_version = 2, entries = {
   }},
   ["穿梭班车"] = {primary_sense_id = "sense-5b6d95fb59106c68048f", senses = {
     {id = "sense-5b6d95fb59106c68048f", display_english = "shuttle", commit_english = "shuttle"},
+  }},
+  ["穿着得体的"] = {primary_sense_id = "sense-candidate-2bc3e10235503b0828699e99", senses = {
+    {id = "sense-candidate-2bc3e10235503b0828699e99", display_english = "well-dressed", commit_english = "well-dressed"},
   }},
   ["穿过"] = {primary_sense_id = "sense-8f472810cf519fb9b157", senses = {
     {id = "sense-8f472810cf519fb9b157", display_english = "across", commit_english = "across"},
@@ -25275,17 +25819,27 @@ return {schema_version = 2, entries = {
   ["等价物"] = {primary_sense_id = "sense-f8b352405d2ae96ccc63", senses = {
     {id = "sense-f8b352405d2ae96ccc63", display_english = "equivalent", commit_english = "equivalent"},
   }},
+  ["等候"] = {primary_sense_id = "sense-candidate-ea7c6d040e60ba1294c74928", senses = {
+    {id = "sense-candidate-ea7c6d040e60ba1294c74928", display_english = "wait", commit_english = "wait"},
+  }},
   ["等同的"] = {primary_sense_id = "sense-12efce6b7fec111a6bf9", senses = {
     {id = "sense-12efce6b7fec111a6bf9", display_english = "tantamount", commit_english = "tantamount"},
   }},
   ["等待"] = {primary_sense_id = "sense-9969093e63d6e62a6de0", senses = {
     {id = "sense-9969093e63d6e62a6de0", display_english = "await", commit_english = "await"},
   }},
+  ["等待时间"] = {primary_sense_id = "sense-candidate-20d387d830f92b189e96e1ad", senses = {
+    {id = "sense-candidate-20d387d830f92b189e96e1ad", display_english = "wait", commit_english = "wait"},
+  }},
   ["等级制度"] = {primary_sense_id = "sense-9a58118c9687996e902b", senses = {
     {id = "sense-9a58118c9687996e902b", display_english = "hierarchy", commit_english = "hierarchy"},
   }},
   ["筋疲力尽"] = {primary_sense_id = "sense-69c6e9ddb031ca6f0d73", senses = {
     {id = "sense-69c6e9ddb031ca6f0d73", display_english = "exhausted", commit_english = "exhausted"},
+  }},
+  ["筋疲力尽的"] = {primary_sense_id = "sense-candidate-7611d98add0b4b7816ab7c9f", senses = {
+    {id = "sense-candidate-7611d98add0b4b7816ab7c9f", display_english = "worn out", commit_english = "worn out"},
+    {id = "sense-candidate-a7cd41421ab8b81ad212d0b2", display_english = "worn-out", commit_english = "worn-out"},
   }},
   ["筏子"] = {primary_sense_id = "sense-f904c81208c6152bc727", senses = {
     {id = "sense-f904c81208c6152bc727", display_english = "raft", commit_english = "raft"},
@@ -25547,11 +26101,17 @@ return {schema_version = 2, entries = {
   ["精彩"] = {primary_sense_id = "sense-034e975c73815796a343", senses = {
     {id = "sense-034e975c73815796a343", display_english = "marvelous", commit_english = "marvelous"},
   }},
+  ["精彩的"] = {primary_sense_id = "sense-candidate-81ef172b29a4be3af71bf7cc", senses = {
+    {id = "sense-candidate-81ef172b29a4be3af71bf7cc", display_english = "wonderful", commit_english = "wonderful"},
+  }},
   ["精心制作"] = {primary_sense_id = "sense-e115b5f7c23e9dc51058", senses = {
     {id = "sense-e115b5f7c23e9dc51058", display_english = "craft", commit_english = "craft"},
   }},
   ["精明"] = {primary_sense_id = "sense-f769b59ea1470f7a6b17", senses = {
     {id = "sense-f769b59ea1470f7a6b17", display_english = "shrewd", commit_english = "shrewd"},
+  }},
+  ["精湛技艺"] = {primary_sense_id = "sense-candidate-8fae3a8369653a6cbaaaebb6", senses = {
+    {id = "sense-candidate-8fae3a8369653a6cbaaaebb6", display_english = "virtuosity", commit_english = "virtuosity"},
   }},
   ["精炼厂"] = {primary_sense_id = "sense-8a74ccb810d44c297d78", senses = {
     {id = "sense-8a74ccb810d44c297d78", display_english = "refinery", commit_english = "refinery"},
@@ -25735,6 +26295,9 @@ return {schema_version = 2, entries = {
   ["紫外线的"] = {primary_sense_id = "sense-08009577b3131d258f23", senses = {
     {id = "sense-08009577b3131d258f23", display_english = "ultraviolet", commit_english = "ultraviolet"},
   }},
+  ["紫罗兰色的"] = {primary_sense_id = "sense-candidate-604c26c2df2432089eeb67e0", senses = {
+    {id = "sense-candidate-604c26c2df2432089eeb67e0", display_english = "violet", commit_english = "violet"},
+  }},
   ["紫色"] = {primary_sense_id = "sense-fcb23a0bcc81db1f8b53", senses = {
     {id = "sense-fcb23a0bcc81db1f8b53", display_english = "purple", commit_english = "purple"},
   }},
@@ -25867,6 +26430,9 @@ return {schema_version = 2, entries = {
   }},
   ["纯度"] = {primary_sense_id = "sense-c72472184a27e90a3189", senses = {
     {id = "sense-c72472184a27e90a3189", display_english = "purity", commit_english = "purity"},
+  }},
+  ["纯洁的"] = {primary_sense_id = "sense-candidate-f3a30d050d329b93329e3d23", senses = {
+    {id = "sense-candidate-f3a30d050d329b93329e3d23", display_english = "virginal", commit_english = "virginal"},
   }},
   ["纯粹的"] = {primary_sense_id = "sense-385737cc90de4eea2cbb", senses = {
     {id = "sense-385737cc90de4eea2cbb", display_english = "sheer", commit_english = "sheer"},
@@ -26143,6 +26709,7 @@ return {schema_version = 2, entries = {
   }},
   ["结婚"] = {primary_sense_id = "sense-f59972071f6ba7f1fbf9", senses = {
     {id = "sense-f59972071f6ba7f1fbf9", display_english = "marry", commit_english = "marry"},
+    {id = "sense-candidate-b0e2b8d061ac51ffab02f2b1", display_english = "wed", commit_english = "wed"},
   }},
   ["结实"] = {primary_sense_id = "sense-54e911c5de9e4f26120d", senses = {
     {id = "sense-54e911c5de9e4f26120d", display_english = "sturdy", commit_english = "sturdy"},
@@ -26298,6 +26865,9 @@ return {schema_version = 2, entries = {
   ["维持生活"] = {primary_sense_id = "sense-b504e5ca9a26c8bdb144", senses = {
     {id = "sense-b504e5ca9a26c8bdb144", display_english = "subsist", commit_english = "subsist"},
   }},
+  ["维生素"] = {primary_sense_id = "sense-candidate-a13429d033cd05e0efbdfc19", senses = {
+    {id = "sense-candidate-a13429d033cd05e0efbdfc19", display_english = "vitamin", commit_english = "vitamin"},
+  }},
   ["绵羊"] = {primary_sense_id = "sense-581391fbbbf1cd2696dd", senses = {
     {id = "sense-581391fbbbf1cd2696dd", display_english = "sheep", commit_english = "sheep"},
   }},
@@ -26415,6 +26985,7 @@ return {schema_version = 2, entries = {
   ["缺乏"] = {primary_sense_id = "sense-655d5bad2a3a52caa812", senses = {
     {id = "sense-655d5bad2a3a52caa812", display_english = "lack", commit_english = "lack"},
     {id = "sense-47a205cc2de21e77e9f3", display_english = "deficiency", commit_english = "deficiency"},
+    {id = "sense-candidate-0a5cebde3ae85b72518dff5c", display_english = "want", commit_english = "want"},
   }},
   ["缺乏人情味的"] = {primary_sense_id = "sense-033452c18b20fe0e878f", senses = {
     {id = "sense-033452c18b20fe0e878f", display_english = "impersonal", commit_english = "impersonal"},
@@ -26500,11 +27071,17 @@ return {schema_version = 2, entries = {
   ["网络学校"] = {primary_sense_id = "sense-a837c5803a363926010a", senses = {
     {id = "sense-a837c5803a363926010a", display_english = "cyberschool", commit_english = "cyberschool"},
   }},
+  ["网络摄像头"] = {primary_sense_id = "sense-candidate-0c41a8f4a5e367caeb813a4d", senses = {
+    {id = "sense-candidate-0c41a8f4a5e367caeb813a4d", display_english = "webcam", commit_english = "webcam"},
+  }},
   ["网络犯罪"] = {primary_sense_id = "sense-a9b43936d2ee68982778", senses = {
     {id = "sense-a9b43936d2ee68982778", display_english = "cybercrime", commit_english = "cybercrime"},
   }},
   ["网络空间"] = {primary_sense_id = "sense-6fbada4cdb644db37946", senses = {
     {id = "sense-6fbada4cdb644db37946", display_english = "cyberspace", commit_english = "cyberspace"},
+  }},
+  ["网页"] = {primary_sense_id = "sense-candidate-1061f9b76aaa6b4b155a0fab", senses = {
+    {id = "sense-candidate-1061f9b76aaa6b4b155a0fab", display_english = "web page", commit_english = "web page"},
   }},
   ["罕见"] = {primary_sense_id = "sense-8676e1ccdee870106e45", senses = {
     {id = "sense-8676e1ccdee870106e45", display_english = "rarity", commit_english = "rarity"},
@@ -26548,6 +27125,9 @@ return {schema_version = 2, entries = {
   }},
   ["置评"] = {primary_sense_id = "sense-91c0cd6de83379e80633", senses = {
     {id = "sense-91c0cd6de83379e80633", display_english = "comment", commit_english = "comment"},
+  }},
+  ["羊毛"] = {primary_sense_id = "sense-candidate-008a964ae3c5e2b3e8d100e1", senses = {
+    {id = "sense-candidate-008a964ae3c5e2b3e8d100e1", display_english = "wool", commit_english = "wool"},
   }},
   ["羊羔"] = {primary_sense_id = "sense-318c18b35beb861455c4", senses = {
     {id = "sense-318c18b35beb861455c4", display_english = "lamb", commit_english = "lamb"},
@@ -26596,6 +27176,9 @@ return {schema_version = 2, entries = {
   }},
   ["美容院"] = {primary_sense_id = "sense-ee374c4b8622c56c0529", senses = {
     {id = "sense-ee374c4b8622c56c0529", display_english = "salon", commit_english = "salon"},
+  }},
+  ["美德"] = {primary_sense_id = "sense-candidate-c9328269907fced00669c696", senses = {
+    {id = "sense-candidate-c9328269907fced00669c696", display_english = "virtue", commit_english = "virtue"},
   }},
   ["美术"] = {primary_sense_id = "sense-09313e20f328fedab490", senses = {
     {id = "sense-09313e20f328fedab490", display_english = "art", commit_english = "art"},
@@ -26739,6 +27322,7 @@ return {schema_version = 2, entries = {
   }},
   ["而"] = {primary_sense_id = "sense-df27d84b436ed321b879", senses = {
     {id = "sense-df27d84b436ed321b879", display_english = "whereas", commit_english = "whereas"},
+    {id = "sense-candidate-61d72e38f61c161491520895", display_english = "while", commit_english = "while"},
   }},
   ["而且"] = {primary_sense_id = "sense-f8e8c0305d6c73564e44", senses = {
     {id = "sense-f8e8c0305d6c73564e44", display_english = "plus", commit_english = "plus"},
@@ -26792,6 +27376,9 @@ return {schema_version = 2, entries = {
   }},
   ["耳目一新"] = {primary_sense_id = "sense-57b5292e00dda9c54c5b", senses = {
     {id = "sense-57b5292e00dda9c54c5b", display_english = "refreshing", commit_english = "refreshing"},
+  }},
+  ["耳语"] = {primary_sense_id = "sense-candidate-ecf456d074af71640a65fd7e", senses = {
+    {id = "sense-candidate-ecf456d074af71640a65fd7e", display_english = "whisper", commit_english = "whisper"},
   }},
   ["耸人听闻地"] = {primary_sense_id = "sense-a9cefb783ee1dc3f5a5e", senses = {
     {id = "sense-a9cefb783ee1dc3f5a5e", display_english = "luridly", commit_english = "luridly"},
@@ -27088,6 +27675,15 @@ return {schema_version = 2, entries = {
   ["胖"] = {primary_sense_id = "sense-1a16a4c92a528311d01e", senses = {
     {id = "sense-1a16a4c92a528311d01e", display_english = "fat", commit_english = "fat"},
   }},
+  ["胜利"] = {primary_sense_id = "sense-candidate-90c131953f3e4f4571afe21c", senses = {
+    {id = "sense-candidate-90c131953f3e4f4571afe21c", display_english = "victory", commit_english = "victory"},
+  }},
+  ["胜利地"] = {primary_sense_id = "sense-candidate-874f24f826c4402502ffde37", senses = {
+    {id = "sense-candidate-874f24f826c4402502ffde37", display_english = "victoriously", commit_english = "victoriously"},
+  }},
+  ["胜局"] = {primary_sense_id = "sense-candidate-12cdf01574227b6e9617d980", senses = {
+    {id = "sense-candidate-12cdf01574227b6e9617d980", display_english = "win", commit_english = "win"},
+  }},
   ["胜过"] = {primary_sense_id = "sense-0e7c686963472d0c4d9b", senses = {
     {id = "sense-0e7c686963472d0c4d9b", display_english = "surpass", commit_english = "surpass"},
     {id = "sense-b387496726a64535b286", display_english = "excel", commit_english = "excel"},
@@ -27254,12 +27850,18 @@ return {schema_version = 2, entries = {
   ["腐败的"] = {primary_sense_id = "sense-38fab15fa0ec35cbfbbb", senses = {
     {id = "sense-38fab15fa0ec35cbfbbb", display_english = "corrupt", commit_english = "corrupt"},
   }},
+  ["腕表"] = {primary_sense_id = "sense-candidate-e873cecc20136029fe7e4e95", senses = {
+    {id = "sense-candidate-e873cecc20136029fe7e4e95", display_english = "wristwatch", commit_english = "wristwatch"},
+  }},
   ["腭"] = {primary_sense_id = "sense-b26ec3540ee660b11ad1", senses = {
     {id = "sense-b26ec3540ee660b11ad1", display_english = "palate", commit_english = "palate"},
   }},
   ["腰带"] = {primary_sense_id = "sense-0c8f4e351258b225acdf", senses = {
     {id = "sense-0c8f4e351258b225acdf", display_english = "belts", commit_english = "belts"},
     {id = "sense-857cb90d0a49f6063d89", display_english = "belt", commit_english = "belt"},
+  }},
+  ["腰部"] = {primary_sense_id = "sense-candidate-594d1534b3477725883c956f", senses = {
+    {id = "sense-candidate-594d1534b3477725883c956f", display_english = "waist", commit_english = "waist"},
   }},
   ["腹地"] = {primary_sense_id = "sense-407f09a56a51a1231786", senses = {
     {id = "sense-407f09a56a51a1231786", display_english = "outback", commit_english = "outback"},
@@ -27376,6 +27978,9 @@ return {schema_version = 2, entries = {
   ["自愿"] = {primary_sense_id = "sense-063d13ab3ef925182679", senses = {
     {id = "sense-063d13ab3ef925182679", display_english = "voluntary", commit_english = "voluntary"},
     {id = "sense-0bdc4b04143d2dfe1840", display_english = "volunteers", commit_english = "volunteers"},
+  }},
+  ["自愿地"] = {primary_sense_id = "sense-candidate-12da8ec51cd18e0748798db1", senses = {
+    {id = "sense-candidate-12da8ec51cd18e0748798db1", display_english = "voluntarily", commit_english = "voluntarily"},
   }},
   ["自我"] = {primary_sense_id = "sense-49ddb9638febf7e8f969", senses = {
     {id = "sense-49ddb9638febf7e8f969", display_english = "self", commit_english = "self"},
@@ -27561,6 +28166,7 @@ return {schema_version = 2, entries = {
   ["航行"] = {primary_sense_id = "sense-24459dc5a1b2b48933ea", senses = {
     {id = "sense-24459dc5a1b2b48933ea", display_english = "navigate", commit_english = "navigate"},
     {id = "sense-afd04a12552b2049bf5f", display_english = "sail", commit_english = "sail"},
+    {id = "sense-candidate-af5ecbd9a9caaf9f5256bbbe", display_english = "voyage", commit_english = "voyage"},
   }},
   ["航运"] = {primary_sense_id = "sense-1f3a7fb8a71eb4b5786e", senses = {
     {id = "sense-1f3a7fb8a71eb4b5786e", display_english = "shipping", commit_english = "shipping"},
@@ -27975,6 +28581,12 @@ return {schema_version = 2, entries = {
     {id = "sense-99671c7d28c02e80f0d9", display_english = "obtain", commit_english = "obtain"},
     {id = "sense-40a061210a811fbd6f1f", display_english = "secure", commit_english = "secure"},
   }},
+  ["获胜的"] = {primary_sense_id = "sense-candidate-fbc828068cf87b690633aaaa", senses = {
+    {id = "sense-candidate-fbc828068cf87b690633aaaa", display_english = "victorious", commit_english = "victorious"},
+  }},
+  ["获胜者"] = {primary_sense_id = "sense-candidate-f167bda0e4080b067dba582b", senses = {
+    {id = "sense-candidate-f167bda0e4080b067dba582b", display_english = "winner", commit_english = "winner"},
+  }},
   ["菜单"] = {primary_sense_id = "sense-14b29ee75cd7e1bd5615", senses = {
     {id = "sense-14b29ee75cd7e1bd5615", display_english = "menu", commit_english = "menu"},
   }},
@@ -28044,12 +28656,16 @@ return {schema_version = 2, entries = {
   }},
   ["著名的"] = {primary_sense_id = "sense-a2d68f8f1694e7c9eb1e", senses = {
     {id = "sense-a2d68f8f1694e7c9eb1e", display_english = "fabled", commit_english = "fabled"},
+    {id = "sense-candidate-c1bee9a926693e6e9a36c7b0", display_english = "well-known", commit_english = "well-known"},
   }},
   ["葡萄"] = {primary_sense_id = "legacy-daily-064", senses = {
     {id = "legacy-daily-064", display_english = "grape", commit_english = "grape"},
   }},
   ["葡萄柚"] = {primary_sense_id = "sense-6c505863f3437b785ae9", senses = {
     {id = "sense-6c505863f3437b785ae9", display_english = "grapefruit", commit_english = "grapefruit"},
+  }},
+  ["葡萄酒"] = {primary_sense_id = "sense-candidate-50be0bb51df3cad9e977cd78", senses = {
+    {id = "sense-candidate-50be0bb51df3cad9e977cd78", display_english = "wine", commit_english = "wine"},
   }},
   ["董事会"] = {primary_sense_id = "sense-41ef1ae44e046d6c0470", senses = {
     {id = "sense-41ef1ae44e046d6c0470", display_english = "board", commit_english = "board"},
@@ -28101,6 +28717,9 @@ return {schema_version = 2, entries = {
   }},
   ["薄"] = {primary_sense_id = "sense-155a148ff0522518cd9f", senses = {
     {id = "sense-155a148ff0522518cd9f", display_english = "thin", commit_english = "thin"},
+  }},
+  ["薄弱的"] = {primary_sense_id = "sense-candidate-96c9c0e6f53044deaecfc4df", senses = {
+    {id = "sense-candidate-96c9c0e6f53044deaecfc4df", display_english = "weak", commit_english = "weak"},
   }},
   ["薄板"] = {primary_sense_id = "sense-ca031b1e31311190c7fe", senses = {
     {id = "sense-ca031b1e31311190c7fe", display_english = "sheet", commit_english = "sheet"},
@@ -28181,6 +28800,10 @@ return {schema_version = 2, entries = {
   }},
   ["虚弱的"] = {primary_sense_id = "sense-978b119b305d659ce482", senses = {
     {id = "sense-978b119b305d659ce482", display_english = "feeble", commit_english = "feeble"},
+    {id = "sense-candidate-e3e48a4419faa266c0415745", display_english = "weak", commit_english = "weak"},
+  }},
+  ["虚拟现实"] = {primary_sense_id = "sense-candidate-6a2b4a89aa1bf797ab30554b", senses = {
+    {id = "sense-candidate-6a2b4a89aa1bf797ab30554b", display_english = "virtual reality", commit_english = "virtual reality"},
   }},
   ["虚拟的"] = {primary_sense_id = "sense-2b8cca31b07692c41fcd", senses = {
     {id = "sense-2b8cca31b07692c41fcd", display_english = "virtual", commit_english = "virtual"},
@@ -28286,6 +28909,9 @@ return {schema_version = 2, entries = {
   ["蜷缩"] = {primary_sense_id = "sense-c2afdd16addfc83cc7f7", senses = {
     {id = "sense-c2afdd16addfc83cc7f7", display_english = "huddle", commit_english = "huddle"},
   }},
+  ["蜿蜒的"] = {primary_sense_id = "sense-candidate-ec9c0fa8a1eb87752d8e0324", senses = {
+    {id = "sense-candidate-ec9c0fa8a1eb87752d8e0324", display_english = "winding", commit_english = "winding"},
+  }},
   ["蝙蝠"] = {primary_sense_id = "sense-702ffefd605e4278982a", senses = {
     {id = "sense-702ffefd605e4278982a", display_english = "bat", commit_english = "bat"},
   }},
@@ -28326,6 +28952,9 @@ return {schema_version = 2, entries = {
   }},
   ["蠕动"] = {primary_sense_id = "sense-240d7cc799bd1153d367", senses = {
     {id = "sense-240d7cc799bd1153d367", display_english = "squirm", commit_english = "squirm"},
+  }},
+  ["蠕虫"] = {primary_sense_id = "sense-candidate-698288dc17b61101b774fd7c", senses = {
+    {id = "sense-candidate-698288dc17b61101b774fd7c", display_english = "worm", commit_english = "worm"},
   }},
   ["蠢"] = {primary_sense_id = "sense-fa0ca34970b084ed13aa", senses = {
     {id = "sense-fa0ca34970b084ed13aa", display_english = "stupid", commit_english = "stupid"},
@@ -28513,6 +29142,7 @@ return {schema_version = 2, entries = {
   ["表达"] = {primary_sense_id = "sense-d83ba73a6caca259d17a", senses = {
     {id = "sense-d83ba73a6caca259d17a", display_english = "express", commit_english = "express"},
     {id = "sense-dd2c55f26f0736b27800", display_english = "expression", commit_english = "expression"},
+    {id = "sense-candidate-9f6aa6b3b62fa111d370cc36", display_english = "voice", commit_english = "voice"},
   }},
   ["表面"] = {primary_sense_id = "sense-068087d64d6e37ad1674", senses = {
     {id = "sense-068087d64d6e37ad1674", display_english = "surface", commit_english = "surface"},
@@ -28716,6 +29346,9 @@ return {schema_version = 2, entries = {
   ["西装"] = {primary_sense_id = "sense-3688ace9db40682a522d", senses = {
     {id = "sense-3688ace9db40682a522d", display_english = "suit", commit_english = "suit"},
   }},
+  ["西装马甲"] = {primary_sense_id = "sense-candidate-42fb0d7157f9da0010aef78d", senses = {
+    {id = "sense-candidate-42fb0d7157f9da0010aef78d", display_english = "waistcoat", commit_english = "waistcoat"},
+  }},
   ["西部的"] = {primary_sense_id = "sense-f0a20b9ee72816dabf3b", senses = {
     {id = "sense-f0a20b9ee72816dabf3b", display_english = "western", commit_english = "western"},
   }},
@@ -28749,6 +29382,9 @@ return {schema_version = 2, entries = {
   ["见证"] = {primary_sense_id = "sense-8e7724ea37bef3e17668", senses = {
     {id = "sense-8e7724ea37bef3e17668", display_english = "witness", commit_english = "witness"},
   }},
+  ["观众"] = {primary_sense_id = "sense-candidate-62075d47b870ba96eb92ee5f", senses = {
+    {id = "sense-candidate-62075d47b870ba96eb92ee5f", display_english = "viewer", commit_english = "viewer"},
+  }},
   ["观光"] = {primary_sense_id = "sense-70e666fe0dbf2422c7e7", senses = {
     {id = "sense-70e666fe0dbf2422c7e7", display_english = "sightseeing", commit_english = "sightseeing"},
   }},
@@ -28771,6 +29407,10 @@ return {schema_version = 2, entries = {
   ["观点"] = {primary_sense_id = "sense-a6594fd5d090b5edb63b", senses = {
     {id = "sense-a6594fd5d090b5edb63b", display_english = "point", commit_english = "point"},
     {id = "sense-bb7cf6437a1414e269c8", display_english = "point of view", commit_english = "point of view"},
+    {id = "sense-candidate-a0a5a7eb92f471cb9a2fe526", display_english = "viewpoint", commit_english = "viewpoint"},
+  }},
+  ["观看"] = {primary_sense_id = "sense-candidate-5794feb69a27832fd402c0a5", senses = {
+    {id = "sense-candidate-5794feb69a27832fd402c0a5", display_english = "watch", commit_english = "watch"},
   }},
   ["观赏"] = {primary_sense_id = "sense-e6aae0741fbe9d7f0bb0", senses = {
     {id = "sense-e6aae0741fbe9d7f0bb0", display_english = "ornamental", commit_english = "ornamental"},
@@ -28818,6 +29458,9 @@ return {schema_version = 2, entries = {
   ["视网膜"] = {primary_sense_id = "sense-cdd0058e587ee596b8e1", senses = {
     {id = "sense-cdd0058e587ee596b8e1", display_english = "retina", commit_english = "retina"},
   }},
+  ["视觉"] = {primary_sense_id = "sense-candidate-53555b262b8e379ec0708900", senses = {
+    {id = "sense-candidate-53555b262b8e379ec0708900", display_english = "vision", commit_english = "vision"},
+  }},
   ["视觉的"] = {primary_sense_id = "sense-c7c330a0331fa693ae25", senses = {
     {id = "sense-c7c330a0331fa693ae25", display_english = "visual", commit_english = "visual"},
     {id = "sense-fed26680b57cf1c29310", display_english = "optic", commit_english = "optic"},
@@ -28829,6 +29472,9 @@ return {schema_version = 2, entries = {
   ["视频"] = {primary_sense_id = "legacy-daily-150", senses = {
     {id = "sense-7db424e1d802ddc1d7cb", display_english = "videos", commit_english = "videos"},
     {id = "legacy-daily-150", display_english = "video", commit_english = "video"},
+  }},
+  ["视频片段"] = {primary_sense_id = "sense-candidate-8d421e01f8a7d9f3ed1cb094", senses = {
+    {id = "sense-candidate-8d421e01f8a7d9f3ed1cb094", display_english = "video clip", commit_english = "video clip"},
   }},
   ["觉得"] = {primary_sense_id = "sense-2d2ede7e6d2de22c6636", senses = {
     {id = "sense-2d2ede7e6d2de22c6636", display_english = "feel", commit_english = "feel"},
@@ -28926,6 +29572,9 @@ return {schema_version = 2, entries = {
   ["警卫"] = {primary_sense_id = "sense-a537605fa23d92571f07", senses = {
     {id = "sense-a537605fa23d92571f07", display_english = "guard", commit_english = "guard"},
   }},
+  ["警告"] = {primary_sense_id = "sense-candidate-d5a6c0f2ff65e87009500180", senses = {
+    {id = "sense-candidate-d5a6c0f2ff65e87009500180", display_english = "warn", commit_english = "warn"},
+  }},
   ["警官"] = {primary_sense_id = "sense-6ed36073b1e7a10c48c1", senses = {
     {id = "sense-6ed36073b1e7a10c48c1", display_english = "police officer", commit_english = "police officer"},
   }},
@@ -28953,6 +29602,9 @@ return {schema_version = 2, entries = {
   }},
   ["警方"] = {primary_sense_id = "sense-142cc04f65137f7c21fd", senses = {
     {id = "sense-142cc04f65137f7c21fd", display_english = "police", commit_english = "police"},
+  }},
+  ["警示"] = {primary_sense_id = "sense-candidate-69a2920d8fde60285a5be44a", senses = {
+    {id = "sense-candidate-69a2920d8fde60285a5be44a", display_english = "warning", commit_english = "warning"},
   }},
   ["计划"] = {primary_sense_id = "sense-8926d7cda532e7ddb0b2", senses = {
     {id = "sense-8926d7cda532e7ddb0b2", display_english = "program", commit_english = "program"},
@@ -29222,6 +29874,7 @@ return {schema_version = 2, entries = {
   }},
   ["访问"] = {primary_sense_id = "sense-ea558734a0e4e1327260", senses = {
     {id = "sense-ea558734a0e4e1327260", display_english = "access", commit_english = "access"},
+    {id = "sense-candidate-640e66b41bebebc3a035f736", display_english = "visit", commit_english = "visit"},
   }},
   ["诀窍"] = {primary_sense_id = "sense-6e5068798957422b6d13", senses = {
     {id = "sense-6e5068798957422b6d13", display_english = "knack", commit_english = "knack"},
@@ -29347,12 +30000,16 @@ return {schema_version = 2, entries = {
   ["诗人"] = {primary_sense_id = "sense-0af8a5fcf5a23c974259", senses = {
     {id = "sense-0af8a5fcf5a23c974259", display_english = "poet", commit_english = "poet"},
   }},
+  ["诗句"] = {primary_sense_id = "sense-candidate-b0438465bf96ca44eb91d51c", senses = {
+    {id = "sense-candidate-b0438465bf96ca44eb91d51c", display_english = "verse", commit_english = "verse"},
+  }},
   ["诗歌"] = {primary_sense_id = "sense-11dbef4e8c3dfd37573b", senses = {
     {id = "sense-11dbef4e8c3dfd37573b", display_english = "poem", commit_english = "poem"},
     {id = "sense-a3766427185827d14d70", display_english = "poetry", commit_english = "poetry"},
   }},
   ["诗节"] = {primary_sense_id = "sense-130336d41447d7d89400", senses = {
     {id = "sense-130336d41447d7d89400", display_english = "stanza", commit_english = "stanza"},
+    {id = "sense-candidate-2cb8b4fc1d3cad17a017a24a", display_english = "verse", commit_english = "verse"},
   }},
   ["诚实"] = {primary_sense_id = "sense-c5450adb5c80e9f3a56c", senses = {
     {id = "sense-c5450adb5c80e9f3a56c", display_english = "honest", commit_english = "honest"},
@@ -29577,6 +30234,13 @@ return {schema_version = 2, entries = {
   }},
   ["课间休息"] = {primary_sense_id = "sense-a90479a5cc6d66486a76", senses = {
     {id = "sense-a90479a5cc6d66486a76", display_english = "recess", commit_english = "recess"},
+  }},
+  ["谁"] = {primary_sense_id = "sense-candidate-a777bfad2f9f1dfb194530d6", senses = {
+    {id = "sense-candidate-a777bfad2f9f1dfb194530d6", display_english = "who", commit_english = "who"},
+    {id = "sense-candidate-356b0326e9484858e6860adf", display_english = "whom", commit_english = "whom"},
+  }},
+  ["谁的"] = {primary_sense_id = "sense-candidate-04252b8f351125542c2f9fe9", senses = {
+    {id = "sense-candidate-04252b8f351125542c2f9fe9", display_english = "whose", commit_english = "whose"},
   }},
   ["调侃"] = {primary_sense_id = "sense-68023967778e7d210079", senses = {
     {id = "sense-68023967778e7d210079", display_english = "quip", commit_english = "quip"},
@@ -29815,6 +30479,9 @@ return {schema_version = 2, entries = {
   ["账户余额"] = {primary_sense_id = "sense-3147fd8e5f493cdead4e", senses = {
     {id = "sense-3147fd8e5f493cdead4e", display_english = "balance", commit_english = "balance"},
   }},
+  ["货品"] = {primary_sense_id = "sense-candidate-a1fab3634bf5d4cd07717590", senses = {
+    {id = "sense-candidate-a1fab3634bf5d4cd07717590", display_english = "wares", commit_english = "wares"},
+  }},
   ["货币"] = {primary_sense_id = "sense-158da03631c1ad909d00", senses = {
     {id = "sense-158da03631c1ad909d00", display_english = "currency", commit_english = "currency"},
   }},
@@ -29825,6 +30492,9 @@ return {schema_version = 2, entries = {
     {id = "sense-b70d452203a788fd2523", display_english = "goods", commit_english = "goods"},
     {id = "sense-a5c32ed42f89f0265d7d", display_english = "commodity", commit_english = "commodity"},
     {id = "sense-4b2ec489118262768e21", display_english = "merchandise", commit_english = "merchandise"},
+  }},
+  ["货车车厢"] = {primary_sense_id = "sense-candidate-344116760210329a75f7144f", senses = {
+    {id = "sense-candidate-344116760210329a75f7144f", display_english = "wagon", commit_english = "wagon"},
   }},
   ["货运"] = {primary_sense_id = "sense-b0e10981c2a45f00b2bd", senses = {
     {id = "sense-b0e10981c2a45f00b2bd", display_english = "freight", commit_english = "freight"},
@@ -29839,8 +30509,14 @@ return {schema_version = 2, entries = {
     {id = "sense-d4dd9c3b56de0c49c211", display_english = "quality", commit_english = "quality"},
     {id = "sense-46ef066e951c95975281", display_english = "mass", commit_english = "mass"},
   }},
+  ["贪吃的"] = {primary_sense_id = "sense-candidate-90228460edc1281e29f3e6bc", senses = {
+    {id = "sense-candidate-90228460edc1281e29f3e6bc", display_english = "voracious", commit_english = "voracious"},
+  }},
   ["贪婪"] = {primary_sense_id = "sense-6dd350f970ad1884bc7a", senses = {
     {id = "sense-6dd350f970ad1884bc7a", display_english = "greedy", commit_english = "greedy"},
+  }},
+  ["贪食"] = {primary_sense_id = "sense-candidate-66d31eea891aaa0990a0e525", senses = {
+    {id = "sense-candidate-66d31eea891aaa0990a0e525", display_english = "voracity", commit_english = "voracity"},
   }},
   ["贫困"] = {primary_sense_id = "sense-890b12d6e23c15a5f2e2", senses = {
     {id = "sense-890b12d6e23c15a5f2e2", display_english = "poverty", commit_english = "poverty"},
@@ -30056,6 +30732,9 @@ return {schema_version = 2, entries = {
   ["赠品"] = {primary_sense_id = "sense-b07cc693f08924af4cc3", senses = {
     {id = "sense-b07cc693f08924af4cc3", display_english = "giveaway", commit_english = "giveaway"},
   }},
+  ["赢"] = {primary_sense_id = "sense-candidate-c917f634afe0620b6768835a", senses = {
+    {id = "sense-candidate-c917f634afe0620b6768835a", display_english = "win", commit_english = "win"},
+  }},
   ["赤纬"] = {primary_sense_id = "sense-2d77aaf68a1f6ca505ef", senses = {
     {id = "sense-2d77aaf68a1f6ca505ef", display_english = "declination", commit_english = "declination"},
   }},
@@ -30247,6 +30926,9 @@ return {schema_version = 2, entries = {
   ["距离"] = {primary_sense_id = "sense-608112933bc4275e6e60", senses = {
     {id = "sense-608112933bc4275e6e60", display_english = "distance", commit_english = "distance"},
   }},
+  ["跟"] = {primary_sense_id = "sense-candidate-5b59003030182e7634dae222", senses = {
+    {id = "sense-candidate-5b59003030182e7634dae222", display_english = "with", commit_english = "with"},
+  }},
   ["跟踪"] = {primary_sense_id = "sense-4f959b92b9afa4e98f32", senses = {
     {id = "sense-4f959b92b9afa4e98f32", display_english = "shadow", commit_english = "shadow"},
   }},
@@ -30259,8 +30941,12 @@ return {schema_version = 2, entries = {
   ["路口"] = {primary_sense_id = "legacy-daily-119", senses = {
     {id = "legacy-daily-119", display_english = "intersection", commit_english = "intersection"},
   }},
+  ["路径"] = {primary_sense_id = "sense-candidate-b48589e266c679479b9556c8", senses = {
+    {id = "sense-candidate-b48589e266c679479b9556c8", display_english = "way", commit_english = "way"},
+  }},
   ["路旁"] = {primary_sense_id = "sense-e1b24b9e7d95fb00ada7", senses = {
     {id = "sense-e1b24b9e7d95fb00ada7", display_english = "roadside", commit_english = "roadside"},
+    {id = "sense-candidate-b1ffbd13e8655eb3911632e7", display_english = "wayside", commit_english = "wayside"},
   }},
   ["路标"] = {primary_sense_id = "sense-02db9124675e0d16b588", senses = {
     {id = "sense-02db9124675e0d16b588", display_english = "signpost", commit_english = "signpost"},
@@ -30468,6 +31154,9 @@ return {schema_version = 2, entries = {
   }},
   ["轮廓分明的"] = {primary_sense_id = "sense-d11ec10e5fca1ecf8b69", senses = {
     {id = "sense-d11ec10e5fca1ecf8b69", display_english = "chiselled", commit_english = "chiselled"},
+  }},
+  ["轮椅"] = {primary_sense_id = "sense-candidate-cad03cf6507d63dfcc915ea1", senses = {
+    {id = "sense-candidate-cad03cf6507d63dfcc915ea1", display_english = "wheelchair", commit_english = "wheelchair"},
   }},
   ["轮次"] = {primary_sense_id = "sense-27114e0648dfd471fca9", senses = {
     {id = "sense-27114e0648dfd471fca9", display_english = "round", commit_english = "round"},
@@ -30919,9 +31608,10 @@ return {schema_version = 2, entries = {
   ["近端的"] = {primary_sense_id = "sense-8568db402427570f3213", senses = {
     {id = "sense-8568db402427570f3213", display_english = "proximal", commit_english = "proximal"},
   }},
-  ["还"] = {primary_sense_id = "sense-fd6e7fa7b90897a22892", requires_reading = true, primary_by_reading = {["huan"] = "sense-fd6e7fa7b90897a22892", ["hai"] = "sense-a8c5bc2ffc45ff45a405"}, senses = {
+  ["还"] = {primary_sense_id = "sense-a8c5bc2ffc45ff45a405", requires_reading = true, primary_by_reading = {["huan"] = "sense-fd6e7fa7b90897a22892", ["hai"] = "sense-a8c5bc2ffc45ff45a405"}, senses = {
     {id = "sense-fd6e7fa7b90897a22892", display_english = "return", commit_english = "return"},
     {id = "sense-a8c5bc2ffc45ff45a405", display_english = "even", commit_english = "even"},
+    {id = "sense-candidate-09bae7458ce2cbffcd7fc2db", display_english = "yet", commit_english = "yet"},
   }},
   ["还可以的"] = {primary_sense_id = "sense-6cd76f99b16a5ae2cc9a", senses = {
     {id = "sense-6cd76f99b16a5ae2cc9a", display_english = "okay", commit_english = "okay"},
@@ -30985,6 +31675,9 @@ return {schema_version = 2, entries = {
   }},
   ["远程地"] = {primary_sense_id = "sense-314936e7295fdd717fba", senses = {
     {id = "sense-314936e7295fdd717fba", display_english = "remotely", commit_english = "remotely"},
+  }},
+  ["远见"] = {primary_sense_id = "sense-candidate-ad26a22f9dfe4462fdb74c99", senses = {
+    {id = "sense-candidate-ad26a22f9dfe4462fdb74c99", display_english = "vision", commit_english = "vision"},
   }},
   ["远足"] = {primary_sense_id = "sense-86ed94d8b14ead7fe42e", senses = {
     {id = "sense-86ed94d8b14ead7fe42e", display_english = "hike", commit_english = "hike"},
@@ -31145,6 +31838,9 @@ return {schema_version = 2, entries = {
   ["退化"] = {primary_sense_id = "sense-5b3befc8983356f9b6ab", senses = {
     {id = "sense-5b3befc8983356f9b6ab", display_english = "degradation", commit_english = "degradation"},
   }},
+  ["退化的"] = {primary_sense_id = "sense-candidate-88ac24f66bd0ed276095a22f", senses = {
+    {id = "sense-candidate-88ac24f66bd0ed276095a22f", display_english = "vestigial", commit_english = "vestigial"},
+  }},
   ["退款"] = {primary_sense_id = "sense-9c0d505415392bf89bb6", senses = {
     {id = "sense-9c0d505415392bf89bb6", display_english = "refund", commit_english = "refund"},
   }},
@@ -31238,8 +31934,12 @@ return {schema_version = 2, entries = {
   ["选择性"] = {primary_sense_id = "sense-581ff8214df3399f4684", senses = {
     {id = "sense-581ff8214df3399f4684", display_english = "selectivity", commit_english = "selectivity"},
   }},
+  ["选民"] = {primary_sense_id = "sense-candidate-54681ef97361794802d868bf", senses = {
+    {id = "sense-candidate-54681ef97361794802d868bf", display_english = "voter", commit_english = "voter"},
+  }},
   ["选票"] = {primary_sense_id = "sense-71c1b794a78fdaf6ccec", senses = {
     {id = "sense-71c1b794a78fdaf6ccec", display_english = "ballot", commit_english = "ballot"},
+    {id = "sense-candidate-055d0b0a5e4c93773e897d12", display_english = "vote", commit_english = "vote"},
   }},
   ["选美比赛"] = {primary_sense_id = "sense-b7562fdf01ccb3398c2f", senses = {
     {id = "sense-b7562fdf01ccb3398c2f", display_english = "pageant", commit_english = "pageant"},
@@ -31372,6 +32072,9 @@ return {schema_version = 2, entries = {
   ["逻辑"] = {primary_sense_id = "sense-12c21bf8b56d92272f70", senses = {
     {id = "sense-12c21bf8b56d92272f70", display_english = "logic", commit_english = "logic"},
   }},
+  ["逼真性"] = {primary_sense_id = "sense-candidate-857d886921b140fb0a688c02", senses = {
+    {id = "sense-candidate-857d886921b140fb0a688c02", display_english = "verisimilitude", commit_english = "verisimilitude"},
+  }},
   ["逼真的"] = {primary_sense_id = "sense-3efc32268d5e04657feb", senses = {
     {id = "sense-3efc32268d5e04657feb", display_english = "realistic", commit_english = "realistic"},
   }},
@@ -31445,6 +32148,7 @@ return {schema_version = 2, entries = {
   }},
   ["遗嘱"] = {primary_sense_id = "sense-5f12289acd70135e98b0", senses = {
     {id = "sense-5f12289acd70135e98b0", display_english = "testament", commit_english = "testament"},
+    {id = "sense-candidate-052393b6634ac776f8b89322", display_english = "will", commit_english = "will"},
   }},
   ["遗失的"] = {primary_sense_id = "sense-4b7ba6b21663f708c3d7", senses = {
     {id = "sense-4b7ba6b21663f708c3d7", display_english = "lost", commit_english = "lost"},
@@ -31684,6 +32388,10 @@ return {schema_version = 2, entries = {
     {id = "sense-9b05fbace888f31a6a26", display_english = "acid", commit_english = "acid"},
     {id = "sense-529cfb759b0da243150c", display_english = "sour", commit_english = "sour"},
   }},
+  ["酸奶"] = {primary_sense_id = "sense-candidate-389c8273bf4976181fb5335d", senses = {
+    {id = "sense-candidate-389c8273bf4976181fb5335d", display_english = "yoghurt", commit_english = "yoghurt"},
+    {id = "sense-candidate-0a0fee598519922bcef68503", display_english = "yogurt", commit_english = "yogurt"},
+  }},
   ["酸性的"] = {primary_sense_id = "sense-6a1d12a32b4a53bc4d0d", senses = {
     {id = "sense-6a1d12a32b4a53bc4d0d", display_english = "acidic", commit_english = "acidic"},
   }},
@@ -31695,6 +32403,12 @@ return {schema_version = 2, entries = {
   }},
   ["酿造"] = {primary_sense_id = "sense-aba7f1621240843ae5fc", senses = {
     {id = "sense-aba7f1621240843ae5fc", display_english = "brew", commit_english = "brew"},
+  }},
+  ["醋"] = {primary_sense_id = "sense-candidate-fcde47fa88cf1b106ab6159a", senses = {
+    {id = "sense-candidate-fcde47fa88cf1b106ab6159a", display_english = "vinegar", commit_english = "vinegar"},
+  }},
+  ["醒来"] = {primary_sense_id = "sense-candidate-63d7591a9ca4100e35c69ad0", senses = {
+    {id = "sense-candidate-63d7591a9ca4100e35c69ad0", display_english = "wake", commit_english = "wake"},
   }},
   ["醒着"] = {primary_sense_id = "sense-3dc7d0ad9efc1409b830", senses = {
     {id = "sense-3dc7d0ad9efc1409b830", display_english = "awake", commit_english = "awake"},
@@ -31846,6 +32560,9 @@ return {schema_version = 2, entries = {
   ["野生动物"] = {primary_sense_id = "sense-e467e1d0df086f459e78", senses = {
     {id = "sense-e467e1d0df086f459e78", display_english = "wildlife", commit_english = "wildlife"},
   }},
+  ["野生的"] = {primary_sense_id = "sense-candidate-8027c03be937c65a830afc7a", senses = {
+    {id = "sense-candidate-8027c03be937c65a830afc7a", display_english = "wild", commit_english = "wild"},
+  }},
   ["野营"] = {primary_sense_id = "sense-2dc9799ed2987c0951a5", senses = {
     {id = "sense-2dc9799ed2987c0951a5", display_english = "camp", commit_english = "camp"},
   }},
@@ -31875,6 +32592,9 @@ return {schema_version = 2, entries = {
   }},
   ["金属"] = {primary_sense_id = "sense-3199b1c82ad98cef1ec0", senses = {
     {id = "sense-3199b1c82ad98cef1ec0", display_english = "metal", commit_english = "metal"},
+  }},
+  ["金属丝"] = {primary_sense_id = "sense-candidate-da88dacbf01cb04cf14ba3f2", senses = {
+    {id = "sense-candidate-da88dacbf01cb04cf14ba3f2", display_english = "wire", commit_english = "wire"},
   }},
   ["金属的"] = {primary_sense_id = "sense-05e11a71a678b7366707", senses = {
     {id = "sense-05e11a71a678b7366707", display_english = "metallic", commit_english = "metallic"},
@@ -32095,6 +32815,12 @@ return {schema_version = 2, entries = {
     {id = "sense-9fc15b8037376440115b", display_english = "error", commit_english = "error"},
     {id = "sense-aeab0d3edb5f48b3692e", display_english = "false", commit_english = "false"},
     {id = "sense-8cd10c510e45d172c75d", display_english = "mistake", commit_english = "mistake"},
+  }},
+  ["错误地"] = {primary_sense_id = "sense-candidate-dc00632935afbbd24c5f63c3", senses = {
+    {id = "sense-candidate-dc00632935afbbd24c5f63c3", display_english = "wrongly", commit_english = "wrongly"},
+  }},
+  ["错误的"] = {primary_sense_id = "sense-candidate-6e522a7f44c9f642abdbbf16", senses = {
+    {id = "sense-candidate-6e522a7f44c9f642abdbbf16", display_english = "wrong", commit_english = "wrong"},
   }},
   ["错误观念"] = {primary_sense_id = "sense-f5de8f6447e061aafdb8", senses = {
     {id = "sense-f5de8f6447e061aafdb8", display_english = "misconception", commit_english = "misconception"},
@@ -32409,6 +33135,9 @@ return {schema_version = 2, entries = {
   ["防御"] = {primary_sense_id = "sense-7d14924035c9ef37d764", senses = {
     {id = "sense-7d14924035c9ef37d764", display_english = "defence", commit_english = "defence"},
     {id = "sense-518ba3012d08e4622a07", display_english = "defense", commit_english = "defense"},
+  }},
+  ["防水"] = {primary_sense_id = "sense-candidate-b411e7780d9c76fae0984db1", senses = {
+    {id = "sense-candidate-b411e7780d9c76fae0984db1", display_english = "waterproof", commit_english = "waterproof"},
   }},
   ["防水的"] = {primary_sense_id = "sense-928fb3a73bae886d0fd5", senses = {
     {id = "sense-928fb3a73bae886d0fd5", display_english = "water-proof", commit_english = "water-proof"},
@@ -34025,6 +34754,9 @@ return {schema_version = 2, entries = {
   ["高耸的"] = {primary_sense_id = "sense-e5530a722cbb7bf0873c", senses = {
     {id = "sense-e5530a722cbb7bf0873c", display_english = "lofty", commit_english = "lofty"},
   }},
+  ["高薪的"] = {primary_sense_id = "sense-candidate-f49bb8661fbc85e2900cc3bb", senses = {
+    {id = "sense-candidate-f49bb8661fbc85e2900cc3bb", display_english = "well-paid", commit_english = "well-paid"},
+  }},
   ["高贵"] = {primary_sense_id = "sense-e672351c50a2659cb7d8", senses = {
     {id = "sense-e672351c50a2659cb7d8", display_english = "noble", commit_english = "noble"},
   }},
@@ -34099,6 +34831,9 @@ return {schema_version = 2, entries = {
   }},
   ["鲜艳"] = {primary_sense_id = "sense-5b026828697a39b32075", senses = {
     {id = "sense-5b026828697a39b32075", display_english = "vivid", commit_english = "vivid"},
+  }},
+  ["鲸"] = {primary_sense_id = "sense-candidate-80b92c7c25dd17c94191d835", senses = {
+    {id = "sense-candidate-80b92c7c25dd17c94191d835", display_english = "whale", commit_english = "whale"},
   }},
   ["鲸脂"] = {primary_sense_id = "sense-revision-789703047b81268b81ac68f8", senses = {
     {id = "sense-revision-789703047b81268b81ac68f8", display_english = "blubber", commit_english = "blubber"},
@@ -34208,6 +34943,9 @@ return {schema_version = 2, entries = {
   }},
   ["黄色的"] = {primary_sense_id = "sense-697777935ea48db9e9b3", senses = {
     {id = "sense-697777935ea48db9e9b3", display_english = "yellow", commit_english = "yellow"},
+  }},
+  ["黄蜂"] = {primary_sense_id = "sense-candidate-4c13c1617bece66a43d53713", senses = {
+    {id = "sense-candidate-4c13c1617bece66a43d53713", display_english = "wasp", commit_english = "wasp"},
   }},
   ["黄金"] = {primary_sense_id = "sense-1f71cf92f108c40764ee", senses = {
     {id = "sense-1f71cf92f108c40764ee", display_english = "gold", commit_english = "gold"},
