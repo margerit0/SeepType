@@ -4,7 +4,7 @@ Android 与 Windows 共用项目主页，分别编号、验证和发布。这里
 
 ## Android
 
-**公开预览：[下载 0.1.0-preview.3](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.3)。** 最低系统版本为 Android 10，支持 `arm64-v8a` 和 `x86_64`。
+**公开预览：[下载 0.1.0-preview.4](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4)。** 最低系统版本为 Android 10，支持 `arm64-v8a` 和 `x86_64`。从 GitHub 发行版 `preview.3` 可覆盖升级。
 
 1. 从发布页下载已签名的 APK。若已安装同包名但签名不同的开发版本，不能直接覆盖安装；不要为了试用就卸载有本地词频数据的版本。
 2. 在测试设备上安装 APK，打开「拾词」，依次点「启用拾词」和「切换键盘」，在系统选择框里选拾词。

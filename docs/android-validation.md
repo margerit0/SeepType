@@ -1,6 +1,6 @@
 # 拾词 Android 开发预览验证
 
-当前 `preview.3` 的受测 APK、通过范围和未完成项见[本地整合验收](android-preview3-integration.md)。下文为 `preview.1` 历史记录。
+当前 `preview.4` 的受测 APK 和验证范围见 [GitHub 发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4)。[本地整合验收](android-preview3-integration.md)记录 `preview.3`，本页余下内容记录 `preview.1`。
 
 更新于 2026-11-11（北京时间）。本页记录原生 Android 实现和实际验证，网页原型只用于视觉参考。
 
