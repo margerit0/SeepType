@@ -272,6 +272,26 @@ class NativeEngineTest {
             send(event("select", "index" to pausedHao.second, "revision" to pausedHao.first.revision))
             check("Paused learning does not add the new phrase again", type("nihc").candidates.first().chinese != "拟好")
 
+            fun commitTallInSegments(): EngineSnapshot {
+                val (full, tai) = find(type("tdgcle"), "太")
+                val remaining = send(event("select", "index" to tai, "revision" to full.revision))
+                val (tail, tall) = find(remaining, "高了")
+                return send(event("select", "index" to tall, "revision" to tail.revision))
+            }
+            check("高了 starts as a generated sentence, absent as a standalone segment in gclema",
+                type("gcle").candidates.first().chinese == "高了" && type("gclema").candidates.none { it.chinese == "高了" })
+            check("Segment selection with learning paused still commits 太高了", commitTallInSegments().commands.single().text == "太高了")
+            check("Paused learning leaves no new 高了 segment", type("gclema").candidates.none { it.chinese == "高了" })
+            scheme("study_flypy", learning = true)
+            val tall = commitTallInSegments()
+            check("Choosing 太 then 高了 commits the complete text", tall.input.isEmpty() && tall.commands.single().text == "太高了")
+            check("gcle now offers the explicitly chosen 高了 first", type("gcle").candidates.first().chinese == "高了")
+            check("太高了 is still learned as a whole", type("tdgcle").candidates.first().chinese == "太高了")
+            for ((schema, code) in listOf("study_flypy" to "gclema", "study_double_pinyin" to "gklema", "study" to "gaolema")) {
+                scheme(schema)
+                check("$schema offers the separately learned 高了 within longer input", type(code).candidates.any { it.chinese == "高了" })
+            }
+
             clear()
             NativeCore.destroy(handle)
             handle = 0
@@ -281,6 +301,7 @@ class NativeEngineTest {
             start()
             scheme("study_flypy")
             check("Missing compiled index is rebuilt with unchanged packaged sources", type("gsyr").candidates.any { it.chinese == "公园" })
+            check("The separately learned 高了 survives native restart", type("gclema").candidates.any { it.chinese == "高了" })
             clear()
             NativeCore.destroy(handle)
             handle = 0

@@ -55,23 +55,47 @@ def prepare():
         archive.unlink()
     receipts.append({"id": "boost-headers", "version": "1.84.0", "url": boost_url, "sha256": boost_sha})
 
-    patches = []
+    patch_sources()
+    json_write(CACHE / "native-sources.json", receipts)
+    print(f"Prepared {len(receipts)} pinned native source inputs.")
+
+
+def patch_sources():
+    replacements = {}
+
     def replace(name, before, after):
-        path = CACHE / "src" / name
-        text = path.read_text(encoding="utf-8")
-        if after in text:
-            return
-        if text.count(before) != 1:
-            raise ValueError("Upstream patch context changed: " + name)
-        updated = text.replace(before, after)
-        patches.extend(difflib.unified_diff(text.splitlines(True), updated.splitlines(True), fromfile="a/" + name, tofile="b/" + name))
-        write(path, updated)
+        replacements.setdefault(name, []).append((before, after))
 
     replace("librime/src/rime/gear/memory.cc", "void Memory::OnCommit(Context* ctx) {\n",
             "void Memory::OnCommit(Context* ctx) {\n"
             '  // StudyIME: pause new learning without dropping existing scores.\n'
             '  if (ctx->get_property("study_user_learning") == "0")\n'
             '    return;\n')
+    replace("librime/src/rime/gear/memory.cc",
+            "  CommitEntry commit_entry(this);\n",
+            "  CommitEntry commit_entry(this);\n"
+            "  vector<an<Phrase>> selected_phrases;\n")
+    replace("librime/src/rime/gear/memory.cc",
+            "      commit_entry.AppendPhrase(phrase);\n"
+            "    }\n"
+            "    if (!recognized || seg.status >= Segment::kConfirmed) {\n"
+            "      commit_entry.Save();\n",
+            "      commit_entry.AppendPhrase(phrase);\n"
+            "      if (seg.status >= Segment::kSelected && phrase->code().size() > 1)\n"
+            "        selected_phrases.push_back(phrase);\n"
+            "    }\n"
+            "    if (!recognized || seg.status >= Segment::kConfirmed) {\n"
+            "      commit_entry.Save();\n"
+            "      // A selected sentence can be flattened into individual words by\n"
+            "      // AppendPhrase. Learn the selected span as a phrase as well.\n"
+            "      for (const auto& selected : selected_phrases) {\n"
+            "        if (selected->code().size() == commit_entry.code.size())\n"
+            "          continue;\n"
+            "        CommitEntry selection(this);\n"
+            "        selection.AppendPhrase(selected);\n"
+            "        selection.Save();\n"
+            "      }\n"
+            "      selected_phrases.clear();\n")
     replace("librime/CMakeLists.txt", "  add_subdirectory(tools)\n", "  # StudyIME Android uses the C API, not standalone tools.\n")
     replace("opencc/CMakeLists.txt", '  find_library(LIBMARISA NAMES marisa)',
             '  find_package(marisa CONFIG REQUIRED)\n  set(LIBMARISA marisa)')
@@ -79,10 +103,23 @@ def prepare():
             '  # StudyIME: no build-machine fallback data path.\n')
     replace("opencc/CMakeLists.txt", 'add_subdirectory(data)\n', '# StudyIME: no conversion data used by the simplified source dictionary.\n')
     replace("opencc/src/CMakeLists.txt", 'add_subdirectory(tools)\n', '# StudyIME: OpenCC library only.\n')
-    if patches:
-        write(ROOT / "android/native/patches/rime-android.patch", "".join(patches))
-    json_write(CACHE / "native-sources.json", receipts)
-    print(f"Prepared {len(receipts)} pinned native source inputs.")
+    patches = []
+    for name, edits in replacements.items():
+        path = CACHE / "src" / name
+        original = path.read_text(encoding="utf-8")
+        # Reconstruct the full patch even when earlier edits are already cached.
+        for before, after in reversed(edits):
+            if after in original:
+                original = original.replace(after, before, 1)
+        updated = original
+        for before, after in edits:
+            if updated.count(before) != 1:
+                raise ValueError("Upstream patch context changed: " + name)
+            updated = updated.replace(before, after, 1)
+        patches.extend(difflib.unified_diff(original.splitlines(True), updated.splitlines(True),
+                                           fromfile="a/" + name, tofile="b/" + name))
+        write(path, updated)
+    write(ROOT / "android/native/patches/rime-android.patch", "".join(patches))
 
 
 if __name__ == "__main__":

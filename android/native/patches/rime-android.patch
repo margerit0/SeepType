@@ -1,6 +1,6 @@
 --- a/librime/src/rime/gear/memory.cc
 +++ b/librime/src/rime/gear/memory.cc
-@@ -99,6 +99,9 @@
+@@ -99,19 +99,35 @@
  }
  
  void Memory::OnCommit(Context* ctx) {
@@ -10,6 +10,32 @@
    if (!user_dict_ || user_dict_->readonly())
      return;
    StartSession();
+   CommitEntry commit_entry(this);
++  vector<an<Phrase>> selected_phrases;
+   for (auto& seg : ctx->composition()) {
+     auto phrase =
+         As<Phrase>(Candidate::GetGenuineCandidate(seg.GetSelectedCandidate()));
+     bool recognized = Language::intelligible(phrase, this);
+     if (recognized) {
+       commit_entry.AppendPhrase(phrase);
++      if (seg.status >= Segment::kSelected && phrase->code().size() > 1)
++        selected_phrases.push_back(phrase);
+     }
+     if (!recognized || seg.status >= Segment::kConfirmed) {
+       commit_entry.Save();
++      // A selected sentence can be flattened into individual words by
++      // AppendPhrase. Learn the selected span as a phrase as well.
++      for (const auto& selected : selected_phrases) {
++        if (selected->code().size() == commit_entry.code.size())
++          continue;
++        CommitEntry selection(this);
++        selection.AppendPhrase(selected);
++        selection.Save();
++      }
++      selected_phrases.clear();
+       commit_entry.Clear();
+     }
+   }
 --- a/librime/CMakeLists.txt
 +++ b/librime/CMakeLists.txt
 @@ -273,7 +273,7 @@
@@ -23,6 +49,15 @@
      add_subdirectory(test)
 --- a/opencc/CMakeLists.txt
 +++ b/opencc/CMakeLists.txt
+@@ -146,7 +146,7 @@
+ ######## Compiler flags
+ 
+ add_definitions(
+-  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
++  # StudyIME: no build-machine fallback data path.
+   -DLOCALEDIR="${DIR_SHARE_LOCALE}"
+   -DVERSION="${OPENCC_VERSION}"
+   -DPACKAGE_NAME="${PACKAGE_NAME}"
 @@ -210,7 +210,8 @@
    message(STATUS "Use bundled marisa library.")
    add_subdirectory(deps/marisa-0.2.6)
@@ -33,20 +68,7 @@
    if (LIBMARISA)
      message(STATUS "libmarisa found: ${LIBMARISA}")
    else()
---- a/opencc/CMakeLists.txt
-+++ b/opencc/CMakeLists.txt
-@@ -146,7 +146,7 @@
- ######## Compiler flags
- 
- add_definitions(
--  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
-+  # StudyIME: no build-machine fallback data path.
-   -DLOCALEDIR="${DIR_SHARE_LOCALE}"
-   -DVERSION="${OPENCC_VERSION}"
-   -DPACKAGE_NAME="${PACKAGE_NAME}"
---- a/opencc/CMakeLists.txt
-+++ b/opencc/CMakeLists.txt
-@@ -223,7 +223,7 @@
+@@ -222,7 +223,7 @@
  
  add_subdirectory(src)
  add_subdirectory(doc)
