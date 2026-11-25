@@ -1,10 +1,12 @@
 # Android-only composition; neither input dictionary changes the shared user DB ID.
 ---
 name: study_android
-version: '1'
+version: '2'
 sort: by_weight
 use_preset_vocabulary: false
 import_tables:
   - cedict_study
   - study_offline_names
 ...
+# Common phrases for Chinese composition.
+让我	rang wo	10000

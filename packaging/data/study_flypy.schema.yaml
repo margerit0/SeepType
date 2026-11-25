@@ -6,7 +6,7 @@ __include: study.schema:/
 schema:
   schema_id: study_flypy
   name: 拾词小鹤双拼
-  version: '0.5.3'
+  version: '0.5.4'
   dependencies: []
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
@@ -42,6 +42,11 @@ speller:
     - xform/ui$/V/
     - xform/in$/B/
     - xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/
+    # Keep bare erhua as an abbreviation. An exact r would let r + hw
+    # suppress rh + w before the translator can look up rang wo.
+    - xform/^r$/r~/
+    - abbrev/^r~$/r/
+    - xform/^r~$/er/
     # Use the first key of each mapped syllable; full syllable codes take precedence.
     - abbrev/^(.).+$/$1/
 translator:

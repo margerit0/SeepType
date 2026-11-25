@@ -109,6 +109,16 @@ class NativeEngineTest {
                 check("$schema accepts an explicit separator in x'z", type("x'z").candidates.firstOrNull()?.chinese == "现在")
                 check("$schema still resolves the full code $fullCode", type(fullCode).candidates.firstOrNull()?.chinese == "现在")
                 check("$schema gives the complete xs syllable precedence", type("xs").candidates.firstOrNull()?.chinese == "胸")
+                check("$schema offers 让 for rh", type("rh").candidates.firstOrNull()?.chinese == "让")
+                check("$schema offers 我 for w", type("w").candidates.firstOrNull()?.chinese == "我")
+                val mixed = type("rhw")
+                check("$schema offers 让我 first for rhw",
+                    mixed.input == "rhw" && mixed.candidates.firstOrNull()?.chinese == "让我")
+                val mixedSelection = send(event("select", "index" to 0, "revision" to mixed.revision))
+                check("$schema commits 让我 in one selection", mixedSelection.input.isEmpty() && mixedSelection.commands.singleOrNull()?.text == "让我")
+                check("$schema still offers 让我 with fully spelled wo", type("rhwo").candidates.firstOrNull()?.chinese == "让我")
+                check("$schema also offers 让步 with an abbreviated final syllable", type("rhb").candidates.any { it.chinese == "让步" })
+                check("$schema still offers 儿 for er", type("er").candidates.any { it.chinese == "儿" })
             }
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })
             val manifest = context.assets.open("generated/manifest.json").bufferedReader().use { JSONObject(it.readText()) }
