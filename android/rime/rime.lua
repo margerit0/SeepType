@@ -14,3 +14,4 @@ end
 local core = require("study_core")
 study_filter = core.filter
 study_keys = require("study_details")(core.keys)
+study_double_pinyin_order = require("study_double_pinyin_order")
