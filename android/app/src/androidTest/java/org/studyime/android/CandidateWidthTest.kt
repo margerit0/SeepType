@@ -2,15 +2,19 @@
 package org.studyime.android
 
 import android.content.res.Configuration
+import android.graphics.Rect
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.PixelMap
+import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotDisplayed
+import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasTestTag
@@ -22,6 +26,7 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.DpRect
 import androidx.compose.ui.unit.dp
+import kotlin.math.abs
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -57,7 +62,7 @@ class CandidateWidthTest {
                 LocalDensity provides Density(LocalDensity.current.density, fontScale = 1f),
             ) {
                 Box(Modifier.width(width.dp)) {
-                    StudyTheme(skin = prefs.skin) {
+                    StudyTheme(mode = "light", skin = prefs.skin) {
                         StudyKeyboard(state.value, prefs, EditorSpec(), {}, { events.add(it) }, {}, {}, {},
                             onPickEmoji = { _, _ -> }, clipboard = ClipboardHistoryState(), onClipboardEnabled = {}, onPasteClipboard = { _, _ -> },
                             onPinClipboard = {}, onDeleteClipboard = {}, onClearClipboard = {})
@@ -101,6 +106,40 @@ class CandidateWidthTest {
         }
         short.assertIsDisplayed()
         assertEquals(short.getUnclippedBoundsInRoot().width, longEnglish.getUnclippedBoundsInRoot().width)
+    }
+
+    @Test fun spellingAndDictionaryCandidatesRenderTheSameMainLabel() {
+        state.value = EngineSnapshot(ready = true, input = "time", highlighted = -1,
+            candidates = listOf(Candidate("time", ""), Candidate("踢", "kick")), spellingCandidates = listOf("time"))
+        showKeyboard(320)
+
+        fun labelBounds(image: PixelMap): Rect = Rect().apply {
+            for (y in 0 until image.height) {
+                for (x in 0 until image.width) {
+                    // Measure the dark glyphs without relying on identical antialiasing at different screen coordinates.
+                    if (image[x, y].red < 0.55f) union(x, y, x + 1, y + 1)
+                }
+            }
+        }
+
+        fun assertSameRendering(inStrip: Boolean) {
+            val inside = hasAnyAncestor(hasTestTag("candidate_scroll"))
+            val container = if (inStrip) inside else !inside
+            val dictionary = compose.onNode(hasTestTag("candidate_0") and container).captureToImage().toPixelMap()
+            val spelling = compose.onNode(hasTestTag("spelling_candidate_0") and container).captureToImage().toPixelMap()
+            assertEquals(dictionary.width, spelling.width)
+            assertEquals(dictionary.height, spelling.height)
+            val dictionaryLabel = labelBounds(dictionary)
+            val spellingLabel = labelBounds(spelling)
+            assertTrue("Both candidate images contain a visible label", !dictionaryLabel.isEmpty && !spellingLabel.isEmpty)
+            assertTrue("Main label bounds should match within one pixel: $dictionaryLabel vs $spellingLabel",
+                abs(dictionaryLabel.left - spellingLabel.left) <= 1 && abs(dictionaryLabel.right - spellingLabel.right) <= 1 &&
+                    abs(dictionaryLabel.top - spellingLabel.top) <= 1 && abs(dictionaryLabel.bottom - spellingLabel.bottom) <= 1)
+        }
+
+        assertSameRendering(inStrip = true)
+        compose.onNodeWithContentDescription("展开候选").performClick()
+        assertSameRendering(inStrip = false)
     }
 
     @Test fun expandedPanelWrapsWordsWiderThanTheScreen() {
