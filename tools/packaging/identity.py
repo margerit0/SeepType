@@ -1,6 +1,7 @@
 """Generate all native identities and original icon resources from product.json."""
 from pathlib import Path
 import json
+import math
 import struct
 import sys
 import uuid
@@ -17,30 +18,62 @@ def guid(value):
 
 
 def png(size):
-    def inside(x, y, a, b, width, height, radius):
-        qx = abs(x - (a + width / 2)) - (width / 2 - radius)
-        qy = abs(y - (b + height / 2)) - (height / 2 - radius)
-        return max(qx, 0) ** 2 + max(qy, 0) ** 2 <= radius ** 2
+    # Match the rounded artwork in packaging/artwork/StudyIME.svg.
+    corner_radius = 21.6
+    arc_radius = 14
+    half_stroke = 5.5
+    inner_radius_sq = (arc_radius - half_stroke) ** 2
+    outer_radius_sq = (arc_radius + half_stroke) ** 2
+    cap_radius_sq = half_stroke ** 2
+    join = (48, 49)
+    green_tip = (59.5, 27)
+    purple_tip = (36.5, 71)
+    green_end = math.atan2(-8, 11.5)
+    purple_end = math.atan2(8, -11.5)
+
+    def on_arc(x, y, center_y, start_angle, end_angle, tip):
+        dx, dy = x - 48, y - center_y
+        if inner_radius_sq <= dx * dx + dy * dy <= outer_radius_sq:
+            angle = (math.atan2(dy, dx) - start_angle) % math.tau
+            if angle <= (end_angle - start_angle) % math.tau:
+                return True
+        return any((x - cap_x) ** 2 + (y - cap_y) ** 2 <= cap_radius_sq
+                   for cap_x, cap_y in (join, tip))
 
     scanlines = bytearray()
     samples = 4
+    scale = 96 / size
     for row in range(size):
         scanlines.append(0)
         for col in range(size):
-            total = [0, 0, 0, 0]
+            red = green = blue = covered = 0
             for sy in range(samples):
+                y = (row + (sy + .5) / samples) * scale
+                corner_y = max(abs(y - 48) - (48 - corner_radius), 0)
                 for sx in range(samples):
-                    x, y = (col + (sx + .5) / samples) * 64 / size, (row + (sy + .5) / samples) * 64 / size
-                    color = (0, 0, 0, 0)
-                    if inside(x, y, 3, 3, 58, 58, 15): color = (21, 61, 67, 255)
-                    if any(inside(x, y, 15, top, width, 7, 3.5) for top, width in [(16, 34), (29, 26), (42, 18)]):
-                        color = (245, 251, 247, 255)
-                    if (x - 46) ** 2 + (y - 46) ** 2 <= 64: color = (227, 185, 96, 255)
-                    for i in range(4): total[i] += color[i]
+                    x = (col + (sx + .5) / samples) * scale
+                    corner_x = max(abs(x - 48) - (48 - corner_radius), 0)
+                    if corner_x ** 2 + corner_y ** 2 > corner_radius ** 2:
+                        continue
+                    # Test topmost artwork first: dot, purple arc, green arc, background.
+                    if (x - 66) ** 2 + (y - 42) ** 2 <= 6 ** 2:
+                        color = (255, 208, 79)
+                    elif on_arc(x, y, 63, -math.pi / 2, purple_end, purple_tip):
+                        color = (108, 99, 224)
+                    elif on_arc(x, y, 35, math.pi / 2, green_end, green_tip):
+                        color = (31, 200, 160)
+                    else:
+                        color = (247, 248, 251)
+                    red += color[0]
+                    green += color[1]
+                    blue += color[2]
+                    covered += 1
             # PNG stores straight alpha. Avoid dark fringes in transparent pixels.
-            alpha = total[3] / samples ** 2
-            rgba = [round(total[i] * 255 / total[3]) if total[3] else 0 for i in range(3)] + [round(alpha)]
-            scanlines.extend(rgba)
+            if covered:
+                scanlines.extend((round(red / covered), round(green / covered), round(blue / covered),
+                                  round(255 * covered / samples ** 2)))
+            else:
+                scanlines.extend((0, 0, 0, 0))
     def chunk(kind, data):
         return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
     return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", size, size, 8, 6, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(bytes(scanlines), 9)) + chunk(b"IEND", b"")

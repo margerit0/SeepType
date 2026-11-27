@@ -34,7 +34,7 @@ Windows PowerShell 5.1 的收据修复 `[NullString]::Value` 仍保留。其先�
 
 ## 标识与运行目录
 
-唯一配置入口为 [product.json](../packaging/product.json)，图标为本项目原创的 [SVG](../packaging/artwork/StudyIME.svg)，生成 16/20/24/32/40/48/64/128/256 像素 ICO。四个 PE 文件均带拾词名称、版本与贡献者信息。
+唯一配置入口为 [product.json](../packaging/product.json)。Windows 使用本项目原创的[双色 S 图标](../packaging/artwork/StudyIME.svg)，以纯几何图形绘制，生成含 16/20/24/32/40/48/64/128/256 像素图层的 ICO 和 256 像素 PNG，均保留透明圆角。四个 PE 文件均带拾词名称、版本与贡献者信息。
 
 | 项目 | 值 |
 | --- | --- |
