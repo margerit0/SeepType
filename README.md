@@ -9,7 +9,7 @@
 离线拼音输入法，英文释义就写在中文候选的上方。<br>
 An offline pinyin keyboard that shows English glosses above the Chinese candidates.
 
-[下载 Android 预览版 0.1.0-preview.5](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5) · [**Releases**](https://github.com/margerit0/SeepType/releases) · [安装与启用](#安装) · [从源码构建](#从源码构建)
+[下载 Android 预览版 0.1.0-preview.6](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.6) · [**Releases**](https://github.com/margerit0/SeepType/releases) · [安装与启用](#安装) · [从源码构建](#从源码构建)
 
 </div>
 
@@ -61,15 +61,17 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 
 ## 安装
 
+**preview.6 更新。** 从系统选择框切换键盘后，安装引导会立即更新。开启英文释义时，候选栏里的英文原文和中文候选底对齐。自然码和小鹤双拼输入三个字母时优先匹配前两个字母组成的完整音节，例如 `rhn` 可找到「让你」。
+
 目前可以安装的是 Android 公开预览版，要求 Android 10（API 29）及以上，APK 同时包含 `arm64-v8a` 和 `x86_64`。
 
-1. 打开 [0.1.0-preview.5 发布页](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5)，下载 `StudyIME-0.1.0-preview.5-arm64-x86_64.apk`。发布页附有 `SHA256SUMS.txt`，可以核对文件。
+1. 打开 [0.1.0-preview.6 发布页](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.6)，下载 `StudyIME-0.1.0-preview.6-arm64-x86_64.apk`。发布页附有 `SHA256SUMS.txt`，可以核对文件。
 2. 安装后打开「SeepType」，依次点「启用拾词」和「切换键盘」，在系统的选择框里选 SeepType。
 3. 回到拾词点「试打几句」。用全拼打 `jiejue`：点「解决」输入中文；长按它打开英文详情，不会直接提交英文。
 
 升级之前：
 
-- 装过 GitHub 发布的 `preview.4`，可以直接覆盖升级。
+- 装过 GitHub 发布的 `preview.5`，可以直接覆盖升级。
 - 装过自己构建的开发签名版本，签名不同，无法互相覆盖。卸载会删除本机的选词记录，不要为了试用卸掉正在用的版本。
 
 文件名里的 StudyIME 是拾词的工程名，包名（`org.studyime.android`）和源码里也沿用它。
@@ -88,9 +90,9 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 这是公开预览，不是正式版：
 
 - **词义可能有误。** 13,429 条英文义项经过 AI 语义审校和自动引擎回归，没有逐条人工复审。
-- **还没有系统的真机验证。** `preview.4` 的最终签名 APK 在 Android 15（API 35）x86_64 模拟器上通过了输入、键盘重开、剪贴板隐私和普通触屏检查，也通过了双 ABI 与 16 KiB 静态对齐检查；真机和 16 KiB 页面设备上的运行仍待验证。最低系统版本和打包架构，不等于所有设备都已实测。
+- **还没有系统的真机验证。** 真机和 16 KiB 页面设备上的运行仍待验证。最低系统版本和打包架构，不等于所有设备都已实测。
 
-本版验证范围见 [preview.5 发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5)，历次验证见[验证记录](docs/android-validation.md)。释义不对、装不上或打不了字，欢迎[提 Issue](https://github.com/margerit0/SeepType/issues)，带上机型和 Android 版本会很有帮助。
+本版验证范围见 [preview.6 发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.6)，历次验证见[验证记录](docs/android-validation.md)。释义不对、装不上或打不了字，欢迎[提 Issue](https://github.com/margerit0/SeepType/issues)，带上机型和 Android 版本会很有帮助。
 
 ## Windows 版
 
