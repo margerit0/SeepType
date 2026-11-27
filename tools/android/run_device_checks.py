@@ -99,6 +99,8 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
         "offline-names-ui": ("OfflineNamesTest#foldedCandidates", "offline-names-ui.json"),
         "offline-names-coverage": ("OfflineNamesTest#allPackagedNames", "offline-names-coverage.json"),
         "offline-names-work-titles": ("OfflineNamesTest#workTitleCandidates", "offline-names-work-titles.json"),
+        "curated-phrases-engine": ("OfflineNamesTest#curatedPhraseCandidates", "curated-phrases-engine.json"),
+        "curated-phrases-coverage": ("OfflineNamesTest#allCuratedPhrases", "curated-phrases-coverage.json"),
         "native": ("NativeEngineTest", "native-engine-report.json"),
         "ime": ("ImeInteractionTest", "ime-interaction-report.json"),
         "preview-input": ("PhoneInputTest", "phone-input-report.json"),
@@ -166,7 +168,8 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
                 setup("push", helper, "/data/local/tmp/studyime-recording.sh")
             # Standalone Compose tests must not share InputMetrics with a live
             # debug IME in the same process.
-            if section in ("native", "draw", "offline-names-engine", "offline-names-coverage", "offline-names-work-titles"):
+            if section in ("native", "draw", "offline-names-engine", "offline-names-coverage", "offline-names-work-titles",
+                           "curated-phrases-engine", "curated-phrases-coverage"):
                 methods = setup("shell", "ime", "list", "-s").stdout.splitlines()
                 other = next((method.strip() for method in methods if "inputmethod.latin" in method), None)
                 if other: setup("shell", "ime", "set", other)
@@ -291,7 +294,7 @@ def test(section, serial, ime_package=None, *, names_baseline=False, apks=None, 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "ime", "preview-input", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "clipboard-privacy", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
+    parser.add_argument("step", choices=["install", "native", "offline-names-engine", "offline-names-ui", "offline-names-coverage", "offline-names-work-titles", "curated-phrases-engine", "curated-phrases-coverage", "ime", "preview-input", "emoji", "recovery", "visual", "skins", "number-pad", "word-details", "clipboard", "clipboard-persistence", "clipboard-privacy", "lifecycle", "scenarios", "performance", "reopen", "draw", "apps", "recording"])
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--ime-package", help="Test the installed optimized IME from the separate debug editor/runner")
     parser.add_argument("--release-apk", type=Path, help="Pin the installed optimized IME to a different APK, such as the final signed release")

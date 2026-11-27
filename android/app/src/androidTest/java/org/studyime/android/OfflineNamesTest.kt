@@ -109,6 +109,34 @@ class OfflineNamesTest {
         runNative { probeEngine(entries, "offline-names-coverage.json", detailed = false) }
     }
 
+    @Test fun curatedPhraseCandidates() {
+        val examples = listOf(
+            Probe("松弛感", listOf("songchigan", "ssiigj", "ssiigj")),
+            Probe("上大分", listOf("shangdafen", "uhdaff", "uhdaff")),
+            Probe("游戏攻略", listOf("youxigonglve", "ybxigslt", "yzxigslt")),
+            Probe("暴击伤害", listOf("baojishanghai", "bkjiuhhl", "bcjiuhhd")),
+            Probe("视频时长", listOf("shipinshichang", "uipnuiih", "uipbuiih")),
+            Probe("对局时长", listOf("duijushichang", "dvjuuiih", "dvjuuiih")),
+            Probe("请重试", listOf("qingchongshi", "qyisui", "qkisui")),
+            Probe("等会儿", listOf("denghuier", "dghver", "dghver")),
+        )
+        runNative { probeEngine(examples, "curated-phrases-engine.json", detailed = true) }
+    }
+
+    @Test fun allCuratedPhrases() {
+        val encode = schemas.map(::encoder)
+        val entries = context.assets.open("generated/rime/study_phrases.dict.yaml")
+            .bufferedReader(Charsets.UTF_8).useLines { lines ->
+                lines.dropWhile { it != "..." }.drop(1)
+                    .filter { it.isNotBlank() && !it.startsWith('#') }.map { row ->
+                        val (word, reading) = row.split('\t')
+                        encodedProbe(word, reading, encode)
+                    }.toList()
+            }
+        assertEquals(1000, entries.size)
+        runNative { probeEngine(entries, "curated-phrases-coverage.json", detailed = false) }
+    }
+
     private fun encoder(schema: String): (String) -> String {
         if (schema == "study") return { it }
         // Use the packaged scheme's transformations for the long coverage run.

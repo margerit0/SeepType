@@ -26,6 +26,7 @@ RIME_SOURCES = {
     "rime/rime.lua": ROOT / "android/rime/rime.lua",
     "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua",
     "rime/study_android.dict.yaml": ROOT / "android/rime/study_android.dict.yaml",
+    "rime/study_phrases.dict.yaml": ROOT / "android/rime/study_phrases.dict.yaml",
 }
 # The prism and the shared cedict_study user dictionary stay unchanged.
 SCHEME_PATCH = b"patch:\n  menu/page_size: 9\n  translator/dictionary: study_android\n  translator/user_dict: cedict_study\n"
@@ -186,6 +187,7 @@ def notice_text(snapshot):
         "英文拼写补全：The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies. "
         "词形去重并按 wordfreq 3.1.1 英语词频排序，派生索引采用 CC BY-SA 4.0；原始署名见 english 和 chinese。\n"
         "安卓影视与游戏专名：Wikidata 结构化标签（CC0-1.0）及项目分音节读音；固定来源见 android-names。\n"
+        "安卓日常、网络和游戏补充词组：参考 wordfreq 筛选和 CC-CEDICT 读音，CC BY-SA 4.0；原始署名见 chinese。\n"
         "Rime、librime-lua、LevelDB、marisa、OpenCC、yaml-cpp、Boost 与双拼方案的许可见 third-party。\n"
         "AndroidX、Kotlin 与 kotlinx.coroutines：Apache-2.0；Rust 标准库及 JNI/serde 依赖：MIT / Apache-2.0。\n"
         "NDK libc++：Apache-2.0 WITH LLVM-exception。源码、锁文件、构建脚本随开发预览材料提供。\n"
