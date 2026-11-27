@@ -255,3 +255,81 @@ fn restart_with_an_unseen_engine_revision_cannot_restore_old_composition() {
     assert!(result.context.input.is_empty() && result.commands.is_empty());
     assert_eq!(result.notice, "restart-discarded");
 }
+
+fn spelling_session(ascii_mode: bool) -> Session<Fake> {
+    let lexicon = EnglishLexicon::from_index("home\t1\nhomeless\t4\nhometown\t5\nhomework\t2\n").unwrap();
+    let mut session = Session::with_english_lexicon(Fake(Rc::default()), lexicon);
+    let config = Config { ascii_mode, suggest_spellings: true, ..Default::default() };
+    session.process(event(Action::Start { config })).unwrap();
+    session
+}
+
+fn type_spelling(session: &mut Session<Fake>, text: &str) -> Snapshot {
+    let mut last = session.process(event(Action::Read)).unwrap();
+    for code in text.bytes() {
+        last = session.process(event(Action::Key { code: code.into(), modifiers: 0 })).unwrap();
+    }
+    last
+}
+
+#[test]
+fn english_completion_ranks_words_preserves_case_and_consumes_selection() {
+    let mut session = spelling_session(true);
+    let before = type_spelling(&mut session, "Hom");
+    assert_eq!(before.context.preedit, "Hom");
+    assert!(before.commands.is_empty());
+    assert_eq!(before.spelling_candidates, ["Hom", "Home", "Homework", "Homeless"]);
+    let tap = Action::SelectSpelling { index: 2, revision: before.revision };
+    let selected = session.process(event(tap.clone())).unwrap();
+    assert_eq!(selected.commands[0].text, "Homework");
+    assert!(selected.context.input.is_empty() && selected.spelling_candidates.is_empty());
+    assert!(session.process(event(tap)).unwrap().commands.is_empty());
+    assert_eq!(type_spelling(&mut session, "HOME").spelling_candidates, ["HOME", "HOMEWORK", "HOMELESS", "HOMETOWN"]);
+}
+
+#[test]
+fn english_boundaries_commit_raw_input_and_keep_space_and_editor_actions() {
+    let mut session = spelling_session(true);
+    assert_eq!(type_spelling(&mut session, "Qzx").spelling_candidates, ["Qzx"]);
+    let backspace = session.process(event(Action::Key { code: BACKSPACE, modifiers: 0 })).unwrap();
+    assert_eq!(backspace.context.input, "Qz");
+    assert!(backspace.commands.is_empty());
+    let space = session.process(event(Action::Key { code: SPACE, modifiers: 0 })).unwrap();
+    assert_eq!(space.commands.iter().map(|c| c.text.as_str()).collect::<Vec<_>>(), ["Qz", " "]);
+    type_spelling(&mut session, "hom");
+    let enter = session.process(event(Action::Key { code: RETURN, modifiers: 0 })).unwrap();
+    assert_eq!(enter.commands[0].text, "hom");
+    assert_eq!(enter.commands[1].kind, "action");
+    type_spelling(&mut session, "Home");
+    let switch = session.process(event(Action::Mode { ascii: false })).unwrap();
+    assert_eq!(switch.commands[0].text, "Home");
+    assert!(!switch.ascii_mode && switch.spelling_candidates.is_empty());
+}
+
+#[test]
+fn mixed_spelling_uses_the_raw_code_without_reindexing_chinese_candidates() {
+    let mut session = spelling_session(false);
+    let before = type_spelling(&mut session, "home");
+    assert_eq!(before.spelling_candidates, ["home"]);
+    assert_eq!(before.context.candidates[0].chinese, "你好");
+    let picked = session.process(event(Action::SelectSpelling { index: 0, revision: before.revision })).unwrap();
+    assert_eq!(picked.commands[0].text, "home");
+    let pinyin = type_spelling(&mut session, "nihao");
+    assert!(pinyin.spelling_candidates.is_empty());
+    let picked = session.process(event(Action::Select { index: 0, revision: pinyin.revision })).unwrap();
+    assert_eq!(picked.commands[0].text, "你好");
+}
+
+#[test]
+fn new_or_protected_editors_cannot_reuse_pending_english_spelling() {
+    let mut session = spelling_session(true);
+    let before = type_spelling(&mut session, "home");
+    let secure = Config { sensitive: true, suggest_spellings: true, ..Default::default() };
+    let start = session.process(Event { generation: 2, action: Action::Start { config: secure } }).unwrap();
+    assert!(start.context.input.is_empty() && start.commands.is_empty());
+    let stale = session.process(event(Action::SelectSpelling { index: 0, revision: before.revision })).unwrap();
+    assert!(stale.commands.is_empty());
+    let direct = session.process(Event { generation: 2, action: Action::Key { code: 104, modifiers: 0 } }).unwrap();
+    assert_eq!(direct.commands[0].text, "h");
+    assert!(direct.context.input.is_empty() && direct.spelling_candidates.is_empty());
+}

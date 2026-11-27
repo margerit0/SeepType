@@ -25,6 +25,9 @@ class DoublePinyinInteractionTest {
                 d.candidate("现在").click()
                 d.expectText("现在")
                 assertTrue("$scheme finishes the selection", d.device.wait(Until.gone(By.res("candidate_0")), 8000))
+                d.type("rhw")
+                d.candidate("让我").click()
+                d.expectText("现在让我")
             }
         } finally {
             prefs.update { original }

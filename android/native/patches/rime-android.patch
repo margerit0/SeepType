@@ -1,6 +1,6 @@
 --- a/librime/src/rime/gear/memory.cc
 +++ b/librime/src/rime/gear/memory.cc
-@@ -99,6 +99,9 @@
+@@ -99,19 +99,35 @@
  }
  
  void Memory::OnCommit(Context* ctx) {
@@ -10,6 +10,67 @@
    if (!user_dict_ || user_dict_->readonly())
      return;
    StartSession();
+   CommitEntry commit_entry(this);
++  vector<an<Phrase>> selected_phrases;
+   for (auto& seg : ctx->composition()) {
+     auto phrase =
+         As<Phrase>(Candidate::GetGenuineCandidate(seg.GetSelectedCandidate()));
+     bool recognized = Language::intelligible(phrase, this);
+     if (recognized) {
+       commit_entry.AppendPhrase(phrase);
++      if (seg.status >= Segment::kSelected && phrase->code().size() > 1)
++        selected_phrases.push_back(phrase);
+     }
+     if (!recognized || seg.status >= Segment::kConfirmed) {
+       commit_entry.Save();
++      // A selected sentence can be flattened into individual words by
++      // AppendPhrase. Learn the selected span as a phrase as well.
++      for (const auto& selected : selected_phrases) {
++        if (selected->code().size() == commit_entry.code.size())
++          continue;
++        CommitEntry selection(this);
++        selection.AppendPhrase(selected);
++        selection.Save();
++      }
++      selected_phrases.clear();
+       commit_entry.Clear();
+     }
+   }
+--- a/librime/src/rime/dict/user_dictionary.h
++++ b/librime/src/rime/dict/user_dictionary.h
+@@ -111,6 +111,12 @@
+   UserDictionary* Create(const Ticket& ticket);
+   UserDictionary* Create(const string& dict_name, const string& db_class);
+ 
++  // StudyIME: inspect the live user database without reopening LevelDB.
++  an<Db> FindDb(const string& dict_name) const {
++    auto entry = db_pool_.find(dict_name);
++    return entry == db_pool_.end() ? nullptr : entry->second.lock();
++  }
++
+  private:
+   hash_map<string, weak<Db>> db_pool_;
+ };
+--- a/librime/src/rime/dict/user_dictionary.cc
++++ b/librime/src/rime/dict/user_dictionary.cc
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <cfloat>
+ #include <cmath>
++#include <limits>
+ #include <boost/algorithm/string.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/common.h>
+@@ -433,7 +434,8 @@
+   if (commits > 0) {
+     if (v.commits < 0)
+       v.commits = -v.commits;  // revive a deleted item
+-    v.commits += commits;
++    // Imported counts may already be at the maximum supported value.
++    v.commits += (std::min)(commits, (std::numeric_limits<int>::max)() - v.commits);
+     UpdateTickCount(1);
+     v.dee = algo::formula_d(commits, (double)tick_, v.dee, (double)v.tick);
+   } else if (commits == 0) {
 --- a/librime/CMakeLists.txt
 +++ b/librime/CMakeLists.txt
 @@ -273,7 +273,7 @@
@@ -23,6 +84,15 @@
      add_subdirectory(test)
 --- a/opencc/CMakeLists.txt
 +++ b/opencc/CMakeLists.txt
+@@ -146,7 +146,7 @@
+ ######## Compiler flags
+ 
+ add_definitions(
+-  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
++  # StudyIME: no build-machine fallback data path.
+   -DLOCALEDIR="${DIR_SHARE_LOCALE}"
+   -DVERSION="${OPENCC_VERSION}"
+   -DPACKAGE_NAME="${PACKAGE_NAME}"
 @@ -210,7 +210,8 @@
    message(STATUS "Use bundled marisa library.")
    add_subdirectory(deps/marisa-0.2.6)
@@ -33,20 +103,7 @@
    if (LIBMARISA)
      message(STATUS "libmarisa found: ${LIBMARISA}")
    else()
---- a/opencc/CMakeLists.txt
-+++ b/opencc/CMakeLists.txt
-@@ -146,7 +146,7 @@
- ######## Compiler flags
- 
- add_definitions(
--  -DPKGDATADIR="${DIR_SHARE_OPENCC}"
-+  # StudyIME: no build-machine fallback data path.
-   -DLOCALEDIR="${DIR_SHARE_LOCALE}"
-   -DVERSION="${OPENCC_VERSION}"
-   -DPACKAGE_NAME="${PACKAGE_NAME}"
---- a/opencc/CMakeLists.txt
-+++ b/opencc/CMakeLists.txt
-@@ -223,7 +223,7 @@
+@@ -222,7 +223,7 @@
  
  add_subdirectory(src)
  add_subdirectory(doc)

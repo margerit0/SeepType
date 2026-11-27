@@ -1,0 +1,1013 @@
+# Curated everyday, internet and game phrases for Android.
+# Selection references wordfreq 3.1.1; readings reference CC-CEDICT. CC BY-SA 4.0.
+# Fixed weight is a ranking prior, not a measured frequency.
+---
+name: study_phrases
+version: '20261127-1'
+sort: by_weight
+use_preset_vocabulary: false
+...
+# 网络
+情绪稳定	qing xu wen ding	1000
+情绪劳动	qing xu lao dong	1000
+情绪内耗	qing xu nei hao	1000
+情绪需求	qing xu xu qiu	1000
+松弛下来	song chi xia lai	1000
+饭搭子	fan da zi	1000
+上班搭子	shang ban da zi	1000
+学习搭子	xue xi da zi	1000
+互联网嘴替	hu lian wang zui ti	1000
+互联网记忆	hu lian wang ji yi	1000
+互联网冲浪	hu lian wang chong lang	1000
+网络热梗	wang luo re geng	1000
+网上冲浪	wang shang chong lang	1000
+网络黑话	wang luo hei hua	1000
+冲浪达人	chong lang da ren	1000
+斗图大战	dou tu da zhan	1000
+电子产品	dian zi chan pin	1000
+松弛感	song chi gan	1000
+电子手账	dian zi shou zhang	1000
+生活搭子	sheng huo da zi	1000
+游戏搭子	you xi da zi	1000
+电子签名	dian zi qian ming	1000
+电子存档	dian zi cun dang	1000
+氛围感	fen wei gan	1000
+赛博世界	sai bo shi jie	1000
+赛博时代	sai bo shi dai	1000
+云吸猫	yun xi mao	1000
+赛博养花	sai bo yang hua	1000
+赛博修仙	sai bo xiu xian	1000
+赛博许愿	sai bo xu yuan	1000
+赛博打卡	sai bo da ka	1000
+云逛街	yun guang jie	1000
+社交电量	she jiao dian liang	1000
+社交恐惧	she jiao kong ju	1000
+低质量社交	di zhi liang she jiao	1000
+社交达人	she jiao da ren	1000
+社交平台	she jiao ping tai	1000
+社交礼仪	she jiao li yi	1000
+社交圈子	she jiao quan zi	1000
+社交需求	she jiao xu qiu	1000
+反差感	fan cha gan	1000
+精神胜利	jing shen sheng li	1000
+精神压力	jing shen ya li	1000
+精神面貌	jing shen mian mao	1000
+精神食粮	jing shen shi liang	1000
+精神损失	jing shen sun shi	1000
+流量密码	liu liang mi ma	1000
+被种草了	bei zhong cao le	1000
+破防了	po fang le	1000
+破防瞬间	po fang shun jian	1000
+心态崩了	xin tai beng le	1000
+心态炸了	xin tai zha le	1000
+心态稳住	xin tai wen zhu	1000
+安利一下	an li yi xia	1000
+真的破防	zhen de po fang	1000
+直接破防	zhi jie po fang	1000
+躺平了	tang ping le	1000
+躺平心态	tang ping xin tai	1000
+拒绝内卷	ju jue nei juan	1000
+不再内耗	bu zai nei hao	1000
+高质量社交	gao zhi liang she jiao	1000
+高质量生活	gao zhi liang sheng huo	1000
+穷开心	qiong kai xin	1000
+主打真实	zhu da zhen shi	1000
+狠狠共情	hen hen gong qing	1000
+共情能力	gong qing neng li	1000
+共情一下	gong qing yi xia	1000
+情绪共鸣	qing xu gong ming	1000
+深有共鸣	shen you gong ming	1000
+代入感很强	dai ru gan hen qiang	1000
+代入感太强	dai ru gan tai qiang	1000
+宿命感	su ming gan	1000
+热梗	re geng	1000
+接梗	jie geng	1000
+抛梗	pao geng	1000
+科普知识	ke pu zhi shi	1000
+干货满满	gan huo man man	1000
+纯干货	chun gan huo	1000
+高能预警	gao neng yu jing	1000
+前方预警	qian fang yu jing	1000
+封神了	feng shen le	1000
+直接封神	zhi jie feng shen	1000
+一战封神	yi zhan feng shen	1000
+一整个爱住了	yi zheng ge ai zhu le	1000
+神级操作	shen ji cao zuo	1000
+神仙操作	shen xian cao zuo	1000
+神仙打架	shen xian da jia	1000
+神仙组合	shen xian zu he	1000
+出圈了	chu quan le	1000
+成功出圈	cheng gong chu quan	1000
+实力出圈	shi li chu quan	1000
+全网出圈	quan wang chu quan	1000
+全网热议	quan wang re yi	1000
+全网寻找	quan wang xun zhao	1000
+全网征集	quan wang zheng ji	1000
+刷屏了	shua ping le	1000
+登上热搜	deng shang re sou	1000
+热搜第一	re sou di yi	1000
+热搜话题	re sou hua ti	1000
+热搜榜单	re sou bang dan	1000
+热门话题	re men hua ti	1000
+推荐算法	tui jian suan fa	1000
+推荐流量	tui jian liu liang	1000
+流量入口	liu liang ru kou	1000
+视频博主	shi pin bo zhu	1000
+美食博主	mei shi bo zhu	1000
+游戏博主	you xi bo zhu	1000
+生活博主	sheng huo bo zhu	1000
+旅游博主	lv you bo zhu	1000
+探店博主	tan dian bo zhu	1000
+博主推荐	bo zhu tui jian	1000
+原创博主	yuan chuang bo zhu	1000
+直播回放	zhi bo hui fang	1000
+直播预告	zhi bo yu gao	1000
+直播平台	zhi bo ping tai	1000
+直播互动	zhi bo hu dong	1000
+直播评论	zhi bo ping lun	1000
+直播时间	zhi bo shi jian	1000
+直播效果	zhi bo xiao guo	1000
+主播本人	zhu bo ben ren	1000
+视频剪辑	shi pin jian ji	1000
+视频素材	shi pin su cai	1000
+视频字幕	shi pin zi mu	1000
+视频配音	shi pin pei yin	1000
+视频教程	shi pin jiao cheng	1000
+视频更新	shi pin geng xin	1000
+视频画质	shi pin hua zhi	1000
+视频时长	shi pin shi chang	1000
+点赞收藏	dian zan shou cang	1000
+一键三连	yi jian san lian	1000
+点赞关注	dian zan guan zhu	1000
+转发评论	zhuan fa ping lun	1000
+评论区见	ping lun qu jian	1000
+留言评论	liu yan ping lun	1000
+点击关注	dian ji guan zhu	1000
+求关注	qiu guan zhu	1000
+私信我	si xin wo	1000
+私信联系	si xin lian xi	1000
+私信回复	si xin hui fu	1000
+私信沟通	si xin gou tong	1000
+消息提醒	xiao xi ti xing	1000
+消息列表	xiao xi lie biao	1000
+消息发送	xiao xi fa song	1000
+删除消息	shan chu xiao xi	1000
+关注列表	guan zhu lie biao	1000
+粉丝列表	fen si lie biao	1000
+粉丝群	fen si qun	1000
+粉丝福利	fen si fu li	1000
+粉丝人数	fen si ren shu	1000
+互相关注	hu xiang guan zhu	1000
+互粉一下	hu fen yi xia	1000
+老粉回归	lao fen hui gui	1000
+实名羡慕	shi ming xian mu	1000
+在线吃瓜	zai xian chi gua	1000
+吃瓜现场	chi gua xian chang	1000
+围观群众	wei guan qun zhong	1000
+前排围观	qian pai wei guan	1000
+前排吃瓜	qian pai chi gua	1000
+留个爪	liu ge zhua	1000
+搬好小板凳	ban hao xiao ban deng	1000
+看乐子	kan le zi	1000
+乐子人	le zi ren	1000
+乐子来了	le zi lai le	1000
+这波操作	zhe bo cao zuo	1000
+血赚不亏	xue zhuan bu kui	1000
+长见识了	zhang jian shi le	1000
+被暖到了	bei nuan dao le	1000
+被惊艳了	bei jing yan le	1000
+有点上头	you dian shang tou	1000
+容易上头	rong yi shang tou	1000
+上头了	shang tou le	1000
+上头瞬间	shang tou shun jian	1000
+安利给你	an li gei ni	1000
+种草了	zhong cao le	1000
+种草清单	zhong cao qing dan	1000
+期待值拉满	qi dai zhi la man	1000
+真香现场	zhen xiang xian chang	1000
+真香定律	zhen xiang ding lv	1000
+真香预警	zhen xiang yu jing	1000
+真香了	zhen xiang le	1000
+好香啊	hao xiang a	1000
+起飞现场	qi fei xian chang	1000
+原地回血	yuan de hui xue	1000
+治愈瞬间	zhi yu shun jian	1000
+内行人	nei xing ren	1000
+专业对口	zhuan ye dui kou	1000
+专业选手	zhuan ye xuan shou	1000
+专业知识	zhuan ye zhi shi	1000
+实力派	shi li pai	1000
+实力担当	shi li dan dang	1000
+实力圈粉	shi li quan fen	1000
+惊艳全场	jing yan quan chang	1000
+打工魂	da gong hun	1000
+打工日常	da gong ri chang	1000
+打工生活	da gong sheng huo	1000
+打工日记	da gong ri ji	1000
+打工现场	da gong xian chang	1000
+今日份开心	jin ri fen kai xin	1000
+今日份分享	jin ri fen fen xiang	1000
+今日份收获	jin ri fen shou huo	1000
+人间值得	ren jian zhi de	1000
+人间烟火	ren jian yan huo	1000
+人间美味	ren jian mei wei	1000
+人间惊喜	ren jian jing xi	1000
+人间美好	ren jian mei hao	1000
+人间观察	ren jian guan cha	1000
+人间四月	ren jian si yue	1000
+热爱生活	re ai sheng huo	1000
+美食探店	mei shi tan dian	1000
+网红餐厅	wang hong can ting	1000
+排队打卡	pai dui da ka	1000
+排队等位	pai dui deng wei	1000
+必打卡	bi da ka	1000
+打卡地	da ka di	1000
+超详细教程	chao xiang xi jiao cheng	1000
+避坑指南	bi keng zhi nan	1000
+避雷指南	bi lei zhi nan	1000
+干货指南	gan huo zhi nan	1000
+购物指南	gou wu zhi nan	1000
+使用指南	shi yong zhi nan	1000
+避坑经验	bi keng jing yan	1000
+开箱视频	kai xiang shi pin	1000
+平价好物	ping jia hao wu	1000
+实用好物	shi yong hao wu	1000
+好物分享	hao wu fen xiang	1000
+宝藏好物	bao zang hao wu	1000
+宝藏男孩	bao zang nan hai	1000
+小众音乐	xiao zhong yin yue	1000
+小众品牌	xiao zhong pin pai	1000
+沉浸式体验	chen jin shi ti yan	1000
+沉浸式学习	chen jin shi xue xi	1000
+沉浸式工作	chen jin shi gong zuo	1000
+沉浸式看剧	chen jin shi kan ju	1000
+满满回忆	man man hui yi	1000
+青春回忆	qing chun hui yi	1000
+回忆拉满	hui yi la man	1000
+改造计划	gai zao ji hua	1000
+房间改造	fang jian gai zao	1000
+家居改造	jia ju gai zao	1000
+旧物改造	jiu wu gai zao	1000
+手工制作	shou gong zhi zuo	1000
+成品效果	cheng pin xiao guo	1000
+收纳改造	shou na gai zao	1000
+狠狠期待	hen hen qi dai	1000
+狠狠拿捏	hen hen na nie	1000
+狠狠点赞	hen hen dian zan	1000
+疯狂点赞	feng kuang dian zan	1000
+强烈推荐	qiang lie tui jian	1000
+友情提醒	you qing ti xing	1000
+温馨提醒	wen xin ti xing	1000
+# 游戏
+组队匹配	zu dui pi pei	1000
+游戏队友	you xi dui you	1000
+冲段位	chong duan wei	1000
+游戏体验	you xi ti yan	1000
+推塔	tui ta	1000
+游戏大厅	you xi da ting	1000
+越塔	yue ta	1000
+切后排	qie hou pai	1000
+游戏攻略	you xi gong lve	1000
+暴击伤害	bao ji shang hai	1000
+游戏技巧	you xi ji qiao	1000
+丝血	si xue	1000
+游戏测评	you xi ce ping	1000
+游戏服务器	you xi fu wu qi	1000
+残血	can xue	1000
+游戏优化	you xi you hua	1000
+开黑吗	kai hei ma	1000
+一起开黑	yi qi kai hei	1000
+组队开黑	zu dui kai hei	1000
+双人开黑	shuang ren kai hei	1000
+多人开黑	duo ren kai hei	1000
+开黑上分	kai hei shang fen	1000
+组队申请	zu dui shen qing	1000
+队伍招募	dui wu zhao mu	1000
+开一局	kai yi ju	1000
+再来一局	zai lai yi ju	1000
+最后一局	zui hou yi ju	1000
+玩一局	wan yi ju	1000
+来一局	lai yi ju	1000
+该上号了	gai shang hao le	1000
+踢出队伍	ti chu dui wu	1000
+队伍已满	dui wu yi man	1000
+排位赛	pai wei sai	1000
+排位模式	pai wei mo shi	1000
+排位上分	pai wei shang fen	1000
+排位连胜	pai wei lian sheng	1000
+排位积分	pai wei ji fen	1000
+赛季排位	sai ji pai wei	1000
+当前段位	dang qian duan wei	1000
+巅峰状态	dian feng zhuang tai	1000
+冲分	chong fen	1000
+上大分	shang da fen	1000
+上分技巧	shang fen ji qiao	1000
+冲榜	chong bang	1000
+榜上有名	bang shang you ming	1000
+排行榜第一	pai hang bang di yi	1000
+世界排名	shi jie pai ming	1000
+段位排行	duan wei pai hang	1000
+匹配成功	pi pei cheng gong	1000
+匹配失败	pi pei shi bai	1000
+匹配中	pi pei zhong	1000
+重新匹配	chong xin pi pei	1000
+匹配队友	pi pei dui you	1000
+退出对局	tui chu dui ju	1000
+对局时长	dui ju shi chang	1000
+对局状态	dui ju zhuang tai	1000
+连胜	lian sheng	1000
+连胜中	lian sheng zhong	1000
+连胜纪录	lian sheng ji lu	1000
+连胜奖励	lian sheng jiang li	1000
+连胜终结	lian sheng zhong jie	1000
+连败中	lian bai zhong	1000
+战斗失败	zhan dou shi bai	1000
+胜率提升	sheng lv ti sheng	1000
+队伍阵容	dui wu zhen rong	1000
+队伍配置	dui wu pei zhi	1000
+欧皇	ou huang	1000
+队伍语音	dui wu yu yin	1000
+队伍配合	dui wu pei he	1000
+团队协作	tuan dui xie zuo	1000
+团队增益	tuan dui zeng yi	1000
+保护队友	bao hu dui you	1000
+语音开黑	yu yin kai hei	1000
+开麦交流	kai mai jiao liu	1000
+开麦沟通	kai mai gou tong	1000
+打开语音	da kai yu yin	1000
+开启麦克风	kai qi mai ke feng	1000
+关闭麦克风	guan bi mai ke feng	1000
+听不到语音	ting bu dao yu yin	1000
+语音频道	yu yin pin dao	1000
+跟我走	gen wo zou	1000
+跟我来	gen wo lai	1000
+跟紧我	gen jin wo	1000
+跟上队伍	gen shang dui wu	1000
+等我一下	deng wo yi xia	1000
+稳住别浪	wen zhu bie lang	1000
+安全发育	an quan fa yu	1000
+资源发育	zi yuan fa yu	1000
+集合进攻	ji he jin gong	1000
+集合防守	ji he fang shou	1000
+集合队伍	ji he dui wu	1000
+集合开团	ji he kai tuan	1000
+迅速集合	xun su ji he	1000
+请求集合	qing qiu ji he	1000
+发起进攻	fa qi jin gong	1000
+随时开战	sui shi kai zhan	1000
+打团	da tuan	1000
+开团	kai tuan	1000
+接团	jie tuan	1000
+团战胜利	tuan zhan sheng li	1000
+团战失利	tuan zhan shi li	1000
+团战输出	tuan zhan shu chu	1000
+团战技能	tuan zhan ji neng	1000
+团战保护	tuan zhan bao hu	1000
+进攻路线	jin gong lu xian	1000
+防守路线	fang shou lu xian	1000
+攻击目标	gong ji mu biao	1000
+锁定目标	suo ding mu biao	1000
+标记目标	biao ji mu biao	1000
+远程输出	yuan cheng shu chu	1000
+输出环境	shu chu huan jing	1000
+打野位	da ye wei	1000
+打野路线	da ye lu xian	1000
+打野节奏	da ye jie zou	1000
+入侵野区	ru qin ye qu	1000
+下路	xia lu	1000
+对抗路	dui kang lu	1000
+法师位	fa shi wei	1000
+补兵	bu bing	1000
+清兵线	qing bing xian	1000
+带兵线	dai bing xian	1000
+控兵线	kong bing xian	1000
+兵线运营	bing xian yun ying	1000
+拆塔	chai ta	1000
+上路兵线	shang lu bing xian	1000
+抢龙	qiang long	1000
+开龙	kai long	1000
+打大龙	da da long	1000
+打小龙	da xiao long	1000
+地图视野	di tu shi ye	1000
+复活点	fu huo dian	1000
+迷你地图	mi ni di tu	1000
+蹲草丛	dun cao cong	1000
+草丛埋伏	cao cong mai fu	1000
+埋伏对手	mai fu dui shou	1000
+绕后	rao hou	1000
+突袭对手	tu xi dui shou	1000
+保护后排	bao hu hou pai	1000
+前排承伤	qian pai cheng shang	1000
+技能连招	ji neng lian zhao	1000
+连招技巧	lian zhao ji qiao	1000
+一套连招	yi tao lian zhao	1000
+技能命中	ji neng ming zhong	1000
+技能伤害	ji neng shang hai	1000
+技能释放	ji neng shi fang	1000
+技能衔接	ji neng xian jie	1000
+普通攻击	pu tong gong ji	1000
+普攻伤害	pu gong shang hai	1000
+攻击速度	gong ji su du	1000
+攻击范围	gong ji fan wei	1000
+物理攻击	wu li gong ji	1000
+真实伤害	zhen shi shang hai	1000
+爆发伤害	bao fa shang hai	1000
+穿甲	chuan jia	1000
+护甲穿透	hu jia chuan tou	1000
+伤害统计	shang hai tong ji	1000
+生命值	sheng ming zhi	1000
+血量	xue liang	1000
+满血	man xue	1000
+残血反杀	can xue fan sha	1000
+护盾值	hu dun zhi	1000
+获得护盾	huo de hu dun	1000
+生成护盾	sheng cheng hu dun	1000
+护盾消失	hu dun xiao shi	1000
+范围治疗	fan wei zhi liao	1000
+回复效果	hui fu xiao guo	1000
+眩晕效果	xuan yun xiao guo	1000
+走位	zou wei	1000
+走位失误	zou wei shi wu	1000
+极限走位	ji xian zou wei	1000
+躲避伤害	duo bi shang hai	1000
+预判走位	yu pan zou wei	1000
+跨越地形	kua yue di xing	1000
+回城	hui cheng	1000
+非酋	fei qiu	1000
+推荐出装	tui jian chu zhuang	1000
+出装思路	chu zhuang si lu	1000
+出装顺序	chu zhuang shun xu	1000
+装备属性	zhuang bei shu xing	1000
+装备评分	zhuang bei ping fen	1000
+装备耐久	zhuang bei nai jiu	1000
+角色养成	jue se yang cheng	1000
+角色等级	jue se deng ji	1000
+角色突破	jue se tu po	1000
+角色属性	jue se shu xing	1000
+角色皮肤	jue se pi fu	1000
+角色定位	jue se ding wei	1000
+角色切换	jue se qie huan	1000
+抽卡	chou ka	1000
+抽卡记录	chou ka ji lu	1000
+抽卡概率	chou ka gai lv	1000
+十连抽	shi lian chou	1000
+常驻卡池	chang zhu ka chi	1000
+歪了	wai le	1000
+出金	chu jin	1000
+副本挑战	fu ben tiao zhan	1000
+副本奖励	fu ben jiang li	1000
+副本难度	fu ben nan du	1000
+副本次数	fu ben ci shu	1000
+副本入口	fu ben ru kou	1000
+日常副本	ri chang fu ben	1000
+刷副本	shua fu ben	1000
+日常任务	ri chang ren wu	1000
+每日任务	mei ri ren wu	1000
+每周任务	mei zhou ren wu	1000
+限时任务	xian shi ren wu	1000
+隐藏任务	yin cang ren wu	1000
+新手任务	xin shou ren wu	1000
+放弃任务	fang qi ren wu	1000
+活动奖励	huo dong jiang li	1000
+活动时间	huo dong shi jian	1000
+活动商店	huo dong shang dian	1000
+活动页面	huo dong ye mian	1000
+活动期间	huo dong qi jian	1000
+每日签到	mei ri qian dao	1000
+连续签到	lian xu qian dao	1000
+游戏存档	you xi cun dang	1000
+商城道具	shang cheng dao ju	1000
+商城礼包	shang cheng li bao	1000
+限时礼包	xian shi li bao	1000
+每日礼包	mei ri li bao	1000
+商店购买	shang dian gou mai	1000
+保底机制	bao di ji zhi	1000
+开放世界	kai fang shi jie	1000
+世界探索	shi jie tan suo	1000
+地图探索	di tu tan suo	1000
+探索进度	tan suo jin du	1000
+传送点	chuan song dian	1000
+解锁传送	jie suo chuan song	1000
+解谜任务	jie mi ren wu	1000
+武器装备	wu qi zhuang bei	1000
+武器类型	wu qi lei xing	1000
+武器等级	wu qi deng ji	1000
+武器强化	wu qi qiang hua	1000
+武器熟练度	wu qi shu lian du	1000
+弹药补给	dan yao bu ji	1000
+装填弹药	zhuang tian dan yao	1000
+画面设置	hua mian she zhi	1000
+画质设置	hua zhi she zhi	1000
+分辨率设置	fen bian lv she zhi	1000
+灵敏度设置	ling min du she zhi	1000
+控制设置	kong zhi she zhi	1000
+自定义按键	zi ding yi an jian	1000
+默认设置	mo ren she zhi	1000
+服务器维护	fu wu qi wei hu	1000
+服务器状态	fu wu qi zhuang tai	1000
+新手玩家	xin shou wan jia	1000
+服务器连接	fu wu qi lian jie	1000
+维护公告	wei hu gong gao	1000
+断线重连	duan xian zhong lian	1000
+网络波动	wang luo bo dong	1000
+卡加载	ka jia zai	1000
+加载界面	jia zai jie mian	1000
+加载失败	jia zai shi bai	1000
+加载完成	jia zai wan cheng	1000
+账号登录	zhang hao deng lu	1000
+账号异常	zhang hao yi chang	1000
+找回密码	zhao hui mi ma	1000
+新手教程	xin shou jiao cheng	1000
+新手引导	xin shou yin dao	1000
+新手入门	xin shou ru men	1000
+新手攻略	xin shou gong lve	1000
+新手村	xin shou cun	1000
+带飞	dai fei	1000
+老玩家	lao wan jia	1000
+游戏平衡	you xi ping heng	1000
+平衡调整	ping heng tiao zheng	1000
+版本平衡	ban ben ping heng	1000
+技能调整	ji neng tiao zheng	1000
+伤害调整	shang hai tiao zheng	1000
+角色加强	jue se jia qiang	1000
+修复问题	xiu fu wen ti	1000
+复活时间	fu huo shi jian	1000
+复活队友	fu huo dui you	1000
+连续击杀	lian xu ji sha	1000
+双杀	shuang sha	1000
+三杀	san sha	1000
+四杀	si sha	1000
+五杀	wu sha	1000
+游戏成就	you xi cheng jiu	1000
+成就系统	cheng jiu xi tong	1000
+成就奖励	cheng jiu jiang li	1000
+完成成就	wan cheng cheng jiu	1000
+赛季奖励	sai ji jiang li	1000
+新赛季	xin sai ji	1000
+竞技模式	jing ji mo shi	1000
+键位设置	jian wei she zhi	1000
+手感设置	shou gan she zhi	1000
+操作手感	cao zuo shou gan	1000
+调整视角	tiao zheng shi jiao	1000
+移动速度	yi dong su du	1000
+蓄力攻击	xu li gong ji	1000
+连续攻击	lian xu gong ji	1000
+安全区	an quan qu	1000
+信号区	xin hao qu	1000
+落点	luo dian	1000
+捡物资	jian wu zi	1000
+补给箱	bu ji xiang	1000
+空投物资	kong tou wu zi	1000
+决赛圈	jue sai quan	1000
+# 日常
+第一个	di yi ge	1000
+第二个	di er ge	1000
+第三个	di san ge	1000
+同一个	tong yi ge	1000
+其他人	qi ta ren	1000
+一个月	yi ge yue	1000
+几十年	ji shi nian	1000
+这时候	zhe shi hou	1000
+别忘了	bie wang le	1000
+解决问题	jie jue wen ti	1000
+发现自己	fa xian zi ji	1000
+就行了	jiu xing le	1000
+一整天	yi zheng tian	1000
+小姑娘	xiao gu niang	1000
+这样的话	zhe yang de hua	1000
+十分钟	shi fen zhong	1000
+总有一天	zong you yi tian	1000
+谢谢你们	xie xie ni men	1000
+可不可以	ke bu ke yi	1000
+那一刻	na yi ke	1000
+坏消息	huai xiao xi	1000
+保持沉默	bao chi chen mo	1000
+不敢相信	bu gan xiang xin	1000
+大大的	da da de	1000
+正常人	zheng chang ren	1000
+同一天	tong yi tian	1000
+现实生活	xian shi sheng huo	1000
+另一边	ling yi bian	1000
+危险性	wei xian xing	1000
+并不知道	bing bu zhi dao	1000
+高品质	gao pin zhi	1000
+实实在在	shi shi zai zai	1000
+几小时	ji xiao shi	1000
+太过分	tai guo fen	1000
+脑子里	nao zi li	1000
+小规模	xiao gui mo	1000
+是否是	shi fou shi	1000
+同情心	tong qing xin	1000
+有点像	you dian xiang	1000
+新鲜事	xin xian shi	1000
+很久以前	hen jiu yi qian	1000
+爸爸妈妈	ba ba ma ma	1000
+实际行动	shi ji xing dong	1000
+第一份	di yi fen	1000
+穿衣服	chuan yi fu	1000
+关键时刻	guan jian shi ke	1000
+全部都是	quan bu dou shi	1000
+继续下去	ji xu xia qu	1000
+你们好	ni men hao	1000
+身体健康	shen ti jian kang	1000
+着眼于	zhuo yan yu	1000
+看不出来	kan bu chu lai	1000
+爱上你	ai shang ni	1000
+没人会	mei ren hui	1000
+无法控制	wu fa kong zhi	1000
+知不知道	zhi bu zhi dao	1000
+算了吧	suan le ba	1000
+每件事	mei jian shi	1000
+解释一下	jie shi yi xia	1000
+非常高兴	fei chang gao xing	1000
+不间断	bu jian duan	1000
+都还没	dou hai mei	1000
+小伙伴	xiao huo ban	1000
+请原谅	qing yuan liang	1000
+向前走	xiang qian zou	1000
+很多很多	hen duo hen duo	1000
+每天晚上	mei tian wan shang	1000
+怎么弄	zen me nong	1000
+小兄弟	xiao xiong di	1000
+面对现实	mian dui xian shi	1000
+空气质量	kong qi zhi liang	1000
+心理健康	xin li jian kang	1000
+真不错	zhen bu cuo	1000
+几秒钟	ji miao zhong	1000
+说说话	shuo shuo hua	1000
+记不清	ji bu qing	1000
+从小到大	cong xiao dao da	1000
+长大成人	zhang da cheng ren	1000
+躲起来	duo qi lai	1000
+的确如此	de que ru ci	1000
+独自一人	du zi yi ren	1000
+记录下来	ji lu xia lai	1000
+写文章	xie wen zhang	1000
+住在一起	zhu zai yi qi	1000
+完全同意	wan quan tong yi	1000
+没听说过	mei ting shuo guo	1000
+说不清	shuo bu qing	1000
+注意事项	zhu yi shi xiang	1000
+看得出来	kan de chu lai	1000
+愿不愿意	yuan bu yuan yi	1000
+往前走	wang qian zou	1000
+身心健康	shen xin jian kang	1000
+行不行	xing bu xing	1000
+从此以后	cong ci yi hou	1000
+大门口	da men kou	1000
+不算什么	bu suan shen me	1000
+一大群	yi da qun	1000
+一大步	yi da bu	1000
+有把握	you ba wo	1000
+好想你	hao xiang ni	1000
+充满希望	chong man xi wang	1000
+积极向上	ji ji xiang shang	1000
+等会儿	deng hui er	1000
+过两天	guo liang tian	1000
+改天见	gai tian jian	1000
+晚点见	wan dian jian	1000
+早点睡	zao dian shui	1000
+早上起来	zao shang qi lai	1000
+好好休息	hao hao xiu xi	1000
+路上小心	lu shang xiao xin	1000
+路上注意安全	lu shang zhu yi an quan	1000
+注意安全	zhu yi an quan	1000
+注意保暖	zhu yi bao nuan	1000
+记得吃饭	ji de chi fan	1000
+多喝热水	duo he re shui	1000
+多喝水	duo he shui	1000
+好好睡觉	hao hao shui jiao	1000
+先吃饭	xian chi fan	1000
+好久没见	hao jiu mei jian	1000
+最近怎么样	zui jin zen me yang	1000
+最近还好吗	zui jin hai hao ma	1000
+今天怎么样	jin tian zen me yang	1000
+最近几天	zui jin ji tian	1000
+这段时间	zhe duan shi jian	1000
+渐渐地	jian jian de	1000
+慢一点	man yi dian	1000
+真不好意思	zhen bu hao yi si	1000
+实在不好意思	shi zai bu hao yi si	1000
+对不起啊	dui bu qi a	1000
+抱歉打扰了	bao qian da rao le	1000
+请稍等	qing shao deng	1000
+请稍等一下	qing shao deng yi xia	1000
+辛苦你了	xin ku ni le	1000
+谢谢帮忙	xie xie bang mang	1000
+我知道了	wo zhi dao le	1000
+我明白了	wo ming bai le	1000
+我懂了	wo dong le	1000
+我不懂	wo bu dong	1000
+我不知道	wo bu zhi dao	1000
+我忘记了	wo wang ji le	1000
+我听一下	wo ting yi xia	1000
+我确认一下	wo que ren yi xia	1000
+稍等一下	shao deng yi xia	1000
+等我回来	deng wo hui lai	1000
+马上回来	ma shang hui lai	1000
+马上就到	ma shang jiu dao	1000
+快到了	kuai dao le	1000
+已经到了	yi jing dao le	1000
+刚到家	gang dao jia	1000
+还没到	hai mei dao	1000
+我来帮忙	wo lai bang mang	1000
+需要帮忙吗	xu yao bang mang ma	1000
+需要帮助吗	xu yao bang zhu ma	1000
+有什么需要	you shen me xu yao	1000
+有什么问题	you shen me wen ti	1000
+有事找我	you shi zhao wo	1000
+我收到了	wo shou dao le	1000
+已经收到	yi jing shou dao	1000
+请问怎么走	qing wen zen me zou	1000
+走哪条路	zou na tiao lu	1000
+怎么过去	zen me guo qu	1000
+多远的路	duo yuan de lu	1000
+到哪里了	dao na li le	1000
+我在楼下	wo zai lou xia	1000
+到了告诉我	dao le gao su wo	1000
+正在路上	zheng zai lu shang	1000
+几点出发	ji dian chu fa	1000
+几点到	ji dian dao	1000
+几点见	ji dian jian	1000
+什么时候出发	shen me shi hou chu fa	1000
+什么时候开始	shen me shi hou kai shi	1000
+还要多久	hai yao duo jiu	1000
+需要多久	xu yao duo jiu	1000
+大概几点	da gai ji dian	1000
+一起去吧	yi qi qu ba	1000
+一起来吧	yi qi lai ba	1000
+一起吃饭	yi qi chi fan	1000
+一起玩吧	yi qi wan ba	1000
+一起回家	yi qi hui jia	1000
+一起出发	yi qi chu fa	1000
+一起工作	yi qi gong zuo	1000
+一起加油	yi qi jia you	1000
+你先去吧	ni xian qu ba	1000
+你先忙吧	ni xian mang ba	1000
+你先休息	ni xian xiu xi	1000
+你先吃吧	ni xian chi ba	1000
+你先看看	ni xian kan kan	1000
+我也觉得	wo ye jue de	1000
+你怎么看	ni zen me kan	1000
+说起来	shuo qi lai	1000
+太棒了	tai bang le	1000
+真好吃	zhen hao chi	1000
+真好玩	zhen hao wan	1000
+非常喜欢	fei chang xi huan	1000
+挺好吃的	ting hao chi de	1000
+值得一看	zhi de yi kan	1000
+值得拥有	zhi de yong you	1000
+挺不错的	ting bu cuo de	1000
+还不错	hai bu cuo	1000
+可以可以	ke yi ke yi	1000
+没那么好	mei na me hao	1000
+不太合适	bu tai he shi	1000
+不太喜欢	bu tai xi huan	1000
+有点遗憾	you dian yi han	1000
+太不容易	tai bu rong yi	1000
+有没有可能	you mei you ke neng	1000
+有没有时间	you mei you shi jian	1000
+有没有空	you mei you kong	1000
+有没有人	you mei you ren	1000
+有没有办法	you mei you ban fa	1000
+有没有问题	you mei you wen ti	1000
+别担心	bie dan xin	1000
+不用担心	bu yong dan xin	1000
+放心吧	fang xin ba	1000
+没事的	mei shi de	1000
+没什么事	mei shen me shi	1000
+不要着急	bu yao zhao ji	1000
+别着急	bie zhao ji	1000
+你可以的	ni ke yi de	1000
+加油加油	jia you jia you	1000
+继续加油	ji xu jia you	1000
+加油努力	jia you nu li	1000
+我们一起加油	wo men yi qi jia you	1000
+不用勉强	bu yong mian qiang	1000
+不要勉强	bu yao mian qiang	1000
+再试一次	zai shi yi ci	1000
+从头再来	cong tou zai lai	1000
+是这样吗	shi zhe yang ma	1000
+是这样的	shi zhe yang de	1000
+事情是这样	shi qing shi zhe yang	1000
+情况是这样	qing kuang shi zhe yang	1000
+具体情况	ju ti qing kuang	1000
+什么情况	shen me qing kuang	1000
+有什么情况	you shen me qing kuang	1000
+原来是这样	yuan lai shi zhe yang	1000
+确实如此	que shi ru ci	1000
+说得没错	shuo de mei cuo	1000
+我觉得也是	wo jue de ye shi	1000
+我觉得可以	wo jue de ke yi	1000
+没看明白	mei kan ming bai	1000
+听明白了	ting ming bai le	1000
+想明白了	xiang ming bai le	1000
+别忘记了	bie wang ji le	1000
+记得提醒我	ji de ti xing wo	1000
+提醒一下	ti xing yi xia	1000
+提醒我一下	ti xing wo yi xia	1000
+差点忘了	cha dian wang le	1000
+差点迟到	cha dian chi dao	1000
+时间过得真快	shi jian guo de zhen kuai	1000
+没时间了	mei shi jian le	1000
+# 生活
+早饭吃什么	zao fan chi shen me	1000
+午饭吃什么	wu fan chi shen me	1000
+晚饭吃什么	wan fan chi shen me	1000
+今天吃什么	jin tian chi shen me	1000
+你想吃什么	ni xiang chi shen me	1000
+叫外卖	jiao wai mai	1000
+外卖到了	wai mai dao le	1000
+外卖平台	wai mai ping tai	1000
+订一份	ding yi fen	1000
+点一份	dian yi fen	1000
+再来一份	zai lai yi fen	1000
+打包带走	da bao dai zou	1000
+现炒现做	xian chao xian zuo	1000
+多吃一点	duo chi yi dian	1000
+吃完再说	chi wan zai shuo	1000
+少放点盐	shao fang dian yan	1000
+等位时间	deng wei shi jian	1000
+排队取号	pai dui qu hao	1000
+提前预约	ti qian yu yue	1000
+预约成功	yu yue cheng gong	1000
+取消预约	qu xiao yu yue	1000
+预约电话	yu yue dian hua	1000
+扫码点餐	sao ma dian can	1000
+现金支付	xian jin zhi fu	1000
+回家做饭	hui jia zuo fan	1000
+做饭教程	zuo fan jiao cheng	1000
+厨房用品	chu fang yong pin	1000
+厨房收纳	chu fang shou na	1000
+解冻食材	jie dong shi cai	1000
+产品日期	chan pin ri qi	1000
+生产日期	sheng chan ri qi	1000
+食用方法	shi yong fang fa	1000
+买点水果	mai dian shui guo	1000
+水果蔬菜	shui guo shu cai	1000
+生活用品	sheng huo yong pin	1000
+清洁用品	qing jie yong pin	1000
+卫生用品	wei sheng yong pin	1000
+个人护理	ge ren hu li	1000
+垃圾袋	la ji dai	1000
+快递到了	kuai di dao le	1000
+查快递	cha kuai di	1000
+取快递	qu kuai di	1000
+快递站	kuai di zhan	1000
+送货上门	song huo shang men	1000
+联系电话	lian xi dian hua	1000
+电话联系	dian hua lian xi	1000
+网上购物	wang shang gou wu	1000
+购物平台	gou wu ping tai	1000
+加入购物车	jia ru gou wu che	1000
+清空购物车	qing kong gou wu che	1000
+取消订单	qu xiao ding dan	1000
+支付订单	zhi fu ding dan	1000
+预计送达	yu ji song da	1000
+退货退款	tui huo tui kuan	1000
+退款申请	tui kuan shen qing	1000
+退款成功	tui kuan cheng gong	1000
+退款进度	tui kuan jin du	1000
+退货地址	tui huo di zhi	1000
+客服回复	ke fu hui fu	1000
+商品页面	shang pin ye mian	1000
+清理房间	qing li fang jian	1000
+整理衣柜	zheng li yi gui	1000
+收拾东西	shou shi dong xi	1000
+做家务	zuo jia wu	1000
+洗衣服	xi yi fu	1000
+晾衣服	liang yi fu	1000
+倒垃圾	dao la ji	1000
+出门之前	chu men zhi qian	1000
+出门准备	chu men zhun bei	1000
+出门带伞	chu men dai san	1000
+记得带伞	ji de dai san	1000
+记得带钥匙	ji de dai yao shi	1000
+带上雨伞	dai shang yu san	1000
+关好门窗	guan hao men chuang	1000
+今天天气	jin tian tian qi	1000
+明天天气	ming tian tian qi	1000
+最近天气	zui jin tian qi	1000
+天气怎么样	tian qi zen me yang	1000
+天气不错	tian qi bu cuo	1000
+天气转暖	tian qi zhuan nuan	1000
+气温下降	qi wen xia jiang	1000
+上下班时间	shang xia ban shi jian	1000
+下班时间	xia ban shi jian	1000
+交通拥堵	jiao tong yong du	1000
+交通状况	jiao tong zhuang kuang	1000
+换乘路线	huan cheng lu xian	1000
+换乘站	huan cheng zhan	1000
+首班车	shou ban che	1000
+打车回家	da che hui jia	1000
+打车软件	da che ruan jian	1000
+下车地点	xia che di dian	1000
+到达目的地	dao da mu di di	1000
+步行导航	bu xing dao hang	1000
+公交路线	gong jiao lu xian	1000
+公交车站	gong jiao che zhan	1000
+买车票	mai che piao	1000
+订车票	ding che piao	1000
+航班信息	hang ban xin xi	1000
+航班号	hang ban hao	1000
+候机室	hou ji shi	1000
+检票口	jian piao kou	1000
+出发时间	chu fa shi jian	1000
+入住时间	ru zhu shi jian	1000
+退房时间	tui fang shi jian	1000
+酒店房间	jiu dian fang jian	1000
+房间号码	fang jian hao ma	1000
+办理退房	ban li tui fang	1000
+身份证件	shen fen zheng jian	1000
+随身行李	sui shen xing li	1000
+上班日	shang ban ri	1000
+休息日	xiu xi ri	1000
+周末安排	zhou mo an pai	1000
+周末快乐	zhou mo kuai le	1000
+小长假	xiao chang jia	1000
+调休安排	tiao xiu an pai	1000
+请假手续	qing jia shou xu	1000
+充电线	chong dian xian	1000
+电量不足	dian liang bu zu	1000
+电量充足	dian liang chong zu	1000
+电池电量	dian chi dian liang	1000
+手机信号	shou ji xin hao	1000
+网络连接	wang luo lian jie	1000
+网络设置	wang luo she zhi	1000
+软件更新	ruan jian geng xin	1000
+系统更新	xi tong geng xin	1000
+重启手机	chong qi shou ji	1000
+存储空间	cun chu kong jian	1000
+内存不足	nei cun bu zu	1000
+文件传输	wen jian chuan shu	1000
+文件下载	wen jian xia zai	1000
+拍张照片	pai zhang zhao pian	1000
+拍个照片	pai ge zhao pian	1000
+照片分享	zhao pian fen xiang	1000
+保存照片	bao cun zhao pian	1000
+接听电话	jie ting dian hua	1000
+未接来电	wei jie lai dian	1000
+通话记录	tong hua ji lu	1000
+账号密码	zhang hao mi ma	1000
+修改密码	xiu gai mi ma	1000
+忘记密码	wang ji mi ma	1000
+设置密码	she zhi mi ma	1000
+账号安全	zhang hao an quan	1000
+手机号码	shou ji hao ma	1000
+身份验证	shen fen yan zheng	1000
+密码错误	mi ma cuo wu	1000
+会议记录	hui yi ji lu	1000
+会议纪要	hui yi ji yao	1000
+加入会议	jia ru hui yi	1000
+开始会议	kai shi hui yi	1000
+会议议程	hui yi yi cheng	1000
+会议主题	hui yi zhu ti	1000
+会议资料	hui yi zi liao	1000
+工作安排	gong zuo an pai	1000
+工作进度	gong zuo jin du	1000
+工作效率	gong zuo xiao lv	1000
+工作经验	gong zuo jing yan	1000
+工作需求	gong zuo xu qiu	1000
+工作汇报	gong zuo hui bao	1000
+邮件通知	you jian tong zhi	1000
+项目进度	xiang mu jin du	1000
+项目计划	xiang mu ji hua	1000
+项目成员	xiang mu cheng yuan	1000
+项目负责人	xiang mu fu ze ren	1000
+项目总结	xiang mu zong jie	1000
+项目会议	xiang mu hui yi	1000
+项目反馈	xiang mu fan kui	1000
+学习计划	xue xi ji hua	1000
+学习任务	xue xi ren wu	1000
+学习效果	xue xi xiao guo	1000
+学习资源	xue xi zi yuan	1000
+学习平台	xue xi ping tai	1000
+学习心得	xue xi xin de	1000
+认真学习	ren zhen xue xi	1000
+课堂笔记	ke tang bi ji	1000
+课后作业	ke hou zuo ye	1000
+完成作业	wan cheng zuo ye	1000
+批改作业	pi gai zuo ye	1000
+考试内容	kao shi nei rong	1000
+考试成绩	kao shi cheng ji	1000
+复习资料	fu xi zi liao	1000
+身体不舒服	shen ti bu shu fu	1000
+不太舒服	bu tai shu fu	1000
+有点不舒服	you dian bu shu fu	1000
+注意身体	zhu yi shen ti	1000
+身体状况	shen ti zhuang kuang	1000
+就诊信息	jiu zhen xin xi	1000
+服药时间	fu yao shi jian	1000
+运动健身	yun dong jian shen	1000
+运动计划	yun dong ji hua	1000
+运动强度	yun dong qiang du	1000
+锻炼身体	duan lian shen ti	1000
+健康饮食	jian kang yin shi	1000
+饮食习惯	yin shi xi guan	1000
+保证睡眠	bao zheng shui mian	1000
+请重试	qing chong shi	1000
+操作失败	cao zuo shi bai	1000
+操作步骤	cao zuo bu zhou	1000
+提交成功	ti jiao cheng gong	1000
+提交失败	ti jiao shi bai	1000
+修改失败	xiu gai shi bai	1000

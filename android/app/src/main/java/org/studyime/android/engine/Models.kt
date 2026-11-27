@@ -27,6 +27,7 @@ data class EngineSnapshot(
     val lastPage: Boolean = true,
     val highlighted: Int = 0,
     val candidates: List<Candidate> = emptyList(),
+    val spellingCandidates: List<String> = emptyList(),
     val schema: String = "study",
     val pendingSchema: String? = null,
     val showEnglish: Boolean = true,
@@ -44,6 +45,7 @@ data class EngineSnapshot(
             check(json.optBoolean("ok")) { json.optString("error", "engine-error") }
             val context = json.getJSONObject("context")
             val candidates = context.getJSONArray("candidates")
+            val spellings = json.optJSONArray("spellingCandidates")
             val commands = json.getJSONArray("commands")
             val target = json.optJSONObject("target")?.let {
                 CandidateTarget(it.getString("token"), it.getInt("index"), it.getString("chinese"),
@@ -58,6 +60,7 @@ data class EngineSnapshot(
                 candidates = List(candidates.length()) { index -> candidates.getJSONObject(index).let {
                     Candidate(it.getString("chinese"), it.getString("english"))
                 } },
+                spellingCandidates = spellings?.let { List(it.length(), it::getString) }.orEmpty(),
                 schema = json.getString("schema"),
                 pendingSchema = if (json.isNull("pendingSchema")) null else json.getString("pendingSchema"),
                 showEnglish = json.getBoolean("showEnglish"), userLearning = json.getBoolean("userLearning"),

@@ -80,7 +80,7 @@ internal fun NumberPad(height: Dp, prefs: KeyboardPreferences, enabled: Boolean,
                         1 -> KeySpec("symbols", "#+=", SIDE_WEIGHT, true,
                             icon = Icons.Outlined.MoreHoriz.takeIf { compact }, spoken = "更多符号")
                         2 -> KeySpec("space", if (asciiMode) "space" else "空格", SIDE_WEIGHT,
-                            icon = Icons.Outlined.SpaceBar.takeIf { compact }, spoken = if (composing) "空格，输入原始拼写" else "空格")
+                            icon = Icons.Outlined.SpaceBar.takeIf { compact }, spoken = if (composing && !asciiMode) "空格，输入原始拼写" else "空格")
                         else -> enter.copy(weight = SIDE_WEIGHT)
                     }
                     KeyCell(action, height, prefs, enabled, onKey, onLongKey,

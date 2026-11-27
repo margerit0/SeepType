@@ -81,9 +81,17 @@ class NativeEngineTest {
             send(event("configure", "config" to config.engineConfig(false, false, false)))
         }
         fun inspect(value: EngineSnapshot, index: Int) = send(event("inspect", "index" to index, "revision" to value.revision))
+        fun exportedWords(): List<List<String>> {
+            val output = File(root, "frequency.tsv")
+            val count = NativeCore.exportWordFrequency(handle, output.path)
+            val rows = output.readLines().filterNot { it.startsWith("#") }.map { it.split('\t') }
+            assertEquals(count, rows.size)
+            return rows
+        }
         val details = WordDetails { file -> context.assets.open(file).bufferedReader(Charsets.UTF_8).use { it.readText() } }
 
         try {
+            check("An unused user dictionary exports zero rows before the first editor", exportedWords().isEmpty())
             start()
             check("Kotlin loads Rust and fixed Rime/Lua", NativeCore.version(handle).contains("Rime 1.13.1"))
             check("Invalid opaque handles are rejected at JNI boundary", runCatching {
@@ -109,6 +117,16 @@ class NativeEngineTest {
                 check("$schema accepts an explicit separator in x'z", type("x'z").candidates.firstOrNull()?.chinese == "现在")
                 check("$schema still resolves the full code $fullCode", type(fullCode).candidates.firstOrNull()?.chinese == "现在")
                 check("$schema gives the complete xs syllable precedence", type("xs").candidates.firstOrNull()?.chinese == "胸")
+                check("$schema offers 让 for rh", type("rh").candidates.firstOrNull()?.chinese == "让")
+                check("$schema offers 我 for w", type("w").candidates.firstOrNull()?.chinese == "我")
+                val mixed = type("rhw")
+                check("$schema offers 让我 first for rhw",
+                    mixed.input == "rhw" && mixed.candidates.firstOrNull()?.chinese == "让我")
+                val mixedSelection = send(event("select", "index" to 0, "revision" to mixed.revision))
+                check("$schema commits 让我 in one selection", mixedSelection.input.isEmpty() && mixedSelection.commands.singleOrNull()?.text == "让我")
+                check("$schema still offers 让我 with fully spelled wo", type("rhwo").candidates.firstOrNull()?.chinese == "让我")
+                check("$schema also offers 让步 with an abbreviated final syllable", type("rhb").candidates.any { it.chinese == "让步" })
+                check("$schema still offers 儿 for er", type("er").candidates.any { it.chinese == "儿" })
             }
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })
             val manifest = context.assets.open("generated/manifest.json").bufferedReader().use { JSONObject(it.readText()) }
@@ -138,7 +156,9 @@ class NativeEngineTest {
                         assertEquals(pinyin, rich.pinyin)
                         val expectedSenses = if (code == "hai") listOf("even", "yet") else listOf("return")
                         assertEquals(expectedSenses, rich.senses.map { it.english })
-                        assertTrue(rich.senses.first().exampleEn.isNotBlank())
+                        val defaultSense = rich.senses.first()
+                        assertEquals(target.english, defaultSense.english)
+                        assertTrue(defaultSense.exampleEn.isNotBlank())
                     }
                     val english = send(event("english", "token" to target.token))
                     assertEquals(case.getString("english"), english.commands.single().text)
@@ -239,6 +259,10 @@ class NativeEngineTest {
             val hao = find(segment, "好")
             val phrase = send(event("select", "index" to hao.second, "revision" to hao.first.revision))
             check("Segmented input learns synthetic phrase", phrase.commands.single().text == "拟好")
+            check("Export includes an immediately selected phrase with its full reading and count",
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val backup = File(root, "frequency-backup.tsv")
+            File(root, "frequency.tsv").copyTo(backup)
             listOf("study_flypy" to "nihc", "study" to "nihao", "study_double_pinyin" to "nihk").forEach { (schema, input) ->
                 scheme(schema, learning = true)
                 check("$schema shares learned Chinese phrase", type(input).candidates.first().chinese == "拟好")
@@ -252,9 +276,15 @@ class NativeEngineTest {
             scheme("study", learning = false)
             check("Learned phrase survives native restart", type("nihao").candidates.first().chinese == "拟好")
             val current = type("nihao")
+            check("Export still includes earlier learning while learning is paused",
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val afterExport = send(event("read"))
+            check("Export preserves active composition and candidate revision",
+                afterExport.input == current.input && afterExport.revision == current.revision && afterExport.commands.isEmpty())
             val forgetTarget = inspect(current, 0).target!!
             val forgotten = send(event("forget", "token" to forgetTarget.token))
             check("Forget retains composition and emits no editor text", forgotten.input == "nihao" && forgotten.commands.isEmpty())
+            check("Export omits forgotten words", exportedWords().none { it.first() == "拟好" })
             scheme("study_flypy")
             check("Forget is shared across schemes", type("nihc").candidates.first().chinese != "拟好")
             val pausedNi = find(type("nihc"), "拟")
@@ -262,6 +292,26 @@ class NativeEngineTest {
             val pausedHao = find(pausedSegment, "好")
             send(event("select", "index" to pausedHao.second, "revision" to pausedHao.first.revision))
             check("Paused learning does not add the new phrase again", type("nihc").candidates.first().chinese != "拟好")
+
+            fun commitTallInSegments(): EngineSnapshot {
+                val (full, tai) = find(type("tdgcle"), "太")
+                val remaining = send(event("select", "index" to tai, "revision" to full.revision))
+                val (tail, tall) = find(remaining, "高了")
+                return send(event("select", "index" to tall, "revision" to tail.revision))
+            }
+            check("高了 starts as a generated sentence, absent as a standalone segment in gclema",
+                type("gcle").candidates.first().chinese == "高了" && type("gclema").candidates.none { it.chinese == "高了" })
+            check("Segment selection with learning paused still commits 太高了", commitTallInSegments().commands.single().text == "太高了")
+            check("Paused learning leaves no new 高了 segment", type("gclema").candidates.none { it.chinese == "高了" })
+            scheme("study_flypy", learning = true)
+            val tall = commitTallInSegments()
+            check("Choosing 太 then 高了 commits the complete text", tall.input.isEmpty() && tall.commands.single().text == "太高了")
+            check("gcle now offers the explicitly chosen 高了 first", type("gcle").candidates.first().chinese == "高了")
+            check("太高了 is still learned as a whole", type("tdgcle").candidates.first().chinese == "太高了")
+            for ((schema, code) in listOf("study_flypy" to "gclema", "study_double_pinyin" to "gklema", "study" to "gaolema")) {
+                scheme(schema)
+                check("$schema offers the separately learned 高了 within longer input", type(code).candidates.any { it.chinese == "高了" })
+            }
 
             clear()
             NativeCore.destroy(handle)
@@ -272,6 +322,7 @@ class NativeEngineTest {
             start()
             scheme("study_flypy")
             check("Missing compiled index is rebuilt with unchanged packaged sources", type("gsyr").candidates.any { it.chinese == "公园" })
+            check("The separately learned 高了 survives native restart", type("gclema").candidates.any { it.chinese == "高了" })
             clear()
             NativeCore.destroy(handle)
             handle = 0
@@ -293,6 +344,31 @@ class NativeEngineTest {
             scheme("study")
             check("Damaged real Lua resources are repaired before native initialization", type("gongyuan").candidates.any { it.chinese == "公园" && it.english == "park" })
             check("Resource repair preserves the forgotten-word user dictionary state", type("nihao").candidates.first().chinese != "拟好")
+
+            val beforeImport = send(event("read"))
+            check("An exported TSV restores its recorded entries", NativeCore.importWordFrequency(handle, backup.path) == 1 &&
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val afterImport = send(event("read"))
+            check("Import preserves active composition and revision", afterImport.input == beforeImport.input &&
+                afterImport.revision == beforeImport.revision && afterImport.commands.isEmpty())
+            check("The imported phrase is used in the next composition", type("nihao").candidates.first().chinese == "拟好")
+
+            val importFile = File(root, "frequency-import.tsv")
+            importFile.writeText("\uFEFF拟好\tni hao\t5\r\n拟好\tni hao\t2\r\n")
+            check("Repeated and duplicate imports keep the higher count", NativeCore.importWordFrequency(handle, importFile.path) == 1 &&
+                NativeCore.importWordFrequency(handle, importFile.path) == 1 && NativeCore.importWordFrequency(handle, backup.path) == 1 &&
+                exportedWords().contains(listOf("拟好", "ni hao", "5")))
+            val beforeInvalid = exportedWords()
+            importFile.writeText("拟好\tni hao\t9\n公园\tgong yuan\t2147483648\n")
+            check("An invalid row leaves the entire dictionary untouched", runCatching {
+                NativeCore.importWordFrequency(handle, importFile.path)
+            }.isFailure && exportedWords() == beforeInvalid)
+            importFile.writeText("公园\tgong yuan\t2147483647\n")
+            NativeCore.importWordFrequency(handle, importFile.path)
+            scheme("study", learning = true)
+            val park = find(type("gongyuan"), "公园")
+            send(event("select", "index" to park.second, "revision" to park.first.revision))
+            check("Learning still works after importing a maximum count", exportedWords().contains(listOf("公园", "gong yuan", "2147483647")))
 
             report.put("passed", true)
         } finally {

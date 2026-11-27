@@ -10,6 +10,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from tools.android.common import CACHE, ROOT, digest, fetch, json_write, safe, write
+from tools.android.english_completions import ASSET as ENGLISH_COMPLETIONS, build_index
 from tools.android.offline_names import load_names
 from tools.android.word_details import pack_details
 from tools.dictionary.cedict import files as chinese_files
@@ -25,6 +26,7 @@ RIME_SOURCES = {
     "rime/rime.lua": ROOT / "android/rime/rime.lua",
     "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua",
     "rime/study_android.dict.yaml": ROOT / "android/rime/study_android.dict.yaml",
+    "rime/study_phrases.dict.yaml": ROOT / "android/rime/study_phrases.dict.yaml",
 }
 # The prism and the shared cedict_study user dictionary stay unchanged.
 SCHEME_PATCH = b"patch:\n  menu/page_size: 9\n  translator/dictionary: study_android\n  translator/user_dict: cedict_study\n"
@@ -64,6 +66,12 @@ def refresh_if_needed(source_cache=None):
                 **{ASSETS / f"rime/{schema}.custom.yaml": sha(SCHEME_PATCH) for schema in SCHEMES},
                 **{ASSETS / asset: sha(content) for asset, content in names.items()},
                 **{ASSETS / asset: expected_hash for asset, expected_hash in detail_hashes.items()}}
+    # The archive may not have been restored yet in a fresh checkout.
+    wordfreq_archive = json.loads((ROOT / "data/chinese/sources.lock.json").read_bytes())["wordfreq"]["archive"]
+    if not (ROOT / wordfreq_archive).is_file():
+        prepare(source_cache)
+        return
+    expected[ASSETS / ENGLISH_COMPLETIONS] = sha(build_index())
     expected[ASSETS / "notices/english/NOTICE.txt"] = digest(SNAPSHOT / "NOTICE.txt")
     expected[ASSETS / "notices/README.txt"] = sha(notice_text(snapshot))
     manifest = ASSETS / "manifest.json"
@@ -106,6 +114,7 @@ def prepare(source_cache=None):
     if hashlib.sha256(chinese["cedict_study.dict.yaml"]).hexdigest() != snapshot["baseDictionarySha256"]:
         raise ValueError("Imported supplemental readings were built on a different Chinese base dictionary")
     payload = {"rime/lua/study_core.lua": study_core,
+               ENGLISH_COMPLETIONS: build_index(),
                **{asset: runtime[name] for name, asset in RUNTIME_ASSETS.items()},
                **{asset: source.read_bytes() for asset, source in RIME_SOURCES.items()},
                **names}
@@ -175,7 +184,10 @@ def notice_text(snapshot):
         "新 Kotlin、Rust 和桥接代码：GPL-3.0-or-later。\n"
         "中文基础数据：CC-CEDICT 2026-11-06，wordfreq 3.1.1，Unihan 17.0.0；完整署名见 chinese。\n"
         f"英文词库：{snapshot['acceptedRecords']:,} 条开发记录；仅作开发预览，未获人工发布审批。来源见 english。\n"
+        "英文拼写补全：The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies. "
+        "词形去重并按 wordfreq 3.1.1 英语词频排序，派生索引采用 CC BY-SA 4.0；原始署名见 english 和 chinese。\n"
         "安卓影视与游戏专名：Wikidata 结构化标签（CC0-1.0）及项目分音节读音；固定来源见 android-names。\n"
+        "安卓日常、网络和游戏补充词组：参考 wordfreq 筛选和 CC-CEDICT 读音，CC BY-SA 4.0；原始署名见 chinese。\n"
         "Rime、librime-lua、LevelDB、marisa、OpenCC、yaml-cpp、Boost 与双拼方案的许可见 third-party。\n"
         "AndroidX、Kotlin 与 kotlinx.coroutines：Apache-2.0；Rust 标准库及 JNI/serde 依赖：MIT / Apache-2.0。\n"
         "NDK libc++：Apache-2.0 WITH LLVM-exception。源码、锁文件、构建脚本随开发预览材料提供。\n"

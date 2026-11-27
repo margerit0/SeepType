@@ -3,6 +3,9 @@
 //! authority for candidate selection, English eligibility and learned entries.
 use serde::{Deserialize, Serialize};
 
+mod english;
+pub use english::EnglishLexicon;
+
 pub type Result<T> = std::result::Result<T, String>;
 pub const BACKSPACE: u32 = 0xff08;
 pub const RETURN: u32 = 0xff0d;
@@ -38,17 +41,19 @@ pub struct Config {
     pub ascii_mode: bool,
     pub sensitive: bool,
     pub no_personalization: bool,
+    pub suggest_spellings: bool,
 }
 impl Default for Config {
     fn default() -> Self {
         Self { version: 1, schema: "study".into(), show_english: true, user_learning: true,
-            ascii_mode: false, sensitive: false, no_personalization: false }
+            ascii_mode: false, sensitive: false, no_personalization: false, suggest_spellings: false }
     }
 }
 impl Config {
     pub fn english(&self) -> bool { self.show_english && !self.sensitive }
     pub fn learning(&self) -> bool { self.user_learning && !self.sensitive && !self.no_personalization }
     pub fn ascii(&self) -> bool { self.ascii_mode || self.sensitive }
+    fn spellings(&self) -> bool { self.suggest_spellings && !self.sensitive }
     fn validate(&self) -> Result<()> {
         if self.version != 1 || !["study", "study_double_pinyin", "study_flypy"].contains(&self.schema.as_str()) {
             return Err("unsupported-config".into());
@@ -96,6 +101,7 @@ pub enum Action {
     Key { code: u32, #[serde(default)] modifiers: u32 },
     Literal { text: String },
     Select { index: usize, revision: u64 },
+    SelectSpelling { index: usize, revision: u64 },
     Inspect { index: usize, revision: u64 },
     English { token: String },
     Forget { token: String },
@@ -140,6 +146,7 @@ pub struct Snapshot {
     pub generation: u64,
     pub revision: u64,
     pub context: Context,
+    pub spelling_candidates: Vec<String>,
     pub schema: String,
     pub pending_schema: Option<String>,
     pub show_english: bool,
@@ -158,12 +165,19 @@ pub struct Session<E: Engine> {
     config: Config,
     active_schema: String,
     target: Option<Target>,
+    lexicon: EnglishLexicon,
+    spelling: String,
+    spelling_caret: usize,
 }
 
 impl<E: Engine> Session<E> {
     pub fn new(engine: E) -> Self {
+        Self::with_english_lexicon(engine, EnglishLexicon::default())
+    }
+
+    pub fn with_english_lexicon(engine: E, lexicon: EnglishLexicon) -> Self {
         Self { engine, generation: 0, revision: 0, next_commit: 0, config: Config::default(),
-               active_schema: String::new(), target: None }
+               active_schema: String::new(), target: None, lexicon, spelling: String::new(), spelling_caret: 0 }
     }
 
     fn invalidate(&mut self) -> Result<()> {
@@ -186,14 +200,20 @@ impl<E: Engine> Session<E> {
     }
 
     fn finish_word(&mut self, commands: &mut Vec<EditorCommand>) -> Result<()> {
+        if self.config.ascii() {
+            if !self.spelling.is_empty() {
+                self.spelling_caret = 0;
+                let text = std::mem::take(&mut self.spelling);
+                self.command(commands, "commit", text)?;
+            }
+            return Ok(());
+        }
         // A punctuation/mode key finishes remaining Chinese segments in order.
         for _ in 0..64 {
             let before = self.engine.read()?;
             if before.input.is_empty() { return Ok(()); }
             if before.candidates.is_empty() {
-                self.engine.clear()?;
-                self.command(commands, "commit", before.input)?;
-                return Ok(());
+                return self.commit_raw(commands, before.input);
             }
             self.engine.select(before.highlighted)?;
             self.drain(commands)?;
@@ -202,8 +222,65 @@ impl<E: Engine> Session<E> {
         Err("composition-too-long".into())
     }
 
+    fn commit_raw(&mut self, commands: &mut Vec<EditorCommand>, text: String) -> Result<()> {
+        self.engine.clear()?;
+        self.spelling.clear();
+        self.spelling_caret = 0;
+        self.command(commands, "commit", text)
+    }
+
+    fn context(&mut self) -> Result<Context> {
+        if self.spelling.is_empty() { return self.engine.read(); }
+        Ok(Context { input: self.spelling.clone(), preedit: self.spelling.clone(),
+            caret: self.spelling_caret, preedit_cursor: self.spelling_caret, last_page: true,
+            ..Context::default() })
+    }
+
+    fn spelling_candidates(&self, context: &Context) -> Vec<String> {
+        let raw = &context.input;
+        if !self.config.spellings() || raw.is_empty() || !raw.bytes().any(|c| c.is_ascii_alphabetic())
+            || !raw.bytes().all(|c| c.is_ascii_alphabetic() || c == b'\'') {
+            return vec![];
+        }
+        let lower = raw.to_ascii_lowercase();
+        if self.config.ascii() {
+            let mut candidates = vec![raw.clone()];
+            if raw.len() >= 2 && context.caret == raw.len() {
+                candidates.extend(self.lexicon.complete(raw, &lower));
+            }
+            candidates
+        } else if context.candidates.is_empty() || (raw.len() >= 2 && self.lexicon.contains(&lower)) {
+            vec![raw.clone()]
+        } else {
+            vec![]
+        }
+    }
+
+    fn ascii_key(&mut self, commands: &mut Vec<EditorCommand>, code: u32) -> Result<()> {
+        if code == BACKSPACE {
+            if self.spelling.is_empty() { return self.command(commands, "delete", String::new()); }
+            if self.spelling_caret > 0 {
+                self.spelling_caret -= 1;
+                self.spelling.remove(self.spelling_caret);
+            }
+        } else if code == RETURN {
+            self.finish_word(commands)?;
+            self.command(commands, "action", String::new())?;
+        } else if let Some(c) = char::from_u32(code).filter(|c| !c.is_control() && code < 0xff00) {
+            if self.config.spellings() && (c.is_ascii_alphabetic() || c == '\'' && self.spelling_caret > 0) {
+                if self.spelling.len() >= 128 { self.finish_word(commands)?; }
+                self.spelling.insert(self.spelling_caret, c);
+                self.spelling_caret += 1;
+            } else {
+                self.finish_word(commands)?;
+                self.command(commands, "commit", c.to_string())?;
+            }
+        }
+        Ok(())
+    }
+
     fn snapshot(&mut self, commands: Vec<EditorCommand>, notice: String) -> Result<Snapshot> {
-        let mut context = self.engine.read()?;
+        let mut context = self.context()?;
         if context.input.is_empty() && self.active_schema != self.config.schema && self.generation != 0 {
             self.engine.schema(&self.config.schema)?;
             self.engine.configure(&self.config)?;
@@ -213,7 +290,8 @@ impl<E: Engine> Session<E> {
         if !self.config.english() {
             for candidate in &mut context.candidates { candidate.english.clear(); }
         }
-        Ok(Snapshot { ok: true, generation: self.generation, revision: self.revision, context,
+        let spelling_candidates = self.spelling_candidates(&context);
+        Ok(Snapshot { ok: true, generation: self.generation, revision: self.revision, context, spelling_candidates,
             schema: self.active_schema.clone(),
             pending_schema: (self.active_schema != self.config.schema).then(|| self.config.schema.clone()),
             show_english: self.config.english(), user_learning: self.config.learning(), ascii_mode: self.config.ascii(),
@@ -244,13 +322,21 @@ impl<E: Engine> Session<E> {
         if let Some((config, resume)) = starting {
             config.validate()?;
             if event.generation <= self.generation { return self.snapshot(commands, "stale-editor".into()); }
-            if !resume { self.engine.clear()?; }
+            if !resume {
+                self.engine.clear()?;
+                self.spelling.clear();
+                self.spelling_caret = 0;
+            }
             // Old, unconsumed engine output can never be delivered to a new editor.
             let _ = self.engine.take_commit()?;
             let previous_ascii = self.config.ascii_mode;
             self.generation = event.generation;
             self.config = config.clone();
             if resume { self.config.ascii_mode = previous_ascii; }
+            if !self.config.spellings() || !self.config.ascii() {
+                self.spelling.clear();
+                self.spelling_caret = 0;
+            }
             self.invalidate()?;
             if !resume {
                 self.engine.schema(&self.config.schema)?;
@@ -268,27 +354,26 @@ impl<E: Engine> Session<E> {
             Action::Start { .. } | Action::Restart { .. } => unreachable!(),
             Action::Read => {},
             Action::Dismiss => { self.invalidate()?; },
-            Action::Clear => { self.invalidate()?; self.engine.clear()?; },
+            Action::Clear => {
+                self.invalidate()?;
+                self.engine.clear()?;
+                self.spelling.clear();
+                self.spelling_caret = 0;
+            },
             Action::Key { code, modifiers } => {
                 self.invalidate()?;
-                let before = self.engine.read()?;
                 if self.config.ascii() {
-                    match code {
-                        BACKSPACE => self.command(&mut commands, "delete", String::new())?,
-                        RETURN => self.command(&mut commands, "action", String::new())?,
-                        _ => {
-                            if let Some(c) = char::from_u32(code).filter(|c| !c.is_control() && code < 0xff00) {
-                                self.command(&mut commands, "commit", c.to_string())?;
-                            }
-                        }
-                    }
-                } else if code == BACKSPACE && before.input.is_empty() {
+                    self.ascii_key(&mut commands, code)?;
+                } else if let Some(c) = char::from_u32(code).filter(char::is_ascii_uppercase) {
+                    self.finish_word(&mut commands)?;
+                    self.command(&mut commands, "commit", c.to_string())?;
+                } else if code == BACKSPACE && self.engine.read()?.input.is_empty() {
                     self.command(&mut commands, "delete", String::new())?;
                 } else if code == RETURN || (code == SPACE && modifiers == 0) {
-                    if !before.input.is_empty() {
+                    let input = self.engine.read()?.input;
+                    if !input.is_empty() {
                         // Commit the typed spelling, not formatted preedit or a candidate.
-                        self.engine.clear()?;
-                        self.command(&mut commands, "commit", before.input)?;
+                        self.commit_raw(&mut commands, input)?;
                     } else if code == RETURN {
                         self.command(&mut commands, "action", String::new())?;
                     } else {
@@ -314,15 +399,27 @@ impl<E: Engine> Session<E> {
                 self.invalidate()?;
                 if !self.engine.select(index)? { notice = "selection-unavailable".into(); }
             },
+            Action::SelectSpelling { index, revision } => {
+                if revision != self.revision {
+                    return self.snapshot(commands, "stale-candidate".into());
+                }
+                let context = self.context()?;
+                let Some(text) = self.spelling_candidates(&context).into_iter().nth(index) else {
+                    return self.snapshot(commands, "stale-candidate".into());
+                };
+                self.invalidate()?;
+                self.commit_raw(&mut commands, text)?;
+            },
             Action::Page { backwards, revision } => {
                 if revision != self.revision { return self.snapshot(commands, "stale-candidate".into()); }
                 self.invalidate()?;
                 self.engine.page(backwards)?;
             },
             Action::Caret { position } => {
-                if position > self.engine.read()?.input.len() { return Err("invalid-caret".into()); }
+                if position > self.context()?.input.len() { return Err("invalid-caret".into()); }
                 self.invalidate()?;
-                self.engine.caret(position)?;
+                if self.spelling.is_empty() { self.engine.caret(position)?; }
+                else { self.spelling_caret = position; }
             },
             Action::Configure { mut config } => {
                 config.validate()?;
@@ -334,6 +431,7 @@ impl<E: Engine> Session<E> {
                 config.ascii_mode = self.config.ascii_mode;
                 config.sensitive = self.config.sensitive;
                 config.no_personalization = self.config.no_personalization;
+                config.suggest_spellings = self.config.suggest_spellings;
                 self.engine.configure(&config)?;
                 self.config = config;
             },

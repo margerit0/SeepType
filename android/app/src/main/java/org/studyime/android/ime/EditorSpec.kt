@@ -12,6 +12,7 @@ data class EditorSpec(
     val phone: Boolean = false,
     val action: Int = EditorInfo.IME_ACTION_UNSPECIFIED,
     val actionLabel: String = "换行",
+    val allowsSpellingSuggestions: Boolean = true,
 ) {
     // The picker remembers recent emoji and skin-tone choices locally.
     val allowsEmoji: Boolean get() = !sensitive && !noPersonalization && !numeric && !asciiPreferred
@@ -46,7 +47,9 @@ data class EditorSpec(
                 else -> "换行"
             }
             return EditorSpec(password, info.imeOptions and EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING != 0,
-                ascii, numeric, category == InputType.TYPE_CLASS_PHONE, action, label)
+                ascii, numeric, category == InputType.TYPE_CLASS_PHONE, action, label,
+                allowsSpellingSuggestions = category == InputType.TYPE_CLASS_TEXT && !ascii &&
+                    info.inputType and InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS == 0)
         }
     }
 }

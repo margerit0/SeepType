@@ -21,6 +21,19 @@ fn checked(value: i32) -> Result<bool> {
     if value < 0 { Err("native-operation-failed".into()) } else { Ok(value != 0) }
 }
 
+/// Called by the runtime owner on the same worker as key and candidate events.
+pub fn export_word_frequency(path: &str) -> Result<i32> {
+    let path = cstring(path)?;
+    let count = unsafe { ffi::study_rime_export_word_frequency(path.as_ptr()) };
+    if count < 0 { Err("word-frequency-export-failed".into()) } else { Ok(count) }
+}
+
+pub fn import_word_frequency(path: &str) -> Result<i32> {
+    let path = cstring(path)?;
+    let count = unsafe { ffi::study_rime_import_word_frequency(path.as_ptr()) };
+    if count < 0 { Err("word-frequency-import-failed".into()) } else { Ok(count) }
+}
+
 struct ViewLease(*const ffi::View);
 impl Drop for ViewLease {
     fn drop(&mut self) { unsafe { ffi::study_rime_free_view(self.0); } }

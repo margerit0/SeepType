@@ -10,6 +10,8 @@ Android 使用[共享开发词库快照](../data/lexicon-expansion/android-runti
 
 另附 [420 条影视与游戏专名](../data/lexicon-expansion/android-names/README.md)，由 Wikidata 固定修订和开发侧校对读音生成，随 APK 离线更新。三种方案沿用原有用户词典，无联机查词或专题包下载。实测分别见 [首版验证](../docs/android-offline-names-validation.md) 与 [作品名补录验证](../docs/android-offline-names-supplement-validation.md)。
 
+另有 [1,000 条日常、网络和游戏补充词组](rime/study_phrases.dict.yaml)：网络 250 条、游戏 300 条、日常表达 250 条、生活场景 200 条，均为基础快照和影视／游戏专名之外的词形。词组由开发侧筛选并参考 wordfreq 3.1.1，拼音参考现有 CC-CEDICT 快照，以 CC BY-SA 4.0 提供；统一权重 1,000 是排序用的固定初值，不代表实测词频。这些词只提供中文候选，不增加英文释义；三种方案共用附加词典和原有用户词频。
+
 ## 单词详情
 
 点底栏的详情键或长按候选，打开沿用当前皮肤的浮卡。浮卡按实际读音把默认译法置顶，并列展示该读音的其他义项、词性和中文用法；有搭配和中英例句时一并展示。可以对照用法，但只有「输入 <默认英文>」会提交英文。关闭不会改变输入，隐藏英文时仍可打开选词学习操作。
@@ -48,6 +50,8 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 
 拼音还没选词时，按回车或空格会原样提交字母（例如 `ni`），不会同时插入空格、换行或触发发送／搜索。要输入汉字，直接点候选词；没有待选拼音时，回车和空格照常使用。
 
+在普通文本框混输时，输入 `home` 可以直接点同名候选。切到「英」后，第一候选保留原始大小写，输入至少两个字母可看到最多三条离线补全，例如输入 `hom` 后点 `home`。空格提交原文并加空格，回车提交原文后执行输入框动作。补全词形来自 CEFR-J 1.5，按 wordfreq 3.1.1 的英语词频排序。密码、邮箱、网址和要求关闭建议的输入框使用原有输入方式。
+
 候选卡片按显示的中英文内容适配宽度；竖屏候选条放不下时可左右滑动，展开按钮和下方键位保持不动。展开后，超宽词条会换行显示。
 
 ## 表情符号
@@ -61,6 +65,10 @@ python -X utf8 tools/android/verify_artifact.py --apk android/app/build/outputs/
 中文基础词典使用固定的 CC-CEDICT / wordfreq / Unihan 数据；英文释义和补充读音来自上述开发快照。`prepare_data.py` 不启动词库扩充或联网查词。原始来源、摘要、署名和审核记录见快照及 APK 许可资料。
 
 资源按摘要生成版本，在后台校验、部署和编译，成功后切换活动版本。用户词典独立保存在 `noBackupFilesDir/rime/user`；三种方案共用它。应用不申请网络权限，用户词典和设置均显式排除 Android 备份。卸载应用仍会删除其本机数据。
+
+在「键盘设置」中点击「导出词频记忆」，通过系统文件选择器保存 UTF-8 TSV。每条记录包含中文词条、完整拼音和选词次数。暂停学习后仍可导出已有记录，已遗忘的词条会被略过。导出文件可能包含你输入过的词组。
+
+点击同一处的「导入词频记忆」可以选择上述 TSV 文件（最大 32 MiB）。导入会合并现有记录，同一词条和拼音保留较高的选词次数。导入文件可以恢复其中保存的旧词条，文件格式错误时整份导入失败。
 
 ## 模拟器和验证
 
@@ -81,6 +89,8 @@ python -X utf8 tools/android/run_device_checks.py word-details --serial 127.0.0.
 python -X utf8 tools/android/run_device_checks.py offline-names-engine --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py offline-names-ui --serial 127.0.0.1:5555
 python -X utf8 tools/android/run_device_checks.py offline-names-coverage --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py curated-phrases-engine --serial 127.0.0.1:5555
+python -X utf8 tools/android/run_device_checks.py curated-phrases-coverage --serial 127.0.0.1:5555
 python -X utf8 tools/android/build.py lint
 ```
 
