@@ -1,4 +1,4 @@
-"""Read the fixed Chinese cBpack data using only the Python standard library."""
+"""Read fixed wordfreq cBpack data using only the Python standard library."""
 from decimal import Decimal, localcontext
 import gzip
 import json
@@ -51,24 +51,29 @@ def unpack_cbpack(raw):
     return value[1:]
 
 
-def frequencies():
-    source = json.loads((ROOT / "data/chinese/sources.lock.json").read_bytes())["wordfreq"]
+def frequency_groups(source):
     archive = ROOT / source["archive"]
     for path, expected in [(archive, source["archive_sha256"]), (ROOT / source["license_file"], source["license_sha256"]),
                            (ROOT / source["data_license_statement"], source["data_license_statement_sha256"])]:
         if file_hash(path) != expected: raise ValueError("Fixed wordfreq source or notice changed")
     with tarfile.open(archive) as bundle:
         compressed = bundle.extractfile(source["source_file"]).read()
-    if sha256(compressed) != source["source_sha256"]: raise ValueError("Chinese wordfreq file changed")
+    if sha256(compressed) != source["source_sha256"]: raise ValueError("wordfreq file changed")
     raw = gzip.decompress(compressed)
-    if len(raw) > 40 * 1024 * 1024: raise ValueError("Unexpected Chinese wordfreq data size")
+    if len(raw) > 40 * 1024 * 1024: raise ValueError("Unexpected wordfreq data size")
     groups = unpack_cbpack(raw)
+    if not all(isinstance(words, list) and all(isinstance(word, str) for word in words) for words in groups):
+        raise ValueError("Invalid wordfreq frequency group")
+    return groups
+
+
+def frequencies():
+    source = json.loads((ROOT / "data/chinese/sources.lock.json").read_bytes())["wordfreq"]
+    groups = frequency_groups(source)
     values = {}
     with localcontext() as context:
         context.prec = 40
         for index, words in enumerate(groups):
-            if not isinstance(words, list) or not all(isinstance(word, str) for word in words):
-                raise ValueError("Invalid wordfreq frequency group")
             weight = max(1, int(Decimal(10) ** (Decimal(900 - index) / 100)))
             for word in words:
                 if word in values: raise ValueError("Duplicate wordfreq word")

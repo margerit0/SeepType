@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! JNI owns opaque, monotonic IDs, never Java-supplied native pointers.
 use jni::{objects::{JObject, JString}, sys::{jlong, jstring}, JNIEnv};
-use std::{panic::{catch_unwind, AssertUnwindSafe}, sync::{Mutex, OnceLock}, thread::{self, ThreadId}};
-use study_core::{Event, Session};
+use std::{fs, io, panic::{catch_unwind, AssertUnwindSafe}, path::Path, sync::{Mutex, OnceLock}, thread::{self, ThreadId}};
+use study_core::{EnglishLexicon, Event, Session};
 use study_rime::RimeEngine;
 
 struct Runtime { id: i64, owner: ThreadId, session: Session<RimeEngine>, version: String }
@@ -29,10 +29,15 @@ pub extern "system" fn Java_org_studyime_android_engine_NativeCore_create(mut en
         let mut registry = registry().lock().map_err(|_| "engine-poisoned")?;
         if registry.runtime.is_some() { return Err("engine-already-owned".into()); }
         let engine = RimeEngine::new(&shared, &user, &build)?;
+        let lexicon = match fs::read_to_string(Path::new(&shared).join("english-completions.tsv")) {
+            Ok(data) => EnglishLexicon::from_index(&data)?,
+            Err(error) if error.kind() == io::ErrorKind::NotFound => EnglishLexicon::default(),
+            Err(_) => return Err("english-index-unreadable".into()),
+        };
         let version = engine.version()?;
         registry.next = registry.next.checked_add(1).ok_or("handle-exhausted")?;
         let id = registry.next;
-        registry.runtime = Some(Runtime { id, owner: thread::current().id(), session: Session::new(engine), version });
+        registry.runtime = Some(Runtime { id, owner: thread::current().id(), session: Session::with_english_lexicon(engine, lexicon), version });
         Ok(id)
     }).unwrap_or(0)
 }

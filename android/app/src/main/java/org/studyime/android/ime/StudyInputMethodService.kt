@@ -200,6 +200,7 @@ class StudyInputMethodService : InputMethodService() {
     }
 
     private fun config() = prefs.engineConfig(ascii, editor.sensitive, editor.noPersonalization)
+        .put("suggestSpellings", editor.allowsSpellingSuggestions)
 
     override fun onStartInputView(info: EditorInfo, restarting: Boolean) {
         StartupTimings.mark(Phase.START_INPUT_VIEW)

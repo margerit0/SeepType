@@ -146,8 +146,9 @@ class NativeEngineTest {
                         assertEquals(code, target.reading)
                         val rich = details.enrich(target)
                         assertEquals(pinyin, rich.pinyin)
-                        assertEquals(target.english, rich.senses.single().english)
-                        assertTrue(rich.senses.single().exampleEn.isNotBlank())
+                        val defaultSense = rich.senses.first()
+                        assertEquals(target.english, defaultSense.english)
+                        assertTrue(defaultSense.exampleEn.isNotBlank())
                     }
                     val english = send(event("english", "token" to target.token))
                     assertEquals(case.getString("english"), english.commands.single().text)
