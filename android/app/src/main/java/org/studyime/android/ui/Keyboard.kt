@@ -474,12 +474,12 @@ private fun CandidateCard(candidate: KeyboardCandidate, state: EngineSnapshot, p
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         val maxLines = if (compact) 1 else Int.MAX_VALUE
         val label = Modifier.clearAndSetSemantics { }
-        if (state.showEnglish && candidate.english != null) Text(candidate.english.ifEmpty { " " }, color = if (highlighted) colors.accent else colors.subtle,
+        if (state.showEnglish && state.candidates.isNotEmpty()) Text(candidate.english.orEmpty().ifEmpty { " " },
+            color = if (highlighted) colors.accent else colors.subtle,
             fontFamily = LocalLatinFont.current, fontSize = ((if (compact) 11 else 12) * prefs.textScale).sp,
             lineHeight = ((if (compact) 15 else 16) * prefs.textScale).sp, maxLines = maxLines, softWrap = !compact,
             textAlign = TextAlign.Center, modifier = label)
         Text(candidate.text, color = colors.ink, fontSize = ((if (compact) 18 else 20) * prefs.textScale).sp,
-            fontFamily = if (candidate.spelling) LocalLatinFont.current else null,
             lineHeight = ((if (compact) 24 else 28) * prefs.textScale).sp,
             fontWeight = if (prefs.skin == KeyboardSkin.SOFT_POP) FontWeight.Normal else FontWeight.Medium,
             maxLines = maxLines, softWrap = !compact, textAlign = TextAlign.Center, modifier = label)

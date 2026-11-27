@@ -125,7 +125,21 @@ class NativeEngineTest {
                 val mixedSelection = send(event("select", "index" to 0, "revision" to mixed.revision))
                 check("$schema commits 让我 in one selection", mixedSelection.input.isEmpty() && mixedSelection.commands.singleOrNull()?.text == "让我")
                 check("$schema still offers 让我 with fully spelled wo", type("rhwo").candidates.firstOrNull()?.chinese == "让我")
-                check("$schema also offers 让步 with an abbreviated final syllable", type("rhb").candidates.any { it.chinese == "让步" })
+                check("$schema gives 让步 precedence for rhb", type("rhb").candidates.firstOrNull()?.chinese == "让步")
+                val threeKeys = type("rhn")
+                check("$schema ranks rh + n and then rh first for rhn",
+                    threeKeys.candidates.take(2).map { it.chinese } == listOf("让你", "让"))
+                val partialRang = send(event("select", "index" to 1, "revision" to threeKeys.revision))
+                check("$schema retains n after selecting the first syllable",
+                    partialRang.commands.isEmpty() && partialRang.candidates.firstOrNull()?.chinese == "你")
+                val completion = send(event("select", "index" to 0, "revision" to partialRang.revision))
+                check("$schema commits both separately selected syllables", completion.commands.singleOrNull()?.text == "让你")
+                val niw = type("niw")
+                val niwWords = niw.candidates.map { it.chinese }
+                check("$schema ranks a leading exact syllable ahead of three initials",
+                    "你我" in niwWords && "你" in niwWords && niwWords.indexOf("你我") < niwWords.indexOf("你") &&
+                        ("黏稠物" !in niwWords || niwWords.indexOf("你") < niwWords.indexOf("黏稠物")))
+                check("$schema retains three-initial candidates on later pages", find(niw, "黏稠物").first.page > 0)
                 check("$schema still offers 儿 for er", type("er").candidates.any { it.chinese == "儿" })
             }
             val cases = JSONArray(instrumentation.context.assets.open("generated/engine-cases.json").bufferedReader().use { it.readText() })

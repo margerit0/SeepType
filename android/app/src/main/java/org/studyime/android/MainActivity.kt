@@ -3,7 +3,10 @@ package org.studyime.android
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.database.ContentObserver
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.text.InputType
 import android.view.inputmethod.EditorInfo
@@ -63,6 +66,9 @@ import org.studyime.android.ui.StudyTheme
 class MainActivity : ComponentActivity() {
     private var enabled by mutableStateOf(false)
     private var selected by mutableStateOf(false)
+    private val selectedImeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+        override fun onChange(selfChange: Boolean) = refreshImeStatus()
+    }
     private val wordFrequencyTransfer by lazy { ViewModelProvider(this)[WordFrequencyTransfer::class.java] }
     private val createWordFrequencyFile = registerForActivityResult(ActivityResultContracts.CreateDocument("text/tab-separated-values")) { uri ->
         if (uri != null) wordFrequencyTransfer.save(this, uri)
@@ -122,8 +128,24 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+    override fun onStart() {
+        super.onStart()
+        contentResolver.registerContentObserver(
+            Settings.Secure.getUriFor(Settings.Secure.DEFAULT_INPUT_METHOD), false, selectedImeObserver,
+        )
+    }
+
     override fun onResume() {
         super.onResume()
+        refreshImeStatus()
+    }
+
+    override fun onStop() {
+        contentResolver.unregisterContentObserver(selectedImeObserver)
+        super.onStop()
+    }
+
+    private fun refreshImeStatus() {
         val manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         enabled = manager.enabledInputMethodList.any { it.packageName == packageName }
         selected = Settings.Secure.getString(contentResolver, Settings.Secure.DEFAULT_INPUT_METHOD)?.startsWith("$packageName/") == true

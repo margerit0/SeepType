@@ -1,7 +1,7 @@
 # Android-only composition; the imported dictionaries share the existing user DB ID.
 ---
 name: study_android
-version: '3'
+version: '4'
 sort: by_weight
 use_preset_vocabulary: false
 import_tables:
@@ -11,3 +11,4 @@ import_tables:
 ...
 # Common phrases for Chinese composition.
 让我	rang wo	10000
+让你	rang ni	10000

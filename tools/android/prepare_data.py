@@ -25,11 +25,16 @@ RIME_SOURCES = {
     **{f"rime/{schema}.schema.yaml": ROOT / f"packaging/data/{schema}.schema.yaml" for schema in SCHEMES},
     "rime/rime.lua": ROOT / "android/rime/rime.lua",
     "rime/lua/study_details.lua": ROOT / "android/rime/study_details.lua",
+    "rime/lua/study_double_pinyin_order.lua": ROOT / "android/rime/study_double_pinyin_order.lua",
     "rime/study_android.dict.yaml": ROOT / "android/rime/study_android.dict.yaml",
     "rime/study_phrases.dict.yaml": ROOT / "android/rime/study_phrases.dict.yaml",
 }
 # The prism and the shared cedict_study user dictionary stay unchanged.
 SCHEME_PATCH = b"patch:\n  menu/page_size: 9\n  translator/dictionary: study_android\n  translator/user_dict: cedict_study\n"
+SCHEME_PATCHES = {
+    schema: SCHEME_PATCH + (b"  engine/filters/@before 0: lua_filter@study_double_pinyin_order\n" if schema != "study" else b"")
+    for schema in SCHEMES
+}
 DETAIL_ROWS = "word-details.jsonl"
 EXAMPLES = SNAPSHOT / "word-detail-examples.json"
 
@@ -63,7 +68,7 @@ def refresh_if_needed(source_cache=None):
                 ENGINE_CASES: snapshot["files"]["engine-cases.json"],
                 **{ASSETS / asset: snapshot["files"][name] for name, asset in RUNTIME_ASSETS.items()},
                 **{ASSETS / asset: digest(source) for asset, source in RIME_SOURCES.items()},
-                **{ASSETS / f"rime/{schema}.custom.yaml": sha(SCHEME_PATCH) for schema in SCHEMES},
+                **{ASSETS / f"rime/{schema}.custom.yaml": sha(content) for schema, content in SCHEME_PATCHES.items()},
                 **{ASSETS / asset: sha(content) for asset, content in names.items()},
                 **{ASSETS / asset: expected_hash for asset, expected_hash in detail_hashes.items()}}
     # The archive may not have been restored yet in a fresh checkout.
@@ -126,8 +131,8 @@ def prepare(source_cache=None):
     # Android's compact strip shows 6–7 entries and the expanded panel shows
     # nine. Override each schema locally; the Windows five-entry menu is shared
     # source and must retain its original configuration.
-    for schema in SCHEMES:
-        payload[f"rime/{schema}.custom.yaml"] = SCHEME_PATCH
+    for schema, content in SCHEME_PATCHES.items():
+        payload[f"rime/{schema}.custom.yaml"] = content
     payload["notices/english/snapshot.json"] = lock
     payload["notices/english/NOTICE.txt"] = (SNAPSHOT / "NOTICE.txt").read_bytes()
     payload["notices/english/legacy-preview-NOTICE.txt"] = (ROOT / "data/lexicon/NOTICE.txt").read_bytes()

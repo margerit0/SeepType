@@ -17,6 +17,27 @@ import org.studyime.android.settings.Preferences
 
 @RunWith(AndroidJUnit4::class)
 class ScenarioTest {
+    @Test fun homeReflectsKeyboardSwitchWhileOpen() {
+        val d = ImeDriver()
+        val ui = d.device
+        val fallback = ui.executeShellCommand("ime list -s").lineSequence().map(String::trim)
+            .first { it.contains("inputmethod.latin") }
+        val selected = By.text("拾词正在使用中")
+        val unselected = By.text("选择拾词，开始自在输入")
+
+        d.context.startActivity(Intent(d.context, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+        assertTrue(ui.wait(Until.hasObject(selected), 8000))
+        try {
+            ui.executeShellCommand("ime set $fallback")
+            assertTrue(ui.wait(Until.hasObject(unselected), 5000))
+            ui.executeShellCommand("ime set ${d.component}")
+            assertTrue(ui.wait(Until.hasObject(selected), 5000))
+        } finally {
+            ui.executeShellCommand("ime set ${d.component}")
+        }
+    }
+
     @Test fun definitionsGesturesNavigationAndSettings() {
         val d = ImeDriver()
         val ui = d.device
