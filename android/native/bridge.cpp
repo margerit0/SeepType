@@ -5,12 +5,20 @@
 #include <rime/dict/prism.h>
 #include <rime/dict/reverse_lookup_dictionary.h>
 #include <rime/dict/table.h>
+#include <rime/dict/table_db.h>
+#include <rime/dict/user_dictionary.h>
+#include <utf8.h>
+#include <algorithm>
+#include <charconv>
 #include <cstring>
 #include <exception>
 #include <filesystem>
+#include <fstream>
+#include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <string_view>
 #include <vector>
 
 namespace {
@@ -56,6 +64,47 @@ bool valid(uintptr_t session) {
     return false;
   }
   return true;
+}
+
+rime::an<rime::Db> word_frequency_db() {
+  auto dictionaries = dynamic_cast<rime::UserDictionaryComponent*>(
+      rime::UserDictionary::Require("user_dictionary"));
+  // The full-pinyin and both double-pinyin schemas share this database.
+  auto db = dictionaries ? dictionaries->FindDb("cedict_study") : nullptr;
+  if (!db || !db->loaded() || db->disabled()) throw std::runtime_error("user-dictionary-unavailable");
+  return db;
+}
+
+std::map<std::string, int> read_word_frequency(const char* path) {
+  std::ifstream input(path, std::ios::binary);
+  if (!input) throw std::runtime_error("word-frequency-unreadable");
+  std::map<std::string, int> records;
+  std::string line;
+  for (bool first = true; std::getline(input, line); first = false) {
+    std::string_view row(line);
+    if (first && row.substr(0, 3) == "\xEF\xBB\xBF") row.remove_prefix(3);
+    if (!row.empty() && row.back() == '\r') row.remove_suffix(1);
+    if (row.empty() || row.front() == '#') continue;
+    const auto word_end = row.find('\t');
+    const auto pinyin_end = word_end == row.npos ? row.npos : row.find('\t', word_end + 1);
+    if (pinyin_end == row.npos) throw std::runtime_error("invalid-word-frequency-row");
+    const auto word = row.substr(0, word_end);
+    const auto pinyin = row.substr(word_end + 1, pinyin_end - word_end - 1);
+    const auto count_text = row.substr(pinyin_end + 1);
+    int count;
+    const auto parsed = std::from_chars(count_text.data(), count_text.data() + count_text.size(), count);
+    if (word.empty() || !utf8::is_valid(word.begin(), word.end()) ||
+        std::any_of(word.begin(), word.end(), [](unsigned char c) { return c < 32 || c == 127; }) ||
+        pinyin.empty() || pinyin.front() == ' ' || pinyin.back() == ' ' ||
+        pinyin.find_first_not_of("abcdefghijklmnopqrstuvwxyz ") != pinyin.npos || pinyin.find("  ") != pinyin.npos ||
+        parsed.ec != std::errc{} || parsed.ptr != count_text.data() + count_text.size() || count < 0) {
+      throw std::runtime_error("invalid-word-frequency-row");
+    }
+    auto& merged = records[std::string(pinyin) + " \t" + std::string(word)];
+    merged = (std::max)(merged, count);
+  }
+  if (input.bad() || !input.eof()) throw std::runtime_error("word-frequency-unreadable");
+  return records;
 }
 
 template<typename F> int guarded(F action) noexcept {
@@ -129,6 +178,64 @@ void study_rime_finalize() {
       initialized = false;
     }
     return 1;
+  });
+}
+
+int study_rime_export_word_frequency(const char* path) {
+  return guarded([&] {
+    if (!initialized || !path) return -1;
+    auto db = word_frequency_db();
+    auto transaction = rime::As<rime::Transactional>(db);
+    if (transaction && transaction->in_transaction() && !transaction->CommitTransaction()) return -1;
+    auto records = db->QueryAll();
+    if (!records) return -1;
+
+    std::ofstream output;
+    output.exceptions(std::ios::badbit | std::ios::failbit);
+    output.open(path, std::ios::binary);
+    output << "# Rime user dictionary export\n# word\tpinyin\tcount\n";
+    int count = 0;
+    std::string key, value;
+    rime::Tsv row;
+    while (records->GetNextRecord(&key, &value)) {
+      if (!rime::TableDb::format.formatter(key, value, &row)) continue;
+      output << row[0] << '\t' << row[1] << '\t' << row[2] << '\n';
+      ++count;
+    }
+    output.close();
+    return count;
+  });
+}
+
+int study_rime_import_word_frequency(const char* path) {
+  return guarded([&] {
+    if (!initialized || !path) return -1;
+    const auto records = read_word_frequency(path);
+    if (records.empty()) return 0;
+    auto db = word_frequency_db();
+    auto transaction = rime::As<rime::Transactional>(db);
+    if (!transaction || db->readonly() ||
+        (transaction->in_transaction() && !transaction->CommitTransaction()) ||
+        !transaction->BeginTransaction()) return -1;
+
+    try {
+      for (const auto& [key, count] : records) {
+        std::string value;
+        rime::UserDbValue entry;
+        if (db->Fetch(key, &value)) {
+          if (!entry.Unpack(value)) throw std::runtime_error("invalid-user-dictionary-entry");
+          if (entry.commits >= count) continue;
+        }
+        entry.commits = count;
+        // Use the initial weight of Rime's table import and preserve the local weight and tick.
+        entry.dee = (std::max)(entry.dee, (count + 1.0) / 1e8);
+        if (!db->Update(key, entry.Pack())) throw std::runtime_error("word-frequency-write-failed");
+      }
+    } catch (...) {
+      transaction->AbortTransaction();
+      throw;
+    }
+    return transaction->CommitTransaction() ? static_cast<int>(records.size()) : -1;
   });
 }
 

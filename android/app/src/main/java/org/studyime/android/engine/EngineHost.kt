@@ -8,6 +8,8 @@ import android.os.Looper
 import android.os.Process
 import android.os.SystemClock
 import java.util.concurrent.atomic.AtomicLong
+import kotlinx.coroutines.android.asCoroutineDispatcher
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.studyime.android.diagnostics.StartupTimings
 import org.studyime.android.diagnostics.StartupTimings.Phase
@@ -20,8 +22,6 @@ data class DispatchTiming(
 /** One serial worker owns the entire native lifetime. UI owns InputConnection. */
 class EngineHost(context: Context) : AutoCloseable {
     private val app = context.applicationContext
-    private val thread = HandlerThread("StudyRime", Process.THREAD_PRIORITY_DISPLAY).apply { start() }
-    private val worker = Handler(thread.looper)
     // A traversal barrier must not hold an already computed input result for
     // another frame. Callbacks remain serial on the main thread and gated by
     // the editor generation, including after disconnect/close.
@@ -35,6 +35,7 @@ class EngineHost(context: Context) : AutoCloseable {
 
     private fun initialize() {
         if (handle != 0L) return
+        check(owner == null)
         val deployer = DataDeployer(app)
         handle = StartupTimings.measure(Phase.RESOURCE_OPEN) {
             deployer.open(initialize = { value ->
@@ -44,6 +45,7 @@ class EngineHost(context: Context) : AutoCloseable {
                 }
             }, close = NativeCore::destroy)
         }
+        owner = this
     }
 
     fun begin(config: JSONObject, previous: EngineSnapshot? = null): Long {
@@ -92,10 +94,45 @@ class EngineHost(context: Context) : AutoCloseable {
     override fun close() {
         closed = true
         invalidate()
-        worker.post {
-            try { if (handle != 0L) NativeCore.destroy(handle) }
-            finally { handle = 0; thread.quitSafely() }
+        worker.post { release() }
+    }
+
+    private fun release() {
+        if (handle == 0L) return
+        try { NativeCore.destroy(handle) }
+        finally { handle = 0; owner = null }
+    }
+
+    companion object {
+        private val nextGeneration = AtomicLong(0)
+        private val worker by lazy {
+            Handler(HandlerThread("StudyRime", Process.THREAD_PRIORITY_DISPLAY).apply { start() }.looper)
+        }
+        private val dispatcher by lazy { worker.asCoroutineDispatcher("StudyRime") }
+        // Accessed only on the serial worker, including during IME teardown.
+        private var owner: EngineHost? = null
+
+        internal suspend fun exportWordFrequency(context: Context, output: String) = withEngine(context) {
+            NativeCore.exportWordFrequency(it, output)
+        }
+
+        internal suspend fun importWordFrequency(context: Context, input: String) = withEngine(context) {
+            NativeCore.importWordFrequency(it, input)
+        }
+
+        private suspend fun withEngine(context: Context, use: (Long) -> Int): Int = withContext(dispatcher) {
+            val running = owner
+            if (running != null) {
+                use(running.handle)
+            } else {
+                val temporary = EngineHost(context)
+                try {
+                    temporary.initialize()
+                    use(temporary.handle)
+                } finally {
+                    temporary.release()
+                }
+            }
         }
     }
-    companion object { private val nextGeneration = AtomicLong(0) }
 }

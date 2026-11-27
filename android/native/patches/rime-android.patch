@@ -36,6 +36,41 @@
        commit_entry.Clear();
      }
    }
+--- a/librime/src/rime/dict/user_dictionary.h
++++ b/librime/src/rime/dict/user_dictionary.h
+@@ -111,6 +111,12 @@
+   UserDictionary* Create(const Ticket& ticket);
+   UserDictionary* Create(const string& dict_name, const string& db_class);
+ 
++  // StudyIME: inspect the live user database without reopening LevelDB.
++  an<Db> FindDb(const string& dict_name) const {
++    auto entry = db_pool_.find(dict_name);
++    return entry == db_pool_.end() ? nullptr : entry->second.lock();
++  }
++
+  private:
+   hash_map<string, weak<Db>> db_pool_;
+ };
+--- a/librime/src/rime/dict/user_dictionary.cc
++++ b/librime/src/rime/dict/user_dictionary.cc
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <cfloat>
+ #include <cmath>
++#include <limits>
+ #include <boost/algorithm/string.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/common.h>
+@@ -433,7 +434,8 @@
+   if (commits > 0) {
+     if (v.commits < 0)
+       v.commits = -v.commits;  // revive a deleted item
+-    v.commits += commits;
++    // Imported counts may already be at the maximum supported value.
++    v.commits += (std::min)(commits, (std::numeric_limits<int>::max)() - v.commits);
+     UpdateTickCount(1);
+     v.dee = algo::formula_d(commits, (double)tick_, v.dee, (double)v.tick);
+   } else if (commits == 0) {
 --- a/librime/CMakeLists.txt
 +++ b/librime/CMakeLists.txt
 @@ -273,7 +273,7 @@

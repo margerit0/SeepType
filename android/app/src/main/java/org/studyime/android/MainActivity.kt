@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 package org.studyime.android
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -8,10 +9,12 @@ import android.text.InputType
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -42,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -50,6 +54,8 @@ import org.studyime.android.engine.schemaName
 import org.studyime.android.settings.KeyboardPreferences
 import org.studyime.android.settings.KeyboardSkin
 import org.studyime.android.settings.Preferences
+import org.studyime.android.settings.WordFrequencyTransfer
+import org.studyime.android.settings.WordFrequencyTransfer.Operation
 import org.studyime.android.ui.LocalStudyColors
 import org.studyime.android.ui.StudyTheme
 
@@ -57,6 +63,22 @@ import org.studyime.android.ui.StudyTheme
 class MainActivity : ComponentActivity() {
     private var enabled by mutableStateOf(false)
     private var selected by mutableStateOf(false)
+    private val wordFrequencyTransfer by lazy { ViewModelProvider(this)[WordFrequencyTransfer::class.java] }
+    private val createWordFrequencyFile = registerForActivityResult(ActivityResultContracts.CreateDocument("text/tab-separated-values")) { uri ->
+        if (uri != null) wordFrequencyTransfer.save(this, uri)
+    }
+    private val openWordFrequencyFile = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) wordFrequencyTransfer.load(this, uri)
+    }
+
+    private fun chooseWordFrequencyFile(launch: () -> Unit) {
+        try {
+            launch()
+        } catch (_: ActivityNotFoundException) {
+            Toast.makeText(this, "系统文件选择器不可用。", Toast.LENGTH_LONG).show()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -88,7 +110,10 @@ class MainActivity : ComponentActivity() {
                             "home" -> Welcome(enabled, selected, onEnable = { startActivity(Intent(Settings.ACTION_INPUT_METHOD_SETTINGS)) },
                                 onChoose = { (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showInputMethodPicker() },
                                 onPractice = { screen = "practice" }, onAbout = { screen = "about" })
-                            "settings" -> SettingsScreen(prefs, settings::update) { screen = "about" }
+                            "settings" -> SettingsScreen(prefs, settings::update, wordFrequencyTransfer.operation,
+                                exportWordFrequency = { chooseWordFrequencyFile { createWordFrequencyFile.launch("拾词-词频记忆.tsv") } },
+                                importWordFrequency = { chooseWordFrequencyFile { openWordFrequencyFile.launch(arrayOf("*/*")) } },
+                                about = { screen = "about" })
                             "practice" -> PracticeScreen()
                             "about" -> AboutScreen(license) { license = it }
                         }
@@ -162,7 +187,14 @@ private fun SetupStep(number: String, title: String, subtitle: String, done: Boo
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun SettingsScreen(prefs: KeyboardPreferences, update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit, about: () -> Unit) {
+private fun SettingsScreen(
+    prefs: KeyboardPreferences,
+    update: ((KeyboardPreferences) -> KeyboardPreferences) -> Unit,
+    wordFrequencyOperation: Operation?,
+    exportWordFrequency: () -> Unit,
+    importWordFrequency: () -> Unit,
+    about: () -> Unit,
+) {
     val c = LocalStudyColors.current
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 22.dp)) {
         SettingLabel("拼音方案")
@@ -176,6 +208,18 @@ private fun SettingsScreen(prefs: KeyboardPreferences, update: ((KeyboardPrefere
         Spacer(Modifier.height(16.dp))
         SwitchSetting("显示英文释义", "候选上方显示英文。普通点按和空格仍输入中文。", prefs.showEnglish) { value -> update { it.copy(showEnglish = value) } }
         SwitchSetting("记住中文选词习惯", "只保存在本机；暂停后保留已有词频。长按候选可逐词遗忘。", prefs.userLearning) { value -> update { it.copy(userLearning = value) } }
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            TextButton(onClick = exportWordFrequency, enabled = wordFrequencyOperation == null,
+                contentPadding = PaddingValues(vertical = 8.dp), modifier = Modifier.heightIn(min = 48.dp)) {
+                Text(if (wordFrequencyOperation == Operation.EXPORT) "正在导出词频记忆…" else "导出词频记忆")
+            }
+            TextButton(onClick = importWordFrequency, enabled = wordFrequencyOperation == null,
+                contentPadding = PaddingValues(vertical = 8.dp), modifier = Modifier.heightIn(min = 48.dp)) {
+                Text(if (wordFrequencyOperation == Operation.IMPORT) "正在导入词频记忆…" else "导入词频记忆")
+            }
+        }
+        Text("TSV 文件包含中文词条、拼音和选词次数。导入时，同一词条和拼音保留较高的次数。",
+            fontSize = 12.sp, lineHeight = 20.sp, color = c.subtle)
         ClipboardSettings()
         SettingLabel("皮肤")
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {

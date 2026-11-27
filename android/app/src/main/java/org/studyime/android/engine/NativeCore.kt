@@ -15,5 +15,7 @@ object NativeCore {
     external fun create(shared: String, user: String, build: String): Long
     external fun dispatch(handle: Long, event: String): String
     external fun destroy(handle: Long)
+    external fun exportWordFrequency(handle: Long, output: String): Int
+    external fun importWordFrequency(handle: Long, input: String): Int
     external fun version(handle: Long): String
 }

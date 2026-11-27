@@ -96,6 +96,20 @@ def patch_sources():
             "        selection.Save();\n"
             "      }\n"
             "      selected_phrases.clear();\n")
+    replace("librime/src/rime/dict/user_dictionary.h",
+            "  UserDictionary* Create(const string& dict_name, const string& db_class);\n",
+            "  UserDictionary* Create(const string& dict_name, const string& db_class);\n"
+            "\n"
+            "  // StudyIME: inspect the live user database without reopening LevelDB.\n"
+            "  an<Db> FindDb(const string& dict_name) const {\n"
+            "    auto entry = db_pool_.find(dict_name);\n"
+            "    return entry == db_pool_.end() ? nullptr : entry->second.lock();\n"
+            "  }\n")
+    replace("librime/src/rime/dict/user_dictionary.cc", "#include <cmath>\n",
+            "#include <cmath>\n#include <limits>\n")
+    replace("librime/src/rime/dict/user_dictionary.cc", "    v.commits += commits;\n",
+            "    // Imported counts may already be at the maximum supported value.\n"
+            "    v.commits += (std::min)(commits, (std::numeric_limits<int>::max)() - v.commits);\n")
     replace("librime/CMakeLists.txt", "  add_subdirectory(tools)\n", "  # StudyIME Android uses the C API, not standalone tools.\n")
     replace("opencc/CMakeLists.txt", '  find_library(LIBMARISA NAMES marisa)',
             '  find_package(marisa CONFIG REQUIRED)\n  set(LIBMARISA marisa)')

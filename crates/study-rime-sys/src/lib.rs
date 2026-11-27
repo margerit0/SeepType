@@ -21,6 +21,8 @@ pub struct View {
 unsafe extern "C" {
     pub fn study_rime_initialize(shared: *const c_char, user: *const c_char, build: *const c_char) -> c_int;
     pub fn study_rime_finalize();
+    pub fn study_rime_export_word_frequency(path: *const c_char) -> c_int;
+    pub fn study_rime_import_word_frequency(path: *const c_char) -> c_int;
     pub fn study_rime_session() -> usize;
     pub fn study_rime_destroy_session(session: usize);
     pub fn study_rime_key(session: usize, code: c_int, modifiers: c_int) -> c_int;

@@ -81,9 +81,17 @@ class NativeEngineTest {
             send(event("configure", "config" to config.engineConfig(false, false, false)))
         }
         fun inspect(value: EngineSnapshot, index: Int) = send(event("inspect", "index" to index, "revision" to value.revision))
+        fun exportedWords(): List<List<String>> {
+            val output = File(root, "frequency.tsv")
+            val count = NativeCore.exportWordFrequency(handle, output.path)
+            val rows = output.readLines().filterNot { it.startsWith("#") }.map { it.split('\t') }
+            assertEquals(count, rows.size)
+            return rows
+        }
         val details = WordDetails { file -> context.assets.open(file).bufferedReader(Charsets.UTF_8).use { it.readText() } }
 
         try {
+            check("An unused user dictionary exports zero rows before the first editor", exportedWords().isEmpty())
             start()
             check("Kotlin loads Rust and fixed Rime/Lua", NativeCore.version(handle).contains("Rime 1.13.1"))
             check("Invalid opaque handles are rejected at JNI boundary", runCatching {
@@ -249,6 +257,10 @@ class NativeEngineTest {
             val hao = find(segment, "好")
             val phrase = send(event("select", "index" to hao.second, "revision" to hao.first.revision))
             check("Segmented input learns synthetic phrase", phrase.commands.single().text == "拟好")
+            check("Export includes an immediately selected phrase with its full reading and count",
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val backup = File(root, "frequency-backup.tsv")
+            File(root, "frequency.tsv").copyTo(backup)
             listOf("study_flypy" to "nihc", "study" to "nihao", "study_double_pinyin" to "nihk").forEach { (schema, input) ->
                 scheme(schema, learning = true)
                 check("$schema shares learned Chinese phrase", type(input).candidates.first().chinese == "拟好")
@@ -262,9 +274,15 @@ class NativeEngineTest {
             scheme("study", learning = false)
             check("Learned phrase survives native restart", type("nihao").candidates.first().chinese == "拟好")
             val current = type("nihao")
+            check("Export still includes earlier learning while learning is paused",
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val afterExport = send(event("read"))
+            check("Export preserves active composition and candidate revision",
+                afterExport.input == current.input && afterExport.revision == current.revision && afterExport.commands.isEmpty())
             val forgetTarget = inspect(current, 0).target!!
             val forgotten = send(event("forget", "token" to forgetTarget.token))
             check("Forget retains composition and emits no editor text", forgotten.input == "nihao" && forgotten.commands.isEmpty())
+            check("Export omits forgotten words", exportedWords().none { it.first() == "拟好" })
             scheme("study_flypy")
             check("Forget is shared across schemes", type("nihc").candidates.first().chinese != "拟好")
             val pausedNi = find(type("nihc"), "拟")
@@ -324,6 +342,31 @@ class NativeEngineTest {
             scheme("study")
             check("Damaged real Lua resources are repaired before native initialization", type("gongyuan").candidates.any { it.chinese == "公园" && it.english == "park" })
             check("Resource repair preserves the forgotten-word user dictionary state", type("nihao").candidates.first().chinese != "拟好")
+
+            val beforeImport = send(event("read"))
+            check("An exported TSV restores its recorded entries", NativeCore.importWordFrequency(handle, backup.path) == 1 &&
+                exportedWords().contains(listOf("拟好", "ni hao", "1")))
+            val afterImport = send(event("read"))
+            check("Import preserves active composition and revision", afterImport.input == beforeImport.input &&
+                afterImport.revision == beforeImport.revision && afterImport.commands.isEmpty())
+            check("The imported phrase is used in the next composition", type("nihao").candidates.first().chinese == "拟好")
+
+            val importFile = File(root, "frequency-import.tsv")
+            importFile.writeText("\uFEFF拟好\tni hao\t5\r\n拟好\tni hao\t2\r\n")
+            check("Repeated and duplicate imports keep the higher count", NativeCore.importWordFrequency(handle, importFile.path) == 1 &&
+                NativeCore.importWordFrequency(handle, importFile.path) == 1 && NativeCore.importWordFrequency(handle, backup.path) == 1 &&
+                exportedWords().contains(listOf("拟好", "ni hao", "5")))
+            val beforeInvalid = exportedWords()
+            importFile.writeText("拟好\tni hao\t9\n公园\tgong yuan\t2147483648\n")
+            check("An invalid row leaves the entire dictionary untouched", runCatching {
+                NativeCore.importWordFrequency(handle, importFile.path)
+            }.isFailure && exportedWords() == beforeInvalid)
+            importFile.writeText("公园\tgong yuan\t2147483647\n")
+            NativeCore.importWordFrequency(handle, importFile.path)
+            scheme("study", learning = true)
+            val park = find(type("gongyuan"), "公园")
+            send(event("select", "index" to park.second, "revision" to park.first.revision))
+            check("Learning still works after importing a maximum count", exportedWords().contains(listOf("公园", "gong yuan", "2147483647")))
 
             report.put("passed", true)
         } finally {

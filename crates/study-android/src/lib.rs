@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! JNI owns opaque, monotonic IDs, never Java-supplied native pointers.
-use jni::{objects::{JObject, JString}, sys::{jlong, jstring}, JNIEnv};
+use jni::{objects::{JObject, JString}, sys::{jint, jlong, jstring}, JNIEnv};
 use std::{fs, io, panic::{catch_unwind, AssertUnwindSafe}, path::Path, sync::{Mutex, OnceLock}, thread::{self, ThreadId}};
 use study_core::{EnglishLexicon, Event, Session};
 use study_rime::RimeEngine;
@@ -69,6 +69,25 @@ pub extern "system" fn Java_org_studyime_android_engine_NativeCore_destroy(mut e
         registry.runtime.take();
         Ok(())
     });
+}
+
+#[no_mangle]
+pub extern "system" fn Java_org_studyime_android_engine_NativeCore_exportWordFrequency(mut env: JNIEnv, _: JObject, id: jlong, output: JString) -> jint {
+    word_frequency(&mut env, id, &output, study_rime::export_word_frequency)
+}
+
+#[no_mangle]
+pub extern "system" fn Java_org_studyime_android_engine_NativeCore_importWordFrequency(mut env: JNIEnv, _: JObject, id: jlong, input: JString) -> jint {
+    word_frequency(&mut env, id, &input, study_rime::import_word_frequency)
+}
+
+fn word_frequency(env: &mut JNIEnv, id: jlong, path: &JString, transfer: impl FnOnce(&str) -> study_core::Result<i32>) -> jint {
+    boundary(env, |env| {
+        let registry = registry().lock().map_err(|_| "engine-poisoned")?;
+        let runtime = registry.runtime.as_ref().filter(|r| r.id == id).ok_or("invalid-engine-handle")?;
+        if runtime.owner != thread::current().id() { return Err("wrong-engine-thread".into()); }
+        transfer(&string(env, path)?)
+    }).unwrap_or(-1)
 }
 
 #[no_mangle]

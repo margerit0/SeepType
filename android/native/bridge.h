@@ -27,6 +27,8 @@ typedef struct {
 
 int study_rime_initialize(const char* shared, const char* user, const char* build);
 void study_rime_finalize(void);
+int study_rime_export_word_frequency(const char* path);
+int study_rime_import_word_frequency(const char* path);
 uintptr_t study_rime_session(void);
 void study_rime_destroy_session(uintptr_t session);
 int study_rime_key(uintptr_t session, int code, int modifiers);
