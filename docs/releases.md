@@ -4,10 +4,10 @@ Android 与 Windows 共用项目主页，分别编号、验证和发布。这里
 
 ## Android
 
-**公开预览：[下载 0.1.0-preview.4](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4)。** 最低系统版本为 Android 10，支持 `arm64-v8a` 和 `x86_64`。从 GitHub 发行版 `preview.3` 可覆盖升级。
+**公开预览：[下载 0.1.0-preview.5](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5)。** 最低系统版本为 Android 10，支持 `arm64-v8a` 和 `x86_64`。从 GitHub 发行版 `preview.4` 可覆盖升级。
 
 1. 从发布页下载已签名的 APK。若已安装同包名但签名不同的开发版本，不能直接覆盖安装；不要为了试用就卸载有本地词频数据的版本。
-2. 在测试设备上安装 APK，打开「拾词」，依次点「启用拾词」和「切换键盘」，在系统选择框里选拾词。
+2. 在测试设备上安装 APK，打开「SeepType」，依次点「启用拾词」和「切换键盘」，在系统选择框里选 SeepType。
 3. 回到拾词点「试打几句」。用全拼输入 `jiejue`，点「解决」应输入中文；长按同一候选应打开英文详情，不会直接提交英文。
 
 Android 公开预览沿用 AI 语义审校，并核对固定快照、来源署名及自动引擎回归，不要求逐条人工复审。词义仍可能有误，欢迎反馈。本版签名 APK 的验证范围见发布说明，不以其他分支或旧 APK 的结果代替。

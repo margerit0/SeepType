@@ -7,7 +7,7 @@
 离线拼音输入法，英文释义就写在中文候选的上方。<br>
 An offline pinyin keyboard that shows English glosses above the Chinese candidates.
 
-[下载 Android 预览版 0.1.0-preview.4](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4) · [安装与启用](#安装) · [从源码构建](#从源码构建)
+[下载 Android 预览版 0.1.0-preview.5](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5) · [**Releases**](https://github.com/margerit0/SeepType/releases) · [安装与启用](#安装) · [从源码构建](#从源码构建)
 
 </div>
 
@@ -47,7 +47,9 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 - **两套皮肤**：默认和轻彩，各有浅色、深色，也能跟随系统；键盘高度和字号可调。见[皮肤说明](docs/android-skins.md)。
 - **数字与符号**：九宫格数字页，左侧运算符栏可以按住滑选 `+ − × ÷ %`；轻彩皮肤的字母键长按输入左下角的数字或符号。
 - **表情和剪贴板**：表情面板不联网、不下载表情包；[剪贴板历史](docs/android-clipboard.md)默认关闭，开启后最多保留 50 条，只存在本机。
-- **离线词库**：约 12.4 万行中文词典，其中 10,718 个「词 + 读音」带默认英文释义；另附 420 条影视、游戏作品名和角色名，比如「流浪地球」「琅琊榜」「空洞骑士」。见[词库快照](data/lexicon-expansion/android-runtime/README.md)和[专名来源](data/lexicon-expansion/android-names/README.md)。
+- **离线词库**：约 12.4 万行中文词典，其中 10,718 个「词 + 读音」带默认英文释义；另附 420 条影视、游戏专名和 [1,000 条日常、网络及游戏词组](android/rime/study_phrases.dict.yaml)。新增词组提供中文候选。见[词库快照](data/lexicon-expansion/android-runtime/README.md)和[专名来源](data/lexicon-expansion/android-names/README.md)。
+- **离线英文补全**：在普通文本框中可以直接选中 `home` 等原文候选。切到「英」后，输入 `hom` 可点选 `home`，最多显示三条补全。
+- **词频备份**：在键盘设置中导出或导入 TSV。导入时合并本机记录，相同词条和拼音保留较高的选词次数。
 
 <img src="docs/images/soft-pop-letters.png" width="390" alt="轻彩浅色皮肤的字母页：白色圆角键帽，右上是字母，左下是彩色数字或灰色符号。">
 
@@ -59,13 +61,13 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 
 目前可以安装的是 Android 公开预览版，要求 Android 10（API 29）及以上，APK 同时包含 `arm64-v8a` 和 `x86_64`。
 
-1. 打开 [0.1.0-preview.4 发布页](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4)，下载 `StudyIME-0.1.0-preview.4-arm64-x86_64.apk`。发布页附有 `SHA256SUMS.txt`，可以核对文件。
-2. 安装后打开「拾词」，依次点「启用拾词」和「切换键盘」，在系统的选择框里选拾词。
+1. 打开 [0.1.0-preview.5 发布页](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5)，下载 `StudyIME-0.1.0-preview.5-arm64-x86_64.apk`。发布页附有 `SHA256SUMS.txt`，可以核对文件。
+2. 安装后打开「SeepType」，依次点「启用拾词」和「切换键盘」，在系统的选择框里选 SeepType。
 3. 回到拾词点「试打几句」。用全拼打 `jiejue`：点「解决」输入中文；长按它打开英文详情，不会直接提交英文。
 
 升级之前：
 
-- 装过 GitHub 发布的 `preview.3`，可以直接覆盖升级。
+- 装过 GitHub 发布的 `preview.4`，可以直接覆盖升级。
 - 装过自己构建的开发签名版本，签名不同，无法互相覆盖。卸载会删除本机的选词记录，不要为了试用卸掉正在用的版本。
 
 文件名里的 StudyIME 是拾词的工程名，包名（`org.studyime.android`）和源码里也沿用它。
@@ -75,7 +77,7 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 启用任何第三方输入法时，Android 都会提示它可能读到你输入的全部内容。拾词把事情都留在设备上：
 
 - 拼音转换、选词学习和查释义全部离线完成，应用不申请网络权限。
-- 选词记录只保存在本机，三种方案共用，不参与系统云备份和换机迁移；卸载应用即删除。
+- 选词记录由三种方案共用，不参与系统云备份。卸载应用会删除本机记录。可以手动导出 TSV 迁移，文件中可能含有你选过的词组。
 - 在密码输入框里，释义和选词学习自动关闭；应用要求停用个性化时，拾词暂停记录。
 - 剪贴板历史默认关闭。开启后也只存本机；密码框、标记为敏感的内容、图片和过长的文本不记录。
 
@@ -86,7 +88,7 @@ https://github.com/user-attachments/assets/2132cab7-4133-41a2-a231-51dcab796751
 - **词义可能有误。** 13,429 条英文义项经过 AI 语义审校和自动引擎回归，没有逐条人工复审。
 - **还没有系统的真机验证。** `preview.4` 的最终签名 APK 在 Android 15（API 35）x86_64 模拟器上通过了输入、键盘重开、剪贴板隐私和普通触屏检查，也通过了双 ABI 与 16 KiB 静态对齐检查；真机和 16 KiB 页面设备上的运行仍待验证。最低系统版本和打包架构，不等于所有设备都已实测。
 
-具体项目见 [preview.4 发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.4)和[验证记录](docs/android-validation.md)。释义不对、装不上或打不了字，欢迎[提 Issue](https://github.com/margerit0/SeepType/issues)，带上机型和 Android 版本会很有帮助。
+本版验证范围见 [preview.5 发布说明](https://github.com/margerit0/SeepType/releases/tag/android-v0.1.0-preview.5)，历次验证见[验证记录](docs/android-validation.md)。释义不对、装不上或打不了字，欢迎[提 Issue](https://github.com/margerit0/SeepType/issues)，带上机型和 Android 版本会很有帮助。
 
 ## Windows 版
 
